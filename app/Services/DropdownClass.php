@@ -120,6 +120,17 @@ class DropdownClass
         return $data;
     }
 
+    public function allagencies(){
+        $data = Agency::with('member')->get()->map(function ($item) {
+            return [
+                'value' => $item->id,
+                'name' => $item->member->name,
+                'short' => $item->name
+            ];
+        });
+        return $data;
+    }
+
     public function roles(){
         $data = ListRole::where('is_active',1)->get()->map(function ($item) {
             return [
@@ -243,16 +254,17 @@ class DropdownClass
                 return [
                     'value' => $item1->id,
                     'report' => null,
-                    'type' => $item1->tsr->laboratory_id,
-                    'name' => $item1->code
+                    'name' => $item1->code,
+                    'selected' => null
                 ];
             });
             return [
                 'value' => $item->id,
                 'report' => null,
                 'name' => $item->code,
-                'type' => $item->tsr->laboratory_id,
-                'related' => $related
+                'related' => $related,
+                'selected' => null,
+                'laboratory_id' => $item->tsr->laboratory_id
             ];
         });
         return $data;

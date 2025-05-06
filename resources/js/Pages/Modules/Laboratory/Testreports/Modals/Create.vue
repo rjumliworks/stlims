@@ -1,6 +1,6 @@
 <template>
     <!-- style="--vz-modal-width: 650px;" -->
-    <b-modal v-model="showModal" style="--vz-modal-width: 600px;" header-class="p-3 bg-light" title="Generate Report Number" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
+    <b-modal v-model="showModal" :style="(selected) ? (selected.laboratory_id == 3) ? '--vz-modal-width: 600px;' : '--vz-modal-width: 600px' : '--vz-modal-width: 600px'" header-class="p-3 bg-light" title="Generate Report Number" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
         <form class="customform">
             <BRow class="g-3">
                 <BCol lg="12">
@@ -41,13 +41,17 @@
                                 <table class="table align-middle table-centered table-nowrap">
                                     <thead class="bg-dark-subtle fs-11">
                                         <tr>
+                                            <th><input class="form-check-input fs-16" v-model="mark" type="checkbox" value="option" /></th>
                                             <th>Sample Code</th>
                                             <th class="text-center" style="width: 50%">Report No.</th>
                                             <th class="text-end" style="width: 20%"></th>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-light-subtle fs-12" v-if="selected">
-                                        <tr class="fs-11 table-info">
+                                        <tr class="fs-13 table-info">
+                                            <td>
+                                                <input type="checkbox" v-model="selected.selected" class="form-check-input" />
+                                            </td>
                                             <td class="fw-semibold text-primary">{{selected.name}}</td>
                                             <td class="text-center">{{(!selected.report) ? '-' : selected.report}}</td>
                                             <td class="text-end">
@@ -61,12 +65,14 @@
                                 <table class="table align-middle table-centered table-nowrap mt-0">
                                     <thead class="bg-dark-subtle fs-11 thead-fixed"  v-if="selected">
                                         <tr>
-                                            <td colspan="3" class="text-center text-muted">Found {{selected.related.length}} related samples under the same TSR that is completed</td>
+                                            <td colspan="4" class="text-center text-muted">Found {{selected.related.length}} related samples under the same TSR that is completed</td>
                                         </tr>
                                     </thead>
                                     <tbody class="bg-light-subtle fs-12" v-if="selected">
-                                        <tr v-for="(list,index) in selected.related" v-bind:key="index" class="fs-11" :class="(list.selected) ? 'table-info' : ''">
-                                           
+                                        <tr v-for="(list,index) in selected.related" v-bind:key="index" class="fs-13" :class="(list.selected) ? 'table-info' : ''">
+                                            <td>
+                                                <input type="checkbox" v-model="list.selected" class="form-check-input" />
+                                            </td>
                                             <td class="fw-semibold text-primary">{{list.name}}</td>
                                             <td style="width: 50%" class="text-center">{{(!list.report) ? '-' : list.report}}</td>
                                             <td style="width: 20%" class="text-end">
@@ -85,33 +91,56 @@
         </form>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
-            <!-- <b-button @click="submit('ok')" variant="primary" :disabled="form.processing" block>Submit</b-button> -->
+            <b-button @click="openConfirmation()" variant="danger" :disabled="form.processing" block>Generate</b-button>
         </template>
     </b-modal>
     <Add @selected="set" ref="conforme"/>
+    <Confirm ref="confirm"/>
 </template>
 <script>
 import _ from 'lodash';
 import simplebar from "simplebar-vue";
+import Confirm from './Confirm.vue';
 import { useForm } from '@inertiajs/vue3';
 import Multiselect from "@vueform/multiselect";
 import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
 export default {
-    components: { Multiselect, InputLabel, TextInput, simplebar },
+    components: { Multiselect, InputLabel, TextInput, simplebar, Confirm },
     data(){
         return {
             currentUrl: window.location.origin,
             form: useForm({
                 id: null,
+                option: 'single',
                 laboratory_id: null
             }),
             index: null,
             selected: null,
             samples: [],
+            checked: [],
+            mark: null,
             showModal: false,
             editable: false
         }
+    },
+    watch: {
+        mark(){
+            if(this.mark){
+                this.selected.related.forEach(item => {
+                    item.selected = true;
+                    this.checked.push(item.value);
+                });
+                this.selected.selected = true;
+                this.checked.push(this.selected.value);
+            }else{
+                this.selected.related.forEach(item => {
+                    item.selected = false;
+                });
+                this.selected.selected = null;
+                this.checked = [];
+            }
+        },
     },
     methods: { 
         show(){
@@ -119,7 +148,7 @@ export default {
         },
         generate(type,data,index = null){
             this.form.id = data.value;
-            this.form.laboratory_id = data.type;
+            this.form.laboratory_id = this.selected.laboratory_id;
             this.index = index;
             this.submit(type);
         },
@@ -147,6 +176,9 @@ export default {
                 this.samples = response.data;
             })
             .catch(err => console.log(err));
+        },
+        openConfirmation(){
+            this.$refs.confirm.show(this.checked,this.selected.laboratory_id);
         },
         handleInput(field) {
             this.form.errors[field] = false;

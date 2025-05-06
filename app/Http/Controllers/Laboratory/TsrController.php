@@ -35,11 +35,13 @@ class TsrController extends Controller
                 'dropdowns' => [
                     'laboratories' => $this->dropdown->laboratories(),
                     'discounts' => $this->dropdown->discounts(),
+                    'agencies' => $this->dropdown->allagencies(),
                     'statuses' => $this->dropdown->statuses('Request'),
                     'services' => $this->dropdown->services(),
                     'purposes' => $this->dropdown->dropdowns('Purpose','n/a'),
                 ],
-                'counts' => $this->view->counts($this->dropdown->statuses('Request'))
+                'counts' => $this->view->counts($this->dropdown->statuses('Request')),
+                'region' => $this->view->region()
             ]);
         }
     }

@@ -73,13 +73,13 @@
                         <div class="row">
                                 <div class="col-md-6">
                                     <div class="custom-control custom-radio mb-3">
-                                        <input type="radio" id="customRadio1" class="custom-control-input me-2" :value="true" v-model="form.is_referral">
+                                        <input type="radio" id="customRadio1" class="custom-control-input me-2" @input="handleInput('is_referral')" :value="true" v-model="form.is_referral">
                                         <label class="custom-control-label fw-normal fs-12" for="customRadio1">Yes</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="custom-control custom-radio mb-3">
-                                        <input type="radio" id="customRadio2" class="custom-control-input me-2" :value="false" v-model="form.is_referral">
+                                        <input type="radio" id="customRadio2" class="custom-control-input me-2" @input="handleInput('is_referral')" :value="false" v-model="form.is_referral">
                                         <label class="custom-control-label fw-normal fs-12" for="customRadio2">No</label>
                                     </div>
                                 </div>
@@ -87,6 +87,51 @@
                         </BCol>
                         <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
                     </BRow>
+                </BCol>
+                <BCol :lg="(form.agency_id == $page.props.user.data.agency_id ) ? 6 : 12" class="mt-n2" v-if="form.is_referral">
+                    <InputLabel for="region" value="Agency" :message="form.errors.agency_id"/>
+                    <Multiselect 
+                    :options="dropdowns.agencies" 
+                    v-model="form.agency_id"
+                    @input="handleInput('agency_id')"
+                    :searchable="true" label="name"
+                    placeholder="Select Agency"/>
+                </BCol>
+                <BCol lg="6" class="mt-n2" v-if="form.is_referral && $page.props.user.data.agency_id == form.agency_id">
+                    <InputLabel for="province" value="Province" :message="form.errors.province_code"/>
+                    <Multiselect 
+                    :options="provinces" 
+                    v-model="form.province_code"
+                    @input="handleInput('province_code')"
+                    :searchable="true" label="name"
+                    placeholder="Select Province"/>
+                </BCol>
+                <BCol lg="12" :class="(form.is_referral) ? '' : 'mt-n2'" v-if="form.laboratory_id == 3">
+                    <BRow class="g-3 mt-n2">
+                        <BCol lg="12" v-if="form.is_referral"><hr class="text-muted mb-n3 mt-n1"/></BCol>
+                        <BCol lg="8" style="margin-top: 13px; margin-bottom: -12px;" class="fs-12" :class="(form.errors.is_onsite) ? 'text-danger' : ''">Is the TSR for onsite calibration?</BCol>
+                        <BCol lg="4" style="margin-top: 13px; margin-bottom: -12px;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="custom-control custom-radio mb-3">
+                                        <input type="radio" id="customRadio1" class="custom-control-input me-2" @input="handleInput('is_onsite')" :value="true" v-model="form.is_onsite">
+                                        <label class="custom-control-label fw-normal fs-12" for="customRadio1">Yes</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="custom-control custom-radio mb-3">
+                                        <input type="radio" id="customRadio2" class="custom-control-input me-2" @input="handleInput('is_onsite')" :value="false" v-model="form.is_onsite">
+                                        <label class="custom-control-label fw-normal fs-12" for="customRadio2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </BCol>
+                        <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
+                    </BRow>
+                </BCol>
+                <BCol lg="12" v-if="form.laboratory_id == 3 && this.form.is_onsite" class="mt-n2">
+                    <InputLabel for="due" value="Request Date" :message="form.errors.created_at"/>
+                    <TextInput v-model="form.created_at" type="date" class="form-control" @input="handleInput('created_at')" :light="true"/>
                 </BCol>
             </BRow>
         </form>
@@ -119,16 +164,40 @@ export default {
                 purpose_id: null,
                 discount_id: null,
                 purpose_id: null,
-                is_referral: null
+                is_referral: null,
+                is_onsite: null,
+                agency_id: null,
+                province_code: null,
+                my_agency: this.$page.props.user.data.agency_id,
+                created_at: null
             }),
             customers: [],
             conformes: [],
+            provinces: [],
+            region: null,
             showModal: false,
             editable: false
         }
     },
+    watch: {
+        "form.is_referral"(newVal){
+            if(!newVal){
+                this.form.agency_id = null;
+                this.form.province_code = null;
+            }
+        },
+        "form.laboratory_id"(newVal){
+            this.form.is_onsite = null;
+            this.form.created_at = null;
+        },
+        "form.is_onsite"(newVal){
+            this.form.created_at = null;
+        },
+    },
     methods: { 
-        show(){
+        show(region){
+            this.region = region;
+            this.fetchProvince(this.region);
             this.showModal = true;
         },
         submit(){
@@ -149,6 +218,18 @@ export default {
             })
             .then(response => {
                 this.customers = response.data;
+            })
+            .catch(err => console.log(err));
+        },
+        fetchProvince(code){
+            axios.get('/search',{
+                params: {
+                    option: 'provinces',
+                    code: code
+                }
+            })
+            .then(response => {
+                this.provinces = response.data;
             })
             .catch(err => console.log(err));
         },

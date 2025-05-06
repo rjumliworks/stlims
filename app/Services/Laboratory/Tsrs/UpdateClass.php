@@ -24,43 +24,54 @@ class UpdateClass
 
     public function update($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
-        $data->customer_id = $request->customer['value'];
-        $data->conforme_id = $request->conforme['value'];
-        $data->purpose_id = $request->purpose_id;
-        $data->laboratory_id = $request->laboratory_id;
-        $data->save();
-        if($data){
-            if($data->payment->discount_id != $request->discount_id){
-                if(in_array($request->discount_id, [5, 6, 7])){
-                    $data->payment->update([
-                        'discount_id' => $request->discount_id,
-                        'status_id' => 8,
-                        'paid_at' => now(),
-                        'is_free' => 1
-                    ]);
-                    $data->status_id = 3; //update to ongoing since it is gratis
-                    $data->save();
-                }else{
-                    $data->payment->update([
-                        'discount_id' => $request->discount_id
-                    ]);
+        if($data->status_id == 1 || $data->status_id == 2){
+            $data->customer_id = $request->customer['value'];
+            $data->conforme_id = $request->conforme['value'];
+            $data->purpose_id = $request->purpose_id;
+            $data->laboratory_id = $request->laboratory_id;
+            $data->save();
+            if($data){
+                if($data->payment->discount_id != $request->discount_id){
+                    if(in_array($request->discount_id, [5, 6, 7])){
+                        $data->payment->update([
+                            'discount_id' => $request->discount_id,
+                            'status_id' => 8,
+                            'paid_at' => now(),
+                            'is_free' => 1
+                        ]);
+                        $data->status_id = 3; //update to ongoing since it is gratis
+                        $data->save();
+                    }else{
+                        $data->payment->update([
+                            'discount_id' => $request->discount_id
+                        ]);
+                    }
+                    $total = $this->updateTotal($request->id,$data->payment->subtotal);
                 }
-                $total = $this->updateTotal($request->id,$data->payment->subtotal);
+                $this->report($request->id);
             }
-            $this->report($request->id);
+
+            $final =  Tsr::query()
+            ->with('laboratory','status','received.profile')
+            ->with('customer.customer_name','conforme','customer.address.region','customer.address.province','customer.address.municipality','customer.address.barangay')
+            ->with('payment.status','payment.collection','payment.type','payment.discounted')
+            ->where('id',$request->id)
+            ->first();
+
+            return [
+                'data' => new TsrResource($final),
+                'message' => 'TSR was successfully updated!', 
+                'info' => "You've successfully updated the tsr details.",
+            ];
+        }else{
+            return [
+                'data' => [],
+                'message' => 'Action Not Allowed',
+                'status' => false,
+                'info' => 'This TSR has already been processed and can no longer be modified.'
+            ];
         }
 
-        $final =  Tsr::query()
-        ->with('laboratory','status','received.profile')
-        ->with('customer.customer_name','conforme','customer.address.region','customer.address.province','customer.address.municipality','customer.address.barangay')
-        ->with('payment.status','payment.collection','payment.type','payment.discounted')
-        ->where('id',$request->id)
-        ->first();
-        return [
-            'data' => new TsrResource($final),
-            'message' => 'TSR was successfully updated!', 
-            'info' => "You've successfully updated the tsr details.",
-        ];
     }
 
     public function cancel($request){

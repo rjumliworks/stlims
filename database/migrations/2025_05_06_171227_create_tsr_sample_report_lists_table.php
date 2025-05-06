@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tsr_referrals', function (Blueprint $table) {
+        Schema::create('tsr_sample_report_lists', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->integer('agency_id')->unsigned()->index();
-            $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
-            $table->bigInteger('tsr_id')->unsigned()->index();
-            $table->foreign('tsr_id')->references('id')->on('tsrs')->onDelete('cascade');
+            $table->bigInteger('report_id')->unsigned()->index();
+            $table->foreign('report_id')->references('id')->on('tsr_sample_reports')->onDelete('cascade');
+            $table->bigInteger('sample_id')->unsigned()->index();
+            $table->foreign('sample_id')->references('id')->on('tsr_samples')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tsr_referrals');
+        Schema::dropIfExists('tsr_sample_report_lists');
     }
 };

@@ -23,7 +23,10 @@ class Tsr extends Model
         'received_by',
         'due_at',
         'is_parent',
-        'is_shelf'
+        'is_shelf',
+        'is_referral',
+        'is_onsite',
+        'created_at'
     ];
 
     public function payment()
@@ -34,6 +37,11 @@ class Tsr extends Model
     public function release()
     {
         return $this->hasOne('App\Models\TsrRelease', 'tsr_id');
+    }
+
+    public function referral()
+    {
+        return $this->hasOne('App\Models\TsrReferral', 'tsr_id');
     }
 
     public function samples()

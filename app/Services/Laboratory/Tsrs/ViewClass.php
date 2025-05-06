@@ -157,6 +157,7 @@ class ViewClass
             ->with('samples.report','samples.analyses','samples.analyses.addfee.service','samples.analyses.testservice.testname','samples.analyses.testservice.method.method','samples.analyses.testservice.method.reference','samples.analyses.testservice.fees')
             ->with('service.service')
             ->with('children.child.status')
+            ->with('referral.agency.member','referral.province')
             ->with('groups.testservice:id,testname_id,method_id,laboratory_id','groups.testservice.testname:id,name','groups.testservice.type:id,name')
             ->with('received:id','received.profile:id,firstname,lastname,user_id')
             ->with('agency','laboratory:id,name','status:id,name,color,others')
@@ -242,5 +243,9 @@ class ViewClass
             $canvas->text(106 - $width, 796, $text, $font, $size);
         });
         return $pdf->stream($lab->code.'.pdf');
+    }
+
+    public function region(){
+        return $this->configuration->agency->address->region_code;
     }
 }

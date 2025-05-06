@@ -70,7 +70,7 @@
                         <table class="table align-middle table-centered mb-0">
                             <thead class="table-light thead-fixed">
                                 <tr class="fs-11">
-                                    <th style="width: 3%;"></th>
+                                    <th style="width: 4%;"></th>
                                     <th>Customer</th>
                                     <th style="width: 7%;" class="text-center">Progress</th>
                                     <th style="width: 10%;" class="text-center">Total</th>
@@ -88,14 +88,17 @@
                                         'bg-danger-subtle': isOverdue(list.due_at,list.status.name)
                                 }" -->
                             <tbody>
-                                <tr v-for="(list,index) in lists" v-bind:key="index" @click="selectRow(index)" 
+                             
+                                <tr class="ribbon-box" v-for="(list,index) in lists" v-bind:key="index" @click="selectRow(index)" 
                                     :class="filter.status === null ? {
                                         'bg-success-subtle': list.status.name === 'Completed',
                                         'bg-info-subtle': list.status.name === 'Ongoing',
                                         'bg-warning-subtle': list.status.name === 'Payment',
                                         'bg-danger-subtle': list.status.name === 'Cancelled'
                                     } : ''">
+                                     
                                     <td class="text-center"> 
+                                        <div v-if="list.is_referral" class="ribbon-two ribbon-two-primary"><span style="font-size: 8px;">Referral</span></div>
                                         {{ (meta.current_page - 1) * meta.per_page + index + 1 }}.
                                     </td>
                                     <td>
@@ -174,7 +177,7 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
     components: { PageHeader, Pagination, Multiselect, Create, Cancel, Edit },
-    props: ['counts','dropdowns'],
+    props: ['counts','dropdowns','region'],
     data(){
         return {
             currentUrl: window.location.origin,
@@ -297,7 +300,7 @@ export default {
             }
         },
         openCreate(){
-            this.$refs.create.show();
+            this.$refs.create.show(this.region);
         },
         openCancel(data,index){
             this.index = index;

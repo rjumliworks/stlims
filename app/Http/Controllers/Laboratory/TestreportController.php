@@ -43,7 +43,14 @@ class TestreportController extends Controller
 
     public function store(Request $request){
         $result = $this->handleTransaction(function () use ($request) {
-            return $this->save->reportnumber($request);
+            switch($request->option){
+                case 'single':
+                    return $this->save->single($request);
+                break;
+                case 'multiple':
+                    return $this->save->multiple($request);
+                break;
+            }
         });
 
         return back()->with([

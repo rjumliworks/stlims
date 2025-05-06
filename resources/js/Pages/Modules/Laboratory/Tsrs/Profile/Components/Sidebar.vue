@@ -132,6 +132,12 @@
                     <i class="ri-information-fill fs-20 mb-n2 mt-n1 text-primary float-end" style="cursor: pointer;"></i>
                 </td>
             </tr>
+            <tr v-if="selected.referral">
+                <td style="border-right: none; border-left: none; cursor: pointer;" @click="openReferral()">
+                    <span class="fw-semibold fs-12 ms-2">Referral Information</span>
+                    <i class="ri-information-fill fs-20 mb-n2 mt-n1 text-primary float-end" style="cursor: pointer;"></i>
+                </td>
+            </tr>
             <!-- <tr v-if="selected.service">
                 <td style="border-right: none; border-left: none;">
                     <div v-if="selected.service" class="alert alert-warning fs-12 mb-0" role="alert">
@@ -153,12 +159,14 @@
     </table>
     <Payment ref="payment"/>
     <Service ref="service"/>
+    <Referral ref="referral"/>
 </template>
 <script>
 import Payment from '../Modals/Sidebar/Payment.vue';
 import Service from '../Modals/Sidebar/Service.vue';
+import Referral from '../Modals/Sidebar/Referral.vue';
 export default {
-    components: { Payment, Service },
+    components: { Payment, Service, Referral },
     props: ['selected'],
     methods: {
         openPayment(){
@@ -166,6 +174,9 @@ export default {
         },
         openService(){
             this.$refs.service.show(this.selected.service,this.selected.status,this.selected.id);
+        },
+        openReferral(){
+            this.$refs.referral.show(this.selected.referral);
         }
     }
 }

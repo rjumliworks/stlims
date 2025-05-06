@@ -34,6 +34,7 @@ class TsrViewResource extends JsonResource
             'addfee' => $this->addfee,
             'is_shelf' => $this->is_shelf,
             'service' => $this->service,
+            'referral' => $this->referral,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
         ];

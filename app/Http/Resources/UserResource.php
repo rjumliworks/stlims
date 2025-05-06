@@ -17,6 +17,7 @@ class UserResource extends JsonResource
             'avatar' => ($this->profile->avatar === 'avatar.jpg') ? '/images/avatars/'.$this->profile->avatar : '/storage/'.$this->profile->avatar,
             'name' => $this->profile->firstname.' '.$this->profile->lastname,
             'roles' => RoleResource::collection($this->myroles),
+            'agency_id' => ($this->myroles) ? \Auth::user()->myroles[0]->agency_id : null,
             'firstname' => $this->profile->firstname,
             'lastname' => $this->profile->lastname,
             'middlename' => $this->profile->middlename,

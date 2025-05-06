@@ -16,7 +16,7 @@ class SaveClass
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
     }
 
-    public function reportnumber($request){
+    public function single($request){
         $labs = $this->configuration->laboratories;
         $laboratory_id = $request->laboratory_id;
 
@@ -62,5 +62,29 @@ class SaveClass
             'message' => $message, 
             'info' => "You've successfully generated the report number."
         ];
+    }
+
+    public function multiple($request){
+        $labs = $this->configuration->laboratories;
+        $laboratory_id = $request->laboratory_id;
+        $lists = $request->checked;
+        $lab_type = ListLaboratory::select('short')->where('id',$laboratory_id)->first();
+        
+        if($request->is_single){
+            if($sample ){
+                if($sample->completed_at){
+                    $date = Carbon::parse($sample->completed_at)->format('mdY');
+                }else{
+                    $endAt = $sample->analyses()->max('end_at');
+                    $date = $endAt ? Carbon::parse($endAt)->format('mdY') : null;
+                }
+            }
+            $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);
+            foreach($lists as $list){
+
+            }
+        }else{
+
+        }
     }
 }

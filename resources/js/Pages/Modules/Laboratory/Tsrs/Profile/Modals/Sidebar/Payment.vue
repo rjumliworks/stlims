@@ -3,30 +3,96 @@
         <div v-if="selected.status.name == 'Pending'" class="alert alert-warning alert-dismissible alert-label-icon label-arrow fs-12" role="alert">
             <i class="ri-alert-line label-icon"></i><strong>Payment Not Settled</strong> - We noticed that your payment has not been settled
         </div>
+        <div class="row g-2 mb-2">
+            <div class="col-md-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-0">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-18"><i class="ri-hashtag"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted fs-11 mb-0">OR Number :</p>
+                            <h5 class="fs-12 mb-0">{{(selected.ornumber) ? selected.ornumber : 'Not Available'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-0">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-18"><i class="ri-coupon-line"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted fs-11 mb-0">Collection :</p>
+                            <h5 class="fs-12 mb-0">{{(selected.collection) ? selected.collection.name : 'Not Available'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-0">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-18"><i class="ri-calendar-2-line"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted fs-11 mb-0">Paid At :</p>
+                            <h5 class="fs-12 mb-0">{{selected.paid_at}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-0">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-18"><i class="ri-secure-payment-line"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted fs-11 mb-0">Payment Method :</p>
+                            <h5 class="fs-12 mb-0">{{(selected.type) ? selected.type.name : 'Not Available'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-0">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-18"><i class="ri-price-tag-2-line"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted fs-11 mb-0">Discount :</p>
+                            <h5 class="fs-12 mb-0">{{(selected.discounted) ? selected.discounted.name : 'Not Available'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-0">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-18"><i class="ri-calendar-2-line"></i>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted fs-11 mb-0">Status :</p>
+                            <h5 class="fs-12 mb-0">{{(selected.status) ? selected.status.name : 'Not Available'}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div>
         <div class="table-responsive fs-12">
             <table class="table table-bordered mt-0 mb-3">
               
                 <tbody>
-                    <tr class="fs-11 table-light">
-                        <th style="width: 33%;" class="text-center">OR Number</th>
-                        <th style="width: 33%;" class="text-center">Collection</th>
-                        <th style="width: 33%;" class="text-center">Paid At</th>
-                    </tr>
-                    <tr>
-                        <td class="text-center">{{(selected.or_number) ? selected.or_number : '-'}}</td>
-                        <td class="text-center">{{(selected.collection) ? selected.collection.name : '-'}}</td>
-                        <td class="text-center">{{selected.paid_at}}</td>
-                    </tr>
-                    <tr class="fs-11 table-light">
-                        <th style="width: 33%;" class="text-center">Payment Method</th>
-                        <th style="width: 33%;" class="text-center">Discount</th>
-                        <th style="width: 33%;" class="text-center">Status</th>
-                    </tr>
-                    <tr>
-                        <td class="text-center">{{(selected.type) ? selected.type.name : '-'}}</td>
-                        <td class="text-center">{{(selected.discounted) ? selected.discounted.name : '-'}}</td>
-                        <td class="text-center">{{selected.status.name}}</td>
-                    </tr>
                     <tr>
                         <td>Sub Total :</td>
                         <td colspan="2" class="text-end fw-semibold">{{selected.subtotal}}</td>

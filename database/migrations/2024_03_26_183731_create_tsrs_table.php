@@ -33,6 +33,7 @@ return new class extends Migration
             $table->boolean('is_referral')->default(0);
             $table->boolean('is_shelf')->default(0);
             $table->boolean('is_parent')->default(0);
+            $table->boolean('is_onsite')->default(0);
             $table->date('due_at')->nullable();
             $table->timestamps();
         });
