@@ -85,13 +85,14 @@ class DatabaseSeeder extends Seeder
         // $this->call(QuotationSamplesTableSeeder::class);
         // $this->call(QuotationAnalysesTableSeeder::class);
         // $this->call(QuotationServicesTableSeeder::class);
-        $this->call(FinanceNamesTableSeeder::class);
-        $this->call(FinanceOrseriesTableSeeder::class);
-        $this->call(FinanceOpsTableSeeder::class);
-        $this->call(FinanceItemsTableSeeder::class);
-        $this->call(FinanceOpItemsTableSeeder::class);
-        $this->call(FinanceReceiptsTableSeeder::class);
-        $this->call(FinanceReceiptDetailsTableSeeder::class);
-        $this->call(FinanceDepositsTableSeeder::class);
+        // $this->call(FinanceNamesTableSeeder::class);
+        // $this->call(FinanceOrseriesTableSeeder::class);
+        // $this->call(FinanceOpsTableSeeder::class);
+        // $this->call(FinanceItemsTableSeeder::class);
+        // $this->call(FinanceOpItemsTableSeeder::class);
+        // $this->call(FinanceReceiptsTableSeeder::class);
+        // $this->call(FinanceReceiptDetailsTableSeeder::class);
+        // $this->call(FinanceDepositsTableSeeder::class);
+        $this->call(SchedulesTableSeeder::class);
     }
 }

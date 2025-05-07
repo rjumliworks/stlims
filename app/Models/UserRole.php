@@ -10,7 +10,7 @@ class UserRole extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'role_id','laboratory_id','agency_id'
+        'user_id', 'role_id','laboratory_id','agency_id','province_code'
     ];
 
     public function user()
@@ -21,6 +21,11 @@ class UserRole extends Model
     public function role()
     {
         return $this->belongsTo('App\Models\ListRole', 'role_id', 'id');
+    }
+
+    public function province()
+    {
+        return $this->belongsTo('App\Models\LocationProvince', 'province_code', 'code');
     }
 
     public function agency()

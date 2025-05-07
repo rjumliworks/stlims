@@ -3,6 +3,7 @@
 namespace App\Services\Executive\Users;
 
 use App\Models\User;
+use App\Models\LocationProvince;
 use App\Http\Resources\UserResource;
 use App\Jobs\MailJob;
 

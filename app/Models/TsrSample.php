@@ -32,6 +32,11 @@ class TsrSample extends Model
         return $this->hasOne('App\Models\TsrSampleReport', 'sample_id');
     }
 
+    public function reportlist()
+    {
+        return $this->hasOne('App\Models\TsrSampleReportList', 'sample_id');
+    }
+
     public function disposal()
     {
         return $this->hasOne('App\Models\TsrSampleDisposal', 'sample_id');

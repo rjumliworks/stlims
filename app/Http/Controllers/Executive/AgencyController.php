@@ -48,6 +48,9 @@ class AgencyController extends Controller
                 case 'activate':
                     return $this->save->activate($request);
                 break;
+                case 'fee':
+                    return $this->save->fee($request);
+                break;
             }
         });
 

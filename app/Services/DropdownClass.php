@@ -20,6 +20,7 @@ use App\Models\LocationProvince;
 use App\Models\LocationMunicipality;
 use App\Models\LocationBarangay;
 use App\Models\TestserviceAddon;
+use App\Models\InventorySupplier;
 
 class DropdownClass
 {  
@@ -30,8 +31,18 @@ class DropdownClass
         $this->laboratory = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
     }
 
+    public function suppliers(){
+        $data = InventorySupplier::where('agency_id',$this->agency)->where('is_active',1)->get()->map(function ($item) {
+            return [
+                'value' => $item->id,
+                'name' => $item->name
+            ];
+        });
+        return $data;
+    }
+
     public function services(){
-        $data = TestserviceAddon::where('is_additional',0)->get()->map(function ($item) {
+        $data = TestserviceAddon::where('agency_id',$this->agency)->where('is_additional',0)->get()->map(function ($item) {
             return [
                 'value' => $item->id,
                 'label' => $item->name.' ('.$item->description.')',
@@ -48,6 +59,19 @@ class DropdownClass
             return [
                 'value' => $item->id,
                 'name' => $item->name
+            ];
+        });
+        return $data;
+    }
+
+    public function events(){
+        $data = ListDropdown::where('classification','Events')->get()->map(function ($item) {
+            return [
+                'value' => $item->id,
+                'name' => $item->name,
+                'type' => $item->type,
+                'color' => $item->color,
+                'others' => $item->others
             ];
         });
         return $data;
@@ -110,10 +134,11 @@ class DropdownClass
     }
 
     public function agencies(){
-        $data = Agency::with('member')->where('is_active',1)->get()->map(function ($item) {
+        $data = Agency::with('member','address')->where('is_active',1)->get()->map(function ($item) {
             return [
                 'value' => $item->id,
                 'name' => $item->member->name,
+                'region' => $item->address->region_code,
                 'short' => $item->name
             ];
         });
@@ -236,28 +261,32 @@ class DropdownClass
         $data = TsrSample::with('tsr')->whereHas('tsr', function ($query){
                 $query->where('agency_id',$this->agency);
             })
-            ->whereDoesntHave('report')
+            ->where('is_completed', 1)
+            ->doesntHave('report')
+            ->doesntHave('reportlist')
             ->whereHas('analyses', function ($query) {
                 $query->where('status_id', 12);
             })
             ->get()->map(function ($item) {
-            $tsr = $item->tsr_id;
-            $related = TsrSample::with('tsr')->whereHas('tsr', function ($query) use ($tsr){
-                $query->where('id',$tsr)->where('agency_id',$this->agency);
-            })
-            ->whereDoesntHave('report')
-            ->whereHas('analyses', function ($query) {
-                $query->where('status_id', 12);
-            })
-            ->where('id', '!=', $item->id)
-            ->get()->map(function ($item1) {
-                return [
-                    'value' => $item1->id,
-                    'report' => null,
-                    'name' => $item1->code,
-                    'selected' => null
-                ];
-            });
+                $tsr = $item->tsr_id;
+                $related = TsrSample::with('tsr')->whereHas('tsr', function ($query) use ($tsr){
+                    $query->where('id',$tsr)->where('agency_id',$this->agency);
+                })
+                ->where('is_completed', 1)
+                ->doesntHave('report')
+                ->doesntHave('reportlist')
+                ->whereHas('analyses', function ($query) {
+                    $query->where('status_id', 12);
+                })
+                ->where('id', '!=', $item->id)
+                ->get()->map(function ($item1) {
+                    return [
+                        'value' => $item1->id,
+                        'report' => null,
+                        'name' => $item1->code,
+                        'selected' => null
+                    ];
+                });
             return [
                 'value' => $item->id,
                 'report' => null,

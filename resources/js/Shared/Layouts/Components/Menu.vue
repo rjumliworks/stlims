@@ -121,31 +121,31 @@
                     </Link>
                 </li>
             </tempalte>
-            <!-- <li class="menu-title">
+            <li class="menu-title">
                 <i class="ri-more-fill" aria-expanded="false"></i>
                 <span data-key="t-menu">Other Modules</span>
             </li>
             <li class="nav-item">
-                <Link href="/services" class="nav-link menu-link"
-                :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
+                <Link href="/calendars" class="nav-link menu-link"
+                :class="{'active': $page.component.startsWith('Modules/Others/Calendars') }">
                 <i class="ri-calendar-fill"></i>
                 <span class="fw-semibold fs-14" data-key="t-dashboards">Calendar</span>
                 </Link>
             </li>
             <li class="nav-item">
-                <Link href="/services" class="nav-link menu-link"
-                :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
+                <Link href="/equipments" class="nav-link menu-link"
+                :class="{'active': $page.component.startsWith('Modules/Others/Equipments') }">
                 <i class="ri-tools-fill"></i>
                 <span class="fw-semibold fs-14" data-key="t-dashboards">Equipments</span>
                 </Link>
-            </li>
-            <li class="nav-item">
+            </li> 
+            <!-- <li class="nav-item">
                 <Link href="/services" class="nav-link menu-link"
                 :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
                 <i class="ri-archive-fill"></i>
                 <span class="fw-semibold fs-14" data-key="t-dashboards">Inventory</span>
                 </Link>
-            </li> -->
+            </li>  -->
             <tempalte v-if="['Cashier','Accountant','Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>

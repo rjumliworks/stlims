@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UserRequest extends FormRequest
@@ -23,6 +24,12 @@ class UserRequest extends FormRequest
             'gender' => 'sometimes|required|string|max:6',
             'mobile' => 'sometimes|required|numeric|digits:11|unique:user_profiles,mobile,'.$this->profile_id,
             'agency_id' => 'sometimes|required',
+            'province_code' => [
+                'sometimes',
+                Rule::requiredIf(function () {
+                    return $this->role_id == 9;
+                }),
+            ],
         ];
     }
 }

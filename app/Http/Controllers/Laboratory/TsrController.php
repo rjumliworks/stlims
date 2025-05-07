@@ -46,6 +46,15 @@ class TsrController extends Controller
         }
     }
 
+    public function show($id){
+        return inertia('Modules/Laboratory/Tsrs/Profile/Index',[
+            'tsr' => $this->view->view($id),
+            'analyses' => $this->view->analyses($id),
+            'services' => $this->dropdown->services(),
+            'laboratories' => $this->dropdown->laboratories()
+        ]);
+    }
+
     public function store(TsrRequest $request){
         $result = $this->handleTransaction(function () use ($request) {
             return $this->save->save($request);
@@ -56,15 +65,6 @@ class TsrController extends Controller
             'message' => $result['message'],
             'info' => $result['info'],
             'status' => $result['status'],
-        ]);
-    }
-
-    public function show($id){
-        return inertia('Modules/Laboratory/Tsrs/Profile/Index',[
-            'tsr' => $this->view->view($id),
-            'analyses' => $this->view->analyses($id),
-            'services' => $this->dropdown->services(),
-            'laboratories' => $this->dropdown->laboratories()
         ]);
     }
 

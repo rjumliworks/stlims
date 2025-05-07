@@ -21,6 +21,7 @@ class TestreportResource extends JsonResource
             'tsr_code' => $this->sample->tsr->code,
             'analyses' => $this->sample->analyses,
             'user' => $this->user->profile->firstname.' '.$this->user->profile->lastname,
+            'lists' => $this->lists,
             'created_at' => $this->created_at
         ]; 
     }

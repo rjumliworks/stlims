@@ -40,7 +40,7 @@ export default {
                 id: null,
                 name: null,
                 fee: null,
-                laboratory_id: null,
+                agency_id: null,
                 is_additional: true,
                 description: 'n/a',
                 option: 'fee'
@@ -50,10 +50,10 @@ export default {
         }
     },
     methods: { 
-        show(id,fees,lab){
+        show(id,fees,agency){
             this.form.id = id;
             this.fees = fees;
-            this.form.laboratory_id = lab;
+            this.form.agency_id = agency;
             this.showModal = true;
         },
         amount(val){

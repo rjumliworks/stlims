@@ -46,7 +46,8 @@ class EventResource extends JsonResource
             'description' => $this->description,
             'is_allday' => $this->is_allday,
             'event' => $this->event,
-            'user_id' => $this->user_id
+            'user_id' => $this->user_id,
+            'created_at' => $this->created_at
         ];
     }
 }

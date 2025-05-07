@@ -100,10 +100,10 @@
                                         <span v-else class="badge bg-danger">Inactive</span>
                                     </td>
                                     <td class="text-end">
-                                        <b-button @click="openFee(list.id,list.fees,list.laboratory_id)" variant="soft-warning" class="me-1" v-b-tooltip.hover title="Add Fee" size="sm">
+                                        <b-button @click="openFee(list.id,list.fees,list.agency_id,)" variant="soft-warning" class="me-1" v-b-tooltip.hover title="Add Fee" size="sm">
                                             <i class="ri-add-circle-fill align-bottom"></i>
                                         </b-button>
-                                        <b-button @click="openProfile(list,index)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
+                                        <b-button @click="openProfile(list)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
                                             <i class="ri-eye-fill align-bottom"></i>
                                         </b-button>
                                     </td>

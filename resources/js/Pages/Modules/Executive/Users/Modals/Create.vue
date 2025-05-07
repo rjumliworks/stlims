@@ -60,15 +60,19 @@
                             </BCol>
                             <BCol lg="12" class="mt-0">
                                 <InputLabel for="username" value="Agency" :message="form.errors.agency_id"/>
-                                <Multiselect :options="dropdowns.agencies" label="name" v-model="form.agency_id" :message="form.errors.agency_id" @input="handleInput('agency_id')" placeholder="Select Agency" ref="multiselect1"/>
+                                <Multiselect :options="dropdowns.agencies" label="name" v-model="form.agency" object @input="handleInput('agency_id')" placeholder="Select Agency" ref="multiselect1"/>
                             </BCol>
-                            <BCol :lg="(has_lab) ? 6 : 12" class="mt-1">
+                            <BCol v-if="form.agency_id" :lg="(has_lab || form.role_id == 9) ? 6 : 12" class="mt-1">
                                 <InputLabel for="role" value="Role" :message="form.errors.role_id"/>
                                 <Multiselect :options="dropdowns.roles" v-model="form.role" label="name" object :message="form.errors.role_id" @input="handleInput('role_id')" placeholder="Select Role" ref="multiselect2"/>
                             </BCol>
                             <BCol lg="6" v-if="has_lab" class="mt-1">
-                                <InputLabel for="laboratory_id" value="Laboratory" />
-                                <Multiselect :options="dropdowns.laboratories" label="name" v-model="form.laboratory_id" :message="form.errors.laboratory_id" placeholder="Select Laboratory" ref="multiselect3"/>
+                                <InputLabel for="laboratory_id" value="Laboratory" :message="form.errors.laboratory_id"/>
+                                <Multiselect :options="dropdowns.laboratories" label="name" v-model="form.laboratory_id" placeholder="Select Laboratory" ref="multiselect3"/>
+                            </BCol>
+                            <BCol lg="6" v-if="form.role_id == 9" class="mt-1">
+                                <InputLabel for="province_code" value="Province" :message="form.errors.province_code"/>
+                                <Multiselect :options="provinces" label="name" v-model="form.province_code" placeholder="Select Province" ref="multiselect3"/>
                             </BCol>
                         </BRow>
                     </div>    
@@ -103,11 +107,15 @@ export default {
                 sex: null,
                 profile_id: null,
                 agency_id: null,
+                agency: null,
                 laboratory_id: null,
+                province_code: null,
                 role_id: null,
                 role: null,
                 option: 'user'
             }),
+            region: null,
+            provinces: [],
             has_lab: false,
             showModal: false,
             editable: false
@@ -116,6 +124,9 @@ export default {
     watch: {
         "form.role"(newVal){
             if(newVal){
+                if(newVal.value == 9){
+                    this.fetchProvince(this.region);
+                }
                 if(newVal.has_lab){
                     this.has_lab = 1
                 }else{
@@ -126,11 +137,36 @@ export default {
                 this.has_lab = 0;
                 this.form.role_id = null;
             }
+        },
+        "form.agency"(newVal){
+            if(newVal){
+              this.form.agency_id = newVal.value;
+              this.region = newVal.region;
+            }else{
+                this.has_lab = 0;
+                this.form.agency_id = null;
+                this.form.role = null;
+                this.form.role_id = null;
+                this.form.province_code = null;
+                this.form.laboratory_id = null;
+            }
         }
     },
     methods: { 
         show(){
             this.showModal = true;
+        },
+        fetchProvince(code){
+            axios.get('/search',{
+                params: {
+                    option: 'provinces',
+                    code: code
+                }
+            })
+            .then(response => {
+                this.provinces = response.data;
+            })
+            .catch(err => console.log(err));
         },
         edit(data){
             console.log(data);

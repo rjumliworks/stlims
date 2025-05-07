@@ -26,6 +26,7 @@ class ViewClass
         if($request->status == 'with'){
             $data = TestreportResource::collection(
                 TsrSampleReport::query()
+                ->with('lists.sample:id,code','lists.sample.analyses:testservice_id,sample_id','lists.sample.analyses.testservice:id,testname_id','lists.sample.analyses.testservice.testname:id,name')
                 ->with('sample.tsr','user.profile')
                 ->with('sample.analyses:testservice_id,sample_id','sample.analyses.testservice:id,testname_id','sample.analyses.testservice.testname:id,name')
                 ->when($request->keyword, function ($query, $keyword) {
@@ -58,14 +59,12 @@ class ViewClass
             );
         }else{
             $data = NoTestreportResource::collection(
-                TsrSample::where('is_completed',1)->whereDoesntHave('report')
-                ->with(['tsr' => function ($query) {
-                    $query->when($this->laboratory, function ($query) {
-                        if (in_array(4, $this->role->toArray(), false)) {
-                            $query->whereIn('laboratory_id', $this->laboratory);
-                        }
-                    });
-                }])
+                TsrSample::where('is_completed',1)
+                ->doesntHave('report')
+                ->doesntHave('reportlist')
+                ->withWhereHas('tsr', function ($query) {
+                    $query->where('agency_id',$this->agency)->where('status_id','!=',5);
+                })
                 ->orderBy('created_at','DESC')
                 ->paginate($request->count)
             );
@@ -74,7 +73,13 @@ class ViewClass
     }
 
     public function count(){
-        $count = TsrSample::where('is_completed',1)->whereDoesntHave('report')->count();
+        $count = TsrSample::where('is_completed', 1)
+        ->doesntHave('report')
+        ->doesntHave('reportlist')
+        ->whereHas('tsr', function ($query) {
+            $query->where('agency_id',$this->agency)->where('status_id','!=',5);
+        })
+        ->count();
         return $count;
     }
 

@@ -61,4 +61,14 @@ class SaveClass
             'info' => "You've successfully created an account for the user."
         ];
     }
+
+    public function fee($request){
+        $data = Agency::findOrFail($request->id);
+        $data->fees()->create($request->all());
+        return [
+            'data' => $data,
+            'message' => 'Additional fee added was successful!', 
+            'info' => "You've successfully added additional fee."
+        ];
+    }
 }

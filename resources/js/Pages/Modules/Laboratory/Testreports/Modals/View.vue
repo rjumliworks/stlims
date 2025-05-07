@@ -8,12 +8,12 @@
                         <div>
                             <h6><span class="fw-semibold text-primary fs-15">{{ selected.code }}</span></h6>
                             <div class="hstack gap-3  fs-12 flex-wrap">
-                                <div>Sample Code : 
+                                <div v-if="selected.lists.length == 0">Sample Code : 
                                     <span v-if="selected.sample_code" class="fw-medium"> {{ selected.sample_code}}</span>
                                     <span v-else class="text-muted">Not Available</span>
                                 </div>
-                                <div class="vr" style="width: 1px;"></div>
-                                <div>Tsr Code : 
+                                <div v-if="selected.lists.length == 0" class="vr" style="width: 1px;"></div>
+                                <div>TSR Code : 
                                     <span v-if="selected.tsr_code" class="fw-medium">{{selected.tsr_code}}</span>
                                     <span v-else class="text-muted">Not Available</span>
                                 </div>
@@ -22,15 +22,23 @@
                                     <span v-if="selected.user" class="fw-medium">{{selected.user}}</span>
                                     <span v-else class="text-muted">Not Available</span>
                                 </div>
-                                <!-- <div class="vr" style="width: 1px;"></div>
-                                <div>Price : <span class="fw-medium">{{selected.price}}</span></div> -->
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <hr class="text-muted"/>
+        <hr class="text-muted" v-if="selected.lists.length > 0"/>
+        <div class="row" v-if="selected.lists.length > 0" style="max-height: 130px; overflow: auto;">
+            <div class="col-md-3" v-for="(column, index) in columns" :key="index">
+                <ul class="list-unstyled">
+                    <li v-for="(item, idx) in column" :key="idx" class="py-1 fs-12">
+                        <i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> {{ item.sample.code }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <hr class="text-muted mt-0"/>
         <div class="row mt-2">
             <div class="col-sm-6">
                 <div class="p-1 border border-dashed rounded">
@@ -85,6 +93,16 @@ export default {
             parameters: [
                 {name: null, result: null}
             ],
+        }
+    },
+    computed: {
+        columns() {
+            const chunkSize = Math.ceil(this.selected.lists.length / 4);
+            const result = [];
+            for (let i = 0; i < this.selected.lists.length; i += chunkSize) {
+                result.push(this.selected.lists.slice(i, i + chunkSize));
+            }
+            return result;
         }
     },
     methods: { 

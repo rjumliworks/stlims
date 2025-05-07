@@ -30,7 +30,7 @@ class ViewClass
         $id = $hashids->decode($id);
 
         $data = new AgencyResource(
-            Agency::with('member','type','configuration')->where('id',$id)->first()
+            Agency::with('member','type','configuration','fees')->where('id',$id)->first()
         );
         return $data;
     }
