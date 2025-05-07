@@ -147,7 +147,7 @@ class UpdateClass
         $lab_type = ListLaboratory::select('short')->where('id',$laboratory)->first();
         $c = Tsr::where('agency_id',$this->agency)->where('laboratory_id',$laboratory)
         ->whereYear('created_at',$year)->where('code','!=',NULL)->count();
-        $code = $agency->code.'-'.date('m').date('Y').'-'.$lab_type->short.'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);  //$tsr_count+ remove since it will reset
+        $code = $agency->code.'-'.date('m').date('Y').'-'.$lab_type->short.'-'.str_pad(($tsr_count+$c+1), 4, '0', STR_PAD_LEFT);  //$tsr_count+ remove since it will reset
         return $code;
     }
 
@@ -167,7 +167,7 @@ class UpdateClass
         $c = TsrSample::whereHas('tsr',function ($query) use ($laboratory) {
             $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory);
         })->whereYear('created_at',$year)->where('code','!=','NULL')->count();
-        return $lab_type->short.'-'.str_pad(($c+1), 5, '0', STR_PAD_LEFT); //$sample_count+ removed
+        return $lab_type->short.'-'.str_pad(($sample_count+$c+1), 5, '0', STR_PAD_LEFT); //$sample_count+ removed
     }
 
     private function updateTotal($id,$fee){

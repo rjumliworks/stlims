@@ -70,6 +70,10 @@ class SaveClass
         $laboratory_id = $request->laboratory_id;
         $lists = $request->checked;
         $lab_type = ListLaboratory::select('short')->where('id',$laboratory_id)->first();
+        $lab = array_values(array_filter($labs, function ($object) use ($laboratory_id) {
+            return $object['value'] === $laboratory_id;
+        }));
+        $test_count = $lab[0]['report_count'];
         
         if($request->is_single){
             $count = TsrSampleReport::whereHas('sample',function ($query) use ($laboratory_id){
@@ -80,7 +84,7 @@ class SaveClass
             ->whereYear('created_at',date('Y'))->where('code','!=',NULL)->count();
             $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
             $date = Carbon::parse($latestCompletedAt)->format('mdY');
-            $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($count+1), 4, '0', STR_PAD_LEFT);
+            $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
             
             $check = TsrSampleReport::where('code',$code)->count();
             if($check == 0){
