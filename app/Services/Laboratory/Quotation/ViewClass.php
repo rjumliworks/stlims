@@ -8,6 +8,8 @@ use App\Models\UserRole;
 use App\Models\Quotation;
 use App\Models\QuotationSample;
 use App\Models\QuotationAnalysis;
+use App\Http\Resources\Laboratory\Quotation\ListResource;
+use App\Http\Resources\Laboratory\Quotation\ViewResource;
 use App\Http\Resources\Operation\QuotationResource;
 use App\Http\Resources\Operation\Quotation\AnalysisResource;
 
@@ -17,12 +19,13 @@ class ViewClass
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->roles = \Auth::user()->myroles->pluck('role_id');
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
     public function counts($statuses){
         foreach($statuses as $status){
             $counts[] = Quotation::where('agency_id',$this->agency)->where('status_id',$status['value'])
-            ->when($this->roles->contains(9), function ($query) {
+            ->when($this->province, function ($query){
                 $query->where('created_by', \Auth::user()->id);
             })->count();
         }
@@ -30,14 +33,12 @@ class ViewClass
     }
 
     public function lists($request){
-        $data = QuotationResource::collection(
+        $data = ListResource::collection(
             Quotation::query()
-            ->with('service.service')
+            ->select('id','total','code','customer_id','created_by','status_id','laboratory_id','discount_id','purpose_id')
             ->with('createdby:id','createdby.profile:id,firstname,lastname,user_id')
             ->with('laboratory:id,name','agency:id,name','status:id,name,color,others','discounted:id,name,value')
-            ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches','customer.address:address,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
-            ->with('customer.contact:id,email,contact_no,customer_id')
-            ->with('conforme:id,name,contact_no')
+            ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')
             ->when($request->keyword, function ($query, $keyword) {
                 $query->where('code', 'LIKE', "%{$keyword}%")
                 ->orWhereHas('customer',function ($query) use ($keyword) {
@@ -53,8 +54,8 @@ class ViewClass
                 $query->where('laboratory_id',$laboratory);
             })
             ->where('agency_id',$this->agency)
-            ->when($this->roles->contains(9), function ($query) {
-                $query->where('received_by', \Auth::user()->id);
+            ->when($this->province, function ($query){
+                $query->where('created_by', \Auth::user()->id);
             })
             ->orderBy('created_at','DESC')
             ->paginate($request->count)
@@ -66,12 +67,12 @@ class ViewClass
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($id);
 
-        $data = new QuotationResource(
+        $data = new ViewResource(
             Quotation::query()
             ->with('service.service')
             ->with('samples.analyses.testservice.testname','samples.analyses.addfee.service','samples.analyses.testservice.method.method','samples.analyses.testservice.method.reference')
             ->with('createdby:id','createdby.profile:id,firstname,lastname,user_id')
-            ->with('agency:id,name','laboratory:id,name','status:id,name,color,others','discounted:id,name,value')
+            ->with('agency:id,name','laboratory:id,name','status:id,name,color,others','discounted:id,name,value','purpose:id,name')
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')
             ->with('customer.address:id,address,region_code,province_code,municipality_code,barangay_code,customer_id','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
             ->with('customer.contact:id,email,contact_no,customer_id')
@@ -118,7 +119,8 @@ class ViewClass
         ->where('quotation_id',$id)
         ->get();
 
-        $samples = QuotationSample::with('analyses.testservice.method.method','analyses.testservice.testname','analyses.addfee.service')->whereHas('quotation',function ($query) use ($id) {
+        $samples = QuotationSample::with('analyses.testservice.method.method','analyses.testservice.testname','analyses.addfee.service')
+        ->whereHas('quotation',function ($query) use ($id) {
             $query->where('id',$id);
         })->get();
 

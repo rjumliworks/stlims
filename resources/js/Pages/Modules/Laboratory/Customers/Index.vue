@@ -48,7 +48,7 @@
                             <ul class="nav nav-tabs nav-tabs-custom nav-primary fs-12" role="tablist">
                                 <li class="nav-item">
                                     <BLink @click="viewClass(null,null)" class="nav-link py-3 active" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                    <i class="ri-apps-2-fill me-1 align-bottom"></i> All Users
+                                    <i class="ri-apps-2-fill me-1 align-bottom"></i> All Customers
                                     </BLink>
                                 </li>
                                 <li class="nav-item" v-for="(list,index) in dropdowns.classes" v-bind:key="index">

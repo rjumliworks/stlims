@@ -45,7 +45,7 @@
                             <ul class="nav nav-tabs nav-tabs-custom nav-primary fs-12" role="tablist">
                                 <li class="nav-item">
                                     <BLink @click="viewStatus(null,null)" class="nav-link py-3 active" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                    <i class="ri-apps-2-fill me-1 align-bottom"></i> All Users
+                                    <i class="ri-apps-2-fill me-1 align-bottom"></i> All Quotations
                                     </BLink>
                                 </li>
                                 <li class="nav-item" v-for="(list,index) in dropdowns.statuses" v-bind:key="index">
@@ -90,7 +90,7 @@
                                     <td>
                                         <h5 v-if="list.code" class="fs-13 mb-0 fw-semibold text-primary">{{list.code}}</h5>
                                         <h5 v-else class="fs-13 mb-0 text-muted">Not yet available</h5>
-                                        <p class="fs-12 text-muted mb-0">{{list.customer.name}}</p>
+                                        <p class="fs-12 text-muted mb-0">{{list.customer}}</p>
                                     </td>
                                     <td class="text-center">{{list.laboratory.name}}</td>
                                     <td class="text-center">{{list.received}}</td>
