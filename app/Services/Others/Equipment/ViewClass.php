@@ -18,7 +18,7 @@ class ViewClass
     public function lists($request){
         $data = IndexResource::collection(
             Equipment::query()
-            ->with('logs','info','type','user.profile','laboratory')
+            ->with('logs','info','laboratory','user.profile','agency')
             ->addSelect([
                 'last_calibration' => EquipmentLog::select('date')->where('is_calibrated',1)->whereColumn('equipment_id', 'equipment.id')->latest()->take(1),
                 'last_maintenance' => EquipmentLog::select('date')->where('is_calibrated',0)->whereColumn('equipment_id', 'equipment.id')->latest()->take(1),

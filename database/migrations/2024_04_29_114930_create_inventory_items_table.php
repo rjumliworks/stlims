@@ -15,7 +15,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('code')->unique();
-            $table->string('old_code',20);
+            $table->string('old_code',20)->nullable();
             $table->string('name')->unique();
             $table->string('img')->default('avatar.jpg');
             $table->integer('reorder')->default(0);
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreign('unit_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->tinyInteger('category_id')->unsigned()->nullable();
             $table->foreign('category_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
+            $table->tinyInteger('laboratory_id')->unsigned()->index();
+            $table->foreign('laboratory_id')->references('id')->on('list_laboratories')->onDelete('cascade');
             $table->integer('agency_id')->unsigned()->index();
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->boolean('is_active')->default(1);

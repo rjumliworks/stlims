@@ -19,6 +19,7 @@ class OpClass
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->configuration = AgencyConfiguration::where('agency_id',$this->agency)->first();
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
     public function lists($request){
@@ -36,6 +37,11 @@ class OpClass
             })
             ->when($this->agency, function ($query, $lab) {
                 $query->where('agency_id',$lab);
+            })
+            ->when($this->province, function ($query) {
+                $query->whereHas('createdby.myroles', function ($query) {
+                    $query->where('province_code', $this->province);
+                });
             })
             ->where('payorable_type','!=','App\Models\FinanceName')
             ->orderBy('updated_at','DESC')
@@ -184,6 +190,11 @@ class OpClass
             })
             ->where('status_id',2)
             ->whereIn('customer_id',$request->customer_id)
+            ->when($this->province, function ($query) {
+                $query->whereHas('received.myroles', function ($query) {
+                    $query->where('province_code', $this->province);
+                });
+            })
             ->orderBy('created_at','DESC')
             ->get()
         );

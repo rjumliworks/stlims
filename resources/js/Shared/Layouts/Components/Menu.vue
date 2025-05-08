@@ -68,33 +68,6 @@
                     </Link>
                 </li>
             </tempalte>
-            <tempalte v-if="['Provincial Customer Relation Officer'].some(role => $page.props.roles.includes(role))">
-                <li class="menu-title">
-                    <i class="ri-more-fill" aria-expanded="false"></i>
-                    <span data-key="t-menu">Laboratory</span>
-                </li>
-                <li class="nav-item">
-                    <Link href="/customers" class="nav-link menu-link"
-                    :class="{'active': $page.component.startsWith('Modules/Laboratory/Customers') }">
-                    <i class="ri-team-fill"></i>
-                    <span class="fw-semibold fs-14" data-key="t-dashboards">Customers</span>
-                    </Link>
-                </li>
-                <li class="nav-item">
-                    <Link href="/quotations" class="nav-link menu-link"
-                    :class="{'active': $page.component.startsWith('Modules/Laboratory/Quotations') }">
-                    <i class="ri-price-tag-3-fill"></i>
-                    <span class="fw-semibold fs-14" data-key="t-dashboards">Quotations</span>
-                    </Link>
-                </li>
-                <li class="nav-item">
-                    <Link href="/tsrs" class="nav-link menu-link"
-                    :class="{'active': $page.component.startsWith('Modules/Laboratory/Tsrs') }">
-                    <i class="ri-hand-coin-fill"></i>
-                    <span class="fw-semibold fs-14" data-key="t-dashboards">TS Requests</span>
-                    </Link>
-                </li>
-            </tempalte>
             <tempalte v-else-if="$page.props.roles.includes('Laboratory Aide')">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>

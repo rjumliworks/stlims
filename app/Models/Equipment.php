@@ -19,18 +19,18 @@ class Equipment extends Model
         'calibration_testpoints',
         'maintenance_due',
         'maintenance_plan',
-        'laboratory_type',
         'laboratory_id',
+        'agency_id',
     ];
+
+    public function agency()
+    {
+        return $this->belongsTo('App\Models\Agency', 'agency_id', 'id');
+    }
 
     public function laboratory()
     {
-        return $this->belongsTo('App\Models\Laboratory', 'laboratory_id', 'id');
-    }
-
-    public function type()
-    {
-        return $this->belongsTo('App\Models\ListLaboratory', 'laboratory_type', 'id');
+        return $this->belongsTo('App\Models\ListLaboratory', 'laboratory_id', 'id');
     }
 
     public function user()
@@ -74,8 +74,8 @@ class Equipment extends Model
         ->logOnly([ 
             'code',
             'name',
-            'laboratory_type',
             'laboratory_id',
+            'agency_id',
             ])
         ->setDescriptionForEvent(fn(string $eventName) => "{$eventName}")
         ->useLogName('Equipment')

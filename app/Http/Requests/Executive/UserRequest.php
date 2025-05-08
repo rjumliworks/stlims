@@ -25,10 +25,11 @@ class UserRequest extends FormRequest
             'mobile' => 'sometimes|required|numeric|digits:11|unique:user_profiles,mobile,'.$this->profile_id,
             'agency_id' => 'sometimes|required',
             'role_id' => 'sometimes|required',
+            'is_psto' => 'sometimes|required',
             'province_code' => [
                 'sometimes',
                 Rule::requiredIf(function () {
-                    return $this->role_id == 9;
+                    return $this->is_psto;
                 }),
             ],
         ];

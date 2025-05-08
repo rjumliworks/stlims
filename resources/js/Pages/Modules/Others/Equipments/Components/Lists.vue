@@ -44,13 +44,13 @@
             <table class="table align-middle table-centered mb-0">
                 <thead class="table-light thead-fixed">
                     <tr class="fs-11">
-                        <th></th>
-                        <th style="width: 29%;">Equipment</th>
+                        <th style="width: 4%;"></th>
+                        <th>Equipment</th>
                         <th style="width: 15%;" class="text-center">Last Calibration</th>
                         <th style="width: 15%;" class="text-center">Calibration Due</th>
                         <th style="width: 15%;" class="text-center">Last Maintenance</th>
                         <th style="width: 15%;" class="text-center">Maintenance Due</th>
-                        <th style="width: 7%;" ></th>
+                        <th style="width: 10%;" ></th>
                     </tr>
                 </thead>
                 <tbody class="table-white">

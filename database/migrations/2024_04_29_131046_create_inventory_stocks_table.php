@@ -22,6 +22,7 @@ return new class extends Migration
             $table->decimal('price',12,2)->default(0.00);
             $table->integer('unit');
             $table->string('supplier')->nullable();
+            $table->boolean('notify')->default(0);
             $table->tinyInteger('unit_id')->unsigned()->index();
             $table->foreign('unit_id')->references('id')->on('list_dropdowns')->onDelete('cascade');
             $table->integer('supplier_id')->unsigned()->nullable();
@@ -32,6 +33,7 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('bought_at')->nullable();
             $table->date('expired_at')->nullable();
+            $table->date('notify_at')->nullable();
             $table->timestamps(); 
         });
     }

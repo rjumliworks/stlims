@@ -25,6 +25,7 @@ class ViewClass
         $this->laboratory = null;
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
         $this->roles = \Auth::user()->myroles->pluck('role_id');
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
     public function counts($statuses){
@@ -40,13 +41,13 @@ class ViewClass
                                     });
                           });
                 })
-                ->when($this->roles->contains(9), function ($query) {
+                ->when($this->province, function ($query) {
                     $query->where('received_by', \Auth::user()->id);
                 })
                 ->count();
             } else {
                 $counts[] = Tsr::where('status_id',$status['value'])
-                ->when($this->roles->contains(9), function ($query){
+                ->when($this->province, function ($query){
                     $query->where('received_by', \Auth::user()->id);
                 })->count();
             }
@@ -154,7 +155,7 @@ class ViewClass
             ->when($this->agency, function ($query,$agency) {
                 $query->where('agency_id',$agency);
             })
-            ->when($this->roles->contains(9), function ($query){
+            ->when($this->province, function ($query){
                 $query->where('received_by', \Auth::user()->id);
             })
             ->paginate($request->count)

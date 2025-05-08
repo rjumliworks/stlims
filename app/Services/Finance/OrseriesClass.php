@@ -15,7 +15,8 @@ class OrseriesClass
     }
 
     public function lists($request){
-        $data = FinanceOrseries::when($request->keyword, function ($query, $keyword) {
+        $data = FinanceOrseries::with('user.profile')
+        ->when($request->keyword, function ($query, $keyword) {
             $query->where('name', 'LIKE', "%{$keyword}%");
         })
         ->when($this->agency, function ($query, $agency) {

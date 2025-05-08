@@ -35,12 +35,12 @@
                     <TextInput v-model="form.acquired_at" type="date" class="form-control" placeholder="Please select date" @input="handleInput('acquired_at')" :light="true"/>
                 </BCol>
                 <BCol lg="3" class="mt-0"> 
-                    <InputLabel value="Laboratory" :message="form.errors.laboratory_type"/>
+                    <InputLabel value="Laboratory" :message="form.errors.laboratory_id"/>
                     <Multiselect 
                     :options="dropdowns.laboratories" 
-                    v-model="form.laboratory_type" 
+                    v-model="form.laboratory_id" 
                     label="name"
-                    @input="handleInput('laboratory_type')"
+                    @input="handleInput('laboratory_id')"
                     placeholder="Select Laboratory"/>
                 </BCol>
                 <BCol lg="6" class="mt-0">
@@ -122,7 +122,7 @@ export default {
                 maintenance_plan: null,
                 calibration_program: null,
                 calibration_testpoints: null,
-                laboratory_type: null,
+                laboratory_id: null,
                 supplier_id: null,
                 acquired_at: null,
             }),
@@ -146,7 +146,7 @@ export default {
             this.form.maintenance_plan = data.maintenance_plan;
             this.form.calibration_program = data.calibration_program;
             this.form.calibration_testpoints = data.calibration_testpoints;
-            this.form.laboratory_type = data.laboratory_type;
+            this.form.laboratory_id = data.laboratory_id;
             this.form.acquired_at = (data.acquired_at == '-' || data.acquired_at == null) ? null : data.acquired_at;
             this.form.calibration_due = data.calibration_due;
             this.form.others = data.others;

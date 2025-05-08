@@ -26,7 +26,7 @@ class NonlabController extends Controller
                 return $this->lists($request);
             break;
             default :
-            return inertia('Modules/Finance/Cashiering/Nonlab/Index',[
+            return inertia('Modules/Finance/Cashiering/Nonlab2/Index',[
                 'dropdowns' => [
                     'payments' => $this->dropdown->dropdowns('Payment Mode','n/a'),
                     'statuses' => $this->dropdown->statuses('Payment'),

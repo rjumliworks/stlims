@@ -27,7 +27,7 @@ class OrController extends Controller
                 return $this->or->print($request);
             break;
             default :
-            return inertia('Modules/Finance/Cashiering/Receipts/Index',[
+            return inertia('Modules/Finance/Cashiering/Receipts2/Index',[
                 'dropdowns' => [
                     'payments' => $this->dropdown->dropdowns('Payment Mode','n/a'),
                     'statuses' => $this->dropdown->statuses('Payment'),

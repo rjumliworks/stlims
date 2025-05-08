@@ -8,7 +8,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
     Route::get('/search', [App\Http\Controllers\DashboardController::class, 'search']);
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
 
-    Route::middleware(['role:Customer Relation Officer,Provincial Customer Relation Officer,Technical Manager,Lab Analyst,Laboratory Head,Laboratory Aide'])->group(function () {
+    Route::middleware(['role:Customer Relation Officer,Technical Manager,Lab Analyst,Laboratory Head,Laboratory Aide'])->group(function () {
         Route::resource('/customers', App\Http\Controllers\Laboratory\CustomerController::class);
         Route::resource('/quotations', App\Http\Controllers\Laboratory\QuotationController::class);
         Route::resource('/samples', App\Http\Controllers\Laboratory\SampleController::class);

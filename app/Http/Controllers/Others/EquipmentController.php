@@ -38,4 +38,34 @@ class EquipmentController extends Controller
             ]);
         }
     }
+
+    public function store(EquipmentRequest $request){
+        $result = $this->handleTransaction(function () use ($request) {
+            if($request->option == 'perform'){
+                return $this->save->perform($request);
+            }else{
+                return $this->save->save($request);
+            }
+        });
+
+        return back()->with([
+            'data' => $result['data'],
+            'message' => $result['message'],
+            'info' => $result['info'],
+            'status' => $result['status'],
+        ]);
+    }
+
+    public function update(EquipmentRequest $request){
+        $result = $this->handleTransaction(function () use ($request) {
+            return $this->save->update($request);
+        });
+
+        return back()->with([
+            'data' => $result['data'],
+            'message' => $result['message'],
+            'info' => $result['info'],
+            'status' => $result['status'],
+        ]);
+    }
 }

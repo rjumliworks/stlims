@@ -21,6 +21,20 @@ class OrClass
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->configuration = AgencyConfiguration::where('agency_id',$this->agency)->first();
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
+    }
+
+    public function counts($payments){
+  
+        foreach($payments as $payment){
+            $counts[] = FinanceOp::where('payment_id',$payment['value'])
+            ->where('payorable_type', 'App\Models\Customer')
+            ->where('status_id',7)
+            ->when($this->province, function ($query){
+                // $query->where('created_by', \Auth::user()->id);
+            })->count();
+        }
+        return $counts;
     }
     
     public function lists($request){

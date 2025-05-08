@@ -93,6 +93,13 @@ class DatabaseSeeder extends Seeder
         // $this->call(FinanceReceiptsTableSeeder::class);
         // $this->call(FinanceReceiptDetailsTableSeeder::class);
         // $this->call(FinanceDepositsTableSeeder::class);
-        $this->call(SchedulesTableSeeder::class);
+        // $this->call(SchedulesTableSeeder::class);
+        $this->call(InventorySuppliersTableSeeder::class);
+        $this->call(InventoryItemsTableSeeder::class);
+        $this->call(InventoryStocksTableSeeder::class);
+        $this->call(InventoryWithdrawalsTableSeeder::class);
+        $this->call(EquipmentTableSeeder::class);
+        $this->call(EquipmentLogsTableSeeder::class);
+        $this->call(EquipmentInfosTableSeeder::class);
     }
 }

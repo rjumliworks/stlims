@@ -13,9 +13,9 @@ class CashieringRequest extends FormRequest
 
     public function rules(): array
     {
-        if($this->option == 'series'){
+        if($this->option == 'orseries'){
             return [
-                'name' => 'required|string',
+                'name' => 'required|string|unique:finance_orseries,name,'.$this->id,
                 'start' => 'required|integer',
                 'next' => 'required|integer',
                 'end' => 'required|integer',

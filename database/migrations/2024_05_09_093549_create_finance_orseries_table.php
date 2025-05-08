@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('next',20);
             $table->string('end',20);
             $table->boolean('is_active');
+            $table->boolean('is_finished')->default(0);
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->integer('agency_id')->unsigned()->index();

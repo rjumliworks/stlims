@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('user_roles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
+            $table->boolean('is_psto')->default(0);
             $table->integer('agency_id')->unsigned()->index();
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->tinyInteger('laboratory_id')->unsigned()->nullable();

@@ -90,15 +90,6 @@ class ListRolesTableSeeder extends Seeder
                 'is_lab' => 1,
                 'is_active' => 1,
             ),
-            8 => 
-            array (
-                'id' => 9,
-            'name' => 'Customer Relation Officer (PSTO)',
-                'description' => 'This user role is responsible in receiving samples and managing transactions in the PSTO.',
-                'has_lab' => 0,
-                'is_lab' => 1,
-                'is_active' => 1,
-            ),
         ));
 
         

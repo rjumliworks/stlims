@@ -75,7 +75,7 @@ class CashieringController extends Controller
     }
 
     public function orseries(){
-        return inertia('Modules/Finance/Cashiering/Orseries/Index');
+        return inertia('Modules/Finance/Cashiering/Orseries2/Index');
     }
 
     public function names(){

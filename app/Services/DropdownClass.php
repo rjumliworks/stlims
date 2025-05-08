@@ -54,8 +54,12 @@ class DropdownClass
         return $data;
     }
 
-    public function dropdowns($class,$type){
-        $data = ListDropdown::where('classification',$class)->where('type',$type)->get()->map(function ($item) {
+    public function dropdowns($class,$type = null){
+        $data = ListDropdown::where('classification',$class)
+        ->when($type, function ($query) use ($type){
+            $query->where('type',$type);
+        })
+        ->get()->map(function ($item) {
             return [
                 'value' => $item->id,
                 'name' => $item->name

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreign('equipment_id')->references('id')->on('equipment')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->longText('note');
+            $table->longText('note')->nullable();
             $table->date('next_date')->nullable();
             $table->date('date')->nullable();
             $table->timestamps(); 
