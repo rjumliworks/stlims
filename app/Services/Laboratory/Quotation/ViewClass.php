@@ -16,11 +16,15 @@ class ViewClass
     public function __construct()
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
+        $this->roles = \Auth::user()->myroles->pluck('role_id');
     }
 
     public function counts($statuses){
         foreach($statuses as $status){
-            $counts[] = Quotation::where('agency_id',$this->agency)->where('status_id',$status['value'])->count();
+            $counts[] = Quotation::where('agency_id',$this->agency)->where('status_id',$status['value'])
+            ->when($this->roles->contains(9), function ($query) {
+                $query->where('created_by', \Auth::user()->id);
+            })->count();
         }
         return $counts;
     }
@@ -49,6 +53,9 @@ class ViewClass
                 $query->where('laboratory_id',$laboratory);
             })
             ->where('agency_id',$this->agency)
+            ->when($this->roles->contains(9), function ($query) {
+                $query->where('received_by', \Auth::user()->id);
+            })
             ->orderBy('created_at','DESC')
             ->paginate($request->count)
         );

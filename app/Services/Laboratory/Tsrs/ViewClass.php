@@ -24,21 +24,31 @@ class ViewClass
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->laboratory = null;
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
+        $this->roles = \Auth::user()->myroles->pluck('role_id');
     }
 
     public function counts($statuses){
         foreach($statuses as $status){
             if ($status['value'] == '2') {
-                $counts[] = Tsr::where('status_id', 2) 
-                            ->where('agency_id',$this->agency)
-                            ->orWhere(function ($query) {
-                                $query->whereIn('status_id', [3,4]) 
+                $counts[] = Tsr::where(function ($query) {
+                    $query->where('status_id', 2)
+                          ->where('agency_id', $this->agency)
+                          ->orWhere(function ($query) {
+                              $query->whereIn('status_id', [3, 4])
                                     ->whereHas('payment', function ($query) {
                                         $query->where('status_id', 18);
                                     });
-                            })->count();
+                          });
+                })
+                ->when($this->roles->contains(9), function ($query) {
+                    $query->where('received_by', \Auth::user()->id);
+                })
+                ->count();
             } else {
-                $counts[] = Tsr::where('status_id',$status['value'])->count();
+                $counts[] = Tsr::where('status_id',$status['value'])
+                ->when($this->roles->contains(9), function ($query){
+                    $query->where('received_by', \Auth::user()->id);
+                })->count();
             }
         }
         return $counts;
@@ -72,6 +82,7 @@ class ViewClass
                     }
                 ]);
             }])
+            
             ->when($request->status, function ($query, $status) {
                 if ($status == '2') {
                     $query->where(function ($query) {
@@ -142,6 +153,9 @@ class ViewClass
             })
             ->when($this->agency, function ($query,$agency) {
                 $query->where('agency_id',$agency);
+            })
+            ->when($this->roles->contains(9), function ($query){
+                $query->where('received_by', \Auth::user()->id);
             })
             ->paginate($request->count)
         );
