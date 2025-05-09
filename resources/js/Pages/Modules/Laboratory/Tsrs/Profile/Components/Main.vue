@@ -29,7 +29,7 @@
                             <div class="input-group mb-1">
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                 <input type="text" placeholder="Search Request" class="form-control" style="width: 40%;">
-                                <span v-if="selected.service == null && selected.status.name == 'Pending'" @click="openService()" class="input-group-text" v-b-tooltip.hover title="Add Service" style="cursor: pointer;"> 
+                                <span v-if="selected.status.name == 'Pending'" @click="openService()" class="input-group-text" v-b-tooltip.hover title="Add Service" style="cursor: pointer;"> 
                                     <i class="ri-add-circle-fill text-primary search-icon"></i>
                                 </span>
                                 <span v-if="selected.status.name == 'Pending'" @click="openAnalysis()" class="input-group-text" v-b-tooltip.hover title="Add Analysis" style="cursor: pointer;"> 
@@ -41,7 +41,6 @@
                             </div>
                         </b-col>
                     </b-row>
-                 
                 </div>
                 <div class="card bg-white border-bottom shadow-none" no-body>
                     <div class="table-responsive" style="max-height: calc(100vh - 300px); overflow: auto;">

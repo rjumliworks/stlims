@@ -94,9 +94,9 @@ class Tsr extends Model
         return $this->morphOne('App\Models\WalletTransaction', 'transacable');
     }
 
-    public function service()
+    public function services()
     {
-        return $this->morphOne('App\Models\TsrService', 'typeable');
+        return $this->morphMany('App\Models\TsrService', 'typeable');
     }
 
     public function itemable()

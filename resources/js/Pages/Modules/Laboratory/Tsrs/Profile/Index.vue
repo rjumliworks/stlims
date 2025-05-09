@@ -14,7 +14,7 @@
                 </div>
                 <div class="file-manager-sidebar" style="margin-right: 20px;">
                     <simplebar data-simplebar style="overflow-x: hidden;" class="h-100" ref="scrollbar">
-                        <Sidebar :selected="tsr.data" />
+                        <Sidebar :selected="tsr.data" :total="totalFee"/>
                     </simplebar>
                 </div>
 
@@ -41,6 +41,16 @@
             Message
         },
         props: ['tsr', 'services', 'analyses', 'laboratories','dropdowns'],
+        computed: {
+            totalFee() {
+                if (!this.analyses.data|| typeof this.analyses.data !== 'object') return 0;
+
+                return Object.values(this.analyses.data).reduce((sum, a) => {
+                const cleaned = Number(String(a.fee).replace(/[₱,]/g, ''));
+                return sum + cleaned;
+                }, 0);
+            }
+        },
     }
 
 </script>

@@ -192,7 +192,7 @@ class UpdateClass
 
     public function report($id){
         $tsr = Tsr::where('id',$id)
-        ->with('service.service')
+        ->with('services.service')
         ->with('received:id','received.profile:id,firstname,middlename,lastname,user_id')
         ->with('agency','laboratory:id,name','status:id,name,color,others')
         ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches','customer.wallet')

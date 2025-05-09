@@ -44,11 +44,11 @@
                                 <b-button v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" variant="warning" v-b-tooltip.hover title="Edit">
                                     <i class="ri-pencil-fill align-bottom"></i>
                                 </b-button>
-                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" variant="danger" class="me-1" v-b-tooltip.hover title="Cancel">
+                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" variant="dark" v-b-tooltip.hover title="Cancel">
                                             <i class="ri-delete-bin-fill align-bottom"></i>
                                         </b-button>
                                 <Link href="/tsrs">
-                                    <b-button variant="danger">
+                                    <b-button variant="soft-danger">
                                         <i class="ri-close-circle-fill align-bottom"></i> 
                                     </b-button>
                                 </Link>

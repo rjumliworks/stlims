@@ -44,7 +44,7 @@ class TsrService extends Model
 
     public function getTotalAttribute($value)
     {
-        return '₱'.$value;
+        return '₱'.number_format($value,2,'.',',');
     }
 
     public function getUpdatedAtAttribute($value)

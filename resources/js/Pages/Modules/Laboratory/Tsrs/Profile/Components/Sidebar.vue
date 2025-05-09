@@ -1,8 +1,9 @@
 <template>
+
     <table class="table table-bordered">
         <tbody>
             <tr>
-                <td style="border-right: none; border-left: none;"><span class="fw-semibold fs-12 ms-2">TSR Information</span></td>
+                <td style="border-right: none; border-left: none; cursor: pointer;" @click="openInformation()"><span class="fw-semibold fs-12 ms-2">TSR Information</span></td>
             </tr>
             <tr>
                 <td style="border-right: none; border-left: none;">
@@ -126,7 +127,7 @@
                     </div>
                 </td>
             </tr>
-            <tr v-if="selected.service">
+            <tr v-if="selected.services.length > 0">
                 <td style="border-right: none; border-left: none; cursor: pointer;" @click="openService()">
                     <span class="fw-semibold fs-12 ms-2">Additional Services</span>
                     <i class="ri-information-fill fs-20 mb-n2 mt-n1 text-primary float-end" style="cursor: pointer;"></i>
@@ -160,23 +161,28 @@
     <Payment ref="payment"/>
     <Service ref="service"/>
     <Referral ref="referral"/>
+    <Information ref="information"/>
 </template>
 <script>
 import Payment from '../Modals/Sidebar/Payment.vue';
 import Service from '../Modals/Sidebar/Service.vue';
 import Referral from '../Modals/Sidebar/Referral.vue';
+import Information from '../Modals/Sidebar/Information.vue';
 export default {
-    components: { Payment, Service, Referral },
-    props: ['selected'],
+    components: { Payment, Service, Referral, Information },
+    props: ['selected','total'],
     methods: {
         openPayment(){
-            this.$refs.payment.show(this.selected.payment);
+            this.$refs.payment.show(this.selected.payment,this.selected.services,this.total);
         },
         openService(){
-            this.$refs.service.show(this.selected.service,this.selected.status,this.selected.id);
+            this.$refs.service.show(this.selected.services,this.selected.status,this.selected.id);
         },
         openReferral(){
             this.$refs.referral.show(this.selected.referral);
+        },
+        openInformation(){
+            this.$refs.information.show(this.selected);
         }
     }
 }
