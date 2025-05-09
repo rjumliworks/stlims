@@ -118,6 +118,7 @@ class OrClass
                     $or = FinanceOrseries::where('id',$request->orseries['value'])->first();
                     if($or->next == $or->end){
                         $or->is_active = 0;
+                        $or->is_finished = 1;
                     }else{
                         $next = $or->next+1;
                         $or->next = $next;

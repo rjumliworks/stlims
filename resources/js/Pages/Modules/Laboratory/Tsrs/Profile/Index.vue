@@ -6,7 +6,7 @@
     </div>
     <div class="auth-page-wrapper d-flex min-vh-100">
         <div :class="{ 'cancelled-wrapper': tsr.data.status?.name === 'Cancelled' }" class="auth-page-content">
-            <Top :selected="tsr.data" :analyses="analyses.data.length" />
+            <Top :selected="tsr.data" :analyses="analyses.data.length" :dropdowns="dropdowns"/>
             <div class="chat-wrapper d-lg-flex gap-1 mx-n4 mt-n4 p-1">
                 <div class="file-manager-content w-100 p-4 pb-0" ref="box" style="margin-left: 20px;">
                     <Main v-if="!tsr.data.is_shelf" :selected="tsr.data" :services="services"
@@ -40,7 +40,7 @@
             Sidebar,
             Message
         },
-        props: ['tsr', 'services', 'analyses', 'laboratories'],
+        props: ['tsr', 'services', 'analyses', 'laboratories','dropdowns'],
     }
 
 </script>

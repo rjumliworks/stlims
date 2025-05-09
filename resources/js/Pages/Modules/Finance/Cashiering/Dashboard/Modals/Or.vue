@@ -31,6 +31,12 @@
                         <b-button variant="success">O.R # : {{or.orseries.next}}</b-button>
                     </div>
                 </BCol>
+                <BCol lg="12" v-if="orseries.length == 0">
+                    <hr class="text-muted mt-0"/>
+                    <div class="alert alert-danger mb-xl-0 material-shadow" role="alert">
+                        No active Official Receipt (OR) series found. Please activate one to continue processing transactions.
+                    </div>
+                </BCol>
                 <BCol lg="12 mt-1 mb-n3">
                     <hr class="text-muted"/>
                 </BCol>

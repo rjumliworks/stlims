@@ -1,6 +1,6 @@
 <template>
 <Head title="Technical Service Requests"/>
-    <PageHeader title="Technical Service Requests" pageTitle="Laboratory" />
+    <PageHeader title="TSR Management" pageTitle="Laboratory" />
     <BRow>
         <div class="col-md-12">
             <div class="card bg-light-subtle shadow-none border">
@@ -104,7 +104,7 @@
                                     <td>
                                         <h5 v-if="list.code" class="fs-13 mb-0 fw-semibold text-primary">{{list.code}}</h5>
                                         <h5 v-else class="fs-13 mb-0 text-muted">Not yet available</h5>
-                                        <p class="fs-12 text-muted mb-0">{{list.customer.name}}</p>
+                                        <p class="fs-12 text-muted mb-0">{{list.customer}}</p>
                                     </td>
                                     <td>
                                         <apexchart v-b-tooltip.hover :title="list.analyses+'%'" class="apex-charts" height="30" dir="ltr" :series="[list.analyses]" :options="{ ...chartOptions }"></apexchart>
@@ -130,26 +130,14 @@
                                                 <i class="ri-eye-fill align-bottom"></i>
                                             </b-button>
                                         </a>
-                                        <b-button v-if="list.status.name === 'Pending' || list.status.name === 'For Payment'" class="me-1" @click="openEdit(list,index)" :variant="(filter.status) ? 'soft-warning' : 'warning'" v-b-tooltip.hover title="Edit" size="sm">
+                                        <!-- <b-button v-if="list.status.name === 'Pending' || list.status.name === 'For Payment'" class="me-1" @click="openEdit(list,index)" :variant="(filter.status) ? 'soft-warning' : 'warning'" v-b-tooltip.hover title="Edit" size="sm">
                                             <i class="ri-pencil-fill align-bottom"></i>
-                                        </b-button>
-                                        <b-button @click="openCancel(list,index)" v-if="list.status.name == 'Pending' || list.status.name == 'For Payment'" :variant="(filter.status) ? 'soft-danger' : 'danger'" class="me-1" v-b-tooltip.hover title="Cancel" size="sm">
-                                            <i class="ri-delete-bin-fill align-bottom"></i>
-                                        </b-button>
-                                        <!-- <b-button v-if="list.status.name !== 'Pending' && list.status.name !== 'Cancelled'" class="me-1" @click="openPrint(list.qr)" variant="soft-success" v-b-tooltip.hover title="Print" size="sm">
+                                        </b-button> -->
+                                        <b-button @click="openPrint(list.qr)" v-if="list.status.name != 'Pending'" :variant="(filter.status) ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Cancel" size="sm">
                                             <i class="ri-printer-fill align-bottom"></i>
                                         </b-button>
-                                        <b-button v-if="list.status.name == 'Cancelled'" variant="soft-danger" v-b-tooltip.hover title="Reason" size="sm">
-                                            <i class="ri-error-warning-fill align-bottom"></i>
-                                        </b-button>
-                                        <b-button v-if="list.status.name === 'Pending' || list.status.name === 'For Payment'" class="me-1" @click="openEdit(list,index)" variant="soft-warning" v-b-tooltip.hover title="Edit" size="sm">
-                                            <i class="ri-pencil-fill align-bottom"></i>
-                                        </b-button>
-                                        <b-button v-if="list.status.name === 'Pending'" @click="openCancel(list,index)" variant="soft-danger" v-b-tooltip.hover title="Cancel" size="sm">
-                                            <i class="ri-delete-bin-2-fill align-bottom"></i>
-                                        </b-button>
-                                        <b-button v-if="list.status.name == 'Completed'" @click="openReport(list.code,list.qr)" variant="soft-primary" v-b-tooltip.hover title="Report No." size="sm">
-                                            <i class="ri-file-text-fill align-bottom"></i>
+                                        <!-- <b-button @click="openCancel(list,index)" v-if="list.status.name == 'Pending' || list.status.name == 'For Payment'" :variant="(filter.status) ? 'soft-danger' : 'danger'" class="me-1" v-b-tooltip.hover title="Cancel" size="sm">
+                                            <i class="ri-delete-bin-fill align-bottom"></i>
                                         </b-button> -->
                                     </td>
                                 </tr>
@@ -309,6 +297,9 @@ export default {
         openEdit(data,index){
             this.index = index;
             this.$refs.edit.show(data);
+        },
+        openPrint(id){
+            window.open('/tsrs?option=print&id='+id);
         },
         updateData(data){
             this.lists[this.index] = data;

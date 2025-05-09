@@ -1,6 +1,6 @@
 <template>
     <Head title="OR Series"/>
-    <PageHeader title="List of OR Series" pageTitle="List" />
+    <PageHeader title="OR Series Management" pageTitle="List" />
     <BRow>
         <div class="col-md-12">
             <div class="card bg-light-subtle shadow-none border">
@@ -75,12 +75,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(list,index) in lists" v-bind:key="index" :class="[(list.is_active == 0) ? 'table-warnings' : '']">
+                                <tr v-for="(list,index) in lists" v-bind:key="index" :class="[(list.is_active == 1 && list.user_id == $page.props.user.data.id) ? 'table-success' : '']">
                                     <td class="text-center" >
                                         {{index+1}}.
                                     </td>
                                     <td>
                                         <h5 class="fs-13 mb-0 text-dark">{{list.name}}</h5>
+                                        <p class="fs-12 text-muted mb-0">{{list.user.profile.firstname}} {{list.user.profile.middlename[0]}}. {{list.user.profile.lastname}}</p>
                                     </td>
                                     <td class="text-center">{{list.start}}</td>
                                     <td class="text-center">{{list.next}}</td>

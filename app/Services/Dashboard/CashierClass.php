@@ -14,7 +14,8 @@ class CashierClass
     }
     
     public function orseries(){
-        $data = FinanceOrseries::where('is_active',1)->where('agency_id',$this->agency)->get()->map(function ($item) {
+        $data = FinanceOrseries::where('is_active',1)->where('user_id',\Auth::user()->id)->where('agency_id',$this->agency)
+        ->get()->map(function ($item) {
             return [
                 'value' => $item->id,
                 'name' => $item->name,

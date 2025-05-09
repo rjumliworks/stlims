@@ -51,7 +51,15 @@ class TsrController extends Controller
             'tsr' => $this->view->view($id),
             'analyses' => $this->view->analyses($id),
             'services' => $this->dropdown->services(),
-            'laboratories' => $this->dropdown->laboratories()
+            'laboratories' => $this->dropdown->laboratories(),
+            'dropdowns' => [
+                'laboratories' => $this->dropdown->laboratories(),
+                'discounts' => $this->dropdown->discounts(),
+                'agencies' => $this->dropdown->allagencies(),
+                'statuses' => $this->dropdown->statuses('Request'),
+                'services' => $this->dropdown->services(),
+                'purposes' => $this->dropdown->dropdowns('Purpose','n/a'),
+            ],
         ]);
     }
 

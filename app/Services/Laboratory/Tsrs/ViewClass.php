@@ -14,6 +14,7 @@ use App\Models\AgencyConfiguration;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 use App\Http\Resources\Laboratory\Tsr\ListResource;
+use App\Http\Resources\Laboratory\Tsr\ViewResource;
 use App\Http\Resources\Operation\TsrResource;
 use App\Http\Resources\Operation\TsrViewResource;
 use App\Http\Resources\Operation\AnalysisResource;
@@ -60,9 +61,7 @@ class ViewClass
         $data = ListResource::collection(
             Tsr::query()
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')
-            ->with('conforme:id,name,contact_no')
-            ->with('received:id','received.profile:id,firstname,lastname,user_id')
-            ->with('laboratory:id,name','status:id,name,color,others','purpose:id,name')
+            ->with('laboratory:id,name','status:id,name,color,others')
             ->with('payment:tsr_id,id,total,is_paid,is_free,paid_at,status_id,discount_id,collection_id,payment_id','payment.status:id,name,color,others')
             ->when($request->keyword, function ($query, $keyword) {
                 $query->where('code', 'LIKE', "%{$keyword}%")
@@ -170,7 +169,7 @@ class ViewClass
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($id);
 
-        $data = new TsrViewResource(
+        $data = new ViewResource(
             Tsr::query()
             ->with('samples.report','samples.analyses','samples.analyses.addfee.service','samples.analyses.testservice.testname','samples.analyses.testservice.method.method','samples.analyses.testservice.method.reference','samples.analyses.testservice.fees')
             ->with('service.service')

@@ -22,7 +22,7 @@ class OrseriesClass
         ->when($this->agency, function ($query, $agency) {
             $query->where('agency_id',$agency);
         })
-        ->orderBy('created_at','DESC')
+        ->orderBy('is_active','DESC')
         ->paginate($request->count);
         return DefaultResource::collection($data);
     }
@@ -30,7 +30,7 @@ class OrseriesClass
     public function save($request){
         $data = FinanceOrseries::create(array_merge($request->all(),[
             'user_id' => \Auth::user()->id,
-            'is_active' => 0,
+            'is_finished' => 0,
             'agency_id' => $this->agency
         ]));
            

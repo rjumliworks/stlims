@@ -18,6 +18,7 @@ class FinanceOrseries extends Model
         'next',
         'user_id',
         'is_active',
+        'is_finished',
         'agency_id'
     ];
 

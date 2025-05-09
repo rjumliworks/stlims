@@ -41,8 +41,14 @@
                                 <b-button v-if="selected.status.name !== 'Pending'" @click="openPrint(selected.qr)" variant="primary" v-b-tooltip.hover title="Print">
                                     <i class="ri-printer-fill"></i>
                                 </b-button>
+                                <b-button v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" variant="warning" v-b-tooltip.hover title="Edit">
+                                    <i class="ri-pencil-fill align-bottom"></i>
+                                </b-button>
+                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" variant="danger" class="me-1" v-b-tooltip.hover title="Cancel">
+                                            <i class="ri-delete-bin-fill align-bottom"></i>
+                                        </b-button>
                                 <Link href="/tsrs">
-                                    <b-button variant="soft-danger">
+                                    <b-button variant="danger">
                                         <i class="ri-close-circle-fill align-bottom"></i> 
                                     </b-button>
                                 </Link>
@@ -56,13 +62,17 @@
     </b-col>
     <Save ref="save"/>
     <Wallet ref="wallet"/>
+    <Cancel ref="cancel"/>
+    <Edit :dropdowns="dropdowns" ref="edit"/>
 </template>
 <script>
+import Edit from '../Modals/Top/Edit.vue';
 import Save from '../Modals/Top/Save.vue';
+import Cancel from '../Modals/Top/Cancel.vue';
 import Wallet from '../Modals/Top/Wallet.vue';
 export default {
-    components: { Save, Wallet },
-    props:['selected','analyses'],
+    components: { Save, Wallet, Edit, Cancel },
+    props:['selected','analyses','dropdowns'],
     methods: {
         openSave(id){
             this.$refs.save.show(id,this.selected.customer.industry);
@@ -72,6 +82,12 @@ export default {
         },
         openPrint(id){
             window.open('/tsrs?option=print&id='+id);
+        },
+        openEdit(selected){
+            this.$refs.edit.show(selected);
+        },
+        openCancel(data){
+            this.$refs.cancel.show(data);
         },
     }
 }
