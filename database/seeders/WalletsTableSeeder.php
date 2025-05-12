@@ -88,6 +88,16 @@ class WalletsTableSeeder extends Seeder
                 'created_at' => '2025-04-23 17:07:48',
                 'updated_at' => '2025-04-23 17:07:48',
             ),
+            7 => 
+            array (
+                'id' => 9,
+                'total' => '500.00',
+                'available' => '500.00',
+                'deduction' => '0.00',
+                'customer_id' => 125,
+                'created_at' => '2025-04-23 17:07:48',
+                'updated_at' => '2025-04-23 17:07:48',
+            ),
         ));
 
         

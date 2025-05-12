@@ -1266,6 +1266,30 @@ class EquipmentLogsTableSeeder extends Seeder
                 'created_at' => '2025-04-12 00:20:15',
                 'updated_at' => '2025-04-12 00:20:15',
             ),
+            104 => 
+            array (
+                'id' => 105,
+                'is_calibrated' => '1',
+                'equipment_id' => 221,
+                'user_id' => 12,
+                'note' => NULL,
+                'next_date' => '2026-04-22',
+                'date' => '2025-04-22',
+                'created_at' => '2025-05-08 23:52:05',
+                'updated_at' => '2025-05-08 23:52:05',
+            ),
+            105 => 
+            array (
+                'id' => 106,
+                'is_calibrated' => '0',
+                'equipment_id' => 221,
+                'user_id' => 12,
+                'note' => NULL,
+                'next_date' => '2026-04-22',
+                'date' => '2025-04-22',
+                'created_at' => '2025-05-08 23:52:16',
+                'updated_at' => '2025-05-08 23:52:16',
+            ),
         ));
 
         

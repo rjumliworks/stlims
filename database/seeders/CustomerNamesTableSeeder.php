@@ -4997,6 +4997,69 @@ class CustomerNamesTableSeeder extends Seeder
                 'created_at' => '2025-05-06 01:18:43',
                 'updated_at' => '2025-05-06 01:18:43',
             ),
+            53 => 
+            array (
+                'id' => 853,
+                'name' => 'Treatment and Rehabilitation Center - Zamboanga City',
+                'has_branches' => 0,
+                'is_active' => 1,
+                'created_at' => '2025-05-06 23:07:19',
+                'updated_at' => '2025-05-06 23:07:19',
+            ),
+            54 => 
+            array (
+                'id' => 854,
+                'name' => 'Noorhaya Pharmacy',
+                'has_branches' => 0,
+                'is_active' => 1,
+                'created_at' => '2025-05-07 22:41:51',
+                'updated_at' => '2025-05-07 22:41:51',
+            ),
+            55 => 
+            array (
+                'id' => 855,
+                'name' => 'Bureau of Fire Protection',
+                'has_branches' => 1,
+                'is_active' => 1,
+                'created_at' => '2025-05-08 17:21:56',
+                'updated_at' => '2025-05-08 17:21:56',
+            ),
+            56 => 
+            array (
+                'id' => 856,
+                'name' => 'Phil-Union Canning Company Inc.',
+                'has_branches' => 0,
+                'is_active' => 1,
+                'created_at' => '2025-05-08 21:43:30',
+                'updated_at' => '2025-05-08 21:43:30',
+            ),
+            57 => 
+            array (
+                'id' => 857,
+                'name' => 'Jane Gasoline Station',
+                'has_branches' => 0,
+                'is_active' => 1,
+                'created_at' => '2025-05-09 00:31:59',
+                'updated_at' => '2025-05-09 00:31:59',
+            ),
+            58 => 
+            array (
+                'id' => 858,
+                'name' => 'Medi Pharma Drug',
+                'has_branches' => 1,
+                'is_active' => 1,
+                'created_at' => '2025-05-09 20:25:41',
+                'updated_at' => '2025-05-09 20:25:41',
+            ),
+            59 => 
+            array (
+                'id' => 859,
+                'name' => 'Chavacano Deli De Alavar',
+                'has_branches' => 0,
+                'is_active' => 1,
+                'created_at' => '2025-05-09 22:08:19',
+                'updated_at' => '2025-05-09 22:08:19',
+            ),
         ));
 
         

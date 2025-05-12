@@ -9176,6 +9176,66 @@ class FinanceReceiptDetailsTableSeeder extends Seeder
                 'created_at' => '2025-05-05 23:33:50',
                 'updated_at' => '2025-05-05 23:33:50',
             ),
+            263 => 
+            array (
+                'id' => 797,
+                'amount' => '500.00',
+                'bank' => 'LBP',
+                'number' => '2CVA',
+                'is_cheque' => 0,
+                'receipt_id' => 1669,
+                'date_at' => '2025-04-28',
+                'created_at' => '2025-05-06 18:48:24',
+                'updated_at' => '2025-05-06 18:48:24',
+            ),
+            264 => 
+            array (
+                'id' => 800,
+                'amount' => '500.00',
+                'bank' => 'LBP',
+                'number' => '2U BL 9ADI',
+                'is_cheque' => 0,
+                'receipt_id' => 1677,
+                'date_at' => '2025-04-25',
+                'created_at' => '2025-05-06 21:10:33',
+                'updated_at' => '2025-05-06 21:10:33',
+            ),
+            265 => 
+            array (
+                'id' => 801,
+                'amount' => '3556626.00',
+                'bank' => 'LBP',
+                'number' => '101101040777-2025',
+                'is_cheque' => 0,
+                'receipt_id' => 1683,
+                'date_at' => '2025-04-29',
+                'created_at' => '2025-05-07 22:10:47',
+                'updated_at' => '2025-05-07 22:10:47',
+            ),
+            266 => 
+            array (
+                'id' => 802,
+                'amount' => '1980.00',
+                'bank' => 'LBP',
+                'number' => 'MBADD250508441757167476',
+                'is_cheque' => 0,
+                'receipt_id' => 1688,
+                'date_at' => '2025-05-08',
+                'created_at' => '2025-05-08 17:51:57',
+                'updated_at' => '2025-05-08 17:51:57',
+            ),
+            267 => 
+            array (
+                'id' => 803,
+                'amount' => '2000.00',
+                'bank' => 'PBCOM',
+                'number' => '2010711691',
+                'is_cheque' => 0,
+                'receipt_id' => 1694,
+                'date_at' => '2025-05-08',
+                'created_at' => '2025-05-09 18:15:06',
+                'updated_at' => '2025-05-09 18:15:06',
+            ),
         ));
 
         

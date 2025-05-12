@@ -34781,6 +34781,1230 @@ class QuotationAnalysesTableSeeder extends Seeder
                 'created_at' => '2025-05-06 01:21:16',
                 'updated_at' => '2025-05-06 01:21:16',
             ),
+            361 => 
+            array (
+                'id' => 3887,
+                'fee' => '1500.00',
+                'testservice_id' => 271,
+                'sample_id' => 1732,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            362 => 
+            array (
+                'id' => 3888,
+                'fee' => '350.00',
+                'testservice_id' => 254,
+                'sample_id' => 1732,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            363 => 
+            array (
+                'id' => 3889,
+                'fee' => '1000.00',
+                'testservice_id' => 255,
+                'sample_id' => 1732,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            364 => 
+            array (
+                'id' => 3890,
+                'fee' => '700.00',
+                'testservice_id' => 253,
+                'sample_id' => 1732,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            365 => 
+            array (
+                'id' => 3891,
+                'fee' => '250.00',
+                'testservice_id' => 237,
+                'sample_id' => 1732,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            366 => 
+            array (
+                'id' => 3892,
+                'fee' => '1500.00',
+                'testservice_id' => 271,
+                'sample_id' => 1733,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            367 => 
+            array (
+                'id' => 3893,
+                'fee' => '350.00',
+                'testservice_id' => 254,
+                'sample_id' => 1733,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            368 => 
+            array (
+                'id' => 3894,
+                'fee' => '1000.00',
+                'testservice_id' => 255,
+                'sample_id' => 1733,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            369 => 
+            array (
+                'id' => 3895,
+                'fee' => '700.00',
+                'testservice_id' => 253,
+                'sample_id' => 1733,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            370 => 
+            array (
+                'id' => 3896,
+                'fee' => '250.00',
+                'testservice_id' => 237,
+                'sample_id' => 1733,
+                'created_at' => '2025-05-06 17:00:16',
+                'updated_at' => '2025-05-06 17:00:16',
+            ),
+            371 => 
+            array (
+                'id' => 3897,
+                'fee' => '550.00',
+                'testservice_id' => 385,
+                'sample_id' => 1734,
+                'created_at' => '2025-05-06 17:50:30',
+                'updated_at' => '2025-05-06 17:50:30',
+            ),
+            372 => 
+            array (
+                'id' => 3898,
+                'fee' => '550.00',
+                'testservice_id' => 373,
+                'sample_id' => 1735,
+                'created_at' => '2025-05-06 17:59:35',
+                'updated_at' => '2025-05-06 17:59:35',
+            ),
+            373 => 
+            array (
+                'id' => 3899,
+                'fee' => '1200.00',
+                'testservice_id' => 368,
+                'sample_id' => 1735,
+                'created_at' => '2025-05-06 17:59:35',
+                'updated_at' => '2025-05-06 17:59:35',
+            ),
+            374 => 
+            array (
+                'id' => 3900,
+                'fee' => '550.00',
+                'testservice_id' => 372,
+                'sample_id' => 1735,
+                'created_at' => '2025-05-06 17:59:35',
+                'updated_at' => '2025-05-06 17:59:35',
+            ),
+            375 => 
+            array (
+                'id' => 3901,
+                'fee' => '1000.00',
+                'testservice_id' => 370,
+                'sample_id' => 1735,
+                'created_at' => '2025-05-06 17:59:35',
+                'updated_at' => '2025-05-06 17:59:35',
+            ),
+            376 => 
+            array (
+                'id' => 3902,
+                'fee' => '1000.00',
+                'testservice_id' => 367,
+                'sample_id' => 1735,
+                'created_at' => '2025-05-06 17:59:35',
+                'updated_at' => '2025-05-06 17:59:35',
+            ),
+            377 => 
+            array (
+                'id' => 3903,
+                'fee' => '550.00',
+                'testservice_id' => 382,
+                'sample_id' => 1736,
+                'created_at' => '2025-05-06 23:10:46',
+                'updated_at' => '2025-05-06 23:10:46',
+            ),
+            378 => 
+            array (
+                'id' => 3904,
+                'fee' => '1000.00',
+                'testservice_id' => 381,
+                'sample_id' => 1736,
+                'created_at' => '2025-05-06 23:10:46',
+                'updated_at' => '2025-05-06 23:10:46',
+            ),
+            379 => 
+            array (
+                'id' => 3905,
+                'fee' => '550.00',
+                'testservice_id' => 385,
+                'sample_id' => 1736,
+                'created_at' => '2025-05-06 23:10:46',
+                'updated_at' => '2025-05-06 23:10:46',
+            ),
+            380 => 
+            array (
+                'id' => 3906,
+                'fee' => '1800.00',
+                'testservice_id' => 239,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            381 => 
+            array (
+                'id' => 3907,
+                'fee' => '1200.00',
+                'testservice_id' => 270,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            382 => 
+            array (
+                'id' => 3908,
+                'fee' => '1200.00',
+                'testservice_id' => 261,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            383 => 
+            array (
+                'id' => 3909,
+                'fee' => '600.00',
+                'testservice_id' => 391,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            384 => 
+            array (
+                'id' => 3910,
+                'fee' => '500.00',
+                'testservice_id' => 266,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            385 => 
+            array (
+                'id' => 3911,
+                'fee' => '300.00',
+                'testservice_id' => 240,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            386 => 
+            array (
+                'id' => 3912,
+                'fee' => '350.00',
+                'testservice_id' => 254,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            387 => 
+            array (
+                'id' => 3913,
+                'fee' => '600.00',
+                'testservice_id' => 247,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            388 => 
+            array (
+                'id' => 3914,
+                'fee' => '370.00',
+                'testservice_id' => 267,
+                'sample_id' => 1737,
+                'created_at' => '2025-05-06 23:17:15',
+                'updated_at' => '2025-05-06 23:17:15',
+            ),
+            389 => 
+            array (
+                'id' => 3915,
+                'fee' => '550.00',
+                'testservice_id' => 386,
+                'sample_id' => 1738,
+                'created_at' => '2025-05-06 23:21:55',
+                'updated_at' => '2025-05-06 23:21:55',
+            ),
+            390 => 
+            array (
+                'id' => 3916,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1739,
+                'created_at' => '2025-05-07 00:06:25',
+                'updated_at' => '2025-05-07 00:06:25',
+            ),
+            391 => 
+            array (
+                'id' => 3917,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1740,
+                'created_at' => '2025-05-07 00:06:25',
+                'updated_at' => '2025-05-07 00:06:25',
+            ),
+            392 => 
+            array (
+                'id' => 3918,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1741,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            393 => 
+            array (
+                'id' => 3919,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1742,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            394 => 
+            array (
+                'id' => 3920,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1743,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            395 => 
+            array (
+                'id' => 3921,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1744,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            396 => 
+            array (
+                'id' => 3922,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1745,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            397 => 
+            array (
+                'id' => 3923,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1746,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            398 => 
+            array (
+                'id' => 3924,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1747,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            399 => 
+            array (
+                'id' => 3925,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1748,
+                'created_at' => '2025-05-07 00:31:59',
+                'updated_at' => '2025-05-07 00:31:59',
+            ),
+            400 => 
+            array (
+                'id' => 3926,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1749,
+                'created_at' => '2025-05-07 00:54:01',
+                'updated_at' => '2025-05-07 00:54:01',
+            ),
+            401 => 
+            array (
+                'id' => 3927,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1750,
+                'created_at' => '2025-05-07 00:54:01',
+                'updated_at' => '2025-05-07 00:54:01',
+            ),
+            402 => 
+            array (
+                'id' => 3928,
+                'fee' => '550.00',
+                'testservice_id' => 385,
+                'sample_id' => 1751,
+                'created_at' => '2025-05-07 01:06:11',
+                'updated_at' => '2025-05-07 01:06:11',
+            ),
+            403 => 
+            array (
+                'id' => 3929,
+                'fee' => '1000.00',
+                'testservice_id' => 381,
+                'sample_id' => 1751,
+                'created_at' => '2025-05-07 01:06:11',
+                'updated_at' => '2025-05-07 01:06:11',
+            ),
+            404 => 
+            array (
+                'id' => 3930,
+                'fee' => '550.00',
+                'testservice_id' => 385,
+                'sample_id' => 1752,
+                'created_at' => '2025-05-07 01:06:11',
+                'updated_at' => '2025-05-07 01:06:11',
+            ),
+            405 => 
+            array (
+                'id' => 3931,
+                'fee' => '1000.00',
+                'testservice_id' => 381,
+                'sample_id' => 1752,
+                'created_at' => '2025-05-07 01:06:11',
+                'updated_at' => '2025-05-07 01:06:11',
+            ),
+            406 => 
+            array (
+                'id' => 3932,
+                'fee' => '300.00',
+                'testservice_id' => 240,
+                'sample_id' => 1753,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            407 => 
+            array (
+                'id' => 3933,
+                'fee' => '500.00',
+                'testservice_id' => 266,
+                'sample_id' => 1753,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            408 => 
+            array (
+                'id' => 3934,
+                'fee' => '350.00',
+                'testservice_id' => 254,
+                'sample_id' => 1753,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            409 => 
+            array (
+                'id' => 3935,
+                'fee' => '1800.00',
+                'testservice_id' => 239,
+                'sample_id' => 1753,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            410 => 
+            array (
+                'id' => 3936,
+                'fee' => '1200.00',
+                'testservice_id' => 261,
+                'sample_id' => 1753,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            411 => 
+            array (
+                'id' => 3937,
+                'fee' => '300.00',
+                'testservice_id' => 240,
+                'sample_id' => 1754,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            412 => 
+            array (
+                'id' => 3938,
+                'fee' => '500.00',
+                'testservice_id' => 266,
+                'sample_id' => 1754,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            413 => 
+            array (
+                'id' => 3939,
+                'fee' => '350.00',
+                'testservice_id' => 254,
+                'sample_id' => 1754,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            414 => 
+            array (
+                'id' => 3940,
+                'fee' => '1800.00',
+                'testservice_id' => 239,
+                'sample_id' => 1754,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            415 => 
+            array (
+                'id' => 3941,
+                'fee' => '1200.00',
+                'testservice_id' => 261,
+                'sample_id' => 1754,
+                'created_at' => '2025-05-07 01:10:48',
+                'updated_at' => '2025-05-07 01:10:48',
+            ),
+            416 => 
+            array (
+                'id' => 3942,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1755,
+                'created_at' => '2025-05-08 17:02:42',
+                'updated_at' => '2025-05-08 17:02:42',
+            ),
+            417 => 
+            array (
+                'id' => 3943,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1756,
+                'created_at' => '2025-05-08 17:31:17',
+                'updated_at' => '2025-05-08 17:31:17',
+            ),
+            418 => 
+            array (
+                'id' => 3944,
+                'fee' => '900.00',
+                'testservice_id' => 320,
+                'sample_id' => 1756,
+                'created_at' => '2025-05-08 17:31:17',
+                'updated_at' => '2025-05-08 17:31:17',
+            ),
+            419 => 
+            array (
+                'id' => 3945,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1757,
+                'created_at' => '2025-05-08 18:53:59',
+                'updated_at' => '2025-05-08 18:53:59',
+            ),
+            420 => 
+            array (
+                'id' => 3946,
+                'fee' => '900.00',
+                'testservice_id' => 320,
+                'sample_id' => 1757,
+                'created_at' => '2025-05-08 18:54:10',
+                'updated_at' => '2025-05-08 18:54:10',
+            ),
+            421 => 
+            array (
+                'id' => 3947,
+                'fee' => '550.00',
+                'testservice_id' => 373,
+                'sample_id' => 1758,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            422 => 
+            array (
+                'id' => 3948,
+                'fee' => '550.00',
+                'testservice_id' => 366,
+                'sample_id' => 1758,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            423 => 
+            array (
+                'id' => 3949,
+                'fee' => '1000.00',
+                'testservice_id' => 370,
+                'sample_id' => 1758,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            424 => 
+            array (
+                'id' => 3950,
+                'fee' => '1200.00',
+                'testservice_id' => 368,
+                'sample_id' => 1758,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            425 => 
+            array (
+                'id' => 3951,
+                'fee' => '1000.00',
+                'testservice_id' => 367,
+                'sample_id' => 1758,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            426 => 
+            array (
+                'id' => 3952,
+                'fee' => '550.00',
+                'testservice_id' => 373,
+                'sample_id' => 1759,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            427 => 
+            array (
+                'id' => 3953,
+                'fee' => '550.00',
+                'testservice_id' => 366,
+                'sample_id' => 1759,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            428 => 
+            array (
+                'id' => 3954,
+                'fee' => '1000.00',
+                'testservice_id' => 370,
+                'sample_id' => 1759,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            429 => 
+            array (
+                'id' => 3955,
+                'fee' => '1200.00',
+                'testservice_id' => 368,
+                'sample_id' => 1759,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            430 => 
+            array (
+                'id' => 3956,
+                'fee' => '1000.00',
+                'testservice_id' => 367,
+                'sample_id' => 1759,
+                'created_at' => '2025-05-08 19:04:58',
+                'updated_at' => '2025-05-08 19:04:58',
+            ),
+            431 => 
+            array (
+                'id' => 3957,
+                'fee' => '1080.00',
+                'testservice_id' => 300,
+                'sample_id' => 1760,
+                'created_at' => '2025-05-08 19:22:16',
+                'updated_at' => '2025-05-08 19:22:16',
+            ),
+            432 => 
+            array (
+                'id' => 3958,
+                'fee' => '900.00',
+                'testservice_id' => 320,
+                'sample_id' => 1760,
+                'created_at' => '2025-05-08 19:22:16',
+                'updated_at' => '2025-05-08 19:22:16',
+            ),
+            433 => 
+            array (
+                'id' => 3959,
+                'fee' => '1200.00',
+                'testservice_id' => 258,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            434 => 
+            array (
+                'id' => 3960,
+                'fee' => '600.00',
+                'testservice_id' => 391,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            435 => 
+            array (
+                'id' => 3961,
+                'fee' => '600.00',
+                'testservice_id' => 406,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            436 => 
+            array (
+                'id' => 3962,
+                'fee' => '750.00',
+                'testservice_id' => 268,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            437 => 
+            array (
+                'id' => 3963,
+                'fee' => '700.00',
+                'testservice_id' => 246,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            438 => 
+            array (
+                'id' => 3964,
+                'fee' => '700.00',
+                'testservice_id' => 269,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            439 => 
+            array (
+                'id' => 3965,
+                'fee' => '0.00',
+                'testservice_id' => 259,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            440 => 
+            array (
+                'id' => 3966,
+                'fee' => '1200.00',
+                'testservice_id' => 260,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            441 => 
+            array (
+                'id' => 3967,
+                'fee' => '1800.00',
+                'testservice_id' => 239,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            442 => 
+            array (
+                'id' => 3968,
+                'fee' => '1200.00',
+                'testservice_id' => 270,
+                'sample_id' => 1762,
+                'created_at' => '2025-05-08 21:55:23',
+                'updated_at' => '2025-05-08 21:55:23',
+            ),
+            443 => 
+            array (
+                'id' => 3969,
+                'fee' => '2300.00',
+                'testservice_id' => 99,
+                'sample_id' => 1763,
+                'created_at' => '2025-05-08 21:57:55',
+                'updated_at' => '2025-05-08 21:57:55',
+            ),
+            444 => 
+            array (
+                'id' => 3970,
+                'fee' => '2300.00',
+                'testservice_id' => 102,
+                'sample_id' => 1763,
+                'created_at' => '2025-05-08 21:57:55',
+                'updated_at' => '2025-05-08 21:57:55',
+            ),
+            445 => 
+            array (
+                'id' => 3971,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1763,
+                'created_at' => '2025-05-08 21:57:55',
+                'updated_at' => '2025-05-08 21:57:55',
+            ),
+            446 => 
+            array (
+                'id' => 3972,
+                'fee' => '1750.00',
+                'testservice_id' => 347,
+                'sample_id' => 1764,
+                'created_at' => '2025-05-08 22:40:45',
+                'updated_at' => '2025-05-08 22:40:45',
+            ),
+            447 => 
+            array (
+                'id' => 3973,
+                'fee' => '1750.00',
+                'testservice_id' => 347,
+                'sample_id' => 1765,
+                'created_at' => '2025-05-08 22:40:45',
+                'updated_at' => '2025-05-08 22:40:45',
+            ),
+            448 => 
+            array (
+                'id' => 3974,
+                'fee' => '1750.00',
+                'testservice_id' => 347,
+                'sample_id' => 1766,
+                'created_at' => '2025-05-08 22:40:45',
+                'updated_at' => '2025-05-08 22:40:45',
+            ),
+            449 => 
+            array (
+                'id' => 3975,
+                'fee' => '0.00',
+                'testservice_id' => 118,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            450 => 
+            array (
+                'id' => 3976,
+                'fee' => '0.00',
+                'testservice_id' => 119,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            451 => 
+            array (
+                'id' => 3977,
+                'fee' => '0.00',
+                'testservice_id' => 118,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            452 => 
+            array (
+                'id' => 3978,
+                'fee' => '0.00',
+                'testservice_id' => 119,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            453 => 
+            array (
+                'id' => 3979,
+                'fee' => '0.00',
+                'testservice_id' => 118,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            454 => 
+            array (
+                'id' => 3980,
+                'fee' => '0.00',
+                'testservice_id' => 119,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            455 => 
+            array (
+                'id' => 3981,
+                'fee' => '0.00',
+                'testservice_id' => 118,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            456 => 
+            array (
+                'id' => 3982,
+                'fee' => '0.00',
+                'testservice_id' => 119,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            457 => 
+            array (
+                'id' => 3983,
+                'fee' => '0.00',
+                'testservice_id' => 118,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            458 => 
+            array (
+                'id' => 3984,
+                'fee' => '0.00',
+                'testservice_id' => 119,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            459 => 
+            array (
+                'id' => 3985,
+                'fee' => '0.00',
+                'testservice_id' => 118,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            460 => 
+            array (
+                'id' => 3986,
+                'fee' => '0.00',
+                'testservice_id' => 119,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:12:49',
+                'updated_at' => '2025-05-09 22:12:49',
+            ),
+            461 => 
+            array (
+                'id' => 3987,
+                'fee' => '550.00',
+                'testservice_id' => 88,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            462 => 
+            array (
+                'id' => 3988,
+                'fee' => '1000.00',
+                'testservice_id' => 85,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            463 => 
+            array (
+                'id' => 3989,
+                'fee' => '400.00',
+                'testservice_id' => 89,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            464 => 
+            array (
+                'id' => 3990,
+                'fee' => '1100.00',
+                'testservice_id' => 86,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            465 => 
+            array (
+                'id' => 3991,
+                'fee' => '550.00',
+                'testservice_id' => 88,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            466 => 
+            array (
+                'id' => 3992,
+                'fee' => '1000.00',
+                'testservice_id' => 85,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            467 => 
+            array (
+                'id' => 3993,
+                'fee' => '400.00',
+                'testservice_id' => 89,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            468 => 
+            array (
+                'id' => 3994,
+                'fee' => '1100.00',
+                'testservice_id' => 86,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            469 => 
+            array (
+                'id' => 3995,
+                'fee' => '550.00',
+                'testservice_id' => 88,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            470 => 
+            array (
+                'id' => 3996,
+                'fee' => '1000.00',
+                'testservice_id' => 85,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            471 => 
+            array (
+                'id' => 3997,
+                'fee' => '400.00',
+                'testservice_id' => 89,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            472 => 
+            array (
+                'id' => 3998,
+                'fee' => '1100.00',
+                'testservice_id' => 86,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            473 => 
+            array (
+                'id' => 3999,
+                'fee' => '550.00',
+                'testservice_id' => 88,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            474 => 
+            array (
+                'id' => 4000,
+                'fee' => '1000.00',
+                'testservice_id' => 85,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            475 => 
+            array (
+                'id' => 4001,
+                'fee' => '400.00',
+                'testservice_id' => 89,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            476 => 
+            array (
+                'id' => 4002,
+                'fee' => '1100.00',
+                'testservice_id' => 86,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            477 => 
+            array (
+                'id' => 4003,
+                'fee' => '550.00',
+                'testservice_id' => 88,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            478 => 
+            array (
+                'id' => 4004,
+                'fee' => '1000.00',
+                'testservice_id' => 85,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            479 => 
+            array (
+                'id' => 4005,
+                'fee' => '400.00',
+                'testservice_id' => 89,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            480 => 
+            array (
+                'id' => 4006,
+                'fee' => '1100.00',
+                'testservice_id' => 86,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            481 => 
+            array (
+                'id' => 4007,
+                'fee' => '550.00',
+                'testservice_id' => 88,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            482 => 
+            array (
+                'id' => 4008,
+                'fee' => '1000.00',
+                'testservice_id' => 85,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            483 => 
+            array (
+                'id' => 4009,
+                'fee' => '400.00',
+                'testservice_id' => 89,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            484 => 
+            array (
+                'id' => 4010,
+                'fee' => '1100.00',
+                'testservice_id' => 86,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:13:34',
+                'updated_at' => '2025-05-09 22:13:34',
+            ),
+            485 => 
+            array (
+                'id' => 4011,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1767,
+                'created_at' => '2025-05-09 22:14:57',
+                'updated_at' => '2025-05-09 22:14:57',
+            ),
+            486 => 
+            array (
+                'id' => 4012,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1768,
+                'created_at' => '2025-05-09 22:14:57',
+                'updated_at' => '2025-05-09 22:14:57',
+            ),
+            487 => 
+            array (
+                'id' => 4013,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1769,
+                'created_at' => '2025-05-09 22:14:57',
+                'updated_at' => '2025-05-09 22:14:57',
+            ),
+            488 => 
+            array (
+                'id' => 4014,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1770,
+                'created_at' => '2025-05-09 22:14:57',
+                'updated_at' => '2025-05-09 22:14:57',
+            ),
+            489 => 
+            array (
+                'id' => 4015,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1771,
+                'created_at' => '2025-05-09 22:14:57',
+                'updated_at' => '2025-05-09 22:14:57',
+            ),
+            490 => 
+            array (
+                'id' => 4016,
+                'fee' => '2300.00',
+                'testservice_id' => 103,
+                'sample_id' => 1772,
+                'created_at' => '2025-05-09 22:14:57',
+                'updated_at' => '2025-05-09 22:14:57',
+            ),
+            491 => 
+            array (
+                'id' => 4017,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1773,
+                'created_at' => '2025-05-09 22:19:41',
+                'updated_at' => '2025-05-09 22:19:41',
+            ),
+            492 => 
+            array (
+                'id' => 4018,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1774,
+                'created_at' => '2025-05-09 22:19:41',
+                'updated_at' => '2025-05-09 22:19:41',
+            ),
+            493 => 
+            array (
+                'id' => 4019,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1775,
+                'created_at' => '2025-05-09 22:19:41',
+                'updated_at' => '2025-05-09 22:19:41',
+            ),
+            494 => 
+            array (
+                'id' => 4020,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1776,
+                'created_at' => '2025-05-09 22:19:41',
+                'updated_at' => '2025-05-09 22:19:41',
+            ),
+            495 => 
+            array (
+                'id' => 4021,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1777,
+                'created_at' => '2025-05-09 22:19:41',
+                'updated_at' => '2025-05-09 22:19:41',
+            ),
+            496 => 
+            array (
+                'id' => 4022,
+                'fee' => '2000.00',
+                'testservice_id' => 358,
+                'sample_id' => 1778,
+                'created_at' => '2025-05-09 22:19:41',
+                'updated_at' => '2025-05-09 22:19:41',
+            ),
         ));
 
         

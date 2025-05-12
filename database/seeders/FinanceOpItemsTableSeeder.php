@@ -20116,6 +20116,306 @@ class FinanceOpItemsTableSeeder extends Seeder
                 'created_at' => '2025-05-05 23:49:24',
                 'updated_at' => '2025-05-05 23:49:24',
             ),
+            9 => 
+            array (
+                'id' => 2099,
+                'amount' => '500.00',
+                'itemable_id' => 1855,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1665,
+                'created_at' => '2025-05-06 17:27:23',
+                'updated_at' => '2025-05-06 17:27:23',
+            ),
+            10 => 
+            array (
+                'id' => 2100,
+                'amount' => '15400.00',
+                'itemable_id' => 1857,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1666,
+                'created_at' => '2025-05-06 18:36:29',
+                'updated_at' => '2025-05-06 18:36:29',
+            ),
+            11 => 
+            array (
+                'id' => 2101,
+                'amount' => '1550.00',
+                'itemable_id' => 1860,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1667,
+                'created_at' => '2025-05-06 19:24:42',
+                'updated_at' => '2025-05-06 19:24:42',
+            ),
+            12 => 
+            array (
+                'id' => 2102,
+                'amount' => '1550.00',
+                'itemable_id' => 1859,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1668,
+                'created_at' => '2025-05-06 19:25:18',
+                'updated_at' => '2025-05-06 19:25:18',
+            ),
+            13 => 
+            array (
+                'id' => 2103,
+                'amount' => '1550.00',
+                'itemable_id' => 1858,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1669,
+                'created_at' => '2025-05-06 19:25:52',
+                'updated_at' => '2025-05-06 19:25:52',
+            ),
+            14 => 
+            array (
+                'id' => 2104,
+                'amount' => '1550.00',
+                'itemable_id' => 1861,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1670,
+                'created_at' => '2025-05-06 19:26:28',
+                'updated_at' => '2025-05-06 19:26:28',
+            ),
+            15 => 
+            array (
+                'id' => 2105,
+                'amount' => '500.00',
+                'itemable_id' => 1856,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1671,
+                'created_at' => '2025-05-06 19:32:47',
+                'updated_at' => '2025-05-06 19:32:47',
+            ),
+            16 => 
+            array (
+                'id' => 2106,
+                'amount' => '3300.00',
+                'itemable_id' => 1862,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1672,
+                'created_at' => '2025-05-06 20:55:59',
+                'updated_at' => '2025-05-06 20:55:59',
+            ),
+            17 => 
+            array (
+                'id' => 2107,
+                'amount' => '3900.00',
+                'itemable_id' => 1863,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1673,
+                'created_at' => '2025-05-06 22:04:01',
+                'updated_at' => '2025-05-06 22:04:01',
+            ),
+            18 => 
+            array (
+                'id' => 2108,
+                'amount' => '550.00',
+                'itemable_id' => 1864,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1674,
+                'created_at' => '2025-05-06 22:16:06',
+                'updated_at' => '2025-05-06 22:16:06',
+            ),
+            19 => 
+            array (
+                'id' => 2109,
+                'amount' => '1500.00',
+                'itemable_id' => 1865,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1675,
+                'created_at' => '2025-05-07 17:59:29',
+                'updated_at' => '2025-05-07 17:59:29',
+            ),
+            20 => 
+            array (
+                'id' => 2110,
+                'amount' => '3500.00',
+                'itemable_id' => 1866,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1676,
+                'created_at' => '2025-05-07 19:46:56',
+                'updated_at' => '2025-05-07 19:46:56',
+            ),
+            21 => 
+            array (
+                'id' => 2111,
+                'amount' => '4300.00',
+                'itemable_id' => 1867,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1677,
+                'created_at' => '2025-05-07 21:29:34',
+                'updated_at' => '2025-05-07 21:29:34',
+            ),
+            22 => 
+            array (
+                'id' => 2112,
+                'amount' => '3556626.00',
+                'itemable_id' => 841,
+                'itemable_type' => 'App\\Models\\FinanceItem',
+                'op_id' => 1678,
+                'created_at' => '2025-05-07 22:10:47',
+                'updated_at' => '2025-05-07 22:10:47',
+            ),
+            23 => 
+            array (
+                'id' => 2113,
+                'amount' => '3500.00',
+                'itemable_id' => 1873,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1679,
+                'created_at' => '2025-05-07 22:25:03',
+                'updated_at' => '2025-05-07 22:25:03',
+            ),
+            24 => 
+            array (
+                'id' => 2114,
+                'amount' => '550.00',
+                'itemable_id' => 1872,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1680,
+                'created_at' => '2025-05-07 22:25:22',
+                'updated_at' => '2025-05-07 22:25:22',
+            ),
+            25 => 
+            array (
+                'id' => 2115,
+                'amount' => '1550.00',
+                'itemable_id' => 1874,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1681,
+                'created_at' => '2025-05-07 23:02:40',
+                'updated_at' => '2025-05-07 23:02:40',
+            ),
+            26 => 
+            array (
+                'id' => 2116,
+                'amount' => '74000.00',
+                'itemable_id' => 842,
+                'itemable_type' => 'App\\Models\\FinanceItem',
+                'op_id' => 1682,
+                'created_at' => '2025-05-08 00:46:28',
+                'updated_at' => '2025-05-08 00:46:28',
+            ),
+            27 => 
+            array (
+                'id' => 2117,
+                'amount' => '1980.00',
+                'itemable_id' => 1876,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1683,
+                'created_at' => '2025-05-08 17:50:24',
+                'updated_at' => '2025-05-08 17:50:24',
+            ),
+            28 => 
+            array (
+                'id' => 2118,
+                'amount' => '2500.00',
+                'itemable_id' => 1875,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1684,
+                'created_at' => '2025-05-08 18:51:10',
+                'updated_at' => '2025-05-08 18:51:10',
+            ),
+            29 => 
+            array (
+                'id' => 2119,
+                'amount' => '1980.00',
+                'itemable_id' => 1878,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1685,
+                'created_at' => '2025-05-08 20:50:26',
+                'updated_at' => '2025-05-08 20:50:26',
+            ),
+            30 => 
+            array (
+                'id' => 2120,
+                'amount' => '900.00',
+                'itemable_id' => 1879,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1686,
+                'created_at' => '2025-05-09 00:02:22',
+                'updated_at' => '2025-05-09 00:02:22',
+            ),
+            31 => 
+            array (
+                'id' => 2121,
+                'amount' => '500.00',
+                'itemable_id' => 1880,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1687,
+                'created_at' => '2025-05-09 00:39:33',
+                'updated_at' => '2025-05-09 00:39:33',
+            ),
+            32 => 
+            array (
+                'id' => 2122,
+                'amount' => '1980.00',
+                'itemable_id' => 1881,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1688,
+                'created_at' => '2025-05-09 16:49:37',
+                'updated_at' => '2025-05-09 16:49:37',
+            ),
+            33 => 
+            array (
+                'id' => 2123,
+                'amount' => '2000.00',
+                'itemable_id' => 1883,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1689,
+                'created_at' => '2025-05-09 18:14:09',
+                'updated_at' => '2025-05-09 18:14:09',
+            ),
+            34 => 
+            array (
+                'id' => 2124,
+                'amount' => '2500.00',
+                'itemable_id' => 1882,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1690,
+                'created_at' => '2025-05-09 18:42:09',
+                'updated_at' => '2025-05-09 18:42:09',
+            ),
+            35 => 
+            array (
+                'id' => 2125,
+                'amount' => '1550.00',
+                'itemable_id' => 1885,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1691,
+                'created_at' => '2025-05-09 20:54:40',
+                'updated_at' => '2025-05-09 20:54:40',
+            ),
+            36 => 
+            array (
+                'id' => 2126,
+                'amount' => '1550.00',
+                'itemable_id' => 1884,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1692,
+                'created_at' => '2025-05-09 20:55:07',
+                'updated_at' => '2025-05-09 20:55:07',
+            ),
+            37 => 
+            array (
+                'id' => 2127,
+                'amount' => '325.00',
+                'itemable_id' => 1887,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1693,
+                'created_at' => '2025-05-09 21:45:22',
+                'updated_at' => '2025-05-09 21:45:22',
+            ),
+            38 => 
+            array (
+                'id' => 2128,
+                'amount' => '2200.00',
+                'itemable_id' => 1886,
+                'itemable_type' => 'App\\Models\\Tsr',
+                'op_id' => 1693,
+                'created_at' => '2025-05-09 21:45:22',
+                'updated_at' => '2025-05-09 21:45:22',
+            ),
         ));
 
         

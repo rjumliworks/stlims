@@ -27,7 +27,7 @@
                     <span data-key="t-menu">Releasing Officer</span>
                 </li>
             </tempalte> -->
-            <tempalte v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+            <template v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Laboratory</span>
@@ -67,13 +67,13 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Test Reports</span>
                     </Link>
                 </li>
-            </tempalte>
-            <tempalte v-else-if="$page.props.roles.includes('Laboratory Aide')">
+            </template>
+            <template v-else-if="$page.props.roles.includes('Laboratory Aide')">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Laboratory Aide</span>
                 </li>
-            </tempalte>
+            </template>
             <tempalte v-else-if="$page.props.roles.includes('Accountant')">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
@@ -87,7 +87,7 @@
                     </Link>
                 </li>
             </tempalte>
-            <tempalte v-else-if="$page.props.roles.includes('Cashier')">
+            <template v-else-if="$page.props.roles.includes('Cashier')">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Cashier</span>
@@ -120,8 +120,8 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Names</span>
                     </Link>
                 </li>
-            </tempalte>
-            <tempalte v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+            </template>
+            <template v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Other Modules</span>
@@ -140,7 +140,7 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Equipments</span>
                     </Link>
                 </li> 
-            </tempalte>
+            </template>
             <!-- <li class="nav-item">
                 <Link href="/services" class="nav-link menu-link"
                 :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
@@ -148,7 +148,7 @@
                 <span class="fw-semibold fs-14" data-key="t-dashboards">Inventory</span>
                 </Link>
             </li>  -->
-            <tempalte v-if="['Cashier','Accountant','Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+            <template v-if="['Cashier','Accountant','Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Others</span>
@@ -160,7 +160,7 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Reports</span>
                     </Link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <Link class="nav-link menu-link"
                     :class="{'active': $page.component.startsWith('Modules/Insights') }">
                     <i class="ri-line-chart-fill"></i>
@@ -185,9 +185,9 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-            </tempalte>
-            <tempalte v-if="$page.props.roles.includes('Administrator')">
+                </li> -->
+            </template>
+            <template v-if="$page.props.roles.includes('Administrator')">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Laboratory Modules</span>
@@ -249,7 +249,7 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Backup and Restore</span>
                     </Link>
                 </li>
-            </tempalte>
+            </template>
         </ul>
         
     </BContainer>

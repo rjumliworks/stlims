@@ -224,7 +224,7 @@ export default {
             <div class="p-3 border-top-0 dropdown-head border-start-0 border-end-0 border-dashed border dropdown-menu-lg">
               <BRow class="align-items-center">
                 <BCol>
-                  <h6 class="m-0 fw-semibold fs-15">Web Apps</h6>
+                  <h6 class="m-0 fw-semibold fs-15">Insights</h6>
                 </BCol>
                 <BCol cols="auto">
                   <BLink href="#!" class="btn btn-sm btn-soft-info">
@@ -236,17 +236,35 @@ export default {
             </div>
 
             <div class="p-2">
-              <BRow class="g-0">
+              <BRow class="g-0 fs-13">
                 <BCol>
-                  <BLink class="dropdown-icon-item" @click="openInNewTab('/dashboard')">
-                    <img src="@assets/images/apps/laboratory.png" alt="lab"/>
-                    <span>Inventory</span>
+                  <BLink class="dropdown-icon-item" @click="openInNewTab('/insights/top')">
+                    <img src="@assets/images/apps/performance.png" alt="lab"/>
+                    <span>Performance</span>
                   </BLink>
                 </BCol>
                 <BCol>
-                  <BLink class="dropdown-icon-item" @click="openInNewTab('/inventory')">
-                    <img src="@assets/images/apps/inventory.png" alt="invent" />
-                    <span>Equipments</span>
+                  <BLink class="dropdown-icon-item" @click="openInNewTab('/insights/gad')">
+                    <img src="@assets/images/apps/gender.png" alt="chatbox" />
+                    <span>GAD Corner</span>
+                  </BLink>
+                </BCol>
+                <BCol>
+                  <BLink class="dropdown-icon-item" @click="openInNewTab('/insights/customers')">
+                    <img src="@assets/images/apps/customer.png" alt="invent" />
+                    <span>Customers</span>
+                  </BLink>
+                </BCol>
+                <BCol>
+                  <BLink class="dropdown-icon-item" @click="openInNewTab('/insights/laboratories')">
+                    <img src="@assets/images/apps/laboratory.png" alt="chatbox" />
+                    <span>Laboratories</span>
+                  </BLink>
+                </BCol>
+                <BCol>
+                  <BLink class="dropdown-icon-item" @click="openInNewTab('/dashboard')">
+                    <img src="@assets/images/apps/payment.png" alt="lab"/>
+                    <span>Payments</span>
                   </BLink>
                 </BCol>
                 <BCol>

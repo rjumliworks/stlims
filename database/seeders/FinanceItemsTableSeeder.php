@@ -6140,6 +6140,22 @@ class FinanceItemsTableSeeder extends Seeder
                 'created_at' => '2025-04-30 23:49:31',
                 'updated_at' => '2025-04-30 23:49:31',
             ),
+            265 => 
+            array (
+                'id' => 841,
+                'amount' => '3556626.00',
+                'name' => 'MOOE SERVICE FEE, STIPEND, FINANCIAL ASSISTANCE',
+                'created_at' => '2025-05-07 22:10:47',
+                'updated_at' => '2025-05-07 22:10:47',
+            ),
+            266 => 
+            array (
+                'id' => 842,
+                'amount' => '74000.00',
+                'name' => 'FOR THE MONTH OF APRIL 2025',
+                'created_at' => '2025-05-08 00:46:28',
+                'updated_at' => '2025-05-08 00:46:28',
+            ),
         ));
 
         

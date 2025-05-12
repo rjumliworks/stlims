@@ -3618,6 +3618,536 @@ class TsrReleasesTableSeeder extends Seeder
                 'created_at' => '2025-04-30 16:40:39',
                 'updated_at' => '2025-04-30 16:40:39',
             ),
+            360 => 
+            array (
+                'id' => 362,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1452,
+                'created_at' => '2025-05-06 17:19:45',
+                'updated_at' => '2025-05-06 17:19:45',
+            ),
+            361 => 
+            array (
+                'id' => 363,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1453,
+                'created_at' => '2025-05-06 17:22:22',
+                'updated_at' => '2025-05-06 17:22:22',
+            ),
+            362 => 
+            array (
+                'id' => 364,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1371,
+                'created_at' => '2025-05-06 17:22:34',
+                'updated_at' => '2025-05-06 17:22:34',
+            ),
+            363 => 
+            array (
+                'id' => 365,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1683,
+                'created_at' => '2025-05-06 17:22:48',
+                'updated_at' => '2025-05-06 17:22:48',
+            ),
+            364 => 
+            array (
+                'id' => 366,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1719,
+                'created_at' => '2025-05-06 17:23:00',
+                'updated_at' => '2025-05-06 17:23:00',
+            ),
+            365 => 
+            array (
+                'id' => 367,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1661,
+                'created_at' => '2025-05-06 17:23:30',
+                'updated_at' => '2025-05-06 17:23:30',
+            ),
+            366 => 
+            array (
+                'id' => 368,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1662,
+                'created_at' => '2025-05-06 17:23:45',
+                'updated_at' => '2025-05-06 17:23:45',
+            ),
+            367 => 
+            array (
+                'id' => 369,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1663,
+                'created_at' => '2025-05-06 17:23:53',
+                'updated_at' => '2025-05-06 17:23:53',
+            ),
+            368 => 
+            array (
+                'id' => 370,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1664,
+                'created_at' => '2025-05-06 17:24:08',
+                'updated_at' => '2025-05-06 17:24:08',
+            ),
+            369 => 
+            array (
+                'id' => 371,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1665,
+                'created_at' => '2025-05-06 17:24:17',
+                'updated_at' => '2025-05-06 17:24:17',
+            ),
+            370 => 
+            array (
+                'id' => 372,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1576,
+                'created_at' => '2025-05-06 17:29:54',
+                'updated_at' => '2025-05-06 17:29:54',
+            ),
+            371 => 
+            array (
+                'id' => 373,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1578,
+                'created_at' => '2025-05-06 17:30:08',
+                'updated_at' => '2025-05-06 17:30:08',
+            ),
+            372 => 
+            array (
+                'id' => 374,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1579,
+                'created_at' => '2025-05-06 17:30:14',
+                'updated_at' => '2025-05-06 17:30:14',
+            ),
+            373 => 
+            array (
+                'id' => 375,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1633,
+                'created_at' => '2025-05-06 17:30:56',
+                'updated_at' => '2025-05-06 17:30:56',
+            ),
+            374 => 
+            array (
+                'id' => 376,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1408,
+                'created_at' => '2025-05-06 17:31:07',
+                'updated_at' => '2025-05-06 17:31:07',
+            ),
+            375 => 
+            array (
+                'id' => 377,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1410,
+                'created_at' => '2025-05-06 17:31:16',
+                'updated_at' => '2025-05-06 17:31:16',
+            ),
+            376 => 
+            array (
+                'id' => 378,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1415,
+                'created_at' => '2025-05-06 17:31:24',
+                'updated_at' => '2025-05-06 17:31:24',
+            ),
+            377 => 
+            array (
+                'id' => 379,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1417,
+                'created_at' => '2025-05-06 17:31:38',
+                'updated_at' => '2025-05-06 17:31:38',
+            ),
+            378 => 
+            array (
+                'id' => 380,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1419,
+                'created_at' => '2025-05-06 17:31:48',
+                'updated_at' => '2025-05-06 17:31:48',
+            ),
+            379 => 
+            array (
+                'id' => 381,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1418,
+                'created_at' => '2025-05-06 17:31:56',
+                'updated_at' => '2025-05-06 17:31:56',
+            ),
+            380 => 
+            array (
+                'id' => 382,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1411,
+                'created_at' => '2025-05-06 17:32:14',
+                'updated_at' => '2025-05-06 17:32:14',
+            ),
+            381 => 
+            array (
+                'id' => 383,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1416,
+                'created_at' => '2025-05-06 17:32:20',
+                'updated_at' => '2025-05-06 17:32:20',
+            ),
+            382 => 
+            array (
+                'id' => 384,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1409,
+                'created_at' => '2025-05-06 17:38:33',
+                'updated_at' => '2025-05-06 17:38:33',
+            ),
+            383 => 
+            array (
+                'id' => 385,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1817,
+                'created_at' => '2025-05-06 18:15:04',
+                'updated_at' => '2025-05-06 18:15:04',
+            ),
+            384 => 
+            array (
+                'id' => 386,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1818,
+                'created_at' => '2025-05-06 18:15:13',
+                'updated_at' => '2025-05-06 18:15:13',
+            ),
+            385 => 
+            array (
+                'id' => 387,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1414,
+                'created_at' => '2025-05-06 18:27:16',
+                'updated_at' => '2025-05-06 18:27:16',
+            ),
+            386 => 
+            array (
+                'id' => 388,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1413,
+                'created_at' => '2025-05-06 18:27:23',
+                'updated_at' => '2025-05-06 18:27:23',
+            ),
+            387 => 
+            array (
+                'id' => 389,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1412,
+                'created_at' => '2025-05-06 18:27:32',
+                'updated_at' => '2025-05-06 18:27:32',
+            ),
+            388 => 
+            array (
+                'id' => 390,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1407,
+                'created_at' => '2025-05-06 18:27:41',
+                'updated_at' => '2025-05-06 18:27:41',
+            ),
+            389 => 
+            array (
+                'id' => 391,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1406,
+                'created_at' => '2025-05-06 18:27:50',
+                'updated_at' => '2025-05-06 18:27:50',
+            ),
+            390 => 
+            array (
+                'id' => 392,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1405,
+                'created_at' => '2025-05-06 18:27:59',
+                'updated_at' => '2025-05-06 18:27:59',
+            ),
+            391 => 
+            array (
+                'id' => 393,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1677,
+                'created_at' => '2025-05-06 19:35:15',
+                'updated_at' => '2025-05-06 19:35:15',
+            ),
+            392 => 
+            array (
+                'id' => 394,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1835,
+                'created_at' => '2025-05-06 19:35:38',
+                'updated_at' => '2025-05-06 19:35:38',
+            ),
+            393 => 
+            array (
+                'id' => 395,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1792,
+                'created_at' => '2025-05-06 19:37:59',
+                'updated_at' => '2025-05-06 19:37:59',
+            ),
+            394 => 
+            array (
+                'id' => 396,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1797,
+                'created_at' => '2025-05-06 19:38:56',
+                'updated_at' => '2025-05-06 19:38:56',
+            ),
+            395 => 
+            array (
+                'id' => 397,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1710,
+                'created_at' => '2025-05-06 19:40:17',
+                'updated_at' => '2025-05-06 19:40:17',
+            ),
+            396 => 
+            array (
+                'id' => 398,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1785,
+                'created_at' => '2025-05-06 19:41:16',
+                'updated_at' => '2025-05-06 19:41:16',
+            ),
+            397 => 
+            array (
+                'id' => 399,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1787,
+                'created_at' => '2025-05-06 19:46:42',
+                'updated_at' => '2025-05-06 19:46:42',
+            ),
+            398 => 
+            array (
+                'id' => 400,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1799,
+                'created_at' => '2025-05-06 19:47:25',
+                'updated_at' => '2025-05-06 19:47:25',
+            ),
+            399 => 
+            array (
+                'id' => 401,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1770,
+                'created_at' => '2025-05-06 19:47:48',
+                'updated_at' => '2025-05-06 19:47:48',
+            ),
+            400 => 
+            array (
+                'id' => 402,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1736,
+                'created_at' => '2025-05-06 19:50:16',
+                'updated_at' => '2025-05-06 19:50:16',
+            ),
+            401 => 
+            array (
+                'id' => 403,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1658,
+                'created_at' => '2025-05-06 20:01:28',
+                'updated_at' => '2025-05-06 20:01:28',
+            ),
+            402 => 
+            array (
+                'id' => 404,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1732,
+                'created_at' => '2025-05-09 18:18:08',
+                'updated_at' => '2025-05-09 18:18:08',
+            ),
+            403 => 
+            array (
+                'id' => 405,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1809,
+                'created_at' => '2025-05-09 21:20:04',
+                'updated_at' => '2025-05-09 21:20:04',
+            ),
+            404 => 
+            array (
+                'id' => 406,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1694,
+                'created_at' => '2025-05-09 21:21:27',
+                'updated_at' => '2025-05-09 21:21:27',
+            ),
+            405 => 
+            array (
+                'id' => 407,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1642,
+                'created_at' => '2025-05-09 21:25:34',
+                'updated_at' => '2025-05-09 21:25:34',
+            ),
+            406 => 
+            array (
+                'id' => 408,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1636,
+                'created_at' => '2025-05-09 21:27:28',
+                'updated_at' => '2025-05-09 21:27:28',
+            ),
+            407 => 
+            array (
+                'id' => 409,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1667,
+                'created_at' => '2025-05-09 21:27:59',
+                'updated_at' => '2025-05-09 21:27:59',
+            ),
+            408 => 
+            array (
+                'id' => 410,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1832,
+                'created_at' => '2025-05-09 21:30:30',
+                'updated_at' => '2025-05-09 21:30:30',
+            ),
+            409 => 
+            array (
+                'id' => 411,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1820,
+                'created_at' => '2025-05-09 21:31:36',
+                'updated_at' => '2025-05-09 21:31:36',
+            ),
+            410 => 
+            array (
+                'id' => 412,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1834,
+                'created_at' => '2025-05-09 21:32:19',
+                'updated_at' => '2025-05-09 21:32:19',
+            ),
+            411 => 
+            array (
+                'id' => 413,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1808,
+                'created_at' => '2025-05-09 21:33:09',
+                'updated_at' => '2025-05-09 21:33:09',
+            ),
+            412 => 
+            array (
+                'id' => 414,
+                'released_at' => NULL,
+                'status_id' => 26,
+                'user_id' => NULL,
+                'tsr_id' => 1654,
+                'created_at' => '2025-05-09 21:34:42',
+                'updated_at' => '2025-05-09 21:34:42',
+            ),
         ));
 
         

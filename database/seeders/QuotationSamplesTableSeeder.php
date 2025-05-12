@@ -18685,6 +18685,890 @@ Model: FB7111',
                 'created_at' => '2025-05-06 01:20:43',
                 'updated_at' => '2025-05-06 01:20:43',
             ),
+            200 => 
+            array (
+                'id' => 1732,
+                'name' => 'Wastewater',
+                'customer_description' => 'Source: East Pumping Station, Date and Time of Sampling:',
+                'description' => '.',
+                'quotation_id' => 412,
+                'created_at' => '2025-05-06 16:57:13',
+                'updated_at' => '2025-05-06 16:57:13',
+            ),
+            201 => 
+            array (
+                'id' => 1733,
+                'name' => 'Wastewater',
+                'customer_description' => 'Source: West Pumping Station, Date and Time of Sampling:',
+                'description' => '.',
+                'quotation_id' => 412,
+                'created_at' => '2025-05-06 16:57:35',
+                'updated_at' => '2025-05-06 16:57:35',
+            ),
+            202 => 
+            array (
+                'id' => 1734,
+                'name' => 'Water',
+                'customer_description' => 'Source: Purified Drinking Water, Date and Time of Sampling:',
+                'description' => '.',
+                'quotation_id' => 413,
+                'created_at' => '2025-05-06 17:50:03',
+                'updated_at' => '2025-05-06 17:50:03',
+            ),
+            203 => 
+            array (
+                'id' => 1735,
+                'name' => 'Squid Fillet',
+                'customer_description' => 'Squid Fillet',
+            'description' => '(submit at least 250 g)',
+                'quotation_id' => 414,
+                'created_at' => '2025-05-06 17:57:18',
+                'updated_at' => '2025-05-06 17:58:59',
+            ),
+            204 => 
+            array (
+                'id' => 1736,
+                'name' => 'Water',
+                'customer_description' => 'Source: ZCWD, Date and Time of Sampling:',
+                'description' => '.',
+                'quotation_id' => 415,
+                'created_at' => '2025-05-06 23:09:49',
+                'updated_at' => '2025-05-06 23:09:49',
+            ),
+            205 => 
+            array (
+                'id' => 1737,
+                'name' => 'Water',
+                'customer_description' => 'Source: ZCWD, Date and Time of Sampling:',
+                'description' => '.',
+                'quotation_id' => 416,
+                'created_at' => '2025-05-06 23:16:00',
+                'updated_at' => '2025-05-06 23:16:00',
+            ),
+            206 => 
+            array (
+                'id' => 1738,
+                'name' => 'Water',
+                'customer_description' => 'Source: ZCWD, Date and Time of Sampling:',
+                'description' => '.',
+                'quotation_id' => 417,
+                'created_at' => '2025-05-06 23:21:44',
+                'updated_at' => '2025-05-06 23:21:44',
+            ),
+            207 => 
+            array (
+                'id' => 1739,
+                'name' => 'Digital Weighing Scale',
+                'customer_description' => 'Serial Number: DWS-RA1-01, Brand/Make: Weitex Xtreme, Model: Xtreme-800 Series, Capacity/Range: 300 kg/ 100 to 300, Graduation/Resolution: 0.01 kg',
+                'description' => '.',
+                'quotation_id' => 418,
+                'created_at' => '2025-05-07 00:05:56',
+                'updated_at' => '2025-05-07 00:05:56',
+            ),
+            208 => 
+            array (
+                'id' => 1740,
+                'name' => 'Digital Weighing Scale',
+                'customer_description' => 'Serial Number: DWS-FA2-02, Brand/Make: Wilson, Model: N/A, Capacity/Range: 40 kg/ 200 g to 40 kg, Graduation/Resolution: 0.005 kg',
+                'description' => '.',
+                'quotation_id' => 418,
+                'created_at' => '2025-05-07 00:06:10',
+                'updated_at' => '2025-05-07 00:06:10',
+            ),
+            209 => 
+            array (
+                'id' => 1741,
+                'name' => 'Sardines',
+                'customer_description' => 'Grand Kim Sardines in Tomato Sauce',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:29:45',
+                'updated_at' => '2025-05-07 00:29:45',
+            ),
+            210 => 
+            array (
+                'id' => 1742,
+                'name' => 'Sardines',
+                'customer_description' => 'Grand Kim Sardines in Tomato Sauce Chili',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:30:25',
+                'updated_at' => '2025-05-07 00:30:25',
+            ),
+            211 => 
+            array (
+                'id' => 1743,
+                'name' => 'Sardines',
+                'customer_description' => 'Golden Town Sardines in Tomato Sauce',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:30:38',
+                'updated_at' => '2025-05-07 00:30:38',
+            ),
+            212 => 
+            array (
+                'id' => 1744,
+                'name' => 'Sardines',
+                'customer_description' => 'Golden Town Sardines in Tomato Sauce Chili',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:30:59',
+                'updated_at' => '2025-05-07 00:30:59',
+            ),
+            213 => 
+            array (
+                'id' => 1745,
+                'name' => 'Sardines',
+                'customer_description' => 'Golden Town Sardines in Tomato Sauce- Super Hot',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:31:16',
+                'updated_at' => '2025-05-07 00:31:16',
+            ),
+            214 => 
+            array (
+                'id' => 1746,
+                'name' => 'Sardines',
+                'customer_description' => 'Grand Kim Sardines in Curry Sauce',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:31:29',
+                'updated_at' => '2025-05-07 00:31:29',
+            ),
+            215 => 
+            array (
+                'id' => 1747,
+                'name' => 'Sardines',
+                'customer_description' => 'Grand Kim Sardines in Oil and Tomato Sauce',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:31:39',
+                'updated_at' => '2025-05-07 00:31:39',
+            ),
+            216 => 
+            array (
+                'id' => 1748,
+                'name' => 'Sardines',
+                'customer_description' => 'Golden Town Spanish Style Sardines in Corn Oil',
+            'description' => '(submit at least two cans/bottles of the same batch/production)',
+                'quotation_id' => 419,
+                'created_at' => '2025-05-07 00:31:47',
+                'updated_at' => '2025-05-07 00:31:47',
+            ),
+            217 => 
+            array (
+                'id' => 1749,
+                'name' => 'Weighing Scale',
+                'customer_description' => 'Item 1, General Master, Capacity: 10 kg, Resolution: 5 g',
+            'description' => '(please also submit item\'s manual)',
+                'quotation_id' => 420,
+                'created_at' => '2025-05-07 00:53:44',
+                'updated_at' => '2025-05-07 00:54:14',
+            ),
+            218 => 
+            array (
+                'id' => 1750,
+                'name' => 'Weighing Scale',
+                'customer_description' => 'Item 2, General Master, Capacity: 10 kg, Resolution: 5 g',
+            'description' => '(please also submit item\'s manual)',
+                'quotation_id' => 420,
+                'created_at' => '2025-05-07 00:53:49',
+                'updated_at' => '2025-05-07 00:54:23',
+            ),
+            219 => 
+            array (
+                'id' => 1751,
+                'name' => 'Water',
+                'customer_description' => 'Source: Faucet, Date and Time of Sampling:',
+            'description' => '(submit at least 350 mL in sterile glass bottle, place in ice chest with ice to preserve the sample during transport)',
+                'quotation_id' => 421,
+                'created_at' => '2025-05-07 01:05:23',
+                'updated_at' => '2025-05-07 01:05:23',
+            ),
+            220 => 
+            array (
+                'id' => 1752,
+                'name' => 'Water',
+                'customer_description' => 'Source: Pump, Date and Time of Sampling:',
+            'description' => '(submit at least 350 mL in sterile glass bottle, place in ice chest with ice to preserve the sample during transport)',
+                'quotation_id' => 421,
+                'created_at' => '2025-05-07 01:05:54',
+                'updated_at' => '2025-05-07 01:05:54',
+            ),
+            221 => 
+            array (
+                'id' => 1753,
+                'name' => 'Water',
+                'customer_description' => 'Source: Faucet, Date and Time of Sampling:',
+            'description' => '(submit at least 350 mL in sterile glass bottle, place in ice chest with ice to preserve the sample during transport)',
+                'quotation_id' => 422,
+                'created_at' => '2025-05-07 01:09:30',
+                'updated_at' => '2025-05-07 01:09:30',
+            ),
+            222 => 
+            array (
+                'id' => 1754,
+                'name' => 'Water',
+                'customer_description' => 'Source: Pump, Date and Time of Sampling:',
+            'description' => '(submit at least 350 mL in sterile glass bottle, place in ice chest with ice to preserve the sample during transport)',
+                'quotation_id' => 422,
+                'created_at' => '2025-05-07 01:09:47',
+                'updated_at' => '2025-05-07 01:09:47',
+            ),
+            223 => 
+            array (
+                'id' => 1755,
+                'name' => 'Canned Sardines',
+                'customer_description' => 'KING CUP IN SUNFLOWER OIL SPANISH STYLE, 155g, HYZSØSS9S 0705252C,
+Exp.: 7 MAY 2028',
+            'description' => '(submit two cans of the same batch/production).',
+                'quotation_id' => 423,
+                'created_at' => '2025-05-08 17:02:30',
+                'updated_at' => '2025-05-08 17:02:30',
+            ),
+            224 => 
+            array (
+                'id' => 1756,
+                'name' => 'Weighing Scale',
+                'customer_description' => 'Serial Number: BFP-ZSP-01',
+                'description' => 'Make: Primaplus,
+Model: ZT-160,
+Capacity: 160 kg,
+Graduation: 0.5 kg,
+Height Measuring Scale - Capacity: 190 cm',
+                'quotation_id' => 424,
+                'created_at' => '2025-05-08 17:30:52',
+                'updated_at' => '2025-05-08 17:30:52',
+            ),
+            225 => 
+            array (
+                'id' => 1757,
+                'name' => 'Weighing Scale',
+            'customer_description' => 'Serial Number: (must be provided by the customer), Make/Model: RTC-160, Capacity: 160 kg, Graduation: 0.5 kg, Height Measuring Scale - Capacity: 190 cm',
+                'description' => '.',
+                'quotation_id' => 425,
+                'created_at' => '2025-05-08 18:53:40',
+                'updated_at' => '2025-05-08 18:53:40',
+            ),
+            226 => 
+            array (
+                'id' => 1758,
+                'name' => 'PES Kappa Powder',
+                'customer_description' => 'PES Kappa Powder',
+            'description' => '(submit at least 250 grams)',
+                'quotation_id' => 426,
+                'created_at' => '2025-05-08 19:03:39',
+                'updated_at' => '2025-05-08 19:03:39',
+            ),
+            227 => 
+            array (
+                'id' => 1759,
+                'name' => 'PES Iota Powder',
+                'customer_description' => 'PES Iota Powder',
+            'description' => '(submit at least 250 grams)',
+                'quotation_id' => 426,
+                'created_at' => '2025-05-08 19:03:55',
+                'updated_at' => '2025-05-08 19:03:55',
+            ),
+            228 => 
+            array (
+                'id' => 1760,
+                'name' => 'Weighing Scale',
+            'customer_description' => 'Serial Number: (must be provided by the customer), Make: Primaplus, Model: ZT-160, Capacity: 160 kg, Graduation: 0.5 kg, Height Measuring Scale - Capacity: 190 cm',
+                'description' => '.',
+                'quotation_id' => 427,
+                'created_at' => '2025-05-08 19:21:59',
+                'updated_at' => '2025-05-08 19:21:59',
+            ),
+            229 => 
+            array (
+                'id' => 1761,
+                'name' => 'Water',
+                'customer_description' => 'Water',
+            'description' => '(DOST IX RSTL provides the sterile sampling glass bottle).',
+                'quotation_id' => 428,
+                'created_at' => '2025-05-08 21:45:35',
+                'updated_at' => '2025-05-08 21:45:35',
+            ),
+            230 => 
+            array (
+                'id' => 1762,
+                'name' => 'Water',
+                'customer_description' => 'Water',
+                'description' => '.',
+                'quotation_id' => 429,
+                'created_at' => '2025-05-08 21:46:53',
+                'updated_at' => '2025-05-08 21:46:53',
+            ),
+            231 => 
+            array (
+                'id' => 1763,
+                'name' => 'Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '.',
+                'quotation_id' => 430,
+                'created_at' => '2025-05-08 21:57:33',
+                'updated_at' => '2025-05-08 21:57:33',
+            ),
+            232 => 
+            array (
+                'id' => 1764,
+                'name' => 'RTD Thermometer',
+                'customer_description' => 'ID Code No.: RTD-001,
+Serial No.: 19011231, 
+Type: HD 2107.1, 
+Manufacturer: Delta Ohm, 
+Test Points: 0, 15, 20, 25, 30 °C',
+                'description' => '.',
+                'quotation_id' => 431,
+                'created_at' => '2025-05-08 22:38:56',
+                'updated_at' => '2025-05-08 22:39:34',
+            ),
+            233 => 
+            array (
+                'id' => 1765,
+                'name' => 'RTD Thermometer',
+                'customer_description' => 'ID Code No.: RTD-002,
+Serial No.: 19011234, 
+Type: HD 2107.1, 
+Manufacturer: Delta Ohm, 
+Test Points: 0, 15, 20, 25, 30 °C',
+                'description' => '.',
+                'quotation_id' => 431,
+                'created_at' => '2025-05-08 22:39:57',
+                'updated_at' => '2025-05-08 22:39:57',
+            ),
+            234 => 
+            array (
+                'id' => 1766,
+                'name' => 'RTD Thermometer',
+                'customer_description' => 'ID Code No.: RTD-003,
+Serial No.: 22029100, 
+Type: HD 2307.0, 
+Manufacturer: Delta Ohm, 
+Test Points: 0, 15, 20, 25, 30 °C',
+                'description' => '.',
+                'quotation_id' => 431,
+                'created_at' => '2025-05-08 22:40:31',
+                'updated_at' => '2025-05-08 22:40:31',
+            ),
+            235 => 
+            array (
+                'id' => 1767,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 432,
+                'created_at' => '2025-05-09 22:10:04',
+                'updated_at' => '2025-05-09 22:10:04',
+            ),
+            236 => 
+            array (
+                'id' => 1768,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 432,
+                'created_at' => '2025-05-09 22:10:28',
+                'updated_at' => '2025-05-09 22:10:28',
+            ),
+            237 => 
+            array (
+                'id' => 1769,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 432,
+                'created_at' => '2025-05-09 22:10:48',
+                'updated_at' => '2025-05-09 22:10:48',
+            ),
+            238 => 
+            array (
+                'id' => 1770,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 432,
+                'created_at' => '2025-05-09 22:11:06',
+                'updated_at' => '2025-05-09 22:11:06',
+            ),
+            239 => 
+            array (
+                'id' => 1771,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 432,
+                'created_at' => '2025-05-09 22:11:26',
+                'updated_at' => '2025-05-09 22:11:26',
+            ),
+            240 => 
+            array (
+                'id' => 1772,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 432,
+                'created_at' => '2025-05-09 22:11:45',
+                'updated_at' => '2025-05-09 22:11:45',
+            ),
+            241 => 
+            array (
+                'id' => 1773,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 433,
+                'created_at' => '2025-05-09 22:17:53',
+                'updated_at' => '2025-05-09 22:17:53',
+            ),
+            242 => 
+            array (
+                'id' => 1774,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 433,
+                'created_at' => '2025-05-09 22:18:08',
+                'updated_at' => '2025-05-09 22:18:08',
+            ),
+            243 => 
+            array (
+                'id' => 1775,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 433,
+                'created_at' => '2025-05-09 22:18:28',
+                'updated_at' => '2025-05-09 22:18:28',
+            ),
+            244 => 
+            array (
+                'id' => 1776,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 433,
+                'created_at' => '2025-05-09 22:18:43',
+                'updated_at' => '2025-05-09 22:18:43',
+            ),
+            245 => 
+            array (
+                'id' => 1777,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 433,
+                'created_at' => '2025-05-09 22:19:02',
+                'updated_at' => '2025-05-09 22:19:02',
+            ),
+            246 => 
+            array (
+                'id' => 1778,
+                'name' => 'Bottled Sardines',
+                'customer_description' => 'Sardines',
+                'description' => '-',
+                'quotation_id' => 433,
+                'created_at' => '2025-05-09 22:19:15',
+                'updated_at' => '2025-05-09 22:19:15',
+            ),
+            247 => 
+            array (
+                'id' => 1779,
+                'name' => 'Analytical Balance',
+                'customer_description' => 'Model: KERN ABJ-NM/ABS-N
+Capacity/ Range: Min: 0.01g Max: 320g
+e = 1mg, d = 0.1mg
+Serial Number: WB18AMO159
+Location: CSM Stockroom
+Status: Used since 2024',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:41:21',
+                'updated_at' => '2025-05-10 00:41:21',
+            ),
+            248 => 
+            array (
+                'id' => 1780,
+                'name' => 'Analytical Balance',
+                'customer_description' => 'Model: KERN ABJ-NM/ABS-N
+Capacity/ Range: Min: 0.01g Max: 320g
+e = 1mg, d = 0.1mg
+Serial Number: WB18AMO158
+Location: CSM Stockroom
+Status: Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:41:37',
+                'updated_at' => '2025-05-10 00:41:37',
+            ),
+            249 => 
+            array (
+                'id' => 1781,
+                'name' => 'Analytical Balance',
+                'customer_description' => 'Model: Shimadzu ATX324R
+Capacity/ Range: Min: 0.1g Max: 320g
+e = 0.001g, d = 0.1g
+Serial Number: D326100347
+Location: CSM 101
+Status: Used',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:41:54',
+                'updated_at' => '2025-05-10 00:41:54',
+            ),
+            250 => 
+            array (
+                'id' => 1782,
+                'name' => 'Analytical Balance',
+                'customer_description' => 'Model: KERN ABJ-NM/ABS-N
+Capacity/ Range: Min: 0.01g Max: 320g
+e = 1mg, d = 0.1mg
+Serial Number: WB18AM0145
+Location: CSM 105
+Status: Used',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:42:15',
+                'updated_at' => '2025-05-10 00:42:15',
+            ),
+            251 => 
+            array (
+                'id' => 1783,
+                'name' => 'Top Loading Balance',
+                'customer_description' => 'Model: Shimadzu TXB622L
+Capacity/ Range: Min: 0.2g Max: 620g
+e = 0.1g, d = 0.01g
+Serial Number: D517707197
+Location: CSM Stockroom
+Status: Used and Previously Calibrated',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:43:08',
+                'updated_at' => '2025-05-10 00:43:08',
+            ),
+            252 => 
+            array (
+                'id' => 1784,
+                'name' => 'Top Loading Balance',
+                'customer_description' => 'Model: Shimadzu TXB622L
+Capacity/ Range: Min: 0.2g Max: 620g
+e = 0.1g, d = 0.01g
+Serial Number: D517707198
+Location: CSM Stockroom
+Status: Used',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:43:42',
+                'updated_at' => '2025-05-10 00:43:42',
+            ),
+            253 => 
+            array (
+                'id' => 1785,
+                'name' => 'Top Loading Balance',
+                'customer_description' => 'Model: Shimadzu TXB622L
+Capacity/ Range: Min: 0.2g Max: 620g
+e = 0.1g, d = 0.01g
+Serial Number: D517702805
+Location: CSM 101',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:46:16',
+                'updated_at' => '2025-05-10 00:46:16',
+            ),
+            254 => 
+            array (
+                'id' => 1786,
+                'name' => 'Laboratory Oven',
+                'customer_description' => 'Model: UN55
+Setting Temperature Range: +20 to +300°C
+Interior: Stainless Steel
+Max. No. of Shelves: 4
+Max. Loading of Chamber: 176lbs
+Max. Loading per shelf: 44lbs
+Voltage Electrical Load: 230V (±10%), 50/60Hz
+Approx. 2000W / 8.7A
+Location: CSM 101
+Status: Used',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 00:57:19',
+                'updated_at' => '2025-05-10 00:57:19',
+            ),
+            255 => 
+            array (
+                'id' => 1787,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:08:35',
+                'updated_at' => '2025-05-10 01:14:23',
+            ),
+            256 => 
+            array (
+                'id' => 1788,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:19:51',
+                'updated_at' => '2025-05-10 01:19:51',
+            ),
+            257 => 
+            array (
+                'id' => 1789,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:04',
+                'updated_at' => '2025-05-10 01:20:04',
+            ),
+            258 => 
+            array (
+                'id' => 1790,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:13',
+                'updated_at' => '2025-05-10 01:20:13',
+            ),
+            259 => 
+            array (
+                'id' => 1791,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:17',
+                'updated_at' => '2025-05-10 01:20:17',
+            ),
+            260 => 
+            array (
+                'id' => 1792,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:22',
+                'updated_at' => '2025-05-10 01:20:22',
+            ),
+            261 => 
+            array (
+                'id' => 1793,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:32',
+                'updated_at' => '2025-05-10 01:20:32',
+            ),
+            262 => 
+            array (
+                'id' => 1794,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:39',
+                'updated_at' => '2025-05-10 01:20:39',
+            ),
+            263 => 
+            array (
+                'id' => 1795,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:51',
+                'updated_at' => '2025-05-10 01:20:51',
+            ),
+            264 => 
+            array (
+                'id' => 1796,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS TJ2611
+US Patent No. D558, 1905
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 2016.07.19
+Location: CSM Stockroom
+Status: 8 – Used, 2 - Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:20:54',
+                'updated_at' => '2025-05-10 01:20:54',
+            ),
+            265 => 
+            array (
+                'id' => 1797,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS 700/800 Series
+US Patent No. 2,729.439
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 80000035
+Location: CSM Stockroom
+Status: Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:21:53',
+                'updated_at' => '2025-05-10 01:21:53',
+            ),
+            266 => 
+            array (
+                'id' => 1798,
+                'name' => 'Triple Beam Balance',
+                'customer_description' => 'Model: OHAUS 700/800 Series
+US Patent No. 2,729.439
+Capacity/ Range:
+*With Attachment Weights: 2,610g
+*Without Attachment Weights: 610g
+Calibrations:
+Front Beam : 10g x 0.1g
+Center Beam : 500g x 100g
+Rear Beam : 100g x 1g
+Serial Number: 80000035
+Location: CSM Stockroom
+Status: Unused',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:22:03',
+                'updated_at' => '2025-05-10 01:22:03',
+            ),
+            267 => 
+            array (
+                'id' => 1799,
+                'name' => 'pH meter',
+                'customer_description' => 'Model: EUTECH Ph 700
+Specifications:
+pH Range: -2.00 to 16.00 pH
+Calibration points: Up to 5 points with auto-buffer
+recognition
+mV Range: ±2000 mV
+Resolution: 0.1 mV (±199.9 mV), 1mV beyond ±200 mV
+Temperature Range: 0.0 to 100°C / 32.0 to 212.0°F
+Resolution: 0.1°C / °F
+Calibration: Offset in 0.1° increments; offset range: ±5.0°C /
+9.0°F
+SN: 2426130
+Status: Used',
+                'description' => '.',
+                'quotation_id' => 434,
+                'created_at' => '2025-05-10 01:22:44',
+                'updated_at' => '2025-05-10 01:22:44',
+            ),
         ));
 
         

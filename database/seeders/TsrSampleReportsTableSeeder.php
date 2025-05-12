@@ -28038,6 +28038,626 @@ class TsrSampleReportsTableSeeder extends Seeder
                 'created_at' => '2025-05-05 23:59:05',
                 'updated_at' => '2025-05-05 23:59:05',
             ),
+            301 => 
+            array (
+                'id' => 2867,
+                'code' => 'R9-05062025-MIC-0379',
+                'information' => NULL,
+                'sample_id' => 4332,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:28:02',
+                'updated_at' => '2025-05-06 17:28:02',
+            ),
+            302 => 
+            array (
+                'id' => 2868,
+                'code' => 'R9-05062025-MIC-0380',
+                'information' => NULL,
+                'sample_id' => 4341,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:28:58',
+                'updated_at' => '2025-05-06 17:28:58',
+            ),
+            303 => 
+            array (
+                'id' => 2869,
+                'code' => 'R9-05062025-MIC-0381',
+                'information' => NULL,
+                'sample_id' => 4342,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:29:39',
+                'updated_at' => '2025-05-06 17:29:39',
+            ),
+            304 => 
+            array (
+                'id' => 2870,
+                'code' => 'R9-05062025-MIC-0382',
+                'information' => NULL,
+                'sample_id' => 4343,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:29:46',
+                'updated_at' => '2025-05-06 17:29:46',
+            ),
+            305 => 
+            array (
+                'id' => 2871,
+                'code' => 'R9-05062025-MIC-0383',
+                'information' => NULL,
+                'sample_id' => 4344,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:29:59',
+                'updated_at' => '2025-05-06 17:29:59',
+            ),
+            306 => 
+            array (
+                'id' => 2872,
+                'code' => 'R9-05062025-MIC-0384',
+                'information' => NULL,
+                'sample_id' => 4345,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:31:13',
+                'updated_at' => '2025-05-06 17:31:13',
+            ),
+            307 => 
+            array (
+                'id' => 2873,
+                'code' => 'R9-05062025-MIC-0385',
+                'information' => NULL,
+                'sample_id' => 4346,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:31:42',
+                'updated_at' => '2025-05-06 17:31:42',
+            ),
+            308 => 
+            array (
+                'id' => 2874,
+                'code' => 'R9-05062025-MIC-0386',
+                'information' => NULL,
+                'sample_id' => 4347,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:31:48',
+                'updated_at' => '2025-05-06 17:31:48',
+            ),
+            309 => 
+            array (
+                'id' => 2875,
+                'code' => 'R9-05062025-MIC-0387',
+                'information' => NULL,
+                'sample_id' => 4348,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:31:55',
+                'updated_at' => '2025-05-06 17:31:55',
+            ),
+            310 => 
+            array (
+                'id' => 2876,
+                'code' => 'R9-05062025-MIC-0388',
+                'information' => NULL,
+                'sample_id' => 4349,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:32:18',
+                'updated_at' => '2025-05-06 17:32:18',
+            ),
+            311 => 
+            array (
+                'id' => 2877,
+                'code' => 'R9-05062025-MIC-0389',
+                'information' => NULL,
+                'sample_id' => 4350,
+                'user_id' => 16,
+                'created_at' => '2025-05-06 17:32:39',
+                'updated_at' => '2025-05-06 17:32:39',
+            ),
+            312 => 
+            array (
+                'id' => 2878,
+                'code' => 'R9-05062025-MET-0613',
+                'information' => NULL,
+                'sample_id' => 3916,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:36:25',
+                'updated_at' => '2025-05-06 21:36:25',
+            ),
+            313 => 
+            array (
+                'id' => 2879,
+                'code' => 'R9-05062025-MET-0614',
+                'information' => NULL,
+                'sample_id' => 3917,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:36:42',
+                'updated_at' => '2025-05-06 21:36:42',
+            ),
+            314 => 
+            array (
+                'id' => 2880,
+                'code' => 'R9-05062025-MET-0615',
+                'information' => NULL,
+                'sample_id' => 3918,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:36:54',
+                'updated_at' => '2025-05-06 21:36:54',
+            ),
+            315 => 
+            array (
+                'id' => 2881,
+                'code' => 'R9-05062025-MET-0616',
+                'information' => NULL,
+                'sample_id' => 3919,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:37:07',
+                'updated_at' => '2025-05-06 21:37:07',
+            ),
+            316 => 
+            array (
+                'id' => 2882,
+                'code' => 'R9-05062025-MET-0617',
+                'information' => NULL,
+                'sample_id' => 3920,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:37:20',
+                'updated_at' => '2025-05-06 21:37:20',
+            ),
+            317 => 
+            array (
+                'id' => 2883,
+                'code' => 'R9-05062025-MET-0618',
+                'information' => NULL,
+                'sample_id' => 3921,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:37:31',
+                'updated_at' => '2025-05-06 21:37:31',
+            ),
+            318 => 
+            array (
+                'id' => 2884,
+                'code' => 'R9-05062025-MET-0619',
+                'information' => NULL,
+                'sample_id' => 3922,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:37:44',
+                'updated_at' => '2025-05-06 21:37:44',
+            ),
+            319 => 
+            array (
+                'id' => 2885,
+                'code' => 'R9-05062025-MET-0620',
+                'information' => NULL,
+                'sample_id' => 3923,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:37:57',
+                'updated_at' => '2025-05-06 21:37:57',
+            ),
+            320 => 
+            array (
+                'id' => 2886,
+                'code' => 'R9-05062025-MET-0621',
+                'information' => NULL,
+                'sample_id' => 3924,
+                'user_id' => 12,
+                'created_at' => '2025-05-06 21:38:11',
+                'updated_at' => '2025-05-06 21:38:11',
+            ),
+            321 => 
+            array (
+                'id' => 2887,
+                'code' => 'R9-05062025-CHE-0599',
+                'information' => NULL,
+                'sample_id' => 4333,
+                'user_id' => 7,
+                'created_at' => '2025-05-06 22:58:21',
+                'updated_at' => '2025-05-06 22:58:21',
+            ),
+            322 => 
+            array (
+                'id' => 2888,
+                'code' => 'R9-05072025-MIC-0390',
+                'information' => NULL,
+                'sample_id' => 4072,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 15:55:11',
+                'updated_at' => '2025-05-07 15:55:11',
+            ),
+            323 => 
+            array (
+                'id' => 2889,
+                'code' => 'R9-05072025-MIC-0391',
+                'information' => NULL,
+                'sample_id' => 4073,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 15:55:39',
+                'updated_at' => '2025-05-07 15:55:39',
+            ),
+            324 => 
+            array (
+                'id' => 2890,
+                'code' => 'R9-05072025-MIC-0392',
+                'information' => NULL,
+                'sample_id' => 4426,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 16:00:42',
+                'updated_at' => '2025-05-07 16:00:42',
+            ),
+            325 => 
+            array (
+                'id' => 2891,
+                'code' => 'R9-05072025-MIC-0393',
+                'information' => NULL,
+                'sample_id' => 4427,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 16:01:01',
+                'updated_at' => '2025-05-07 16:01:01',
+            ),
+            326 => 
+            array (
+                'id' => 2892,
+                'code' => 'R9-05072025-MIC-0394',
+                'information' => NULL,
+                'sample_id' => 4428,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 16:01:13',
+                'updated_at' => '2025-05-07 16:01:13',
+            ),
+            327 => 
+            array (
+                'id' => 2893,
+                'code' => 'R9-05072025-MIC-0395',
+                'information' => NULL,
+                'sample_id' => 4429,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 16:01:29',
+                'updated_at' => '2025-05-07 16:01:29',
+            ),
+            328 => 
+            array (
+                'id' => 2894,
+                'code' => 'R9-05072025-MIC-0396',
+                'information' => NULL,
+                'sample_id' => 4430,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 16:01:49',
+                'updated_at' => '2025-05-07 16:01:49',
+            ),
+            329 => 
+            array (
+                'id' => 2895,
+                'code' => 'R9-05072025-MIC-0397',
+                'information' => NULL,
+                'sample_id' => 4431,
+                'user_id' => 16,
+                'created_at' => '2025-05-07 16:02:11',
+                'updated_at' => '2025-05-07 16:02:11',
+            ),
+            330 => 
+            array (
+                'id' => 2896,
+                'code' => 'R9-05072025-MET-0622',
+                'information' => NULL,
+                'sample_id' => 4318,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:49:57',
+                'updated_at' => '2025-05-07 23:49:57',
+            ),
+            331 => 
+            array (
+                'id' => 2897,
+                'code' => 'R9-05072025-MET-0623',
+                'information' => NULL,
+                'sample_id' => 4143,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:51:22',
+                'updated_at' => '2025-05-07 23:51:22',
+            ),
+            332 => 
+            array (
+                'id' => 2898,
+                'code' => 'R9-05072025-MET-0624',
+                'information' => NULL,
+                'sample_id' => 4144,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:51:41',
+                'updated_at' => '2025-05-07 23:51:41',
+            ),
+            333 => 
+            array (
+                'id' => 2899,
+                'code' => 'R9-05072025-MET-0625',
+                'information' => NULL,
+                'sample_id' => 4145,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:51:55',
+                'updated_at' => '2025-05-07 23:51:55',
+            ),
+            334 => 
+            array (
+                'id' => 2900,
+                'code' => 'R9-05072025-MET-0626',
+                'information' => NULL,
+                'sample_id' => 4146,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:52:10',
+                'updated_at' => '2025-05-07 23:52:10',
+            ),
+            335 => 
+            array (
+                'id' => 2901,
+                'code' => 'R9-05072025-MET-0627',
+                'information' => NULL,
+                'sample_id' => 4147,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:52:43',
+                'updated_at' => '2025-05-07 23:52:43',
+            ),
+            336 => 
+            array (
+                'id' => 2902,
+                'code' => 'R9-05072025-MET-0628',
+                'information' => NULL,
+                'sample_id' => 4148,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:52:58',
+                'updated_at' => '2025-05-07 23:52:58',
+            ),
+            337 => 
+            array (
+                'id' => 2903,
+                'code' => 'R9-05072025-MET-0629',
+                'information' => NULL,
+                'sample_id' => 4149,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:53:28',
+                'updated_at' => '2025-05-07 23:53:28',
+            ),
+            338 => 
+            array (
+                'id' => 2904,
+                'code' => 'R9-05072025-MET-0630',
+                'information' => NULL,
+                'sample_id' => 4150,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:53:38',
+                'updated_at' => '2025-05-07 23:53:38',
+            ),
+            339 => 
+            array (
+                'id' => 2905,
+                'code' => 'R9-05072025-MET-0631',
+                'information' => NULL,
+                'sample_id' => 4151,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:53:47',
+                'updated_at' => '2025-05-07 23:53:47',
+            ),
+            340 => 
+            array (
+                'id' => 2906,
+                'code' => 'R9-05072025-MET-0632',
+                'information' => NULL,
+                'sample_id' => 4152,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:53:57',
+                'updated_at' => '2025-05-07 23:53:57',
+            ),
+            341 => 
+            array (
+                'id' => 2907,
+                'code' => 'R9-05072025-MET-0633',
+                'information' => NULL,
+                'sample_id' => 4153,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:54:02',
+                'updated_at' => '2025-05-07 23:54:02',
+            ),
+            342 => 
+            array (
+                'id' => 2908,
+                'code' => 'R9-05072025-MET-0634',
+                'information' => NULL,
+                'sample_id' => 4154,
+                'user_id' => 12,
+                'created_at' => '2025-05-07 23:54:06',
+                'updated_at' => '2025-05-07 23:54:06',
+            ),
+            343 => 
+            array (
+                'id' => 2909,
+                'code' => 'R9-05082025-MIC-0398',
+                'information' => NULL,
+                'sample_id' => 4361,
+                'user_id' => 16,
+                'created_at' => '2025-05-08 16:35:34',
+                'updated_at' => '2025-05-08 16:35:34',
+            ),
+            344 => 
+            array (
+                'id' => 2910,
+                'code' => 'R9-05082025-MIC-0399',
+                'information' => NULL,
+                'sample_id' => 4416,
+                'user_id' => 16,
+                'created_at' => '2025-05-08 16:36:18',
+                'updated_at' => '2025-05-08 16:36:18',
+            ),
+            345 => 
+            array (
+                'id' => 2911,
+                'code' => 'R9-05082025-MIC-0400',
+                'information' => NULL,
+                'sample_id' => 4417,
+                'user_id' => 16,
+                'created_at' => '2025-05-08 16:36:40',
+                'updated_at' => '2025-05-08 16:36:40',
+            ),
+            346 => 
+            array (
+                'id' => 2912,
+                'code' => 'R9-05082025-MIC-0401',
+                'information' => NULL,
+                'sample_id' => 4418,
+                'user_id' => 16,
+                'created_at' => '2025-05-08 16:37:09',
+                'updated_at' => '2025-05-08 16:37:09',
+            ),
+            347 => 
+            array (
+                'id' => 2913,
+                'code' => 'R9-05082025-MET-0635',
+                'information' => NULL,
+                'sample_id' => 4529,
+                'user_id' => 13,
+                'created_at' => '2025-05-08 19:09:30',
+                'updated_at' => '2025-05-08 19:09:30',
+            ),
+            348 => 
+            array (
+                'id' => 2914,
+                'code' => 'R9-05082025-MIC-0402',
+                'information' => NULL,
+                'sample_id' => 4326,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 04:46:50',
+                'updated_at' => '2025-05-09 04:46:50',
+            ),
+            349 => 
+            array (
+                'id' => 2915,
+                'code' => 'R9-05082025-MIC-0403',
+                'information' => NULL,
+                'sample_id' => 4351,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 05:13:17',
+                'updated_at' => '2025-05-09 05:13:17',
+            ),
+            350 => 
+            array (
+                'id' => 2916,
+                'code' => 'R9-05092025-CHE-0600',
+                'information' => NULL,
+                'sample_id' => 4474,
+                'user_id' => 7,
+                'created_at' => '2025-05-09 18:25:19',
+                'updated_at' => '2025-05-09 18:25:19',
+            ),
+            351 => 
+            array (
+                'id' => 2917,
+                'code' => 'R9-05092025-CHE-0601',
+                'information' => NULL,
+                'sample_id' => 4475,
+                'user_id' => 7,
+                'created_at' => '2025-05-09 18:25:24',
+                'updated_at' => '2025-05-09 18:25:24',
+            ),
+            352 => 
+            array (
+                'id' => 2918,
+                'code' => 'R9-05092025-MET-0636',
+                'information' => NULL,
+                'sample_id' => 4536,
+                'user_id' => 13,
+                'created_at' => '2025-05-09 18:59:04',
+                'updated_at' => '2025-05-09 18:59:04',
+            ),
+            353 => 
+            array (
+                'id' => 2919,
+                'code' => 'R9-05092025-MIC-0404',
+                'information' => NULL,
+                'sample_id' => 4497,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 19:02:24',
+                'updated_at' => '2025-05-09 19:02:24',
+            ),
+            354 => 
+            array (
+                'id' => 2920,
+                'code' => 'R9-05092025-MIC-0405',
+                'information' => NULL,
+                'sample_id' => 4498,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 19:02:49',
+                'updated_at' => '2025-05-09 19:02:49',
+            ),
+            355 => 
+            array (
+                'id' => 2921,
+                'code' => 'R9-05092025-MIC-0406',
+                'information' => NULL,
+                'sample_id' => 4499,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 19:03:10',
+                'updated_at' => '2025-05-09 19:03:10',
+            ),
+            356 => 
+            array (
+                'id' => 2922,
+                'code' => 'R9-05092025-MIC-0407',
+                'information' => NULL,
+                'sample_id' => 4500,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 19:03:30',
+                'updated_at' => '2025-05-09 19:03:30',
+            ),
+            357 => 
+            array (
+                'id' => 2923,
+                'code' => 'R9-05092025-MIC-0408',
+                'information' => NULL,
+                'sample_id' => 4501,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 19:03:51',
+                'updated_at' => '2025-05-09 19:03:51',
+            ),
+            358 => 
+            array (
+                'id' => 2924,
+                'code' => 'R9-05092025-MIC-0409',
+                'information' => NULL,
+                'sample_id' => 4502,
+                'user_id' => 16,
+                'created_at' => '2025-05-09 19:04:07',
+                'updated_at' => '2025-05-09 19:04:07',
+            ),
+            359 => 
+            array (
+                'id' => 2925,
+                'code' => 'R9-05092025-CHE-0602',
+                'information' => NULL,
+                'sample_id' => 4362,
+                'user_id' => 7,
+                'created_at' => '2025-05-10 00:24:39',
+                'updated_at' => '2025-05-10 00:24:39',
+            ),
+            360 => 
+            array (
+                'id' => 2926,
+                'code' => 'R9-05102025-CHE-0603',
+                'information' => NULL,
+                'sample_id' => 4110,
+                'user_id' => 8,
+                'created_at' => '2025-05-10 11:51:04',
+                'updated_at' => '2025-05-10 11:51:04',
+            ),
+            361 => 
+            array (
+                'id' => 2927,
+                'code' => 'R9-05102025-CHE-0604',
+                'information' => NULL,
+                'sample_id' => 4111,
+                'user_id' => 8,
+                'created_at' => '2025-05-10 11:51:12',
+                'updated_at' => '2025-05-10 11:51:12',
+            ),
+            362 => 
+            array (
+                'id' => 2928,
+                'code' => 'R9-05102025-CHE-0605',
+                'information' => NULL,
+                'sample_id' => 4112,
+                'user_id' => 8,
+                'created_at' => '2025-05-10 11:51:25',
+                'updated_at' => '2025-05-10 11:51:25',
+            ),
         ));
 
         

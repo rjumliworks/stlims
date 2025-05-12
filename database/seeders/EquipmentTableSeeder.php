@@ -3309,14 +3309,14 @@ class EquipmentTableSeeder extends Seeder
                 'code' => 'MET-081',
                 'name' => 'Deep-well Compact Bath',
                 'maintenance_plan' => '1 year',
-                'maintenance_due' => NULL,
+                'maintenance_due' => '2026-04-22',
                 'calibration_program' => '1 year',
-                'calibration_due' => '2025-02-02',
+                'calibration_due' => '2026-04-22',
                 'calibration_testpoints' => NULL,
                 'laboratory_id' => 3,
                 'agency_id' => 14,
                 'created_at' => '2025-02-04 22:35:14',
-                'updated_at' => '2025-04-12 00:16:11',
+                'updated_at' => '2025-05-08 23:52:16',
             ),
             220 => 
             array (

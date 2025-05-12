@@ -15,10 +15,430 @@ class AddressesTableSeeder extends Seeder
     {
         
 
-        \DB::table('customer_addresses')->delete();
+        \DB::table('addresses')->delete();
         
-        \DB::table('customer_addresses')->insert(array (
+        \DB::table('addresses')->insert(array (
             0 => 
+            array (
+                'id' => 1,
+                'address' => 'DMMMSU-MLU Campus',
+                'longitude' => '120.315835',
+                'latitude' => '16.607972',
+                'barangay_code' => NULL,
+                'municipality_code' => '013314000',
+                'province_code' => '013300000',
+                'region_code' => '010000000',
+                'addressable_id' => 1,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 22:42:29',
+                'updated_at' => '2024-02-28 22:42:29',
+            ),
+            1 => 
+            array (
+                'id' => 2,
+                'address' => 'Dalan na Paccurofon, corner Matunung St., Regional Government Center',
+                'longitude' => '121.752502',
+                'latitude' => '17.652242',
+                'barangay_code' => '021529018',
+                'municipality_code' => '021529000',
+                'province_code' => '021500000',
+                'region_code' => '020000000',
+                'addressable_id' => 3,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 22:46:42',
+                'updated_at' => '2024-02-28 22:46:42',
+            ),
+            2 => 
+            array (
+                'id' => 3,
+                'address' => 'Regional Gov\'t. Center Park, Main Road Diosdado Macapagal Regional Center',
+                'longitude' => '120.657300',
+                'latitude' => '15.066352',
+                'barangay_code' => NULL,
+                'municipality_code' => '035416000',
+                'province_code' => '035400000',
+                'region_code' => '030000000',
+                'addressable_id' => 4,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 22:49:43',
+                'updated_at' => '2024-02-28 22:49:43',
+            ),
+            3 => 
+            array (
+                'id' => 4,
+                'address' => 'Jamboree Rd.',
+                'longitude' => '121.223556',
+                'latitude' => '14.172264',
+                'barangay_code' => '043411014',
+                'municipality_code' => '043411000',
+                'province_code' => '043400000',
+                'region_code' => '040000000',
+                'addressable_id' => 5,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 22:53:59',
+                'updated_at' => '2024-02-28 22:53:59',
+            ),
+            4 => 
+            array (
+                'id' => 5,
+                'address' => 'Jamboree Rd.',
+                'longitude' => '120.868458',
+                'latitude' => '14.278183',
+                'barangay_code' => '043411014',
+                'municipality_code' => '043411000',
+                'province_code' => '043400000',
+                'region_code' => '040000000',
+                'addressable_id' => 6,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:02:55',
+                'updated_at' => '2024-02-28 23:02:55',
+            ),
+            5 => 
+            array (
+                'id' => 6,
+                'address' => 'Provincial Engineering Compound',
+                'longitude' => '121.0611725',
+                'latitude' => '13.7721064',
+                'barangay_code' => '041005035',
+                'municipality_code' => '041005000',
+                'province_code' => '041000000',
+                'region_code' => '040000000',
+                'addressable_id' => 7,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:04:41',
+                'updated_at' => '2024-02-28 23:04:41',
+            ),
+            6 => 
+            array (
+                'id' => 7,
+                'address' => 'Monica',
+                'longitude' => '118.734071',
+                'latitude' => '9.784145',
+                'barangay_code' => NULL,
+                'municipality_code' => '175316000',
+                'province_code' => '175300000',
+                'region_code' => '170000000',
+                'addressable_id' => 9,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:10:33',
+                'updated_at' => '2024-02-28 23:10:33',
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'address' => 'Regional Center Site',
+                'longitude' => '123.751951',
+                'latitude' => '13.167125',
+                'barangay_code' => '050506064',
+                'municipality_code' => '050506000',
+                'province_code' => '050500000',
+                'region_code' => '050000000',
+                'addressable_id' => 10,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:12:58',
+                'updated_at' => '2024-02-28 23:12:58',
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'address' => 'La Paz',
+                'longitude' => '122.563898',
+                'latitude' => '10.711773',
+                'barangay_code' => '063022102',
+                'municipality_code' => '063022000',
+                'province_code' => '063000000',
+                'region_code' => '060000000',
+                'addressable_id' => 11,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:17:06',
+                'updated_at' => '2024-02-28 23:17:06',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'address' => 'Sudlon',
+                'longitude' => '123.896707',
+                'latitude' => '10.326021',
+                'barangay_code' => '072217041',
+                'municipality_code' => '072217000',
+                'province_code' => '072200000',
+                'region_code' => '070000000',
+                'addressable_id' => 12,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:20:31',
+                'updated_at' => '2024-02-28 23:20:31',
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'address' => 'Government Cente',
+                'longitude' => '125.003762',
+                'latitude' => '11.179108',
+                'barangay_code' => '083739009',
+                'municipality_code' => '083739000',
+                'province_code' => '083700000',
+                'region_code' => '080000000',
+                'addressable_id' => 13,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:21:56',
+                'updated_at' => '2024-02-28 23:21:56',
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'address' => 'Pettit Barracks',
+                'longitude' => '122.0794235',
+                'latitude' => '6.9031523',
+                'barangay_code' => '097332064',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 14,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:24:53',
+                'updated_at' => '2024-02-28 23:24:53',
+            ),
+            12 => 
+            array (
+                'id' => 13,
+                'address' => 'J.V. Seriña Street',
+                'longitude' => '124.627571',
+                'latitude' => '8.482154',
+                'barangay_code' => '104305044',
+                'municipality_code' => '104305000',
+                'province_code' => '104300000',
+                'region_code' => '100000000',
+                'addressable_id' => 15,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:26:25',
+                'updated_at' => '2024-02-28 23:26:25',
+            ),
+            13 => 
+            array (
+                'id' => 14,
+                'address' => 'Friendship-Dumanlas Roads, Bajada',
+                'longitude' => '125.619313',
+                'latitude' => '7.100831',
+                'barangay_code' => NULL,
+                'municipality_code' => '112402000',
+                'province_code' => '112400000',
+                'region_code' => '110000000',
+                'addressable_id' => 16,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:28:40',
+                'updated_at' => '2024-02-28 23:28:40',
+            ),
+            14 => 
+            array (
+                'id' => 15,
+                'address' => 'Regional Government Center',
+                'longitude' => '124.245030',
+                'latitude' => '7.195893',
+                'barangay_code' => NULL,
+                'municipality_code' => '129804000',
+                'province_code' => '153800000',
+                'region_code' => '150000000',
+                'addressable_id' => 17,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:31:39',
+                'updated_at' => '2024-02-28 23:31:39',
+            ),
+            15 => 
+            array (
+                'id' => 16,
+                'address' => 'PSTC SARGEN, Brgy. Hall Compound',
+                'longitude' => '124.245030',
+                'latitude' => '7.195893',
+                'barangay_code' => '126303033',
+                'municipality_code' => '126303000',
+                'province_code' => '126300000',
+                'region_code' => '120000000',
+                'addressable_id' => 18,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:36:37',
+                'updated_at' => '2024-02-28 23:36:37',
+            ),
+            16 => 
+            array (
+                'id' => 17,
+                'address' => 'Caraga State University Campus',
+                'longitude' => '125.531068',
+                'latitude' => '8.949169',
+                'barangay_code' => '160202007',
+                'municipality_code' => '160202000',
+                'province_code' => '160200000',
+                'region_code' => '160000000',
+                'addressable_id' => 19,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:39:52',
+                'updated_at' => '2024-02-28 23:39:52',
+            ),
+            17 => 
+            array (
+                'id' => 18,
+                'address' => 'ORG Compound',
+                'longitude' => '124.2461288',
+                'latitude' => '7.1977899',
+                'barangay_code' => '129804004',
+                'municipality_code' => '129804000',
+                'province_code' => '153800000',
+                'region_code' => '150000000',
+                'addressable_id' => 20,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:42:03',
+                'updated_at' => '2024-02-28 23:42:03',
+            ),
+            18 => 
+            array (
+                'id' => 19,
+                'address' => 'Gen. Santos Ave., Bicutan',
+                'longitude' => '121.053114',
+                'latitude' => '14.489892',
+                'barangay_code' => NULL,
+                'municipality_code' => '137607000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 21,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:46:17',
+                'updated_at' => '2024-02-28 23:46:17',
+            ),
+            19 => 
+            array (
+                'id' => 20,
+                'address' => 'Narra Rd., Forestry Campus, College',
+                'longitude' => '121.235461',
+                'latitude' => '14.156966',
+                'barangay_code' => NULL,
+                'municipality_code' => '043411000',
+                'province_code' => '043400000',
+                'region_code' => '040000000',
+                'addressable_id' => 22,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:47:50',
+                'updated_at' => '2024-02-28 23:47:50',
+            ),
+            20 => 
+            array (
+                'id' => 21,
+                'address' => 'DOST Gen. Santos Ave.',
+                'longitude' => '121.050719',
+                'latitude' => '14.489730',
+                'barangay_code' => NULL,
+                'municipality_code' => '137607000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 23,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:50:24',
+                'updated_at' => '2024-02-28 23:50:24',
+            ),
+            21 => 
+            array (
+                'id' => 22,
+                'address' => 'DOST Gen. Santos Ave.',
+                'longitude' => '121.049609',
+                'latitude' => '14.486842',
+                'barangay_code' => NULL,
+                'municipality_code' => '137607000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 24,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:51:33',
+                'updated_at' => '2024-02-28 23:51:33',
+            ),
+            22 => 
+            array (
+                'id' => 23,
+                'address' => 'Commonwealth Avenue, Diliman',
+                'longitude' => '121.055715',
+                'latitude' => '14.661146',
+                'barangay_code' => NULL,
+                'municipality_code' => '137404000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 25,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:55:33',
+                'updated_at' => '2024-02-28 23:55:33',
+            ),
+            23 => 
+            array (
+                'id' => 24,
+                'address' => 'DOST Gen. Santos Ave., Bicutan',
+                'longitude' => '121.047867',
+                'latitude' => '14.487292',
+                'barangay_code' => NULL,
+                'municipality_code' => '137607000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 26,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-28 23:56:31',
+                'updated_at' => '2024-02-28 23:56:31',
+            ),
+            24 => 
+            array (
+                'id' => 25,
+                'address' => 'Civic Drive Filinvest Corporate City',
+                'longitude' => '121.0395257',
+                'latitude' => '14.4126992',
+                'barangay_code' => '137603001',
+                'municipality_code' => '137603000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 27,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-29 00:29:28',
+                'updated_at' => '2024-02-29 00:29:28',
+            ),
+            25 => 
+            array (
+                'id' => 26,
+                'address' => '1101 East Ave, Diliman',
+                'longitude' => '120.9687049',
+                'latitude' => '14.5879321',
+                'barangay_code' => NULL,
+                'municipality_code' => '137404000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 28,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-29 00:31:50',
+                'updated_at' => '2024-02-29 00:31:50',
+            ),
+            26 => 
+            array (
+                'id' => 27,
+                'address' => 'FPA Bldg, B.A.I Compound Visayas Ave',
+                'longitude' => '120.9683613',
+                'latitude' => '14.5882354',
+                'barangay_code' => NULL,
+                'municipality_code' => '137404000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 29,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-29 00:33:08',
+                'updated_at' => '2024-02-29 00:33:08',
+            ),
+            27 => 
+            array (
+                'id' => 28,
+                'address' => '623, Pedro Gil St, Ermita',
+                'longitude' => '120.9845589',
+                'latitude' => '14.5759405',
+                'barangay_code' => NULL,
+                'municipality_code' => '133900000',
+                'province_code' => '170000000',
+                'region_code' => '130000000',
+                'addressable_id' => 30,
+                'addressable_type' => 'App\\Models\\Laboratory',
+                'created_at' => '2024-02-29 00:34:40',
+                'updated_at' => '2024-02-29 00:34:40',
+            ),
+            28 => 
             array (
                 'id' => 29,
                 'address' => 'P. Upo 2',
@@ -28,11 +448,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 2,
+                'addressable_id' => 2,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 21:35:41',
                 'updated_at' => '2024-07-30 21:35:41',
             ),
-            1 => 
+            29 => 
             array (
                 'id' => 30,
                 'address' => 'Rajah Mudah Mandi Street',
@@ -42,11 +463,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 3,
+                'addressable_id' => 3,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 21:48:15',
                 'updated_at' => '2024-07-30 21:48:15',
             ),
-            2 => 
+            30 => 
             array (
                 'id' => 31,
                 'address' => 'Aglibut Ave., UPLB Campus',
@@ -56,11 +478,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '043411000',
                 'province_code' => '043400000',
                 'region_code' => '040000000',
-                'customer_id' => 4,
+                'addressable_id' => 4,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 21:57:10',
                 'updated_at' => '2024-07-30 21:57:10',
             ),
-            3 => 
+            31 => 
             array (
                 'id' => 32,
                 'address' => 'San Isidro',
@@ -70,11 +493,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 5,
+                'addressable_id' => 5,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:02:23',
                 'updated_at' => '2024-07-30 22:02:23',
             ),
-            4 => 
+            32 => 
             array (
                 'id' => 33,
                 'address' => 'Dr Evangelista Street',
@@ -84,11 +508,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 6,
+                'addressable_id' => 6,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:05:08',
                 'updated_at' => '2024-07-30 22:05:08',
             ),
-            5 => 
+            33 => 
             array (
                 'id' => 34,
                 'address' => 'Pettit Barracks',
@@ -98,11 +523,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 7,
+                'addressable_id' => 7,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:08:45',
                 'updated_at' => '2024-07-30 22:08:45',
             ),
-            6 => 
+            34 => 
             array (
                 'id' => 35,
                 'address' => 'National Highway',
@@ -112,11 +538,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 8,
+                'addressable_id' => 8,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:12:39',
                 'updated_at' => '2024-07-30 22:12:39',
             ),
-            7 => 
+            35 => 
             array (
                 'id' => 36,
                 'address' => 'Pettit Barracks',
@@ -126,11 +553,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 9,
+                'addressable_id' => 9,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:14:49',
                 'updated_at' => '2024-07-30 22:14:49',
             ),
-            8 => 
+            36 => 
             array (
                 'id' => 37,
                 'address' => 'Pettit Barracks',
@@ -140,11 +568,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 10,
+                'addressable_id' => 10,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:16:09',
                 'updated_at' => '2024-07-30 22:16:09',
             ),
-            9 => 
+            37 => 
             array (
                 'id' => 38,
                 'address' => 'Purok 1',
@@ -154,11 +583,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 11,
+                'addressable_id' => 11,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:24:37',
                 'updated_at' => '2024-07-30 22:24:37',
             ),
-            10 => 
+            38 => 
             array (
                 'id' => 39,
                 'address' => 'PFDA Complex',
@@ -168,11 +598,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 12,
+                'addressable_id' => 12,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:27:56',
                 'updated_at' => '2024-07-30 22:27:56',
             ),
-            11 => 
+            39 => 
             array (
                 'id' => 40,
                 'address' => 'Sagun St.',
@@ -182,11 +613,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 13,
+                'addressable_id' => 13,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:31:01',
                 'updated_at' => '2025-02-05 00:27:23',
             ),
-            12 => 
+            40 => 
             array (
                 'id' => 41,
                 'address' => 'WTL Commercial Building, Roberto Villarez St.',
@@ -196,11 +628,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 14,
+                'addressable_id' => 14,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:55:55',
                 'updated_at' => '2024-07-30 22:55:55',
             ),
-            13 => 
+            41 => 
             array (
                 'id' => 42,
                 'address' => 'Barangay road',
@@ -210,11 +643,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 15,
+                'addressable_id' => 15,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 22:58:27',
                 'updated_at' => '2024-07-30 22:58:27',
             ),
-            14 => 
+            42 => 
             array (
                 'id' => 43,
                 'address' => 'Nunez Extension',
@@ -224,11 +658,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 16,
+                'addressable_id' => 16,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:00:14',
                 'updated_at' => '2024-07-30 23:00:14',
             ),
-            15 => 
+            43 => 
             array (
                 'id' => 44,
                 'address' => 'Gov. Ramos Ave.',
@@ -238,11 +673,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 17,
+                'addressable_id' => 17,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:02:14',
                 'updated_at' => '2024-07-30 23:02:14',
             ),
-            16 => 
+            44 => 
             array (
                 'id' => 45,
                 'address' => 'Stall 6, Ipil Public Market, Purok African Daisy',
@@ -252,11 +688,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 18,
+                'addressable_id' => 18,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:03:40',
                 'updated_at' => '2024-07-30 23:03:40',
             ),
-            17 => 
+            45 => 
             array (
                 'id' => 46,
                 'address' => 'Dumagsa',
@@ -266,11 +703,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 19,
+                'addressable_id' => 19,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:05:39',
                 'updated_at' => '2024-07-30 23:05:39',
             ),
-            18 => 
+            46 => 
             array (
                 'id' => 47,
                 'address' => 'San Jose Road',
@@ -280,11 +718,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 20,
+                'addressable_id' => 20,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:08:30',
                 'updated_at' => '2024-07-30 23:08:30',
             ),
-            19 => 
+            47 => 
             array (
                 'id' => 48,
                 'address' => 'Lungangitung',
@@ -294,11 +733,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 21,
+                'addressable_id' => 21,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:11:24',
                 'updated_at' => '2024-07-30 23:11:24',
             ),
-            20 => 
+            48 => 
             array (
                 'id' => 49,
                 'address' => 'Farmer\'s Drive',
@@ -308,11 +748,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 22,
+                'addressable_id' => 22,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:13:55',
                 'updated_at' => '2024-07-30 23:13:55',
             ),
-            21 => 
+            49 => 
             array (
                 'id' => 50,
                 'address' => 'Main road',
@@ -322,11 +763,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 23,
+                'addressable_id' => 23,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:16:22',
                 'updated_at' => '2024-07-30 23:16:22',
             ),
-            22 => 
+            50 => 
             array (
                 'id' => 51,
                 'address' => 'Calle La Virgen De Fatima',
@@ -336,11 +778,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 24,
+                'addressable_id' => 24,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:17:55',
                 'updated_at' => '2024-07-30 23:17:55',
             ),
-            23 => 
+            51 => 
             array (
                 'id' => 52,
                 'address' => 'Rizal Avenue',
@@ -350,11 +793,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 25,
+                'addressable_id' => 25,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:20:39',
                 'updated_at' => '2024-07-30 23:20:39',
             ),
-            24 => 
+            52 => 
             array (
                 'id' => 53,
                 'address' => 'Zone 8, Calle Fatima',
@@ -364,11 +808,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 26,
+                'addressable_id' => 26,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:23:05',
                 'updated_at' => '2024-07-30 23:23:05',
             ),
-            25 => 
+            53 => 
             array (
                 'id' => 54,
                 'address' => 'Road',
@@ -378,11 +823,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097219000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 27,
+                'addressable_id' => 27,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:25:53',
                 'updated_at' => '2024-07-30 23:25:53',
             ),
-            26 => 
+            54 => 
             array (
                 'id' => 55,
                 'address' => 'Campaner St.',
@@ -392,11 +838,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 28,
+                'addressable_id' => 28,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:28:12',
                 'updated_at' => '2024-07-30 23:28:12',
             ),
-            27 => 
+            55 => 
             array (
                 'id' => 56,
                 'address' => 'Logoy Grande Rd',
@@ -406,11 +853,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 29,
+                'addressable_id' => 29,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:30:29',
                 'updated_at' => '2024-07-30 23:30:29',
             ),
-            28 => 
+            56 => 
             array (
                 'id' => 57,
                 'address' => 'Main road',
@@ -420,11 +868,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 30,
+                'addressable_id' => 30,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:32:52',
                 'updated_at' => '2024-07-30 23:32:52',
             ),
-            29 => 
+            57 => 
             array (
                 'id' => 58,
                 'address' => 'Governor Camins',
@@ -434,11 +883,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 31,
+                'addressable_id' => 31,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:34:51',
                 'updated_at' => '2024-07-30 23:34:51',
             ),
-            30 => 
+            58 => 
             array (
                 'id' => 59,
                 'address' => 'Main road',
@@ -448,11 +898,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 32,
+                'addressable_id' => 32,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:40:12',
                 'updated_at' => '2024-07-30 23:40:12',
             ),
-            31 => 
+            59 => 
             array (
                 'id' => 60,
                 'address' => 'Main road',
@@ -462,11 +913,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 33,
+                'addressable_id' => 33,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:42:45',
                 'updated_at' => '2024-07-30 23:42:45',
             ),
-            32 => 
+            60 => 
             array (
                 'id' => 61,
                 'address' => 'Main road',
@@ -476,11 +928,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097227000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 34,
+                'addressable_id' => 34,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:46:18',
                 'updated_at' => '2024-07-30 23:46:18',
             ),
-            33 => 
+            61 => 
             array (
                 'id' => 62,
                 'address' => 'Coloy',
@@ -490,11 +943,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 35,
+                'addressable_id' => 35,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:47:49',
                 'updated_at' => '2024-07-30 23:47:49',
             ),
-            34 => 
+            62 => 
             array (
                 'id' => 63,
                 'address' => 'Zone 5',
@@ -504,11 +958,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 36,
+                'addressable_id' => 36,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:49:30',
                 'updated_at' => '2024-07-30 23:49:30',
             ),
-            35 => 
+            63 => 
             array (
                 'id' => 64,
                 'address' => 'Gov. Camins Avenue',
@@ -518,11 +973,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 37,
+                'addressable_id' => 37,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:52:41',
                 'updated_at' => '2024-07-30 23:52:41',
             ),
-            36 => 
+            64 => 
             array (
                 'id' => 65,
                 'address' => 'Climaco Street',
@@ -532,11 +988,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 38,
+                'addressable_id' => 38,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:55:53',
                 'updated_at' => '2024-07-30 23:55:53',
             ),
-            37 => 
+            65 => 
             array (
                 'id' => 66,
                 'address' => 'Cadena de Amor',
@@ -546,11 +1003,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 39,
+                'addressable_id' => 39,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-30 23:59:51',
                 'updated_at' => '2024-07-30 23:59:51',
             ),
-            38 => 
+            66 => 
             array (
                 'id' => 67,
                 'address' => 'Purok 4',
@@ -560,11 +1018,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 40,
+                'addressable_id' => 40,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:06:20',
                 'updated_at' => '2024-07-31 00:06:20',
             ),
-            39 => 
+            67 => 
             array (
                 'id' => 68,
                 'address' => 'Grande Europa',
@@ -574,11 +1033,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104305000',
                 'province_code' => '104300000',
                 'region_code' => '100000000',
-                'customer_id' => 41,
+                'addressable_id' => 41,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:11:41',
                 'updated_at' => '2024-07-31 00:11:41',
             ),
-            40 => 
+            68 => 
             array (
                 'id' => 69,
                 'address' => 'Barua St.',
@@ -588,11 +1048,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 42,
+                'addressable_id' => 42,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:13:23',
                 'updated_at' => '2024-07-31 00:13:23',
             ),
-            41 => 
+            69 => 
             array (
                 'id' => 70,
                 'address' => 'Gov. Ramos St.',
@@ -602,11 +1063,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 43,
+                'addressable_id' => 43,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:15:08',
                 'updated_at' => '2024-07-31 00:15:08',
             ),
-            42 => 
+            70 => 
             array (
                 'id' => 71,
                 'address' => 'Purok Lily',
@@ -616,11 +1078,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 44,
+                'addressable_id' => 44,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:16:59',
                 'updated_at' => '2024-07-31 00:16:59',
             ),
-            43 => 
+            71 => 
             array (
                 'id' => 72,
                 'address' => 'Main road',
@@ -630,11 +1093,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 45,
+                'addressable_id' => 45,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:20:12',
                 'updated_at' => '2024-07-31 00:20:12',
             ),
-            44 => 
+            72 => 
             array (
                 'id' => 73,
                 'address' => 'Main road',
@@ -644,11 +1108,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 46,
+                'addressable_id' => 46,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:21:41',
                 'updated_at' => '2024-07-31 00:21:41',
             ),
-            45 => 
+            73 => 
             array (
                 'id' => 74,
                 'address' => 'Mayor Jaldon St.',
@@ -658,11 +1123,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 47,
+                'addressable_id' => 47,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:23:56',
                 'updated_at' => '2024-07-31 00:23:56',
             ),
-            46 => 
+            74 => 
             array (
                 'id' => 75,
                 'address' => 'Evangelista St.',
@@ -672,11 +1138,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 48,
+                'addressable_id' => 48,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:25:43',
                 'updated_at' => '2024-07-31 00:25:43',
             ),
-            47 => 
+            75 => 
             array (
                 'id' => 76,
                 'address' => 'RT Lim Boulevard',
@@ -686,11 +1153,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 49,
+                'addressable_id' => 49,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:27:32',
                 'updated_at' => '2024-07-31 00:27:32',
             ),
-            48 => 
+            76 => 
             array (
                 'id' => 77,
                 'address' => '#733 Molave St., Juna Subd.',
@@ -700,11 +1168,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112402000',
                 'province_code' => '112400000',
                 'region_code' => '110000000',
-                'customer_id' => 50,
+                'addressable_id' => 50,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:29:49',
                 'updated_at' => '2024-07-31 00:29:49',
             ),
-            49 => 
+            77 => 
             array (
                 'id' => 78,
                 'address' => 'Gov. Ramos Ave.',
@@ -714,11 +1183,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 51,
+                'addressable_id' => 51,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:34:00',
                 'updated_at' => '2024-07-31 00:34:00',
             ),
-            50 => 
+            78 => 
             array (
                 'id' => 79,
                 'address' => 'Main road',
@@ -728,11 +1198,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 52,
+                'addressable_id' => 52,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:35:34',
                 'updated_at' => '2024-07-31 00:35:34',
             ),
-            51 => 
+            79 => 
             array (
                 'id' => 80,
                 'address' => 'Main road',
@@ -742,11 +1213,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 53,
+                'addressable_id' => 53,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:36:48',
                 'updated_at' => '2024-07-31 00:36:48',
             ),
-            52 => 
+            80 => 
             array (
                 'id' => 81,
                 'address' => 'Main road',
@@ -756,11 +1228,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 54,
+                'addressable_id' => 54,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:39:02',
                 'updated_at' => '2024-07-31 00:39:02',
             ),
-            53 => 
+            81 => 
             array (
                 'id' => 82,
                 'address' => 'Don Toribio',
@@ -770,11 +1243,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 55,
+                'addressable_id' => 55,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:40:28',
                 'updated_at' => '2024-07-31 00:40:28',
             ),
-            54 => 
+            82 => 
             array (
                 'id' => 83,
                 'address' => 'Main Road',
@@ -784,11 +1258,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 56,
+                'addressable_id' => 56,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:41:53',
                 'updated_at' => '2024-07-31 00:41:53',
             ),
-            55 => 
+            83 => 
             array (
                 'id' => 84,
                 'address' => 'C.P. Garcia St.',
@@ -798,11 +1273,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 57,
+                'addressable_id' => 57,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:43:08',
                 'updated_at' => '2024-07-31 00:43:08',
             ),
-            56 => 
+            84 => 
             array (
                 'id' => 85,
                 'address' => 'Main road',
@@ -812,11 +1288,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 58,
+                'addressable_id' => 58,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:44:17',
                 'updated_at' => '2024-07-31 00:44:17',
             ),
-            57 => 
+            85 => 
             array (
                 'id' => 86,
                 'address' => 'Calle Fatima',
@@ -826,11 +1303,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 59,
+                'addressable_id' => 59,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:47:53',
                 'updated_at' => '2024-07-31 00:47:53',
             ),
-            58 => 
+            86 => 
             array (
                 'id' => 87,
                 'address' => 'Main road',
@@ -840,11 +1318,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 60,
+                'addressable_id' => 60,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:48:58',
                 'updated_at' => '2024-07-31 00:48:58',
             ),
-            59 => 
+            87 => 
             array (
                 'id' => 88,
                 'address' => 'Seaside',
@@ -854,11 +1333,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 61,
+                'addressable_id' => 61,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:50:15',
                 'updated_at' => '2024-07-31 00:50:15',
             ),
-            60 => 
+            88 => 
             array (
                 'id' => 89,
                 'address' => 'East District',
@@ -868,11 +1348,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '056216000',
                 'province_code' => '056200000',
                 'region_code' => '050000000',
-                'customer_id' => 62,
+                'addressable_id' => 62,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:54:24',
                 'updated_at' => '2024-07-31 00:54:24',
             ),
-            61 => 
+            89 => 
             array (
                 'id' => 90,
                 'address' => 'Gov. Camins Avenue',
@@ -882,11 +1363,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 63,
+                'addressable_id' => 63,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:56:37',
                 'updated_at' => '2024-07-31 00:56:37',
             ),
-            62 => 
+            90 => 
             array (
                 'id' => 91,
                 'address' => 'National Highway',
@@ -896,11 +1378,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 64,
+                'addressable_id' => 64,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:58:37',
                 'updated_at' => '2024-07-31 00:58:37',
             ),
-            63 => 
+            91 => 
             array (
                 'id' => 92,
                 'address' => 'Zone 5',
@@ -910,11 +1393,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 65,
+                'addressable_id' => 65,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 00:59:47',
                 'updated_at' => '2024-07-31 00:59:47',
             ),
-            64 => 
+            92 => 
             array (
                 'id' => 93,
                 'address' => 'Lacaya St.',
@@ -924,11 +1408,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 66,
+                'addressable_id' => 66,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 01:01:11',
                 'updated_at' => '2024-07-31 01:01:11',
             ),
-            65 => 
+            93 => 
             array (
                 'id' => 94,
                 'address' => 'Main road',
@@ -938,11 +1423,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097209000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 67,
+                'addressable_id' => 67,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 01:02:26',
                 'updated_at' => '2024-07-31 01:02:26',
             ),
-            66 => 
+            94 => 
             array (
                 'id' => 95,
                 'address' => '-',
@@ -952,11 +1438,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 68,
+                'addressable_id' => 68,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:24:31',
                 'updated_at' => '2025-04-24 00:44:48',
             ),
-            67 => 
+            95 => 
             array (
                 'id' => 96,
                 'address' => 'Main road',
@@ -966,11 +1453,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 69,
+                'addressable_id' => 69,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:28:33',
                 'updated_at' => '2024-07-31 02:28:33',
             ),
-            68 => 
+            96 => 
             array (
                 'id' => 97,
                 'address' => 'Sitio San Ramon, Second Industrial Park',
@@ -980,11 +1468,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 70,
+                'addressable_id' => 70,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:31:00',
                 'updated_at' => '2024-07-31 02:31:00',
             ),
-            69 => 
+            97 => 
             array (
                 'id' => 98,
                 'address' => 'Barangay road',
@@ -994,11 +1483,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097216000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 71,
+                'addressable_id' => 71,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:33:34',
                 'updated_at' => '2024-07-31 02:33:34',
             ),
-            70 => 
+            98 => 
             array (
                 'id' => 99,
                 'address' => 'Jail',
@@ -1008,11 +1498,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097319000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 72,
+                'addressable_id' => 72,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:35:56',
                 'updated_at' => '2024-07-31 02:35:56',
             ),
-            71 => 
+            99 => 
             array (
                 'id' => 100,
                 'address' => '716 Bens Metal Works, Gov. Ramos Ave.',
@@ -1022,11 +1513,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 73,
+                'addressable_id' => 73,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:41:59',
                 'updated_at' => '2024-07-31 02:41:59',
             ),
-            72 => 
+            100 => 
             array (
                 'id' => 101,
                 'address' => 'Veterans Ave. Ext.',
@@ -1036,11 +1528,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 74,
+                'addressable_id' => 74,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:43:52',
                 'updated_at' => '2024-07-31 02:43:52',
             ),
-            73 => 
+            101 => 
             array (
                 'id' => 102,
                 'address' => 'Road',
@@ -1050,11 +1543,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097203000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 75,
+                'addressable_id' => 75,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:45:15',
                 'updated_at' => '2024-07-31 02:45:15',
             ),
-            74 => 
+            102 => 
             array (
                 'id' => 103,
                 'address' => 'Road',
@@ -1064,11 +1558,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 76,
+                'addressable_id' => 76,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:46:25',
                 'updated_at' => '2024-07-31 02:46:25',
             ),
-            75 => 
+            103 => 
             array (
                 'id' => 104,
                 'address' => 'Road',
@@ -1078,11 +1573,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097211000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 77,
+                'addressable_id' => 77,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:48:40',
                 'updated_at' => '2024-07-31 02:48:40',
             ),
-            76 => 
+            104 => 
             array (
                 'id' => 105,
                 'address' => 'Dr. Varela Street',
@@ -1092,11 +1588,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 78,
+                'addressable_id' => 78,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:52:08',
                 'updated_at' => '2024-07-31 02:52:08',
             ),
-            77 => 
+            105 => 
             array (
                 'id' => 106,
                 'address' => 'Road',
@@ -1106,11 +1603,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157009000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 79,
+                'addressable_id' => 79,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:55:17',
                 'updated_at' => '2024-07-31 02:55:17',
             ),
-            78 => 
+            106 => 
             array (
                 'id' => 107,
                 'address' => 'Dr. Jose Torres Street',
@@ -1120,11 +1618,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '150702000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 80,
+                'addressable_id' => 80,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:57:43',
                 'updated_at' => '2024-10-15 17:24:37',
             ),
-            79 => 
+            107 => 
             array (
                 'id' => 108,
                 'address' => 'Governor Lim Avenue',
@@ -1134,11 +1633,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 81,
+                'addressable_id' => 81,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 02:59:21',
                 'updated_at' => '2024-07-31 02:59:21',
             ),
-            80 => 
+            108 => 
             array (
                 'id' => 109,
                 'address' => 'Budgetwise Bldg. Calle Carmen',
@@ -1148,11 +1648,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 82,
+                'addressable_id' => 82,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:00:29',
                 'updated_at' => '2024-07-31 03:00:29',
             ),
-            81 => 
+            109 => 
             array (
                 'id' => 110,
                 'address' => '1021 4th St., Aurora Village',
@@ -1162,11 +1663,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 83,
+                'addressable_id' => 83,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:02:24',
                 'updated_at' => '2024-07-31 03:02:24',
             ),
-            82 => 
+            110 => 
             array (
                 'id' => 111,
                 'address' => 'Pettit Barracks',
@@ -1176,11 +1678,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 84,
+                'addressable_id' => 84,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:03:58',
                 'updated_at' => '2024-07-31 03:03:58',
             ),
-            83 => 
+            111 => 
             array (
                 'id' => 112,
                 'address' => 'Main road',
@@ -1190,11 +1693,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 85,
+                'addressable_id' => 85,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:06:29',
                 'updated_at' => '2024-07-31 03:06:29',
             ),
-            84 => 
+            112 => 
             array (
                 'id' => 113,
                 'address' => 'Calle Segundo',
@@ -1204,11 +1708,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 86,
+                'addressable_id' => 86,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:07:24',
                 'updated_at' => '2024-07-31 03:07:24',
             ),
-            85 => 
+            113 => 
             array (
                 'id' => 114,
                 'address' => 'Zone 4',
@@ -1218,11 +1723,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 87,
+                'addressable_id' => 87,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:08:16',
                 'updated_at' => '2024-07-31 03:08:16',
             ),
-            86 => 
+            114 => 
             array (
                 'id' => 115,
                 'address' => 'MCLL Highway',
@@ -1232,11 +1738,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 88,
+                'addressable_id' => 88,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:09:11',
                 'updated_at' => '2024-07-31 03:09:11',
             ),
-            87 => 
+            115 => 
             array (
                 'id' => 116,
                 'address' => 'Main road',
@@ -1246,11 +1753,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097211000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 89,
+                'addressable_id' => 89,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:11:41',
                 'updated_at' => '2024-07-31 03:11:41',
             ),
-            88 => 
+            116 => 
             array (
                 'id' => 117,
                 'address' => 'Main road',
@@ -1260,11 +1768,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157007000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 90,
+                'addressable_id' => 90,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:13:25',
                 'updated_at' => '2024-07-31 03:13:25',
             ),
-            89 => 
+            117 => 
             array (
                 'id' => 118,
                 'address' => 'Mayor Jaldon St.',
@@ -1274,11 +1783,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 91,
+                'addressable_id' => 91,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:14:41',
                 'updated_at' => '2024-07-31 03:14:41',
             ),
-            90 => 
+            118 => 
             array (
                 'id' => 119,
                 'address' => 'G1 Bldg. Vitaliano Agan Avenue',
@@ -1288,11 +1798,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 92,
+                'addressable_id' => 92,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-07-31 03:16:01',
                 'updated_at' => '2024-07-31 03:16:01',
             ),
-            91 => 
+            119 => 
             array (
                 'id' => 120,
                 'address' => 'MCLL Highway',
@@ -1302,11 +1813,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 93,
+                'addressable_id' => 93,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:12:24',
                 'updated_at' => '2024-08-07 16:12:24',
             ),
-            92 => 
+            120 => 
             array (
                 'id' => 121,
                 'address' => 'Main road',
@@ -1316,11 +1828,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 94,
+                'addressable_id' => 94,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:15:37',
                 'updated_at' => '2024-08-07 16:15:37',
             ),
-            93 => 
+            121 => 
             array (
                 'id' => 122,
                 'address' => 'Daisy Road',
@@ -1330,11 +1843,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 95,
+                'addressable_id' => 95,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:17:35',
                 'updated_at' => '2024-08-07 16:17:35',
             ),
-            94 => 
+            122 => 
             array (
                 'id' => 123,
                 'address' => 'Main road',
@@ -1344,11 +1858,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 96,
+                'addressable_id' => 96,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:19:12',
                 'updated_at' => '2024-08-07 16:19:12',
             ),
-            95 => 
+            123 => 
             array (
                 'id' => 124,
                 'address' => 'Zamboanga West Coastal Road, Purok 5',
@@ -1358,11 +1873,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 97,
+                'addressable_id' => 97,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:21:15',
                 'updated_at' => '2024-08-07 16:21:15',
             ),
-            96 => 
+            124 => 
             array (
                 'id' => 125,
                 'address' => 'Purok 3',
@@ -1372,11 +1888,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 98,
+                'addressable_id' => 98,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:22:37',
                 'updated_at' => '2024-08-07 16:22:37',
             ),
-            97 => 
+            125 => 
             array (
                 'id' => 126,
                 'address' => 'CP Garcia Street',
@@ -1386,11 +1903,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 99,
+                'addressable_id' => 99,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:25:53',
                 'updated_at' => '2024-08-07 16:25:53',
             ),
-            98 => 
+            126 => 
             array (
                 'id' => 127,
                 'address' => 'Main road',
@@ -1400,11 +1918,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '156602000',
                 'province_code' => '156600000',
                 'region_code' => '150000000',
-                'customer_id' => 100,
+                'addressable_id' => 100,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:30:38',
                 'updated_at' => '2024-08-07 16:30:38',
             ),
-            99 => 
+            127 => 
             array (
                 'id' => 128,
                 'address' => 'Darol Akram',
@@ -1414,11 +1933,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157009000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 101,
+                'addressable_id' => 101,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:32:51',
                 'updated_at' => '2024-08-07 16:32:51',
             ),
-            100 => 
+            128 => 
             array (
                 'id' => 129,
                 'address' => 'Upper',
@@ -1428,11 +1948,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 102,
+                'addressable_id' => 102,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:35:20',
                 'updated_at' => '2024-08-07 16:35:20',
             ),
-            101 => 
+            129 => 
             array (
                 'id' => 130,
                 'address' => 'Ibaba',
@@ -1442,11 +1963,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '045647000',
                 'province_code' => '045600000',
                 'region_code' => '040000000',
-                'customer_id' => 103,
+                'addressable_id' => 103,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-07 16:37:53',
                 'updated_at' => '2024-08-07 16:37:53',
             ),
-            102 => 
+            130 => 
             array (
                 'id' => 131,
                 'address' => 'Banicapt',
@@ -1456,11 +1978,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 104,
+                'addressable_id' => 104,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:09:26',
                 'updated_at' => '2024-08-14 17:09:26',
             ),
-            103 => 
+            131 => 
             array (
                 'id' => 132,
                 'address' => 'Main road',
@@ -1470,11 +1993,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097223000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 105,
+                'addressable_id' => 105,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:11:26',
                 'updated_at' => '2024-08-14 17:11:26',
             ),
-            104 => 
+            132 => 
             array (
                 'id' => 133,
                 'address' => 'Gov. Ramos St.',
@@ -1484,11 +2008,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 106,
+                'addressable_id' => 106,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:15:41',
                 'updated_at' => '2024-08-14 17:15:41',
             ),
-            105 => 
+            133 => 
             array (
                 'id' => 134,
                 'address' => 'Main road',
@@ -1498,11 +2023,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 107,
+                'addressable_id' => 107,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:18:10',
                 'updated_at' => '2024-08-14 17:18:10',
             ),
-            106 => 
+            134 => 
             array (
                 'id' => 135,
                 'address' => '73 Sunrise Village',
@@ -1512,11 +2038,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 108,
+                'addressable_id' => 108,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:19:57',
                 'updated_at' => '2024-08-14 17:19:57',
             ),
-            107 => 
+            135 => 
             array (
                 'id' => 136,
                 'address' => 'Zamora Drive',
@@ -1526,11 +2053,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 109,
+                'addressable_id' => 109,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:21:14',
                 'updated_at' => '2024-08-14 17:21:14',
             ),
-            108 => 
+            136 => 
             array (
                 'id' => 137,
                 'address' => 'Main road',
@@ -1540,11 +2068,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 110,
+                'addressable_id' => 110,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:26:16',
                 'updated_at' => '2024-08-14 17:26:16',
             ),
-            109 => 
+            137 => 
             array (
                 'id' => 138,
                 'address' => 'Government Center',
@@ -1554,11 +2083,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '083739000',
                 'province_code' => '083700000',
                 'region_code' => '080000000',
-                'customer_id' => 111,
+                'addressable_id' => 111,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:30:14',
                 'updated_at' => '2024-08-14 17:30:14',
             ),
-            110 => 
+            138 => 
             array (
                 'id' => 139,
                 'address' => 'Main road',
@@ -1568,11 +2098,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 112,
+                'addressable_id' => 112,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:32:56',
                 'updated_at' => '2024-08-14 17:32:56',
             ),
-            111 => 
+            139 => 
             array (
                 'id' => 140,
                 'address' => 'Boa Drive',
@@ -1582,11 +2113,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 113,
+                'addressable_id' => 113,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:34:13',
                 'updated_at' => '2024-08-14 17:34:13',
             ),
-            112 => 
+            140 => 
             array (
                 'id' => 141,
                 'address' => 'National Highway, Cor. Sunset Boulevard',
@@ -1596,11 +2128,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 114,
+                'addressable_id' => 114,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:36:22',
                 'updated_at' => '2024-08-14 17:36:22',
             ),
-            113 => 
+            141 => 
             array (
                 'id' => 142,
                 'address' => 'Purok Sampaguita',
@@ -1610,11 +2143,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 115,
+                'addressable_id' => 115,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:38:12',
                 'updated_at' => '2024-08-14 17:38:12',
             ),
-            114 => 
+            142 => 
             array (
                 'id' => 143,
                 'address' => 'Main road',
@@ -1624,11 +2158,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 116,
+                'addressable_id' => 116,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:39:49',
                 'updated_at' => '2024-08-14 17:39:49',
             ),
-            115 => 
+            143 => 
             array (
                 'id' => 144,
                 'address' => 'RT Lim Blvd.',
@@ -1638,11 +2173,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 117,
+                'addressable_id' => 117,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:45:13',
                 'updated_at' => '2024-08-14 17:45:13',
             ),
-            116 => 
+            144 => 
             array (
                 'id' => 145,
                 'address' => 'Km. 2',
@@ -1652,11 +2188,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 118,
+                'addressable_id' => 118,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-14 17:50:29',
                 'updated_at' => '2024-08-14 17:50:29',
             ),
-            117 => 
+            145 => 
             array (
                 'id' => 146,
                 'address' => 'Mayor Vitaliano Agan Ave.',
@@ -1666,11 +2203,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 119,
+                'addressable_id' => 119,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-16 16:18:29',
                 'updated_at' => '2024-08-16 16:18:29',
             ),
-            118 => 
+            146 => 
             array (
                 'id' => 147,
                 'address' => 'Zamja. Bldg., Veterans Avenue',
@@ -1680,11 +2218,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 120,
+                'addressable_id' => 120,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-16 16:23:15',
                 'updated_at' => '2024-08-16 16:33:18',
             ),
-            119 => 
+            147 => 
             array (
                 'id' => 148,
                 'address' => 'Normal road',
@@ -1694,11 +2233,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 121,
+                'addressable_id' => 121,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-16 16:24:44',
                 'updated_at' => '2024-08-16 16:24:44',
             ),
-            120 => 
+            148 => 
             array (
                 'id' => 149,
                 'address' => 'Main road',
@@ -1708,11 +2248,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 122,
+                'addressable_id' => 122,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-16 16:26:57',
                 'updated_at' => '2024-08-16 16:26:57',
             ),
-            121 => 
+            149 => 
             array (
                 'id' => 150,
                 'address' => 'Main road',
@@ -1722,11 +2263,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 123,
+                'addressable_id' => 123,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-16 16:28:10',
                 'updated_at' => '2024-08-16 16:28:10',
             ),
-            122 => 
+            150 => 
             array (
                 'id' => 151,
                 'address' => 'Main road',
@@ -1736,11 +2278,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '156611000',
                 'province_code' => '156600000',
                 'region_code' => '150000000',
-                'customer_id' => 124,
+                'addressable_id' => 124,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-17 00:54:21',
                 'updated_at' => '2024-08-17 00:54:21',
             ),
-            123 => 
+            151 => 
             array (
                 'id' => 152,
                 'address' => 'Main road',
@@ -1750,11 +2293,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 125,
+                'addressable_id' => 125,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-17 01:00:01',
                 'updated_at' => '2024-08-17 01:00:01',
             ),
-            124 => 
+            152 => 
             array (
                 'id' => 153,
                 'address' => 'road',
@@ -1764,11 +2308,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 126,
+                'addressable_id' => 126,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-17 01:02:46',
                 'updated_at' => '2024-08-17 01:02:46',
             ),
-            125 => 
+            153 => 
             array (
                 'id' => 154,
                 'address' => 'Main road',
@@ -1778,11 +2323,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 127,
+                'addressable_id' => 127,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-19 22:36:39',
                 'updated_at' => '2024-08-19 22:36:39',
             ),
-            126 => 
+            154 => 
             array (
                 'id' => 155,
                 'address' => 'Aurora Village',
@@ -1792,11 +2338,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 128,
+                'addressable_id' => 128,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-19 22:37:58',
                 'updated_at' => '2024-08-19 22:37:58',
             ),
-            127 => 
+            155 => 
             array (
                 'id' => 156,
                 'address' => 'MCLL Highway',
@@ -1806,11 +2353,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 129,
+                'addressable_id' => 129,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-19 22:40:12',
                 'updated_at' => '2024-08-19 22:40:12',
             ),
-            128 => 
+            156 => 
             array (
                 'id' => 157,
                 'address' => 'Justina Subdivision',
@@ -1820,11 +2368,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 130,
+                'addressable_id' => 130,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-19 22:41:21',
                 'updated_at' => '2024-08-19 22:41:21',
             ),
-            129 => 
+            157 => 
             array (
                 'id' => 158,
                 'address' => 'MCLL Highway',
@@ -1834,11 +2383,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 131,
+                'addressable_id' => 131,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-19 23:11:30',
                 'updated_at' => '2024-08-19 23:11:30',
             ),
-            130 => 
+            158 => 
             array (
                 'id' => 159,
                 'address' => 'Main road',
@@ -1848,11 +2398,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 132,
+                'addressable_id' => 132,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-21 16:20:59',
                 'updated_at' => '2024-08-21 16:20:59',
             ),
-            131 => 
+            159 => 
             array (
                 'id' => 160,
                 'address' => 'Morning Breeze',
@@ -1862,11 +2413,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 133,
+                'addressable_id' => 133,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-21 16:22:49',
                 'updated_at' => '2024-08-21 16:22:49',
             ),
-            132 => 
+            160 => 
             array (
                 'id' => 161,
                 'address' => 'No. 4 Lot 2 South Plains Subdivision, Sto. Niño Village',
@@ -1876,11 +2428,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 134,
+                'addressable_id' => 134,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-21 16:24:02',
                 'updated_at' => '2024-08-21 16:24:02',
             ),
-            133 => 
+            161 => 
             array (
                 'id' => 162,
                 'address' => 'Main road',
@@ -1890,11 +2443,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 135,
+                'addressable_id' => 135,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-21 16:26:22',
                 'updated_at' => '2024-08-21 16:26:22',
             ),
-            134 => 
+            162 => 
             array (
                 'id' => 163,
                 'address' => '',
@@ -1904,11 +2458,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 136,
+                'addressable_id' => 136,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-21 18:26:28',
                 'updated_at' => '2024-08-21 18:26:28',
             ),
-            135 => 
+            163 => 
             array (
                 'id' => 164,
                 'address' => 'Normal Road',
@@ -1918,11 +2473,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 137,
+                'addressable_id' => 137,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-29 00:43:51',
                 'updated_at' => '2024-08-29 00:43:51',
             ),
-            136 => 
+            164 => 
             array (
                 'id' => 165,
                 'address' => 'Governor Camins',
@@ -1932,11 +2488,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 138,
+                'addressable_id' => 138,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-29 01:00:50',
                 'updated_at' => '2024-08-29 01:00:50',
             ),
-            137 => 
+            165 => 
             array (
                 'id' => 166,
                 'address' => 'Purok Bougainvilla',
@@ -1946,11 +2503,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 139,
+                'addressable_id' => 139,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-29 01:06:00',
                 'updated_at' => '2024-08-29 01:06:00',
             ),
-            138 => 
+            166 => 
             array (
                 'id' => 167,
                 'address' => 'Purok Airways',
@@ -1960,11 +2518,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 140,
+                'addressable_id' => 140,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-29 01:06:57',
                 'updated_at' => '2024-08-29 01:06:57',
             ),
-            139 => 
+            167 => 
             array (
                 'id' => 168,
                 'address' => 'Purok Mabini',
@@ -1974,11 +2533,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 141,
+                'addressable_id' => 141,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 02:50:46',
                 'updated_at' => '2024-08-30 02:50:46',
             ),
-            140 => 
+            168 => 
             array (
                 'id' => 169,
                 'address' => 'Petron Aviation Facility, ZIA',
@@ -1988,11 +2548,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 142,
+                'addressable_id' => 142,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 02:54:42',
                 'updated_at' => '2024-08-30 02:54:42',
             ),
-            141 => 
+            169 => 
             array (
                 'id' => 170,
                 'address' => 'Main road',
@@ -2002,11 +2563,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 143,
+                'addressable_id' => 143,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 02:56:39',
                 'updated_at' => '2024-08-30 02:56:39',
             ),
-            142 => 
+            170 => 
             array (
                 'id' => 171,
                 'address' => 'Purok-2A',
@@ -2016,11 +2578,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 144,
+                'addressable_id' => 144,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 02:58:11',
                 'updated_at' => '2024-08-30 02:58:11',
             ),
-            143 => 
+            171 => 
             array (
                 'id' => 172,
                 'address' => 'Mayor Vitaliano Agan Avenue',
@@ -2030,11 +2593,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 145,
+                'addressable_id' => 145,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 02:59:08',
                 'updated_at' => '2024-08-30 02:59:08',
             ),
-            144 => 
+            172 => 
             array (
                 'id' => 173,
                 'address' => 'Doña Vicenta Building, Gov. Lim Avenue',
@@ -2044,11 +2608,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 146,
+                'addressable_id' => 146,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:01:52',
                 'updated_at' => '2024-08-30 03:01:52',
             ),
-            145 => 
+            173 => 
             array (
                 'id' => 174,
                 'address' => 'Main road',
@@ -2058,11 +2623,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097307000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 147,
+                'addressable_id' => 147,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:03:26',
                 'updated_at' => '2024-08-30 03:03:26',
             ),
-            146 => 
+            174 => 
             array (
                 'id' => 175,
                 'address' => 'Seaside',
@@ -2072,11 +2638,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 148,
+                'addressable_id' => 148,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:05:43',
                 'updated_at' => '2024-08-30 03:05:43',
             ),
-            147 => 
+            175 => 
             array (
                 'id' => 176,
                 'address' => 'Main road',
@@ -2086,11 +2653,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 149,
+                'addressable_id' => 149,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:06:54',
                 'updated_at' => '2024-08-30 03:06:54',
             ),
-            148 => 
+            176 => 
             array (
                 'id' => 177,
                 'address' => 'Dumagsa',
@@ -2100,11 +2668,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 150,
+                'addressable_id' => 150,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:08:45',
                 'updated_at' => '2024-08-30 03:08:45',
             ),
-            149 => 
+            177 => 
             array (
                 'id' => 178,
                 'address' => 'Main road',
@@ -2114,11 +2683,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 151,
+                'addressable_id' => 151,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:10:16',
                 'updated_at' => '2024-08-30 03:10:16',
             ),
-            150 => 
+            178 => 
             array (
                 'id' => 179,
                 'address' => 'Dumagsa',
@@ -2128,11 +2698,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 152,
+                'addressable_id' => 152,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:12:12',
                 'updated_at' => '2024-08-30 03:12:12',
             ),
-            151 => 
+            179 => 
             array (
                 'id' => 180,
                 'address' => 'Main road',
@@ -2142,11 +2713,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 153,
+                'addressable_id' => 153,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:13:18',
                 'updated_at' => '2024-08-30 03:13:18',
             ),
-            152 => 
+            180 => 
             array (
                 'id' => 181,
                 'address' => 'Main road',
@@ -2156,11 +2728,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 154,
+                'addressable_id' => 154,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:15:36',
                 'updated_at' => '2024-08-30 03:15:36',
             ),
-            153 => 
+            181 => 
             array (
                 'id' => 182,
                 'address' => 'Highway',
@@ -2170,11 +2743,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 155,
+                'addressable_id' => 155,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:17:05',
                 'updated_at' => '2024-08-30 03:17:05',
             ),
-            154 => 
+            182 => 
             array (
                 'id' => 183,
                 'address' => 'Main road',
@@ -2184,11 +2758,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097219000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 156,
+                'addressable_id' => 156,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-30 03:18:18',
                 'updated_at' => '2024-08-30 03:18:18',
             ),
-            155 => 
+            183 => 
             array (
                 'id' => 184,
                 'address' => 'Artica Building',
@@ -2198,11 +2773,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '043403000',
                 'province_code' => '043400000',
                 'region_code' => '040000000',
-                'customer_id' => 157,
+                'addressable_id' => 157,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-31 18:48:06',
                 'updated_at' => '2024-08-31 18:48:06',
             ),
-            156 => 
+            184 => 
             array (
                 'id' => 185,
                 'address' => 'Monserat Drive',
@@ -2212,11 +2788,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 158,
+                'addressable_id' => 158,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-31 19:42:34',
                 'updated_at' => '2024-08-31 19:42:34',
             ),
-            157 => 
+            185 => 
             array (
                 'id' => 186,
                 'address' => 'Main road',
@@ -2226,11 +2803,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 159,
+                'addressable_id' => 159,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-08-31 19:47:27',
                 'updated_at' => '2024-08-31 19:47:27',
             ),
-            158 => 
+            186 => 
             array (
                 'id' => 187,
                 'address' => 'Main road',
@@ -2240,11 +2818,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 160,
+                'addressable_id' => 160,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-02 23:10:28',
                 'updated_at' => '2024-09-02 23:10:28',
             ),
-            159 => 
+            187 => 
             array (
                 'id' => 188,
                 'address' => 'Callejon Old Highway',
@@ -2254,11 +2833,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 161,
+                'addressable_id' => 161,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-02 23:12:13',
                 'updated_at' => '2024-09-02 23:12:13',
             ),
-            160 => 
+            188 => 
             array (
                 'id' => 189,
                 'address' => 'MCLL Highway',
@@ -2268,11 +2848,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 162,
+                'addressable_id' => 162,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-02 23:22:53',
                 'updated_at' => '2024-09-02 23:22:53',
             ),
-            161 => 
+            189 => 
             array (
                 'id' => 190,
                 'address' => 'MCLL Highway',
@@ -2282,11 +2863,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 163,
+                'addressable_id' => 163,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-02 23:29:15',
                 'updated_at' => '2024-09-02 23:29:15',
             ),
-            162 => 
+            190 => 
             array (
                 'id' => 191,
                 'address' => 'Km 7',
@@ -2296,11 +2878,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 164,
+                'addressable_id' => 164,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-04 03:05:51',
                 'updated_at' => '2024-09-04 03:05:51',
             ),
-            163 => 
+            191 => 
             array (
                 'id' => 192,
                 'address' => 'Normal road',
@@ -2310,11 +2893,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 166,
+                'addressable_id' => 166,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-04 03:08:00',
                 'updated_at' => '2024-09-04 03:08:00',
             ),
-            164 => 
+            192 => 
             array (
                 'id' => 193,
                 'address' => 'Dr. D. Evangelista St.',
@@ -2324,11 +2908,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 167,
+                'addressable_id' => 167,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-04 03:09:26',
                 'updated_at' => '2024-09-04 03:09:26',
             ),
-            165 => 
+            193 => 
             array (
                 'id' => 194,
                 'address' => 'Nuñez Street',
@@ -2338,11 +2923,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 168,
+                'addressable_id' => 168,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 19:13:52',
                 'updated_at' => '2024-09-05 19:13:52',
             ),
-            166 => 
+            194 => 
             array (
                 'id' => 195,
                 'address' => 'Governor Camins Avenue',
@@ -2352,11 +2938,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 169,
+                'addressable_id' => 169,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 19:17:15',
                 'updated_at' => '2024-09-05 19:17:15',
             ),
-            167 => 
+            195 => 
             array (
                 'id' => 196,
                 'address' => 'Bench Drive',
@@ -2366,11 +2953,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 170,
+                'addressable_id' => 170,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 19:37:31',
                 'updated_at' => '2024-09-05 19:37:31',
             ),
-            168 => 
+            196 => 
             array (
                 'id' => 197,
                 'address' => 'Polanco',
@@ -2380,11 +2968,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 171,
+                'addressable_id' => 171,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 21:34:02',
                 'updated_at' => '2024-09-05 21:34:02',
             ),
-            169 => 
+            197 => 
             array (
                 'id' => 198,
                 'address' => 'IBT Tambulig',
@@ -2394,11 +2983,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097328000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 172,
+                'addressable_id' => 172,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 23:42:02',
                 'updated_at' => '2024-09-05 23:42:02',
             ),
-            170 => 
+            198 => 
             array (
                 'id' => 199,
                 'address' => 'Gregorio Drive',
@@ -2408,11 +2998,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 173,
+                'addressable_id' => 173,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 23:44:03',
                 'updated_at' => '2024-09-05 23:44:03',
             ),
-            171 => 
+            199 => 
             array (
                 'id' => 200,
                 'address' => 'Crossing',
@@ -2422,11 +3013,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 174,
+                'addressable_id' => 174,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-05 23:45:59',
                 'updated_at' => '2024-09-05 23:45:59',
             ),
-            172 => 
+            200 => 
             array (
                 'id' => 201,
                 'address' => 'Purok Santan',
@@ -2436,11 +3028,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 175,
+                'addressable_id' => 175,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-06 18:01:30',
                 'updated_at' => '2024-09-06 18:01:30',
             ),
-            173 => 
+            201 => 
             array (
                 'id' => 202,
                 'address' => 'Lumiyap',
@@ -2450,11 +3043,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 176,
+                'addressable_id' => 176,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-07 00:00:56',
                 'updated_at' => '2024-09-07 00:00:56',
             ),
-            174 => 
+            202 => 
             array (
                 'id' => 203,
                 'address' => 'Main Road',
@@ -2464,11 +3058,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157011000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 177,
+                'addressable_id' => 177,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-09 17:41:16',
                 'updated_at' => '2024-09-09 17:41:16',
             ),
-            175 => 
+            203 => 
             array (
                 'id' => 204,
                 'address' => 'MCLL Highway',
@@ -2478,11 +3073,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 178,
+                'addressable_id' => 178,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-09 19:10:32',
                 'updated_at' => '2024-09-09 19:10:32',
             ),
-            176 => 
+            204 => 
             array (
                 'id' => 205,
                 'address' => 'Normal Road',
@@ -2492,11 +3088,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 179,
+                'addressable_id' => 179,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-09 21:07:46',
                 'updated_at' => '2024-09-09 21:07:46',
             ),
-            177 => 
+            205 => 
             array (
                 'id' => 206,
                 'address' => 'Tugung St.',
@@ -2506,11 +3103,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 180,
+                'addressable_id' => 180,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-10 16:43:35',
                 'updated_at' => '2024-09-10 16:43:35',
             ),
-            178 => 
+            206 => 
             array (
                 'id' => 207,
                 'address' => 'Rizal Avenue',
@@ -2520,11 +3118,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 181,
+                'addressable_id' => 181,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-10 16:47:17',
                 'updated_at' => '2024-09-10 16:47:17',
             ),
-            179 => 
+            207 => 
             array (
                 'id' => 208,
                 'address' => 'Purok Golden Shower',
@@ -2534,11 +3133,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 182,
+                'addressable_id' => 182,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-10 18:12:12',
                 'updated_at' => '2024-09-10 18:12:12',
             ),
-            180 => 
+            208 => 
             array (
                 'id' => 209,
                 'address' => 'Purok Acacia',
@@ -2548,11 +3148,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 183,
+                'addressable_id' => 183,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-10 19:02:10',
                 'updated_at' => '2024-09-10 19:02:10',
             ),
-            181 => 
+            209 => 
             array (
                 'id' => 210,
                 'address' => 'Tagbalogo St.',
@@ -2562,11 +3163,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104326000',
                 'province_code' => '104300000',
                 'region_code' => '100000000',
-                'customer_id' => 184,
+                'addressable_id' => 184,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-10 22:35:44',
                 'updated_at' => '2024-09-10 22:35:44',
             ),
-            182 => 
+            210 => 
             array (
                 'id' => 211,
                 'address' => 'Zone III',
@@ -2576,11 +3178,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 185,
+                'addressable_id' => 185,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-11 00:40:48',
                 'updated_at' => '2024-09-11 00:40:48',
             ),
-            183 => 
+            211 => 
             array (
                 'id' => 212,
                 'address' => 'Sitio To-tal',
@@ -2590,11 +3193,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157004000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 186,
+                'addressable_id' => 186,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-11 17:11:20',
                 'updated_at' => '2024-09-11 17:11:20',
             ),
-            184 => 
+            212 => 
             array (
                 'id' => 213,
                 'address' => 'Governor Lim Avenue',
@@ -2604,11 +3208,27 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 187,
+                'addressable_id' => 187,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-11 18:16:22',
                 'updated_at' => '2024-09-11 18:16:22',
             ),
-            185 => 
+            213 => 
+            array (
+                'id' => 214,
+                'address' => 'Socorro St.',
+                'longitude' => '122.137401',
+                'latitude' => '6.963286',
+                'barangay_code' => '097332053',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 188,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2024-09-11 21:50:43',
+                'updated_at' => '2024-09-11 21:50:43',
+            ),
+            214 => 
             array (
                 'id' => 215,
                 'address' => 'Zone 6',
@@ -2618,11 +3238,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 189,
+                'addressable_id' => 189,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-11 22:46:21',
                 'updated_at' => '2024-09-11 22:46:21',
             ),
-            186 => 
+            215 => 
             array (
                 'id' => 216,
                 'address' => 'Highway,',
@@ -2632,11 +3253,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097211000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 190,
+                'addressable_id' => 190,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-12 23:43:59',
                 'updated_at' => '2024-09-12 23:43:59',
             ),
-            187 => 
+            216 => 
             array (
                 'id' => 217,
                 'address' => 'Kadena Hub, Mabini St., Araullo Corner',
@@ -2646,11 +3268,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112402000',
                 'province_code' => '112400000',
                 'region_code' => '110000000',
-                'customer_id' => 191,
+                'addressable_id' => 191,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-14 02:34:14',
                 'updated_at' => '2024-09-14 02:34:14',
             ),
-            188 => 
+            217 => 
             array (
                 'id' => 218,
                 'address' => 'RNR Drive, Zone II',
@@ -2660,11 +3283,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 192,
+                'addressable_id' => 192,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-17 19:37:12',
                 'updated_at' => '2024-09-17 19:37:12',
             ),
-            189 => 
+            218 => 
             array (
                 'id' => 219,
                 'address' => 'Lubing Oguis',
@@ -2674,11 +3298,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 193,
+                'addressable_id' => 193,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 03:29:21',
                 'updated_at' => '2024-09-18 03:29:21',
             ),
-            190 => 
+            219 => 
             array (
                 'id' => 220,
                 'address' => 'Arnaldo Boulevard',
@@ -2688,11 +3313,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '061914000',
                 'province_code' => '061900000',
                 'region_code' => '060000000',
-                'customer_id' => 194,
+                'addressable_id' => 194,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 04:17:08',
                 'updated_at' => '2024-09-18 04:17:08',
             ),
-            191 => 
+            220 => 
             array (
                 'id' => 221,
                 'address' => 'Daisy Road',
@@ -2702,11 +3328,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 195,
+                'addressable_id' => 195,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 18:38:39',
                 'updated_at' => '2024-09-18 18:38:39',
             ),
-            192 => 
+            221 => 
             array (
                 'id' => 222,
                 'address' => 'Purok 8',
@@ -2716,11 +3343,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 196,
+                'addressable_id' => 196,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 19:23:32',
                 'updated_at' => '2024-09-18 19:23:32',
             ),
-            193 => 
+            222 => 
             array (
                 'id' => 223,
                 'address' => 'Calle San Isidro, Zone II',
@@ -2730,11 +3358,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 197,
+                'addressable_id' => 197,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 19:51:10',
                 'updated_at' => '2024-09-18 19:51:10',
             ),
-            194 => 
+            223 => 
             array (
                 'id' => 224,
                 'address' => 'J. Ruste Drive, Saavedra extension',
@@ -2744,11 +3373,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 198,
+                'addressable_id' => 198,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 20:11:35',
                 'updated_at' => '2024-09-18 20:11:35',
             ),
-            195 => 
+            224 => 
             array (
                 'id' => 225,
                 'address' => 'Brillantes Compound, Gov. Ramos',
@@ -2758,11 +3388,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 199,
+                'addressable_id' => 199,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-18 20:38:44',
                 'updated_at' => '2024-09-18 20:38:44',
             ),
-            196 => 
+            225 => 
             array (
                 'id' => 226,
                 'address' => 'Kilometer 3',
@@ -2772,11 +3403,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '156601000',
                 'province_code' => '156600000',
                 'region_code' => '150000000',
-                'customer_id' => 200,
+                'addressable_id' => 200,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-19 00:23:11',
                 'updated_at' => '2024-09-19 00:23:11',
             ),
-            197 => 
+            226 => 
             array (
                 'id' => 227,
                 'address' => 'Philippine National Halal Laboratory and Science Center',
@@ -2786,11 +3418,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '126306000',
                 'province_code' => '126300000',
                 'region_code' => '120000000',
-                'customer_id' => 201,
+                'addressable_id' => 201,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-19 16:42:03',
                 'updated_at' => '2024-09-19 16:42:03',
             ),
-            198 => 
+            227 => 
             array (
                 'id' => 228,
                 'address' => 'Pamiguitan',
@@ -2800,11 +3433,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 202,
+                'addressable_id' => 202,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-19 19:26:36',
                 'updated_at' => '2024-09-19 19:26:36',
             ),
-            199 => 
+            228 => 
             array (
                 'id' => 229,
                 'address' => 'National Highway',
@@ -2814,11 +3448,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 203,
+                'addressable_id' => 203,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-19 19:41:09',
                 'updated_at' => '2024-09-19 19:41:09',
             ),
-            200 => 
+            229 => 
             array (
                 'id' => 230,
                 'address' => 'Zone 3',
@@ -2828,11 +3463,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 204,
+                'addressable_id' => 204,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-20 16:51:04',
                 'updated_at' => '2024-09-20 16:51:04',
             ),
-            201 => 
+            230 => 
             array (
                 'id' => 231,
                 'address' => 'No. 1046-A Saint Ignatius Street, Cabato Road',
@@ -2842,11 +3478,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 205,
+                'addressable_id' => 205,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-20 18:25:09',
                 'updated_at' => '2024-09-20 18:25:09',
             ),
-            202 => 
+            231 => 
             array (
                 'id' => 232,
                 'address' => 'Cluster-2',
@@ -2856,11 +3493,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097220000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 206,
+                'addressable_id' => 206,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-20 21:31:55',
                 'updated_at' => '2024-09-20 21:31:55',
             ),
-            203 => 
+            232 => 
             array (
                 'id' => 233,
                 'address' => 'Purok 1',
@@ -2870,11 +3508,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097208000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 207,
+                'addressable_id' => 207,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-23 18:38:11',
                 'updated_at' => '2024-09-23 18:38:11',
             ),
-            204 => 
+            233 => 
             array (
                 'id' => 234,
                 'address' => 'Love Drive, Lower Calarian',
@@ -2884,11 +3523,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 208,
+                'addressable_id' => 208,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-23 20:48:31',
                 'updated_at' => '2024-09-23 20:48:31',
             ),
-            205 => 
+            234 => 
             array (
                 'id' => 235,
                 'address' => 'Phase 2, Zambo Ecozone, San Ramon',
@@ -2898,11 +3538,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 209,
+                'addressable_id' => 209,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-24 19:21:34',
                 'updated_at' => '2024-09-24 19:21:34',
             ),
-            206 => 
+            235 => 
             array (
                 'id' => 236,
                 'address' => 'Purok African Daisy',
@@ -2912,11 +3553,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 210,
+                'addressable_id' => 210,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-24 22:23:02',
                 'updated_at' => '2024-09-24 22:23:02',
             ),
-            207 => 
+            236 => 
             array (
                 'id' => 237,
                 'address' => 'Veterans Avenue Extension',
@@ -2926,11 +3568,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 211,
+                'addressable_id' => 211,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-24 23:24:18',
                 'updated_at' => '2024-09-24 23:24:18',
             ),
-            208 => 
+            237 => 
             array (
                 'id' => 238,
                 'address' => '007 JP Rizal St.',
@@ -2940,11 +3583,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '045810000',
                 'province_code' => '045800000',
                 'region_code' => '040000000',
-                'customer_id' => 212,
+                'addressable_id' => 212,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-25 00:41:35',
                 'updated_at' => '2024-09-25 00:41:35',
             ),
-            209 => 
+            238 => 
             array (
                 'id' => 239,
                 'address' => 'Gov. Ramos Avenue',
@@ -2954,11 +3598,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 213,
+                'addressable_id' => 213,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-25 17:34:49',
                 'updated_at' => '2024-09-25 17:34:49',
             ),
-            210 => 
+            239 => 
             array (
                 'id' => 240,
                 'address' => 'Apolinario Loop',
@@ -2968,11 +3613,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 214,
+                'addressable_id' => 214,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-25 22:12:57',
                 'updated_at' => '2024-09-25 22:12:57',
             ),
-            211 => 
+            240 => 
             array (
                 'id' => 241,
                 'address' => 'D10-D12 Yoho Center, Purok Tambis',
@@ -2982,11 +3628,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 215,
+                'addressable_id' => 215,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-25 23:19:22',
                 'updated_at' => '2024-09-25 23:19:22',
             ),
-            212 => 
+            241 => 
             array (
                 'id' => 242,
                 'address' => 'Purok Maabiabihon',
@@ -2996,11 +3643,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 216,
+                'addressable_id' => 216,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-26 17:15:12',
                 'updated_at' => '2024-09-26 17:15:12',
             ),
-            213 => 
+            242 => 
             array (
                 'id' => 243,
                 'address' => 'Purok Matinabangon',
@@ -3010,11 +3658,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 217,
+                'addressable_id' => 217,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-26 17:28:09',
                 'updated_at' => '2024-09-26 17:28:09',
             ),
-            214 => 
+            243 => 
             array (
                 'id' => 244,
                 'address' => 'Camp Arturo T. Enrile',
@@ -3024,11 +3673,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 218,
+                'addressable_id' => 218,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-26 21:27:11',
                 'updated_at' => '2024-09-26 21:27:11',
             ),
-            215 => 
+            244 => 
             array (
                 'id' => 245,
                 'address' => 'Km 4, Main Road',
@@ -3038,11 +3688,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 219,
+                'addressable_id' => 219,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-26 21:37:56',
                 'updated_at' => '2024-09-26 21:37:56',
             ),
-            216 => 
+            245 => 
             array (
                 'id' => 246,
                 'address' => 'Petron Corp.-Amlan Terminal, National Highway',
@@ -3052,11 +3703,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '074601000',
                 'province_code' => '074600000',
                 'region_code' => '070000000',
-                'customer_id' => 220,
+                'addressable_id' => 220,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-26 22:08:52',
                 'updated_at' => '2024-09-26 22:08:52',
             ),
-            217 => 
+            246 => 
             array (
                 'id' => 247,
                 'address' => 'Blk 3, Lot 5, Alta',
@@ -3066,11 +3718,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 221,
+                'addressable_id' => 221,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-27 05:40:46',
                 'updated_at' => '2024-09-27 05:40:46',
             ),
-            218 => 
+            247 => 
             array (
                 'id' => 248,
                 'address' => 'Pitogo, Brgy.Sinunuc, Zamboanga City',
@@ -3080,11 +3733,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 222,
+                'addressable_id' => 222,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-09-30 17:51:51',
                 'updated_at' => '2024-09-30 17:51:51',
             ),
-            219 => 
+            248 => 
             array (
                 'id' => 249,
                 'address' => '2nd Industrial Park, Zamboanga Ecozone, San Ramon',
@@ -3094,11 +3748,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 223,
+                'addressable_id' => 223,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-01 17:23:47',
                 'updated_at' => '2024-10-01 17:23:47',
             ),
-            220 => 
+            249 => 
             array (
                 'id' => 250,
                 'address' => 'Zone 6, J Mendoza Drive',
@@ -3108,11 +3763,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 224,
+                'addressable_id' => 224,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-01 18:02:52',
                 'updated_at' => '2024-10-01 18:02:52',
             ),
-            221 => 
+            250 => 
             array (
                 'id' => 251,
                 'address' => 'Zone A-1',
@@ -3122,11 +3778,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 225,
+                'addressable_id' => 225,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-01 18:32:11',
                 'updated_at' => '2024-10-01 18:32:11',
             ),
-            222 => 
+            251 => 
             array (
                 'id' => 252,
                 'address' => 'La Purisima St.',
@@ -3136,11 +3793,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 226,
+                'addressable_id' => 226,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-02 21:35:57',
                 'updated_at' => '2024-10-02 21:35:57',
             ),
-            223 => 
+            252 => 
             array (
                 'id' => 253,
                 'address' => 'Purok Acasia',
@@ -3150,11 +3808,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097307000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 227,
+                'addressable_id' => 227,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-02 23:33:30',
                 'updated_at' => '2024-10-02 23:33:30',
             ),
-            224 => 
+            253 => 
             array (
                 'id' => 254,
                 'address' => 'Veterans Avenue',
@@ -3164,11 +3823,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 228,
+                'addressable_id' => 228,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-04 18:26:06',
                 'updated_at' => '2024-10-04 18:35:49',
             ),
-            225 => 
+            254 => 
             array (
                 'id' => 255,
                 'address' => 'Tomas Claudio Street',
@@ -3178,11 +3838,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 229,
+                'addressable_id' => 229,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-04 21:47:25',
                 'updated_at' => '2024-10-04 21:47:25',
             ),
-            226 => 
+            255 => 
             array (
                 'id' => 256,
                 'address' => '026 Burgos St.',
@@ -3192,11 +3853,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 230,
+                'addressable_id' => 230,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-07 16:34:44',
                 'updated_at' => '2024-10-07 16:34:44',
             ),
-            227 => 
+            256 => 
             array (
                 'id' => 257,
                 'address' => 'Purok Falcata',
@@ -3206,11 +3868,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097221000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 231,
+                'addressable_id' => 231,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-07 17:14:48',
                 'updated_at' => '2024-10-07 17:14:48',
             ),
-            228 => 
+            257 => 
             array (
                 'id' => 258,
                 'address' => 'Purok 8',
@@ -3220,11 +3883,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 232,
+                'addressable_id' => 232,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 00:26:41',
                 'updated_at' => '2024-11-27 19:15:05',
             ),
-            229 => 
+            258 => 
             array (
                 'id' => 259,
                 'address' => 'Zone V-A, Caragasan',
@@ -3234,11 +3898,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 233,
+                'addressable_id' => 233,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 18:53:16',
                 'updated_at' => '2024-10-08 18:53:16',
             ),
-            230 => 
+            259 => 
             array (
                 'id' => 260,
                 'address' => 'Sunset View, Purok 2',
@@ -3248,11 +3913,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 234,
+                'addressable_id' => 234,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 19:13:48',
                 'updated_at' => '2024-10-08 19:13:48',
             ),
-            231 => 
+            260 => 
             array (
                 'id' => 261,
                 'address' => 'Zone IV',
@@ -3262,11 +3928,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 235,
+                'addressable_id' => 235,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 21:11:46',
                 'updated_at' => '2024-10-08 21:11:46',
             ),
-            232 => 
+            261 => 
             array (
                 'id' => 262,
                 'address' => 'Purok 4',
@@ -3276,11 +3943,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 236,
+                'addressable_id' => 236,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 21:46:21',
                 'updated_at' => '2024-10-08 21:46:21',
             ),
-            233 => 
+            262 => 
             array (
                 'id' => 263,
                 'address' => 'Purok 1, Malandi',
@@ -3290,11 +3958,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 237,
+                'addressable_id' => 237,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 22:02:27',
                 'updated_at' => '2024-10-08 22:02:27',
             ),
-            234 => 
+            263 => 
             array (
                 'id' => 264,
                 'address' => 'Motorpool',
@@ -3304,11 +3973,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 238,
+                'addressable_id' => 238,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 22:37:58',
                 'updated_at' => '2024-10-08 22:37:58',
             ),
-            235 => 
+            264 => 
             array (
                 'id' => 265,
                 'address' => 'Calle Lastimosa',
@@ -3318,11 +3988,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 239,
+                'addressable_id' => 239,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-08 23:01:10',
                 'updated_at' => '2024-10-08 23:01:10',
             ),
-            236 => 
+            265 => 
             array (
                 'id' => 266,
                 'address' => 'Stall 211, Row D',
@@ -3332,11 +4003,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 240,
+                'addressable_id' => 240,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-09 19:12:19',
                 'updated_at' => '2024-10-09 19:12:19',
             ),
-            237 => 
+            266 => 
             array (
                 'id' => 267,
                 'address' => 'Purok Madasigon',
@@ -3346,11 +4018,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 241,
+                'addressable_id' => 241,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-09 22:42:51',
                 'updated_at' => '2024-10-09 22:42:51',
             ),
-            238 => 
+            267 => 
             array (
                 'id' => 268,
                 'address' => 'Km. 7, Pumping Station, McArthur Highway, Bangkal',
@@ -3360,11 +4033,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112402000',
                 'province_code' => '112400000',
                 'region_code' => '110000000',
-                'customer_id' => 242,
+                'addressable_id' => 242,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-10 17:26:53',
                 'updated_at' => '2024-10-10 17:26:53',
             ),
-            239 => 
+            268 => 
             array (
                 'id' => 269,
                 'address' => 'Masambo Drive, Baliwasan Grande',
@@ -3374,11 +4048,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 243,
+                'addressable_id' => 243,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-10 19:44:57',
                 'updated_at' => '2024-10-10 19:44:57',
             ),
-            240 => 
+            269 => 
             array (
                 'id' => 270,
                 'address' => '315 Diversion Road',
@@ -3388,11 +4063,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 244,
+                'addressable_id' => 244,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-10 22:23:08',
                 'updated_at' => '2024-10-10 22:23:08',
             ),
-            241 => 
+            270 => 
             array (
                 'id' => 271,
                 'address' => 'MCLL Highway',
@@ -3402,11 +4078,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 245,
+                'addressable_id' => 245,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-11 19:32:26',
                 'updated_at' => '2024-10-11 19:32:26',
             ),
-            242 => 
+            271 => 
             array (
                 'id' => 272,
                 'address' => 'MCLL Highway',
@@ -3416,11 +4093,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 246,
+                'addressable_id' => 246,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-11 19:34:03',
                 'updated_at' => '2024-10-11 19:34:03',
             ),
-            243 => 
+            272 => 
             array (
                 'id' => 273,
                 'address' => 'MCLL Highway',
@@ -3430,11 +4108,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 247,
+                'addressable_id' => 247,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-11 19:35:00',
                 'updated_at' => '2024-10-11 19:35:00',
             ),
-            244 => 
+            273 => 
             array (
                 'id' => 274,
                 'address' => 'MCLL Highway',
@@ -3444,11 +4123,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 248,
+                'addressable_id' => 248,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-11 19:39:21',
                 'updated_at' => '2024-10-11 19:39:21',
             ),
-            245 => 
+            274 => 
             array (
                 'id' => 275,
                 'address' => 'Purok 4',
@@ -3458,11 +4138,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 249,
+                'addressable_id' => 249,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-14 17:29:52',
                 'updated_at' => '2024-10-14 17:29:52',
             ),
-            246 => 
+            275 => 
             array (
                 'id' => 276,
                 'address' => 'GF David Walstrom Bldg. ADZU Lantaka Campus, NS Valderosa St.',
@@ -3472,11 +4153,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 250,
+                'addressable_id' => 250,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-14 22:56:53',
                 'updated_at' => '2024-10-14 22:56:53',
             ),
-            247 => 
+            276 => 
             array (
                 'id' => 277,
                 'address' => 'Summerhills Subdivision',
@@ -3486,11 +4168,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 251,
+                'addressable_id' => 251,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-14 23:42:45',
                 'updated_at' => '2024-10-14 23:42:45',
             ),
-            248 => 
+            277 => 
             array (
                 'id' => 278,
                 'address' => 'Gov. Camins Avenue',
@@ -3500,11 +4183,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 252,
+                'addressable_id' => 252,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-15 18:23:16',
                 'updated_at' => '2024-10-15 18:23:16',
             ),
-            249 => 
+            278 => 
             array (
                 'id' => 279,
                 'address' => 'Sun Street, NIA Subdivision',
@@ -3514,11 +4198,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 253,
+                'addressable_id' => 253,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-15 21:05:54',
                 'updated_at' => '2024-10-15 21:05:54',
             ),
-            250 => 
+            279 => 
             array (
                 'id' => 280,
                 'address' => 'Sampaloc Drive, Lower Calarian',
@@ -3528,11 +4213,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 254,
+                'addressable_id' => 254,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-16 00:36:07',
                 'updated_at' => '2024-10-16 00:36:07',
             ),
-            251 => 
+            280 => 
             array (
                 'id' => 281,
                 'address' => 'Logoy Diutay',
@@ -3542,11 +4228,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 255,
+                'addressable_id' => 255,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-16 00:55:27',
                 'updated_at' => '2024-10-16 00:55:27',
             ),
-            252 => 
+            281 => 
             array (
                 'id' => 282,
                 'address' => 'Ruste Drive',
@@ -3556,11 +4243,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 256,
+                'addressable_id' => 256,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-16 00:57:07',
                 'updated_at' => '2024-10-16 00:57:07',
             ),
-            253 => 
+            282 => 
             array (
                 'id' => 283,
                 'address' => 'Christina Homes 2',
@@ -3570,11 +4258,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 257,
+                'addressable_id' => 257,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-16 20:26:02',
                 'updated_at' => '2024-10-16 20:26:02',
             ),
-            254 => 
+            283 => 
             array (
                 'id' => 284,
                 'address' => 'Christina Homes 2',
@@ -3584,11 +4273,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 258,
+                'addressable_id' => 258,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-16 20:29:04',
                 'updated_at' => '2024-10-16 20:29:04',
             ),
-            255 => 
+            284 => 
             array (
                 'id' => 285,
                 'address' => 'KM 6',
@@ -3598,11 +4288,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 259,
+                'addressable_id' => 259,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-16 22:27:21',
                 'updated_at' => '2024-10-16 22:27:21',
             ),
-            256 => 
+            285 => 
             array (
                 'id' => 286,
                 'address' => 'Purok Bangus',
@@ -3612,11 +4303,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 260,
+                'addressable_id' => 260,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-17 00:26:45',
                 'updated_at' => '2024-10-17 00:26:45',
             ),
-            257 => 
+            286 => 
             array (
                 'id' => 287,
                 'address' => 'Town Plaza',
@@ -3626,11 +4318,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '150704000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 261,
+                'addressable_id' => 261,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-17 17:47:12',
                 'updated_at' => '2024-10-17 17:47:12',
             ),
-            258 => 
+            287 => 
             array (
                 'id' => 288,
                 'address' => 'Evangelista St.',
@@ -3640,11 +4333,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 262,
+                'addressable_id' => 262,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-17 18:09:35',
                 'updated_at' => '2024-10-17 18:09:35',
             ),
-            259 => 
+            288 => 
             array (
                 'id' => 289,
                 'address' => 'MCLL Highway',
@@ -3654,11 +4348,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 263,
+                'addressable_id' => 263,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-17 22:38:27',
                 'updated_at' => '2024-10-17 22:38:27',
             ),
-            260 => 
+            289 => 
             array (
                 'id' => 290,
                 'address' => 'Daayata Compound, Zone 2, District 1',
@@ -3668,11 +4363,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104305000',
                 'province_code' => '104300000',
                 'region_code' => '100000000',
-                'customer_id' => 264,
+                'addressable_id' => 264,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-17 23:11:36',
                 'updated_at' => '2024-10-17 23:11:36',
             ),
-            261 => 
+            290 => 
             array (
                 'id' => 291,
                 'address' => 'San Ramon',
@@ -3682,11 +4378,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 265,
+                'addressable_id' => 265,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-18 16:40:34',
                 'updated_at' => '2024-10-18 16:40:34',
             ),
-            262 => 
+            291 => 
             array (
                 'id' => 292,
                 'address' => 'Binaloy',
@@ -3696,11 +4393,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 266,
+                'addressable_id' => 266,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-18 21:30:08',
                 'updated_at' => '2024-10-18 21:30:08',
             ),
-            263 => 
+            292 => 
             array (
                 'id' => 293,
                 'address' => '.',
@@ -3710,11 +4408,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 267,
+                'addressable_id' => 267,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-18 22:13:33',
                 'updated_at' => '2024-10-18 22:13:33',
             ),
-            264 => 
+            293 => 
             array (
                 'id' => 294,
                 'address' => 'SM City Mindpro, La Purisima Street',
@@ -3724,11 +4423,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 268,
+                'addressable_id' => 268,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-21 22:09:32',
                 'updated_at' => '2024-10-21 22:09:32',
             ),
-            265 => 
+            294 => 
             array (
                 'id' => 295,
                 'address' => 'Veterans Avenue Extension',
@@ -3738,11 +4438,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 269,
+                'addressable_id' => 269,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-21 22:13:49',
                 'updated_at' => '2024-10-21 22:13:49',
             ),
-            266 => 
+            295 => 
             array (
                 'id' => 296,
                 'address' => 'Upper Calarian',
@@ -3752,11 +4453,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 270,
+                'addressable_id' => 270,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-22 22:20:04',
                 'updated_at' => '2024-10-22 22:20:04',
             ),
-            267 => 
+            296 => 
             array (
                 'id' => 297,
                 'address' => 'Purok 4',
@@ -3766,11 +4468,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097206000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 271,
+                'addressable_id' => 271,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-22 23:38:58',
                 'updated_at' => '2024-10-22 23:38:58',
             ),
-            268 => 
+            297 => 
             array (
                 'id' => 298,
                 'address' => 'Block 9 Lot 5-A Phase 2 Via Valentina St., Forteza Crown Asia',
@@ -3780,11 +4483,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '043404000',
                 'province_code' => '043400000',
                 'region_code' => '040000000',
-                'customer_id' => 272,
+                'addressable_id' => 272,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-23 16:38:28',
                 'updated_at' => '2024-10-23 16:38:28',
             ),
-            269 => 
+            298 => 
             array (
                 'id' => 299,
                 'address' => 'Baliwasan Chico Road',
@@ -3794,11 +4498,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 273,
+                'addressable_id' => 273,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-23 19:35:33',
                 'updated_at' => '2024-10-23 19:35:33',
             ),
-            270 => 
+            299 => 
             array (
                 'id' => 300,
                 'address' => 'La Purisima Street',
@@ -3808,11 +4513,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 274,
+                'addressable_id' => 274,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-23 20:20:04',
                 'updated_at' => '2024-10-23 20:20:04',
             ),
-            271 => 
+            300 => 
             array (
                 'id' => 301,
                 'address' => 'Old Highway',
@@ -3822,11 +4528,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 275,
+                'addressable_id' => 275,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-23 21:46:14',
                 'updated_at' => '2024-10-23 21:46:14',
             ),
-            272 => 
+            301 => 
             array (
                 'id' => 302,
                 'address' => 'Pagang St., Purok Maabi-abihon',
@@ -3836,11 +4543,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 276,
+                'addressable_id' => 276,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-23 23:44:23',
                 'updated_at' => '2024-10-23 23:44:23',
             ),
-            273 => 
+            302 => 
             array (
                 'id' => 303,
                 'address' => '-',
@@ -3850,11 +4558,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 278,
+                'addressable_id' => 278,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:25:00',
                 'updated_at' => '2025-04-30 17:59:04',
             ),
-            274 => 
+            303 => 
             array (
                 'id' => 304,
                 'address' => 'Mulu-muluan, Mercedes, Zamboanga City',
@@ -3864,11 +4573,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 279,
+                'addressable_id' => 279,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:36:56',
                 'updated_at' => '2024-10-25 17:36:56',
             ),
-            275 => 
+            304 => 
             array (
                 'id' => 305,
                 'address' => 'Purok 6, Fatima, Liloy',
@@ -3878,11 +4588,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097206000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 280,
+                'addressable_id' => 280,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:45:31',
                 'updated_at' => '2024-10-25 17:45:31',
             ),
-            276 => 
+            305 => 
             array (
                 'id' => 306,
                 'address' => 'Tigbalabag, Zamboanga City',
@@ -3892,11 +4603,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 281,
+                'addressable_id' => 281,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:47:30',
                 'updated_at' => '2024-10-25 17:47:30',
             ),
-            277 => 
+            306 => 
             array (
                 'id' => 307,
                 'address' => 'Mangusu, Zamboanga City',
@@ -3906,11 +4618,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 282,
+                'addressable_id' => 282,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:48:56',
                 'updated_at' => '2024-10-25 17:48:56',
             ),
-            278 => 
+            307 => 
             array (
                 'id' => 308,
                 'address' => 'Pettit Barracks, Zamboanga City',
@@ -3920,11 +4633,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 283,
+                'addressable_id' => 283,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:51:22',
                 'updated_at' => '2024-10-25 17:51:22',
             ),
-            279 => 
+            308 => 
             array (
                 'id' => 309,
                 'address' => 'Cabaluay, Zamboanga City',
@@ -3934,11 +4648,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 284,
+                'addressable_id' => 284,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 17:52:31',
                 'updated_at' => '2024-10-25 17:52:31',
             ),
-            280 => 
+            309 => 
             array (
                 'id' => 310,
                 'address' => 'Ruste Drive',
@@ -3948,11 +4663,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 285,
+                'addressable_id' => 285,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-25 23:46:43',
                 'updated_at' => '2024-10-25 23:46:43',
             ),
-            281 => 
+            310 => 
             array (
                 'id' => 311,
                 'address' => 'Zone 2',
@@ -3962,11 +4678,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 286,
+                'addressable_id' => 286,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-28 17:55:32',
                 'updated_at' => '2024-10-28 17:55:32',
             ),
-            282 => 
+            311 => 
             array (
                 'id' => 312,
                 'address' => '12 NS Valderosa Street',
@@ -3976,11 +4693,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 287,
+                'addressable_id' => 287,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-28 19:06:23',
                 'updated_at' => '2024-10-28 19:06:23',
             ),
-            283 => 
+            312 => 
             array (
                 'id' => 313,
                 'address' => 'Purok 1',
@@ -3990,11 +4708,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 288,
+                'addressable_id' => 288,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-28 20:44:01',
                 'updated_at' => '2024-10-28 20:44:01',
             ),
-            284 => 
+            313 => 
             array (
                 'id' => 314,
                 'address' => 'Phase 2, Block 19',
@@ -4004,11 +4723,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 289,
+                'addressable_id' => 289,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-28 21:03:21',
                 'updated_at' => '2024-10-28 21:03:21',
             ),
-            285 => 
+            314 => 
             array (
                 'id' => 315,
                 'address' => 'Earth Street',
@@ -4018,11 +4738,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 290,
+                'addressable_id' => 290,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 17:49:39',
                 'updated_at' => '2024-10-29 17:49:39',
             ),
-            286 => 
+            315 => 
             array (
                 'id' => 316,
                 'address' => 'Purok Santan',
@@ -4032,11 +4753,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 291,
+                'addressable_id' => 291,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 18:11:26',
                 'updated_at' => '2024-10-29 18:11:26',
             ),
-            287 => 
+            316 => 
             array (
                 'id' => 317,
                 'address' => 'Lamitan District Hospital',
@@ -4046,11 +4768,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '150702000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 292,
+                'addressable_id' => 292,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 18:49:17',
                 'updated_at' => '2024-10-29 18:49:17',
             ),
-            288 => 
+            317 => 
             array (
                 'id' => 318,
                 'address' => 'Sumisip District Hospital',
@@ -4060,11 +4783,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '150705000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 293,
+                'addressable_id' => 293,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 18:51:38',
                 'updated_at' => '2024-10-29 18:51:38',
             ),
-            289 => 
+            318 => 
             array (
                 'id' => 319,
                 'address' => 'Zamboanga West Coastal Road',
@@ -4074,11 +4798,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097216000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 296,
+                'addressable_id' => 296,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 20:29:12',
                 'updated_at' => '2024-10-29 20:29:12',
             ),
-            290 => 
+            319 => 
             array (
                 'id' => 320,
                 'address' => 'Zone 6',
@@ -4088,11 +4813,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 297,
+                'addressable_id' => 297,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 21:09:57',
                 'updated_at' => '2024-10-29 21:09:57',
             ),
-            291 => 
+            320 => 
             array (
                 'id' => 321,
                 'address' => 'Cor. San Jose Road and Tomas Castillo Street',
@@ -4102,11 +4828,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 298,
+                'addressable_id' => 298,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-29 21:37:22',
                 'updated_at' => '2024-10-29 21:37:22',
             ),
-            292 => 
+            321 => 
             array (
                 'id' => 322,
                 'address' => 'Unit 2B No. 10 Apo St. Metro Montaña Village',
@@ -4116,11 +4843,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '045808000',
                 'province_code' => '045800000',
                 'region_code' => '040000000',
-                'customer_id' => 299,
+                'addressable_id' => 299,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-10-31 18:06:01',
                 'updated_at' => '2024-10-31 18:06:01',
             ),
-            293 => 
+            322 => 
             array (
                 'id' => 323,
                 'address' => 'C. P. Garcia St.',
@@ -4130,11 +4858,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 300,
+                'addressable_id' => 300,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-04 17:50:02',
                 'updated_at' => '2024-11-04 17:50:02',
             ),
-            294 => 
+            323 => 
             array (
                 'id' => 324,
                 'address' => 'National Highway',
@@ -4144,11 +4873,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 301,
+                'addressable_id' => 301,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-04 18:57:54',
                 'updated_at' => '2024-11-04 18:57:54',
             ),
-            295 => 
+            324 => 
             array (
                 'id' => 325,
                 'address' => 'Villa Teresa Homes, MCLL Highway',
@@ -4158,11 +4888,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 302,
+                'addressable_id' => 302,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-04 21:24:00',
                 'updated_at' => '2024-11-04 21:24:00',
             ),
-            296 => 
+            325 => 
             array (
                 'id' => 326,
                 'address' => 'PEO Drive',
@@ -4172,11 +4903,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 303,
+                'addressable_id' => 303,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-04 23:31:05',
                 'updated_at' => '2024-11-04 23:31:05',
             ),
-            297 => 
+            326 => 
             array (
                 'id' => 327,
                 'address' => 'B.O.',
@@ -4186,11 +4918,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 304,
+                'addressable_id' => 304,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-04 23:55:31',
                 'updated_at' => '2024-11-04 23:55:31',
             ),
-            298 => 
+            327 => 
             array (
                 'id' => 328,
                 'address' => 'Gomez Street',
@@ -4200,11 +4933,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 305,
+                'addressable_id' => 305,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-05 17:21:49',
                 'updated_at' => '2024-11-05 17:21:49',
             ),
-            299 => 
+            328 => 
             array (
                 'id' => 329,
                 'address' => 'Maestra Vicenta',
@@ -4214,11 +4948,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 306,
+                'addressable_id' => 306,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-06 18:12:52',
                 'updated_at' => '2024-11-06 18:12:52',
             ),
-            300 => 
+            329 => 
             array (
                 'id' => 330,
                 'address' => 'Parang District Hospital',
@@ -4228,11 +4963,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '156609000',
                 'province_code' => '156600000',
                 'region_code' => '150000000',
-                'customer_id' => 307,
+                'addressable_id' => 307,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-06 18:46:40',
                 'updated_at' => '2024-11-06 18:46:40',
             ),
-            301 => 
+            330 => 
             array (
                 'id' => 331,
                 'address' => 'Basement MWSS Administration Bldg., 489 Katipunan Rd.',
@@ -4242,11 +4978,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '137404000',
                 'province_code' => '170000000',
                 'region_code' => '130000000',
-                'customer_id' => 308,
+                'addressable_id' => 308,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-06 19:48:21',
                 'updated_at' => '2024-11-06 19:48:21',
             ),
-            302 => 
+            331 => 
             array (
                 'id' => 332,
                 'address' => 'Blk. 415, Villa',
@@ -4256,11 +4993,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 309,
+                'addressable_id' => 309,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-06 21:44:24',
                 'updated_at' => '2024-11-06 21:44:24',
             ),
-            303 => 
+            332 => 
             array (
                 'id' => 333,
                 'address' => 'Nuñez Extension',
@@ -4270,11 +5008,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 310,
+                'addressable_id' => 310,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-06 22:10:14',
                 'updated_at' => '2024-11-06 22:10:14',
             ),
-            304 => 
+            333 => 
             array (
                 'id' => 334,
                 'address' => '7F Tower 3, Rockwell Business Center,  Ortigas Ave.',
@@ -4284,11 +5023,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '137403000',
                 'province_code' => '170000000',
                 'region_code' => '130000000',
-                'customer_id' => 311,
+                'addressable_id' => 311,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-07 19:43:30',
                 'updated_at' => '2024-11-07 19:43:30',
             ),
-            305 => 
+            334 => 
             array (
                 'id' => 335,
                 'address' => '584-D, Moret Road',
@@ -4298,11 +5038,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 312,
+                'addressable_id' => 312,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-08 21:56:00',
                 'updated_at' => '2024-11-08 21:56:00',
             ),
-            306 => 
+            335 => 
             array (
                 'id' => 336,
                 'address' => 'Gov. Ramos Ave., Zone 2',
@@ -4312,11 +5053,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 313,
+                'addressable_id' => 313,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-11 22:52:09',
                 'updated_at' => '2024-11-11 22:52:09',
             ),
-            307 => 
+            336 => 
             array (
                 'id' => 337,
                 'address' => 'Purok-6',
@@ -4326,11 +5068,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097303000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 314,
+                'addressable_id' => 314,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-12 19:26:51',
                 'updated_at' => '2024-11-12 19:26:51',
             ),
-            308 => 
+            337 => 
             array (
                 'id' => 338,
                 'address' => 'Purok 5, Along By-pass Road, Lower Cabatangan',
@@ -4340,11 +5083,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 315,
+                'addressable_id' => 315,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-12 22:30:00',
                 'updated_at' => '2024-11-12 22:30:00',
             ),
-            309 => 
+            338 => 
             array (
                 'id' => 339,
                 'address' => 'Row F No. 38 Main Public Market',
@@ -4354,11 +5098,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 316,
+                'addressable_id' => 316,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:14:29',
                 'updated_at' => '2024-11-14 18:14:29',
             ),
-            310 => 
+            339 => 
             array (
                 'id' => 340,
                 'address' => 'National Highway, Purok Tuburan',
@@ -4368,11 +5113,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097302000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 317,
+                'addressable_id' => 317,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:16:56',
                 'updated_at' => '2024-11-14 18:16:56',
             ),
-            311 => 
+            340 => 
             array (
                 'id' => 341,
                 'address' => 'MCLL Highway, Zone II',
@@ -4382,11 +5128,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 318,
+                'addressable_id' => 318,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:18:33',
                 'updated_at' => '2024-11-14 18:18:33',
             ),
-            312 => 
+            341 => 
             array (
                 'id' => 342,
                 'address' => 'San Luis Bldg., San Jose Rd.',
@@ -4396,11 +5143,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 319,
+                'addressable_id' => 319,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:20:05',
                 'updated_at' => '2024-11-14 18:20:05',
             ),
-            313 => 
+            342 => 
             array (
                 'id' => 343,
                 'address' => 'City Mart Bldg., I. Magno St., Corner Barcelona St.',
@@ -4410,11 +5158,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 320,
+                'addressable_id' => 320,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:22:10',
                 'updated_at' => '2024-11-14 18:22:10',
             ),
-            314 => 
+            343 => 
             array (
                 'id' => 344,
                 'address' => 'MCLL Highway, Zone V-A, Lumiyap',
@@ -4424,11 +5173,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 321,
+                'addressable_id' => 321,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:24:08',
                 'updated_at' => '2024-11-14 18:24:08',
             ),
-            315 => 
+            344 => 
             array (
                 'id' => 345,
                 'address' => 'National Highway',
@@ -4438,11 +5188,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097206000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 322,
+                'addressable_id' => 322,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:32:17',
                 'updated_at' => '2024-11-14 18:32:17',
             ),
-            316 => 
+            345 => 
             array (
                 'id' => 346,
                 'address' => 'MCLL Highway, Yu Bldg.',
@@ -4452,11 +5203,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 323,
+                'addressable_id' => 323,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:46:44',
                 'updated_at' => '2024-11-14 18:46:44',
             ),
-            317 => 
+            346 => 
             array (
                 'id' => 347,
                 'address' => 'Cadena de Amor cor. Bougainvilla St.',
@@ -4466,11 +5218,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 324,
+                'addressable_id' => 324,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:48:43',
                 'updated_at' => '2024-11-14 18:48:43',
             ),
-            318 => 
+            347 => 
             array (
                 'id' => 348,
                 'address' => 'Yubenco Supermarket Inc.',
@@ -4480,11 +5233,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 325,
+                'addressable_id' => 325,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:50:44',
                 'updated_at' => '2024-11-14 18:50:44',
             ),
-            319 => 
+            348 => 
             array (
                 'id' => 349,
                 'address' => 'Purok Masigla',
@@ -4494,11 +5248,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 326,
+                'addressable_id' => 326,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:52:38',
                 'updated_at' => '2024-11-14 18:52:38',
             ),
-            320 => 
+            349 => 
             array (
                 'id' => 350,
                 'address' => 'Purok Banaba, Gaisano Grand Mall Ipil',
@@ -4508,11 +5263,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 327,
+                'addressable_id' => 327,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:54:46',
                 'updated_at' => '2024-11-14 18:54:46',
             ),
-            321 => 
+            350 => 
             array (
                 'id' => 351,
                 'address' => 'National Highway, Purok A',
@@ -4522,11 +5278,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 328,
+                'addressable_id' => 328,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:56:09',
                 'updated_at' => '2024-11-14 18:56:09',
             ),
-            322 => 
+            351 => 
             array (
                 'id' => 352,
                 'address' => 'MCLL Highway, Calle Real, Zone 1',
@@ -4536,11 +5293,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 329,
+                'addressable_id' => 329,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:57:15',
                 'updated_at' => '2024-11-14 18:57:15',
             ),
-            323 => 
+            352 => 
             array (
                 'id' => 353,
                 'address' => 'RT Bldg., San Jose Road',
@@ -4550,11 +5308,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 330,
+                'addressable_id' => 330,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 18:59:46',
                 'updated_at' => '2024-11-14 18:59:46',
             ),
-            324 => 
+            353 => 
             array (
                 'id' => 354,
                 'address' => 'Governor Ramos Corner Talungon',
@@ -4564,11 +5323,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 331,
+                'addressable_id' => 331,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:07:37',
                 'updated_at' => '2024-11-14 19:07:37',
             ),
-            325 => 
+            354 => 
             array (
                 'id' => 355,
                 'address' => 'MCLL Highway, Purok 5',
@@ -4578,11 +5338,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 332,
+                'addressable_id' => 332,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:08:58',
                 'updated_at' => '2024-11-14 19:08:58',
             ),
-            326 => 
+            355 => 
             array (
                 'id' => 356,
                 'address' => 'Dr. Evangelista Street',
@@ -4592,11 +5353,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 333,
+                'addressable_id' => 333,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:11:01',
                 'updated_at' => '2024-11-14 19:11:01',
             ),
-            327 => 
+            356 => 
             array (
                 'id' => 357,
                 'address' => 'Sia and Sons Bldg., Veterans Avenue Extension',
@@ -4606,11 +5368,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 334,
+                'addressable_id' => 334,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:13:36',
                 'updated_at' => '2024-11-14 19:13:36',
             ),
-            328 => 
+            357 => 
             array (
                 'id' => 358,
                 'address' => 'Barangay',
@@ -4620,11 +5383,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 335,
+                'addressable_id' => 335,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:16:17',
                 'updated_at' => '2024-11-14 19:16:17',
             ),
-            329 => 
+            358 => 
             array (
                 'id' => 359,
                 'address' => 'M-Bros Bldg., Gov. Ramos Avenue',
@@ -4634,11 +5398,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 336,
+                'addressable_id' => 336,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:17:39',
                 'updated_at' => '2024-11-14 19:17:39',
             ),
-            330 => 
+            359 => 
             array (
                 'id' => 360,
                 'address' => 'RJ Bldg., Talon-Talon Loop',
@@ -4648,11 +5413,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 337,
+                'addressable_id' => 337,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:20:09',
                 'updated_at' => '2024-11-14 19:20:09',
             ),
-            331 => 
+            360 => 
             array (
                 'id' => 361,
                 'address' => 'Talon-Talon Road, Zone 5',
@@ -4662,11 +5428,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 338,
+                'addressable_id' => 338,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:22:47',
                 'updated_at' => '2024-11-14 19:22:47',
             ),
-            332 => 
+            361 => 
             array (
                 'id' => 362,
                 'address' => 'Alvarez Drive, Don Alfaro Street',
@@ -4676,11 +5443,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 339,
+                'addressable_id' => 339,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:24:44',
                 'updated_at' => '2024-11-14 19:24:44',
             ),
-            333 => 
+            362 => 
             array (
                 'id' => 363,
                 'address' => 'Purok 6',
@@ -4690,11 +5458,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 340,
+                'addressable_id' => 340,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:25:47',
                 'updated_at' => '2024-11-14 19:25:47',
             ),
-            334 => 
+            363 => 
             array (
                 'id' => 364,
                 'address' => 'Main Road',
@@ -4704,11 +5473,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 341,
+                'addressable_id' => 341,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:27:31',
                 'updated_at' => '2024-11-14 19:27:31',
             ),
-            335 => 
+            364 => 
             array (
                 'id' => 365,
                 'address' => 'Wee Agro Building, Veterans Avenue',
@@ -4718,11 +5488,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 342,
+                'addressable_id' => 342,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:43:39',
                 'updated_at' => '2024-11-14 19:43:39',
             ),
-            336 => 
+            365 => 
             array (
                 'id' => 366,
                 'address' => 'MCLL Highway, Purok II',
@@ -4732,11 +5503,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 343,
+                'addressable_id' => 343,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:44:53',
                 'updated_at' => '2024-11-14 19:44:53',
             ),
-            337 => 
+            366 => 
             array (
                 'id' => 367,
                 'address' => 'SCC West Campus',
@@ -4746,11 +5518,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 344,
+                'addressable_id' => 344,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-14 19:46:50',
                 'updated_at' => '2024-11-14 19:46:50',
             ),
-            338 => 
+            367 => 
             array (
                 'id' => 368,
                 'address' => 'Cabato Road',
@@ -4760,11 +5533,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 345,
+                'addressable_id' => 345,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-18 22:08:30',
                 'updated_at' => '2024-11-18 22:08:30',
             ),
-            339 => 
+            368 => 
             array (
                 'id' => 369,
                 'address' => 'Near Batu Catholic Church',
@@ -4774,11 +5548,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 346,
+                'addressable_id' => 346,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-18 22:36:12',
                 'updated_at' => '2024-11-18 22:36:12',
             ),
-            340 => 
+            369 => 
             array (
                 'id' => 370,
                 'address' => 'Annie\'s Store, Navarro Court Ext., Barredo Compound',
@@ -4788,11 +5563,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 347,
+                'addressable_id' => 347,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-18 23:32:46',
                 'updated_at' => '2024-11-18 23:32:46',
             ),
-            341 => 
+            370 => 
             array (
                 'id' => 371,
                 'address' => 'Block 5 Saturn Street, Puentebella Subdivision',
@@ -4802,11 +5578,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '064501000',
                 'province_code' => '064500000',
                 'region_code' => '060000000',
-                'customer_id' => 348,
+                'addressable_id' => 348,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-19 20:01:03',
                 'updated_at' => '2024-11-19 20:01:03',
             ),
-            342 => 
+            371 => 
             array (
                 'id' => 372,
                 'address' => '3rd Floor, MPO Center, Don Alfaro St.',
@@ -4816,11 +5593,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 349,
+                'addressable_id' => 349,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-19 22:16:38',
                 'updated_at' => '2024-11-19 22:16:38',
             ),
-            343 => 
+            372 => 
             array (
                 'id' => 373,
                 'address' => '3rd Floor, MPO Center, Don Alfaro St.',
@@ -4830,11 +5608,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 350,
+                'addressable_id' => 350,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-19 22:23:30',
                 'updated_at' => '2024-11-19 22:23:30',
             ),
-            344 => 
+            373 => 
             array (
                 'id' => 374,
                 'address' => 'Port Area, Purok Bagong Silang',
@@ -4844,11 +5623,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 351,
+                'addressable_id' => 351,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-21 17:48:13',
                 'updated_at' => '2024-11-21 17:48:13',
             ),
-            345 => 
+            374 => 
             array (
                 'id' => 375,
                 'address' => 'Lower Inuman',
@@ -4858,11 +5638,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 352,
+                'addressable_id' => 352,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-21 19:21:18',
                 'updated_at' => '2024-11-21 19:21:18',
             ),
-            346 => 
+            375 => 
             array (
                 'id' => 376,
                 'address' => 'Anflo Industrial Estate',
@@ -4872,11 +5653,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112315000',
                 'province_code' => '112300000',
                 'region_code' => '110000000',
-                'customer_id' => 353,
+                'addressable_id' => 353,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-21 21:43:54',
                 'updated_at' => '2024-11-21 21:43:54',
             ),
-            347 => 
+            376 => 
             array (
                 'id' => 377,
                 'address' => 'Tuan Ligaddung Lipae Street',
@@ -4886,11 +5668,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157010000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 354,
+                'addressable_id' => 354,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-25 18:53:27',
                 'updated_at' => '2024-11-25 18:53:27',
             ),
-            348 => 
+            377 => 
             array (
                 'id' => 378,
                 'address' => 'Buenavista Street',
@@ -4900,11 +5683,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 355,
+                'addressable_id' => 355,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-25 19:48:14',
                 'updated_at' => '2024-11-25 19:48:14',
             ),
-            349 => 
+            378 => 
             array (
                 'id' => 379,
                 'address' => 'Purok Jasmin',
@@ -4914,11 +5698,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 356,
+                'addressable_id' => 356,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-25 20:40:31',
                 'updated_at' => '2024-11-25 20:40:31',
             ),
-            350 => 
+            379 => 
             array (
                 'id' => 380,
                 'address' => 'Purok 4, Zone 3',
@@ -4928,11 +5713,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 357,
+                'addressable_id' => 357,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-26 17:36:19',
                 'updated_at' => '2024-11-26 17:36:19',
             ),
-            351 => 
+            380 => 
             array (
                 'id' => 381,
                 'address' => 'Recodo Elementary School',
@@ -4942,11 +5728,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 358,
+                'addressable_id' => 358,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-26 20:30:16',
                 'updated_at' => '2024-11-26 20:30:16',
             ),
-            352 => 
+            381 => 
             array (
                 'id' => 382,
                 'address' => 'National Highway',
@@ -4956,11 +5743,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 359,
+                'addressable_id' => 359,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-26 22:27:09',
                 'updated_at' => '2024-11-26 22:27:09',
             ),
-            353 => 
+            382 => 
             array (
                 'id' => 383,
                 'address' => 'National Highway',
@@ -4970,11 +5758,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 360,
+                'addressable_id' => 360,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-26 22:29:51',
                 'updated_at' => '2024-11-26 22:29:51',
             ),
-            354 => 
+            383 => 
             array (
                 'id' => 384,
                 'address' => 'Purok Rose, Dr. Elago Street',
@@ -4984,11 +5773,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097317000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 361,
+                'addressable_id' => 361,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 19:40:09',
                 'updated_at' => '2024-11-28 19:40:09',
             ),
-            355 => 
+            384 => 
             array (
                 'id' => 385,
                 'address' => 'Ventura Building, Zone 6',
@@ -4998,11 +5788,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 362,
+                'addressable_id' => 362,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 22:09:06',
                 'updated_at' => '2024-11-28 22:09:06',
             ),
-            356 => 
+            385 => 
             array (
                 'id' => 386,
                 'address' => 'Barangay Hall',
@@ -5012,11 +5803,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 363,
+                'addressable_id' => 363,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 23:32:30',
                 'updated_at' => '2024-11-28 23:32:30',
             ),
-            357 => 
+            386 => 
             array (
                 'id' => 387,
                 'address' => 'Barangay Hall',
@@ -5026,11 +5818,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 364,
+                'addressable_id' => 364,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 23:34:34',
                 'updated_at' => '2024-11-28 23:34:34',
             ),
-            358 => 
+            387 => 
             array (
                 'id' => 388,
                 'address' => '-',
@@ -5040,11 +5833,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 365,
+                'addressable_id' => 365,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 23:36:06',
                 'updated_at' => '2024-11-28 23:36:06',
             ),
-            359 => 
+            388 => 
             array (
                 'id' => 389,
                 'address' => '-',
@@ -5054,11 +5848,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 366,
+                'addressable_id' => 366,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 23:37:02',
                 'updated_at' => '2024-11-28 23:37:02',
             ),
-            360 => 
+            389 => 
             array (
                 'id' => 390,
                 'address' => '-',
@@ -5068,11 +5863,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 367,
+                'addressable_id' => 367,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 23:38:06',
                 'updated_at' => '2024-11-28 23:38:06',
             ),
-            361 => 
+            390 => 
             array (
                 'id' => 391,
                 'address' => '-',
@@ -5082,11 +5878,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 368,
+                'addressable_id' => 368,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-28 23:38:58',
                 'updated_at' => '2024-11-28 23:38:58',
             ),
-            362 => 
+            391 => 
             array (
                 'id' => 392,
                 'address' => 'Blk 1 Lot 24, Lobregat Village',
@@ -5096,11 +5893,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 369,
+                'addressable_id' => 369,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-29 18:28:47',
                 'updated_at' => '2024-11-29 18:28:47',
             ),
-            363 => 
+            392 => 
             array (
                 'id' => 393,
                 'address' => '-',
@@ -5110,11 +5908,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 370,
+                'addressable_id' => 370,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-29 22:07:23',
                 'updated_at' => '2024-11-29 22:07:23',
             ),
-            364 => 
+            393 => 
             array (
                 'id' => 394,
                 'address' => '-',
@@ -5124,11 +5923,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 371,
+                'addressable_id' => 371,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-29 22:09:20',
                 'updated_at' => '2024-11-29 22:09:20',
             ),
-            365 => 
+            394 => 
             array (
                 'id' => 395,
                 'address' => '-',
@@ -5138,11 +5938,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 372,
+                'addressable_id' => 372,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 01:23:04',
                 'updated_at' => '2024-11-30 01:23:04',
             ),
-            366 => 
+            395 => 
             array (
                 'id' => 396,
                 'address' => '-',
@@ -5152,11 +5953,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 373,
+                'addressable_id' => 373,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 01:30:59',
                 'updated_at' => '2024-11-30 01:30:59',
             ),
-            367 => 
+            396 => 
             array (
                 'id' => 397,
                 'address' => 'Star Apple Drive',
@@ -5166,11 +5968,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 374,
+                'addressable_id' => 374,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 01:40:30',
                 'updated_at' => '2024-11-30 01:40:30',
             ),
-            368 => 
+            397 => 
             array (
                 'id' => 398,
                 'address' => '-',
@@ -5180,11 +5983,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 375,
+                'addressable_id' => 375,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 01:46:23',
                 'updated_at' => '2024-11-30 01:46:23',
             ),
-            369 => 
+            398 => 
             array (
                 'id' => 399,
                 'address' => '-',
@@ -5194,11 +5998,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 376,
+                'addressable_id' => 376,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:00:25',
                 'updated_at' => '2024-11-30 02:00:25',
             ),
-            370 => 
+            399 => 
             array (
                 'id' => 400,
                 'address' => '-',
@@ -5208,11 +6013,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 377,
+                'addressable_id' => 377,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:20:12',
                 'updated_at' => '2024-11-30 02:20:12',
             ),
-            371 => 
+            400 => 
             array (
                 'id' => 401,
                 'address' => '-',
@@ -5222,11 +6028,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 378,
+                'addressable_id' => 378,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:26:18',
                 'updated_at' => '2024-11-30 02:26:18',
             ),
-            372 => 
+            401 => 
             array (
                 'id' => 402,
                 'address' => '-',
@@ -5236,11 +6043,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 379,
+                'addressable_id' => 379,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:31:04',
                 'updated_at' => '2024-11-30 02:31:04',
             ),
-            373 => 
+            402 => 
             array (
                 'id' => 403,
                 'address' => '-',
@@ -5250,11 +6058,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 380,
+                'addressable_id' => 380,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:34:48',
                 'updated_at' => '2024-11-30 02:34:48',
             ),
-            374 => 
+            403 => 
             array (
                 'id' => 404,
                 'address' => 'Flamingo',
@@ -5264,11 +6073,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 381,
+                'addressable_id' => 381,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:40:02',
                 'updated_at' => '2024-11-30 02:40:02',
             ),
-            375 => 
+            404 => 
             array (
                 'id' => 405,
                 'address' => 'Hipolito Drive',
@@ -5278,11 +6088,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 382,
+                'addressable_id' => 382,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:45:52',
                 'updated_at' => '2024-11-30 02:45:52',
             ),
-            376 => 
+            405 => 
             array (
                 'id' => 406,
                 'address' => '-',
@@ -5292,11 +6103,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 383,
+                'addressable_id' => 383,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:51:07',
                 'updated_at' => '2024-11-30 02:51:07',
             ),
-            377 => 
+            406 => 
             array (
                 'id' => 407,
                 'address' => '-',
@@ -5306,11 +6118,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 384,
+                'addressable_id' => 384,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 02:56:29',
                 'updated_at' => '2024-11-30 02:56:29',
             ),
-            378 => 
+            407 => 
             array (
                 'id' => 408,
                 'address' => 'Sitio Latap',
@@ -5320,11 +6133,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 385,
+                'addressable_id' => 385,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:03:19',
                 'updated_at' => '2024-11-30 03:03:19',
             ),
-            379 => 
+            408 => 
             array (
                 'id' => 409,
                 'address' => '-',
@@ -5334,11 +6148,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 386,
+                'addressable_id' => 386,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:09:25',
                 'updated_at' => '2024-11-30 03:09:25',
             ),
-            380 => 
+            409 => 
             array (
                 'id' => 410,
                 'address' => '-',
@@ -5348,11 +6163,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 387,
+                'addressable_id' => 387,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:13:49',
                 'updated_at' => '2024-11-30 03:13:49',
             ),
-            381 => 
+            410 => 
             array (
                 'id' => 411,
                 'address' => '-',
@@ -5362,11 +6178,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 388,
+                'addressable_id' => 388,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:18:30',
                 'updated_at' => '2024-11-30 03:18:30',
             ),
-            382 => 
+            411 => 
             array (
                 'id' => 412,
                 'address' => '-',
@@ -5376,11 +6193,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 389,
+                'addressable_id' => 389,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:23:51',
                 'updated_at' => '2024-11-30 03:23:51',
             ),
-            383 => 
+            412 => 
             array (
                 'id' => 413,
                 'address' => '-',
@@ -5390,11 +6208,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 390,
+                'addressable_id' => 390,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:28:03',
                 'updated_at' => '2024-11-30 03:28:03',
             ),
-            384 => 
+            413 => 
             array (
                 'id' => 414,
                 'address' => '-',
@@ -5404,11 +6223,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 391,
+                'addressable_id' => 391,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:34:28',
                 'updated_at' => '2024-11-30 03:34:28',
             ),
-            385 => 
+            414 => 
             array (
                 'id' => 415,
                 'address' => '-',
@@ -5418,11 +6238,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 392,
+                'addressable_id' => 392,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:43:47',
                 'updated_at' => '2024-11-30 03:43:47',
             ),
-            386 => 
+            415 => 
             array (
                 'id' => 416,
                 'address' => '-',
@@ -5432,11 +6253,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 393,
+                'addressable_id' => 393,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 03:52:04',
                 'updated_at' => '2024-11-30 03:52:04',
             ),
-            387 => 
+            416 => 
             array (
                 'id' => 417,
                 'address' => '-',
@@ -5446,11 +6268,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 394,
+                'addressable_id' => 394,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 04:03:38',
                 'updated_at' => '2024-11-30 04:03:38',
             ),
-            388 => 
+            417 => 
             array (
                 'id' => 418,
                 'address' => '-',
@@ -5460,11 +6283,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 395,
+                'addressable_id' => 395,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 04:08:13',
                 'updated_at' => '2024-11-30 04:08:13',
             ),
-            389 => 
+            418 => 
             array (
                 'id' => 419,
                 'address' => '-',
@@ -5474,11 +6298,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 396,
+                'addressable_id' => 396,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-11-30 04:12:23',
                 'updated_at' => '2024-11-30 04:12:23',
             ),
-            390 => 
+            419 => 
             array (
                 'id' => 420,
                 'address' => '-',
@@ -5488,11 +6313,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 397,
+                'addressable_id' => 397,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:12:14',
                 'updated_at' => '2024-12-02 18:12:14',
             ),
-            391 => 
+            420 => 
             array (
                 'id' => 421,
                 'address' => '-',
@@ -5502,11 +6328,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 398,
+                'addressable_id' => 398,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:19:21',
                 'updated_at' => '2024-12-02 18:19:21',
             ),
-            392 => 
+            421 => 
             array (
                 'id' => 422,
                 'address' => '-',
@@ -5516,11 +6343,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 399,
+                'addressable_id' => 399,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:23:43',
                 'updated_at' => '2024-12-02 18:23:43',
             ),
-            393 => 
+            422 => 
             array (
                 'id' => 423,
                 'address' => '-',
@@ -5530,11 +6358,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 400,
+                'addressable_id' => 400,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:27:26',
                 'updated_at' => '2024-12-02 18:27:26',
             ),
-            394 => 
+            423 => 
             array (
                 'id' => 424,
                 'address' => '-',
@@ -5544,11 +6373,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 401,
+                'addressable_id' => 401,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:31:16',
                 'updated_at' => '2024-12-02 18:31:16',
             ),
-            395 => 
+            424 => 
             array (
                 'id' => 425,
                 'address' => '-',
@@ -5558,11 +6388,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 402,
+                'addressable_id' => 402,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:35:37',
                 'updated_at' => '2024-12-02 18:35:37',
             ),
-            396 => 
+            425 => 
             array (
                 'id' => 426,
                 'address' => '-',
@@ -5572,11 +6403,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 403,
+                'addressable_id' => 403,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:39:34',
                 'updated_at' => '2024-12-02 18:39:34',
             ),
-            397 => 
+            426 => 
             array (
                 'id' => 427,
                 'address' => '-',
@@ -5586,11 +6418,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 404,
+                'addressable_id' => 404,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:43:12',
                 'updated_at' => '2024-12-02 18:43:12',
             ),
-            398 => 
+            427 => 
             array (
                 'id' => 428,
                 'address' => '-',
@@ -5600,11 +6433,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 405,
+                'addressable_id' => 405,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:46:53',
                 'updated_at' => '2024-12-02 18:46:53',
             ),
-            399 => 
+            428 => 
             array (
                 'id' => 429,
                 'address' => '-',
@@ -5614,11 +6448,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 406,
+                'addressable_id' => 406,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:53:32',
                 'updated_at' => '2024-12-02 18:53:32',
             ),
-            400 => 
+            429 => 
             array (
                 'id' => 430,
                 'address' => '-',
@@ -5628,11 +6463,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 407,
+                'addressable_id' => 407,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 18:57:18',
                 'updated_at' => '2024-12-02 18:57:18',
             ),
-            401 => 
+            430 => 
             array (
                 'id' => 431,
                 'address' => '-',
@@ -5642,11 +6478,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 408,
+                'addressable_id' => 408,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 19:00:58',
                 'updated_at' => '2024-12-02 19:00:58',
             ),
-            402 => 
+            431 => 
             array (
                 'id' => 432,
                 'address' => '-',
@@ -5656,11 +6493,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 409,
+                'addressable_id' => 409,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 19:06:01',
                 'updated_at' => '2024-12-02 19:06:01',
             ),
-            403 => 
+            432 => 
             array (
                 'id' => 433,
                 'address' => 'Purok 3B',
@@ -5670,11 +6508,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 410,
+                'addressable_id' => 410,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-02 23:36:50',
                 'updated_at' => '2024-12-02 23:36:50',
             ),
-            404 => 
+            433 => 
             array (
                 'id' => 434,
                 'address' => 'Warehouse 6, ZCSEZA I, San Ramon',
@@ -5684,11 +6523,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 411,
+                'addressable_id' => 411,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 16:11:45',
                 'updated_at' => '2024-12-11 19:29:21',
             ),
-            405 => 
+            434 => 
             array (
                 'id' => 435,
                 'address' => '.',
@@ -5698,11 +6538,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097318000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 412,
+                'addressable_id' => 412,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 18:56:37',
                 'updated_at' => '2024-12-03 22:49:25',
             ),
-            406 => 
+            435 => 
             array (
                 'id' => 436,
                 'address' => '.',
@@ -5712,11 +6553,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097308000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 413,
+                'addressable_id' => 413,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 18:58:35',
                 'updated_at' => '2024-12-03 22:49:14',
             ),
-            407 => 
+            436 => 
             array (
                 'id' => 437,
                 'address' => 'Ubay, Labason, Zamboanga Del Norte',
@@ -5726,11 +6568,27 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097205000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 414,
+                'addressable_id' => 414,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 19:00:11',
                 'updated_at' => '2024-12-03 19:00:11',
             ),
-            408 => 
+            437 => 
+            array (
+                'id' => 438,
+                'address' => 'Villateresa, Divisoria, Zamboanga City',
+                'longitude' => NULL,
+                'latitude' => NULL,
+                'barangay_code' => NULL,
+                'municipality_code' => NULL,
+                'province_code' => NULL,
+                'region_code' => NULL,
+                'addressable_id' => 415,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2024-12-03 19:07:23',
+                'updated_at' => '2024-12-03 19:07:23',
+            ),
+            438 => 
             array (
                 'id' => 439,
                 'address' => 'Blk 5, Lot 3, Villa Teresa',
@@ -5740,11 +6598,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 416,
+                'addressable_id' => 416,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 20:36:49',
                 'updated_at' => '2024-12-03 20:36:49',
             ),
-            409 => 
+            439 => 
             array (
                 'id' => 440,
                 'address' => 'Lacosante Drive',
@@ -5754,11 +6613,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 417,
+                'addressable_id' => 417,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 22:05:29',
                 'updated_at' => '2024-12-03 22:49:44',
             ),
-            410 => 
+            440 => 
             array (
                 'id' => 441,
                 'address' => 'Margarita',
@@ -5768,11 +6628,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 418,
+                'addressable_id' => 418,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 23:29:29',
                 'updated_at' => '2024-12-03 23:29:47',
             ),
-            411 => 
+            441 => 
             array (
                 'id' => 442,
                 'address' => 'Maestra Vicenta St.',
@@ -5782,11 +6643,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 419,
+                'addressable_id' => 419,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-03 23:41:28',
                 'updated_at' => '2024-12-03 23:41:28',
             ),
-            412 => 
+            442 => 
             array (
                 'id' => 443,
                 'address' => 'Sea Oil Gasoline Station',
@@ -5796,11 +6658,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 420,
+                'addressable_id' => 420,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-04 18:06:51',
                 'updated_at' => '2024-12-04 18:06:51',
             ),
-            413 => 
+            443 => 
             array (
                 'id' => 444,
                 'address' => 'Terracota Building, Veterans Avenue Extension',
@@ -5810,11 +6673,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 421,
+                'addressable_id' => 421,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-04 21:51:55',
                 'updated_at' => '2024-12-04 21:51:55',
             ),
-            414 => 
+            444 => 
             array (
                 'id' => 445,
                 'address' => 'Zone 3, Lope Reyes Drive',
@@ -5824,11 +6688,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 422,
+                'addressable_id' => 422,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-05 00:08:31',
                 'updated_at' => '2024-12-05 00:08:31',
             ),
-            415 => 
+            445 => 
             array (
                 'id' => 446,
                 'address' => 'Deveza Compound',
@@ -5838,11 +6703,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '045623000',
                 'province_code' => '045600000',
                 'region_code' => '040000000',
-                'customer_id' => 423,
+                'addressable_id' => 423,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-07 01:52:43',
                 'updated_at' => '2024-12-07 01:52:43',
             ),
-            416 => 
+            446 => 
             array (
                 'id' => 447,
                 'address' => 'J.P. Rizal Avenue',
@@ -5852,11 +6718,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097319000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 424,
+                'addressable_id' => 424,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-09 17:18:20',
                 'updated_at' => '2024-12-09 17:18:20',
             ),
-            417 => 
+            447 => 
             array (
                 'id' => 448,
                 'address' => 'Purok 5',
@@ -5866,11 +6733,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '160306000',
                 'province_code' => '160300000',
                 'region_code' => '160000000',
-                'customer_id' => 425,
+                'addressable_id' => 425,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-10 17:46:54',
                 'updated_at' => '2024-12-10 17:46:54',
             ),
-            418 => 
+            448 => 
             array (
                 'id' => 449,
                 'address' => 'Purok 3',
@@ -5880,11 +6748,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097315000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 426,
+                'addressable_id' => 426,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-10 18:42:35',
                 'updated_at' => '2024-12-10 18:42:35',
             ),
-            419 => 
+            449 => 
             array (
                 'id' => 450,
                 'address' => 'Talon-Talon Loop',
@@ -5894,11 +6763,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 427,
+                'addressable_id' => 427,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-10 19:08:13',
                 'updated_at' => '2024-12-10 19:08:13',
             ),
-            420 => 
+            450 => 
             array (
                 'id' => 451,
                 'address' => '-',
@@ -5908,11 +6778,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 428,
+                'addressable_id' => 428,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-10 19:10:17',
                 'updated_at' => '2024-12-10 19:10:17',
             ),
-            421 => 
+            451 => 
             array (
                 'id' => 452,
                 'address' => 'Lapu-Lapu Drive',
@@ -5922,11 +6793,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 429,
+                'addressable_id' => 429,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-10 19:12:39',
                 'updated_at' => '2024-12-10 19:12:39',
             ),
-            422 => 
+            452 => 
             array (
                 'id' => 453,
                 'address' => '-',
@@ -5936,11 +6808,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 430,
+                'addressable_id' => 430,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-11 18:23:43',
                 'updated_at' => '2024-12-11 18:23:43',
             ),
-            423 => 
+            453 => 
             array (
                 'id' => 454,
                 'address' => 'Purok 7',
@@ -5950,11 +6823,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 431,
+                'addressable_id' => 431,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-11 20:24:34',
                 'updated_at' => '2024-12-11 20:24:34',
             ),
-            424 => 
+            454 => 
             array (
                 'id' => 455,
                 'address' => '361 Sen. Gil Puyat Ave,',
@@ -5964,11 +6838,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '137602000',
                 'province_code' => '170000000',
                 'region_code' => '130000000',
-                'customer_id' => 432,
+                'addressable_id' => 432,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-12 16:27:32',
                 'updated_at' => '2024-12-12 16:27:32',
             ),
-            425 => 
+            455 => 
             array (
                 'id' => 456,
                 'address' => 'Unit 1 Leope Building Cor. J. Joaqin St. and S. Cabahug St.',
@@ -5978,11 +6853,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '072217000',
                 'province_code' => '072200000',
                 'region_code' => '070000000',
-                'customer_id' => 433,
+                'addressable_id' => 433,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-13 18:30:30',
                 'updated_at' => '2024-12-13 18:30:30',
             ),
-            426 => 
+            456 => 
             array (
                 'id' => 457,
                 'address' => 'Zone 2, Calong-calong',
@@ -5992,11 +6868,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '064501000',
                 'province_code' => '064500000',
                 'region_code' => '060000000',
-                'customer_id' => 434,
+                'addressable_id' => 434,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-13 19:22:23',
                 'updated_at' => '2024-12-13 19:22:23',
             ),
-            427 => 
+            457 => 
             array (
                 'id' => 458,
                 'address' => 'Akao Farms 1, Bypass Rd',
@@ -6006,11 +6883,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 435,
+                'addressable_id' => 435,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-14 00:44:55',
                 'updated_at' => '2024-12-14 00:44:55',
             ),
-            428 => 
+            458 => 
             array (
                 'id' => 459,
                 'address' => '-',
@@ -6020,11 +6898,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 436,
+                'addressable_id' => 436,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:49:23',
                 'updated_at' => '2024-12-15 19:49:23',
             ),
-            429 => 
+            459 => 
             array (
                 'id' => 460,
                 'address' => '-',
@@ -6034,11 +6913,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 437,
+                'addressable_id' => 437,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:50:49',
                 'updated_at' => '2024-12-15 19:50:49',
             ),
-            430 => 
+            460 => 
             array (
                 'id' => 461,
                 'address' => '-',
@@ -6048,11 +6928,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 438,
+                'addressable_id' => 438,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:51:49',
                 'updated_at' => '2024-12-15 19:51:49',
             ),
-            431 => 
+            461 => 
             array (
                 'id' => 462,
                 'address' => '-',
@@ -6062,11 +6943,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 439,
+                'addressable_id' => 439,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:52:39',
                 'updated_at' => '2024-12-15 19:52:39',
             ),
-            432 => 
+            462 => 
             array (
                 'id' => 463,
                 'address' => '-',
@@ -6076,11 +6958,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 440,
+                'addressable_id' => 440,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:53:37',
                 'updated_at' => '2024-12-15 19:53:37',
             ),
-            433 => 
+            463 => 
             array (
                 'id' => 464,
                 'address' => '-',
@@ -6090,11 +6973,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 441,
+                'addressable_id' => 441,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:55:30',
                 'updated_at' => '2024-12-15 19:55:30',
             ),
-            434 => 
+            464 => 
             array (
                 'id' => 465,
                 'address' => '-',
@@ -6104,11 +6988,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 442,
+                'addressable_id' => 442,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:57:01',
                 'updated_at' => '2024-12-15 19:57:01',
             ),
-            435 => 
+            465 => 
             array (
                 'id' => 466,
                 'address' => '-',
@@ -6118,11 +7003,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 443,
+                'addressable_id' => 443,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 19:58:02',
                 'updated_at' => '2024-12-15 19:58:02',
             ),
-            436 => 
+            466 => 
             array (
                 'id' => 467,
                 'address' => '-',
@@ -6132,11 +7018,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 444,
+                'addressable_id' => 444,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:00:03',
                 'updated_at' => '2024-12-15 20:00:03',
             ),
-            437 => 
+            467 => 
             array (
                 'id' => 468,
                 'address' => '-',
@@ -6146,11 +7033,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 445,
+                'addressable_id' => 445,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:01:57',
                 'updated_at' => '2024-12-15 20:01:57',
             ),
-            438 => 
+            468 => 
             array (
                 'id' => 469,
                 'address' => '-',
@@ -6160,11 +7048,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 446,
+                'addressable_id' => 446,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:02:54',
                 'updated_at' => '2024-12-15 20:02:54',
             ),
-            439 => 
+            469 => 
             array (
                 'id' => 470,
                 'address' => '-',
@@ -6174,11 +7063,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 447,
+                'addressable_id' => 447,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:04:39',
                 'updated_at' => '2024-12-15 20:04:39',
             ),
-            440 => 
+            470 => 
             array (
                 'id' => 471,
                 'address' => '-',
@@ -6188,11 +7078,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 448,
+                'addressable_id' => 448,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:08:09',
                 'updated_at' => '2024-12-15 20:08:09',
             ),
-            441 => 
+            471 => 
             array (
                 'id' => 472,
                 'address' => '-',
@@ -6202,11 +7093,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 449,
+                'addressable_id' => 449,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:09:10',
                 'updated_at' => '2024-12-15 20:09:10',
             ),
-            442 => 
+            472 => 
             array (
                 'id' => 473,
                 'address' => '-',
@@ -6216,11 +7108,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 450,
+                'addressable_id' => 450,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:12:37',
                 'updated_at' => '2024-12-15 20:12:37',
             ),
-            443 => 
+            473 => 
             array (
                 'id' => 474,
                 'address' => '-',
@@ -6230,11 +7123,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 451,
+                'addressable_id' => 451,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:15:48',
                 'updated_at' => '2024-12-15 20:15:48',
             ),
-            444 => 
+            474 => 
             array (
                 'id' => 475,
                 'address' => '-',
@@ -6244,11 +7138,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 452,
+                'addressable_id' => 452,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:17:24',
                 'updated_at' => '2024-12-15 20:17:24',
             ),
-            445 => 
+            475 => 
             array (
                 'id' => 476,
                 'address' => '-',
@@ -6258,11 +7153,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 453,
+                'addressable_id' => 453,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:18:33',
                 'updated_at' => '2024-12-15 20:18:33',
             ),
-            446 => 
+            476 => 
             array (
                 'id' => 477,
                 'address' => '-',
@@ -6272,11 +7168,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 454,
+                'addressable_id' => 454,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:20:19',
                 'updated_at' => '2024-12-15 20:20:19',
             ),
-            447 => 
+            477 => 
             array (
                 'id' => 478,
                 'address' => '-',
@@ -6286,11 +7183,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 455,
+                'addressable_id' => 455,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:21:04',
                 'updated_at' => '2024-12-15 20:21:04',
             ),
-            448 => 
+            478 => 
             array (
                 'id' => 479,
                 'address' => '-',
@@ -6300,11 +7198,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 456,
+                'addressable_id' => 456,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:23:14',
                 'updated_at' => '2024-12-15 20:23:14',
             ),
-            449 => 
+            479 => 
             array (
                 'id' => 480,
                 'address' => '-',
@@ -6314,11 +7213,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 457,
+                'addressable_id' => 457,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:25:16',
                 'updated_at' => '2024-12-15 20:25:16',
             ),
-            450 => 
+            480 => 
             array (
                 'id' => 481,
                 'address' => '-',
@@ -6328,11 +7228,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 458,
+                'addressable_id' => 458,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:27:32',
                 'updated_at' => '2024-12-15 20:27:32',
             ),
-            451 => 
+            481 => 
             array (
                 'id' => 482,
                 'address' => '-',
@@ -6342,11 +7243,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 459,
+                'addressable_id' => 459,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:29:34',
                 'updated_at' => '2024-12-15 20:29:34',
             ),
-            452 => 
+            482 => 
             array (
                 'id' => 483,
                 'address' => '-',
@@ -6356,11 +7258,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 460,
+                'addressable_id' => 460,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:30:22',
                 'updated_at' => '2024-12-15 20:30:22',
             ),
-            453 => 
+            483 => 
             array (
                 'id' => 484,
                 'address' => '-',
@@ -6370,11 +7273,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 461,
+                'addressable_id' => 461,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:31:09',
                 'updated_at' => '2024-12-15 20:31:09',
             ),
-            454 => 
+            484 => 
             array (
                 'id' => 485,
                 'address' => '-',
@@ -6384,11 +7288,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 462,
+                'addressable_id' => 462,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:31:56',
                 'updated_at' => '2024-12-15 20:31:56',
             ),
-            455 => 
+            485 => 
             array (
                 'id' => 486,
                 'address' => '-',
@@ -6398,11 +7303,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 463,
+                'addressable_id' => 463,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:33:59',
                 'updated_at' => '2024-12-15 20:33:59',
             ),
-            456 => 
+            486 => 
             array (
                 'id' => 487,
                 'address' => '-',
@@ -6412,11 +7318,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 464,
+                'addressable_id' => 464,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:34:46',
                 'updated_at' => '2024-12-15 20:34:46',
             ),
-            457 => 
+            487 => 
             array (
                 'id' => 488,
                 'address' => '-',
@@ -6426,11 +7333,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 465,
+                'addressable_id' => 465,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:35:36',
                 'updated_at' => '2024-12-15 20:35:36',
             ),
-            458 => 
+            488 => 
             array (
                 'id' => 489,
                 'address' => '-',
@@ -6440,11 +7348,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 466,
+                'addressable_id' => 466,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:36:21',
                 'updated_at' => '2024-12-15 20:36:21',
             ),
-            459 => 
+            489 => 
             array (
                 'id' => 490,
                 'address' => '-',
@@ -6454,11 +7363,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 467,
+                'addressable_id' => 467,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:37:08',
                 'updated_at' => '2024-12-15 20:37:08',
             ),
-            460 => 
+            490 => 
             array (
                 'id' => 491,
                 'address' => '-',
@@ -6468,11 +7378,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 468,
+                'addressable_id' => 468,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:38:29',
                 'updated_at' => '2024-12-15 20:38:29',
             ),
-            461 => 
+            491 => 
             array (
                 'id' => 492,
                 'address' => '-',
@@ -6482,11 +7393,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 469,
+                'addressable_id' => 469,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:39:21',
                 'updated_at' => '2024-12-15 20:39:21',
             ),
-            462 => 
+            492 => 
             array (
                 'id' => 493,
                 'address' => '-',
@@ -6496,11 +7408,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 470,
+                'addressable_id' => 470,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:40:06',
                 'updated_at' => '2024-12-15 20:40:06',
             ),
-            463 => 
+            493 => 
             array (
                 'id' => 494,
                 'address' => '-',
@@ -6510,11 +7423,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 471,
+                'addressable_id' => 471,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:40:54',
                 'updated_at' => '2024-12-15 20:40:54',
             ),
-            464 => 
+            494 => 
             array (
                 'id' => 495,
                 'address' => '-',
@@ -6524,11 +7438,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 472,
+                'addressable_id' => 472,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:41:33',
                 'updated_at' => '2024-12-15 20:41:33',
             ),
-            465 => 
+            495 => 
             array (
                 'id' => 496,
                 'address' => '-',
@@ -6538,11 +7453,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098302000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 473,
+                'addressable_id' => 473,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:42:21',
                 'updated_at' => '2024-12-15 20:42:21',
             ),
-            466 => 
+            496 => 
             array (
                 'id' => 497,
                 'address' => '-',
@@ -6552,11 +7468,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 474,
+                'addressable_id' => 474,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:44:51',
                 'updated_at' => '2024-12-15 20:44:51',
             ),
-            467 => 
+            497 => 
             array (
                 'id' => 498,
                 'address' => '-',
@@ -6566,11 +7483,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 475,
+                'addressable_id' => 475,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:46:20',
                 'updated_at' => '2024-12-15 20:46:20',
             ),
-            468 => 
+            498 => 
             array (
                 'id' => 499,
                 'address' => '-',
@@ -6580,11 +7498,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 476,
+                'addressable_id' => 476,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:49:22',
                 'updated_at' => '2024-12-15 20:49:22',
             ),
-            469 => 
+            499 => 
             array (
                 'id' => 500,
                 'address' => '-',
@@ -6594,11 +7513,14 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 477,
+                'addressable_id' => 477,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:50:31',
                 'updated_at' => '2024-12-15 20:50:31',
             ),
-            470 => 
+        ));
+        \DB::table('addresses')->insert(array (
+            0 => 
             array (
                 'id' => 501,
                 'address' => '-',
@@ -6608,11 +7530,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 478,
+                'addressable_id' => 478,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:51:37',
                 'updated_at' => '2024-12-15 20:51:37',
             ),
-            471 => 
+            1 => 
             array (
                 'id' => 502,
                 'address' => '-',
@@ -6622,11 +7545,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 479,
+                'addressable_id' => 479,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:55:28',
                 'updated_at' => '2024-12-15 20:55:28',
             ),
-            472 => 
+            2 => 
             array (
                 'id' => 503,
                 'address' => '-',
@@ -6636,11 +7560,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 480,
+                'addressable_id' => 480,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:56:23',
                 'updated_at' => '2024-12-15 20:56:23',
             ),
-            473 => 
+            3 => 
             array (
                 'id' => 504,
                 'address' => '-',
@@ -6650,11 +7575,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 481,
+                'addressable_id' => 481,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:57:08',
                 'updated_at' => '2024-12-15 20:57:08',
             ),
-            474 => 
+            4 => 
             array (
                 'id' => 505,
                 'address' => '-',
@@ -6664,11 +7590,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 482,
+                'addressable_id' => 482,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:57:51',
                 'updated_at' => '2024-12-15 20:57:51',
             ),
-            475 => 
+            5 => 
             array (
                 'id' => 506,
                 'address' => '-',
@@ -6678,11 +7605,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 483,
+                'addressable_id' => 483,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 20:59:02',
                 'updated_at' => '2024-12-15 20:59:02',
             ),
-            476 => 
+            6 => 
             array (
                 'id' => 507,
                 'address' => '-',
@@ -6692,11 +7620,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 484,
+                'addressable_id' => 484,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:02:35',
                 'updated_at' => '2024-12-15 21:02:35',
             ),
-            477 => 
+            7 => 
             array (
                 'id' => 508,
                 'address' => '-',
@@ -6706,11 +7635,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 485,
+                'addressable_id' => 485,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:03:26',
                 'updated_at' => '2024-12-15 21:03:26',
             ),
-            478 => 
+            8 => 
             array (
                 'id' => 509,
                 'address' => '-',
@@ -6720,11 +7650,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 486,
+                'addressable_id' => 486,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:04:16',
                 'updated_at' => '2024-12-15 21:04:16',
             ),
-            479 => 
+            9 => 
             array (
                 'id' => 510,
                 'address' => '-',
@@ -6734,11 +7665,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 487,
+                'addressable_id' => 487,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:04:53',
                 'updated_at' => '2024-12-15 21:04:53',
             ),
-            480 => 
+            10 => 
             array (
                 'id' => 511,
                 'address' => '-',
@@ -6748,11 +7680,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 488,
+                'addressable_id' => 488,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:07:17',
                 'updated_at' => '2024-12-15 21:07:17',
             ),
-            481 => 
+            11 => 
             array (
                 'id' => 512,
                 'address' => '-',
@@ -6762,11 +7695,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 489,
+                'addressable_id' => 489,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:09:22',
                 'updated_at' => '2024-12-15 21:09:22',
             ),
-            482 => 
+            12 => 
             array (
                 'id' => 513,
                 'address' => '-',
@@ -6776,11 +7710,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 490,
+                'addressable_id' => 490,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:11:41',
                 'updated_at' => '2024-12-15 21:11:41',
             ),
-            483 => 
+            13 => 
             array (
                 'id' => 514,
                 'address' => '-',
@@ -6790,11 +7725,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 491,
+                'addressable_id' => 491,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:12:47',
                 'updated_at' => '2024-12-15 21:12:47',
             ),
-            484 => 
+            14 => 
             array (
                 'id' => 515,
                 'address' => '-',
@@ -6804,11 +7740,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 492,
+                'addressable_id' => 492,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:14:44',
                 'updated_at' => '2024-12-15 21:14:44',
             ),
-            485 => 
+            15 => 
             array (
                 'id' => 516,
                 'address' => 'Lalat',
@@ -6818,11 +7755,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 493,
+                'addressable_id' => 493,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:15:35',
                 'updated_at' => '2024-12-15 21:15:35',
             ),
-            486 => 
+            16 => 
             array (
                 'id' => 517,
                 'address' => '-',
@@ -6832,11 +7770,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 494,
+                'addressable_id' => 494,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:17:23',
                 'updated_at' => '2024-12-15 21:17:23',
             ),
-            487 => 
+            17 => 
             array (
                 'id' => 518,
                 'address' => '-',
@@ -6846,11 +7785,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 495,
+                'addressable_id' => 495,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:18:40',
                 'updated_at' => '2024-12-15 21:18:40',
             ),
-            488 => 
+            18 => 
             array (
                 'id' => 519,
                 'address' => '-',
@@ -6860,11 +7800,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 496,
+                'addressable_id' => 496,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:21:02',
                 'updated_at' => '2024-12-15 21:21:02',
             ),
-            489 => 
+            19 => 
             array (
                 'id' => 520,
                 'address' => '-',
@@ -6874,11 +7815,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 497,
+                'addressable_id' => 497,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:21:50',
                 'updated_at' => '2024-12-15 21:21:50',
             ),
-            490 => 
+            20 => 
             array (
                 'id' => 521,
                 'address' => '-',
@@ -6888,11 +7830,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 498,
+                'addressable_id' => 498,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:22:32',
                 'updated_at' => '2024-12-15 21:22:32',
             ),
-            491 => 
+            21 => 
             array (
                 'id' => 522,
                 'address' => '-',
@@ -6902,11 +7845,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 499,
+                'addressable_id' => 499,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:23:19',
                 'updated_at' => '2024-12-15 21:23:19',
             ),
-            492 => 
+            22 => 
             array (
                 'id' => 523,
                 'address' => '-',
@@ -6916,11 +7860,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 500,
+                'addressable_id' => 500,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:24:39',
                 'updated_at' => '2024-12-15 21:24:39',
             ),
-            493 => 
+            23 => 
             array (
                 'id' => 524,
                 'address' => '-',
@@ -6930,11 +7875,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 501,
+                'addressable_id' => 501,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:26:52',
                 'updated_at' => '2024-12-15 21:26:52',
             ),
-            494 => 
+            24 => 
             array (
                 'id' => 525,
                 'address' => '-',
@@ -6944,11 +7890,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 502,
+                'addressable_id' => 502,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:28:39',
                 'updated_at' => '2024-12-15 21:28:39',
             ),
-            495 => 
+            25 => 
             array (
                 'id' => 526,
                 'address' => '-',
@@ -6958,11 +7905,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 503,
+                'addressable_id' => 503,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:29:28',
                 'updated_at' => '2024-12-15 21:29:28',
             ),
-            496 => 
+            26 => 
             array (
                 'id' => 527,
                 'address' => '-',
@@ -6972,11 +7920,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 504,
+                'addressable_id' => 504,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:30:59',
                 'updated_at' => '2024-12-15 21:30:59',
             ),
-            497 => 
+            27 => 
             array (
                 'id' => 528,
                 'address' => '-',
@@ -6986,11 +7935,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 505,
+                'addressable_id' => 505,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:32:08',
                 'updated_at' => '2024-12-15 21:32:08',
             ),
-            498 => 
+            28 => 
             array (
                 'id' => 529,
                 'address' => '-',
@@ -7000,11 +7950,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 506,
+                'addressable_id' => 506,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:33:49',
                 'updated_at' => '2024-12-15 21:33:49',
             ),
-            499 => 
+            29 => 
             array (
                 'id' => 530,
                 'address' => '-',
@@ -7014,13 +7965,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 507,
+                'addressable_id' => 507,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:36:16',
                 'updated_at' => '2024-12-15 21:36:16',
             ),
-        ));
-        \DB::table('addresses')->insert(array (
-            0 => 
+            30 => 
             array (
                 'id' => 531,
                 'address' => '-',
@@ -7030,11 +7980,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 508,
+                'addressable_id' => 508,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:38:20',
                 'updated_at' => '2024-12-15 21:38:20',
             ),
-            1 => 
+            31 => 
             array (
                 'id' => 532,
                 'address' => '-',
@@ -7044,11 +7995,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 509,
+                'addressable_id' => 509,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:40:06',
                 'updated_at' => '2024-12-15 21:40:06',
             ),
-            2 => 
+            32 => 
             array (
                 'id' => 533,
                 'address' => '-',
@@ -7058,11 +8010,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 510,
+                'addressable_id' => 510,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:41:12',
                 'updated_at' => '2024-12-15 21:41:12',
             ),
-            3 => 
+            33 => 
             array (
                 'id' => 534,
                 'address' => '-',
@@ -7072,11 +8025,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 511,
+                'addressable_id' => 511,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:42:16',
                 'updated_at' => '2024-12-15 21:42:16',
             ),
-            4 => 
+            34 => 
             array (
                 'id' => 535,
                 'address' => '-',
@@ -7086,11 +8040,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 512,
+                'addressable_id' => 512,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:43:57',
                 'updated_at' => '2024-12-15 21:43:57',
             ),
-            5 => 
+            35 => 
             array (
                 'id' => 536,
                 'address' => '-',
@@ -7100,11 +8055,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 513,
+                'addressable_id' => 513,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:44:44',
                 'updated_at' => '2024-12-15 21:44:44',
             ),
-            6 => 
+            36 => 
             array (
                 'id' => 537,
                 'address' => '-',
@@ -7114,11 +8070,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 514,
+                'addressable_id' => 514,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:45:58',
                 'updated_at' => '2024-12-15 21:45:58',
             ),
-            7 => 
+            37 => 
             array (
                 'id' => 538,
                 'address' => '-',
@@ -7128,11 +8085,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 515,
+                'addressable_id' => 515,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:47:50',
                 'updated_at' => '2024-12-15 21:47:50',
             ),
-            8 => 
+            38 => 
             array (
                 'id' => 539,
                 'address' => '-',
@@ -7142,11 +8100,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 516,
+                'addressable_id' => 516,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:49:32',
                 'updated_at' => '2024-12-15 21:49:32',
             ),
-            9 => 
+            39 => 
             array (
                 'id' => 540,
                 'address' => '-',
@@ -7156,11 +8115,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 517,
+                'addressable_id' => 517,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:51:14',
                 'updated_at' => '2024-12-15 21:51:14',
             ),
-            10 => 
+            40 => 
             array (
                 'id' => 541,
                 'address' => '-',
@@ -7170,11 +8130,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 518,
+                'addressable_id' => 518,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:52:35',
                 'updated_at' => '2024-12-15 21:52:35',
             ),
-            11 => 
+            41 => 
             array (
                 'id' => 542,
                 'address' => '-',
@@ -7184,11 +8145,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 519,
+                'addressable_id' => 519,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:54:22',
                 'updated_at' => '2024-12-15 21:54:22',
             ),
-            12 => 
+            42 => 
             array (
                 'id' => 543,
                 'address' => '-',
@@ -7198,11 +8160,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 520,
+                'addressable_id' => 520,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:57:16',
                 'updated_at' => '2024-12-15 21:57:16',
             ),
-            13 => 
+            43 => 
             array (
                 'id' => 544,
                 'address' => '-',
@@ -7212,11 +8175,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 521,
+                'addressable_id' => 521,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 21:59:24',
                 'updated_at' => '2024-12-15 21:59:24',
             ),
-            14 => 
+            44 => 
             array (
                 'id' => 545,
                 'address' => '-',
@@ -7226,11 +8190,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 522,
+                'addressable_id' => 522,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:00:19',
                 'updated_at' => '2024-12-15 22:00:19',
             ),
-            15 => 
+            45 => 
             array (
                 'id' => 546,
                 'address' => '-',
@@ -7240,11 +8205,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 523,
+                'addressable_id' => 523,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:01:37',
                 'updated_at' => '2024-12-15 22:01:37',
             ),
-            16 => 
+            46 => 
             array (
                 'id' => 547,
                 'address' => 'Canacan',
@@ -7254,11 +8220,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 524,
+                'addressable_id' => 524,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:02:14',
                 'updated_at' => '2024-12-15 22:02:14',
             ),
-            17 => 
+            47 => 
             array (
                 'id' => 548,
                 'address' => '-',
@@ -7268,11 +8235,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 525,
+                'addressable_id' => 525,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:03:32',
                 'updated_at' => '2024-12-15 22:03:32',
             ),
-            18 => 
+            48 => 
             array (
                 'id' => 549,
                 'address' => 'Datagan',
@@ -7282,11 +8250,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 526,
+                'addressable_id' => 526,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:04:35',
                 'updated_at' => '2024-12-15 22:04:35',
             ),
-            19 => 
+            49 => 
             array (
                 'id' => 550,
                 'address' => '-',
@@ -7296,11 +8265,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 527,
+                'addressable_id' => 527,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:05:44',
                 'updated_at' => '2024-12-15 22:05:44',
             ),
-            20 => 
+            50 => 
             array (
                 'id' => 551,
                 'address' => '-',
@@ -7310,11 +8280,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 528,
+                'addressable_id' => 528,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:07:00',
                 'updated_at' => '2024-12-15 22:07:00',
             ),
-            21 => 
+            51 => 
             array (
                 'id' => 552,
                 'address' => '-',
@@ -7324,11 +8295,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 529,
+                'addressable_id' => 529,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:07:41',
                 'updated_at' => '2024-12-15 22:07:41',
             ),
-            22 => 
+            52 => 
             array (
                 'id' => 553,
                 'address' => '-',
@@ -7338,11 +8310,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 530,
+                'addressable_id' => 530,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:09:41',
                 'updated_at' => '2024-12-15 22:09:41',
             ),
-            23 => 
+            53 => 
             array (
                 'id' => 554,
                 'address' => '-',
@@ -7352,11 +8325,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 531,
+                'addressable_id' => 531,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:11:04',
                 'updated_at' => '2024-12-15 22:11:04',
             ),
-            24 => 
+            54 => 
             array (
                 'id' => 555,
                 'address' => '-',
@@ -7366,11 +8340,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 532,
+                'addressable_id' => 532,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:14:59',
                 'updated_at' => '2024-12-15 22:14:59',
             ),
-            25 => 
+            55 => 
             array (
                 'id' => 556,
                 'address' => '-',
@@ -7380,11 +8355,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 533,
+                'addressable_id' => 533,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:15:44',
                 'updated_at' => '2024-12-15 22:15:44',
             ),
-            26 => 
+            56 => 
             array (
                 'id' => 557,
                 'address' => '-',
@@ -7394,11 +8370,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 534,
+                'addressable_id' => 534,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:16:50',
                 'updated_at' => '2024-12-15 22:16:50',
             ),
-            27 => 
+            57 => 
             array (
                 'id' => 558,
                 'address' => '-',
@@ -7408,11 +8385,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 535,
+                'addressable_id' => 535,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:17:40',
                 'updated_at' => '2024-12-15 22:17:40',
             ),
-            28 => 
+            58 => 
             array (
                 'id' => 559,
                 'address' => '-',
@@ -7422,11 +8400,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 536,
+                'addressable_id' => 536,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:18:23',
                 'updated_at' => '2024-12-15 22:18:23',
             ),
-            29 => 
+            59 => 
             array (
                 'id' => 560,
                 'address' => '-',
@@ -7436,11 +8415,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 537,
+                'addressable_id' => 537,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:19:46',
                 'updated_at' => '2024-12-15 22:19:46',
             ),
-            30 => 
+            60 => 
             array (
                 'id' => 561,
                 'address' => '-',
@@ -7450,11 +8430,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 538,
+                'addressable_id' => 538,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:21:09',
                 'updated_at' => '2024-12-15 22:21:09',
             ),
-            31 => 
+            61 => 
             array (
                 'id' => 562,
                 'address' => '-',
@@ -7464,11 +8445,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 539,
+                'addressable_id' => 539,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:22:28',
                 'updated_at' => '2024-12-15 22:22:28',
             ),
-            32 => 
+            62 => 
             array (
                 'id' => 563,
                 'address' => '-',
@@ -7478,11 +8460,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 540,
+                'addressable_id' => 540,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:23:41',
                 'updated_at' => '2024-12-15 22:23:41',
             ),
-            33 => 
+            63 => 
             array (
                 'id' => 564,
                 'address' => '-',
@@ -7492,11 +8475,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 541,
+                'addressable_id' => 541,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:24:54',
                 'updated_at' => '2024-12-15 22:24:54',
             ),
-            34 => 
+            64 => 
             array (
                 'id' => 565,
                 'address' => '-',
@@ -7506,11 +8490,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 542,
+                'addressable_id' => 542,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:26:25',
                 'updated_at' => '2024-12-15 22:26:25',
             ),
-            35 => 
+            65 => 
             array (
                 'id' => 566,
                 'address' => '-',
@@ -7520,11 +8505,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 543,
+                'addressable_id' => 543,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:27:51',
                 'updated_at' => '2024-12-15 22:27:51',
             ),
-            36 => 
+            66 => 
             array (
                 'id' => 567,
                 'address' => '-',
@@ -7534,11 +8520,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 544,
+                'addressable_id' => 544,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:29:15',
                 'updated_at' => '2024-12-15 22:29:15',
             ),
-            37 => 
+            67 => 
             array (
                 'id' => 568,
                 'address' => '-',
@@ -7548,11 +8535,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098306000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 545,
+                'addressable_id' => 545,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:30:35',
                 'updated_at' => '2024-12-15 22:30:35',
             ),
-            38 => 
+            68 => 
             array (
                 'id' => 569,
                 'address' => '-',
@@ -7562,11 +8550,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 546,
+                'addressable_id' => 546,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:39:15',
                 'updated_at' => '2024-12-15 22:39:15',
             ),
-            39 => 
+            69 => 
             array (
                 'id' => 570,
                 'address' => '-',
@@ -7576,11 +8565,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 547,
+                'addressable_id' => 547,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:40:08',
                 'updated_at' => '2024-12-15 22:40:08',
             ),
-            40 => 
+            70 => 
             array (
                 'id' => 571,
                 'address' => '-',
@@ -7590,11 +8580,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 548,
+                'addressable_id' => 548,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:40:53',
                 'updated_at' => '2024-12-15 22:40:53',
             ),
-            41 => 
+            71 => 
             array (
                 'id' => 572,
                 'address' => '-',
@@ -7604,11 +8595,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 549,
+                'addressable_id' => 549,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:41:36',
                 'updated_at' => '2024-12-15 22:41:36',
             ),
-            42 => 
+            72 => 
             array (
                 'id' => 573,
                 'address' => '-',
@@ -7618,11 +8610,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 550,
+                'addressable_id' => 550,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:42:20',
                 'updated_at' => '2024-12-15 22:42:20',
             ),
-            43 => 
+            73 => 
             array (
                 'id' => 574,
                 'address' => '-',
@@ -7632,11 +8625,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 551,
+                'addressable_id' => 551,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:43:16',
                 'updated_at' => '2024-12-15 22:43:16',
             ),
-            44 => 
+            74 => 
             array (
                 'id' => 575,
                 'address' => '-',
@@ -7646,11 +8640,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 552,
+                'addressable_id' => 552,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:45:17',
                 'updated_at' => '2024-12-15 22:45:17',
             ),
-            45 => 
+            75 => 
             array (
                 'id' => 576,
                 'address' => '-',
@@ -7660,11 +8655,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 553,
+                'addressable_id' => 553,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:45:55',
                 'updated_at' => '2024-12-15 22:45:55',
             ),
-            46 => 
+            76 => 
             array (
                 'id' => 577,
                 'address' => '-',
@@ -7674,11 +8670,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 554,
+                'addressable_id' => 554,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:46:39',
                 'updated_at' => '2024-12-15 22:46:39',
             ),
-            47 => 
+            77 => 
             array (
                 'id' => 578,
                 'address' => '-',
@@ -7688,11 +8685,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 555,
+                'addressable_id' => 555,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:47:29',
                 'updated_at' => '2024-12-15 22:47:29',
             ),
-            48 => 
+            78 => 
             array (
                 'id' => 579,
                 'address' => '-',
@@ -7702,11 +8700,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 556,
+                'addressable_id' => 556,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:49:15',
                 'updated_at' => '2024-12-15 22:49:15',
             ),
-            49 => 
+            79 => 
             array (
                 'id' => 580,
                 'address' => '-',
@@ -7716,11 +8715,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 557,
+                'addressable_id' => 557,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:49:54',
                 'updated_at' => '2024-12-15 22:49:54',
             ),
-            50 => 
+            80 => 
             array (
                 'id' => 581,
                 'address' => '-',
@@ -7730,11 +8730,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 558,
+                'addressable_id' => 558,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:50:33',
                 'updated_at' => '2024-12-15 22:50:33',
             ),
-            51 => 
+            81 => 
             array (
                 'id' => 582,
                 'address' => '-',
@@ -7744,11 +8745,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 559,
+                'addressable_id' => 559,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:51:19',
                 'updated_at' => '2024-12-15 22:51:19',
             ),
-            52 => 
+            82 => 
             array (
                 'id' => 583,
                 'address' => '-',
@@ -7758,11 +8760,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 560,
+                'addressable_id' => 560,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:51:54',
                 'updated_at' => '2024-12-15 22:51:54',
             ),
-            53 => 
+            83 => 
             array (
                 'id' => 584,
                 'address' => '-',
@@ -7772,11 +8775,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 561,
+                'addressable_id' => 561,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:52:40',
                 'updated_at' => '2024-12-15 22:52:40',
             ),
-            54 => 
+            84 => 
             array (
                 'id' => 585,
                 'address' => '-',
@@ -7786,11 +8790,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 562,
+                'addressable_id' => 562,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:54:10',
                 'updated_at' => '2024-12-15 22:54:10',
             ),
-            55 => 
+            85 => 
             array (
                 'id' => 586,
                 'address' => '-',
@@ -7800,11 +8805,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 563,
+                'addressable_id' => 563,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:54:59',
                 'updated_at' => '2024-12-15 22:54:59',
             ),
-            56 => 
+            86 => 
             array (
                 'id' => 587,
                 'address' => '-',
@@ -7814,11 +8820,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098307000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 564,
+                'addressable_id' => 564,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:55:45',
                 'updated_at' => '2024-12-15 22:55:45',
             ),
-            57 => 
+            87 => 
             array (
                 'id' => 588,
                 'address' => '-',
@@ -7828,11 +8835,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 565,
+                'addressable_id' => 565,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:57:47',
                 'updated_at' => '2024-12-15 22:57:47',
             ),
-            58 => 
+            88 => 
             array (
                 'id' => 589,
                 'address' => '-',
@@ -7842,11 +8850,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 566,
+                'addressable_id' => 566,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:58:50',
                 'updated_at' => '2024-12-15 22:58:50',
             ),
-            59 => 
+            89 => 
             array (
                 'id' => 590,
                 'address' => '-',
@@ -7856,11 +8865,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 567,
+                'addressable_id' => 567,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 22:59:57',
                 'updated_at' => '2024-12-15 22:59:57',
             ),
-            60 => 
+            90 => 
             array (
                 'id' => 591,
                 'address' => '-',
@@ -7870,11 +8880,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 568,
+                'addressable_id' => 568,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:00:44',
                 'updated_at' => '2024-12-15 23:00:44',
             ),
-            61 => 
+            91 => 
             array (
                 'id' => 592,
                 'address' => '-',
@@ -7884,11 +8895,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 569,
+                'addressable_id' => 569,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:01:28',
                 'updated_at' => '2024-12-15 23:01:28',
             ),
-            62 => 
+            92 => 
             array (
                 'id' => 593,
                 'address' => '-',
@@ -7898,11 +8910,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 570,
+                'addressable_id' => 570,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:02:38',
                 'updated_at' => '2024-12-15 23:02:38',
             ),
-            63 => 
+            93 => 
             array (
                 'id' => 594,
                 'address' => '-',
@@ -7912,11 +8925,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 571,
+                'addressable_id' => 571,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:04:08',
                 'updated_at' => '2024-12-15 23:04:08',
             ),
-            64 => 
+            94 => 
             array (
                 'id' => 595,
                 'address' => '-',
@@ -7926,11 +8940,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 572,
+                'addressable_id' => 572,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:04:47',
                 'updated_at' => '2024-12-15 23:04:47',
             ),
-            65 => 
+            95 => 
             array (
                 'id' => 596,
                 'address' => '-',
@@ -7940,11 +8955,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 573,
+                'addressable_id' => 573,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:06:17',
                 'updated_at' => '2024-12-15 23:06:17',
             ),
-            66 => 
+            96 => 
             array (
                 'id' => 597,
                 'address' => '-',
@@ -7954,11 +8970,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 574,
+                'addressable_id' => 574,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:06:56',
                 'updated_at' => '2024-12-15 23:06:56',
             ),
-            67 => 
+            97 => 
             array (
                 'id' => 598,
                 'address' => '-',
@@ -7968,11 +8985,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 575,
+                'addressable_id' => 575,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:07:35',
                 'updated_at' => '2024-12-15 23:07:35',
             ),
-            68 => 
+            98 => 
             array (
                 'id' => 599,
                 'address' => '-',
@@ -7982,11 +9000,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 576,
+                'addressable_id' => 576,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:09:06',
                 'updated_at' => '2024-12-15 23:09:06',
             ),
-            69 => 
+            99 => 
             array (
                 'id' => 600,
                 'address' => '-',
@@ -7996,11 +9015,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 577,
+                'addressable_id' => 577,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:10:34',
                 'updated_at' => '2024-12-15 23:10:34',
             ),
-            70 => 
+            100 => 
             array (
                 'id' => 601,
                 'address' => '-',
@@ -8010,11 +9030,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 578,
+                'addressable_id' => 578,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:11:21',
                 'updated_at' => '2024-12-15 23:11:21',
             ),
-            71 => 
+            101 => 
             array (
                 'id' => 602,
                 'address' => '-',
@@ -8024,11 +9045,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 579,
+                'addressable_id' => 579,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:16:15',
                 'updated_at' => '2024-12-15 23:16:15',
             ),
-            72 => 
+            102 => 
             array (
                 'id' => 603,
                 'address' => '-',
@@ -8038,11 +9060,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 580,
+                'addressable_id' => 580,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:17:33',
                 'updated_at' => '2024-12-15 23:17:33',
             ),
-            73 => 
+            103 => 
             array (
                 'id' => 604,
                 'address' => '-',
@@ -8052,11 +9075,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 581,
+                'addressable_id' => 581,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:19:28',
                 'updated_at' => '2024-12-15 23:19:28',
             ),
-            74 => 
+            104 => 
             array (
                 'id' => 605,
                 'address' => '-',
@@ -8066,11 +9090,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 582,
+                'addressable_id' => 582,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:21:08',
                 'updated_at' => '2024-12-15 23:21:08',
             ),
-            75 => 
+            105 => 
             array (
                 'id' => 606,
                 'address' => '-',
@@ -8080,11 +9105,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 583,
+                'addressable_id' => 583,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:24:04',
                 'updated_at' => '2024-12-15 23:24:04',
             ),
-            76 => 
+            106 => 
             array (
                 'id' => 607,
                 'address' => '-',
@@ -8094,11 +9120,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 584,
+                'addressable_id' => 584,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:24:44',
                 'updated_at' => '2024-12-15 23:24:44',
             ),
-            77 => 
+            107 => 
             array (
                 'id' => 608,
                 'address' => '-',
@@ -8108,11 +9135,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 585,
+                'addressable_id' => 585,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:26:21',
                 'updated_at' => '2024-12-15 23:26:21',
             ),
-            78 => 
+            108 => 
             array (
                 'id' => 609,
                 'address' => '-',
@@ -8122,11 +9150,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 586,
+                'addressable_id' => 586,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:28:25',
                 'updated_at' => '2024-12-15 23:28:25',
             ),
-            79 => 
+            109 => 
             array (
                 'id' => 610,
                 'address' => '-',
@@ -8136,11 +9165,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 587,
+                'addressable_id' => 587,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:29:17',
                 'updated_at' => '2024-12-15 23:29:17',
             ),
-            80 => 
+            110 => 
             array (
                 'id' => 611,
                 'address' => '-',
@@ -8150,11 +9180,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 588,
+                'addressable_id' => 588,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:30:20',
                 'updated_at' => '2024-12-15 23:30:20',
             ),
-            81 => 
+            111 => 
             array (
                 'id' => 612,
                 'address' => '-',
@@ -8164,11 +9195,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 589,
+                'addressable_id' => 589,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:32:00',
                 'updated_at' => '2024-12-15 23:32:00',
             ),
-            82 => 
+            112 => 
             array (
                 'id' => 613,
                 'address' => '-',
@@ -8178,11 +9210,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 590,
+                'addressable_id' => 590,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:32:42',
                 'updated_at' => '2024-12-15 23:32:42',
             ),
-            83 => 
+            113 => 
             array (
                 'id' => 614,
                 'address' => '-',
@@ -8192,11 +9225,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 591,
+                'addressable_id' => 591,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:33:21',
                 'updated_at' => '2024-12-15 23:33:21',
             ),
-            84 => 
+            114 => 
             array (
                 'id' => 615,
                 'address' => '-',
@@ -8206,11 +9240,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 592,
+                'addressable_id' => 592,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:34:13',
                 'updated_at' => '2024-12-15 23:34:13',
             ),
-            85 => 
+            115 => 
             array (
                 'id' => 616,
                 'address' => '-',
@@ -8220,11 +9255,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 593,
+                'addressable_id' => 593,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:35:07',
                 'updated_at' => '2024-12-15 23:35:07',
             ),
-            86 => 
+            116 => 
             array (
                 'id' => 617,
                 'address' => '-',
@@ -8234,11 +9270,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 594,
+                'addressable_id' => 594,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:36:27',
                 'updated_at' => '2024-12-15 23:36:27',
             ),
-            87 => 
+            117 => 
             array (
                 'id' => 618,
                 'address' => '-',
@@ -8248,11 +9285,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 595,
+                'addressable_id' => 595,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:37:40',
                 'updated_at' => '2024-12-15 23:37:40',
             ),
-            88 => 
+            118 => 
             array (
                 'id' => 619,
                 'address' => '-',
@@ -8262,11 +9300,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 596,
+                'addressable_id' => 596,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-15 23:38:31',
                 'updated_at' => '2024-12-15 23:38:31',
             ),
-            89 => 
+            119 => 
             array (
                 'id' => 620,
                 'address' => '-',
@@ -8276,11 +9315,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 597,
+                'addressable_id' => 597,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 00:15:27',
                 'updated_at' => '2024-12-30 00:15:27',
             ),
-            90 => 
+            120 => 
             array (
                 'id' => 621,
                 'address' => '-',
@@ -8290,11 +9330,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 598,
+                'addressable_id' => 598,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 00:21:11',
                 'updated_at' => '2024-12-30 00:21:11',
             ),
-            91 => 
+            121 => 
             array (
                 'id' => 622,
                 'address' => '-',
@@ -8304,11 +9345,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 599,
+                'addressable_id' => 599,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 00:24:02',
                 'updated_at' => '2024-12-30 00:24:02',
             ),
-            92 => 
+            122 => 
             array (
                 'id' => 623,
                 'address' => '-',
@@ -8318,11 +9360,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 600,
+                'addressable_id' => 600,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 00:27:19',
                 'updated_at' => '2024-12-30 00:27:19',
             ),
-            93 => 
+            123 => 
             array (
                 'id' => 624,
                 'address' => '-',
@@ -8332,11 +9375,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 601,
+                'addressable_id' => 601,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:25:09',
                 'updated_at' => '2024-12-30 02:25:09',
             ),
-            94 => 
+            124 => 
             array (
                 'id' => 625,
                 'address' => '-',
@@ -8346,11 +9390,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 602,
+                'addressable_id' => 602,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:26:24',
                 'updated_at' => '2024-12-30 02:26:24',
             ),
-            95 => 
+            125 => 
             array (
                 'id' => 626,
                 'address' => '-',
@@ -8360,11 +9405,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 603,
+                'addressable_id' => 603,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:29:01',
                 'updated_at' => '2024-12-30 02:29:01',
             ),
-            96 => 
+            126 => 
             array (
                 'id' => 627,
                 'address' => '-',
@@ -8374,11 +9420,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 604,
+                'addressable_id' => 604,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:39:46',
                 'updated_at' => '2024-12-30 02:39:46',
             ),
-            97 => 
+            127 => 
             array (
                 'id' => 628,
                 'address' => '-',
@@ -8388,11 +9435,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 605,
+                'addressable_id' => 605,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:43:06',
                 'updated_at' => '2024-12-30 02:43:06',
             ),
-            98 => 
+            128 => 
             array (
                 'id' => 629,
                 'address' => '-',
@@ -8402,11 +9450,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 606,
+                'addressable_id' => 606,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:44:00',
                 'updated_at' => '2024-12-30 02:44:00',
             ),
-            99 => 
+            129 => 
             array (
                 'id' => 630,
                 'address' => '-',
@@ -8416,11 +9465,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 607,
+                'addressable_id' => 607,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:45:05',
                 'updated_at' => '2024-12-30 02:45:05',
             ),
-            100 => 
+            130 => 
             array (
                 'id' => 631,
                 'address' => '-',
@@ -8430,11 +9480,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 608,
+                'addressable_id' => 608,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:46:07',
                 'updated_at' => '2024-12-30 02:46:07',
             ),
-            101 => 
+            131 => 
             array (
                 'id' => 632,
                 'address' => '-',
@@ -8444,11 +9495,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 609,
+                'addressable_id' => 609,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:49:39',
                 'updated_at' => '2024-12-30 02:49:39',
             ),
-            102 => 
+            132 => 
             array (
                 'id' => 633,
                 'address' => '-',
@@ -8458,11 +9510,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098310000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 610,
+                'addressable_id' => 610,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 02:51:17',
                 'updated_at' => '2024-12-30 02:51:17',
             ),
-            103 => 
+            133 => 
             array (
                 'id' => 634,
                 'address' => '-',
@@ -8472,11 +9525,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 611,
+                'addressable_id' => 611,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 07:53:18',
                 'updated_at' => '2024-12-30 07:53:18',
             ),
-            104 => 
+            134 => 
             array (
                 'id' => 635,
                 'address' => '-',
@@ -8486,11 +9540,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 612,
+                'addressable_id' => 612,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 07:54:01',
                 'updated_at' => '2024-12-30 07:54:01',
             ),
-            105 => 
+            135 => 
             array (
                 'id' => 636,
                 'address' => '-',
@@ -8500,11 +9555,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 613,
+                'addressable_id' => 613,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 07:55:47',
                 'updated_at' => '2024-12-30 07:55:47',
             ),
-            106 => 
+            136 => 
             array (
                 'id' => 637,
                 'address' => '-',
@@ -8514,11 +9570,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 614,
+                'addressable_id' => 614,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:00:34',
                 'updated_at' => '2024-12-30 08:00:34',
             ),
-            107 => 
+            137 => 
             array (
                 'id' => 638,
                 'address' => '-',
@@ -8528,11 +9585,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 615,
+                'addressable_id' => 615,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:01:35',
                 'updated_at' => '2024-12-30 08:01:35',
             ),
-            108 => 
+            138 => 
             array (
                 'id' => 639,
                 'address' => '-',
@@ -8542,11 +9600,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 616,
+                'addressable_id' => 616,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:02:29',
                 'updated_at' => '2024-12-30 08:02:29',
             ),
-            109 => 
+            139 => 
             array (
                 'id' => 640,
                 'address' => '-',
@@ -8556,11 +9615,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 617,
+                'addressable_id' => 617,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:03:47',
                 'updated_at' => '2024-12-30 08:03:47',
             ),
-            110 => 
+            140 => 
             array (
                 'id' => 641,
                 'address' => '-',
@@ -8570,11 +9630,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 618,
+                'addressable_id' => 618,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:04:42',
                 'updated_at' => '2024-12-30 08:04:42',
             ),
-            111 => 
+            141 => 
             array (
                 'id' => 642,
                 'address' => '-',
@@ -8584,11 +9645,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 619,
+                'addressable_id' => 619,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:06:32',
                 'updated_at' => '2024-12-30 08:06:32',
             ),
-            112 => 
+            142 => 
             array (
                 'id' => 643,
                 'address' => '-',
@@ -8598,11 +9660,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 620,
+                'addressable_id' => 620,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:07:17',
                 'updated_at' => '2024-12-30 08:07:17',
             ),
-            113 => 
+            143 => 
             array (
                 'id' => 644,
                 'address' => '-',
@@ -8612,11 +9675,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 621,
+                'addressable_id' => 621,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:08:28',
                 'updated_at' => '2024-12-30 08:08:28',
             ),
-            114 => 
+            144 => 
             array (
                 'id' => 645,
                 'address' => '-',
@@ -8626,11 +9690,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 622,
+                'addressable_id' => 622,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:09:38',
                 'updated_at' => '2024-12-30 08:09:38',
             ),
-            115 => 
+            145 => 
             array (
                 'id' => 646,
                 'address' => '-',
@@ -8640,11 +9705,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 623,
+                'addressable_id' => 623,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:10:21',
                 'updated_at' => '2024-12-30 08:10:21',
             ),
-            116 => 
+            146 => 
             array (
                 'id' => 647,
                 'address' => '-',
@@ -8654,11 +9720,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 624,
+                'addressable_id' => 624,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:11:58',
                 'updated_at' => '2024-12-30 08:11:58',
             ),
-            117 => 
+            147 => 
             array (
                 'id' => 648,
                 'address' => '-',
@@ -8668,11 +9735,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 625,
+                'addressable_id' => 625,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:13:14',
                 'updated_at' => '2024-12-30 08:13:14',
             ),
-            118 => 
+            148 => 
             array (
                 'id' => 649,
                 'address' => '-',
@@ -8682,11 +9750,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 626,
+                'addressable_id' => 626,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:14:02',
                 'updated_at' => '2024-12-30 08:14:02',
             ),
-            119 => 
+            149 => 
             array (
                 'id' => 650,
                 'address' => '-',
@@ -8696,11 +9765,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 627,
+                'addressable_id' => 627,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:14:45',
                 'updated_at' => '2024-12-30 08:14:45',
             ),
-            120 => 
+            150 => 
             array (
                 'id' => 651,
                 'address' => '-',
@@ -8710,11 +9780,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 628,
+                'addressable_id' => 628,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:15:32',
                 'updated_at' => '2024-12-30 08:15:32',
             ),
-            121 => 
+            151 => 
             array (
                 'id' => 652,
                 'address' => '-',
@@ -8724,11 +9795,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 629,
+                'addressable_id' => 629,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:17:19',
                 'updated_at' => '2024-12-30 08:17:19',
             ),
-            122 => 
+            152 => 
             array (
                 'id' => 653,
                 'address' => '-',
@@ -8738,11 +9810,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 630,
+                'addressable_id' => 630,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:19:04',
                 'updated_at' => '2024-12-30 08:19:04',
             ),
-            123 => 
+            153 => 
             array (
                 'id' => 654,
                 'address' => '-',
@@ -8752,11 +9825,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 631,
+                'addressable_id' => 631,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:19:56',
                 'updated_at' => '2024-12-30 08:19:56',
             ),
-            124 => 
+            154 => 
             array (
                 'id' => 655,
                 'address' => '-',
@@ -8766,11 +9840,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 632,
+                'addressable_id' => 632,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 08:21:35',
                 'updated_at' => '2024-12-30 08:21:35',
             ),
-            125 => 
+            155 => 
             array (
                 'id' => 656,
                 'address' => '-',
@@ -8780,11 +9855,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 633,
+                'addressable_id' => 633,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:01:38',
                 'updated_at' => '2024-12-30 09:01:38',
             ),
-            126 => 
+            156 => 
             array (
                 'id' => 657,
                 'address' => '-',
@@ -8794,11 +9870,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 634,
+                'addressable_id' => 634,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:02:25',
                 'updated_at' => '2024-12-30 09:02:25',
             ),
-            127 => 
+            157 => 
             array (
                 'id' => 658,
                 'address' => '-',
@@ -8808,11 +9885,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 635,
+                'addressable_id' => 635,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:04:01',
                 'updated_at' => '2024-12-30 09:04:01',
             ),
-            128 => 
+            158 => 
             array (
                 'id' => 659,
                 'address' => '-',
@@ -8822,11 +9900,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 636,
+                'addressable_id' => 636,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:05:17',
                 'updated_at' => '2024-12-30 09:05:17',
             ),
-            129 => 
+            159 => 
             array (
                 'id' => 660,
                 'address' => '-',
@@ -8836,11 +9915,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 637,
+                'addressable_id' => 637,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:06:33',
                 'updated_at' => '2024-12-30 09:06:33',
             ),
-            130 => 
+            160 => 
             array (
                 'id' => 661,
                 'address' => '-',
@@ -8850,11 +9930,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 638,
+                'addressable_id' => 638,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:07:31',
                 'updated_at' => '2024-12-30 09:07:31',
             ),
-            131 => 
+            161 => 
             array (
                 'id' => 662,
                 'address' => '-',
@@ -8864,11 +9945,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 639,
+                'addressable_id' => 639,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:08:34',
                 'updated_at' => '2024-12-30 09:08:34',
             ),
-            132 => 
+            162 => 
             array (
                 'id' => 663,
                 'address' => '-',
@@ -8878,11 +9960,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 640,
+                'addressable_id' => 640,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:09:41',
                 'updated_at' => '2024-12-30 09:09:41',
             ),
-            133 => 
+            163 => 
             array (
                 'id' => 664,
                 'address' => '-',
@@ -8892,11 +9975,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 641,
+                'addressable_id' => 641,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:10:38',
                 'updated_at' => '2024-12-30 09:10:38',
             ),
-            134 => 
+            164 => 
             array (
                 'id' => 665,
                 'address' => '-',
@@ -8906,11 +9990,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 642,
+                'addressable_id' => 642,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:11:25',
                 'updated_at' => '2024-12-30 09:11:25',
             ),
-            135 => 
+            165 => 
             array (
                 'id' => 666,
                 'address' => '-',
@@ -8920,11 +10005,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 643,
+                'addressable_id' => 643,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-30 09:12:07',
                 'updated_at' => '2024-12-30 09:12:07',
             ),
-            136 => 
+            166 => 
             array (
                 'id' => 667,
                 'address' => '-',
@@ -8934,11 +10020,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 644,
+                'addressable_id' => 644,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:42:50',
                 'updated_at' => '2024-12-31 09:42:50',
             ),
-            137 => 
+            167 => 
             array (
                 'id' => 668,
                 'address' => '-',
@@ -8948,11 +10035,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 645,
+                'addressable_id' => 645,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:44:49',
                 'updated_at' => '2024-12-31 09:44:49',
             ),
-            138 => 
+            168 => 
             array (
                 'id' => 669,
                 'address' => '-',
@@ -8962,11 +10050,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 646,
+                'addressable_id' => 646,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:46:49',
                 'updated_at' => '2024-12-31 09:46:49',
             ),
-            139 => 
+            169 => 
             array (
                 'id' => 670,
                 'address' => '-',
@@ -8976,11 +10065,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 647,
+                'addressable_id' => 647,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:47:43',
                 'updated_at' => '2024-12-31 09:47:43',
             ),
-            140 => 
+            170 => 
             array (
                 'id' => 671,
                 'address' => '-',
@@ -8990,11 +10080,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 648,
+                'addressable_id' => 648,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:48:54',
                 'updated_at' => '2024-12-31 09:48:54',
             ),
-            141 => 
+            171 => 
             array (
                 'id' => 672,
                 'address' => '-',
@@ -9004,11 +10095,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 649,
+                'addressable_id' => 649,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:49:45',
                 'updated_at' => '2024-12-31 09:49:45',
             ),
-            142 => 
+            172 => 
             array (
                 'id' => 673,
                 'address' => '-',
@@ -9018,11 +10110,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 650,
+                'addressable_id' => 650,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:50:29',
                 'updated_at' => '2024-12-31 09:50:29',
             ),
-            143 => 
+            173 => 
             array (
                 'id' => 674,
                 'address' => '-',
@@ -9032,11 +10125,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 651,
+                'addressable_id' => 651,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:51:25',
                 'updated_at' => '2024-12-31 09:51:25',
             ),
-            144 => 
+            174 => 
             array (
                 'id' => 675,
                 'address' => '-',
@@ -9046,11 +10140,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 652,
+                'addressable_id' => 652,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:52:37',
                 'updated_at' => '2024-12-31 09:52:37',
             ),
-            145 => 
+            175 => 
             array (
                 'id' => 676,
                 'address' => '-',
@@ -9060,11 +10155,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 653,
+                'addressable_id' => 653,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:54:57',
                 'updated_at' => '2024-12-31 09:54:57',
             ),
-            146 => 
+            176 => 
             array (
                 'id' => 677,
                 'address' => '-',
@@ -9074,11 +10170,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 654,
+                'addressable_id' => 654,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:56:20',
                 'updated_at' => '2024-12-31 09:56:20',
             ),
-            147 => 
+            177 => 
             array (
                 'id' => 678,
                 'address' => '-',
@@ -9088,11 +10185,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 655,
+                'addressable_id' => 655,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:57:33',
                 'updated_at' => '2024-12-31 09:57:33',
             ),
-            148 => 
+            178 => 
             array (
                 'id' => 679,
                 'address' => '-',
@@ -9102,11 +10200,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 656,
+                'addressable_id' => 656,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:58:53',
                 'updated_at' => '2024-12-31 09:58:53',
             ),
-            149 => 
+            179 => 
             array (
                 'id' => 680,
                 'address' => '-',
@@ -9116,11 +10215,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 657,
+                'addressable_id' => 657,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 09:59:54',
                 'updated_at' => '2024-12-31 09:59:54',
             ),
-            150 => 
+            180 => 
             array (
                 'id' => 681,
                 'address' => '-',
@@ -9130,11 +10230,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 658,
+                'addressable_id' => 658,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:00:44',
                 'updated_at' => '2024-12-31 10:00:44',
             ),
-            151 => 
+            181 => 
             array (
                 'id' => 682,
                 'address' => '-',
@@ -9144,11 +10245,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 659,
+                'addressable_id' => 659,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:02:03',
                 'updated_at' => '2024-12-31 10:02:03',
             ),
-            152 => 
+            182 => 
             array (
                 'id' => 683,
                 'address' => '-',
@@ -9158,11 +10260,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 660,
+                'addressable_id' => 660,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:03:40',
                 'updated_at' => '2024-12-31 10:03:40',
             ),
-            153 => 
+            183 => 
             array (
                 'id' => 684,
                 'address' => '-',
@@ -9172,11 +10275,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 661,
+                'addressable_id' => 661,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:04:47',
                 'updated_at' => '2024-12-31 10:04:47',
             ),
-            154 => 
+            184 => 
             array (
                 'id' => 685,
                 'address' => '-',
@@ -9186,11 +10290,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 662,
+                'addressable_id' => 662,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:08:30',
                 'updated_at' => '2024-12-31 10:08:30',
             ),
-            155 => 
+            185 => 
             array (
                 'id' => 686,
                 'address' => '-',
@@ -9200,11 +10305,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 663,
+                'addressable_id' => 663,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:09:49',
                 'updated_at' => '2024-12-31 10:09:49',
             ),
-            156 => 
+            186 => 
             array (
                 'id' => 687,
                 'address' => '-',
@@ -9214,11 +10320,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 664,
+                'addressable_id' => 664,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:10:48',
                 'updated_at' => '2024-12-31 10:10:48',
             ),
-            157 => 
+            187 => 
             array (
                 'id' => 688,
                 'address' => '-',
@@ -9228,11 +10335,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 665,
+                'addressable_id' => 665,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:11:25',
                 'updated_at' => '2024-12-31 10:11:25',
             ),
-            158 => 
+            188 => 
             array (
                 'id' => 689,
                 'address' => '-',
@@ -9242,11 +10350,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 666,
+                'addressable_id' => 666,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:12:28',
                 'updated_at' => '2024-12-31 10:12:28',
             ),
-            159 => 
+            189 => 
             array (
                 'id' => 690,
                 'address' => '-',
@@ -9256,11 +10365,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 667,
+                'addressable_id' => 667,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:14:06',
                 'updated_at' => '2024-12-31 10:14:06',
             ),
-            160 => 
+            190 => 
             array (
                 'id' => 691,
                 'address' => '-',
@@ -9270,11 +10380,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 668,
+                'addressable_id' => 668,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:15:07',
                 'updated_at' => '2024-12-31 10:15:07',
             ),
-            161 => 
+            191 => 
             array (
                 'id' => 692,
                 'address' => '-',
@@ -9284,11 +10395,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 669,
+                'addressable_id' => 669,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:16:17',
                 'updated_at' => '2024-12-31 10:16:17',
             ),
-            162 => 
+            192 => 
             array (
                 'id' => 693,
                 'address' => '-',
@@ -9298,11 +10410,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 670,
+                'addressable_id' => 670,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:17:26',
                 'updated_at' => '2024-12-31 10:17:26',
             ),
-            163 => 
+            193 => 
             array (
                 'id' => 694,
                 'address' => '-',
@@ -9312,11 +10425,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 671,
+                'addressable_id' => 671,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:18:34',
                 'updated_at' => '2024-12-31 10:18:34',
             ),
-            164 => 
+            194 => 
             array (
                 'id' => 695,
                 'address' => '-',
@@ -9326,11 +10440,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 672,
+                'addressable_id' => 672,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:20:08',
                 'updated_at' => '2024-12-31 10:20:08',
             ),
-            165 => 
+            195 => 
             array (
                 'id' => 696,
                 'address' => '-',
@@ -9340,11 +10455,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 673,
+                'addressable_id' => 673,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:44:16',
                 'updated_at' => '2024-12-31 10:44:16',
             ),
-            166 => 
+            196 => 
             array (
                 'id' => 697,
                 'address' => '-',
@@ -9354,11 +10470,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 674,
+                'addressable_id' => 674,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:45:23',
                 'updated_at' => '2024-12-31 10:45:23',
             ),
-            167 => 
+            197 => 
             array (
                 'id' => 698,
                 'address' => '-',
@@ -9368,11 +10485,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 675,
+                'addressable_id' => 675,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:46:42',
                 'updated_at' => '2024-12-31 10:46:42',
             ),
-            168 => 
+            198 => 
             array (
                 'id' => 699,
                 'address' => '-',
@@ -9382,11 +10500,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 676,
+                'addressable_id' => 676,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:48:09',
                 'updated_at' => '2024-12-31 10:48:09',
             ),
-            169 => 
+            199 => 
             array (
                 'id' => 700,
                 'address' => '-',
@@ -9396,11 +10515,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 677,
+                'addressable_id' => 677,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:48:52',
                 'updated_at' => '2024-12-31 10:48:52',
             ),
-            170 => 
+            200 => 
             array (
                 'id' => 701,
                 'address' => '-',
@@ -9410,11 +10530,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 678,
+                'addressable_id' => 678,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:49:41',
                 'updated_at' => '2024-12-31 10:49:41',
             ),
-            171 => 
+            201 => 
             array (
                 'id' => 702,
                 'address' => '-',
@@ -9424,11 +10545,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 679,
+                'addressable_id' => 679,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:50:30',
                 'updated_at' => '2024-12-31 10:50:30',
             ),
-            172 => 
+            202 => 
             array (
                 'id' => 703,
                 'address' => '-',
@@ -9438,11 +10560,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 680,
+                'addressable_id' => 680,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:51:31',
                 'updated_at' => '2024-12-31 10:51:31',
             ),
-            173 => 
+            203 => 
             array (
                 'id' => 704,
                 'address' => '-',
@@ -9452,11 +10575,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 681,
+                'addressable_id' => 681,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:52:58',
                 'updated_at' => '2024-12-31 10:52:58',
             ),
-            174 => 
+            204 => 
             array (
                 'id' => 705,
                 'address' => '-',
@@ -9466,11 +10590,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 682,
+                'addressable_id' => 682,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:55:02',
                 'updated_at' => '2024-12-31 10:55:02',
             ),
-            175 => 
+            205 => 
             array (
                 'id' => 706,
                 'address' => '-',
@@ -9480,11 +10605,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 683,
+                'addressable_id' => 683,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:55:42',
                 'updated_at' => '2024-12-31 10:55:42',
             ),
-            176 => 
+            206 => 
             array (
                 'id' => 707,
                 'address' => '-',
@@ -9494,11 +10620,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 684,
+                'addressable_id' => 684,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:57:25',
                 'updated_at' => '2024-12-31 10:57:25',
             ),
-            177 => 
+            207 => 
             array (
                 'id' => 708,
                 'address' => '-',
@@ -9508,11 +10635,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 685,
+                'addressable_id' => 685,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:58:22',
                 'updated_at' => '2024-12-31 10:58:22',
             ),
-            178 => 
+            208 => 
             array (
                 'id' => 709,
                 'address' => '-',
@@ -9522,11 +10650,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 686,
+                'addressable_id' => 686,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 10:59:29',
                 'updated_at' => '2024-12-31 10:59:29',
             ),
-            179 => 
+            209 => 
             array (
                 'id' => 710,
                 'address' => '-',
@@ -9536,11 +10665,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 687,
+                'addressable_id' => 687,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:00:25',
                 'updated_at' => '2024-12-31 11:00:25',
             ),
-            180 => 
+            210 => 
             array (
                 'id' => 711,
                 'address' => '-',
@@ -9550,11 +10680,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 688,
+                'addressable_id' => 688,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:01:16',
                 'updated_at' => '2024-12-31 11:01:16',
             ),
-            181 => 
+            211 => 
             array (
                 'id' => 712,
                 'address' => '-',
@@ -9564,11 +10695,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 689,
+                'addressable_id' => 689,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:02:15',
                 'updated_at' => '2024-12-31 11:02:15',
             ),
-            182 => 
+            212 => 
             array (
                 'id' => 713,
                 'address' => '-',
@@ -9578,11 +10710,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 690,
+                'addressable_id' => 690,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:03:10',
                 'updated_at' => '2024-12-31 11:03:10',
             ),
-            183 => 
+            213 => 
             array (
                 'id' => 714,
                 'address' => '-',
@@ -9592,11 +10725,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 691,
+                'addressable_id' => 691,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:04:23',
                 'updated_at' => '2024-12-31 11:04:23',
             ),
-            184 => 
+            214 => 
             array (
                 'id' => 715,
                 'address' => '-',
@@ -9606,11 +10740,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 692,
+                'addressable_id' => 692,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:05:39',
                 'updated_at' => '2024-12-31 11:05:39',
             ),
-            185 => 
+            215 => 
             array (
                 'id' => 716,
                 'address' => '-',
@@ -9620,11 +10755,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 693,
+                'addressable_id' => 693,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:06:42',
                 'updated_at' => '2024-12-31 11:06:42',
             ),
-            186 => 
+            216 => 
             array (
                 'id' => 717,
                 'address' => '-',
@@ -9634,11 +10770,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 694,
+                'addressable_id' => 694,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:07:18',
                 'updated_at' => '2024-12-31 11:07:18',
             ),
-            187 => 
+            217 => 
             array (
                 'id' => 718,
                 'address' => '-',
@@ -9648,11 +10785,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 695,
+                'addressable_id' => 695,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:08:06',
                 'updated_at' => '2024-12-31 11:08:06',
             ),
-            188 => 
+            218 => 
             array (
                 'id' => 719,
                 'address' => '-',
@@ -9662,11 +10800,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 696,
+                'addressable_id' => 696,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:08:44',
                 'updated_at' => '2024-12-31 11:08:44',
             ),
-            189 => 
+            219 => 
             array (
                 'id' => 720,
                 'address' => '-',
@@ -9676,11 +10815,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 697,
+                'addressable_id' => 697,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:09:29',
                 'updated_at' => '2024-12-31 11:09:29',
             ),
-            190 => 
+            220 => 
             array (
                 'id' => 721,
                 'address' => '-',
@@ -9690,11 +10830,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 698,
+                'addressable_id' => 698,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:10:39',
                 'updated_at' => '2024-12-31 11:10:39',
             ),
-            191 => 
+            221 => 
             array (
                 'id' => 722,
                 'address' => '-',
@@ -9704,11 +10845,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 699,
+                'addressable_id' => 699,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:11:51',
                 'updated_at' => '2024-12-31 11:11:51',
             ),
-            192 => 
+            222 => 
             array (
                 'id' => 723,
                 'address' => '-',
@@ -9718,11 +10860,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 700,
+                'addressable_id' => 700,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:14:01',
                 'updated_at' => '2024-12-31 11:14:01',
             ),
-            193 => 
+            223 => 
             array (
                 'id' => 724,
                 'address' => '-',
@@ -9732,11 +10875,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 701,
+                'addressable_id' => 701,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:16:29',
                 'updated_at' => '2024-12-31 11:16:29',
             ),
-            194 => 
+            224 => 
             array (
                 'id' => 725,
                 'address' => '-',
@@ -9746,11 +10890,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 702,
+                'addressable_id' => 702,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:17:28',
                 'updated_at' => '2024-12-31 11:17:28',
             ),
-            195 => 
+            225 => 
             array (
                 'id' => 726,
                 'address' => '-',
@@ -9760,11 +10905,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 703,
+                'addressable_id' => 703,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:18:09',
                 'updated_at' => '2024-12-31 11:18:09',
             ),
-            196 => 
+            226 => 
             array (
                 'id' => 727,
                 'address' => '-',
@@ -9774,11 +10920,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 704,
+                'addressable_id' => 704,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:19:02',
                 'updated_at' => '2024-12-31 11:19:02',
             ),
-            197 => 
+            227 => 
             array (
                 'id' => 728,
                 'address' => '-',
@@ -9788,11 +10935,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 705,
+                'addressable_id' => 705,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:20:32',
                 'updated_at' => '2024-12-31 11:20:32',
             ),
-            198 => 
+            228 => 
             array (
                 'id' => 729,
                 'address' => '-',
@@ -9802,11 +10950,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 706,
+                'addressable_id' => 706,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:21:42',
                 'updated_at' => '2024-12-31 11:21:42',
             ),
-            199 => 
+            229 => 
             array (
                 'id' => 730,
                 'address' => '-',
@@ -9816,11 +10965,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 707,
+                'addressable_id' => 707,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:22:38',
                 'updated_at' => '2024-12-31 11:22:38',
             ),
-            200 => 
+            230 => 
             array (
                 'id' => 731,
                 'address' => '-',
@@ -9830,11 +10980,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 708,
+                'addressable_id' => 708,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:23:21',
                 'updated_at' => '2024-12-31 11:23:21',
             ),
-            201 => 
+            231 => 
             array (
                 'id' => 732,
                 'address' => 'Morning Glory',
@@ -9844,11 +10995,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 709,
+                'addressable_id' => 709,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:30:26',
                 'updated_at' => '2024-12-31 11:30:26',
             ),
-            202 => 
+            232 => 
             array (
                 'id' => 733,
                 'address' => '-',
@@ -9858,11 +11010,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 710,
+                'addressable_id' => 710,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:32:03',
                 'updated_at' => '2024-12-31 11:32:03',
             ),
-            203 => 
+            233 => 
             array (
                 'id' => 734,
                 'address' => '-',
@@ -9872,11 +11025,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 711,
+                'addressable_id' => 711,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:33:28',
                 'updated_at' => '2024-12-31 11:33:28',
             ),
-            204 => 
+            234 => 
             array (
                 'id' => 735,
                 'address' => '-',
@@ -9886,11 +11040,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 712,
+                'addressable_id' => 712,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:34:23',
                 'updated_at' => '2024-12-31 11:34:23',
             ),
-            205 => 
+            235 => 
             array (
                 'id' => 736,
                 'address' => '-',
@@ -9900,11 +11055,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 713,
+                'addressable_id' => 713,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:35:30',
                 'updated_at' => '2024-12-31 11:35:30',
             ),
-            206 => 
+            236 => 
             array (
                 'id' => 737,
                 'address' => '-',
@@ -9914,11 +11070,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 714,
+                'addressable_id' => 714,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2024-12-31 11:39:46',
                 'updated_at' => '2024-12-31 11:39:46',
             ),
-            207 => 
+            237 => 
             array (
                 'id' => 738,
                 'address' => 'Purok 5, Tugbungan Barangay, Zamboanga City',
@@ -9928,11 +11085,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 715,
+                'addressable_id' => 715,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-03 17:14:15',
                 'updated_at' => '2025-01-03 17:14:15',
             ),
-            208 => 
+            238 => 
             array (
                 'id' => 739,
                 'address' => 'Purok St. Niño',
@@ -9942,11 +11100,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097325000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 716,
+                'addressable_id' => 716,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-03 19:44:40',
                 'updated_at' => '2025-01-03 19:44:40',
             ),
-            209 => 
+            239 => 
             array (
                 'id' => 740,
                 'address' => 'Purok Tubo',
@@ -9956,11 +11115,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097313000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 717,
+                'addressable_id' => 717,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-03 20:06:53',
                 'updated_at' => '2025-01-03 20:06:53',
             ),
-            210 => 
+            240 => 
             array (
                 'id' => 741,
                 'address' => 'Bougainvillea Road',
@@ -9970,11 +11130,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 718,
+                'addressable_id' => 718,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-03 21:55:30',
                 'updated_at' => '2025-01-03 21:55:30',
             ),
-            211 => 
+            241 => 
             array (
                 'id' => 742,
                 'address' => 'Km. 5, Lantawan Drive',
@@ -9984,11 +11145,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 719,
+                'addressable_id' => 719,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-06 17:55:51',
                 'updated_at' => '2025-01-06 17:55:51',
             ),
-            212 => 
+            242 => 
             array (
                 'id' => 743,
                 'address' => '128-D Masuhud Drive,',
@@ -9998,11 +11160,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 720,
+                'addressable_id' => 720,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-06 18:30:55',
                 'updated_at' => '2025-01-06 18:30:55',
             ),
-            213 => 
+            243 => 
             array (
                 'id' => 744,
                 'address' => 'Wee Agro Bldg., Veterans Avenue',
@@ -10012,11 +11175,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 721,
+                'addressable_id' => 721,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-06 19:25:20',
                 'updated_at' => '2025-01-06 19:25:20',
             ),
-            214 => 
+            244 => 
             array (
                 'id' => 745,
                 'address' => 'Lim Compound, Tambis Lane',
@@ -10026,11 +11190,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 722,
+                'addressable_id' => 722,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-07 16:51:01',
                 'updated_at' => '2025-01-07 16:51:01',
             ),
-            215 => 
+            245 => 
             array (
                 'id' => 746,
                 'address' => 'MCLL Highway',
@@ -10040,11 +11205,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 723,
+                'addressable_id' => 723,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-07 18:02:38',
                 'updated_at' => '2025-01-07 18:02:38',
             ),
-            216 => 
+            246 => 
             array (
                 'id' => 747,
                 'address' => 'MCLL Highway, Zone 5',
@@ -10054,11 +11220,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 724,
+                'addressable_id' => 724,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-07 19:39:44',
                 'updated_at' => '2025-01-07 19:39:44',
             ),
-            217 => 
+            247 => 
             array (
                 'id' => 748,
                 'address' => 'Zone 3, Socorro St.',
@@ -10068,11 +11235,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 725,
+                'addressable_id' => 725,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-07 19:41:59',
                 'updated_at' => '2025-01-07 19:41:59',
             ),
-            218 => 
+            248 => 
             array (
                 'id' => 749,
                 'address' => 'Love Drive, Pasay Road',
@@ -10082,11 +11250,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 726,
+                'addressable_id' => 726,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 17:40:57',
                 'updated_at' => '2025-01-08 17:40:57',
             ),
-            219 => 
+            249 => 
             array (
                 'id' => 750,
                 'address' => 'Urban Poor Sunrise Village',
@@ -10096,11 +11265,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 727,
+                'addressable_id' => 727,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 18:18:11',
                 'updated_at' => '2025-01-08 18:18:11',
             ),
-            220 => 
+            250 => 
             array (
                 'id' => 751,
                 'address' => 'Purok 7 Cambodia',
@@ -10110,11 +11280,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 728,
+                'addressable_id' => 728,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 18:19:54',
                 'updated_at' => '2025-01-08 18:19:54',
             ),
-            221 => 
+            251 => 
             array (
                 'id' => 752,
                 'address' => 'San Ramon',
@@ -10124,11 +11295,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 729,
+                'addressable_id' => 729,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 18:21:45',
                 'updated_at' => '2025-01-08 18:21:45',
             ),
-            222 => 
+            252 => 
             array (
                 'id' => 753,
                 'address' => 'Warehouse Unit No. 5 & 8 HRT Compound',
@@ -10138,11 +11310,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 730,
+                'addressable_id' => 730,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 19:13:35',
                 'updated_at' => '2025-01-08 19:13:35',
             ),
-            223 => 
+            253 => 
             array (
                 'id' => 754,
                 'address' => 'R. T. Lim Boulevard',
@@ -10152,11 +11325,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 731,
+                'addressable_id' => 731,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 22:37:48',
                 'updated_at' => '2025-01-08 22:37:48',
             ),
-            224 => 
+            254 => 
             array (
                 'id' => 755,
                 'address' => 'Purok 1',
@@ -10166,11 +11340,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 732,
+                'addressable_id' => 732,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 22:57:27',
                 'updated_at' => '2025-01-08 22:57:27',
             ),
-            225 => 
+            255 => 
             array (
                 'id' => 756,
                 'address' => 'Purok Dahlia',
@@ -10180,11 +11355,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 733,
+                'addressable_id' => 733,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-08 23:40:15',
                 'updated_at' => '2025-01-08 23:40:15',
             ),
-            226 => 
+            256 => 
             array (
                 'id' => 757,
                 'address' => '-',
@@ -10194,11 +11370,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 734,
+                'addressable_id' => 734,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 00:17:53',
                 'updated_at' => '2025-01-09 00:17:53',
             ),
-            227 => 
+            257 => 
             array (
                 'id' => 758,
                 'address' => '-',
@@ -10208,11 +11385,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 735,
+                'addressable_id' => 735,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 00:19:23',
                 'updated_at' => '2025-01-09 00:19:23',
             ),
-            228 => 
+            258 => 
             array (
                 'id' => 759,
                 'address' => '-',
@@ -10222,11 +11400,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 736,
+                'addressable_id' => 736,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 00:24:54',
                 'updated_at' => '2025-01-09 00:24:54',
             ),
-            229 => 
+            259 => 
             array (
                 'id' => 760,
                 'address' => '-',
@@ -10236,11 +11415,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097221000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 737,
+                'addressable_id' => 737,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 00:26:43',
                 'updated_at' => '2025-01-09 00:26:43',
             ),
-            230 => 
+            260 => 
             array (
                 'id' => 761,
                 'address' => 'Row D, Public Market Bldg.',
@@ -10250,11 +11430,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 738,
+                'addressable_id' => 738,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 20:55:26',
                 'updated_at' => '2025-01-09 20:55:26',
             ),
-            231 => 
+            261 => 
             array (
                 'id' => 762,
                 'address' => '-',
@@ -10264,11 +11445,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097315000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 739,
+                'addressable_id' => 739,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 21:45:23',
                 'updated_at' => '2025-01-09 21:45:23',
             ),
-            232 => 
+            262 => 
             array (
                 'id' => 763,
                 'address' => 'Unit 3 & 4 South SSS Bldg., Veterans Avenue',
@@ -10278,11 +11460,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 740,
+                'addressable_id' => 740,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-09 23:18:42',
                 'updated_at' => '2025-01-09 23:18:42',
             ),
-            233 => 
+            263 => 
             array (
                 'id' => 764,
                 'address' => 'Purok 3',
@@ -10292,11 +11475,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097324000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 741,
+                'addressable_id' => 741,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-10 00:12:32',
                 'updated_at' => '2025-01-10 00:12:32',
             ),
-            234 => 
+            264 => 
             array (
                 'id' => 765,
                 'address' => 'Socorro St., Zone 3A',
@@ -10306,11 +11490,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 742,
+                'addressable_id' => 742,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-10 16:30:08',
                 'updated_at' => '2025-01-10 16:30:08',
             ),
-            235 => 
+            265 => 
             array (
                 'id' => 766,
                 'address' => 'Art Drive, Jumbo Bridge',
@@ -10320,11 +11505,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 743,
+                'addressable_id' => 743,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-10 22:27:15',
                 'updated_at' => '2025-01-10 22:27:15',
             ),
-            236 => 
+            266 => 
             array (
                 'id' => 767,
                 'address' => 'National Highway',
@@ -10334,11 +11520,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097221000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 744,
+                'addressable_id' => 744,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-11 00:31:04',
                 'updated_at' => '2025-01-11 00:31:04',
             ),
-            237 => 
+            267 => 
             array (
                 'id' => 768,
                 'address' => 'Purok Acacia',
@@ -10348,11 +11535,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098316000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 745,
+                'addressable_id' => 745,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-13 16:55:57',
                 'updated_at' => '2025-01-13 16:55:57',
             ),
-            238 => 
+            268 => 
             array (
                 'id' => 769,
                 'address' => '639 Monte Zuma Heights, Moret Road',
@@ -10362,11 +11550,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 746,
+                'addressable_id' => 746,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-13 18:33:25',
                 'updated_at' => '2025-01-13 18:33:25',
             ),
-            239 => 
+            269 => 
             array (
                 'id' => 770,
                 'address' => 'Purok 4',
@@ -10376,11 +11565,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097343000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 747,
+                'addressable_id' => 747,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-13 22:51:29',
                 'updated_at' => '2025-01-13 22:51:29',
             ),
-            240 => 
+            270 => 
             array (
                 'id' => 771,
                 'address' => 'S.N Fernando Lane',
@@ -10390,11 +11580,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 748,
+                'addressable_id' => 748,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-13 23:08:21',
                 'updated_at' => '2025-01-13 23:08:21',
             ),
-            241 => 
+            271 => 
             array (
                 'id' => 772,
                 'address' => 'Quezon Blvd.',
@@ -10404,11 +11595,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '150702000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 749,
+                'addressable_id' => 749,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-13 23:37:54',
                 'updated_at' => '2025-01-13 23:37:54',
             ),
-            242 => 
+            272 => 
             array (
                 'id' => 773,
                 'address' => 'San Ramon',
@@ -10418,11 +11610,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 750,
+                'addressable_id' => 750,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-15 19:00:11',
                 'updated_at' => '2025-01-15 19:00:11',
             ),
-            243 => 
+            273 => 
             array (
                 'id' => 774,
                 'address' => 'San Ramon',
@@ -10432,11 +11625,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 751,
+                'addressable_id' => 751,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-15 19:01:57',
                 'updated_at' => '2025-01-15 19:01:57',
             ),
-            244 => 
+            274 => 
             array (
                 'id' => 775,
                 'address' => 'San Ramon',
@@ -10446,11 +11640,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 752,
+                'addressable_id' => 752,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-15 19:03:05',
                 'updated_at' => '2025-01-15 19:03:05',
             ),
-            245 => 
+            275 => 
             array (
                 'id' => 776,
                 'address' => 'Nalil, Bongao, Tawi-Tawi',
@@ -10460,11 +11655,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 753,
+                'addressable_id' => 753,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-15 20:28:39',
                 'updated_at' => '2025-01-15 20:28:39',
             ),
-            246 => 
+            276 => 
             array (
                 'id' => 777,
                 'address' => 'Mayor Vitaliano D. Agan Avenue',
@@ -10474,11 +11670,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 754,
+                'addressable_id' => 754,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-15 21:07:27',
                 'updated_at' => '2025-01-15 21:07:27',
             ),
-            247 => 
+            277 => 
             array (
                 'id' => 778,
                 'address' => 'Don Toribio St.',
@@ -10488,11 +11685,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 755,
+                'addressable_id' => 755,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-15 21:35:28',
                 'updated_at' => '2025-01-15 21:35:28',
             ),
-            248 => 
+            278 => 
             array (
                 'id' => 779,
                 'address' => 'Veterans Avenue',
@@ -10502,11 +11700,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 756,
+                'addressable_id' => 756,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-16 01:29:30',
                 'updated_at' => '2025-01-16 01:29:30',
             ),
-            249 => 
+            279 => 
             array (
                 'id' => 780,
                 'address' => 'Liloy-Siocon Road',
@@ -10516,11 +11715,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097205000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 757,
+                'addressable_id' => 757,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-16 17:41:28',
                 'updated_at' => '2025-01-16 17:41:28',
             ),
-            250 => 
+            280 => 
             array (
                 'id' => 781,
                 'address' => 'Gov. Camins Avenue',
@@ -10530,11 +11730,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 758,
+                'addressable_id' => 758,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-16 19:23:41',
                 'updated_at' => '2025-01-16 19:23:41',
             ),
-            251 => 
+            281 => 
             array (
                 'id' => 782,
                 'address' => '-',
@@ -10544,11 +11745,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 759,
+                'addressable_id' => 759,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-16 19:58:53',
                 'updated_at' => '2025-01-16 19:58:53',
             ),
-            252 => 
+            282 => 
             array (
                 'id' => 783,
                 'address' => 'Barangay Hall, Zone I',
@@ -10558,11 +11760,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 760,
+                'addressable_id' => 760,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-16 21:43:04',
                 'updated_at' => '2025-01-16 21:43:04',
             ),
-            253 => 
+            283 => 
             array (
                 'id' => 784,
                 'address' => 'Veterans Avenue Extension',
@@ -10572,11 +11775,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 761,
+                'addressable_id' => 761,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-16 22:35:14',
                 'updated_at' => '2025-01-16 22:35:14',
             ),
-            254 => 
+            284 => 
             array (
                 'id' => 785,
                 'address' => 'PC Compound',
@@ -10586,11 +11790,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 762,
+                'addressable_id' => 762,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-17 00:33:01',
                 'updated_at' => '2025-01-17 00:33:01',
             ),
-            255 => 
+            285 => 
             array (
                 'id' => 786,
                 'address' => 'Zone 4',
@@ -10600,11 +11805,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 763,
+                'addressable_id' => 763,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-17 01:19:35',
                 'updated_at' => '2025-01-17 01:19:35',
             ),
-            256 => 
+            286 => 
             array (
                 'id' => 787,
                 'address' => '-',
@@ -10614,11 +11820,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 764,
+                'addressable_id' => 764,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-17 23:38:59',
                 'updated_at' => '2025-01-20 06:37:36',
             ),
-            257 => 
+            287 => 
             array (
                 'id' => 788,
                 'address' => 'Chico',
@@ -10628,11 +11835,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 765,
+                'addressable_id' => 765,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-18 00:40:50',
                 'updated_at' => '2025-01-20 06:36:43',
             ),
-            258 => 
+            288 => 
             array (
                 'id' => 789,
                 'address' => '#49 Centaurus St., Villa Ernesto Phase 1',
@@ -10642,11 +11850,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104305000',
                 'province_code' => '104300000',
                 'region_code' => '100000000',
-                'customer_id' => 766,
+                'addressable_id' => 766,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 07:51:54',
                 'updated_at' => '2025-01-20 07:51:54',
             ),
-            259 => 
+            289 => 
             array (
                 'id' => 790,
                 'address' => '219, Purok Rosal',
@@ -10656,11 +11865,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '045605000',
                 'province_code' => '045600000',
                 'region_code' => '040000000',
-                'customer_id' => 767,
+                'addressable_id' => 767,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 08:42:56',
                 'updated_at' => '2025-01-20 08:42:56',
             ),
-            260 => 
+            290 => 
             array (
                 'id' => 791,
                 'address' => 'Purok 8c',
@@ -10670,11 +11880,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 768,
+                'addressable_id' => 768,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 17:20:00',
                 'updated_at' => '2025-01-20 17:20:00',
             ),
-            261 => 
+            291 => 
             array (
                 'id' => 792,
                 'address' => 'Purok 3',
@@ -10684,11 +11895,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 769,
+                'addressable_id' => 769,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 18:47:39',
                 'updated_at' => '2025-01-20 18:47:39',
             ),
-            262 => 
+            292 => 
             array (
                 'id' => 793,
                 'address' => 'Justina Village',
@@ -10698,11 +11910,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 770,
+                'addressable_id' => 770,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 19:02:02',
                 'updated_at' => '2025-01-20 19:02:02',
             ),
-            263 => 
+            293 => 
             array (
                 'id' => 794,
                 'address' => 'Triplet',
@@ -10712,11 +11925,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 771,
+                'addressable_id' => 771,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 20:01:04',
                 'updated_at' => '2025-01-20 20:01:04',
             ),
-            264 => 
+            294 => 
             array (
                 'id' => 795,
                 'address' => 'WMSU, San Ramon',
@@ -10726,11 +11940,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 772,
+                'addressable_id' => 772,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 20:02:54',
                 'updated_at' => '2025-01-20 20:02:54',
             ),
-            265 => 
+            295 => 
             array (
                 'id' => 796,
                 'address' => 'ECOZONE San Ramon',
@@ -10740,11 +11955,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 773,
+                'addressable_id' => 773,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 20:31:28',
                 'updated_at' => '2025-01-20 20:31:28',
             ),
-            266 => 
+            296 => 
             array (
                 'id' => 797,
                 'address' => '211, Suterville Subd., Azucena St.',
@@ -10754,11 +11970,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 774,
+                'addressable_id' => 774,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-20 21:31:40',
                 'updated_at' => '2025-01-20 21:31:40',
             ),
-            267 => 
+            297 => 
             array (
                 'id' => 798,
                 'address' => '-',
@@ -10768,11 +11985,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 775,
+                'addressable_id' => 775,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-21 21:34:07',
                 'updated_at' => '2025-01-21 21:34:07',
             ),
-            268 => 
+            298 => 
             array (
                 'id' => 799,
                 'address' => '-',
@@ -10782,11 +12000,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '166714000',
                 'province_code' => '166700000',
                 'region_code' => '160000000',
-                'customer_id' => 776,
+                'addressable_id' => 776,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 00:31:46',
                 'updated_at' => '2025-01-22 00:31:46',
             ),
-            269 => 
+            299 => 
             array (
                 'id' => 800,
                 'address' => 'Lower Calarian',
@@ -10796,11 +12015,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 777,
+                'addressable_id' => 777,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 01:46:56',
                 'updated_at' => '2025-01-22 01:46:56',
             ),
-            270 => 
+            300 => 
             array (
                 'id' => 801,
                 'address' => 'San Ramon',
@@ -10810,11 +12030,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 778,
+                'addressable_id' => 778,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 19:04:11',
                 'updated_at' => '2025-01-22 19:04:11',
             ),
-            271 => 
+            301 => 
             array (
                 'id' => 802,
                 'address' => 'Morning Breeze',
@@ -10824,11 +12045,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 779,
+                'addressable_id' => 779,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 19:12:57',
                 'updated_at' => '2025-01-22 19:12:57',
             ),
-            272 => 
+            302 => 
             array (
                 'id' => 803,
                 'address' => 'Bongao, Tawi-Tawi',
@@ -10838,11 +12060,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 780,
+                'addressable_id' => 780,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 20:30:58',
                 'updated_at' => '2025-01-22 20:30:58',
             ),
-            273 => 
+            303 => 
             array (
                 'id' => 804,
                 'address' => 'Zone 7 Calle Sto. Niño',
@@ -10852,11 +12075,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 781,
+                'addressable_id' => 781,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 21:12:52',
                 'updated_at' => '2025-01-22 21:12:52',
             ),
-            274 => 
+            304 => 
             array (
                 'id' => 805,
                 'address' => 'Talon-Talon Loop',
@@ -10866,11 +12090,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 782,
+                'addressable_id' => 782,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-22 22:48:20',
                 'updated_at' => '2025-01-22 22:48:20',
             ),
-            275 => 
+            305 => 
             array (
                 'id' => 806,
                 'address' => '-',
@@ -10880,11 +12105,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 783,
+                'addressable_id' => 783,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-23 17:38:23',
                 'updated_at' => '2025-01-23 17:38:23',
             ),
-            276 => 
+            306 => 
             array (
                 'id' => 807,
                 'address' => 'Doctor J. Estrada St.',
@@ -10894,11 +12120,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 784,
+                'addressable_id' => 784,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-23 22:25:48',
                 'updated_at' => '2025-01-23 22:25:48',
             ),
-            277 => 
+            307 => 
             array (
                 'id' => 808,
                 'address' => 'Dapiwak, Zamboanga Del Sur',
@@ -10908,11 +12135,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097308000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 785,
+                'addressable_id' => 785,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-24 15:43:03',
                 'updated_at' => '2025-01-24 15:43:03',
             ),
-            278 => 
+            308 => 
             array (
                 'id' => 809,
                 'address' => '224 Manggahan-Lawin,',
@@ -10922,11 +12150,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '042111000',
                 'province_code' => '042100000',
                 'region_code' => '040000000',
-                'customer_id' => 786,
+                'addressable_id' => 786,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-28 17:08:00',
                 'updated_at' => '2025-01-28 17:08:00',
             ),
-            279 => 
+            309 => 
             array (
                 'id' => 810,
                 'address' => 'Johnston Subdivision',
@@ -10936,11 +12165,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 787,
+                'addressable_id' => 787,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-28 21:07:24',
                 'updated_at' => '2025-01-28 21:07:24',
             ),
-            280 => 
+            310 => 
             array (
                 'id' => 811,
                 'address' => 'Pettit Barracks',
@@ -10950,11 +12180,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 788,
+                'addressable_id' => 788,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-29 01:02:57',
                 'updated_at' => '2025-01-29 01:02:57',
             ),
-            281 => 
+            311 => 
             array (
                 'id' => 812,
                 'address' => '-',
@@ -10964,11 +12195,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 789,
+                'addressable_id' => 789,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-30 18:30:25',
                 'updated_at' => '2025-01-30 18:30:25',
             ),
-            282 => 
+            312 => 
             array (
                 'id' => 813,
                 'address' => '733 Molave St., Juna Subd.',
@@ -10978,11 +12210,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112402000',
                 'province_code' => '112400000',
                 'region_code' => '110000000',
-                'customer_id' => 790,
+                'addressable_id' => 790,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-31 00:17:30',
                 'updated_at' => '2025-01-31 00:17:30',
             ),
-            283 => 
+            313 => 
             array (
                 'id' => 814,
                 'address' => 'Titay Public Market',
@@ -10992,11 +12225,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 791,
+                'addressable_id' => 791,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-31 01:35:51',
                 'updated_at' => '2025-01-31 01:35:51',
             ),
-            284 => 
+            314 => 
             array (
                 'id' => 815,
                 'address' => 'Uhoa Phoa Ilonggo Subdivision, Galves Compound',
@@ -11006,11 +12240,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 792,
+                'addressable_id' => 792,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-01-31 18:55:28',
                 'updated_at' => '2025-01-31 18:55:28',
             ),
-            285 => 
+            315 => 
             array (
                 'id' => 816,
                 'address' => 'Rizza St.',
@@ -11020,11 +12255,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 793,
+                'addressable_id' => 793,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-01 00:09:28',
                 'updated_at' => '2025-02-01 00:09:28',
             ),
-            286 => 
+            316 => 
             array (
                 'id' => 817,
                 'address' => 'Upper Calarian',
@@ -11034,11 +12270,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 794,
+                'addressable_id' => 794,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-03 16:59:07',
                 'updated_at' => '2025-02-03 16:59:07',
             ),
-            287 => 
+            317 => 
             array (
                 'id' => 818,
                 'address' => 'Golden Valley',
@@ -11048,11 +12285,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 795,
+                'addressable_id' => 795,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-03 18:25:45',
                 'updated_at' => '2025-02-03 18:25:45',
             ),
-            288 => 
+            318 => 
             array (
                 'id' => 819,
                 'address' => 'Zone 1, Azcuna',
@@ -11062,11 +12300,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 796,
+                'addressable_id' => 796,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-03 18:27:39',
                 'updated_at' => '2025-02-03 18:27:39',
             ),
-            289 => 
+            319 => 
             array (
                 'id' => 820,
                 'address' => 'Lupa Lupa Mosque',
@@ -11076,11 +12315,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 797,
+                'addressable_id' => 797,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-03 19:44:25',
                 'updated_at' => '2025-02-03 19:44:25',
             ),
-            290 => 
+            320 => 
             array (
                 'id' => 821,
                 'address' => 'Zone 7, Asinan',
@@ -11090,11 +12330,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 798,
+                'addressable_id' => 798,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-03 20:09:20',
                 'updated_at' => '2025-02-03 20:09:20',
             ),
-            291 => 
+            321 => 
             array (
                 'id' => 822,
                 'address' => 'Upper Calarian',
@@ -11104,11 +12345,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 799,
+                'addressable_id' => 799,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-03 20:10:25',
                 'updated_at' => '2025-02-03 20:10:25',
             ),
-            292 => 
+            322 => 
             array (
                 'id' => 823,
                 'address' => 'Purok 4 Miluao',
@@ -11118,11 +12360,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 800,
+                'addressable_id' => 800,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-04 19:37:36',
                 'updated_at' => '2025-02-04 19:37:36',
             ),
-            293 => 
+            323 => 
             array (
                 'id' => 824,
                 'address' => 'La Purisima Street',
@@ -11132,11 +12375,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 801,
+                'addressable_id' => 801,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-05 17:02:08',
                 'updated_at' => '2025-02-05 17:02:08',
             ),
-            294 => 
+            324 => 
             array (
                 'id' => 825,
                 'address' => 'CMUP Higher Village',
@@ -11146,11 +12390,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 802,
+                'addressable_id' => 802,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-05 17:16:45',
                 'updated_at' => '2025-02-05 17:16:45',
             ),
-            295 => 
+            325 => 
             array (
                 'id' => 826,
                 'address' => 'Sitio Pole Diutay, Zone 3',
@@ -11160,11 +12405,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 803,
+                'addressable_id' => 803,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-05 18:55:53',
                 'updated_at' => '2025-02-05 18:55:53',
             ),
-            296 => 
+            326 => 
             array (
                 'id' => 827,
                 'address' => 'Mayor Jaldon St.',
@@ -11174,11 +12420,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 804,
+                'addressable_id' => 804,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-05 20:03:23',
                 'updated_at' => '2025-02-05 20:03:23',
             ),
-            297 => 
+            327 => 
             array (
                 'id' => 828,
                 'address' => 'Zone 4',
@@ -11188,11 +12435,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 805,
+                'addressable_id' => 805,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-05 22:03:11',
                 'updated_at' => '2025-02-05 22:03:11',
             ),
-            298 => 
+            328 => 
             array (
                 'id' => 829,
                 'address' => 'Tongsinah',
@@ -11202,11 +12450,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 806,
+                'addressable_id' => 806,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-05 23:05:57',
                 'updated_at' => '2025-02-05 23:05:57',
             ),
-            299 => 
+            329 => 
             array (
                 'id' => 830,
                 'address' => 'Apolinario Loop, Old Highway',
@@ -11216,11 +12465,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 807,
+                'addressable_id' => 807,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 18:58:00',
                 'updated_at' => '2025-02-06 18:58:00',
             ),
-            300 => 
+            330 => 
             array (
                 'id' => 831,
                 'address' => '-',
@@ -11230,11 +12480,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104203000',
                 'province_code' => '104200000',
                 'region_code' => '100000000',
-                'customer_id' => 808,
+                'addressable_id' => 808,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 19:58:10',
                 'updated_at' => '2025-02-06 19:58:10',
             ),
-            301 => 
+            331 => 
             array (
                 'id' => 832,
                 'address' => '-',
@@ -11244,11 +12495,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '103509000',
                 'province_code' => '103500000',
                 'region_code' => '100000000',
-                'customer_id' => 809,
+                'addressable_id' => 809,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 20:02:31',
                 'updated_at' => '2025-02-06 20:02:31',
             ),
-            302 => 
+            332 => 
             array (
                 'id' => 833,
                 'address' => '-',
@@ -11258,11 +12510,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '103522000',
                 'province_code' => '103500000',
                 'region_code' => '090000000',
-                'customer_id' => 810,
+                'addressable_id' => 810,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 20:04:41',
                 'updated_at' => '2025-02-06 20:04:41',
             ),
-            303 => 
+            333 => 
             array (
                 'id' => 834,
                 'address' => '-',
@@ -11272,11 +12525,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104210000',
                 'province_code' => '104200000',
                 'region_code' => '100000000',
-                'customer_id' => 811,
+                'addressable_id' => 811,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:01:37',
                 'updated_at' => '2025-02-06 21:01:37',
             ),
-            304 => 
+            334 => 
             array (
                 'id' => 835,
                 'address' => '-',
@@ -11286,11 +12540,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104210000',
                 'province_code' => '104200000',
                 'region_code' => '100000000',
-                'customer_id' => 812,
+                'addressable_id' => 812,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:04:19',
                 'updated_at' => '2025-02-06 21:04:19',
             ),
-            305 => 
+            335 => 
             array (
                 'id' => 836,
                 'address' => '-',
@@ -11300,11 +12555,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104209000',
                 'province_code' => '104200000',
                 'region_code' => '100000000',
-                'customer_id' => 813,
+                'addressable_id' => 813,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:31:29',
                 'updated_at' => '2025-02-06 21:31:29',
             ),
-            306 => 
+            336 => 
             array (
                 'id' => 837,
                 'address' => '-',
@@ -11314,11 +12570,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '103503000',
                 'province_code' => '103500000',
                 'region_code' => '100000000',
-                'customer_id' => 814,
+                'addressable_id' => 814,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:34:15',
                 'updated_at' => '2025-02-06 21:34:15',
             ),
-            307 => 
+            337 => 
             array (
                 'id' => 838,
                 'address' => '-',
@@ -11328,11 +12585,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 815,
+                'addressable_id' => 815,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:43:38',
                 'updated_at' => '2025-02-06 21:43:38',
             ),
-            308 => 
+            338 => 
             array (
                 'id' => 839,
                 'address' => '-',
@@ -11342,11 +12600,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '103509000',
                 'province_code' => '103500000',
                 'region_code' => '100000000',
-                'customer_id' => 816,
+                'addressable_id' => 816,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:53:13',
                 'updated_at' => '2025-02-06 21:53:13',
             ),
-            309 => 
+            339 => 
             array (
                 'id' => 840,
                 'address' => '-',
@@ -11356,11 +12615,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 817,
+                'addressable_id' => 817,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 21:57:50',
                 'updated_at' => '2025-02-06 21:57:50',
             ),
-            310 => 
+            340 => 
             array (
                 'id' => 841,
                 'address' => '-',
@@ -11370,11 +12630,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097209000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 818,
+                'addressable_id' => 818,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 22:06:32',
                 'updated_at' => '2025-02-06 22:06:32',
             ),
-            311 => 
+            341 => 
             array (
                 'id' => 842,
                 'address' => '-',
@@ -11384,11 +12645,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097319000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 819,
+                'addressable_id' => 819,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-06 22:19:27',
                 'updated_at' => '2025-02-06 22:19:27',
             ),
-            312 => 
+            342 => 
             array (
                 'id' => 843,
                 'address' => '-',
@@ -11398,11 +12660,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 820,
+                'addressable_id' => 820,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-07 21:38:41',
                 'updated_at' => '2025-02-07 21:38:41',
             ),
-            313 => 
+            343 => 
             array (
                 'id' => 844,
                 'address' => 'Calle Pilar',
@@ -11412,11 +12675,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 821,
+                'addressable_id' => 821,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-07 22:46:04',
                 'updated_at' => '2025-02-07 22:46:04',
             ),
-            314 => 
+            344 => 
             array (
                 'id' => 845,
                 'address' => 'MCLL Highway',
@@ -11426,11 +12690,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 822,
+                'addressable_id' => 822,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-07 23:34:22',
                 'updated_at' => '2025-02-07 23:34:22',
             ),
-            315 => 
+            345 => 
             array (
                 'id' => 846,
                 'address' => 'J.S. Alano Street',
@@ -11440,11 +12705,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 823,
+                'addressable_id' => 823,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 07:00:28',
                 'updated_at' => '2025-02-10 07:00:28',
             ),
-            316 => 
+            346 => 
             array (
                 'id' => 847,
                 'address' => 'Gov. Alvarez Avenue',
@@ -11454,11 +12720,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 824,
+                'addressable_id' => 824,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 07:02:51',
                 'updated_at' => '2025-02-10 07:02:51',
             ),
-            317 => 
+            347 => 
             array (
                 'id' => 848,
                 'address' => 'Don Toribio Street',
@@ -11468,11 +12735,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 825,
+                'addressable_id' => 825,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 07:04:33',
                 'updated_at' => '2025-02-10 07:04:33',
             ),
-            318 => 
+            348 => 
             array (
                 'id' => 849,
                 'address' => 'Purok Violeta',
@@ -11482,11 +12750,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 826,
+                'addressable_id' => 826,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 16:39:58',
                 'updated_at' => '2025-02-10 16:39:58',
             ),
-            319 => 
+            349 => 
             array (
                 'id' => 850,
                 'address' => 'Waray Street',
@@ -11496,11 +12765,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 827,
+                'addressable_id' => 827,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 17:37:46',
                 'updated_at' => '2025-02-10 17:37:46',
             ),
-            320 => 
+            350 => 
             array (
                 'id' => 851,
                 'address' => '052 GVH, Herrera Drive',
@@ -11510,11 +12780,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 828,
+                'addressable_id' => 828,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 18:03:05',
                 'updated_at' => '2025-02-10 18:03:05',
             ),
-            321 => 
+            351 => 
             array (
                 'id' => 852,
                 'address' => 'Block 1 Lot 4, Katatagan Street, Upper Calarian',
@@ -11524,11 +12795,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 829,
+                'addressable_id' => 829,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 18:23:11',
                 'updated_at' => '2025-02-10 18:23:11',
             ),
-            322 => 
+            352 => 
             array (
                 'id' => 853,
                 'address' => 'Purok Marang',
@@ -11538,11 +12810,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097307000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 830,
+                'addressable_id' => 830,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 20:15:51',
                 'updated_at' => '2025-02-10 20:15:51',
             ),
-            323 => 
+            353 => 
             array (
                 'id' => 854,
                 'address' => 'Lower Calarian',
@@ -11552,11 +12825,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 831,
+                'addressable_id' => 831,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-10 20:35:48',
                 'updated_at' => '2025-02-10 20:35:48',
             ),
-            324 => 
+            354 => 
             array (
                 'id' => 855,
                 'address' => 'Casumpang Drive',
@@ -11566,11 +12840,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 832,
+                'addressable_id' => 832,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-11 17:54:22',
                 'updated_at' => '2025-02-11 17:54:22',
             ),
-            325 => 
+            355 => 
             array (
                 'id' => 856,
                 'address' => '-',
@@ -11580,11 +12855,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 833,
+                'addressable_id' => 833,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-11 22:33:36',
                 'updated_at' => '2025-02-11 22:33:36',
             ),
-            326 => 
+            356 => 
             array (
                 'id' => 857,
                 'address' => 'National Highway',
@@ -11594,11 +12870,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 834,
+                'addressable_id' => 834,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-11 23:43:38',
                 'updated_at' => '2025-02-11 23:43:38',
             ),
-            327 => 
+            357 => 
             array (
                 'id' => 858,
                 'address' => 'Sun Street',
@@ -11608,11 +12885,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 835,
+                'addressable_id' => 835,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-12 00:02:01',
                 'updated_at' => '2025-02-12 00:02:01',
             ),
-            328 => 
+            358 => 
             array (
                 'id' => 859,
                 'address' => '162-E Don MC Enriquez Drive',
@@ -11622,11 +12900,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 836,
+                'addressable_id' => 836,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-12 18:11:22',
                 'updated_at' => '2025-02-12 18:11:22',
             ),
-            329 => 
+            359 => 
             array (
                 'id' => 860,
                 'address' => 'Toribio Drive',
@@ -11636,11 +12915,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 837,
+                'addressable_id' => 837,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-12 23:58:48',
                 'updated_at' => '2025-02-12 23:58:48',
             ),
-            330 => 
+            360 => 
             array (
                 'id' => 861,
                 'address' => 'Immaculate Drive, Zone 1',
@@ -11650,11 +12930,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 838,
+                'addressable_id' => 838,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-13 00:15:12',
                 'updated_at' => '2025-02-13 00:15:12',
             ),
-            331 => 
+            361 => 
             array (
                 'id' => 862,
                 'address' => 'Calle Fatima',
@@ -11664,11 +12945,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 839,
+                'addressable_id' => 839,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-13 01:08:57',
                 'updated_at' => '2025-02-13 01:08:57',
             ),
-            332 => 
+            362 => 
             array (
                 'id' => 863,
                 'address' => 'Duncaan Drive',
@@ -11678,11 +12960,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 840,
+                'addressable_id' => 840,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-13 21:04:06',
                 'updated_at' => '2025-02-13 21:04:06',
             ),
-            333 => 
+            363 => 
             array (
                 'id' => 864,
                 'address' => '-',
@@ -11692,11 +12975,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 841,
+                'addressable_id' => 841,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-13 22:26:55',
                 'updated_at' => '2025-02-13 22:26:55',
             ),
-            334 => 
+            364 => 
             array (
                 'id' => 865,
                 'address' => 'MCLL Highway',
@@ -11706,11 +12990,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 842,
+                'addressable_id' => 842,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-13 23:00:40',
                 'updated_at' => '2025-02-13 23:00:40',
             ),
-            335 => 
+            365 => 
             array (
                 'id' => 866,
                 'address' => 'Sitio Lalat',
@@ -11720,11 +13005,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098304000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 843,
+                'addressable_id' => 843,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-18 17:41:48',
                 'updated_at' => '2025-02-18 17:41:48',
             ),
-            336 => 
+            366 => 
             array (
                 'id' => 867,
                 'address' => 'MCLL Highway',
@@ -11734,11 +13020,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 844,
+                'addressable_id' => 844,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-19 16:42:49',
                 'updated_at' => '2025-02-19 16:42:49',
             ),
-            337 => 
+            367 => 
             array (
                 'id' => 868,
                 'address' => '-',
@@ -11748,11 +13035,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097216000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 845,
+                'addressable_id' => 845,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-19 17:23:10',
                 'updated_at' => '2025-02-19 17:23:10',
             ),
-            338 => 
+            368 => 
             array (
                 'id' => 869,
                 'address' => 'Cluster 3, Luyahan',
@@ -11762,11 +13050,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 846,
+                'addressable_id' => 846,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-19 18:22:30',
                 'updated_at' => '2025-02-19 18:22:30',
             ),
-            339 => 
+            369 => 
             array (
                 'id' => 870,
                 'address' => 'Near Chapel, Nazareth Dr. Zone 3',
@@ -11776,11 +13065,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 847,
+                'addressable_id' => 847,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-19 19:00:05',
                 'updated_at' => '2025-02-19 19:00:05',
             ),
-            340 => 
+            370 => 
             array (
                 'id' => 871,
                 'address' => 'Cadena de Amor Road',
@@ -11790,11 +13080,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 848,
+                'addressable_id' => 848,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-19 21:00:42',
                 'updated_at' => '2025-02-19 21:00:42',
             ),
-            341 => 
+            371 => 
             array (
                 'id' => 872,
                 'address' => 'Zone 3, Socorro Street',
@@ -11804,11 +13095,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 849,
+                'addressable_id' => 849,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-19 23:51:10',
                 'updated_at' => '2025-02-19 23:51:10',
             ),
-            342 => 
+            372 => 
             array (
                 'id' => 873,
                 'address' => 'National Highway',
@@ -11818,11 +13110,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 850,
+                'addressable_id' => 850,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-20 17:04:47',
                 'updated_at' => '2025-02-20 17:04:47',
             ),
-            343 => 
+            373 => 
             array (
                 'id' => 874,
                 'address' => 'C-1068 Mayor Jaldon St.',
@@ -11832,11 +13125,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 851,
+                'addressable_id' => 851,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-20 17:50:32',
                 'updated_at' => '2025-02-20 17:50:32',
             ),
-            344 => 
+            374 => 
             array (
                 'id' => 875,
                 'address' => '.',
@@ -11846,11 +13140,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098312000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 852,
+                'addressable_id' => 852,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-21 20:39:31',
                 'updated_at' => '2025-02-21 20:39:31',
             ),
-            345 => 
+            375 => 
             array (
                 'id' => 876,
                 'address' => '.',
@@ -11860,11 +13155,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097213000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 853,
+                'addressable_id' => 853,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-21 20:46:44',
                 'updated_at' => '2025-02-21 20:46:44',
             ),
-            346 => 
+            376 => 
             array (
                 'id' => 877,
                 'address' => '.',
@@ -11874,11 +13170,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097223000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 854,
+                'addressable_id' => 854,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-21 20:49:15',
                 'updated_at' => '2025-02-21 20:49:15',
             ),
-            347 => 
+            377 => 
             array (
                 'id' => 878,
                 'address' => 'Purok 4, Lower Cabatangan',
@@ -11888,11 +13185,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 855,
+                'addressable_id' => 855,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-24 16:24:20',
                 'updated_at' => '2025-02-24 16:24:20',
             ),
-            348 => 
+            378 => 
             array (
                 'id' => 879,
                 'address' => 'San Jose Road, Corner Clipper Heights',
@@ -11902,11 +13200,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 856,
+                'addressable_id' => 856,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-25 16:52:35',
                 'updated_at' => '2025-02-25 16:52:35',
             ),
-            349 => 
+            379 => 
             array (
                 'id' => 880,
                 'address' => 'Boa Drive',
@@ -11916,11 +13215,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 857,
+                'addressable_id' => 857,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-25 17:56:33',
                 'updated_at' => '2025-02-25 17:56:33',
             ),
-            350 => 
+            380 => 
             array (
                 'id' => 881,
                 'address' => 'Tanjay Street',
@@ -11930,11 +13230,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 858,
+                'addressable_id' => 858,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-27 16:32:46',
                 'updated_at' => '2025-02-27 16:32:46',
             ),
-            351 => 
+            381 => 
             array (
                 'id' => 882,
                 'address' => '-',
@@ -11944,11 +13245,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 859,
+                'addressable_id' => 859,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-27 16:35:12',
                 'updated_at' => '2025-02-27 16:35:12',
             ),
-            352 => 
+            382 => 
             array (
                 'id' => 883,
                 'address' => 'Daap',
@@ -11958,11 +13260,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 860,
+                'addressable_id' => 860,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-27 18:17:58',
                 'updated_at' => '2025-02-27 18:17:58',
             ),
-            353 => 
+            383 => 
             array (
                 'id' => 884,
                 'address' => 'Road 21',
@@ -11972,11 +13275,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 861,
+                'addressable_id' => 861,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-28 19:31:17',
                 'updated_at' => '2025-02-28 19:31:17',
             ),
-            354 => 
+            384 => 
             array (
                 'id' => 885,
                 'address' => '-',
@@ -11986,11 +13290,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '156605000',
                 'province_code' => '156600000',
                 'region_code' => '150000000',
-                'customer_id' => 862,
+                'addressable_id' => 862,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-02-28 22:23:52',
                 'updated_at' => '2025-02-28 22:23:52',
             ),
-            355 => 
+            385 => 
             array (
                 'id' => 886,
                 'address' => '060 Ivory. St, Acharon Village',
@@ -12000,11 +13305,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '126303000',
                 'province_code' => '126300000',
                 'region_code' => '120000000',
-                'customer_id' => 863,
+                'addressable_id' => 863,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-03 17:55:11',
                 'updated_at' => '2025-03-03 17:55:11',
             ),
-            356 => 
+            386 => 
             array (
                 'id' => 887,
                 'address' => 'Saavedra Street, Viguera Compound',
@@ -12014,11 +13320,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 864,
+                'addressable_id' => 864,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-03 21:04:55',
                 'updated_at' => '2025-03-03 21:04:55',
             ),
-            357 => 
+            387 => 
             array (
                 'id' => 888,
                 'address' => 'Purok 5',
@@ -12028,11 +13335,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 865,
+                'addressable_id' => 865,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-03 22:21:56',
                 'updated_at' => '2025-03-03 22:21:56',
             ),
-            358 => 
+            388 => 
             array (
                 'id' => 889,
                 'address' => '-',
@@ -12042,11 +13350,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097205000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 866,
+                'addressable_id' => 866,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-04 16:55:07',
                 'updated_at' => '2025-03-04 16:55:07',
             ),
-            359 => 
+            389 => 
             array (
                 'id' => 890,
                 'address' => 'Purok Anthurium',
@@ -12056,11 +13365,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097209000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 867,
+                'addressable_id' => 867,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-05 00:42:49',
                 'updated_at' => '2025-03-05 00:42:49',
             ),
-            360 => 
+            390 => 
             array (
                 'id' => 891,
                 'address' => 'Purok Palmera',
@@ -12070,11 +13380,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097313000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 868,
+                'addressable_id' => 868,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-05 19:08:02',
                 'updated_at' => '2025-03-05 19:08:02',
             ),
-            361 => 
+            391 => 
             array (
                 'id' => 892,
                 'address' => 'San Isidro Road, Zone II, Duncaan',
@@ -12084,11 +13395,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 869,
+                'addressable_id' => 869,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-05 19:50:41',
                 'updated_at' => '2025-03-05 19:50:41',
             ),
-            362 => 
+            392 => 
             array (
                 'id' => 893,
                 'address' => 'Purok Daisy',
@@ -12098,11 +13410,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098301000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 870,
+                'addressable_id' => 870,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-05 20:57:16',
                 'updated_at' => '2025-03-05 20:57:16',
             ),
-            363 => 
+            393 => 
             array (
                 'id' => 894,
                 'address' => 'Zone 4',
@@ -12112,11 +13425,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 871,
+                'addressable_id' => 871,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-06 01:00:40',
                 'updated_at' => '2025-03-06 01:00:40',
             ),
-            364 => 
+            394 => 
             array (
                 'id' => 895,
                 'address' => 'San Ramon',
@@ -12126,11 +13440,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 872,
+                'addressable_id' => 872,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-06 17:09:15',
                 'updated_at' => '2025-03-06 17:09:15',
             ),
-            365 => 
+            395 => 
             array (
                 'id' => 896,
                 'address' => 'Limpapa-Labuan Road, Upper Calarian',
@@ -12140,11 +13455,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 873,
+                'addressable_id' => 873,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-06 18:31:57',
                 'updated_at' => '2025-03-06 18:31:57',
             ),
-            366 => 
+            396 => 
             array (
                 'id' => 897,
                 'address' => 'Triplet Road',
@@ -12154,11 +13470,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 874,
+                'addressable_id' => 874,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-07 00:49:27',
                 'updated_at' => '2025-03-07 00:49:27',
             ),
-            367 => 
+            397 => 
             array (
                 'id' => 898,
                 'address' => 'Upper Calarian',
@@ -12168,11 +13485,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 875,
+                'addressable_id' => 875,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-07 18:41:52',
                 'updated_at' => '2025-03-07 18:41:52',
             ),
-            368 => 
+            398 => 
             array (
                 'id' => 899,
                 'address' => '-',
@@ -12182,11 +13500,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '124704000',
                 'province_code' => '124700000',
                 'region_code' => '120000000',
-                'customer_id' => 876,
+                'addressable_id' => 876,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-07 19:18:29',
                 'updated_at' => '2025-03-07 19:18:29',
             ),
-            369 => 
+            399 => 
             array (
                 'id' => 900,
                 'address' => '-',
@@ -12196,11 +13515,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097341000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 877,
+                'addressable_id' => 877,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 17:14:12',
                 'updated_at' => '2025-03-10 17:14:12',
             ),
-            370 => 
+            400 => 
             array (
                 'id' => 901,
                 'address' => '-',
@@ -12210,11 +13530,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '103509000',
                 'province_code' => '103500000',
                 'region_code' => '100000000',
-                'customer_id' => 878,
+                'addressable_id' => 878,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 17:18:25',
                 'updated_at' => '2025-03-10 17:18:25',
             ),
-            371 => 
+            401 => 
             array (
                 'id' => 902,
                 'address' => '-',
@@ -12224,11 +13545,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 879,
+                'addressable_id' => 879,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 17:20:26',
                 'updated_at' => '2025-03-10 17:20:26',
             ),
-            372 => 
+            402 => 
             array (
                 'id' => 903,
                 'address' => '-',
@@ -12238,11 +13560,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 880,
+                'addressable_id' => 880,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 17:22:18',
                 'updated_at' => '2025-03-10 17:22:18',
             ),
-            373 => 
+            403 => 
             array (
                 'id' => 904,
                 'address' => '-',
@@ -12252,11 +13575,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 881,
+                'addressable_id' => 881,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 17:23:49',
                 'updated_at' => '2025-03-10 17:23:49',
             ),
-            374 => 
+            404 => 
             array (
                 'id' => 905,
                 'address' => '-',
@@ -12266,11 +13590,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097312000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 882,
+                'addressable_id' => 882,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 17:25:55',
                 'updated_at' => '2025-03-10 17:25:55',
             ),
-            375 => 
+            405 => 
             array (
                 'id' => 906,
                 'address' => '0965 Prk. Bonifacio',
@@ -12280,11 +13605,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 883,
+                'addressable_id' => 883,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 21:17:13',
                 'updated_at' => '2025-03-10 21:17:13',
             ),
-            376 => 
+            406 => 
             array (
                 'id' => 907,
                 'address' => 'Zone 3, Luyahan',
@@ -12294,11 +13620,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 884,
+                'addressable_id' => 884,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 21:59:40',
                 'updated_at' => '2025-03-10 21:59:40',
             ),
-            377 => 
+            407 => 
             array (
                 'id' => 908,
                 'address' => 'Fronting Prycegas',
@@ -12308,11 +13635,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 885,
+                'addressable_id' => 885,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-10 23:43:13',
                 'updated_at' => '2025-03-10 23:43:13',
             ),
-            378 => 
+            408 => 
             array (
                 'id' => 909,
                 'address' => 'Veterans Drive',
@@ -12322,11 +13650,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '150702000',
                 'province_code' => '150700000',
                 'region_code' => '150000000',
-                'customer_id' => 886,
+                'addressable_id' => 886,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-11 17:20:40',
                 'updated_at' => '2025-03-11 17:20:40',
             ),
-            379 => 
+            409 => 
             array (
                 'id' => 910,
                 'address' => 'Zone 7c',
@@ -12336,11 +13665,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 887,
+                'addressable_id' => 887,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-12 20:07:21',
                 'updated_at' => '2025-03-12 20:07:21',
             ),
-            380 => 
+            410 => 
             array (
                 'id' => 911,
                 'address' => 'Don Toribio Street',
@@ -12350,11 +13680,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 888,
+                'addressable_id' => 888,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-12 22:55:51',
                 'updated_at' => '2025-03-12 22:55:51',
             ),
-            381 => 
+            411 => 
             array (
                 'id' => 912,
                 'address' => 'Lot 5, Abarro Compound, Upper Calarian',
@@ -12364,11 +13695,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 889,
+                'addressable_id' => 889,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-13 00:04:31',
                 'updated_at' => '2025-03-13 00:04:31',
             ),
-            382 => 
+            412 => 
             array (
                 'id' => 913,
                 'address' => 'Puruk 3 Muslimin',
@@ -12378,11 +13710,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 890,
+                'addressable_id' => 890,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-13 01:03:58',
                 'updated_at' => '2025-03-13 01:03:58',
             ),
-            383 => 
+            413 => 
             array (
                 'id' => 914,
                 'address' => '-',
@@ -12392,11 +13725,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 891,
+                'addressable_id' => 891,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-13 17:05:34',
                 'updated_at' => '2025-03-13 17:05:34',
             ),
-            384 => 
+            414 => 
             array (
                 'id' => 915,
                 'address' => 'Purok Bagong Silang',
@@ -12406,11 +13740,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098303000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 892,
+                'addressable_id' => 892,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-13 17:27:41',
                 'updated_at' => '2025-03-13 17:27:41',
             ),
-            385 => 
+            415 => 
             array (
                 'id' => 916,
                 'address' => 'Normal Road',
@@ -12420,11 +13755,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 893,
+                'addressable_id' => 893,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-13 19:01:37',
                 'updated_at' => '2025-03-13 19:01:37',
             ),
-            386 => 
+            416 => 
             array (
                 'id' => 917,
                 'address' => 'Madraso Drive, Don Alfaro Street',
@@ -12434,11 +13770,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 894,
+                'addressable_id' => 894,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-14 18:13:45',
                 'updated_at' => '2025-03-14 18:13:45',
             ),
-            387 => 
+            417 => 
             array (
                 'id' => 918,
                 'address' => 'Blk 8 Lot 5 Armor Village',
@@ -12448,11 +13785,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 895,
+                'addressable_id' => 895,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-14 18:37:42',
                 'updated_at' => '2025-03-14 18:37:42',
             ),
-            388 => 
+            418 => 
             array (
                 'id' => 919,
                 'address' => 'Lots 4 & 5, B2 Cahaya Timur Subdivision, Caragasan',
@@ -12462,11 +13800,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 896,
+                'addressable_id' => 896,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-17 17:03:16',
                 'updated_at' => '2025-03-17 17:03:16',
             ),
-            389 => 
+            419 => 
             array (
                 'id' => 920,
                 'address' => 'Purok 1',
@@ -12476,11 +13815,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 897,
+                'addressable_id' => 897,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-17 17:13:51',
                 'updated_at' => '2025-03-17 17:13:51',
             ),
-            390 => 
+            420 => 
             array (
                 'id' => 921,
                 'address' => 'Harmony Village, Pitogo',
@@ -12490,11 +13830,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 898,
+                'addressable_id' => 898,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-17 23:13:17',
                 'updated_at' => '2025-03-17 23:13:17',
             ),
-            391 => 
+            421 => 
             array (
                 'id' => 922,
                 'address' => '#108 Veterans Avenue',
@@ -12504,11 +13845,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 899,
+                'addressable_id' => 899,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-18 16:39:11',
                 'updated_at' => '2025-03-18 16:39:11',
             ),
-            392 => 
+            422 => 
             array (
                 'id' => 923,
                 'address' => '#108 Veterans Avenue',
@@ -12518,11 +13860,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 900,
+                'addressable_id' => 900,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-18 16:40:25',
                 'updated_at' => '2025-03-18 16:40:25',
             ),
-            393 => 
+            423 => 
             array (
                 'id' => 924,
                 'address' => 'UG-07 & 08 Globe Telecom Plaza Tower 1, Pioneer Highlands South Condominium, Pioneer Corner Madison Streets',
@@ -12532,11 +13875,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '137401000',
                 'province_code' => '170000000',
                 'region_code' => '130000000',
-                'customer_id' => 901,
+                'addressable_id' => 901,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-18 23:25:09',
                 'updated_at' => '2025-03-18 23:25:09',
             ),
-            394 => 
+            424 => 
             array (
                 'id' => 925,
                 'address' => 'Fernandez Drive',
@@ -12546,11 +13890,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 902,
+                'addressable_id' => 902,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-19 21:05:38',
                 'updated_at' => '2025-03-19 21:05:38',
             ),
-            395 => 
+            425 => 
             array (
                 'id' => 926,
                 'address' => '#117 km.3 McArthur Highway',
@@ -12560,11 +13905,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112402000',
                 'province_code' => '112400000',
                 'region_code' => '110000000',
-                'customer_id' => 903,
+                'addressable_id' => 903,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-20 18:24:52',
                 'updated_at' => '2025-03-20 18:24:52',
             ),
-            396 => 
+            426 => 
             array (
                 'id' => 927,
                 'address' => 'Green Meadow Subd. Galvez Rd., Gov. Ramos Ave.,',
@@ -12574,11 +13920,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 904,
+                'addressable_id' => 904,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-20 19:18:02',
                 'updated_at' => '2025-03-20 19:18:02',
             ),
-            397 => 
+            427 => 
             array (
                 'id' => 928,
                 'address' => 'Bulawan National High School',
@@ -12588,11 +13935,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098311000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 905,
+                'addressable_id' => 905,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-20 20:47:17',
                 'updated_at' => '2025-03-20 20:47:17',
             ),
-            398 => 
+            428 => 
             array (
                 'id' => 929,
                 'address' => '-',
@@ -12602,11 +13950,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098313000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 906,
+                'addressable_id' => 906,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-20 21:02:33',
                 'updated_at' => '2025-03-20 21:02:33',
             ),
-            399 => 
+            429 => 
             array (
                 'id' => 930,
                 'address' => 'Purok Gaway-gaway',
@@ -12616,11 +13965,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 907,
+                'addressable_id' => 907,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-20 22:59:08',
                 'updated_at' => '2025-03-20 22:59:08',
             ),
-            400 => 
+            430 => 
             array (
                 'id' => 931,
                 'address' => 'PNOC EC',
@@ -12630,11 +13980,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 908,
+                'addressable_id' => 908,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-21 06:48:15',
                 'updated_at' => '2025-03-21 06:48:15',
             ),
-            401 => 
+            431 => 
             array (
                 'id' => 932,
                 'address' => 'Upper Calarian',
@@ -12644,11 +13995,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 909,
+                'addressable_id' => 909,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-21 19:00:24',
                 'updated_at' => '2025-03-21 19:00:24',
             ),
-            402 => 
+            432 => 
             array (
                 'id' => 933,
                 'address' => '-',
@@ -12658,11 +14010,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104212000',
                 'province_code' => '104200000',
                 'region_code' => '100000000',
-                'customer_id' => 910,
+                'addressable_id' => 910,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-24 06:01:09',
                 'updated_at' => '2025-03-24 06:01:09',
             ),
-            403 => 
+            433 => 
             array (
                 'id' => 934,
                 'address' => 'Lazaro Drive',
@@ -12672,11 +14025,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 911,
+                'addressable_id' => 911,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-24 16:55:55',
                 'updated_at' => '2025-03-24 16:55:55',
             ),
-            404 => 
+            434 => 
             array (
                 'id' => 935,
                 'address' => '#5 Forbes Hill',
@@ -12686,11 +14040,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 912,
+                'addressable_id' => 912,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-24 22:51:29',
                 'updated_at' => '2025-03-24 22:51:29',
             ),
-            405 => 
+            435 => 
             array (
                 'id' => 936,
                 'address' => 'ZSCMST Compound',
@@ -12700,11 +14055,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 913,
+                'addressable_id' => 913,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-24 23:22:15',
                 'updated_at' => '2025-03-24 23:22:15',
             ),
-            406 => 
+            436 => 
             array (
                 'id' => 937,
                 'address' => '#19 L3 South Woodland Heights',
@@ -12714,11 +14070,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '104305000',
                 'province_code' => '104300000',
                 'region_code' => '100000000',
-                'customer_id' => 914,
+                'addressable_id' => 914,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-25 17:42:02',
                 'updated_at' => '2025-03-25 17:42:02',
             ),
-            407 => 
+            437 => 
             array (
                 'id' => 938,
                 'address' => '-',
@@ -12728,11 +14085,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 915,
+                'addressable_id' => 915,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-25 18:39:33',
                 'updated_at' => '2025-03-25 18:39:33',
             ),
-            408 => 
+            438 => 
             array (
                 'id' => 939,
                 'address' => '144 Santan Street',
@@ -12742,11 +14100,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '160202000',
                 'province_code' => '160200000',
                 'region_code' => '160000000',
-                'customer_id' => 916,
+                'addressable_id' => 916,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 00:38:04',
                 'updated_at' => '2025-03-26 00:38:04',
             ),
-            409 => 
+            439 => 
             array (
                 'id' => 940,
                 'address' => 'Zone 6',
@@ -12756,11 +14115,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 917,
+                'addressable_id' => 917,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 17:18:20',
                 'updated_at' => '2025-03-26 17:30:02',
             ),
-            410 => 
+            440 => 
             array (
                 'id' => 941,
                 'address' => 'MSU Compound',
@@ -12770,11 +14130,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 918,
+                'addressable_id' => 918,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 18:17:39',
                 'updated_at' => '2025-03-26 18:17:39',
             ),
-            411 => 
+            441 => 
             array (
                 'id' => 942,
                 'address' => '-',
@@ -12784,11 +14145,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097308000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 920,
+                'addressable_id' => 920,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 18:46:51',
                 'updated_at' => '2025-03-26 18:46:51',
             ),
-            412 => 
+            442 => 
             array (
                 'id' => 943,
                 'address' => '-',
@@ -12798,11 +14160,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098315000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 921,
+                'addressable_id' => 921,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 18:48:07',
                 'updated_at' => '2025-03-26 18:48:07',
             ),
-            413 => 
+            443 => 
             array (
                 'id' => 944,
                 'address' => '-',
@@ -12812,11 +14175,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 922,
+                'addressable_id' => 922,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 18:49:10',
                 'updated_at' => '2025-03-26 18:49:10',
             ),
-            414 => 
+            444 => 
             array (
                 'id' => 945,
                 'address' => '-',
@@ -12826,11 +14190,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097303000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 923,
+                'addressable_id' => 923,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 18:50:57',
                 'updated_at' => '2025-03-26 18:50:57',
             ),
-            415 => 
+            445 => 
             array (
                 'id' => 946,
                 'address' => 'Kia Compound',
@@ -12840,11 +14205,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 924,
+                'addressable_id' => 924,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 18:51:33',
                 'updated_at' => '2025-03-26 18:51:33',
             ),
-            416 => 
+            446 => 
             array (
                 'id' => 947,
                 'address' => 'Malasugat Drive',
@@ -12854,11 +14220,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 925,
+                'addressable_id' => 925,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 19:25:49',
                 'updated_at' => '2025-03-26 19:25:49',
             ),
-            417 => 
+            447 => 
             array (
                 'id' => 948,
                 'address' => 'MSU Compound',
@@ -12868,11 +14235,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '157002000',
                 'province_code' => '157000000',
                 'region_code' => '150000000',
-                'customer_id' => 926,
+                'addressable_id' => 926,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-26 20:00:04',
                 'updated_at' => '2025-03-26 20:00:04',
             ),
-            418 => 
+            448 => 
             array (
                 'id' => 949,
                 'address' => 'Zone 1, MCLL Highway',
@@ -12882,11 +14250,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 927,
+                'addressable_id' => 927,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 00:08:31',
                 'updated_at' => '2025-03-27 00:08:31',
             ),
-            419 => 
+            449 => 
             array (
                 'id' => 950,
                 'address' => 'No. 130 H Don Toribio Street',
@@ -12896,11 +14265,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 928,
+                'addressable_id' => 928,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 18:57:50',
                 'updated_at' => '2025-03-27 18:57:50',
             ),
-            420 => 
+            450 => 
             array (
                 'id' => 951,
                 'address' => 'No. 130 H Don Toribio Street',
@@ -12910,11 +14280,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 929,
+                'addressable_id' => 929,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 19:01:29',
                 'updated_at' => '2025-03-27 19:01:29',
             ),
-            421 => 
+            451 => 
             array (
                 'id' => 952,
                 'address' => 'No. 130 H Don Toribio Street',
@@ -12924,11 +14295,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 930,
+                'addressable_id' => 930,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 19:03:15',
                 'updated_at' => '2025-03-27 19:03:15',
             ),
-            422 => 
+            452 => 
             array (
                 'id' => 953,
                 'address' => 'Blue Shark Hotel Bldg, Mayor Jaldon Street',
@@ -12938,11 +14310,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 931,
+                'addressable_id' => 931,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 19:06:00',
                 'updated_at' => '2025-03-27 19:06:00',
             ),
-            423 => 
+            453 => 
             array (
                 'id' => 954,
                 'address' => 'SBJ Drive Don Toribio Street',
@@ -12952,11 +14325,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 932,
+                'addressable_id' => 932,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 19:08:00',
                 'updated_at' => '2025-03-27 19:08:00',
             ),
-            424 => 
+            454 => 
             array (
                 'id' => 955,
                 'address' => 'Morning Breeze Road',
@@ -12966,11 +14340,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 933,
+                'addressable_id' => 933,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-27 19:40:00',
                 'updated_at' => '2025-03-27 19:40:00',
             ),
-            425 => 
+            455 => 
             array (
                 'id' => 956,
                 'address' => 'Del Pilar Street',
@@ -12980,11 +14355,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 934,
+                'addressable_id' => 934,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-28 19:24:15',
                 'updated_at' => '2025-03-28 19:24:15',
             ),
-            426 => 
+            456 => 
             array (
                 'id' => 957,
                 'address' => '-',
@@ -12994,11 +14370,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098314000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 935,
+                'addressable_id' => 935,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-28 23:11:33',
                 'updated_at' => '2025-03-28 23:11:33',
             ),
-            427 => 
+            457 => 
             array (
                 'id' => 958,
                 'address' => 'Sucabon',
@@ -13008,11 +14385,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 936,
+                'addressable_id' => 936,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-29 00:22:09',
                 'updated_at' => '2025-03-29 00:22:09',
             ),
-            428 => 
+            458 => 
             array (
                 'id' => 959,
                 'address' => 'Felisario Drive',
@@ -13022,11 +14400,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 937,
+                'addressable_id' => 937,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-31 19:49:24',
                 'updated_at' => '2025-03-31 19:49:24',
             ),
-            429 => 
+            459 => 
             array (
                 'id' => 960,
                 'address' => 'City Hall',
@@ -13036,11 +14415,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 938,
+                'addressable_id' => 938,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-03-31 20:12:01',
                 'updated_at' => '2025-03-31 20:12:21',
             ),
-            430 => 
+            460 => 
             array (
                 'id' => 961,
                 'address' => '101 San Jose Road',
@@ -13050,11 +14430,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 939,
+                'addressable_id' => 939,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-02 18:47:08',
                 'updated_at' => '2025-04-02 18:47:08',
             ),
-            431 => 
+            461 => 
             array (
                 'id' => 962,
                 'address' => 'DSWD Compound, Logoy Diutay',
@@ -13064,11 +14445,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 940,
+                'addressable_id' => 940,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-02 19:19:50',
                 'updated_at' => '2025-04-02 19:19:50',
             ),
-            432 => 
+            462 => 
             array (
                 'id' => 963,
                 'address' => 'Calle Fe',
@@ -13078,11 +14460,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 941,
+                'addressable_id' => 941,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-02 21:13:19',
                 'updated_at' => '2025-04-02 21:13:19',
             ),
-            433 => 
+            463 => 
             array (
                 'id' => 964,
                 'address' => 'Tugung Street',
@@ -13092,11 +14475,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 942,
+                'addressable_id' => 942,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-03 17:35:44',
                 'updated_at' => '2025-04-03 17:35:44',
             ),
-            434 => 
+            464 => 
             array (
                 'id' => 965,
                 'address' => 'Wee Guiao Bldg.',
@@ -13106,11 +14490,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 943,
+                'addressable_id' => 943,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-03 21:48:44',
                 'updated_at' => '2025-04-03 21:48:44',
             ),
-            435 => 
+            465 => 
             array (
                 'id' => 966,
                 'address' => 'National Highway',
@@ -13120,11 +14505,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 944,
+                'addressable_id' => 944,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-03 23:03:36',
                 'updated_at' => '2025-04-03 23:03:36',
             ),
-            436 => 
+            466 => 
             array (
                 'id' => 967,
                 'address' => 'Nazareth Drive',
@@ -13134,11 +14520,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 945,
+                'addressable_id' => 945,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-03 23:23:15',
                 'updated_at' => '2025-04-03 23:23:15',
             ),
-            437 => 
+            467 => 
             array (
                 'id' => 968,
                 'address' => '-',
@@ -13148,11 +14535,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 946,
+                'addressable_id' => 946,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-03 23:25:22',
                 'updated_at' => '2025-04-03 23:25:22',
             ),
-            438 => 
+            468 => 
             array (
                 'id' => 969,
                 'address' => 'Cosac Street',
@@ -13162,11 +14550,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 947,
+                'addressable_id' => 947,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-05 00:23:24',
                 'updated_at' => '2025-04-05 00:23:24',
             ),
-            439 => 
+            469 => 
             array (
                 'id' => 970,
                 'address' => 'Zone 1, Calle Real St.',
@@ -13176,11 +14565,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 948,
+                'addressable_id' => 948,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-08 00:33:39',
                 'updated_at' => '2025-04-08 00:33:39',
             ),
-            440 => 
+            470 => 
             array (
                 'id' => 971,
                 'address' => 'Purok 1',
@@ -13190,11 +14580,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097206000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 949,
+                'addressable_id' => 949,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-08 16:08:32',
                 'updated_at' => '2025-04-08 16:08:32',
             ),
-            441 => 
+            471 => 
             array (
                 'id' => 972,
                 'address' => 'Purok 6',
@@ -13204,11 +14595,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 950,
+                'addressable_id' => 950,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-08 17:29:35',
                 'updated_at' => '2025-04-08 17:29:35',
             ),
-            442 => 
+            472 => 
             array (
                 'id' => 973,
                 'address' => '.',
@@ -13218,11 +14610,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 951,
+                'addressable_id' => 951,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-08 17:53:38',
                 'updated_at' => '2025-04-08 17:53:38',
             ),
-            443 => 
+            473 => 
             array (
                 'id' => 974,
                 'address' => '331 Santa Maria Road',
@@ -13232,11 +14625,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 952,
+                'addressable_id' => 952,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-08 21:13:25',
                 'updated_at' => '2025-04-08 21:13:25',
             ),
-            444 => 
+            474 => 
             array (
                 'id' => 975,
                 'address' => 'Campo Muslim',
@@ -13246,11 +14640,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 953,
+                'addressable_id' => 953,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-08 21:35:35',
                 'updated_at' => '2025-04-08 21:35:35',
             ),
-            445 => 
+            475 => 
             array (
                 'id' => 976,
                 'address' => 'Bo. Cabu',
@@ -13260,11 +14655,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '126303000',
                 'province_code' => '126300000',
                 'region_code' => '120000000',
-                'customer_id' => 954,
+                'addressable_id' => 954,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-10 07:32:14',
                 'updated_at' => '2025-04-10 07:32:14',
             ),
-            446 => 
+            476 => 
             array (
                 'id' => 977,
                 'address' => 'Harmony Village, Pitogo',
@@ -13274,11 +14670,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 955,
+                'addressable_id' => 955,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-10 16:57:07',
                 'updated_at' => '2025-04-10 16:57:07',
             ),
-            447 => 
+            477 => 
             array (
                 'id' => 978,
                 'address' => 'Don Alfaro St.',
@@ -13288,11 +14685,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 956,
+                'addressable_id' => 956,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-10 22:04:56',
                 'updated_at' => '2025-04-10 22:04:56',
             ),
-            448 => 
+            478 => 
             array (
                 'id' => 979,
                 'address' => 'Lawa-an',
@@ -13302,11 +14700,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097201000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 957,
+                'addressable_id' => 957,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-11 16:25:50',
                 'updated_at' => '2025-04-11 16:25:50',
             ),
-            449 => 
+            479 => 
             array (
                 'id' => 980,
                 'address' => 'Lower Dicayas',
@@ -13316,11 +14715,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097202000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 958,
+                'addressable_id' => 958,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-11 16:48:24',
                 'updated_at' => '2025-04-11 16:48:24',
             ),
-            450 => 
+            480 => 
             array (
                 'id' => 981,
                 'address' => 'Purok Sunrise',
@@ -13330,11 +14730,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 959,
+                'addressable_id' => 959,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-11 18:14:07',
                 'updated_at' => '2025-04-11 18:14:07',
             ),
-            451 => 
+            481 => 
             array (
                 'id' => 982,
                 'address' => 'Campo Muslim',
@@ -13344,11 +14745,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 960,
+                'addressable_id' => 960,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-11 18:46:52',
                 'updated_at' => '2025-04-11 18:46:52',
             ),
-            452 => 
+            482 => 
             array (
                 'id' => 983,
                 'address' => 'Purok Bliss',
@@ -13358,11 +14760,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 961,
+                'addressable_id' => 961,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-11 19:11:13',
                 'updated_at' => '2025-04-11 19:11:13',
             ),
-            453 => 
+            483 => 
             array (
                 'id' => 984,
                 'address' => 'Normal Road',
@@ -13372,11 +14775,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 962,
+                'addressable_id' => 962,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-11 21:37:38',
                 'updated_at' => '2025-04-11 21:37:38',
             ),
-            454 => 
+            484 => 
             array (
                 'id' => 985,
                 'address' => 'Boa Drive, San Jose Road',
@@ -13386,11 +14790,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 963,
+                'addressable_id' => 963,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-14 17:43:17',
                 'updated_at' => '2025-04-14 17:43:17',
             ),
-            455 => 
+            485 => 
             array (
                 'id' => 986,
                 'address' => 'Purok 8A',
@@ -13400,11 +14805,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 964,
+                'addressable_id' => 964,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-15 00:14:57',
                 'updated_at' => '2025-04-15 00:14:57',
             ),
-            456 => 
+            486 => 
             array (
                 'id' => 987,
                 'address' => 'JNS Compound, Fronting Lorenzo Shipping Beside Doña Aurella Village, Old Airport',
@@ -13414,11 +14820,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '112402000',
                 'province_code' => '112400000',
                 'region_code' => '110000000',
-                'customer_id' => 965,
+                'addressable_id' => 965,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-15 17:25:28',
                 'updated_at' => '2025-04-15 17:25:28',
             ),
-            457 => 
+            487 => 
             array (
                 'id' => 988,
                 'address' => 'Purok 3B, Dacon Compound',
@@ -13428,11 +14835,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 966,
+                'addressable_id' => 966,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-16 00:50:30',
                 'updated_at' => '2025-04-16 00:50:30',
             ),
-            458 => 
+            488 => 
             array (
                 'id' => 989,
                 'address' => 'Purok Malinis',
@@ -13442,11 +14850,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 967,
+                'addressable_id' => 967,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-21 16:40:00',
                 'updated_at' => '2025-04-21 16:40:00',
             ),
-            459 => 
+            489 => 
             array (
                 'id' => 990,
                 'address' => 'Purok 1, Malandi',
@@ -13456,11 +14865,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 968,
+                'addressable_id' => 968,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-21 19:45:38',
                 'updated_at' => '2025-04-21 19:45:38',
             ),
-            460 => 
+            490 => 
             array (
                 'id' => 991,
                 'address' => 'In front of Balok Covered Court',
@@ -13470,11 +14880,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 969,
+                'addressable_id' => 969,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-21 20:09:02',
                 'updated_at' => '2025-04-21 20:09:02',
             ),
-            461 => 
+            491 => 
             array (
                 'id' => 992,
                 'address' => 'Zone 1, Dumagsa Road',
@@ -13484,11 +14895,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 970,
+                'addressable_id' => 970,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-21 23:03:37',
                 'updated_at' => '2025-04-21 23:03:37',
             ),
-            462 => 
+            492 => 
             array (
                 'id' => 993,
                 'address' => 'I. Magno Street',
@@ -13498,11 +14910,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 971,
+                'addressable_id' => 971,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-21 23:46:56',
                 'updated_at' => '2025-04-21 23:46:56',
             ),
-            463 => 
+            493 => 
             array (
                 'id' => 994,
                 'address' => 'N. Valderosa Street',
@@ -13512,11 +14925,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 972,
+                'addressable_id' => 972,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-21 23:48:35',
                 'updated_at' => '2025-04-21 23:48:35',
             ),
-            464 => 
+            494 => 
             array (
                 'id' => 995,
                 'address' => '-',
@@ -13526,11 +14940,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097213000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 973,
+                'addressable_id' => 973,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-22 04:38:16',
                 'updated_at' => '2025-04-22 04:38:16',
             ),
-            465 => 
+            495 => 
             array (
                 'id' => 996,
                 'address' => 'Purok Bliss',
@@ -13540,11 +14955,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097322000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 974,
+                'addressable_id' => 974,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-22 13:49:59',
                 'updated_at' => '2025-04-22 13:49:59',
             ),
-            466 => 
+            496 => 
             array (
                 'id' => 997,
                 'address' => 'N.S. Valderosa Street',
@@ -13554,11 +14970,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 975,
+                'addressable_id' => 975,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-22 17:35:04',
                 'updated_at' => '2025-04-22 17:35:04',
             ),
-            467 => 
+            497 => 
             array (
                 'id' => 998,
                 'address' => 'Telecom Drive, Pantano',
@@ -13568,11 +14985,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 976,
+                'addressable_id' => 976,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-22 19:20:11',
                 'updated_at' => '2025-04-22 19:20:11',
             ),
-            468 => 
+            498 => 
             array (
                 'id' => 999,
                 'address' => 'Chapel, San Jose Road',
@@ -13582,11 +15000,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 977,
+                'addressable_id' => 977,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-22 19:40:30',
                 'updated_at' => '2025-04-22 19:40:30',
             ),
-            469 => 
+            499 => 
             array (
                 'id' => 1000,
                 'address' => 'Bangsamoro Government Center',
@@ -13596,11 +15015,14 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '129804000',
                 'province_code' => '153800000',
                 'region_code' => '150000000',
-                'customer_id' => 978,
+                'addressable_id' => 978,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-23 17:51:29',
                 'updated_at' => '2025-04-23 17:51:29',
             ),
-            470 => 
+        ));
+        \DB::table('addresses')->insert(array (
+            0 => 
             array (
                 'id' => 1001,
                 'address' => 'Kalayaan Subdivision',
@@ -13610,11 +15032,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 979,
+                'addressable_id' => 979,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-23 19:39:31',
                 'updated_at' => '2025-04-23 19:39:31',
             ),
-            471 => 
+            1 => 
             array (
                 'id' => 1002,
                 'address' => '-',
@@ -13624,11 +15047,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097210000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 980,
+                'addressable_id' => 980,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-24 00:24:47',
                 'updated_at' => '2025-04-24 00:24:47',
             ),
-            472 => 
+            2 => 
             array (
                 'id' => 1003,
                 'address' => '-',
@@ -13638,11 +15062,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097308000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 981,
+                'addressable_id' => 981,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-24 01:09:12',
                 'updated_at' => '2025-04-24 01:09:12',
             ),
-            473 => 
+            3 => 
             array (
                 'id' => 1004,
                 'address' => '-',
@@ -13652,11 +15077,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097328000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 982,
+                'addressable_id' => 982,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-24 17:19:03',
                 'updated_at' => '2025-04-24 17:19:03',
             ),
-            474 => 
+            4 => 
             array (
                 'id' => 1005,
                 'address' => '-',
@@ -13666,11 +15092,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 983,
+                'addressable_id' => 983,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-24 18:18:51',
                 'updated_at' => '2025-04-24 18:18:51',
             ),
-            475 => 
+            5 => 
             array (
                 'id' => 1006,
                 'address' => 'Corcuerra Extension, Port Area',
@@ -13680,11 +15107,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 984,
+                'addressable_id' => 984,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-25 16:36:47',
                 'updated_at' => '2025-04-25 16:36:47',
             ),
-            476 => 
+            6 => 
             array (
                 'id' => 1007,
                 'address' => 'Purok Maabi-abihon',
@@ -13694,11 +15122,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098308000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 985,
+                'addressable_id' => 985,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-25 16:55:40',
                 'updated_at' => '2025-04-25 16:55:40',
             ),
-            477 => 
+            7 => 
             array (
                 'id' => 1008,
                 'address' => 'Purok 3',
@@ -13708,11 +15137,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 986,
+                'addressable_id' => 986,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 17:50:45',
                 'updated_at' => '2025-04-28 17:50:45',
             ),
-            478 => 
+            8 => 
             array (
                 'id' => 1009,
                 'address' => 'Purok 3',
@@ -13722,11 +15152,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098309000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 987,
+                'addressable_id' => 987,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 18:17:19',
                 'updated_at' => '2025-04-28 18:17:19',
             ),
-            479 => 
+            9 => 
             array (
                 'id' => 1010,
                 'address' => 'N. Valderoza Street',
@@ -13736,11 +15167,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 988,
+                'addressable_id' => 988,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 18:48:33',
                 'updated_at' => '2025-04-28 18:48:33',
             ),
-            480 => 
+            10 => 
             array (
                 'id' => 1011,
                 'address' => 'N. Valderoza Street',
@@ -13750,11 +15182,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '099701000',
                 'province_code' => '098400000',
                 'region_code' => '090000000',
-                'customer_id' => 989,
+                'addressable_id' => 989,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 19:17:03',
                 'updated_at' => '2025-04-28 19:17:03',
             ),
-            481 => 
+            11 => 
             array (
                 'id' => 1012,
                 'address' => 'Blue Homes',
@@ -13764,11 +15197,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 990,
+                'addressable_id' => 990,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 23:01:26',
                 'updated_at' => '2025-04-28 23:01:26',
             ),
-            482 => 
+            12 => 
             array (
                 'id' => 1013,
                 'address' => '2-A-1 Sotto Drive',
@@ -13778,11 +15212,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 991,
+                'addressable_id' => 991,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 23:33:33',
                 'updated_at' => '2025-04-28 23:33:33',
             ),
-            483 => 
+            13 => 
             array (
                 'id' => 1014,
                 'address' => 'Purok 1, Upper Cabatangan Road',
@@ -13792,11 +15227,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 992,
+                'addressable_id' => 992,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-28 23:50:09',
                 'updated_at' => '2025-04-28 23:50:09',
             ),
-            484 => 
+            14 => 
             array (
                 'id' => 1015,
                 'address' => 'Galvez Drive, Green Meadows Subd.',
@@ -13806,11 +15242,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 993,
+                'addressable_id' => 993,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-29 17:43:47',
                 'updated_at' => '2025-04-29 17:43:47',
             ),
-            485 => 
+            15 => 
             array (
                 'id' => 1016,
                 'address' => 'National Highway',
@@ -13820,11 +15257,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097218000',
                 'province_code' => '097200000',
                 'region_code' => '090000000',
-                'customer_id' => 994,
+                'addressable_id' => 994,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-29 19:06:31',
                 'updated_at' => '2025-04-29 19:06:31',
             ),
-            486 => 
+            16 => 
             array (
                 'id' => 1017,
                 'address' => 'Governor Lim Avenue',
@@ -13834,11 +15272,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 995,
+                'addressable_id' => 995,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-29 23:07:32',
                 'updated_at' => '2025-04-29 23:07:32',
             ),
-            487 => 
+            17 => 
             array (
                 'id' => 1018,
                 'address' => 'OPHO 2nd Floor, Capitol Building,',
@@ -13848,11 +15287,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 996,
+                'addressable_id' => 996,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-04-30 22:46:28',
                 'updated_at' => '2025-04-30 22:46:28',
             ),
-            488 => 
+            18 => 
             array (
                 'id' => 1019,
                 'address' => 'Nuñez Extension',
@@ -13862,11 +15302,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 997,
+                'addressable_id' => 997,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-01 00:59:03',
                 'updated_at' => '2025-05-01 00:59:03',
             ),
-            489 => 
+            19 => 
             array (
                 'id' => 1020,
                 'address' => 'Morning Breeze Road',
@@ -13876,11 +15317,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 998,
+                'addressable_id' => 998,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-02 18:35:24',
                 'updated_at' => '2025-05-02 18:35:24',
             ),
-            490 => 
+            20 => 
             array (
                 'id' => 1021,
                 'address' => '101 San Jose Road',
@@ -13890,11 +15332,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 999,
+                'addressable_id' => 999,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-02 19:13:10',
                 'updated_at' => '2025-05-02 19:13:10',
             ),
-            491 => 
+            21 => 
             array (
                 'id' => 1022,
                 'address' => 'A. CBK Building 493-497 Quintin Paredes St., Binondo, 1006',
@@ -13904,11 +15347,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '133900000',
                 'province_code' => '170000000',
                 'region_code' => '130000000',
-                'customer_id' => 1000,
+                'addressable_id' => 1000,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-03 00:59:33',
                 'updated_at' => '2025-05-03 00:59:33',
             ),
-            492 => 
+            22 => 
             array (
                 'id' => 1023,
                 'address' => '157 Logoy Diutay',
@@ -13918,11 +15362,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 1001,
+                'addressable_id' => 1001,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-05 17:43:22',
                 'updated_at' => '2025-05-05 17:43:22',
             ),
-            493 => 
+            23 => 
             array (
                 'id' => 1024,
                 'address' => 'Purok 5, Darrusalam Village',
@@ -13932,11 +15377,12 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '097332000',
                 'province_code' => '097300000',
                 'region_code' => '090000000',
-                'customer_id' => 1002,
+                'addressable_id' => 1002,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-05 22:00:24',
                 'updated_at' => '2025-05-05 22:00:24',
             ),
-            494 => 
+            24 => 
             array (
                 'id' => 1025,
                 'address' => 'Purok Orchids, Sitio Garing-Garing',
@@ -13946,9 +15392,250 @@ class AddressesTableSeeder extends Seeder
                 'municipality_code' => '098305000',
                 'province_code' => '098300000',
                 'region_code' => '090000000',
-                'customer_id' => 1003,
+                'addressable_id' => 1003,
+                'addressable_type' => 'App\\Models\\Customer',
                 'created_at' => '2025-05-06 01:18:43',
                 'updated_at' => '2025-05-06 01:18:43',
+            ),
+            25 => 
+            array (
+                'id' => 1026,
+                'address' => 'Talon-Talon Loop',
+                'longitude' => '122.109003',
+                'latitude' => '6.91568',
+                'barangay_code' => '097332085',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1004,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-06 18:55:34',
+                'updated_at' => '2025-05-06 18:55:34',
+            ),
+            26 => 
+            array (
+                'id' => 1027,
+                'address' => '-',
+                'longitude' => '122.114925',
+                'latitude' => '6.910445',
+                'barangay_code' => '097332085',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1005,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-06 18:59:24',
+                'updated_at' => '2025-05-06 18:59:24',
+            ),
+            27 => 
+            array (
+                'id' => 1028,
+                'address' => 'Main Road',
+                'longitude' => '122.075805',
+                'latitude' => '6.931024',
+                'barangay_code' => '097332076',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1006,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-06 19:02:20',
+                'updated_at' => '2025-05-06 19:02:20',
+            ),
+            28 => 
+            array (
+                'id' => 1029,
+                'address' => 'Purok Tambis',
+                'longitude' => '122.595062',
+                'latitude' => '7.787401',
+                'barangay_code' => '098305024',
+                'municipality_code' => '098305000',
+                'province_code' => '098300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1007,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-06 19:04:00',
+                'updated_at' => '2025-05-06 19:04:00',
+            ),
+            29 => 
+            array (
+                'id' => 1030,
+                'address' => 'Zone 3, Diversion Road',
+                'longitude' => '122.127772',
+                'latitude' => '6.971268',
+                'barangay_code' => '097332102',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1008,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-06 23:07:19',
+                'updated_at' => '2025-05-06 23:07:19',
+            ),
+            30 => 
+            array (
+                'id' => 1031,
+                'address' => 'Chinese Pier St.',
+                'longitude' => '119.775717',
+                'latitude' => '5.031321',
+                'barangay_code' => '157002027',
+                'municipality_code' => '157002000',
+                'province_code' => '157000000',
+                'region_code' => '150000000',
+                'addressable_id' => 1009,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-07 22:41:51',
+                'updated_at' => '2025-05-07 22:41:51',
+            ),
+            31 => 
+            array (
+                'id' => 1032,
+                'address' => 'Zamboanga Sibugay Capitol Building, Capitol Exit',
+                'longitude' => '122.574136',
+                'latitude' => '7.787996',
+                'barangay_code' => '098305009',
+                'municipality_code' => '098305000',
+                'province_code' => '098300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1010,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-08 17:21:56',
+                'updated_at' => '2025-05-08 17:21:56',
+            ),
+            32 => 
+            array (
+                'id' => 1033,
+                'address' => 'BFL Building, Fernan Street, Palmera',
+                'longitude' => '123.444048',
+                'latitude' => '7.822401',
+                'barangay_code' => '097322041',
+                'municipality_code' => '097322000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1011,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-08 18:47:05',
+                'updated_at' => '2025-05-08 18:47:05',
+            ),
+            33 => 
+            array (
+                'id' => 1034,
+                'address' => '2nd Floor PDRRMO Office, Old Provincial Hospital',
+                'longitude' => '123.344029',
+                'latitude' => '8.592518',
+                'barangay_code' => '097202010',
+                'municipality_code' => '097202000',
+                'province_code' => '097200000',
+                'region_code' => '090000000',
+                'addressable_id' => 1012,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-08 19:17:18',
+                'updated_at' => '2025-05-08 19:17:18',
+            ),
+            34 => 
+            array (
+                'id' => 1035,
+                'address' => 'Mayor Cesar C. Climaco Avenue',
+                'longitude' => '122.074576',
+                'latitude' => '6.906395',
+                'barangay_code' => '097332062',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1013,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-08 20:34:46',
+                'updated_at' => '2025-05-08 20:34:46',
+            ),
+            35 => 
+            array (
+                'id' => 1036,
+                'address' => 'Zamboanga Ecozone, San Ramon',
+                'longitude' => '121.930003',
+                'latitude' => '7.007146',
+                'barangay_code' => '097332084',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1014,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-08 21:43:30',
+                'updated_at' => '2025-05-08 21:43:30',
+            ),
+            36 => 
+            array (
+                'id' => 1037,
+                'address' => 'Purok 5',
+                'longitude' => '123.276858',
+                'latitude' => '7.652635',
+                'barangay_code' => '097324016',
+                'municipality_code' => '097324000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1015,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-09 00:31:59',
+                'updated_at' => '2025-05-09 00:31:59',
+            ),
+            37 => 
+            array (
+                'id' => 1038,
+                'address' => 'Gov. Lim Ave. , Corner Urdaneta St.',
+                'longitude' => '122.078501',
+                'latitude' => '6.906956',
+                'barangay_code' => '097332062',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1016,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-09 20:25:41',
+                'updated_at' => '2025-05-09 20:25:41',
+            ),
+            38 => 
+            array (
+                'id' => 1039,
+                'address' => 'Southway Square, Gov Lim Avenue, corner La Purisima St.',
+                'longitude' => '122.076761',
+                'latitude' => '6.905968',
+                'barangay_code' => '097332064',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1017,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-09 20:29:28',
+                'updated_at' => '2025-05-09 20:29:28',
+            ),
+            39 => 
+            array (
+                'id' => 1040,
+                'address' => 'Don Alfaro St.',
+                'longitude' => '122.086687',
+                'latitude' => '6.915818',
+                'barangay_code' => '097332087',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1018,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-09 22:08:19',
+                'updated_at' => '2025-05-09 22:08:19',
+            ),
+            40 => 
+            array (
+                'id' => 1041,
+                'address' => 'Normal Road',
+                'longitude' => '122.063674',
+                'latitude' => '6.913155',
+                'barangay_code' => '097332004',
+                'municipality_code' => '097332000',
+                'province_code' => '097300000',
+                'region_code' => '090000000',
+                'addressable_id' => 1019,
+                'addressable_type' => 'App\\Models\\Customer',
+                'created_at' => '2025-05-10 00:37:55',
+                'updated_at' => '2025-05-10 00:37:55',
             ),
         ));
 
