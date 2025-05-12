@@ -196,13 +196,25 @@
     "file": "assets/calendar-yfM8ZpJt.png",
     "src": "public/images/apps/calendar.png"
   },
-  "public/images/apps/inventory.png": {
-    "file": "assets/inventory-DCAGjWxa.png",
-    "src": "public/images/apps/inventory.png"
+  "public/images/apps/customer.png": {
+    "file": "assets/customer-BnSpBMSv.png",
+    "src": "public/images/apps/customer.png"
+  },
+  "public/images/apps/gender.png": {
+    "file": "assets/gender-B5GfYAzc.png",
+    "src": "public/images/apps/gender.png"
   },
   "public/images/apps/laboratory.png": {
     "file": "assets/laboratory-DGebyxyk.png",
     "src": "public/images/apps/laboratory.png"
+  },
+  "public/images/apps/payment.png": {
+    "file": "assets/payment-D3v2iUXr.png",
+    "src": "public/images/apps/payment.png"
+  },
+  "public/images/apps/performance.png": {
+    "file": "assets/performance-Drv6lVg6.png",
+    "src": "public/images/apps/performance.png"
   },
   "public/images/cover-pattern.png": {
     "file": "assets/cover-pattern-CzcjCYXt.png",
@@ -237,7 +249,7 @@
     "src": "public/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-BP39Gl5D.js",
+    "file": "assets/app-DB30qze2.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -260,8 +272,11 @@
       "assets/logo-sm-BMbbSDmV.png",
       "assets/logo-dark-BTQwWYkM.png",
       "assets/logo-light-xO5Q2xFH.png",
+      "assets/performance-Drv6lVg6.png",
+      "assets/gender-B5GfYAzc.png",
+      "assets/customer-BnSpBMSv.png",
       "assets/laboratory-DGebyxyk.png",
-      "assets/inventory-DCAGjWxa.png",
+      "assets/payment-D3v2iUXr.png",
       "assets/calendar-yfM8ZpJt.png",
       "assets/img-1-C6VsSbnm.jpg",
       "assets/img-2-B0ULeiCa.jpg",
