@@ -64,9 +64,8 @@
                     <b-col lg>
                         <div class="input-group mb-1">
                             <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
+                            <Multiselect class="white" @search-change="checkSearchSample" style="width: 45%;" :options="sampletypes" v-model="sampletype" label="name" :allow-empty="false" :searchable="true" placeholder="Search sampletype" ref="multiselectS"/>
                             <input type="text" v-model="filter.keyword" placeholder="Search" class="form-control" style="width: 40%;">
-                            <Multiselect class="white" @search-change="checkSearchSample" style="width: 40%;" :options="sampletypes" v-model="sampletype" label="name" :allow-empty="false" :searchable="true" placeholder="Search sampletype" ref="multiselectS"/>
-                      
                             <b-button type="button" variant="primary">
                                 <i class="ri-search-eye-line align-bottom me-1"></i> 
                             </b-button>
