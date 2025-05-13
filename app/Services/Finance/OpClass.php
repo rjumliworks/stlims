@@ -295,6 +295,7 @@ class OpClass
         $number = $digit->format($wholeNumber);
 
         $cashier = UserRole::with('user.profile')->where('role_id',6)->where('agency_id',$this->agency)->first();
+        $accountant = UserRole::with('user.profile')->where('role_id',5)->where('agency_id',$this->agency)->first();
         $array = [
             'lists' => $data->items,
             'code' => $data->code,
@@ -306,7 +307,7 @@ class OpClass
             'samples' => $samples_list,
             'address' => $data->payorable->address->address.', '.$data->payorable->address->barangay->name.', '.$data->payorable->address->municipality->name.', '.$data->payorable->address->province->name,
             'cashier' => $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname,
-            'accountant' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname
+            'accountant' => $accountant->user->profile->firstname.' '.$accountant->user->profile->middlename[0].'. '.$accountant->user->profile->lastname,
         ];
 
         $pdf = \PDF::loadView('prints.op',$array)->setPaper('A4', 'portrait');
