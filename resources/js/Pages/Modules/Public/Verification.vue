@@ -1,5 +1,5 @@
 <template>
-    <Head title="Log in"/>
+    <Head title="Verification"/>
     <div class="auth-page-wrapper pt-5 d-flex justify-content-center align-items-center min-vh-100">
         <div class="auth-page-content">
             <BContainer>
