@@ -28,7 +28,7 @@ class VerificationController extends Controller
         ->orderBy('created_at','ASC')
         ->get();
 
-        $tsr = Tsr::query()->where('id',$samples[0]->tsr_id)
+        $tsr = Tsr::query()->where('id',$samples->tsr_id)
         ->with('received:id','received.profile:id,firstname,lastname,user_id')
         ->with('laboratory:id,name','status:id,name,color,others')
         ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
