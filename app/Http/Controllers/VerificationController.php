@@ -78,7 +78,6 @@ class VerificationController extends Controller
         ->with('conforme:id,name,contact_no')
         ->with('payment:tsr_id,id,total,subtotal,discount,or_number,is_paid,paid_at,status_id,discount_id,collection_id,payment_id','payment.status:id,name,color,others','payment.collection:id,name','payment.type:id,name','payment.discounted:id,name,value')
         ->first();
-
         $samples = TsrSample::query()->where('tsr_id',$id)
             ->with('analyses.status','analyses.testservice.method.method','analyses.testservice.testname','analyses.sample')
             ->orderBy('created_at','ASC')
