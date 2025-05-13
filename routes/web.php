@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/verification/{code}', [App\Http\Controllers\VerificationController::class, 'verification']);
+Route::get('/verification/sample/{code}', [App\Http\Controllers\VerificationController::class, 'sample_verification']);
+
 Route::middleware(['2fa','auth','verified'])->group(function () {
     Route::resource('/profile', App\Http\Controllers\Auth\ProfileController::class);
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
