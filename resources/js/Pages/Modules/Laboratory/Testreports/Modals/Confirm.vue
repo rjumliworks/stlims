@@ -56,7 +56,8 @@ export default {
     },
     methods: { 
         show(checked,laboratory_id){
-            this.form.checked = checked;
+            const sortedChecked = [...checked].sort((a, b) => a - b);
+            this.form.checked = sortedChecked;
             this.form.laboratory_id = laboratory_id;
             this.showModal = true;
         },
@@ -64,11 +65,16 @@ export default {
             this.form.post('/testreports',{
                 preserveScroll: true,
                 onSuccess: (response) => {
-                    this.$emit('update',true);
+                    this.$emit('update',this.$page.props.flash.data);
+                    this.hide();
                 },
             });
         },
+         handleInput(field) {
+            this.form.errors[field] = false;
+        },
         hide(){
+            this.form.reset();
             this.showModal = false;
         }
     }

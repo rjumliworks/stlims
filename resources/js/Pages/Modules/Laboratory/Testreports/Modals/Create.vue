@@ -2,7 +2,6 @@
     <!-- style="--vz-modal-width: 650px;" -->
     <b-modal v-model="showModal" :style="(selected) ? (selected.laboratory_id == 3) ? '--vz-modal-width: 600px;' : '--vz-modal-width: 600px' : '--vz-modal-width: 600px'" header-class="p-3 bg-light" title="Generate Report Number" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
         <form class="customform">
-            {{ checked }}
             <BRow class="g-3">
                 <BCol lg="12">
                     <InputLabel for="customer" value="Sample Code" :message="form.errors.sample"/>
@@ -51,13 +50,14 @@
                                     <tbody class="bg-light-subtle fs-12" v-if="selected">
                                         <tr class="fs-13 table-info">
                                             <td>
-                                                <input type="checkbox" v-model="selected.selected" class="form-check-input" />
+                                                <input type="checkbox"  @change="toggleChecked($event, selected, 5000)" v-model="selected.selected" class="form-check-input" />
                                             </td>
                                             <td class="fw-semibold text-primary">{{selected.name}}</td>
                                             <td class="text-center">{{(!selected.report) ? '-' : selected.report}}</td>
                                             <td class="text-end">
-                                                <b-button v-if="!selected.report" @click="generate('main',selected)" variant="primary" class="mb-n2 mt-n2" :disabled="form.processing" size="sm">Generate</b-button>
-                                                <i v-else class="ri-checkbox-circle-fill text-success fs-18"></i>
+                                                <i v-if="checked.includes(selected.value) && !selected.report" class="ri-record-circle-fill text-primary fs-18"></i>
+                                                <b-button v-if="!selected.report && !checked.includes(selected.value)" @click="generate('main',selected)" variant="primary" class="mb-n2 mt-n2" :disabled="form.processing" size="sm">Generate</b-button>
+                                                <i v-if="selected.report" class="ri-checkbox-circle-fill text-success fs-18"></i>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -77,8 +77,9 @@
                                             <td class="fw-semibold text-primary">{{list.name}}</td>
                                             <td style="width: 50%" class="text-center">{{(!list.report) ? '-' : list.report}}</td>
                                             <td style="width: 20%" class="text-end">
-                                                <b-button v-if="!list.report" @click="generate('sub',list,index)" variant="primary" class="mb-n2 mt-n2" :disabled="form.processing" size="sm">Generate</b-button>
-                                                <i v-else class="ri-checkbox-circle-fill text-success fs-18"></i>
+                                                <i v-if="checked.includes(list.value) && !list.report" class="ri-record-circle-fill text-primary fs-18"></i>
+                                                <b-button v-if="!list.report && !checked.includes(list.value)" @click="generate('sub',list,index)" variant="primary" class="mb-n2 mt-n2" :disabled="form.processing" size="sm">Generate</b-button>
+                                                <i v-if="list.report" class="ri-checkbox-circle-fill text-success fs-18"></i>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -92,11 +93,11 @@
         </form>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
-            <b-button @click="openConfirmation()" variant="danger" :disabled="form.processing" block>Generate</b-button>
+            <b-button v-if="checked.length > 0" @click="openConfirmation()" variant="danger" :disabled="form.processing" block>Generate</b-button>
         </template>
     </b-modal>
     <Add @selected="set" ref="conforme"/>
-    <Confirm ref="confirm"/>
+    <Confirm @update="updateData" ref="confirm"/>
 </template>
 <script>
 import _ from 'lodash';
@@ -154,17 +155,17 @@ export default {
             this.submit(type);
         },
         submit(type){
-            // this.form.post('/testreports',{
-            //     preserveScroll: true,
-            //     onSuccess: (response) => {
-            //         if(type == 'main'){
-            //             this.selected.report = this.$page.props.flash.data.code;
-            //         }else{
-            //             this.selected.related[this.index].report = this.$page.props.flash.data.code;
-            //         }
-            //         this.$emit('update',true);
-            //     },
-            // });
+            this.form.post('/testreports',{
+                preserveScroll: true,
+                onSuccess: (response) => {
+                    if(type == 'main'){
+                        this.selected.report = this.$page.props.flash.data.code;
+                    }else{
+                        this.selected.related[this.index].report = this.$page.props.flash.data.code;
+                    }
+                    this.$emit('update',true);
+                },
+            });
         },
         fetchSample(code){
             axios.get('/search',{
@@ -181,7 +182,11 @@ export default {
         toggleChecked(event, item, index) {
             const isChecked = event.target.checked;
             item.selected = isChecked;
-            this.selected.related[index].selected = isChecked;
+            if(index != 5000){
+                this.selected.related[index].selected = isChecked;
+            }else{
+                this.selected.selected = isChecked;
+            }
 
             if (isChecked) {
                 if (!this.checked.includes(item.value)) {
@@ -194,10 +199,25 @@ export default {
         openConfirmation(){
             this.$refs.confirm.show(this.checked,this.selected.laboratory_id);
         },
+        updateData(data){
+            const match = data.find(item => item.id === this.selected.value);
+            if (match) {
+                this.selected.report = match.code;
+            }
+            this.selected.related.forEach(relatedItem => {
+                const relatedMatch = data.find(item => item.id === relatedItem.value);
+                if (relatedMatch) {
+                    relatedItem.report = relatedMatch.code;
+                }
+            });
+
+            this.$emit('update',true);
+        },
         handleInput(field) {
             this.form.errors[field] = false;
         },
         hide(){
+            this.checked = [];
             this.form.reset();
             this.editable = false;
             this.showModal = false;
