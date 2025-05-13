@@ -17,7 +17,7 @@ class VerificationController extends Controller
         $id = $hashids->decode($code);
 
 
-        $samples = TsrSample::query()->whereIn('id',[$id])
+        $samples = TsrSample::query()->whereIn('id',$id)
             ->with('analyses.status','analyses.testservice.method.method','analyses.testservice.testname','analyses.sample')
             ->orderBy('created_at','ASC')
             ->get();
