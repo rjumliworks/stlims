@@ -18,16 +18,13 @@
                         <div class="flex-shrink-0">
                             <div class="input-group mb-0">
                                     <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
-                                    <input type="text"  placeholder="Search Sample Code" v-model="filter.keyword" class="form-control" style="width: 20%;">
+                                    <input type="text"  placeholder="Search Sample Code/Name" v-model="filter.keyword" class="form-control" style="width: 30%;">
                                     <select v-model="filter.month" class="form-select" id="inputGroupSelect01">
                                         <option :value="null" selected>Filter by month</option>
                                         <option v-for="month in months" :key="month.value" :value="month.value"> {{ month.name }}</option>
                                     </select>
-                                    <select class="form-select" id="inputGroupSelect01">
-                                        <option @click="setDisplay('sample')" selected>Show by Sample</option>
-                                    </select>
-                                    <b-button type="button" variant="primary"  @click="refresh()">
-                                        <i class="bx bx-refresh search-icon"></i>
+                                      <b-button type="button" variant="primary"  @click="(checked1.length > 0 || checked2.length > 0) ? openUpdate() : '' ">
+                                        <i class="ri-timer-line search-icon"></i> Update
                                     </b-button>
                                 </div>
                         </div>
@@ -58,20 +55,24 @@
                     </div>
                 </div>
                 <div class="card-body bg-light-subtle border-bottom">
-                    <p class="mb-0 text-primary text-center fw-semibold fs-12">{{pendings.length}} Sample ready for test</p>
+                    <p class="mb-0 text-primary text-center fw-semibold fs-12">
+                        <input v-if="filter.keyword" class="form-check-input float-start fs-16 mt-0" v-model="mark1" type="checkbox" value="option" />
+                         {{pendings.length}} Sample ready for test
+                    </p>
                 </div>
                 <div class="card shadow-none" no-body style="height: calc(100vh - 505px)">
                     <simplebar data-simplebar style="height: calc(100vh - 500px);">
                         <BRow v-if="pendings.length > 0">
                             <BCol lg="12" class="project-card mb-n3" v-for="(item, index) of pendings" :key="index">
-                                <div class="card" style="cursor: pointer;" @click="openShow(item,'Pending')">
+                                <div class="card">
                                     <div class="card-header">
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1 text-muted">
+                                        <div class="d-flex align-items-center"> 
+                                            <input type="checkbox" v-model="item.selected" class="form-check-input me-2" />
+                                            <div class="flex-grow-1 text-muted" style="cursor: pointer;" @click="openShow(item,'Pending')">
                                                 <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{item.tsr.due_at}}</div>
+                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column h-100 mt-1">
@@ -120,20 +121,22 @@
                     </div>
                 </div>
                 <div class="card-body bg-light-subtle border-bottom bg-white">
+                     <input v-if="filter.keyword" class="form-check-input float-start fs-16 mt-0" v-model="mark2" type="checkbox" value="option" />
                     <p class="mb-0 text-primary fs-12 fw-semibold text-center">{{ongoings.length}} ongoing analyzation</p>
                 </div>
                 <div class="card bg-white shadow-none" no-body style="height: calc(100vh - 505px)">
                     <simplebar data-simplebar style="height: calc(100vh - 500px);">
                         <BRow v-if="ongoings.length > 0">
                             <BCol lg="12" class="project-card mb-n3" v-for="(item, index) of ongoings" :key="index">
-                                <div class="card" style="cursor: pointer;" @click="openShow(item,'Ongoing')">
+                                <div class="card">
                                     <div class="card-header">
                                         <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1 text-muted">
+                                             <input type="checkbox" v-model="item.selected" class="form-check-input me-2" />    
+                                            <div class="flex-grow-1 text-muted" style="cursor: pointer;" @click="openShow(item,'Ongoing')">
                                                 <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{item.tsr.due_at}}</div>
+                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column h-100 mt-1">
@@ -194,7 +197,7 @@
                                             <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
                                         </div>
                                         <div class="flex-shrink-0">
-                                            <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{item.tsr.due_at}}</div>
+                                            <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column h-100 mt-1">
@@ -226,13 +229,15 @@
         </div>
     </div>
     <Show @update="fetch()" ref="show"/>
+    <Update @update="updateList" ref="update"/>
 </template>
 <script>
 import _ from 'lodash';
 import Show from '../Modals/Show.vue';
+import Update from '../Modals/Update.vue';
 import simplebar from "simplebar-vue";
 export default {
-    components: { simplebar, Show },
+    components: { simplebar, Show, Update },
     props: ['searchQuery'],
     data() {
         return {
@@ -248,6 +253,10 @@ export default {
                 month: null,
                 reminder: null
             },
+            mark1: null,
+            mark2: null,
+            checked1: [],
+            checked2: [],
             months: [
                 { value: '1', name: 'January' },
                 { value: '2', name: 'February' },
@@ -273,6 +282,34 @@ export default {
         },
         "filter.keyword"(newVal){
             this.checkSearchStr(newVal);
+        },
+        "mark1"(){
+            if(this.mark1){
+                this.pendings.forEach(item => {
+                    item.selected = true;
+                    this.checked1.push(item);
+                });
+            }else{
+                this.pendings.forEach(item => {
+                    item.selected = false;
+                });
+                this.checked1 = [];
+            }
+            this.mark2 = null;
+        },
+         "mark2"(){
+            if(this.mark2){
+                this.ongoings.forEach(item => {
+                    item.selected = true;
+                    this.checked2.push(item);
+                });
+            }else{
+                this.ongoings.forEach(item => {
+                    item.selected = false;
+                });
+                this.checked2 = [];
+            }
+            this.mark1 = null;
         },
     },
     methods: {
@@ -318,10 +355,31 @@ export default {
         },
         openShow(data,status){
             this.$refs.show.show(data,status);
-        },  
+        }, 
+        openUpdate(){
+            if(this.mark1){
+                this.$refs.update.show(this.checked1);
+            }else{
+                this.$refs.update.show(this.checked2);
+            }
+        },
+        updateList(){
+            this.fetch();
+            this.checked1 = [];
+            this.checked2 = [];
+            this.mark1 = null;
+            this.mark2 = null;
+        },
         refresh(){
             this.filter.reminder = null;
             this.fetch();
+        },
+        formatShortMonth(date) {
+            return new Date(date).toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+            });
         }
     }
 }

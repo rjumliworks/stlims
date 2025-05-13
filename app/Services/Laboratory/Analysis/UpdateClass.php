@@ -120,6 +120,10 @@ class UpdateClass
                 });
             })->whereIn('status_id',[10,11])->count();
             if($count === 0){
+                $tsr = TsrSample::where('id',$request->sample_id)->update([
+                    'is_completed' => 1,
+                    'completed_at' => $request->date
+                ]); 
                 $tsr = Tsr::where('id',$tsr_id)->update(['status_id' => 4]); 
             }
         }

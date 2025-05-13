@@ -49,7 +49,8 @@ class AnalysisController extends Controller
     public function update(Request $request){
         $request->validate([
             'start_at' => ['required_if:option,start'],
-            'end_at' => ['required_if:option,end']
+            'end_at' => ['required_if:option,end'],
+            'date' => ['required_if:option,group']
         ]);
         $result = $this->handleTransaction(function () use ($request) {
             switch($request->option){

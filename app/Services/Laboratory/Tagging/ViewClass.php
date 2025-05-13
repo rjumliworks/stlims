@@ -33,7 +33,7 @@ class ViewClass
 
     private function completeds($request){
         $ongoings = TsrSample::when($request->keyword, function ($query, $keyword) {
-            $query->where('code', 'LIKE', "%{$keyword}%");
+            $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
         })
         ->when($request->reminder, function ($query, $reminder) {
             switch($reminder){
@@ -113,7 +113,7 @@ class ViewClass
 
     private function ongoings($request){
         $ongoings = TsrSample::when($request->keyword, function ($query, $keyword) {
-            $query->where('code', 'LIKE', "%{$keyword}%");
+            $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
         })->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
             $query->where('agency_id',$this->agency)->whereIn('laboratory_id',$this->laboratory)->where('status_id',3);
@@ -184,7 +184,7 @@ class ViewClass
 
     private function pendings($request){
         $pendings = TsrSample::when($request->keyword, function ($query, $keyword) {
-            $query->where('code', 'LIKE', "%{$keyword}%");
+            $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
         })->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
             $query->where('agency_id',$this->agency)->where('laboratory_id',$this->laboratory)->where('status_id',3);
@@ -247,7 +247,8 @@ class ViewClass
                 'count' => $sample->analyses_count,
                 'pending' => $sample->pending_analyses_count,
                 'ongoing' => $sample->ongoing_analyses_count,
-                'completed' => $sample->completed_analyses_count
+                'completed' => $sample->completed_analyses_count,
+                'selected' => null
             ];
         });
         return $pendings;
