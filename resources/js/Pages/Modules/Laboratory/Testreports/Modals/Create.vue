@@ -2,6 +2,7 @@
     <!-- style="--vz-modal-width: 650px;" -->
     <b-modal v-model="showModal" :style="(selected) ? (selected.laboratory_id == 3) ? '--vz-modal-width: 600px;' : '--vz-modal-width: 600px' : '--vz-modal-width: 600px'" header-class="p-3 bg-light" title="Generate Report Number" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
         <form class="customform">
+            {{ checked }}
             <BRow class="g-3">
                 <BCol lg="12">
                     <InputLabel for="customer" value="Sample Code" :message="form.errors.sample"/>
@@ -71,7 +72,7 @@
                                     <tbody class="bg-light-subtle fs-12" v-if="selected">
                                         <tr v-for="(list,index) in selected.related" v-bind:key="index" class="fs-13" :class="(list.selected) ? 'table-info' : ''">
                                             <td>
-                                                <input type="checkbox" v-model="list.selected" class="form-check-input" />
+                                                <input type="checkbox" @change="toggleChecked($event, list, index)" v-model="list.selected" class="form-check-input" />
                                             </td>
                                             <td class="fw-semibold text-primary">{{list.name}}</td>
                                             <td style="width: 50%" class="text-center">{{(!list.report) ? '-' : list.report}}</td>
@@ -153,17 +154,17 @@ export default {
             this.submit(type);
         },
         submit(type){
-            this.form.post('/testreports',{
-                preserveScroll: true,
-                onSuccess: (response) => {
-                    if(type == 'main'){
-                        this.selected.report = this.$page.props.flash.data.code;
-                    }else{
-                        this.selected.related[this.index].report = this.$page.props.flash.data.code;
-                    }
-                    this.$emit('update',true);
-                },
-            });
+            // this.form.post('/testreports',{
+            //     preserveScroll: true,
+            //     onSuccess: (response) => {
+            //         if(type == 'main'){
+            //             this.selected.report = this.$page.props.flash.data.code;
+            //         }else{
+            //             this.selected.related[this.index].report = this.$page.props.flash.data.code;
+            //         }
+            //         this.$emit('update',true);
+            //     },
+            // });
         },
         fetchSample(code){
             axios.get('/search',{
@@ -176,6 +177,19 @@ export default {
                 this.samples = response.data;
             })
             .catch(err => console.log(err));
+        },
+        toggleChecked(event, item, index) {
+            const isChecked = event.target.checked;
+            item.selected = isChecked;
+            this.selected.related[index].selected = isChecked;
+
+            if (isChecked) {
+                if (!this.checked.includes(item.value)) {
+                    this.checked.push(item.value);
+                }
+            } else {
+                this.checked = this.checked.filter(val => val !== item.value);
+            }
         },
         openConfirmation(){
             this.$refs.confirm.show(this.checked,this.selected.laboratory_id);

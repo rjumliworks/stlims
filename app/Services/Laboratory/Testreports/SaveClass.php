@@ -76,7 +76,7 @@ class SaveClass
             return $object['value'] === $laboratory_id;
         }));
         $test_count = $lab[0]['report_count'];
-        
+
         if($request->is_single){
             $count = TsrSampleReport::whereHas('sample',function ($query) use ($laboratory_id){
                 $query->whereHas('tsr',function ($query) use ($laboratory_id){
@@ -84,6 +84,7 @@ class SaveClass
                 });
             })
             ->whereYear('created_at',date('Y'))->where('code','!=',NULL)->count();
+     
             $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
             $date = Carbon::parse($latestCompletedAt)->format('mdY');
             $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
@@ -121,7 +122,38 @@ class SaveClass
                 $message = 'Report number already generated!';
             }
         }else{
+            foreach($lists as $list){
+                $count = TsrSampleReport::whereHas('sample',function ($query) use ($laboratory_id){
+                    $query->whereHas('tsr',function ($query) use ($laboratory_id){
+                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
+                    });
+                })
+                ->whereYear('created_at',date('Y'))->where('code','!=',NULL)->count();
 
+                $latestCompletedAt = TsrSample::where('id', $list)->value('completed_at');
+                $date = Carbon::parse($latestCompletedAt)->format('mdY');
+                $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
+                
+                $check = TsrSampleReport::where('code',$code)->count();
+                if($check == 0){
+                    $errors = [];
+                    
+                    $count = TsrSampleReport::where('sample_id',$list)->count();
+                    if($count == 0){
+                        $first = TsrSampleReport::create([
+                            'code' => $code,
+                            'sample_id' => $list,
+                            'user_id' => \Auth::user()->id
+                        ]);
+                    }else{
+                        $errors[] = 'A report number has already been assigned to the sample . '+$list;
+                    }
+                    
+                }else{
+                    $data = null;
+                    $message = 'Report number already generated!';
+                }
+            }
         }
     }
 }
