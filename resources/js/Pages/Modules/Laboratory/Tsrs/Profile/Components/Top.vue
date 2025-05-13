@@ -41,7 +41,7 @@
                                 <b-button v-if="selected.status.name !== 'Pending'" @click="openPrint(selected.qr)" variant="primary" v-b-tooltip.hover title="Print">
                                     <i class="ri-printer-fill"></i>
                                 </b-button>
-                                <b-button v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" variant="warning" v-b-tooltip.hover title="Edit">
+                                <b-button @click="openEdit(selected,index)" variant="warning" v-b-tooltip.hover title="Edit">
                                     <i class="ri-pencil-fill align-bottom"></i>
                                 </b-button>
                                 <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" variant="dark" v-b-tooltip.hover title="Cancel">
