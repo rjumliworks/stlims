@@ -24,7 +24,7 @@ class UpdateClass
 
     public function update($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
-        if($data->status_id == 1 || $data->status_id == 2){
+        if($data){
             $data->customer_id = $request->customer['value'];
             $data->conforme_id = $request->conforme['value'];
             $data->purpose_id = $request->purpose_id;
