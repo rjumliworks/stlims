@@ -28,7 +28,7 @@ class DropdownClass
     {
         $this->agency = (\Auth::user()->role != 'Administrator') ? (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null : null;
         $this->ids = (\Auth::check()) ? (\Auth::user()->role == 'Administrator') ? [] : AgencyConfiguration::where('agency_id',$this->agency)->value('laboratories') : '';
-        $this->laboratory = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
+        $this->laboratory = UserRole::where('user_id',\Auth::user()->id)->whereNotNull('laboratory_id')->pluck('laboratory_id');
     }
 
     public function suppliers(){
@@ -214,7 +214,13 @@ class DropdownClass
 
     public function tsrsamples($keyword){
         $data =  Tsr::when($keyword, function ($query) use ($keyword){
-            $query->where('code', 'LIKE', "%{$keyword}%")->whereIn('status_id',[3,4])->whereIn('laboratory_id',$this->laboratory)->where('agency_id',$this->agency);
+            $query->where('code', 'LIKE', "%{$keyword}%")->whereIn('status_id',[3,4])
+            ->when($this->laboratory, function ($query){
+                if(count($this->laboratory) > 0){
+                    $query->where('laboratory_id', $this->laboratory);
+                }
+            })
+            ->where('agency_id',$this->agency);
         })
         ->limit(5)->get()->map(function ($item) {
             return [

@@ -12,7 +12,7 @@ class ViewResource extends JsonResource
     {
         $hashids = new Hashids('krad',10);
         $code = $hashids->encode($this->id);
-
+       
         return [
             'id' => $this->id,
             'qr' => $code,

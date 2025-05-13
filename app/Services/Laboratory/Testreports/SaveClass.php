@@ -33,9 +33,11 @@ class SaveClass
             if($sample->completed_at){
                 $date = Carbon::parse($sample->completed_at)->format('mdY');
             }else{
+                   dd('y');
                 $endAt = $sample->analyses()->max('end_at');
                 $date = $endAt ? Carbon::parse($endAt)->format('mdY') : null;
             }
+           
         }
         $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);  //$report_count REMOVED
 

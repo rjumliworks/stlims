@@ -58,7 +58,7 @@ class UpdateClass
             if($count === 0){
                 $tsr = TsrSample::where('id',$request->sample_id)->update([
                     'is_completed' => 1,
-                    'completed_at' => Carbon::now()
+                    'completed_at' => $request->end_at
                 ]); 
                 $count2 = TsrSampleDisposal::where('sample_id',$sample_id)->count();
                 if($count2 === 0){
@@ -126,7 +126,7 @@ class UpdateClass
 
         foreach($request->lists as $sampleId) {
             if (!TsrAnalysis::where('sample_id', $sampleId)->where('status_id', '!=', 12)->exists()) {
-                TsrSample::where('id', $sampleId)->update(['is_completed' => true, 'completed_at' => Carbon::now()]);
+                TsrSample::where('id', $sampleId)->update(['is_completed' => true, 'completed_at' => $request->date]);
             }
         }
 

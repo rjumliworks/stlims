@@ -27,6 +27,7 @@ class SaveClass
             'status_id' => 1,
             'received_by' => \Auth::user()->id
         ]);
+
         if($data){
             $data->payment()->create([
                 'total' => $request->total,
@@ -78,6 +79,7 @@ class SaveClass
             }
             $status = Quotation::where('id',$id)->update(['status_id' => 16]);
         }
+
         $hashids = new Hashids('krad',10);
         $code = $hashids->encode($data->id);
 

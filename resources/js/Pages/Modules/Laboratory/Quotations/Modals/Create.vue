@@ -120,6 +120,7 @@ export default {
                 preserveScroll: true,
                 onSuccess: (response) => {
                     this.$emit('message',true);
+                    this.$emit('success',this.$page.props.flash.data);
                     this.hide();
                 },
             });

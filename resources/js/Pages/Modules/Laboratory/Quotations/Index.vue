@@ -125,7 +125,7 @@
     </BRow>
     <Cancel @update="updateData" ref="cancel"/>
     <Edit @update="updateData" :dropdowns="dropdowns" ref="edit"/>
-    <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
+    <Create @message="fetch()" @success="moveTo" :dropdowns="dropdowns" :region="region" ref="create"/>
 </template>
 <script>
 import _ from 'lodash';
@@ -212,6 +212,10 @@ export default {
             this.index = index;
             this.filter.status = status;
             this.fetch();
+        },
+        moveTo(data){
+            window.open('/quotations/' + data, '_blank');
+            // this.$inertia.visit('/quotations/'+data);
         },
     }
 }
