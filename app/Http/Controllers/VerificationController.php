@@ -10,7 +10,6 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Operation\SampleResource;
 use App\Http\Resources\Operation\Verification\IndexResource;
 
-
 class VerificationController extends Controller
 {
     public function sample_verification($code){
