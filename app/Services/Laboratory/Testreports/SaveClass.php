@@ -33,7 +33,6 @@ class SaveClass
             if($sample->completed_at){
                 $date = Carbon::parse($sample->completed_at)->format('mdY');
             }else{
-                   dd('y');
                 $endAt = $sample->analyses()->max('end_at');
                 $date = $endAt ? Carbon::parse($endAt)->format('mdY') : null;
             }
@@ -88,7 +87,8 @@ class SaveClass
             $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
             $date = Carbon::parse($latestCompletedAt)->format('mdY');
             $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
-            
+            $codes = [];
+
             $check = TsrSampleReport::where('code',$code)->count();
             if($check == 0){
                 $errors = [];
@@ -113,8 +113,16 @@ class SaveClass
                                 $errors[] = 'A report number has already been assigned to the sample . '+$list;
                             }
                         }
+                        $codes[] = [
+                            'id' => $list,
+                            'code' => $code
+                        ];
                     }else{
-                        $errors[] = 'A report number has already been assigned to the sample . '+$list;
+                        $errors[] = 'A report number has already been assigned to the sample . '.$list;
+                        $codes[] = [
+                            'id' => $list,
+                            'code' => TsrSampleReport::where('sample_id',$list)->value('code')
+                        ];
                     }
                 }
             }else{
@@ -122,6 +130,7 @@ class SaveClass
                 $message = 'Report number already generated!';
             }
         }else{
+            $codes = [];
             foreach($lists as $list){
                 $count = TsrSampleReport::whereHas('sample',function ($query) use ($laboratory_id){
                     $query->whereHas('tsr',function ($query) use ($laboratory_id){
@@ -145,8 +154,17 @@ class SaveClass
                             'sample_id' => $list,
                             'user_id' => \Auth::user()->id
                         ]);
+
+                        $codes[] = [
+                            'id' => $list,
+                            'code' => $code
+                        ];
                     }else{
-                        $errors[] = 'A report number has already been assigned to the sample . '+$list;
+                        $errors[] = 'A report number has already been assigned to the sample . '.$list;
+                        $codes[] = [
+                            'id' => $list,
+                            'code' => TsrSampleReport::where('sample_id',$list)->value('code')
+                        ];
                     }
                     
                 }else{
@@ -155,5 +173,11 @@ class SaveClass
                 }
             }
         }
+
+        return [
+            'data' => $codes,
+            'message' => 'Report number successfully generated!',
+            'info' => "The laboratory analyst result has been recorded and the report number has been created."
+        ];
     }
 }
