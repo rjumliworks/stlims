@@ -36,7 +36,7 @@ class SaveClass
                 $endAt = $sample->analyses()->max('end_at');
                 $date = $endAt ? Carbon::parse($endAt)->format('mdY') : null;
             }
-            $date = Carbon::parse($endAt)->format('mdY');
+            $date = Carbon::now()->format('mdY');
         }
         $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);  //$report_count REMOVED
 
@@ -86,7 +86,7 @@ class SaveClass
      
             $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
             $date = Carbon::parse($latestCompletedAt)->format('mdY');
-            $date = Carbon::parse($endAt)->format('mdY');
+            $date = Carbon::now()->format('mdY');
             $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
             $codes = [];
 
@@ -142,7 +142,7 @@ class SaveClass
 
                 $latestCompletedAt = TsrSample::where('id', $list)->value('completed_at');
                 $date = Carbon::parse($latestCompletedAt)->format('mdY');
-                $date = Carbon::parse($endAt)->format('mdY');
+                $date = Carbon::now()->format('mdY');
                 $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
                 
                 $check = TsrSampleReport::where('code',$code)->count();
