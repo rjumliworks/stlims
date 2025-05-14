@@ -20,7 +20,7 @@ class OrClass
     public function __construct()
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
-        $this->configuration = AgencyConfiguration::where('agency_id',$this->agency)->first();
+        $this->configuration = AgencyConfiguration::with('agency')->where('agency_id',$this->agency)->first();
         $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
@@ -330,9 +330,8 @@ class OrClass
    
         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
         $number = $digit->format($wholeNumber);
-
         $array = [
-            'agency' => $this->configuration->acronym,
+            'agency' => $this->configuration->agency->name,
             'customer' => $customer.$sub,
             'word' => ucwords($number),
             'date' => $data->created_at,

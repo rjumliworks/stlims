@@ -9,8 +9,8 @@
             <Top :selected="tsr.data" :analyses="analyses.data.length" :dropdowns="dropdowns"/>
             <div class="chat-wrapper d-lg-flex gap-1 mx-n4 mt-n4 p-1">
                 <div class="file-manager-content w-100 p-4 pb-0" ref="box" style="margin-left: 20px;">
-                    <Main v-if="!tsr.data.is_shelf" :selected="tsr.data" :services="services"
-                        :analyses="analyses.data" />
+                    <Main v-if="!tsr.data.is_shelf" :selected="tsr.data" :services="services" :analyses="analyses.data" />
+                    <Shelf v-else :selected="tsr.data" :services="services" :analyses="analyses.data" :laboratories="laboratories"/>
                 </div>
                 <div class="file-manager-sidebar" style="margin-right: 20px;">
                     <simplebar data-simplebar style="overflow-x: hidden;" class="h-100" ref="scrollbar">
@@ -26,6 +26,7 @@
 <script>
     import Top from './Components/Top.vue';
     import Main from './Components/Main.vue';
+    import Shelf from './Components/Shelf.vue';
     import Message from './Modals/Message.vue';
     import Sidebar from './Components/Sidebar.vue';
     import simplebar from "simplebar-vue";
@@ -38,7 +39,8 @@
             Top,
             Main,
             Sidebar,
-            Message
+            Message,
+            Shelf
         },
         props: ['tsr', 'services', 'analyses', 'laboratories','dropdowns'],
         computed: {

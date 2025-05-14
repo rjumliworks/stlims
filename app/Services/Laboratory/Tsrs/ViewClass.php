@@ -175,7 +175,7 @@ class ViewClass
             ->with('services.service')
             ->with('children.child.status')
             ->with('referral.agency.member','referral.province')
-            ->with('groups.testservice:id,testname_id,method_id,laboratory_id','groups.testservice.testname:id,name','groups.testservice.type:id,name')
+            ->with('groups.testservice:id,testname_id,method_id,laboratory_id','groups.testservice.testname:id,name','groups.testservice.laboratory:id,name')
             ->with('received:id','received.profile:id,firstname,lastname,user_id')
             ->with('agency','laboratory:id,name','status:id,name,color,others')
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches','customer.wallet','customer.industry:id,name')
