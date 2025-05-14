@@ -6,7 +6,10 @@ use App\Models\UserRole;
 use App\Models\Tsr;
 use App\Models\TsrSample;
 use App\Models\TsrReport;
+use App\Models\TsrChild;
+use App\Models\TsrGroup;
 use App\Models\TsrPayment;
+use App\Models\TsrAnalysis;
 use App\Models\Agency;
 use App\Models\AgencyConfiguration;
 use App\Models\ListLaboratory;
@@ -131,6 +134,59 @@ class UpdateClass
             'data' => new TsrResource($final),
             'message' => 'TSR was successfully confirmed!', 
             'info' => "You've successfully updated the tsr status.",
+        ];
+    }
+
+    public function child($request){
+        $data = Tsr::create(array_merge($request->all(),[
+            'code' => $this->generateCode($request),
+            'purpose_id' => Tsr::where('id',$request->tsr_id)->value('purpose_id'),
+            'agency_id' => $this->agency,
+            'received_by' => \Auth::user()->id
+        ]));
+
+        if($data){
+            TsrChild::create([
+                'parent_id' => $request->tsr_id,
+                'child_id' => $data->id
+            ]);
+            $data->payment()->create([
+                'discount_id' => $request->payment['discount_id'],
+                'collection_id' => $request->payment['collection_id'],
+                'payment_id' => $request->payment['payment_id'],
+                'status_id' => $request->payment['status_id'],
+                'or_number' => $request->payment['or_number'],
+                'is_child' => 1,
+                'is_paid' => 1
+            ]);
+            $count = ($request->has_control) ? 2 : 1;
+            for ($i = 0; $i < $count; $i++) {
+                $sample = $data->samples()->create([
+                    'name' => $request->name,
+                    'customer_description' => $request->customer_description,
+                    'description' => $request->description,
+                    'code' => $this->generateSampleCode($data)
+                ]);
+                foreach($request->lists as $list){
+                    TsrGroup::where('id',$list['id'])->update(['status_id' => 24]);
+                    TsrAnalysis::create([
+                        'status_id' => 10,
+                        'testservice_id' => $list['testservice_id'],
+                        'sample_id' => $sample->id,
+                        'fee' => $list['fee']
+                    ]);
+
+                    $total = $this->updateTotal($data->id,$list['fee']);
+                }
+            }
+
+            $this->report($data->id);
+        }
+
+        return [
+            'data' => $data,
+            'message' => 'TS Request creation was successful!', 
+            'info' => "You've successfully created the new request."
         ];
     }
 

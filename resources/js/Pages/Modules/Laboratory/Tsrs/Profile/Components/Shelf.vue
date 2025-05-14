@@ -17,10 +17,10 @@
                             <p class="text-muted text-truncate-two-lines fs-12">Generate and track quotations for lab services requested by customers.</p>
                         </div>
                         <div class="flex-shrink-0">
-                            <div class="form-check form-switch form-switch-right form-switch-md mt-2">
+                            <!-- <div class="form-check form-switch form-switch-right form-switch-md mt-2">
                                 <label for="navbarscrollspy-showcode" class="form-label text-muted">Show Analyses</label>
                                 <input class="form-check-input code-switcher" type="checkbox" id="navbarscrollspy-showcode">
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
                                     <transition mode="out-in">
                                         <div :key="index" class="tab-content">
                                             <div v-if="menu == 'Sample'">
-                                                <div class="table-responsive table-card" style="height: calc(100vh - 443px);">
+                                                <div class="table-responsive table-card" style="height: calc(100vh - 300px);">
                                                     <table class="table table-nowrap align-middle mb-0">
                                                         <thead class="bg-primary text-white">
                                                              <tr class="fs-11">
@@ -122,9 +122,6 @@
                                                                                         <span :class="'badge '+list.status.color+' '+list.status.others">{{list.status.name}}</span>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <b-button @click="openAdditional(list.additional,list.id)" v-if="list.additional != null && list.addfee == null" variant="soft-success" class="me-1" v-b-tooltip.hover title="Add" size="sm">
-                                                                                            <i class="ri-add-circle-fill align-bottom"></i>
-                                                                                        </b-button>
                                                                                         <b-button @click="openViewAnalysis(list)" variant="soft-info" class="me-1" v-b-tooltip.hover title="View" size="sm">
                                                                                             <i class="ri-eye-fill align-bottom"></i>
                                                                                         </b-button>
@@ -147,8 +144,52 @@
                                                     </table>
                                                 </div>
                                             </div>
+
+
+
                                             <div v-if="menu == 'TSRs'">t</div>
-                                            <div v-if="menu == 'Cycles'">c</div>
+
+
+                                            <div v-if="menu == 'Cycles'">
+                                                <div class="table-responsive table-card" style="height: calc(100vh - 300px);">
+                                                    <table class="table table-nowrap table-striped table align-middle mb-0">
+                                                        <thead class="bg-primary text-white">
+                                                            <tr class="fs-11">
+                                                                <th class="text-center" width="4%">#</th>
+                                                                <th class="text-center" width="10%">Sampling Days</th>
+                                                                <th class="text-center" width="13%">Date</th>
+                                                                <th class="text-center">Testnames</th>
+                                                                <th class="text-center" width="13%">Total</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr class="fs-11" v-for="(group, day, index) in groupedByDays" :key="day" @click="openViewGroup(group,selected.customer,selected.payment,selected.id)" style="cursor: pointer;"
+                                                            :class="{
+                                                                    'bg-success-subtle': group.status === 'Completed',
+                                                                    'bg-warning-subtle': group.status === 'Not Completed'
+                                                            }">
+                                                                <td class="text-center">
+                                                                    <!-- <i @click="openViewGroup(group,selected.customer,selected.payment,selected.id)" v-if="group.status_id == 24" class="ri-checkbox-circle-fill text-success fs-15" v-b-tooltip.hover title="Confirmed"></i>
+                                                                    <i @click="openViewGroup(group,selected.customer,selected.payment,selected.id)" v-else-if="group.status_id == 25" class="ri-checkbox-circle-fill text-info fs-15" v-b-tooltip.hover title="Unprocessed"></i>
+                                                                    <i @click="openViewGroup(group,selected.customer,selected.payment,selected.id)" v-else class="ri-close-circle-fill text-danger fs-15" v-b-tooltip.hover title="Pending"></i> -->
+                                                                    {{ index+1   }}
+                                                                </td>
+                                                                <td class="text-center">{{day}}</td>
+                                                                <td class="text-center">{{group.date}}</td>
+                                                                <td><span v-for="item in group.items" :key="item.id">{{item.testservice.testname.name}}, </span></td>
+                                                            
+                                                                <td class="text-center">{{formatMoney(group.totalSum)}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                        <tfoot class="table-light">
+                                                            <tr class="fs-11">
+                                                                <th class="text-end text-muted" colspan="4">Grand Total</th>
+                                                                <th class="text-center">{{formatMoney(grandTotal)}}</th>
+                                                            </tr>
+                                                        </tfoot>
+                                                    </table>
+                                                </div>
+                                            </div>
                                         </div>
                                     </transition>
                                 </div>
@@ -161,20 +202,12 @@
             </div>
         </div>
     </BRow>
+    <View ref="view"/>
 </template>
-<Delete ref="delete"/>
-<Sample ref="sample"/>
-<Additional ref="additional"/>
-<Analysis @success="mark = false" ref="analysis"/>
-<Service :services="services" ref="service"/>
 <script>
-import Delete from '../Modals/Main/Delete.vue';
-import Sample from '../Modals/Main/Sample.vue';
-import Service from '../Modals/Main/Service.vue';
-import Analysis from '../Modals/Main/Analysis.vue';
-import Additional from '../Modals/Main/Additional.vue';
+import View from '../Modals/Shelflife/View.vue';
 export default {
-    components: { Sample, Service, Delete, Analysis, Additional },
+    components: { View },
     props:['selected','services','analyses','laboratories'],
     data(){
         return {
@@ -211,35 +244,47 @@ export default {
             }
         }
     },
-    methods: { 
-        openService(){
-            this.$refs.service.show(this.selected.id);
-        }, 
-        openAdditional(data,id){
-            this.$refs.additional.show(data,id,this.selected.id);
-        },       
-        openSample(){
-            this.mark = false;
-            this.$refs.sample.show(this.selected.id,this.selected.laboratory.id);
+    computed: {
+        groupedByDays() {
+            const grouped = this.selected.groups.reduce((acc, item) => {
+                const day = item.days;
+                const date = item.date;
+
+                if (!acc[day]) {
+                acc[day] = {
+                    date: date,
+                    items: [],
+                    totalSum: 0,
+                    status: '',
+                };
+                }
+
+                acc[day].items.push(item);
+                acc[day].totalSum += parseFloat(item.total);
+
+                return acc;
+            }, {});
+            
+            Object.values(grouped).forEach(group => {
+                const allCompleted = group.items.every(item => item.status_id === 24);
+                group.status = allCompleted ? 'Completed' : 'Not Completed';
+            });
+
+            return grouped;
         },
-        openSampleEdit(data){
-            this.$refs.sample.edit(this.selected.id,this.selected.laboratory.id,data);
-        },        
-        openSampleCopy(sample){
-            this.mark = false;
-            this.$refs.sample.copy(this.selected.id,this.selected.laboratory.id,sample);
+        grandTotal() {
+            return Object.values(this.groupedByDays).reduce((total, group) => {
+                return total + group.totalSum;
+            }, 0);
         },
-        openSampleDelete(data){
-            this.$refs.delete.show(data,this.selected.id,'sample');
+    },
+    methods: {      
+        openViewGroup(data,customer,payment,id){
+            this.$refs.view.show(data,customer,payment,id);
         },
-        openAnalysis(){
-            (this.samples.length > 0) ? this.$refs.analysis.show(this.samples,this.selected.laboratory.id) : '';
-        },
-        openAnalysisDelete(data){
-            this.$refs.delete.show(data,this.selected.id,'analysis');
-        },
-        openQr(data){
-            window.open('/samples?option=qrcode&id='+data.qr);
+        formatMoney(value) {
+            let val = (value/1).toFixed(2).replace(',', '.')
+            return '₱'+val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         },
     }
 }

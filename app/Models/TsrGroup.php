@@ -13,6 +13,11 @@ class TsrGroup extends Model
        'group','days','date','quantity','total','fee','tsr_id','testservice_id','status_id'
     ];
 
+    public function status()
+    {
+        return $this->belongsTo('App\Models\ListStatus', 'status_id', 'id');
+    }
+
     public function testservice()
     {
         return $this->belongsTo('App\Models\Testservice', 'testservice_id', 'id');
@@ -20,7 +25,6 @@ class TsrGroup extends Model
 
     public function getDateAttribute($value)
     {
-
         return ($value) ? date('F d, Y', strtotime($value)) : null;
     }
 

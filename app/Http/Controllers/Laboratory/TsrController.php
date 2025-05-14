@@ -88,6 +88,9 @@ class TsrController extends Controller
                 case 'Update':
                     return $this->update->update($request);
                 break;
+                 case 'Child':
+                    return $this->update->child($request);
+                break;
             }
         });
         
