@@ -30,13 +30,16 @@ class SaveClass
         ->whereYear('created_at',date('Y'))->where('code','!=',NULL)->count();
         $sample = TsrSample::where('id',$request->id)->first();
         if($sample ){
-            if($sample->completed_at){
-                $date = Carbon::parse($sample->completed_at)->format('mdY');
+            if($laboratory_id == 3){
+                if($sample->completed_at){
+                    $date = Carbon::parse($sample->completed_at)->format('mdY');
+                }else{
+                    $endAt = $sample->analyses()->max('end_at');
+                    $date = $endAt ? Carbon::parse($endAt)->format('mdY') : null;
+                }
             }else{
-                $endAt = $sample->analyses()->max('end_at');
-                $date = $endAt ? Carbon::parse($endAt)->format('mdY') : null;
+                $date = Carbon::now()->format('mdY');
             }
-            $date = Carbon::now()->format('mdY');
         }
         $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);  //$report_count REMOVED
 
@@ -84,9 +87,13 @@ class SaveClass
             })
             ->whereYear('created_at',date('Y'))->where('code','!=',NULL)->count();
      
-            $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
-            $date = Carbon::parse($latestCompletedAt)->format('mdY');
-            $date = Carbon::now()->format('mdY');
+            if($laboratory_id == 3){
+                $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
+                $date = Carbon::parse($latestCompletedAt)->format('mdY');
+            }else{
+                $date = Carbon::now()->format('mdY');
+            }
+
             $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
             $codes = [];
 
@@ -140,9 +147,12 @@ class SaveClass
                 })
                 ->whereYear('created_at',date('Y'))->where('code','!=',NULL)->count();
 
-                $latestCompletedAt = TsrSample::where('id', $list)->value('completed_at');
-                $date = Carbon::parse($latestCompletedAt)->format('mdY');
-                $date = Carbon::now()->format('mdY');
+                if($laboratory_id == 3){
+                    $latestCompletedAt = TsrSample::whereIn('id', $lists)->max('completed_at');
+                    $date = Carbon::parse($latestCompletedAt)->format('mdY');
+                }else{
+                    $date = Carbon::now()->format('mdY');
+                }
                 $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
                 
                 $check = TsrSampleReport::where('code',$code)->count();

@@ -136,16 +136,21 @@ export default {
                 this.selected.selected = true;
                 this.checked.push(this.selected.value);
             }else{
-                this.selected.related.forEach(item => {
-                    item.selected = false;
-                });
-                this.selected.selected = null;
+                if(this.selected){
+                    this.selected.related.forEach(item => {
+                        item.selected = false;
+                    });
+                    this.selected.selected = null;
+                }
                 this.checked = [];
             }
         },
     },
     methods: { 
         show(){
+            this.mark = null;
+            this.checked = [];
+            this.selected = null;
             this.showModal = true;
         },
         generate(type,data,index = null){
