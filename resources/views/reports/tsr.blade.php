@@ -263,7 +263,7 @@
                 <tr>
                     <td style="min-height: 50px; border-bottom-style: hidden;"><span style="font-size:9px; color: #606060;">Conforme:</span></td>
                     <td style="min-height: 50px; border-bottom-style: hidden;"><span style="font-size:9px; color: #606060;">Sample(s) received by:</span></td>
-                    <td style="min-height: 50px; border-bottom-style: hidden;"><span style="font-size:9px; color: #606060;">Sampel(s) reviewed by:</span></td>
+                    <td style="min-height: 50px; border-bottom-style: hidden;"><span style="font-size:9px; color: #606060;">Sample(s) reviewed by:</span></td>
                 </tr>
                 <tr>
                     <td style="min-height: 50px; padding: 15px; border-bottom-style: hidden;"></td>

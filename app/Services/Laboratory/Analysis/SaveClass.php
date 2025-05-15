@@ -68,7 +68,7 @@ class SaveClass
 
     public function service($request){
         $data = Tsr::findOrFail($request->id);
-        $data->service()->create([
+        $data->services()->create([
             'service_id' => $request->service['value'],
             'fee' => $request->service['fee'],
             'quantity' => $request->quantity,
