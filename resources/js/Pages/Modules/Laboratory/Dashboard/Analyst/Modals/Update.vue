@@ -21,7 +21,8 @@
                             {{index + 1 }}.
                         </td>
                         <td>
-                            <span class="fs-13 mb-0 fw-semibold text-primary me-1">{{list.code}}</span><span class="text-muted fs-13">({{ list.name }})</span>
+                            <span class="fs-13 mb-0 fw-semibold text-primary me-1">{{(form.type == 'Sample Code') ? list.code : list.testservice_name}}</span><span class="text-muted fs-13">({{ (form.type == 'Sample Code') ? list.name : list.code }})</span>
+                            <p v-if="form.type == 'Sample Name'" class="mb-0">{{list.name}}</p>
                         </td>
                     </tr>
                 </tbody>
@@ -45,6 +46,7 @@ export default {
             form: useForm({
                 date: null,
                 lists: [],
+                type: null,
                 option: 'group'
             }),
             keyword: null,
@@ -52,7 +54,8 @@ export default {
         }
     },
     methods: { 
-        show(data){
+        show(data,type){
+            this.form.type = type;
             this.lists = data;
             this.form.lists = this.lists.map(item => item.id);
             this.showModal = true;

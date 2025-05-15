@@ -16,22 +16,20 @@
                             <p class="text-muted text-truncate-two-lines fs-12">{{ (name) ? name.description : 'Monitoring the status of tests from pending to completion'}}</p>
                         </div>
                         <div class="flex-shrink-0">
-                            <div class="input-group mb-0">
-                                    <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
-                                    <input type="text"  placeholder="Search Sample Code/Name" v-model="filter.keyword" class="form-control" style="width: 30%;">
-                                    <select v-model="filter.month" class="form-select" id="inputGroupSelect01" style="width: 30%;">
-                                        <option :value="null" selected>Filter by month</option>
-                                        <option v-for="month in months" :key="month.value" :value="month.value"> {{ month.name }}</option>
-                                    </select>
-                                      <b-button type="button" variant="primary"  @click="(checked1.length > 0 || checked2.length > 0) ? openUpdate() : '' ">
-                                        <i class="ri-timer-line search-icon"></i> Update
-                                    </b-button>
-                                </div>
+                          
                         </div>
                     </div>
                 </div>
                 <div class="card-body  bg-white">
-                    <p class="mb-0 text-primary fs-12 fw-semibold">Analyst Performance Summary</p>
+                     <div class="input-group mb-0">
+                        <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
+                        <input type="text"  placeholder="Search Sample Code/Name" v-model="filter.keyword" class="form-control" style="width: 30%;">
+                        <Multiselect class="white" style="width: 17%;" :options="months" v-model="filter.month" label="name" :allow-empty="false" :searchable="true" placeholder="Filter by Month" />
+                        <Multiselect class="white" style="width: 20%;" :options="['Sample Code','Sample Name']" v-model="filter.type" :searchable="true" :allow-empty="false"/>
+                        <b-button type="button" variant="primary"  @click="(checked1.length > 0 || checked2.length > 0) ? openUpdate() : '' ">
+                            <i class="ri-timer-line search-icon"></i> Update
+                        </b-button>
+                    </div>
                 </div>
                 
             </div>
@@ -60,7 +58,7 @@
                          {{pendings.length}} Sample ready for test
                     </p>
                 </div>
-                <div class="card shadow-none" no-body style="height: calc(100vh - 505px)">
+                <div class="card shadow-none" no-body style="height: calc(100vh - 522px)">
                     <simplebar data-simplebar style="height: calc(100vh - 500px);">
                         <BRow v-if="pendings.length > 0">
                             <BCol lg="12" class="project-card mb-n3" v-for="(item, index) of pendings" :key="index">
@@ -69,10 +67,10 @@
                                         <div class="d-flex align-items-center"> 
                                             <input type="checkbox" v-model="item.selected" @change="toggleChecked($event, item, index)"  class="form-check-input me-2" />
                                             <div class="flex-grow-1 text-muted" style="cursor: pointer;"  @click="openShow(item,'Pending')">
-                                                <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
+                                                <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{(filter.type == 'Sample Code') ? item.code : item.testservice_name}}</span></h6>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
+                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{(item.tsr) ? formatShortMonth(item.tsr.due_at) : '-'}}</div>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column h-100 mt-1" style="cursor: pointer;"  @click="openShow(item,'Pending')">
@@ -82,9 +80,13 @@
                                                         <div class="text-muted">{{item.name}}</div>
                                                     </div>
                                                     <div class="flex-shrink-0">
-                                                        <div>
+                                                        <div v-if="filter.type == 'Sample Code'">
                                                             <i class="ri-list-check align-bottom me-1 text-muted"></i>
                                                             {{(item.ongoing)}}/{{(item.count-item.completed)}}
+                                                        </div>
+                                                         <div v-else>
+                                                            <i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                            {{item.code}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -124,7 +126,7 @@
                      <input v-if="filter.keyword" class="form-check-input float-start fs-16 mt-0" v-model="mark2" type="checkbox" value="option" />
                     <p class="mb-0 text-primary fs-12 fw-semibold text-center">{{ongoings.length}} ongoing test</p>
                 </div>
-                <div class="card bg-white shadow-none" no-body style="height: calc(100vh - 505px)">
+                <div class="card bg-white shadow-none" no-body style="height: calc(100vh - 522px)">
                     <simplebar data-simplebar style="height: calc(100vh - 500px);">
                         <BRow v-if="ongoings.length > 0">
                             <BCol lg="12" class="project-card mb-n3" v-for="(item, index) of ongoings" :key="index">
@@ -133,10 +135,10 @@
                                         <div class="d-flex align-items-center">
                                              <input type="checkbox" v-model="item.selected" @change="toggleChecked1($event, item, index)" class="form-check-input me-2" />    
                                             <div class="flex-grow-1 text-muted" style="cursor: pointer;" @click="openShow(item,'Ongoing')">
-                                                <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
+                                                <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{(filter.type == 'Sample Code') ? item.code : item.testservice_name}}</span></h6>
                                             </div>
                                             <div class="flex-shrink-0">
-                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
+                                                <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{(item.tsr) ? formatShortMonth(item.tsr.due_at) : '-'}}</div>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column h-100 mt-1" style="cursor: pointer;" @click="openShow(item,'Ongoing')">
@@ -146,8 +148,13 @@
                                                         <div class="text-muted">{{item.name}}</div>
                                                     </div>
                                                     <div class="flex-shrink-0">
-                                                        <div>
-                                                            <i class="ri-list-check align-bottom me-1 text-muted"></i>{{item.ongoing}}
+                                                        <div v-if="filter.type == 'Sample Code'">
+                                                            <i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                            {{(item.ongoing)}}/{{(item.count-item.completed)}}
+                                                        </div>
+                                                         <div v-else>
+                                                            <i class="ri-list-check align-bottom me-1 text-muted"></i>
+                                                            {{item.code}}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -186,7 +193,7 @@
                 <div class="card-body bg-light-subtle border-bottom bg-white">
                     <p class="mb-0 text-primary fs-12 fw-semibold text-center">{{completeds.length}} samples completed</p>
                 </div>
-                <div class="card bg-white shadow-none" no-body style="height: calc(100vh - 505px)">
+                <div class="card bg-white shadow-none" no-body style="height: calc(100vh - 522px)">
                     <simplebar data-simplebar style="height: calc(100vh - 500px);">
                         <BRow v-if="completeds.length > 0">
                         <BCol lg="12" class="project-card mb-n3" v-for="(item, index) of completeds" :key="index">
@@ -197,7 +204,7 @@
                                             <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
                                         </div>
                                         <div class="flex-shrink-0">
-                                            <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
+                                            <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{ (item.tsr) ? formatShortMonth(item.tsr.due_at) : '-'}}</div>
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column h-100 mt-1">
@@ -236,8 +243,9 @@ import _ from 'lodash';
 import Show from '../Modals/Show.vue';
 import Update from '../Modals/Update.vue';
 import simplebar from "simplebar-vue";
+import Multiselect from "@vueform/multiselect";
 export default {
-    components: { simplebar, Show, Update },
+    components: { simplebar, Show, Update, Multiselect },
     props: ['searchQuery'],
     data() {
         return {
@@ -251,6 +259,7 @@ export default {
             filter: {
                 keyword: null,
                 month: null,
+                type: 'Sample Code',
                 reminder: null
             },
             mark1: null,
@@ -282,6 +291,9 @@ export default {
         },
         "filter.keyword"(newVal){
             this.checkSearchStr(newVal);
+        },
+        "filter.type"(newVal){
+            this.fetch();
         },
         "mark1"(){
             if(this.mark1){
@@ -322,6 +334,7 @@ export default {
             page_url = page_url || '/samples';
             axios.get(page_url,{
                 params : {
+                    type: this.filter.type,
                     keyword: this.filter.keyword,
                     month: this.filter.month,
                     reminder: this.filter.reminder,
@@ -382,16 +395,20 @@ export default {
             this.fetch();
         },
         openShow(data,status){
-            this.$refs.show.show(data,status);
+            if(status == 'Completed'){
+                this.$refs.show.show(data,status,this.filter.type)
+            }else{
+                (this.filter.type == 'Sample Code') ? this.$refs.show.show(data,status,this.filter.type) : this.$refs.show.show2(data,status,this.filter.type);
+            }
         }, 
         openUpdate(){
             if(this.mark1){
                 this.$refs.update.show(this.checked1);
             }else{
                 if(this.checked1.length > 0){
-                    this.$refs.update.show(this.checked1);
+                    this.$refs.update.show(this.checked1,this.filter.type);
                 }else{
-                    this.$refs.update.show(this.checked2);
+                    this.$refs.update.show(this.checked2,this.filter.type);
                 }
             }
         },

@@ -153,7 +153,7 @@ export default {
         }
     },
     methods : {
-        show(data,status) {
+        show(data,status,type) {
             this.status = status;
             this.selected = data;
             this.mark = null;

@@ -4,6 +4,7 @@ namespace App\Services\Laboratory\Tagging;
 
 use Carbon\Carbon;
 use App\Models\UserRole;
+use App\Models\TsrAnalysis;
 use App\Models\TsrSample;
 use App\Models\AgencyConfiguration;
 use App\Http\Resources\Operation\AnalysisResource;
@@ -23,12 +24,190 @@ class ViewClass
 
     public function lists($request){
         $pendings = []; $ongoings = []; $completeds = [];
+        
+        if($request->type == 'Sample Code'){
+            return [
+                'pendings' => $this->pendings($request),
+                'ongoings' => $this->ongoings($request),
+                'completeds' => $this->completeds($request),
+            ];
+        }else{
+            return [
+                'pendings' => $this->pendings2($request),
+                'ongoings' => $this->ongoings2($request),
+                'completeds' =>  $this->completeds($request),
+            ];
+        }
+    }
 
-        return [
-            'pendings' => $this->pendings($request),
-            'ongoings' => $this->ongoings($request),
-            'completeds' => $this->completeds($request),
-        ];
+    private function pendings2($request){
+        $pendings = TsrAnalysis::query()
+            ->with([
+                'sample',
+                'testservice.testname',
+                'testservice.method.reference',
+                'testservice.method.method',
+                'analyst'
+            ])
+            ->where('status_id', 10)
+            
+            // Combined keyword filter
+            ->when($request->keyword, function ($query, $keyword) {
+                $query->where(function ($q) use ($keyword) {
+                    $q->whereHas('testservice.testname', function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', "%{$keyword}%");
+                    })->orWhereHas('sample', function ($q) use ($keyword) {
+                        $q->where('code', 'LIKE', "%{$keyword}%")
+                        ->orWhere('name', 'LIKE', "%{$keyword}%");
+                    });
+                });
+            })
+
+            // Reminder filters
+            ->when($request->reminder, function ($query, $reminder) {
+                switch ($reminder) {
+                    case 'Due Soon':
+                        $query->whereIn('status_id', [10, 11]);
+                        break;
+                    case 'Ongoing Task':
+                    case 'Completed':
+                        $query->where('analyst_id', \Auth::user()->id);
+                        break;
+                }
+            })
+
+            // Sample and TSR filters
+            ->withWhereHas('sample', function ($query) use ($request) {
+                $query->withWhereHas('tsr', function ($query) use ($request) {
+                    $query->select('id', 'due_at', 'created_at')
+                        ->where('agency_id', $this->agency)
+                        ->where('laboratory_id', $this->laboratory)
+                        ->where('status_id', 3)
+                        ->when($request->month, function ($query, $month) {
+                            $query->whereMonth('due_at', $month);
+                        })
+                        ->when($request->reminder, function ($query, $reminder) {
+                            switch ($reminder) {
+                                case 'Completed with no report number':
+                                    $query->where('status_id', 4)
+                                        ->where('due_at', '<', Carbon::now());
+                                    break;
+                                case 'Due Soon':
+                                    $query->whereBetween('due_at', [
+                                        Carbon::now()->startOfDay(),
+                                        Carbon::now()->addDays(5)->endOfDay()
+                                    ]);
+                                    break;
+                                case 'Overdue Request':
+                                    $query->whereDate('due_at', '<', Carbon::now());
+                                    break;
+                                case 'Completed':
+                                    $query->where('status_id', 4);
+                                    break;
+                            }
+                        });
+                });
+            })
+            ->get()
+            ->map(function ($analysis) {
+                return [
+                    'id' => $analysis->id,
+                    'tsr_id' => $analysis->sample->tsr_id,
+                    'tsr' => $analysis->sample->tsr,
+                    'code' => $analysis->sample->code,
+                    'name' => $analysis->sample->name,
+                    'testservice_name' => $analysis->testservice->testname->name ?? '',
+                    'testservice' => $analysis->testservice,
+                    'selected' => null
+                ];
+            });
+
+        return $pendings;
+    }
+
+    private function ongoings2($request){
+        $ongoings = TsrAnalysis::query()
+            ->with([
+                'sample',
+                'testservice.testname',
+                'testservice.method.reference',
+                'testservice.method.method',
+                'analyst'
+            ])
+            ->where('status_id', 11)
+            
+            // Combined keyword filter
+            ->when($request->keyword, function ($query, $keyword) {
+                $query->where(function ($q) use ($keyword) {
+                    $q->whereHas('testservice.testname', function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', "%{$keyword}%");
+                    })->orWhereHas('sample', function ($q) use ($keyword) {
+                        $q->where('code', 'LIKE', "%{$keyword}%")
+                        ->orWhere('name', 'LIKE', "%{$keyword}%");
+                    });
+                });
+            })
+
+            // Reminder filters
+            ->when($request->reminder, function ($query, $reminder) {
+                switch ($reminder) {
+                    case 'Due Soon':
+                        $query->whereIn('status_id', [10, 11]);
+                        break;
+                    case 'Ongoing Task':
+                    case 'Completed':
+                        $query->where('analyst_id', \Auth::user()->id);
+                        break;
+                }
+            })
+
+            // Sample and TSR filters
+            ->withWhereHas('sample', function ($query) use ($request) {
+                $query->withWhereHas('tsr', function ($query) use ($request) {
+                    $query->select('id', 'due_at', 'created_at')
+                        ->where('agency_id', $this->agency)
+                        ->where('laboratory_id', $this->laboratory)
+                        ->where('status_id', 3)
+                        ->when($request->month, function ($query, $month) {
+                            $query->whereMonth('due_at', $month);
+                        })
+                        ->when($request->reminder, function ($query, $reminder) {
+                            switch ($reminder) {
+                                case 'Completed with no report number':
+                                    $query->where('status_id', 4)
+                                        ->where('due_at', '<', Carbon::now());
+                                    break;
+                                case 'Due Soon':
+                                    $query->whereBetween('due_at', [
+                                        Carbon::now()->startOfDay(),
+                                        Carbon::now()->addDays(5)->endOfDay()
+                                    ]);
+                                    break;
+                                case 'Overdue Request':
+                                    $query->whereDate('due_at', '<', Carbon::now());
+                                    break;
+                                case 'Completed':
+                                    $query->where('status_id', 4);
+                                    break;
+                            }
+                        });
+                });
+            })
+            ->get()
+            ->map(function ($analysis) {
+                return [
+                    'id' => $analysis->id,
+                    'tsr_id' => $analysis->sample->tsr_id,
+                    'tsr' => $analysis->sample->tsr,
+                    'code' => $analysis->sample->code,
+                    'name' => $analysis->sample->name,
+                    'testservice_name' => $analysis->testservice->testname->name ?? '',
+                    'testservice' => $analysis->testservice,
+                    'selected' => null
+                ];
+            });
+
+        return $ongoings;
     }
 
     private function completeds($request){
