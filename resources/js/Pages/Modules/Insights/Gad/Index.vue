@@ -81,6 +81,9 @@ export default {
     watch: {
         "date"(newVal){
             this.fetch();
+        },
+        "year"(newVal){
+            this.fetch();
         }
     },
     methods: {

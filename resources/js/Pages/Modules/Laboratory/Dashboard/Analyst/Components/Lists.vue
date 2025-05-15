@@ -19,7 +19,7 @@
                             <div class="input-group mb-0">
                                     <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                     <input type="text"  placeholder="Search Sample Code/Name" v-model="filter.keyword" class="form-control" style="width: 30%;">
-                                    <select v-model="filter.month" class="form-select" id="inputGroupSelect01">
+                                    <select v-model="filter.month" class="form-select" id="inputGroupSelect01" style="width: 30%;">
                                         <option :value="null" selected>Filter by month</option>
                                         <option v-for="month in months" :key="month.value" :value="month.value"> {{ month.name }}</option>
                                     </select>
@@ -67,15 +67,15 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="d-flex align-items-center"> 
-                                            <input type="checkbox" v-model="item.selected" class="form-check-input me-2" />
-                                            <div class="flex-grow-1 text-muted" style="cursor: pointer;" @click="openShow(item,'Pending')">
+                                            <input type="checkbox" v-model="item.selected" @change="toggleChecked($event, item, index)"  class="form-check-input me-2" />
+                                            <div class="flex-grow-1 text-muted" style="cursor: pointer;"  @click="openShow(item,'Pending')">
                                                 <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-column h-100 mt-1">
+                                        <div class="d-flex flex-column h-100 mt-1" style="cursor: pointer;"  @click="openShow(item,'Pending')">
                                             <div class="mt-auto">
                                                 <div class="d-flex mb-2">
                                                     <div class="flex-grow-1">
@@ -122,7 +122,7 @@
                 </div>
                 <div class="card-body bg-light-subtle border-bottom bg-white">
                      <input v-if="filter.keyword" class="form-check-input float-start fs-16 mt-0" v-model="mark2" type="checkbox" value="option" />
-                    <p class="mb-0 text-primary fs-12 fw-semibold text-center">{{ongoings.length}} ongoing analyzation</p>
+                    <p class="mb-0 text-primary fs-12 fw-semibold text-center">{{ongoings.length}} ongoing test</p>
                 </div>
                 <div class="card bg-white shadow-none" no-body style="height: calc(100vh - 505px)">
                     <simplebar data-simplebar style="height: calc(100vh - 500px);">
@@ -131,7 +131,7 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <div class="d-flex align-items-center">
-                                             <input type="checkbox" v-model="item.selected" class="form-check-input me-2" />    
+                                             <input type="checkbox" v-model="item.selected" @change="toggleChecked1($event, item, index)" class="form-check-input me-2" />    
                                             <div class="flex-grow-1 text-muted" style="cursor: pointer;" @click="openShow(item,'Ongoing')">
                                                 <h6 class="card-title mb-n1 fs-14 fw-semibold"><span class="text-primary">{{item.code}}</span></h6>
                                             </div>
@@ -139,7 +139,7 @@
                                                 <div class="text-muted"><i class="ri-calendar-event-fill me-1 align-bottom"></i>{{formatShortMonth(item.tsr.due_at)}}</div>
                                             </div>
                                         </div>
-                                        <div class="d-flex flex-column h-100 mt-1">
+                                        <div class="d-flex flex-column h-100 mt-1" style="cursor: pointer;" @click="openShow(item,'Ongoing')">
                                             <div class="mt-auto">
                                                 <div class="d-flex mb-2">
                                                     <div class="flex-grow-1">
@@ -296,6 +296,7 @@ export default {
                 this.checked1 = [];
             }
             this.mark2 = null;
+            this.checked2 = [];
         },
          "mark2"(){
             if(this.mark2){
@@ -310,6 +311,7 @@ export default {
                 this.checked2 = [];
             }
             this.mark1 = null;
+            this.checked1 = [];
         },
     },
     methods: {
@@ -345,6 +347,30 @@ export default {
                 this.refresh();
             }
         },
+        toggleChecked(event, item, index) {
+            this.checked2 = [];
+            this.ongoings.forEach(i => i.selected = false);
+            const isChecked = event.target.checked;
+            this.pendings[index].selected = isChecked;
+            if (isChecked) {
+                this.pendings[index].selected = true;
+                this.checked1.push(item);
+            }else{
+                this.pendings[index].selected = false;
+            }
+        },
+        toggleChecked1(event, item, index) {
+            this.checked1 = [];
+            this.pendings.forEach(i => i.selected = false);
+            const isChecked = event.target.checked;
+            this.ongoings[index].selected = isChecked;
+            if (isChecked) {
+                this.ongoings[index].selected = true;
+                this.checked2.push(item);
+            }else{
+                this.pendings[index].selected = false;
+            }
+        },
         setMonth(data){
             this.filter.month = data;
             this.fetch();
@@ -360,7 +386,11 @@ export default {
             if(this.mark1){
                 this.$refs.update.show(this.checked1);
             }else{
-                this.$refs.update.show(this.checked2);
+                if(this.checked1.length > 0){
+                    this.$refs.update.show(this.checked1);
+                }else{
+                    this.$refs.update.show(this.checked2);
+                }
             }
         },
         updateList(){
