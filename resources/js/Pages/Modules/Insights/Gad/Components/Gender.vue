@@ -25,12 +25,12 @@
                 </div>
             </div>
         </div>
-        <div class="card-body" style="height: 712px; overflow-y: auto; overflow-x: hidden;">
-            <apexchart ref="realtimeChart" class="apex-charts" type="pie" height="270" :series="g"
+        <div class="card-body bg-white" style="height: 390px; overflow-y: auto; overflow-x: hidden;">
+            <apexchart ref="realtimeChart" class="apex-charts" type="pie" height="230" :series="g"
                 :options="chartOptions">
             </apexchart>
 
-            <table class="table mb-1 mt-4" v-if="genders.length > 0">
+            <table class="table table-sm table-striped mb-1 mt-4" v-if="genders.length > 0">
                 <tbody>
                     <tr>
                         <td>Male :</td>
@@ -46,7 +46,7 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="table-responsive table-card mt-2">
+            <!-- <div class="table-responsive table-card mt-2">
                 <simplebar data-simplebar>
                     <table class="table align-middle table-centered table-nowrap mb-3">
                         <thead class="bg-white fs-11 thead-fixed">
@@ -70,7 +70,7 @@
             </div>
             <div class="d-grid gap-2 mt-3" >
                 <b-button @click="openExcel()" variant="primary">Download Excel</b-button>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
@@ -87,7 +87,7 @@ export default {
             chartOptions: {
                 chart: {
                     type: 'pie',
-                    height: 100,
+                    height: 50,
                 },
                 labels: ['Male', 'Female','Not Applicable'],
                 colors: ['#0d68e3', '#e21673','#c2c2c2'],

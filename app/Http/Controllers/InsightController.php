@@ -100,8 +100,11 @@ class InsightController extends Controller
             case 'gad':
                 return [
                     'discounts' => $this->gad->discounts($request),
+                    'total' => $this->gad->total($request),
                     'genders' => $this->gad->gender($request),
                     'purposes' => $this->gad->purposes($request),
+                    'customers' => $this->gad->customers($request),
+                    'values' => $this->gad->values($request),
                     'laboratories' => $this->gad->laboratory($request),
                 ];
             break;
@@ -110,6 +113,9 @@ class InsightController extends Controller
             break;
             case 'gad-excel':
                 return $this->gad->excel($request);
+            break;
+            case 'gad-roles':
+                return $this->gad->roles($request);
             break;
             default:
             return inertia('Modules/Insights/Index');

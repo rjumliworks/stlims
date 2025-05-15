@@ -28,6 +28,17 @@
                 </li>
             </tempalte> -->
             <template v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+                <li class="menu-title" v-if="['Customer Relation Officer'].some(role => $page.props.roles.includes(role))">
+                    <i class="ri-more-fill" aria-expanded="false"></i>
+                    <span data-key="t-menu">Lists</span>
+                </li>
+                <li class="nav-item"  v-if="['Customer Relation Officer'].some(role => $page.props.roles.includes(role))">
+                    <Link href="/services" class="nav-link menu-link"
+                    :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
+                    <i class="ri-flask-fill"></i>
+                    <span class="fw-semibold fs-14" data-key="t-dashboards">Test Services</span>
+                    </Link>
+                </li>
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Laboratory</span>

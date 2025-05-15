@@ -33,7 +33,7 @@ export default {
             laboratory: null,
             series: "area",
             chartOptions: {
-                chart: {height: 284,toolbar: {show: false,},},
+                chart: {height: 326,toolbar: {show: false,},},
                 // stroke: {curve: "straight", dashArray: [0, 0, 8],width: [2, 0, 2.2]},
                 // fill: {opacity: [0.1, 0.9, 1]},
                 markers: {

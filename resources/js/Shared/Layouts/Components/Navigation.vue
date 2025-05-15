@@ -219,7 +219,7 @@ export default {
             toggle-class="btn-icon btn-topbar rounded-circle mode-layout ms-1 arrow-none"
             menu-class="p-0 dropdown-menu-end">
             <template #button-content>
-              <i class="bx bx-category-alt fs-22"></i>
+              <i class="ri-bar-chart-2-line fs-22"></i>
             </template>
             <div class="p-3 border-top-0 dropdown-head border-start-0 border-end-0 border-dashed border dropdown-menu-lg">
               <BRow class="align-items-center">

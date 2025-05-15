@@ -10,6 +10,7 @@ use App\Models\ListLaboratory;
 use App\Http\Resources\DefaultResource;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\GadExport;
+use App\Models\ListRole;
 
 class GadClass
 {
@@ -23,6 +24,11 @@ class GadClass
         return Excel::download(new GadExport(), 'gad.xlsx');
     }
 
+    public function total($request){
+        $total = Customer::where('agency_id',$this->agency)->where('is_active',1)->count();
+        return $total;
+    }
+
     public function discounts($request){
        
         return [
@@ -31,12 +37,99 @@ class GadClass
                 'count' => TsrPayment::where('discount_id',9)->count(),
                 'total' => TsrPayment::where('discount_id', 9)->sum(\DB::raw('CAST(discount AS DECIMAL(10,2))'))
             ],
-            // [
-            //     'name' => 'Student (Female)',
-            //     'count' => 1,
-            //     'total' => 0
-            // ],
         ];
+    }
+
+    public function roles(){
+        $roleStats = \DB::table(
+            \DB::table('user_roles')
+                ->select('user_id', 'role_id')
+                ->groupBy('user_id', 'role_id')
+        , 'ur')
+        ->join('list_roles as r', 'r.id', '=', 'ur.role_id')
+        ->join('users as u', 'u.id', '=', 'ur.user_id')
+        ->leftJoin('user_profiles as up', 'up.user_id', '=', 'u.id')
+        ->select(
+            'r.name as role_name',
+            \DB::raw("SUM(CASE WHEN up.sex = 'male' THEN 1 ELSE 0 END) as male_count"),
+            \DB::raw("SUM(CASE WHEN up.sex = 'female' THEN 1 ELSE 0 END) as female_count"),
+            \DB::raw("COUNT(*) as total_users"),
+            \DB::raw("ROUND(SUM(CASE WHEN up.sex = 'male' THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0), 2) as male_percentage"),
+            \DB::raw("ROUND(SUM(CASE WHEN up.sex = 'female' THEN 1 ELSE 0 END) * 100.0 / NULLIF(COUNT(*), 0), 2) as female_percentage")
+        )
+        ->where('u.is_active',1)
+        ->groupBy('r.id', 'r.name')
+        ->get();
+
+        return $roleStats;
+    }
+
+    public function customers($request){
+        $array = [
+            ['name' => 'Female','count' => Customer::where('agency_id',$this->agency)->where('female_id',73)->where('is_active',1)->count()],
+            ['name' => 'Female-led','count' => Customer::where('agency_id',$this->agency)->where('female_id',74)->where('is_active',1)->count()],
+            ['name' => 'Male','count' =>  Customer::where('agency_id',$this->agency)->where('sex_id',70)->where('is_active',1)->count()],
+            ['name' => 'Not Applicable','count' =>  Customer::where('agency_id',$this->agency)->where('sex_id',72)->where('is_active',1)->count()],
+        ];
+        return $array;
+    }
+
+    public function values($request){
+        $year = $request->year;
+        $month = $request->month;
+        $laboratory = $request->laboratory;
+
+        $total1 = TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$year,$month){
+            $query->where('agency_id', $this->agency)->where('status_id','!=',5);
+            $query->whereHas('customer', function ($query) {
+                $query->where('female_id',73);
+            });
+            $query->when($laboratory, function ($query, $laboratory) {
+                $query->where('laboratory_id',$laboratory);
+            });
+            $query->whereYear('created_at',$year);
+        })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total');
+
+        $total2 = TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$year,$month){
+            $query->where('agency_id', $this->agency)->where('status_id','!=',5);
+            $query->whereHas('customer', function ($query) {
+                $query->where('female_id',74);
+            });
+            $query->when($laboratory, function ($query, $laboratory) {
+                $query->where('laboratory_id',$laboratory);
+            });
+            $query->whereYear('created_at',$year);
+        })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total');
+
+        $total3 = TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$year){
+            $query->where('agency_id', $this->agency)->where('status_id','!=',5);
+            $query->whereHas('customer', function ($query) {
+                $query->where('sex_id',70);
+            });
+            $query->when($laboratory, function ($query, $laboratory) {
+                $query->where('laboratory_id',$laboratory);
+            });
+            $query->whereYear('created_at',$year);
+        })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total');
+
+        $total4 = TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$year){
+            $query->where('agency_id', $this->agency)->where('status_id','!=',5);
+            $query->whereHas('customer', function ($query) {
+                $query->where('sex_id',72);
+            });
+            $query->when($laboratory, function ($query, $laboratory) {
+                $query->where('laboratory_id',$laboratory);
+            });
+            $query->whereYear('created_at',$year);
+        })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total');
+
+        $array = [
+            ['name' => 'Female','count' => $total1],
+            ['name' => 'Female-led','count' => $total2],
+            ['name' => 'Male','count' => $total3],
+            ['name' => 'Not Applicable','count' => $total4],
+        ];
+        return $array;
     }
 
     public function purposes($request){
