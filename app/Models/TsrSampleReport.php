@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,5 +35,10 @@ class TsrSampleReport extends Model
     public function getCreatedAtAttribute($value)
     {
         return date('F d, Y g:i a', strtotime($value));
+    }
+
+    public function getCodeAttribute($value)
+    {
+        return Str::after($value, '-');
     }
 }
