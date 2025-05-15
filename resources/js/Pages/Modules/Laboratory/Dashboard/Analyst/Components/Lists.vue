@@ -368,7 +368,8 @@ export default {
                 this.ongoings[index].selected = true;
                 this.checked2.push(item);
             }else{
-                this.pendings[index].selected = false;
+                this.ongoings[index].selected = false;
+                this.checked2 = this.checked2.filter(i => i.id !== item.id);
             }
         },
         setMonth(data){
