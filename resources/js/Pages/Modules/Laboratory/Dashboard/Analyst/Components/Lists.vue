@@ -357,6 +357,7 @@ export default {
                 this.checked1.push(item);
             }else{
                 this.pendings[index].selected = false;
+                this.checked1 = this.checked1.filter(i => i.id !== item.id);
             }
         },
         toggleChecked1(event, item, index) {
