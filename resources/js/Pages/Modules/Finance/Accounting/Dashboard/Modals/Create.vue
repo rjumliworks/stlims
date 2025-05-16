@@ -159,10 +159,12 @@ export default {
     },
     computed: {
         total(){
-            let s = this.form.selected.reduce((acc, item) => acc + parseInt(item.payment.total.replace('₱', '').replace(/,/g, '')), 0);
+            let s = this.form.selected.reduce((acc, item) => 
+                acc + parseFloat(item.payment.total.replace('₱', '').replace(/,/g, '')), 0
+            );
             this.form.total = s;
-            let val = (s/1).toFixed(2).replace(',', '.')
-            return '₱'+val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            let val = s.toFixed(2); // this keeps the decimal exact
+            return '₱' + val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         }
     },
     methods: { 
