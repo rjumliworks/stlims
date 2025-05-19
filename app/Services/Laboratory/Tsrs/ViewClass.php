@@ -46,12 +46,14 @@ class ViewClass
                 ->when($this->province, function ($query) {
                     $query->where('received_by', \Auth::user()->id);
                 })
+                ->where('agency_id',$this->agency)
                 ->count();
             } else {
                 $counts[] = Tsr::where('status_id',$status['value'])
                 ->when($this->province, function ($query){
                     $query->where('received_by', \Auth::user()->id);
-                })->count();
+                })
+                ->where('agency_id',$this->agency)->count();
             }
         }
         return $counts;

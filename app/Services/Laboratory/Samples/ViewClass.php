@@ -62,7 +62,12 @@ class ViewClass
                             $query->where('laboratory_id',$this->laboratory);
                         });
                     })->count(),
-                    TsrSample::where('is_completed',1)->count()
+                    TsrSample::where('is_completed',0)->withWhereHas('tsr',function ($query){
+                        $query->where('agency_id',$this->agency);
+                        $query->when($this->laboratory, function ($query) {
+                            $query->where('laboratory_id',$this->laboratory);
+                        });
+                    })->where('is_completed',1)->count()
                 ];
 
         return $counts;

@@ -69,7 +69,7 @@ class SaveClass
             }
             $services = QuotationService::where('typeable_id',$id)->where('typeable_type','App\Models\Quotation')->get();
             foreach($services as $service){
-                $data->service()->create([
+                $data->services()->create([
                     'fee' => $service['fee'],
                     'total' => $service['total'],
                     'quantity' => $service['quantity'],
