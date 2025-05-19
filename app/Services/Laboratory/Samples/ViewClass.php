@@ -127,8 +127,13 @@ class ViewClass
             'created_at' => $sample->tsr->created_at,
             'testnames' => $testnames
         ];
-        $width = 6.20 * 28.35; 
-        $height = 6.00 * 28.35;
+        if($this->agency == 14){
+            $width = 6.20 * 28.35; 
+            $height = 6.00 * 28.35;
+        }else if($this->agency == 11){
+            $width = 108; 
+            $height = 144; 
+        }
         $pdf = \PDF::loadView('qrcodes.sample',$array)->setPaper([0, 0, $width, $height], 'portrait');
 
         return $pdf->stream('sampleqrcode.pdf');
