@@ -220,12 +220,19 @@ class ViewClass
             $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
             ->whereHas('role',function ($query){
                 $query->where('name','Cashier');
-            })->where('is_psto',1)->where('province_code'.$province)->first();
+            })
+            ->where('agency_id',$this->agency)
+            ->where('is_psto',1)
+            ->where('province_code'.$province)
+            ->first();
         }else{
             $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
             ->whereHas('role',function ($query){
                 $query->where('name','Cashier');
-            })->where('is_psto',0)->first();
+            })
+            ->where('agency_id',$this->agency)
+            ->where('is_psto',0)
+            ->first();
         }
 
         $head = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
