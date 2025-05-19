@@ -209,29 +209,38 @@ class ViewClass
         $hashids = new Hashids('krad',10);
         $id = $hashids->decode($request->id);
 
-        $labcolor = Tsr::where('id',$id)->with('laboratory')->first();
+        $tsrinfo = Tsr::where('id',$id)->with('laboratory')->first();
         $tsr = TsrReport::where('tsr_id',$id)->value('information');
         $lab = json_decode($tsr);
-    
+        
+        $user_id = $tsrinfo->received_by;
+        $userrole = UserRole::where('user_id',$user_id)->where('role_id',3)->first();
+        if($userrole->is_psto){
+            $province = $userrole->province_code;
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+            ->whereHas('role',function ($query){
+                $query->where('name','Cashier');
+            })->where('is_psto',1)->where('province_code'.$province)->first();
+        }else{
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+            ->whereHas('role',function ($query){
+                $query->where('name','Cashier');
+            })->where('is_psto',0)->first();
+        }
 
         $head = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-       ->where('laboratory_id',$labcolor->laboratory->id)->whereHas('role',function ($query){
+       ->where('laboratory_id',$tsrinfo->laboratory->id)->whereHas('role',function ($query){
             $query->where('name','Technical Manager');
         })->first();
 
-        $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-        ->whereHas('role',function ($query){
-            $query->where('name','Cashier');
-        })->first();
-        
         $url = $_SERVER['HTTP_HOST'].'/verification/'.$request->id;
         $qrCode = new QrCode($url);
         $qrCode->setSize(300);
         $pngWriter = new PngWriter();
         $qrCodeImageString = $pngWriter->write($qrCode)->getString();
         $base64Image = 'data:image/png;base64,' . base64_encode($qrCodeImageString);
-        $wallet = Wallet::where('customer_id',$labcolor->customer_id)->value('available');
-        $payment = TsrPayment::select('id','total','payment_id')->with('type:id,name')->where('tsr_id',$labcolor->id)->first();
+        $wallet = Wallet::where('customer_id',$tsrinfo->customer_id)->value('available');
+        $payment = TsrPayment::select('id','total','payment_id')->with('type:id,name')->where('tsr_id',$tsrinfo->id)->first();
    
         $array = [
             'qrCodeImage' => $base64Image,
@@ -240,7 +249,7 @@ class ViewClass
             'cashier' => $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname,
             'manager' => $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname,
             'user' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname,
-            'color' => ($labcolor->lab_type) ? $labcolor->lab_type->color : 'black',
+            'color' => ($tsrinfo->lab_type) ? $tsrinfo->lab_type->color : 'black',
             'wallet' => ($wallet) ?  $wallet : '0.00',
             'payment' => $payment
         ];
