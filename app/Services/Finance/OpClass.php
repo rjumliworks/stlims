@@ -294,8 +294,33 @@ class OpClass
         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
         $number = $digit->format($wholeNumber);
 
-        $cashier = UserRole::with('user.profile')->where('role_id',6)->where('agency_id',$this->agency)->first();
-        $accountant = UserRole::with('user.profile')->where('role_id',5)->where('agency_id',$this->agency)->first();
+        $user_id = $data->created_by;
+        $userrole = UserRole::where('user_id',$user_id)->where('role_id',5)->first();
+
+        if($userrole->is_psto){
+            $province = $userrole->province_code;
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+            ->whereHas('role',function ($query){
+                $query->where('name','Cashier');
+            })
+            ->where('agency_id',$this->agency)
+            ->where('is_psto',1)
+            ->where('province_code'.$province)
+            ->first();
+
+            $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+            ->whereHas('role',function ($query){
+                $query->where('name','Accountant');
+            })
+            ->where('agency_id',$this->agency)
+            ->where('is_psto',1)
+            ->where('province_code'.$province)
+            ->first();
+        }else{
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',6)->where('is_psto',0)->where('agency_id',$this->agency)->first();
+            $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',5)->where('is_psto',0)->where('agency_id',$this->agency)->first();
+        }
+
         $array = [
             'lists' => $data->items,
             'code' => $data->code,

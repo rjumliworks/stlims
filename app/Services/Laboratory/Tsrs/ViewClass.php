@@ -240,7 +240,7 @@ class ViewClass
         $head = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
        ->where('laboratory_id',$tsrinfo->laboratory->id)->whereHas('role',function ($query){
             $query->where('name','Technical Manager');
-        })->first();
+        })->where('agency_id',$this->agency)->first();
 
         $url = $_SERVER['HTTP_HOST'].'/verification/'.$request->id;
         $qrCode = new QrCode($url);
@@ -256,7 +256,7 @@ class ViewClass
             'configuration' => AgencyConfiguration::with('agency.member')->where('agency_id',$this->agency)->first(),
             'tsr' => json_decode($tsr),
             'cashier' => ($cashier) ?  $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname : '',
-            'manager' => $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname,
+            'manager' => ($head) ? $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname : '',
             'user' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname,
             'color' => ($tsrinfo->lab_type) ? $tsrinfo->lab_type->color : 'black',
             'wallet' => ($wallet) ?  $wallet : '0.00',
