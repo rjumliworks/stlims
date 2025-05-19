@@ -35,7 +35,7 @@ class ViewClass
     public function lists($request){
         $data = ListResource::collection(
             Quotation::query()
-            ->select('id','total','code','customer_id','created_by','status_id','laboratory_id','discount_id','purpose_id')
+            ->select('id','total','code','customer_id','created_by','status_id','laboratory_id','discount_id','purpose_id','created_at')
             ->with('createdby:id','createdby.profile:id,firstname,lastname,user_id')
             ->with('laboratory:id,name','agency:id,name','status:id,name,color,others','discounted:id,name,value')
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')

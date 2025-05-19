@@ -10,7 +10,7 @@ use Spatie\Activitylog\LogOptions;
 
 class Tsr extends Model
 {
-    use HasFactory,LogsActivity;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
         'code',
@@ -136,7 +136,6 @@ class Tsr extends Model
 
     public function getDueAtAttribute($value)
     {
-
         return ($value) ? date('F d, Y', strtotime($value)) : null;
     }
 
