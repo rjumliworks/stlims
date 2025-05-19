@@ -228,6 +228,7 @@ class ViewClass
             ->where('province_code'.$province)
             ->first();
         }else{
+  
             $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
             ->whereHas('role',function ($query){
                 $query->where('name','Cashier');
