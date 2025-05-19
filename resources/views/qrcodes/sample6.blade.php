@@ -16,7 +16,7 @@
             .code {
                 position: absolute;
                 top: -30; /* 4 cm from the top */
-                left: 10; /* 7 cm from the left */
+                left: 5; /* 7 cm from the left */
                 font-size: 10pt; /* Adjust font size as needed */
                 width: 170px;
                 /* background-color: red; */
@@ -24,21 +24,21 @@
             .received {
                 position: absolute;
                 top: -17; /* 4 cm from the top */
-                left: -30; /* 7 cm from the left */
+                left: 5; /* 7 cm from the left */
                 font-size: 6pt; /* Adjust font size as needed */
                 width: 170px;
             }
             .due {
                 position: absolute;
                 top: -9; /* 4 cm from the top */
-                left: -30; /* 7 cm from the left */
+                left: 5; /* 7 cm from the left */
                 font-size: 6pt; /* Adjust font size as needed */
                 width: 170px;
             }
             .code1 {
                 position: absolute;
                 top: -30; /* 4 cm from the top */
-                left: 11; /* 7 cm from the left */
+                left: 2; /* 7 cm from the left */
                 font-size: 10pt; /* Adjust font size as needed */
                 width: 170px;
                 /* background-color: red; */
@@ -46,22 +46,22 @@
             .sample1 {
                 position: absolute;
                 top: -20; /* 4 cm from the top */
-                left: 11; /* 7 cm from the left */
+                left: 2; /* 7 cm from the left */
                 font-size: 7pt; /* Adjust font size as needed */
-                width: 170px;
+                width: 150px;
                 /* background-color: red; */
             }
             .received1 {
                 position: absolute;
                 top: -13; /* 4 cm from the top */
-                left: 11; /* 7 cm from the left */
+                left: 2; /* 7 cm from the left */
                 font-size: 7pt; /* Adjust font size as needed */
                 width: 170px;
             }
             .due1 {
                 position: absolute;
                 top: -6; /* 4 cm from the top */
-                left: 11%; /* 7 cm from the left */
+                left: 2; /* 7 cm from the left */
                 font-size: 7pt; /* Adjust font size as needed */
                 width: 170px;
             }
@@ -71,19 +71,20 @@
                 width: 32;
                 height: 32;
                 margin-top: -39px; 
-                margin-left: -30px;
+                margin-left: -40px;
             }
             .names {
                 position: absolute;
                 top: 10; /* 4 cm from the top */
                 left: -22; /* 7 cm from the left */
                 font-size: 7.5pt; /* Adjust font size as needed */
+                width: 190px;
             }
             .breakline {
                 position: absolute;
-                width: 210px; /* or any desired width */
+                width: 182px; /* or any desired width */
                 top: 5; /* 4 cm from the top */
-                left: -21; /* 7 cm from the left */
+                left: -30; /* 7 cm from the left */
                 border-top: 1px solid black; /* Thickness and color of the line */
             }
             .image {
@@ -114,7 +115,7 @@
         <div class="names">
             <ul>
                 @foreach($testnames as $index=>$name)
-                <li>{{$name}} asdad asd dad asdadas</li>
+                <li>{{$name}} asdad asd dad asdada asdada asds</li>
                 @endforeach
             </ul>
         </div>

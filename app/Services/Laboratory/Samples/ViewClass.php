@@ -139,7 +139,7 @@ class ViewClass
         }else if($this->agency == 11){
             $width = 108; 
             $height = 144; 
-            $pdf = \PDF::loadView('qrcodes.sample6',$array)->setPaper([0, 0, $width, $height], 'portrait');
+            $pdf = \PDF::loadView('qrcodes.sample6',$array)->setPaper([0, 0, $width, $height], 'landscape');
         }
 
         return $pdf->stream('sampleqrcode.pdf');
