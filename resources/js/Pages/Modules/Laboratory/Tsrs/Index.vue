@@ -130,15 +130,9 @@
                                                 <i class="ri-eye-fill align-bottom"></i>
                                             </b-button>
                                         </a>
-                                        <!-- <b-button v-if="list.status.name === 'Pending' || list.status.name === 'For Payment'" class="me-1" @click="openEdit(list,index)" :variant="(filter.status) ? 'soft-warning' : 'warning'" v-b-tooltip.hover title="Edit" size="sm">
-                                            <i class="ri-pencil-fill align-bottom"></i>
-                                        </b-button> -->
-                                        <b-button @click="openPrint(list.qr)" v-if="list.status.name != 'Pending'" :variant="(filter.status) ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Cancel" size="sm">
+                                        <b-button @click="openPrint(list.qr)" v-if="list.status.name != 'Pending'" :variant="(filter.status) ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Print" size="sm">
                                             <i class="ri-printer-fill align-bottom"></i>
                                         </b-button>
-                                        <!-- <b-button @click="openCancel(list,index)" v-if="list.status.name == 'Pending' || list.status.name == 'For Payment'" :variant="(filter.status) ? 'soft-danger' : 'danger'" class="me-1" v-b-tooltip.hover title="Cancel" size="sm">
-                                            <i class="ri-delete-bin-fill align-bottom"></i>
-                                        </b-button> -->
                                     </td>
                                 </tr>
                             </tbody>

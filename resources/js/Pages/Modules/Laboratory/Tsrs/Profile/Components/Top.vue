@@ -10,15 +10,7 @@
                                     <div>
                                         <h4 class="fw-semibold text-primary">{{(selected.code) ? selected.code+' - ' : ''}} <span class="fs-15">{{selected.customer.name}}</span></h4>
                                         <div class="hstack gap-3 flex-wrap">
-                                            <!-- <div>
-                                                <i class="ri-user-fill align-bottom me-1"></i>
-                                                {{selected.customer.name}}
-                                            </div>
-                                             <div class="vr"></div> -->
-                                            <div>
-                                                <i class="ri-map-pin-2-fill align-bottom me-1"></i>
-                                                {{selected.customer.address.name}}
-                                            </div>
+                                            <div><i class="ri-map-pin-2-fill align-bottom me-1"></i>{{selected.customer.address.name}}</div>
                                             <div class="vr"></div>
                                             <div><i class="ri-account-circle-fill align-bottom me-1"></i>{{selected.conforme}}</div>
                                             <div class="vr"></div>

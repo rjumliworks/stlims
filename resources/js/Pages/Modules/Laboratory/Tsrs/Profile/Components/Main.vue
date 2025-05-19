@@ -23,19 +23,35 @@
                         </div>
                     </div>
                 </div>
+                <div class="card bg-light overflow-hidden mb-0" v-if="selected.status.name == 'Ongoing'">
+                    <div class="card-body">
+                        <div class="d-flex">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0"><b class="text-secondary">Overall Progress: {{analysisCounts.percentage}}% of analyses completed successfully</b></h6>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <h6 class="mb-0">{{analysisCounts.completed}} of {{ analysisCounts.total }} completed</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress  bg-secondary-subtle">
+                        <div class="progress-bar progress-bar-striped bg-secondary progress-bar-animated" role="progressbar" :aria-valuenow="analysisCounts.percentage" aria-valuemin="0" aria-valuemax="100" :style="'width: '+analysisCounts.percentage+'%'"></div>
+                    </div>
+                </div>
                 <div class="car-body bg-white border-bottom shadow-none">
                     <b-row class="mb-2 ms-1 me-1" style="margin-top: 12px;">
                         <b-col lg>
+                          
                             <div class="input-group mb-1">
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
-                                <input type="text" placeholder="Search Request" class="form-control" style="width: 40%;">
+                                 <input type="text" placeholder="Search Sample" class="form-control" style="width: 40%;">
                                 <span v-if="selected.status.name == 'Pending'" @click="openService()" class="input-group-text" v-b-tooltip.hover title="Add Service" style="cursor: pointer;"> 
-                                    <i class="ri-add-circle-fill text-primary search-icon"></i>
+                                    <i class="ri-add-circle-fill text-primary search-icon me-1"></i>Add-ons
                                 </span>
                                 <span v-if="selected.status.name == 'Pending'" @click="openAnalysis()" class="input-group-text" v-b-tooltip.hover title="Add Analysis" style="cursor: pointer;"> 
-                                    <i class="ri-flask-fill text-primary search-icon"></i>
+                                    <i class="ri-flask-fill text-primary search-icon me-1"></i>Add Service
                                 </span>
-                                <b-button type="button" variant="primary" @click="openSample">
+                                <b-button v-if="selected.status.name == 'Pending'" type="button" variant="primary" @click="openSample">
                                     <i class="ri-add-circle-fill align-bottom me-1"></i>Add Sample
                                 </b-button>
                             </div>
@@ -43,7 +59,7 @@
                     </b-row>
                 </div>
                 <div class="card bg-white border-bottom shadow-none" no-body>
-                    <div class="table-responsive" style="max-height: calc(100vh - 300px); overflow: auto;">
+                    <div class="table-responsive" :style="containerStyle">
                         <table class="table table-nowrap table-striped align-middle mb-0">
                             <thead class="table-light thead-fixed">
                                 <tr class="fs-11">
@@ -64,7 +80,7 @@
                                             <input type="checkbox" v-model="list.selected" class="form-check-input" />
                                         </td>
                                         <td :class="(selected.status.name == 'Pending') ? '' : 'text-center'" width="3%">{{index+1}}</td>
-                                        <td width="20%">
+                                        <td width="20%" style="cursor: pointer;" @click="openSampleView(list)">
                                             <h5 class="fs-13 mb-0 fw-semibold text-primary">{{(list.code) ? list.code : 'Not yet available'}}</h5>
                                             <p class="fs-13 text-muted mb-0">{{list.name}}</p>
                                         </td>
@@ -76,21 +92,28 @@
                                             <span v-else><i class="ri-checkbox-circle-fill text-success fs-18" v-b-tooltip.hover :title="list.analyses.filter(item => item.status.name == 'Completed').length+'/'+list.analyses.length"></i></span>
                                         </td>
                                         <td width="7%" class="text-end">
-                                            <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openSampleEdit(list)" variant="soft-primary" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
-                                                <i class="ri-pencil-fill align-bottom"></i>
-                                            </b-button>
-                                            <b-button v-if="selected.status.name != 'Pending'" @click="openQr(list)" variant="soft-dark" class="me-1" v-b-tooltip.hover title="View QR" size="sm">
-                                                <i class="ri-qr-code-fill align-bottom"></i>
-                                            </b-button>
-                                            <b-button v-if="selected.status.name == 'Pending'" @click="openSampleDelete(list)" variant="soft-danger" v-b-tooltip.hover title="Delete" size="sm">
-                                                <i class="ri-delete-bin-fill align-bottom"></i>
-                                            </b-button>
-                                            <b-button v-if="selected.status.name == 'Completed'" @click="openCertificate(list)" variant="soft-primary" v-b-tooltip.hover title="Certificate" size="sm">
-                                                <i class="ri-file-paper-2-fill align-bottom"></i>
-                                            </b-button>
-                                            <b-button v-if="selected.status.name == 'Pending'" @click="openSampleCopy(list)" variant="soft-success" class="ms-1" v-b-tooltip.hover title="Copy" size="sm">
-                                                <i class="ri-file-copy-2-line align-bottom"></i>
-                                            </b-button>
+                                            <template v-if="showAnalyses">
+                                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openSampleEdit(list)" variant="soft-primary" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
+                                                    <i class="ri-pencil-fill align-bottom"></i>
+                                                </b-button>
+                                                <b-button v-if="selected.status.name != 'Pending'" @click="openQr(list)" variant="soft-dark" class="me-1" v-b-tooltip.hover title="View Sample QR" size="sm">
+                                                    <i class="ri-qr-code-fill align-bottom"></i>
+                                                </b-button>
+                                                <b-button v-if="selected.status.name == 'Pending'" @click="openSampleDelete(list)" variant="soft-danger" v-b-tooltip.hover title="Delete" size="sm">
+                                                    <i class="ri-delete-bin-fill align-bottom"></i>
+                                                </b-button>
+                                                <b-button v-if="selected.status.name == 'Completed'" @click="openReport(list)" variant="soft-primary" v-b-tooltip.hover title="View Report" size="sm">
+                                                    <i class="ri-file-paper-2-fill align-bottom"></i>
+                                                </b-button>
+                                                <b-button v-if="selected.status.name == 'Pending'" @click="openSampleCopy(list)" variant="soft-success" class="ms-1" v-b-tooltip.hover title="Copy" size="sm">
+                                                    <i class="ri-file-copy-2-line align-bottom"></i>
+                                                </b-button>
+                                            </template>
+                                            <template v-else>
+                                                 <b-button @click="openSampleView(list)" variant="soft-info" class="me-1" v-b-tooltip.hover title="View" size="sm">
+                                                    <i class="ri-eye-fill align-bottom"></i>
+                                                </b-button>
+                                            </template>
                                         </td>
                                     </tr>
                                     <tr v-if="list.analyses.length > 0 && showAnalyses" class="bg-info-subtle">
@@ -157,12 +180,6 @@
                         </table>
                     </div>
                 </div>
-
-                <!-- <b-accordion class="custom-accordionwithicon" id="accordionWithicon">
-                    <b-accordion-item title="How Does Age Verification Work?" visible>
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua nulla assumenda shoreditch et.
-                    </b-accordion-item>
-                </b-accordion> -->
             </div>
         </div>
     </BRow>
@@ -171,15 +188,19 @@
     <Additional ref="additional"/>
     <Analysis @success="mark = false" ref="analysis"/>
     <Service :services="services" ref="service"/>
+    <SampleView ref="sampleview"/>
+    <Report ref="report"/>
 </template>
 <script>
+import Report from '../Modals/Main/Report.vue';
 import Delete from '../Modals/Main/Delete.vue';
 import Sample from '../Modals/Main/Sample.vue';
 import Service from '../Modals/Main/Service.vue';
 import Analysis from '../Modals/Main/Analysis.vue';
 import Additional from '../Modals/Main/Additional.vue';
+import SampleView from '../Modals/Main/SampleView.vue';
 export default {
-    components: { Sample, Service, Delete, Analysis, Additional },
+    components: { Sample, Service, Delete, Analysis, Additional, SampleView, Report },
     props:['selected','services','analyses'],
     data(){
         return {
@@ -189,6 +210,34 @@ export default {
             showAnalyses: true,
             view: false,
             mark: false,
+        }
+    },
+    computed: {
+        analysisCounts() {
+            let completed = 0;
+            let notCompleted = 0;
+
+            this.selected.samples.forEach(sample => {
+                sample.analyses.forEach(analysis => {
+                    if (analysis.status.id === 12) {
+                    completed++;
+                    } else {
+                    notCompleted++;
+                    }
+                });
+            });
+            const total = completed + notCompleted;
+            const percentage = total > 0 ? (completed / total) * 100 : 0;
+
+            return { completed,notCompleted,total,percentage: percentage.toFixed(2) };
+        },
+        containerStyle() {
+            let offset = 300;
+            if (this.selected.status.name === 'Ongoing') {offset = 360;}
+            return {
+                maxHeight: `calc(100vh - ${offset}px)`,
+                overflow: 'auto'
+            };
         }
     },
     watch: {
@@ -225,6 +274,10 @@ export default {
             this.mark = false;
             this.$refs.sample.show(this.selected.id,this.selected.laboratory.id);
         },
+        openSampleView(data){
+            console.log(data);
+            this.$refs.sampleview.show(data);
+        },
         openSampleEdit(data){
             this.$refs.sample.edit(this.selected.id,this.selected.laboratory.id,data);
         },        
@@ -237,6 +290,9 @@ export default {
         },
         openAnalysis(){
             (this.samples.length > 0) ? this.$refs.analysis.show(this.samples,this.selected.laboratory.id) : '';
+        },
+        openReport(data){
+            this.$refs.report.show(data);
         },
         openAnalysisDelete(data){
             this.$refs.delete.show(data,this.selected.id,'analysis');

@@ -57,6 +57,12 @@ class TsrSample extends Model
         return date('M d, Y g:i a', strtotime($value));
     }
 
+    public function getCompletedAtAttribute($value)
+    {
+
+        return ($value) ? date('F d, Y', strtotime($value)) : null;
+    }
+
     public function setNameAttribute($value)
     {
         $this->attributes['name'] = $value;

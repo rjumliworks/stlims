@@ -118,7 +118,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 overflow-hidden">
-                                    <p class="mb-1 fs-12 text-muted">Purpose of Request:</p>
+                                    <p class="mb-1 fs-12 text-muted">Purpose of Request :</p>
                                     <h6 class="text-truncate mb-0 fs-12" v-if="selected.purpose">{{selected.purpose.name}}</h6>
                                     <h6 class="text-warning mb-0 fs-12" v-else>Not Available</h6>
                                 </div>
@@ -129,7 +129,7 @@
             </tr>
             <tr v-if="selected.services.length > 0">
                 <td style="border-right: none; border-left: none; cursor: pointer;" @click="openService()">
-                    <span class="fw-semibold fs-12 ms-2">Additional Services</span>
+                    <span class="fw-semibold fs-12 ms-2">Add-ons</span>
                     <i class="ri-information-fill fs-20 mb-n2 mt-n1 text-primary float-end" style="cursor: pointer;"></i>
                 </td>
             </tr>
