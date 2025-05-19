@@ -228,7 +228,6 @@ class ViewClass
             ->where('province_code'.$province)
             ->first();
         }else{
-  
             $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
             ->whereHas('role',function ($query){
                 $query->where('name','Cashier');
@@ -256,7 +255,7 @@ class ViewClass
             'qrCodeImage' => $base64Image,
             'configuration' => AgencyConfiguration::with('agency.member')->where('agency_id',$this->agency)->first(),
             'tsr' => json_decode($tsr),
-            'cashier' => $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname,
+            'cashier' => ($cashier) ?  $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname : '',
             'manager' => $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname,
             'user' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname,
             'color' => ($tsrinfo->lab_type) ? $tsrinfo->lab_type->color : 'black',
