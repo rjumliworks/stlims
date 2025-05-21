@@ -9,25 +9,7 @@
                 <span class="fw-semibold fs-14" data-key="t-dashboards">Dashboard</span>
                 </Link>
             </li>
-            <!-- <tempalte v-if="$page.props.roles.includes('Technical Manager')">
-                <li class="menu-title">
-                    <i class="ri-more-fill" aria-expanded="false"></i>
-                    <span data-key="t-menu">Technical Manager</span>
-                </li>
-            </tempalte>
-            <tempalte v-else-if="$page.props.roles.includes('Lab Analyst')">
-                <li class="menu-title">
-                    <i class="ri-more-fill" aria-expanded="false"></i>
-                    <span data-key="t-menu">Lab Analyst</span>
-                </li>
-            </tempalte>
-            <tempalte v-else-if="$page.props.roles.includes('Releasing Officer')">
-                <li class="menu-title">
-                    <i class="ri-more-fill" aria-expanded="false"></i>
-                    <span data-key="t-menu">Releasing Officer</span>
-                </li>
-            </tempalte> -->
-            <template v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+            <template v-if="['Customer Relation Officer','Releasing Officer','Laboratory Analyst','Calibration Officer','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title" v-if="['Customer Relation Officer'].some(role => $page.props.roles.includes(role))">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Lists</span>
@@ -132,7 +114,7 @@
                     </Link>
                 </li>
             </template>
-            <template v-if="['Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+            <template v-if="['Customer Relation Officer','Releasing Officer','Laboratory Analyst','Calibration Officer','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Other Modules</span>
@@ -159,7 +141,7 @@
                 <span class="fw-semibold fs-14" data-key="t-dashboards">Inventory</span>
                 </Link>
             </li>  -->
-            <template v-if="['Cashier','Accountant','Customer Relation Officer','Releasing Officer','Lab Analyst','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
+            <template v-if="['Cashier','Accountant','Customer Relation Officer','Releasing Officer','Laboratory Analyst','Calibration Officer','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Others</span>

@@ -26,6 +26,7 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 0,
                 'is_lab' => 1,
                 'is_active' => 1,
+                'sequence' => 2,
             ),
             1 => 
             array (
@@ -35,6 +36,7 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 1,
                 'is_lab' => 1,
                 'is_active' => 1,
+                'sequence' => 3,
             ),
             2 => 
             array (
@@ -44,15 +46,17 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 0,
                 'is_lab' => 1,
                 'is_active' => 1,
+                'sequence' => 4,
             ),
             3 => 
             array (
                 'id' => 4,
-                'name' => 'Lab Analyst',
+                'name' => 'Laboratory Analyst',
                 'description' => 'This user role allows Lab Analysts to access the eULIMS specifically the Sample Tagging module.',
                 'has_lab' => 1,
                 'is_lab' => 1,
                 'is_active' => 1,
+                'sequence' => 5,
             ),
             4 => 
             array (
@@ -62,6 +66,7 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 0,
                 'is_lab' => 0,
                 'is_active' => 1,
+                'sequence' => 10,
             ),
             5 => 
             array (
@@ -71,6 +76,7 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 0,
                 'is_lab' => 0,
                 'is_active' => 1,
+                'sequence' => 9,
             ),
             6 => 
             array (
@@ -80,6 +86,7 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 0,
                 'is_lab' => 1,
                 'is_active' => 1,
+                'sequence' => 7,
             ),
             7 => 
             array (
@@ -89,6 +96,27 @@ class ListRolesTableSeeder extends Seeder
                 'has_lab' => 0,
                 'is_lab' => 1,
                 'is_active' => 1,
+                'sequence' => 8,
+            ),
+            8 => 
+            array (
+                'id' => 9,
+                'name' => 'Calibration Officer',
+                'description' => 'This user role allows Lab Analysts to access the eULIMS specifically the Sample Tagging module.',
+                'has_lab' => 1,
+                'is_lab' => 1,
+                'is_active' => 1,
+                'sequence' => 6,
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'name' => 'Top Management',
+                'description' => 'This user role allows Lab Analysts to access the eULIMS specifically the Sample Tagging module.',
+                'has_lab' => 0,
+                'is_lab' => 1,
+                'is_active' => 1,
+                'sequence' => 1,
             ),
         ));
 

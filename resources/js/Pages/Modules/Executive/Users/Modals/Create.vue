@@ -90,7 +90,13 @@
                             </BCol>
                             <BCol v-if="form.agency_id" :lg="(has_lab || form.role_id == 9) ? 6 : 12" class="mt-1">
                                 <InputLabel for="role" value="Role" :message="form.errors.role_id"/>
-                                <Multiselect :options="dropdowns.roles" v-model="form.role" label="name" object :message="form.errors.role_id" @input="handleInput('role_id')" placeholder="Select Role" ref="multiselect2"/>
+                                <Multiselect
+                                v-model="form.role" :groups="true"
+                                :options="dropdowns.roles"
+                                label="name"
+                                object
+                                ref="multiselect2"
+                                placeholder="Select Role"/>
                             </BCol>
                             <BCol lg="6" v-if="has_lab" class="mt-1">
                                 <InputLabel for="laboratory_id" value="Laboratory" :message="form.errors.laboratory_id"/>

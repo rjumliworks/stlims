@@ -69,7 +69,14 @@ class DashboardController extends Controller
                             ]
                         ]);
                     break;
-                    case 'Lab Analyst':
+                    case 'Laboratory Analyst':
+                        return inertia('Modules/Laboratory/Dashboard/Analyst/Index',[
+                            'reminders' => $this->analyst->reminders($request),
+                            'tasks' => $this->analyst->tasks($request),
+                            'lists' => $this->analyst->lists($request),
+                        ]);
+                    break;
+                    case 'Calibration Officer':
                         return inertia('Modules/Laboratory/Dashboard/Analyst/Index',[
                             'reminders' => $this->analyst->reminders($request),
                             'tasks' => $this->analyst->tasks($request),

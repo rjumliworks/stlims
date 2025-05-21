@@ -28,7 +28,8 @@
                                 <div class="input-group mb-1">
                                     <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                     <input type="text" v-model="filter.keyword" placeholder="Search User" class="form-control" style="width: 30%;">
-                                    <Multiselect class="white" style="width: 17%;" :options="dropdowns.roles" v-model="filter.role" label="name" :searchable="true" placeholder="Select Role" />
+                                    <!-- <Multiselect class="white" style="width: 17%;" :options="dropdowns.roles" v-model="filter.role" label="name" :searchable="true" placeholder="Select Role" /> -->
+                                    <Multiselect class="white" style="width: 17%;" v-model="filter.role" :groups="true" :options="dropdowns.roles" label="name" :searchable="true" placeholder="Select Role"/>
                                     <Multiselect class="white" style="width: 17%;" :options="dropdowns.laboratories" v-model="filter.laboratory" label="name" :searchable="true" placeholder="Select Laboratory" />
                                     <Multiselect class="white" style="width: 15%;" :options="dropdowns.agencies" v-model="filter.agency" label="short" :searchable="true" placeholder="Select Agency" />
                                     <span @click="refresh()" class="input-group-text" v-b-tooltip.hover title="Refresh" style="cursor: pointer;"> 
@@ -78,7 +79,7 @@
                                         <th>Name</th>
                                         <th style="width: 15%;" class="text-center">Laboratory</th>
                                         <th style="width: 15%;" class="text-center">Agency</th>
-                                        <th style="width: 15%;" class="text-center">Email</th>
+                                        <th style="width: 15%;" class="text-center">Assignment</th>
                                         <th style="width: 15%;" class="text-center">Status</th>
                                         <th style="width: 10%;"></th>
                                     </tr>
@@ -97,7 +98,10 @@
                                         </td>
                                         <td class="text-center fs-12">{{list.roles[0].laboratory}}</td>
                                         <td class="text-center fs-12">{{list.roles[0].agency}}</td>
-                                        <td class="text-center fs-12">{{list.email}}</td>
+                                        <td class="text-center fs-12">
+                                            <span v-if="list.province">{{ list.province.name }} <span class="text-muted">(PSTO)</span></span>
+                                            <span v-else>Regional Office</span>
+                                        </td>
                                         <td class="text-center fs-12">
                                             <span v-if="list.is_active" class="badge bg-success">Active</span>
                                             <span v-else class="badge bg-danger">Inactive</span>
@@ -160,6 +164,9 @@
             "filter.agency"(newVal){
                 this.fetch();
             },
+            "filter.laboratory"(newVal){
+                this.fetch();
+            },
             "filter.keyword"(newVal){
                 this.checkSearchStr(newVal);
             }
@@ -177,6 +184,7 @@
                     params : {
                         agency: this.filter.agency,
                         role: this.filter.role,
+                        laboratory: this.filter.laboratory,
                         keyword: this.filter.keyword,
                         count: 10,
                         option: 'lists'
@@ -195,14 +203,20 @@
                 this.index = index;
                 this.$refs.activation.show(type,data);
             },
-            setDefaultImage(event) {
-                event.target.src = '/images/avatars/avatar.jpg'; 
-            },
             openCreate(){
                 this.$refs.create.show();
             },
             updateData(data){
                 this.lists[this.index] = data;
+            },
+            setDefaultImage(event) {
+                event.target.src = '/images/avatars/avatar.jpg'; 
+            },
+            refresh(){
+                this.filter.keyword = null;
+                this.filter.laboratory = null;
+                this.filter.agency = null;
+                this.filter.role = null;
             }
         }
     }

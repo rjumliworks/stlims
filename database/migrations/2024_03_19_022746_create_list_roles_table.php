@@ -19,6 +19,7 @@ return new class extends Migration
             $table->boolean('has_lab');
             $table->boolean('is_lab');
             $table->boolean('is_active')->default(1);
+            $table->tinyInteger('sequence');
         });
     }
 

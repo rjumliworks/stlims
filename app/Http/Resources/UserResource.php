@@ -18,6 +18,7 @@ class UserResource extends JsonResource
             'name' => $this->profile->firstname.' '.$this->profile->lastname,
             'roles' => RoleResource::collection($this->myroles),
             'agency_id' => (count($this->myroles) > 0) ? $this->myroles[0]->agency_id : null,
+            'province' => (count($this->myroles) > 0) ? $this->myroles[0]->province : null,
             'firstname' => $this->profile->firstname,
             'lastname' => $this->profile->lastname,
             'middlename' => $this->profile->middlename,

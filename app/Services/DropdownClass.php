@@ -161,14 +161,44 @@ class DropdownClass
     }
 
     public function roles(){
-        $data = ListRole::where('is_active',1)->get()->map(function ($item) {
-            return [
-                'value' => $item->id,
-                'name' => $item->name,
-                'has_lab' => $item->has_lab
-            ];
+        $data = ListRole::where('is_active',1)->orderBy('sequence','ASC')->get()->map(function ($item) {
+            if ($item->is_lab == 1 && $item->has_lab == 0) {
+                return [
+                    'label' => 'Cross-Functional Users',
+                    'options' => [
+                        'value' => $item->id,
+                        'name' => $item->name,
+                        'has_lab' => $item->has_lab
+                    ]
+                ];
+            }else if($item->is_lab == 1 && $item->has_lab == 1){
+                return [
+                    'label' => 'Lab-Scoped Users',
+                    'options' => [
+                        'value' => $item->id,
+                        'name' => $item->name,
+                        'has_lab' => $item->has_lab
+                    ]
+                ];
+             }else if($item->is_lab == 0 && $item->has_lab == 0){
+                return [
+                    'label' => 'Finance Users',
+                    'options' => [
+                        'value' => $item->id,
+                        'name' => $item->name,
+                        'has_lab' => $item->has_lab
+                    ]
+                ];
+            }
         });
-        return $data;
+        $grouped = $data->groupBy('label')->map(function ($items) {
+            return [
+                'label' => $items->first()['label'],
+                'options' => $items->pluck('options')->values()
+            ];
+        })->values();
+
+        return $grouped;
     }
     
 
