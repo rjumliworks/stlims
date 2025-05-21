@@ -216,7 +216,7 @@ class ViewClass
         $lab = json_decode($tsr);
         
         $user_id = $tsrinfo->received_by;
-        $userrole = UserRole::where('user_id',$user_id)->where('role_id',3)->first();
+        $userrole = UserRole::where('user_id',$user_id)->first();
         if($userrole->is_psto){
             $province = $userrole->province_code;
             $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
