@@ -188,7 +188,7 @@ class OpClass
             ->whereHas('payment',function ($query){
                 $query->where('is_paid', 0)->where('payment_id',null)->where('collection_id',null)->whereIn('status_id',[6,18]);
             })
-            ->where('status_id',2)
+            ->whereIn('status_id',[2,3,4])
             ->whereIn('customer_id',$request->customer_id)
             ->when($this->province, function ($query) {
                 $query->whereHas('received.myroles', function ($query) {
