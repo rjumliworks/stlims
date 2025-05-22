@@ -18,8 +18,9 @@ class WalletClass
         if($wallet){
             $available = trim(str_replace(',','',$wallet->available),'₱');
             $deduction = trim(str_replace(',','',$wallet->deduction),'₱');
-            $avail = ($available >= $total) ? $available - $total : 0;
-            $deduct = $deduction + $total;
+            $total_deducted = ($available >= $total) ? $total : $available;
+            $deduct = $deduction + $total_deducted;
+            $avail = $available - $total_deducted;
             $wallet->available = $avail;
             $wallet->deduction = $deduct;
             if($wallet->save()){
@@ -27,7 +28,7 @@ class WalletClass
                 $data = Tsr::where('id',$tsr_id)->first();
                 $data->transaction()->create([
                     'code' => $code,
-                    'amount' => $total,
+                    'amount' => $total_deducted,
                     'balance' => trim(str_replace(',','',$wallet->available),'₱'),
                     'is_credit' => 0,
                     'wallet_id' => $wallet->id
@@ -52,7 +53,7 @@ class WalletClass
                     }else{
                         $deduction = TsrPaymentDeduction::create([
                             'code' => $code,
-                            'amount' => $available,
+                            'amount' => $total_deducted,
                             'payment_id' => $id,
                             'wallet_id' => $wallet_id,
                             'user_id' => \Auth::user()->id
