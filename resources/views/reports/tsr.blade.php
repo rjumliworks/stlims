@@ -229,7 +229,7 @@
                 <tr>
                     <td colspan="5"></td>
                     <td style="font-size: 8px;">TOTAL</td>
-                    <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($tsr['payment']['total'],'₱ ')}}</td>
+                    <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($payment['total'],'₱ ')}}</td>
                 </tr>
             </tfoot>
         </table>
