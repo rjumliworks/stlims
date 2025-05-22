@@ -228,7 +228,7 @@
                 @endif
                 @if(isset($transaction))
                     <tr>
-                        <td colspan="5" style="font-weight: regular; text-align: left;"><i>Debited {{trim($transaction['amount'],'₱ ')}} from customers e-wallet</i></td>
+                        <td colspan="5" style="font-weight: regular; text-align: left;"><i>Partially debited {{trim($transaction['amount'],'₱ ')}} from customers e-wallet</i></td>
                         <td style="font-size: 8px;">E-WALLET</td>
                         <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($transaction['amount'],'₱ ')}}</td>
                     </tr>
