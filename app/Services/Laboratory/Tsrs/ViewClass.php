@@ -10,6 +10,7 @@ use App\Models\Tsr;
 use App\Models\TsrReport;
 use App\Models\TsrPayment;
 use App\Models\TsrAnalysis;
+use App\Models\WalletTransaction;
 use App\Models\AgencyConfiguration;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
@@ -250,7 +251,7 @@ class ViewClass
         $base64Image = 'data:image/png;base64,' . base64_encode($qrCodeImageString);
         $wallet = Wallet::where('customer_id',$tsrinfo->customer_id)->value('available');
         $payment = TsrPayment::select('id','total','payment_id')->with('type:id,name')->where('tsr_id',$tsrinfo->id)->first();
-   
+        $transaction = WalletTransaction::where('transacable_id',$tsrinfo->id)->where('transacable_type','App\Models\Tsr')->first();
         $array = [
             'qrCodeImage' => $base64Image,
             'configuration' => AgencyConfiguration::with('agency.member')->where('agency_id',$this->agency)->first(),
@@ -260,8 +261,9 @@ class ViewClass
             'user' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname,
             'color' => ($tsrinfo->lab_type) ? $tsrinfo->lab_type->color : 'black',
             'wallet' => ($wallet) ?  $wallet : '0.00',
-            'payment' => $payment
-        ];
+            'payment' => $payment,
+            'transaction' => $transaction
+        ]; 
 
         $pdf = \PDF::loadView('reports.tsr',$array)->setPaper('a4', 'portrait');
         $pdf->output();
