@@ -17,8 +17,11 @@ class WalletClass
         $wallet = Wallet::where('id',$wallet_id)->first();
         if($wallet){
             $available = trim(str_replace(',','',$wallet->available),'₱');
+            $deduction = trim(str_replace(',','',$wallet->deduction),'₱');
             $avail = ($available >= $total) ? $available - $total : 0;
+            $deduct = $deduction + $total;
             $wallet->available = $avail;
+            $wallet->deduction = $deduct;
             if($wallet->save()){
                 $code = date('Ymdgis');
                 $data = Tsr::where('id',$tsr_id)->first();
