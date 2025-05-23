@@ -19,12 +19,12 @@ class InventorySupplier extends Model
         'municipality_code',
         'is_active',
         'user_id',
-        'laboratory_id'
+        'agency_id'
     ];
 
-    public function laboratory()
+    public function agency()
     {
-        return $this->belongsTo('App\Models\Laboratory', 'laboratory_id', 'id');
+        return $this->belongsTo('App\Models\Agency', 'agency_id', 'id');
     }
 
     public function user()

@@ -42,6 +42,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
 
     Route::resource('/calendars', App\Http\Controllers\Others\CalendarController::class);
     Route::resource('/equipments', App\Http\Controllers\Others\EquipmentController::class);
+    Route::resource('/inventory', App\Http\Controllers\Others\InventoryController::class);
 
     Route::resource('/insights', App\Http\Controllers\InsightController::class);
     Route::resource('/reports', App\Http\Controllers\ReportController::class);

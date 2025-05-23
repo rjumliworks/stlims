@@ -38,7 +38,7 @@ class InventoryStock extends Model
         return $this->belongsTo('App\Models\InventoryItem', 'item_id', 'id');
     }
 
-    public function suppliers()
+    public function supplier()
     {
         return $this->belongsTo('App\Models\InventorySupplier', 'supplier_id', 'id');
     }

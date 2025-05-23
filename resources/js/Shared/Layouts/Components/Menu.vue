@@ -133,6 +133,13 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Equipments</span>
                     </Link>
                 </li> 
+                 <li class="nav-item">
+                    <Link href="/inventory" class="nav-link menu-link"
+                    :class="{'active': $page.component.startsWith('Modules/Others/Inventory') }">
+                    <i class="ri-archive-fill"></i>
+                    <span class="fw-semibold fs-14" data-key="t-dashboards">Inventory</span>
+                    </Link>
+                </li> 
             </template>
             <!-- <li class="nav-item">
                 <Link href="/services" class="nav-link menu-link"

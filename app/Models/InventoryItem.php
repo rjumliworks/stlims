@@ -17,8 +17,8 @@ class InventoryItem extends Model
         'reorder',
         'unit_id',
         'category_id',
+        'agency_id',
         'laboratory_id',
-        'laboratory_type',
         'user_id',
         'is_equipment'
     ];
@@ -28,14 +28,14 @@ class InventoryItem extends Model
         return $this->hasMany('App\Models\InventoryStock', 'item_id');
     }
 
-    public function laboratory()
+    public function agency()
     {
-        return $this->belongsTo('App\Models\Laboratory', 'laboratory_id', 'id');
+        return $this->belongsTo('App\Models\Agency', 'agency_id', 'id');
     }
 
-    public function laboratory_type()
+    public function laboratory()
     {
-        return $this->belongsTo('App\Models\ListLaboratory', 'laboratory_type', 'id');
+        return $this->belongsTo('App\Models\ListLaboratory', 'laboratory_id', 'id');
     }
 
     public function category()
