@@ -176,6 +176,7 @@ class ViewClass
             Tsr::query()
             ->with('samples.report','samples.analyses','samples.analyses.addfee.service','samples.analyses.testservice.testname','samples.analyses.testservice.method.method','samples.analyses.testservice.method.reference','samples.analyses.testservice.fees')
             ->with('services.service')
+            ->with('parent')
             ->with('children.child.status')
             ->with('referral.agency.member','referral.province')
             ->with('groups.testservice:id,testname_id,method_id,laboratory_id','groups.testservice.testname:id,name','groups.testservice.laboratory:id,name','groups.status')
