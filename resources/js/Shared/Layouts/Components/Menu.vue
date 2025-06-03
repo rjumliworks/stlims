@@ -141,13 +141,6 @@
                     </Link>
                 </li> 
             </template>
-            <!-- <li class="nav-item">
-                <Link href="/services" class="nav-link menu-link"
-                :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
-                <i class="ri-archive-fill"></i>
-                <span class="fw-semibold fs-14" data-key="t-dashboards">Inventory</span>
-                </Link>
-            </li>  -->
             <template v-if="['Cashier','Accountant','Customer Relation Officer','Releasing Officer','Laboratory Analyst','Calibration Officer','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
@@ -160,32 +153,6 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Reports</span>
                     </Link>
                 </li>
-                <!-- <li class="nav-item">
-                    <Link class="nav-link menu-link"
-                    :class="{'active': $page.component.startsWith('Modules/Insights') }">
-                    <i class="ri-line-chart-fill"></i>
-                    <span class="fw-semibold fs-14" data-key="t-dashboards">Insights</span>
-                    </Link>
-                    <div class="collapse menu-dropdown" id="gad">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <Link class="nav-link" :class="{'active': $page.url === '/insights/gad' }" href="/insights/gad">GAD Corner</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link class="nav-link" :class="{'active': $page.url === '/insights/top' }" href="/insights/top">Performance Summary</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link class="nav-link" :class="{'active': $page.url === '/insights/payments' }" href="/insights/payments">Payments</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link class="nav-link" :class="{'active': $page.url === '/insights/customers' }" href="/insights/customers">Customers</Link>
-                            </li>
-                            <li class="nav-item">
-                                <Link class="nav-link" :class="{'active': $page.url === '/insights/laboratories' }" href="/insights/laboratories">Laboratories</Link>
-                            </li>
-                        </ul>
-                    </div>
-                </li> -->
             </template>
             <template v-if="$page.props.roles.includes('Administrator')">
                 <li class="menu-title">
@@ -197,6 +164,13 @@
                     :class="{'active': $page.component.startsWith('Modules/Laboratory/Services') }">
                     <i class="ri-flask-fill"></i>
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Test Services</span>
+                    </Link>
+                </li>
+                <li class="nav-item">
+                    <Link href="/testrequests" class="nav-link menu-link"
+                    :class="{'active': $page.component.startsWith('Modules/Executive/Tsrs') }">
+                    <i class="ri-hand-coin-fill"></i>
+                    <span class="fw-semibold fs-14" data-key="t-dashboards">Tsrs</span>
                     </Link>
                 </li>
                 <li class="menu-title">
