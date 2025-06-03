@@ -70,7 +70,7 @@ class ReportClass
                 ];
             }
         }else{
-            $service = null;
+            $services = null;
         }
 
         $samples = array_values($groupedData);
