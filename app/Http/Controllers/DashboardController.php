@@ -147,6 +147,9 @@ class DashboardController extends Controller
     public function search(Request $request){
         $option = $request->option;
         switch($option){
+            case 'performance':
+                return $this->analyst->performance($request);
+            break;
             case 'provinces':
                 return $this->dropdown->provinces($request->code);
             break;

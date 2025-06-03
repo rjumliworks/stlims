@@ -20,7 +20,7 @@
                         <div class="flex-shrink-0"></div>
                     </div>
                 </div>
-                <div class="card-body border-bottom bg-white">
+                <div class="card-body border-bottom bg-white" style="cursor: pointer;" @click="openPerformance()">
                     <p class="mb-0 text-primary fs-12 fw-semibold">Analyst Performance Summary</p>
                 </div>
                 <div class="card bg-white border-bottom shadow-none mb-0" style="height: calc(100vh - 343px); overflow: auto;">
@@ -72,13 +72,15 @@
             <Lists :search-query="searchQuery" ref="sample"/>
         </div>
     </b-row>
+    <Performance ref="performance"/>
 </template>
 <script>
 import _ from 'lodash';
 import Lists from './Components/Lists.vue';
+import Performance from './Modals/Performance.vue';
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 export default {
-    components: { PageHeader, Lists },
+    components: { PageHeader, Lists, Performance },
     props: ['tasks','reminders','lists'],
     data(){
         return {
@@ -125,6 +127,9 @@ export default {
         },
         isActive(name) {
             return this.activeList === name;
+        },
+        openPerformance(){
+            this.$refs.performance.show();
         }
     }
     

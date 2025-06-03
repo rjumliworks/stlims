@@ -13,6 +13,38 @@ class AnalystClass
         $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : '';
     }
 
+    public function performance($request){
+        $userId = \Auth::user()->id;
+        $year = $request->year;
+        $month = $request->month;
+        $startMonth = ($month == 'January - June') ? 1 : 7;
+        $endMonth = $startMonth + 5;
+
+        $monthlyCounts = [];
+
+        for ($m = $startMonth; $m <= $endMonth; $m++) {
+            $query = TsrAnalysis::where('status_id', 12)
+            ->where('analyst_id', $userId)
+            ->whereHas('sample', function ($query) use ($year, $m) {
+                $query->whereHas('tsr', function ($query) use ($year, $m) {
+                    $query->whereYear('created_at', $year)
+                        ->whereMonth('created_at', $m);
+                });
+            });
+
+            $count = $query->count();
+            $totalCost = round($query->sum('fee'), 2);
+
+            $monthName = Carbon::create()->month($m)->format('F');
+            $monthlyData[$monthName] = [
+                'tests_performed' => $count,
+                'total_cost' => $totalCost
+            ];
+        }
+
+        return $monthlyData;
+    }
+
     public function lists($request){
         // $laboratory = \Auth::user()->myroles[0]->laboratory_id;
         return [
