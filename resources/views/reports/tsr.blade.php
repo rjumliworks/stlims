@@ -197,13 +197,21 @@
                 </tr>
                 @endif
             @endforeach
-            @if(isset($tsr['service']))
-                <tr style="text-align: center; font-size: 9px; color: #072388;">
-                    <td style="text-align: left;" colspan="4">{{$tsr['service']['name']}} ({{$tsr['service']['description']}})</td>
-                    <td>{{$tsr['service']['quantity']}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$tsr['service']['fee']),'₱ '),2,".",",")}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$tsr['service']['fee']),'₱ ')*$tsr['service']['quantity'],2,".",",")}}</td>
-                </tr>
+            @if(isset($tsr['services']) && is_array($tsr['services']))
+                @foreach($tsr['services'] as $service)
+                    <tr style="text-align: center; font-size: 9px; color: #072388;">
+                        <td style="text-align: left;" colspan="4">
+                            {{ $service['name'] }} ({{ $service['description'] }})
+                        </td>
+                        <td>{{ $service['quantity'] }}</td>
+                        <td style="text-align: right;">
+                            <span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format(trim(str_replace([',', '₱'], '', $service['fee'])), 2, ".", ",") }}
+                        </td>
+                        <td style="text-align: right;">
+                            <span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format(trim(str_replace([',', '₱'], '', $service['fee'])) * $service['quantity'], 2, ".", ",") }}
+                        </td>
+                    </tr>
+                @endforeach
             @endif
             </tbody>
             <tfoot style="text-align: center; padding: 3px; font-weight: bold; background-color:#c8c8c8;">

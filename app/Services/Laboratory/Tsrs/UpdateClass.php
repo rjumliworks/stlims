@@ -297,15 +297,18 @@ class UpdateClass
                 $groupedData[$key]["count"] += 1;
             }
         }
-        if(isset($tsr->service)){
-            $service = [
-                'name' => $tsr->service->service->name,
-                'description' => $tsr->service->service->description,
-                'quantity' => $tsr->service->quantity,
-                'fee' => $tsr->service->fee
-            ];
+        if(isset($tsr->services) && count($tsr->services)){
+           foreach ($tsr->services as $item) {
+                $services[] = [
+                    'name' => $item->service->name ?? null,
+                    'description' => $item->service->description ?? null,
+                    'quantity' => $item->quantity,
+                    'fee' => $item->fee,
+                    'total' => $item->total
+                ];
+            }
         }else{
-            $service = null;
+            $services = null;
         }
 
         $samples = array_values($groupedData);
@@ -323,7 +326,7 @@ class UpdateClass
         }
         $information = [
             'code' => $tsr->code,
-            'service' => $service,
+            'services' => $services,
             'date' => $tsr->created_at,
             'laboratory_id' => $tsr->laboratory_id,
             'due_at' => $tsr->due_at,
