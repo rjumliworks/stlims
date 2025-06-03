@@ -31,7 +31,7 @@ class ScheduleCommand extends Command
         }
         $message .= "\nThank you!";
 
-        $users = UserRole::with('user.profile')->whereIn('role_id',[2,3,4])->get();
+        $users = UserRole::with('user.profile')->whereIn('role_id',[2,3,4,9])->get();
         if(count($schedules) > 0){
             foreach($users as $user){
                 dispatch(new SmsJob($user->user->profile->mobile, $message));
