@@ -322,6 +322,7 @@ class OpClass
         }
 
         $array = [
+            'configuration' => AgencyConfiguration::with('agency.member')->where('agency_id',$this->agency)->first(),
             'lists' => $data->items,
             'code' => $data->code,
             'date' => $data->created_at,

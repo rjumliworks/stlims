@@ -33,7 +33,7 @@
                 </BCol>
             </BRow>
         </form>
-          <template v-slot:footer>
+        <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Cancel</b-button>
             <b-button @click="submit('ok')" variant="primary" :disabled="form.processing || !isFormValid" block>Submit</b-button>
         </template>
@@ -111,7 +111,7 @@ export default {
             this.showModal = true;
         },  
         submit(){
-            const address = `${this.form.address}, ${this.form.barangay.name}, ${this.form.municipality.name}, ${this.form.province.name}, ${this.form.region.name}`;
+            const address = `${this.form.address}, ${this.form.barangay.name}, ${this.form.municipality.name}, ${this.form.province.name}`;
             this.$emit('submit', {
                 address: address,
                 index: this.index,

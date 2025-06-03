@@ -20,7 +20,11 @@
                         <InputLabel for="middlename" value="Email" :message="form.errors.email"/>
                         <TextInput id="middlename" v-model="form.settings.email" type="text" class="form-control" placeholder="Please enter email" @input="handleInput('email')" :light="true"/>
                     </BCol>
-                    <BCol lg="12" class="mt-0">
+                    <BCol lg="6" class="mt-0">
+                        <InputLabel for="middlename" value="Bank Account" :message="form.errors.time"/>
+                        <TextInput id="middlename" v-model="form.settings.bank" type="text" class="form-control" placeholder="Please enter bank" @input="handleInput('bank')" :light="true"/>
+                    </BCol>
+                     <BCol lg="6" class="mt-0">
                         <InputLabel for="middlename" value="Time" :message="form.errors.time"/>
                         <TextInput id="middlename" v-model="form.settings.time" type="text" class="form-control" placeholder="Please enter time" @input="handleInput('time')" :light="true"/>
                     </BCol>

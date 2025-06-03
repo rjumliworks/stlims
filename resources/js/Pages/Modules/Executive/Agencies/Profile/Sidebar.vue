@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="flex-grow-1">
                                     <p class="text-muted mb-0 fs-12">Contact number:</p>
-                                    <h5 class="mb-0 fs-12">{{ selected.data.configuration.form.contact }}</h5>
+                                    <h5 class="mb-0 fs-12 text-truncate">{{ truncateContact(selected.data.configuration.form.contact) }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -139,6 +139,21 @@
                                 <div class="flex-grow-1">
                                     <p class="text-muted mb-0 fs-12">Time:</p>
                                     <h5 class="mb-0 fs-12">{{ selected.data.configuration.form.time }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="p-0 border border-dashed rounded">
+                            <div class="d-flex align-items-center">
+                                <div class="avatar-sm me-2">
+                                    <div class="avatar-title rounded bg-transparent text-primary fs-20">
+                                        <i class="ri-time-fill"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <p class="text-muted mb-0 fs-12">Bank Account:</p>
+                                    <h5 class="mb-0 fs-12">{{ selected.data.configuration.form.bank }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -174,6 +189,10 @@ export default {
         },
         openSetting(){
             this.$refs.setting.show();
+        },
+        truncateContact(value) {
+            if (!value) return '';
+            return value.length > 40 ? value.slice(0, 40) + '...' : value;
         }
     }
 }

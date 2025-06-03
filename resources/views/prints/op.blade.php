@@ -75,12 +75,14 @@ label {
 
     </style>
     </head>
-
+<?php 
+$form = $configuration['form'] = $configuration['form'];
+?>
     <body>
         <div style="font-family:Arial;">
-            <center style="font-size: 10px; margin-bottom: 0px; text-transform: uppercase;">DEPARTMENT OF SCIENCE AND TECHNOLOGY</center>
+            <center style="font-size: 10px; margin-bottom: 0px; text-transform: uppercase;">{{$configuration['agency']['member']['name']}}</center>
             <center style="font-size: 11px; margin-bottom: 0px; font-weight: bold;">REGIONAL STANDARDS AND TESTING LABORATORIES</center>
-            <center style="font-size: 11px;">Pettit Baracks, Zamboanga City | (062) 991-1024</center>
+            <center style="font-size: 11px;">{{$form['address']}} | {{$form['email']}}</center>
             <br/>
             
         </div>
@@ -158,7 +160,7 @@ label {
             <tbody>
                 @for ($i = 0; $i < 1; $i++)
                 <tr style="font-size: 11px;">
-                    <td style="font-weight: bold; text-align: center;">@if($i == 0)3402-2844-20 @endif</td>
+                    <td style="font-weight: bold; text-align: center;">@if($i == 0){{$form['bank']}} @endif</td>
                     <td style="text-align: center;">@if($i == 0)LANDBANK @endif</td>
                     <td style="text-align:center; ">@if($i == 0) <span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($total,'₱ ')}} @endif</td>
                 </tr>
