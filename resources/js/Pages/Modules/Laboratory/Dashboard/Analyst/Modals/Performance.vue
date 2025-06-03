@@ -38,7 +38,7 @@
                 
                     <div class="card-body bg-white">
                         <div class="table-responsive table-card">
-                            <simplebar data-simplebar style="max-height: 300px;">
+                            <simplebar data-simplebar style="max-height: 400px;">
                                 <table class="table align-middle table-bordered table-centered table-nowrap">
                                     <thead class="bg-dark-subtle fs-11 thead-fixed">
                                         <tr>
@@ -52,6 +52,11 @@
                                             <td class="text-center">{{ month }}</td>
                                             <td class="text-center">{{ count.tests_performed }}</td>
                                             <td class="text-center">{{ formatMoney(count.total_cost) }}</td>
+                                        </tr>
+                                        <tr class="fw-semibold fs-11 bg-light text-dark">
+                                            <td class="text-center">Total</td>
+                                            <td class="text-center">{{ totals.tests }}</td>
+                                            <td class="text-center">{{ formatMoney(totals.cost) }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -84,6 +89,22 @@ export default {
             month: month,
             year: new Date().getFullYear(),
             showModal: false
+        }
+    },
+    computed: {
+        totals() {
+            let totalTests = 0;
+            let totalCost = 0;
+
+            Object.values(this.selected).forEach(item => {
+                totalTests += item.tests_performed || 0;
+                totalCost += parseFloat(item.total_cost) || 0;
+            });
+
+            return {
+                tests: totalTests,
+                cost: totalCost
+            };
         }
     },
     watch: {
