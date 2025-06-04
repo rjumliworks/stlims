@@ -37,6 +37,13 @@ class CashierClass
                 'end' => $item->end
             ];
         });
+        $data->push([
+            'value' => 0,
+            'name' => 'Custom OR',
+            'start' => 0,
+            'next' => 0,
+            'end' => 0,
+        ]);
         return $data;
     }
 
