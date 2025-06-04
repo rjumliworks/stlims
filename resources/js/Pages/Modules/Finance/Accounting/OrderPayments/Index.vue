@@ -39,13 +39,13 @@
                             <td>
                                 <h5 class="fs-13 mb-0 text-dark" v-if="list.or">{{list.code}} <span class="text-muted">(OR# : {{list.or.number}})</span></h5>
                                 <h5 class="fs-13 mb-0 text-dark" v-else>{{list.code}}</h5>
-                                <p class="fs-12 text-muted mb-0">{{list.payorable.name}}</p>
+                                <p class="fs-13 text-muted mb-0">{{list.payorable.name}}</p>
                             </td>
-                            <td class="text-center fs-12">{{list.collection}}</td>
-                            <td class="text-center fs-12">{{list.payment.name}}</td>
-                            <td class="text-center fs-12">{{list.total}}</td>
-                            <td class="text-center fs-12">{{list.user}}</td>
-                            <td class="text-center fs-12">{{list.date}}</td>
+                            <td class="text-center fs-13">{{list.collection}}</td>
+                            <td class="text-center fs-13">{{list.payment.name}}</td>
+                            <td class="text-center fs-13">{{list.total}}</td>
+                            <td class="text-center fs-13">{{list.user}}</td>
+                            <td class="text-center fs-13">{{list.date}}</td>
                             <td class="text-center">
                                 <span :class="'badge '+list.status.color+' '+list.status.others">{{list.status.name}}</span>
                             </td>

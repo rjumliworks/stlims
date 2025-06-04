@@ -10,7 +10,7 @@
                 </Link>
             </li>
             <template v-if="['Customer Relation Officer','Releasing Officer','Laboratory Analyst','Calibration Officer','Technical Manager','Laboratory Head'].some(role => $page.props.roles.includes(role))">
-                <li class="menu-title" v-if="['Customer Relation Officer'].some(role => $page.props.roles.includes(role))">
+                <!-- <li class="menu-title" v-if="['Customer Relation Officer'].some(role => $page.props.roles.includes(role))">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Lists</span>
                 </li>
@@ -20,7 +20,7 @@
                     <i class="ri-flask-fill"></i>
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Test Services</span>
                     </Link>
-                </li>
+                </li> -->
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Laboratory</span>

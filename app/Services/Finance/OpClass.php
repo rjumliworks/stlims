@@ -159,6 +159,9 @@ class OpClass
                     });
                 });
         })
+        ->when($this->agency, function ($query, $agency) {
+            $query->where('agency_id',$agency);
+        })
         ->get()->map(function ($item) {
             $name = ($item->customer_name->has_branches) ? ($item->is_main) ? $item->customer_name->name :  $item->customer_name->name.' - '.$item->name : $item->customer_name->name;
             return [

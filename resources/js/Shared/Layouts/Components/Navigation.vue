@@ -214,6 +214,14 @@ export default {
             </BLink>
           </BDropdown> -->
 
+          <div class="ms-1 header-item d-none d-sm-flex">
+            <Link href="/services">
+              <BButton type="button" variant="ghost-secondary" class="btn-icon btn-topbar rounded-circle">
+                <i class="ri-flask-fill fs-22"></i>
+              </BButton>
+            </Link>
+          </div>
+
           <BDropdown class="dropdown" variant="ghost-secondary" dropstart
             :offset="{ alignmentAxis: 57, crossAxis: 0, mainAxis: -42 }"
             toggle-class="btn-icon btn-topbar rounded-circle mode-layout ms-1 arrow-none"

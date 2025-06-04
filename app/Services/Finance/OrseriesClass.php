@@ -11,6 +11,7 @@ class OrseriesClass
     public function __construct()
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
         $this->configuration = AgencyConfiguration::where('agency_id',$this->agency)->first();
     }
 
@@ -21,6 +22,20 @@ class OrseriesClass
         })
         ->when($this->agency, function ($query, $agency) {
             $query->where('agency_id',$agency);
+        })
+        ->when(true, function ($query) {
+            if ($this->province) {
+                // Province is set: match province_code
+                $query->whereHas('user.myroles', function ($q) {
+                    $q->whereNotNull('province_code')
+                      ->where('province_code', $this->province);
+                });
+            } else {
+                // Province is not set: exclude users with any role that has a province_code
+                $query->whereDoesntHave('user.myroles', function ($q) {
+                    $q->whereNotNull('province_code');
+                });
+            }
         })
         ->orderBy('is_active','DESC')
         ->paginate($request->count);

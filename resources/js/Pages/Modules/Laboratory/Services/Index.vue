@@ -93,7 +93,10 @@
                                     </td>
                                     <!-- <td class="fs-12">{{list.sampletype.name}}</td> -->
                                     <td class="text-center fs-12">{{list.testname.name}}</td>
-                                    <td class="text-center fs-12">{{ (list.method.method.short) ? list.method.method.short: list.method.method.name}}</td>
+                                    <td class="text-center fs-12">
+                                        <h5 class="fs-12 mb-0 text-dark">{{ (list.method.method.short) ? list.method.method.short: list.method.method.name}}</h5>
+                                        <p class="fs-12 text-muted mb-0"> <span class="text-muted fs-11">{{list.method.reference.name}}</span></p>
+                                    </td>
                                     <td class="text-center fs-12">{{list.method.fee}}</td>
                                     <td class="text-center">
                                         <span v-if="list.is_active" class="badge bg-success">Active</span>

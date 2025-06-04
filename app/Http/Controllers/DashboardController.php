@@ -41,7 +41,6 @@ class DashboardController extends Controller
         if(!\Auth::check()){
             return inertia('Auth/Login');
         }else{
-           
             if(\Auth::user()->role === 'Administrator'){
                 return inertia('Modules/Executive/Dashboard/Index');
             }else{
