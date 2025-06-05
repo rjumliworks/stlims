@@ -6,9 +6,20 @@ use App\Models\Tsr;
 use App\Models\TsrPayment;
 use App\Models\TsrPaymentDeduction;
 use App\Models\Wallet;
+use App\Http\Resources\DefaultResource;
 
 class WalletClass
 {
+    public function lists($request){
+         $data = DefaultResource::collection(
+            Wallet::query()
+            ->with('customer.customer_name','customer.contact')
+            ->orderBy('available','DESC')
+            ->paginate($request->count)
+        );
+        return $data;
+    }
+
     public function wallet($request){
         $id = $request->id;
         $tsr_id = $request->tsr_id;

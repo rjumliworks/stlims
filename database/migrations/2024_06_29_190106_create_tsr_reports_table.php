@@ -15,6 +15,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->longText('information');
+            $table->longText('secret_key')->nullable();
             $table->bigInteger('tsr_id')->unsigned()->index();
             $table->foreign('tsr_id')->references('id')->on('tsrs')->onDelete('cascade');
             $table->timestamps();

@@ -36,6 +36,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
 
     Route::middleware(['role:Administrator'])->group(function () {
         Route::resource('/services', App\Http\Controllers\Laboratory\ServiceController::class);
+        Route::resource('/wallets', App\Http\Controllers\Finance\WalletController::class);
         Route::resource('/testrequests', App\Http\Controllers\Executive\TsrController::class);
         Route::resource('/users', App\Http\Controllers\Executive\UserController::class);
         Route::resource('/agencies', App\Http\Controllers\Executive\AgencyController::class);

@@ -173,6 +173,13 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Tsrs</span>
                     </Link>
                 </li>
+                <li class="nav-item">
+                    <Link href="/wallets" class="nav-link menu-link"
+                    :class="{'active': $page.component.startsWith('Modules/Executive/Wallet') }">
+                    <i class="ri-wallet-3-fill"></i>
+                    <span class="fw-semibold fs-14" data-key="t-dashboards">Wallet</span>
+                    </Link>
+                </li>
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>
                     <span data-key="t-menu">Executive</span>

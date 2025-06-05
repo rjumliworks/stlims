@@ -15,6 +15,16 @@ class WalletController extends Controller
         $this->wallet = $wallet;
     }
 
+    public function index(Request $request){
+        switch($request->option){
+            case 'lists':
+                return $this->wallet->lists($request);
+            break;
+            default :
+            return inertia('Modules/Executive/Wallets/Index');
+        }
+    }
+
     public function store(Request $request){
         $result = $this->handleTransaction(function () use ($request) {
             switch($request->option){

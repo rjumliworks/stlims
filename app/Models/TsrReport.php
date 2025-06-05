@@ -10,11 +10,21 @@ class TsrReport extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['information','tsr_id'];
+    protected $fillable = ['information','tsr_id','secret_key'];
 
     public function tsr()
     {
         return $this->belongsTo('App\Models\Tsr', 'tsr_id', 'id');
+    }
+
+    public function setSecretKeyAttribute($value)
+    {
+        $this->attributes['secret_key'] = Crypt::encryptString($value);
+    }
+
+    public function getSecretKeyAttribute($value)
+    {
+        return Crypt::decryptString($value);
     }
 
     public function setInformationAttribute($value)
