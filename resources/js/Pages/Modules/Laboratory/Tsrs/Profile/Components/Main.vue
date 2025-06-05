@@ -93,7 +93,7 @@
                                         </td>
                                         <td width="7%" class="text-end">
                                             <template v-if="showAnalyses">
-                                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment' || selected.has_parent" @click="openSampleEdit(list)" variant="soft-primary" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
+                                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment' || selected.has_parent || selected.payment.status.name == 'Gratis'" @click="openSampleEdit(list)" variant="soft-primary" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
                                                     <i class="ri-pencil-fill align-bottom"></i>
                                                 </b-button>
                                                 <b-button v-if="selected.status.name != 'Pending'" @click="openQr(list)" variant="soft-dark" class="me-1" v-b-tooltip.hover title="View Sample QR" size="sm">

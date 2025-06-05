@@ -27,9 +27,13 @@
                 </BCol>
                 <BCol lg="12" v-if="or.orseries">
                     <hr class="text-muted mt-0"/>
-                    <div class="d-grid gap-2" >
+                    <div class="d-grid gap-2" v-if="or.orseries.value != 0">
                         <b-button variant="success">O.R # : {{or.orseries.next}}</b-button>
                     </div>
+                    <BCol lg="12 mt-n2 mb-n2" v-else>
+                        <InputLabel value="Customer OR Number" :message="form.errors.details_date_at"/>
+                        <TextInput v-model="or.orseries.next" type="text" class="form-control" @input="handleInput('details_date_at')" :light="true"/>
+                    </BCol>
                 </BCol>
                 <BCol lg="12" v-if="orseries.length == 0">
                     <hr class="text-muted mt-0"/>

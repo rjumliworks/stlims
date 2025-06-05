@@ -86,7 +86,7 @@
                 </BCol>
                 <BCol lg="12" v-if="or.orseries">
                     <hr class="text-muted mt-0"/>
-                    <div class="d-grid gap-2 mt-n2" >
+                    <div class="d-grid gap-2 mt-n2">
                         <b-button variant="success">O.R # : {{or.orseries.next}}</b-button>
                     </div>
                 </BCol>
