@@ -8,26 +8,26 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class RSTLExport implements FromView
 {
-    protected $month,$year,$type,$laboratory;
+    protected $month,$year,$type,$agency;
 
-    function __construct($month,$year,$type,$laboratory) {
+    function __construct($month,$year,$type,$agency) {
         $this->month = $month;
         $this->year = $year;
         $this->type = $type;
-        $this->laboratory = $laboratory;
+        $this->agency = $agency;
     }
 
     public function view(): View {
         $lists = Tsr::select('id','code','customer_id')
         ->whereDoesntHave('parent')
-        ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,addressable_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
+        ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
         ->withWhereHas('payment', function ($query) {
             $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id')->with('status','type');
         })
         ->when($this->type, function ($query, $type) {
             $query->where('laboratory_id',$type);
         })
-        ->where('agency_id',$this->laboratory)
+        ->where('agency_id',$this->agency)
         ->whereMonth('created_at',$this->month)
         ->whereYear('created_at',$this->year)
         ->get();

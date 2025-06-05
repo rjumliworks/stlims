@@ -51,18 +51,17 @@ class AccountingClass
     private function excel($request){
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');  
         $year = ($request->year) ? $request->year : date('Y');
-        $type = $request->laboratory;
+        $laboratory = $request->laboratory;
         $month_name = $request->month;
-
         switch($request->type){
             case 'op':
                 return Excel::download(new OpExport($month,$year,$this->agency), 'opor-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
             case 'rstl':
-                return Excel::download(new RSTLExport($month,$year,$type,$this->agency), 'rstl-'.strtolower($month_name).'-'.$year.'.xlsx');
+                return Excel::download(new RSTLExport($month,$year,$laboratory,$this->agency), 'rstl-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
             case 'tsr':
-                return Excel::download(new TsrExport($month,$year,$type,$this->agency), 'tsr-'.strtolower($month_name).'-'.$year.'.xlsx');
+                return Excel::download(new TsrExport($month,$year,$laboratory,$this->agency), 'tsr-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
             default:
                 return Excel::download(new ReconciliationExport($month,$year,$this->agency), 'reconciliation-'.strtolower($month_name).'-'.$year.'.xlsx');
