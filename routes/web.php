@@ -18,6 +18,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
         Route::resource('/analyses', App\Http\Controllers\Laboratory\AnalysisController::class);
         Route::resource('/testreports', App\Http\Controllers\Laboratory\TestreportController::class);
         Route::resource('/tsrs', App\Http\Controllers\Laboratory\TsrController::class);
+        Route::resource('/testservices', App\Http\Controllers\Laboratory\ServiceController::class);
         Route::post('/wallet', [App\Http\Controllers\Finance\WalletController::class, 'store']);
     });
 
@@ -35,7 +36,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
     });
 
     Route::middleware(['role:Administrator'])->group(function () {
-        Route::resource('/services', App\Http\Controllers\Laboratory\ServiceController::class);
+        Route::resource('/services', App\Http\Controllers\Executive\TestserviceController::class);
         Route::resource('/wallets', App\Http\Controllers\Finance\WalletController::class);
         Route::resource('/testrequests', App\Http\Controllers\Executive\TsrController::class);
         Route::resource('/users', App\Http\Controllers\Executive\UserController::class);
@@ -48,7 +49,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
 
     Route::resource('/insights', App\Http\Controllers\InsightController::class);
     Route::resource('/reports', App\Http\Controllers\ReportController::class);
-    Route::get('/services', [App\Http\Controllers\Laboratory\ServiceController::class, 'index']);
+    // Route::get('/services', [App\Http\Controllers\Laboratory\ServiceController::class, 'index']);
     // Route::resource('/executive', App\Http\Controllers\ExecutiveController::class);
 });
 

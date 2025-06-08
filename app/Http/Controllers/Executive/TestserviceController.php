@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Laboratory;
+namespace App\Http\Controllers\Executive;
 
 use App\Traits\HandlesTransaction;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Operation\NameRequest;
 use App\Services\DropdownClass;
+use App\Http\Requests\Operation\NameRequest;
 use App\Services\Laboratory\Services\ViewClass;
 use App\Services\Laboratory\Services\SaveClass;
 
-class ServiceController extends Controller
+class TestserviceController extends Controller
 {
     use HandlesTransaction;
 
@@ -35,12 +35,13 @@ class ServiceController extends Controller
                 return $this->view->testservices($request);
             break;
             default :
-            return inertia('Modules/Laboratory/Services/Index',[
+            return inertia('Modules/Executive/Services/Index',[
                 'dropdowns' => [
-                    'laboratories' => $this->dropdown->laboratories(),
-                    'statuses' => $this->dropdown->statuses('Testservice')
+                    'agencies' => $this->dropdown->agencies(),
+                    'laboratories' => $this->dropdown->laboratories()
                 ],
-                'counts' => $this->view->counts($this->dropdown->statuses('Testservice'))
+                'laboratory' => []
+                // $this->view->laboratory()
             ]);
         }
     }
@@ -84,4 +85,5 @@ class ServiceController extends Controller
             break;
         }
     }
+    
 }

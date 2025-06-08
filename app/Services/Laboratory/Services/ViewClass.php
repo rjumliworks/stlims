@@ -22,7 +22,13 @@ class ViewClass
             ->when($request->laboratory, function ($query, $laboratory) {
                 $query->where('laboratory_id',$laboratory);
             })
-            ->when($request->agency, function ($query, $agency) {
+            ->when($request->status, function ($query, $status) {
+                $query->where('status_id',$status);
+            })
+            ->when($this->agency, function ($query, $agency) {
+                $query->where('agency_id',$agency);
+            })
+             ->when($request->agency, function ($query, $agency) {
                 $query->where('agency_id',$agency);
             })
             ->when($request->keyword, function ($query, $keyword) {
@@ -36,14 +42,22 @@ class ViewClass
                     });
                 });
             })
-            ->with('fees')
+            ->with('fees','status')
             ->with('sampletype','testname','agency.member','agency.address.region','laboratory')
             ->with('method.method','method.reference')
-            ->where('is_active',1)
             ->orderBy('created_at','DESC')
             ->paginate($request->count)
         );
         return $data;
+    }
+
+    public function counts($statuses){
+        foreach($statuses as $status){
+            $counts[] = Testservice::where('status_id',$status['value'])
+            ->where('is_active',1)
+            ->where('agency_id',$this->agency)->count();
+        }
+        return $counts;
     }
 
     public function search($request){

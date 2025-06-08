@@ -1,9 +1,17 @@
 <template>
-    <b-modal v-model="showModal" style="--vz-modal-width: 900px;" header-class="p-3 bg-light" :title="(!editable) ? 'Request Testservice' : 'Edit Testservice'" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
+    <b-modal v-model="showModal" style="--vz-modal-width: 900px;" header-class="p-3 bg-light" :title="(!editable) ? 'Create Test Service' : 'Edit Test Service'" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
             
         <form class="customform">
             <BRow>
-                <BCol lg="12" class="mt-1 mb-1">
+                <BCol lg="6" class="mt-1 mb-1">
+                    <InputLabel for="classification_id" value="Agency" :message="form.errors.agency_id"/>
+                    <Multiselect :options="dropdowns.agencies"
+                    @input="handleInput('agency_id')" 
+                  
+                    :searchable="true" v-model="form.agency_id" 
+                    placeholder="Select Laboratory" ref="multiselect1"/>
+                </BCol>
+                <BCol lg="6" class="mt-1 mb-1">
                     <InputLabel for="classification_id" value="Laboratory" :message="form.errors.laboratory_id"/>
                     <Multiselect :options="dropdowns.laboratories" 
                     @input="handleInput('laboratory_id')" 
@@ -110,11 +118,11 @@ export default {
             currentUrl: window.location.origin,
             form: useForm({
                 id: null,
+                agency_id: null,
                 laboratory_id: null,
                 sampletype_id: null,
                 testname_id: null,
                 method_id: null,
-                status_id: 31,
                 option: 'create'
             }),
             filter: {
@@ -148,7 +156,7 @@ export default {
             this.showModal = true;
         }, 
         submit(){
-            this.form.post('/testservices',{
+            this.form.post('/services',{
                 preserveScroll: true,
                 onSuccess: (response) => {
                     this.$emit('message',true);
@@ -162,7 +170,7 @@ export default {
         }, 300),
         fetchSample(code){
             this.sampletypes = [];
-            axios.get('/testservices',{
+            axios.get('/services',{
                 params: {
                     option: 'search',
                     laboratory_id: this.form.laboratory_id,
@@ -180,7 +188,7 @@ export default {
             this.filter.testname = string;
         }, 300),
         fetchTest(code){
-            axios.get('/testservices',{
+            axios.get('/services',{
                 params: {
                     option: 'search',
                     laboratory_id: this.form.laboratory_id,
@@ -197,7 +205,7 @@ export default {
             this.fetchMethod(string);
         }, 300),
         fetchMethod(code){
-            axios.get('/testservices',{
+            axios.get('/services',{
                 params: {
                     option: 'methods',
                     count: 5,

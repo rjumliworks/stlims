@@ -10,8 +10,13 @@ class Testservice extends Model
     use HasFactory;
 
     protected $fillable = [
-        'laboratory_id','sampletype_id','testname_id','method_id','agency_id','is_active'
+        'laboratory_id','sampletype_id','testname_id','method_id','agency_id','is_active','status_id'
     ];
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\ListStatus', 'status_id', 'id');
+    }
 
     public function sampletype()
     {

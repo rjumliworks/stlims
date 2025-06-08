@@ -348,6 +348,50 @@ class ListStatusesTableSeeder extends Seeder
                 'created_at' => '2024-03-28 10:33:01',
                 'updated_at' => '2024-03-28 10:33:01',
             ),
+            30 => 
+            array (
+                'id' => 31,
+                'name' => 'Pending',
+                'type' => 'Testservice',
+                'color' => 'bg-warning',
+                'others' => 'text-warning',
+                'is_active' => 1,
+                'created_at' => '2024-03-28 10:33:01',
+                'updated_at' => '2024-03-28 10:33:01',
+            ),
+            31 => 
+            array (
+                'id' => 32,
+                'name' => 'Approved',
+                'type' => 'Testservice',
+                'color' => 'bg-success',
+                'others' => 'text-success',
+                'is_active' => 1,
+                'created_at' => '2024-03-28 10:33:01',
+                'updated_at' => '2024-03-28 10:33:01',
+            ),
+            32 => 
+            array (
+                'id' => 33,
+                'name' => 'Suspended',
+                'type' => 'Testservice',
+                'color' => 'bg-danger',
+                'others' => 'text-danger',
+                'is_active' => 1,
+                'created_at' => '2024-03-28 10:33:01',
+                'updated_at' => '2024-03-28 10:33:01',
+            ),
+            33 => 
+            array (
+                'id' => 34,
+                'name' => 'Rejected',
+                'type' => 'Testservice',
+                'color' => 'bg-dark',
+                'others' => 'text-dark',
+                'is_active' => 1,
+                'created_at' => '2024-03-28 10:33:01',
+                'updated_at' => '2024-03-28 10:33:01',
+            ),
         ));
 
         

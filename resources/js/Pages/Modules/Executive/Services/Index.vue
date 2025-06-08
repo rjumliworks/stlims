@@ -29,11 +29,15 @@
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                 <input type="text" v-model="filter.keyword" placeholder="Search sampletype, testname, method or fee" class="form-control" style="width: 30%;">
                                 <Multiselect class="white" style="width: 17%;" :options="dropdowns.laboratories" v-model="filter.laboratory" label="name" :searchable="true" placeholder="Select Laboratory" />
+                                <Multiselect class="white" style="width: 17%;" :options="dropdowns.agencies" v-model="filter.agency" label="short" :searchable="true" placeholder="Select Agency" />
+                                <span @click="openUpload()" class="input-group-text" v-b-tooltip.hover title="Upload" style="cursor: pointer;"> 
+                                    <i class="ri-upload-cloud-fill search-icon"></i>
+                                </span>
                                 <span @click="refresh()" class="input-group-text" v-b-tooltip.hover title="Refresh" style="cursor: pointer;"> 
                                     <i class="bx bx-refresh search-icon"></i>
                                 </span>
                                 <b-button type="button" variant="primary" @click="openCreate">
-                                    <i class="ri-add-circle-fill align-bottom me-1"></i> Request
+                                    <i class="ri-add-circle-fill align-bottom me-1"></i> Create
                                 </b-button>
                             </div>
                         </b-col>
@@ -45,19 +49,9 @@
                             <ul class="nav nav-tabs nav-tabs-custom nav-primary fs-12" role="tablist">
                                 <li class="nav-item">
                                     <BLink @click="viewStatus(null,null)" class="nav-link py-3 active" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                    <i class="ri-apps-2-fill me-1 align-bottom"></i> All Testservices 
+                                    <i class="ri-apps-2-fill me-1 align-bottom"></i> All Testservices
                                     </BLink>
                                 </li>
-                                <!-- <li class="nav-item">
-                                    <BLink @click="viewStatus(1,33)" class="nav-link py-3" :class="(this.index == 1) ? 'text-danger active' : ''" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                    <i class="ri-lock-2-fill me-1 align-bottom"></i> Suspended Testservices <BBadge v-if="counts[index] > 0" :class="list.color" class="align-middle ms-1">{{counts[index]}}</BBadge>
-                                    </BLink>
-                                </li>
-                                <li class="nav-item">
-                                    <BLink @click="viewStatus(2,31)" class="nav-link py-3" :class="(this.index == 2) ? 'text-warning active' : ''" data-bs-toggle="tab" role="tab" aria-selected="true">
-                                    <i class="ri-time-fill me-1 align-bottom"></i> Pending Testservices <BBadge v-if="counts[index] > 0" :class="list.color" class="align-middle ms-1">{{counts[index]}}</BBadge>
-                                    </BLink>
-                                </li> -->
                                 <li class="nav-item" v-for="(list,index) in dropdowns.statuses" v-bind:key="index">
                                     <BLink @click="viewStatus(index,list.value)" class="nav-link py-3" :class="(this.index == index) ? list.others+' active' : ''" data-bs-toggle="tab" role="tab" aria-selected="false">
                                         <i :class="icons[index]" class="me-1 align-bottom"></i>
@@ -85,7 +79,6 @@
                                     <th style="width: 30%;" class="text-center">Method</th>
                                     <th style="width: 10%;" class="text-center">Fee</th>
                                     <th style="width: 7%;" class="text-center">Status</th>
-                                    <th style="width: 7%;" class="text-center">Availability</th>
                                     <th style="width: 7%;" ></th>
                                 </tr>
                             </thead>
@@ -106,11 +99,8 @@
                                     </td>
                                     <td class="text-center fs-12">{{list.method.fee}}</td>
                                     <td class="text-center">
-                                        <span :class="'badge '+list.status.color">{{list.status.name}}</span>
-                                    </td>
-                                    <td class="text-center">
-                                        <span v-if="list.is_active" class="fs-17 text-success"><i class="ri-checkbox-circle-fill"></i></span>
-                                        <span v-else class="fs-17 text-danger"><i class="ri-close-circle-fill"></i></span>
+                                        <span v-if="list.is_active" class="badge bg-success">Active</span>
+                                        <span v-else class="badge bg-danger">Inactive</span>
                                     </td>
                                     <td class="text-end">
                                         <b-button @click="openFee(list.id,list.fees,list.agency_id,)" variant="soft-warning" class="me-1" v-b-tooltip.hover title="Add Fee" size="sm">
@@ -134,17 +124,19 @@
     <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
     <Fee ref="fee"/>
     <Profile ref="profile"/>
+    <Upload :dropdowns="dropdowns"  @update="fetch()" ref="upload"/>
 </template>
 <script>
 import _ from 'lodash';
 import Fee from './Modals/Fee.vue';
 import Profile from './Modals/Profile.vue';
 import Create from './Modals/Create.vue';
+import Upload from './Modals/Upload.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Multiselect, Create, Fee, Profile },
+    components: { PageHeader, Pagination, Multiselect, Create, Fee, Profile, Upload },
     props: ['counts','dropdowns'],
     data(){
         return {
@@ -155,13 +147,15 @@ export default {
             filter: {
                 keyword: null,
                 laboratory: null,
+                agency: null,
                 status: null
             },
             index: null,
             icons: [
                 'ri-information-line',
-                'ri-checkbox-circle-line',
+                'ri-wallet-3-line',
                 'ri-indeterminate-circle-line',
+                'ri-checkbox-circle-line',
                 'ri-close-circle-line'
             ],
         }
@@ -185,7 +179,7 @@ export default {
             this.fetch();
         }, 300),
         fetch(page_url){
-            page_url = page_url || '/testservices';
+            page_url = page_url || '/services';
             axios.get(page_url,{
                 params : {
                     keyword: this.filter.keyword,
@@ -214,10 +208,8 @@ export default {
         openProfile(data){
             this.$refs.profile.show(data);
         },
-        viewStatus(index,status){
-            this.index = index;
-            this.filter.status = status;
-            this.fetch();
+        openUpload(){
+            this.$refs.upload.show();
         },
     }
 }

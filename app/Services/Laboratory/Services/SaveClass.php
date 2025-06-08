@@ -10,8 +10,16 @@ use App\Models\TestserviceMethod;
 
 class SaveClass
 {
+    public function __construct()
+    {
+        $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
+    }
+
     public function create($request){
-        $service = Testservice::create(array_merge($request->all()));
+        $service = Testservice::create(array_merge($request->all(),[
+            'agency_id' => $this->agency,
+            'is_active' => 0
+        ]));
         return [
             'data' => $service,
             'message' => 'Testservice creation was successful!', 
