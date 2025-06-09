@@ -85,12 +85,17 @@
                                     <th style="width: 30%;" class="text-center">Method</th>
                                     <th style="width: 10%;" class="text-center">Fee</th>
                                     <th style="width: 7%;" class="text-center">Status</th>
-                                    <th style="width: 7%;" class="text-center">Availability</th>
-                                    <th style="width: 7%;" ></th>
+                                    <th style="width: 5%;" class="text-center">Availability</th>
+                                    <th style="width: 5%;" ></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(list,index) in lists" v-bind:key="index">
+                                <tr v-for="(list,index) in lists" v-bind:key="index" 
+                                   :class="filter.status === null ? {
+                                        'bg-dark-subtle': list.status.name === 'Rejected',
+                                        'bg-warning-subtle': list.status.name === 'Pending',
+                                        'bg-danger-subtle': list.status.name === 'Suspended'
+                                    } : ''">
                                     <td class="text-center"> 
                                         {{ (meta.current_page - 1) * meta.per_page + index + 1 }}.
                                     </td>
@@ -113,12 +118,11 @@
                                         <span v-else class="fs-17 text-danger"><i class="ri-close-circle-fill"></i></span>
                                     </td>
                                     <td class="text-end">
-                                        <b-button @click="openFee(list.id,list.fees,list.agency_id,)" variant="soft-warning" class="me-1" v-b-tooltip.hover title="Add Fee" size="sm">
-                                            <i class="ri-add-circle-fill align-bottom"></i>
-                                        </b-button>
-                                        <b-button @click="openProfile(list)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
+                               
+                                        <b-button @click="openView(list)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
                                             <i class="ri-eye-fill align-bottom"></i>
                                         </b-button>
+                                        <!-- v-if="$page.props.roles[0] == 'Technical Manager'" -->
                                     </td>
                                 </tr>
                             </tbody>
@@ -133,18 +137,18 @@
     </BRow>
     <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
     <Fee ref="fee"/>
-    <Profile ref="profile"/>
+    <View @success="fetch()" ref="view"/>
 </template>
 <script>
 import _ from 'lodash';
 import Fee from './Modals/Fee.vue';
-import Profile from './Modals/Profile.vue';
+import View from './Modals/View.vue';
 import Create from './Modals/Create.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Multiselect, Create, Fee, Profile },
+    components: { PageHeader, Pagination, Multiselect, Create, Fee, View },
     props: ['counts','dropdowns'],
     data(){
         return {
@@ -211,8 +215,8 @@ export default {
         openFee(id,fee,lab){
             this.$refs.fee.show(id,fee,lab);
         },
-        openProfile(data){
-            this.$refs.profile.show(data);
+        openView(data){
+            this.$refs.view.show(data);
         },
         viewStatus(index,status){
             this.index = index;

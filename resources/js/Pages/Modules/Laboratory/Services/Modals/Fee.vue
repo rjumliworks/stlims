@@ -60,9 +60,10 @@ export default {
             this.form.fee = val;
         },
         submit(){
-            this.form.post('/services',{
+            this.form.post('/testservices',{
                 preserveScroll: true,
                 onSuccess: (response) => {
+                    this.$emit('success',response.props.flash.data);
                     this.hide();
                 },
             });

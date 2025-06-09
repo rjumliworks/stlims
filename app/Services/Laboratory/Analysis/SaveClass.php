@@ -84,14 +84,21 @@ class SaveClass
 
     public function fee($request){
         $data = TsrAnalysis::findOrFail($request->id);
-        $data->addfee()->create([
-            'service_id' => $request->service['id'],
-            'fee' => $request->service['fee'],
-            'total' => $request->total,
-            'quantity' => $request->quantity,
-            'is_additional' => 1
-        ]);
-        $total = $this->updateTotal($request->tsr_id,$request->total);
+        $grandTotal = 0;
+        foreach($request->services as $service){
+            $fee = str_replace(['₱', ','], '', $service['fee']);
+            $quantity = $service['quantity'];
+            $total = $fee * $quantity;
+            $data->addfee()->create([
+                'service_id' => $service['id'],
+                'fee' => $fee,
+                'total' => $total,
+                'quantity' => $quantity,
+                'is_additional' => 1
+            ]);
+            $grandTotal += $total;
+        }
+        $total = $this->updateTotal($request->tsr_id, $grandTotal);
         return [
             'data' => $total,
             'message' => 'Additional Fee Added Successfully', 

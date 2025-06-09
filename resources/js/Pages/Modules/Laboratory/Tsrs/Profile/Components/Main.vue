@@ -266,7 +266,7 @@ export default {
     methods: { 
         openService(){
             this.$refs.service.show(this.selected.id);
-        }, 
+        },
         openAdditional(data,id){
             this.$refs.additional.show(data,id,this.selected.id);
         },       

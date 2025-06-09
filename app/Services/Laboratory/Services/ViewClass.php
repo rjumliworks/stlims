@@ -54,7 +54,6 @@ class ViewClass
     public function counts($statuses){
         foreach($statuses as $status){
             $counts[] = Testservice::where('status_id',$status['value'])
-            ->where('is_active',1)
             ->where('agency_id',$this->agency)->count();
         }
         return $counts;

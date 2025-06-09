@@ -3,7 +3,7 @@
         <b-card no-body>
             <div class="bg-info-subtle">
                 <b-card-body class="pb-0 px-4">
-                     <b-row class="mb-3">
+                    <b-row class="mb-3">
                         <b-col md>
                             <b-row class="align-items-center g-3">
                                 <b-col md>
@@ -23,25 +23,27 @@
                             </b-row>
                         </b-col>
                         <b-col md="auto">
-                            <div class="hstack gap-4 flex-wrap mt-2">
+                            <div class="hstack gap-1 flex-wrap mt-2">
+                                <b-button v-if="selected.status.name === 'Pending'" :disabled="(analyses == 0) ? true : false" @click="openSave(selected.id)" variant="primary" v-b-tooltip.hover title="Save">
+                                    <i class="ri-save-fill align-bottom"></i> Save
+                                </b-button>
+                                <b-button v-if="selected.status.name === 'For Payment' && selected.customer.wallet != null && selected.customer.wallet.available != '₱0.00'" @click="openWallet(selected.id,selected.customer,selected.payment)" variant="primary" v-b-tooltip.hover title="Payment">
+                                    <i class="ri-wallet-fill align-bottom"></i> Use Wallet
+                                </b-button>
+                                <b-button v-if="selected.status.name !== 'Pending'" @click="openPrint(selected.qr)" variant="primary" v-b-tooltip.hover title="Print">
+                                    <i class="ri-printer-fill"></i>
+                                </b-button>
+                                <b-button v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" variant="warning" v-b-tooltip.hover title="Edit">
+                                    <i class="ri-pencil-fill align-bottom"></i>
+                                </b-button>
+                                <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" variant="dark" v-b-tooltip.hover title="Cancel">
+                                            <i class="ri-delete-bin-fill align-bottom"></i>
+                                        </b-button>
                                 <Link href="/tsrs">
-                                    <div class="text-muted" @click="hide()">  
-                                        <i class="ri-close-circle-fill fs-16"></i> Close
-                                    </div>
+                                    <b-button variant="soft-danger">
+                                        <i class="ri-close-circle-fill align-bottom"></i> 
+                                    </b-button>
                                 </Link>
-                                <div class="text-muted" v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" style="cursor: pointer;">  
-                                    <i class="ri-edit-box-fill fs-16"></i> Update
-                                </div>
-                                <div class="text-muted" v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" style="cursor: pointer;">  
-                                    <i class="ri-delete-bin-fill fs-16"></i> Cancel
-                                </div>
-                                <div class="vr" style="width: 1px;"></div>
-                                <div v-if="selected.status.name === 'Pending'" :disabled="(analyses == 0) ? true : false">  
-                                    <b-button @click="openSave(selected.id)" variant="primary" block><i class="ri-save-fill me-1"></i> Save</b-button>
-                                </div>
-                                 <div v-if="selected.status.name !== 'Pending'" @click="openPrint(selected.qr)">  
-                                    <b-button variant="primary" block><i class="ri-printer-fill me-1"></i> Print</b-button>
-                                </div>
                             </div>
                         </b-col>
                     </b-row>

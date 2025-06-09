@@ -51,6 +51,9 @@ class ServiceController extends Controller
             case 'add':
                 return $this->save->add($request);
             break;
+            case 'status':
+                return $this->save->status($request);
+            break;
             case 'create':
                 $result = $this->handleTransaction(function () use ($request) {
                     return $this->save->create($request);

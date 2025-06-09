@@ -27,6 +27,19 @@ class SaveClass
         ];
     }
 
+    public function status($request){
+        $data = Testservice::find($request->id);
+        $data->status_id = $request->status_id;
+        $data->is_active = ($request->status_id == 32) ? 1 : 0;
+        $data->save();
+
+        return [
+            'data' => $data,
+            'message' => 'Testservice creation was successful!', 
+            'info' => "You've successfully created the new testservice."
+        ];
+    }
+
     public function add($request){
         $name = TestserviceName::create($request->all());
         $data = TestserviceName::findOrFail($name->id);
@@ -45,9 +58,9 @@ class SaveClass
 
     public function fee($request){
         $data = Testservice::findOrFail($request->id);
-        $data->fees()->create($request->all());
+        $fee = $data->fees()->create($request->all());
         return [
-            'data' => $data,
+            'data' => $fee,
             'message' => 'Additional fee added was successful!', 
             'info' => "You've successfully added additional fee."
         ];
