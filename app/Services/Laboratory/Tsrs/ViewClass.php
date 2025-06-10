@@ -227,8 +227,18 @@ class ViewClass
             })
             ->where('agency_id',$this->agency)
             ->where('is_psto',1)
-            ->where('province_code'.$province)
+            ->where('is_signatory',1)
+            ->where('province_code',$province)
             ->first();
+            if(!$cashier){
+                $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+                ->whereHas('role',function ($query){
+                    $query->where('name','Cashier');
+                })
+                ->where('agency_id',$this->agency)
+                ->where('is_signatory',1)
+                ->first();
+            }
         }else{
             $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
             ->whereHas('role',function ($query){
