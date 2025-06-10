@@ -82,7 +82,7 @@ class ReportClass
         if($tsr->customer->address->municipality->name == 'Zamboanga City' || $tsr->customer->address->municipality->name == 'Isabela City'){
             $a = $tsr->customer->address->municipality->name;
         }else if($tsr->customer->address->province->name == 'Sulu'){
-            $a = ', '.$tsr->customer->address->province->name;
+            $a = $tsr->customer->address->municipality->name.', '.$tsr->customer->address->province->name;
         }else{
             $a = $tsr->customer->address->municipality->name.', '.$tsr->customer->address->province->name.', '.$tsr->customer->address->region->region;
         }
