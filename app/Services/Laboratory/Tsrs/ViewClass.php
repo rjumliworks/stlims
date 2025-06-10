@@ -216,7 +216,6 @@ class ViewClass
         $tsrinfo = Tsr::where('id',$id)->with('laboratory')->first();
         $tsr = TsrReport::where('tsr_id',$id)->value('information');
         $lab = json_decode($tsr);
-        
         $user_id = $tsrinfo->received_by;
         $userrole = UserRole::where('user_id',$user_id)->first();
         if($userrole->is_psto){
