@@ -308,8 +308,18 @@ class OpClass
             })
             ->where('agency_id',$this->agency)
             ->where('is_psto',1)
-            ->where('province_code'.$province)
+            ->where('is_signatory',1)
+            ->where('province_code',$province)
             ->first();
+            if(!$cashier){
+                  $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+                ->whereHas('role',function ($query){
+                    $query->where('name','Cashier');
+                })
+                ->where('agency_id',$this->agency)
+                ->where('is_signatory',1)
+                ->first();
+            }
 
             $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
             ->whereHas('role',function ($query){
@@ -317,11 +327,20 @@ class OpClass
             })
             ->where('agency_id',$this->agency)
             ->where('is_psto',1)
-            ->where('province_code'.$province)
+            ->where('province_code',$province)
             ->first();
+            if(!$accountant){
+                $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+                ->whereHas('role',function ($query){
+                    $query->where('name','Accountant');
+                })
+                ->where('agency_id',$this->agency)
+                ->where('is_signatory',1)
+                ->first();
+            }
         }else{
-            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',6)->where('is_psto',0)->where('agency_id',$this->agency)->first();
-            $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',5)->where('is_psto',0)->where('agency_id',$this->agency)->first();
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',6)->where('is_psto',0)->where('is_signatory',1)->where('agency_id',$this->agency)->first();
+            $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',5)->where('is_psto',0)->where('is_signatory',1)->where('agency_id',$this->agency)->first();
         }
 
         $array = [
