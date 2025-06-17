@@ -11,7 +11,7 @@ class AccountantClass
     public function __construct()
     {
         $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : '';
-        $this->province =(\Auth::check()) ?  (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null : '';
+        $this->province =(\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->province_code : null : '';
     }
 
     public function reminders(){
