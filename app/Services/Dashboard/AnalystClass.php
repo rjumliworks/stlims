@@ -11,6 +11,7 @@ class AnalystClass
     public function __construct()
     {
         $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : '';
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
     public function performance($request){
@@ -113,6 +114,11 @@ class AnalystClass
                 'count' => 
                 TsrSample::whereHas('tsr',function ($query) use ($laboratory) {
                     $query->whereBetween('due_at', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()])->where('agency_id',$this->agency)->where('status_id',3)->where('laboratory_id',$laboratory);
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received.myroles', function ($query) {
+                            $query->where('province_code', $this->province);
+                        });
+                    });
                 })
                 ->whereHas('analyses', function ($query){
                     $query->whereIn('status_id',[10,11]);
@@ -127,6 +133,11 @@ class AnalystClass
                 'count' => TsrSample::where('is_completed',0)
                 ->whereHas('tsr',function ($query) use ($laboratory) {
                     $query->whereDate('due_at','<',Carbon::now())->where('agency_id',$this->agency)->where('laboratory_id',$laboratory)->whereNotIn('status_id',[4,5]);
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received.myroles', function ($query) {
+                            $query->where('province_code', $this->province);
+                        });
+                    });
                 })->count(),
                 'icon' => 'ri-error-warning-fill fs-20',
                 'color' => 'text-danger'
@@ -136,6 +147,11 @@ class AnalystClass
                 'description' => 'Please generate a report number.',
                 'count' => TsrSample::whereHas('tsr',function ($query) use ($laboratory) {
                     $query->where('status_id',4)->where('due_at','<',Carbon::now())->where('agency_id',$this->agency)->where('laboratory_id',$laboratory);
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received.myroles', function ($query) {
+                            $query->where('province_code', $this->province);
+                        });
+                    });
                 })
                 ->whereDoesntHave('report')
                 ->whereHas('analyses', function ($query) {

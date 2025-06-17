@@ -14,6 +14,7 @@ class ViewClass
     public function __construct()
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
         $data = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
         $filteredData = $data->filter(function ($value) {
@@ -106,6 +107,11 @@ class ViewClass
                                     break;
                             }
                         });
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received.myroles', function ($query) {
+                            $query->where('province_code', $this->province);
+                        });
+                    });
                 });
             })
             ->get()
@@ -165,32 +171,36 @@ class ViewClass
             ->withWhereHas('sample', function ($query) use ($request) {
                 $query->withWhereHas('tsr', function ($query) use ($request) {
                     $query->select('id', 'due_at', 'created_at')
-                        ->where('agency_id', $this->agency)
-                        ->where('laboratory_id', $this->laboratory)
-                        ->where('status_id', 3)
-                        ->when($request->month, function ($query, $month) {
-                            $query->whereMonth('due_at', $month);
-                        })
-                        ->when($request->reminder, function ($query, $reminder) {
-                            switch ($reminder) {
-                                case 'Completed with no report number':
-                                    $query->where('status_id', 4)
-                                        ->where('due_at', '<', Carbon::now());
-                                    break;
-                                case 'Due Soon':
-                                    $query->whereBetween('due_at', [
-                                        Carbon::now()->startOfDay(),
-                                        Carbon::now()->addDays(5)->endOfDay()
-                                    ]);
-                                    break;
-                                case 'Overdue Request':
-                                    $query->whereDate('due_at', '<', Carbon::now());
-                                    break;
-                                case 'Completed':
-                                    $query->where('status_id', 4);
-                                    break;
-                            }
+                    ->where('agency_id', $this->agency)
+                    ->where('laboratory_id', $this->laboratory)
+                    ->where('status_id', 3)
+                    ->when($request->month, function ($query, $month) {
+                        $query->whereMonth('due_at', $month);
+                    })
+                    ->when($request->reminder, function ($query, $reminder) {
+                        switch ($reminder) {
+                            case 'Completed with no report number':
+                                $query->where('status_id', 4)->where('due_at', '<', Carbon::now());
+                            break;
+                            case 'Due Soon':
+                                $query->whereBetween('due_at', [
+                                    Carbon::now()->startOfDay(),
+                                    Carbon::now()->addDays(5)->endOfDay()
+                                ]);
+                            break;
+                            case 'Overdue Request':
+                                $query->whereDate('due_at', '<', Carbon::now());
+                            break;
+                            case 'Completed':
+                                $query->where('status_id', 4);
+                            break;
+                        }
+                    });
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received.myroles', function ($query) {
+                            $query->where('province_code', $this->province);
                         });
+                    });
                 });
             })
             ->get()
@@ -242,6 +252,11 @@ class ViewClass
             });
             $query->when($request->month, function ($query, $month) {
                 $query->whereMonth('due_at',$month);
+            });
+            $query->when($this->province, function ($query){
+                $query->whereHas('received.myroles', function ($query) {
+                    $query->where('province_code', $this->province);
+                });
             });
         })->withWhereHas('analyses', function ($query) use ($request){
             $query->with('sample','testservice.testname','testservice.method.reference','testservice.method.method');
@@ -315,6 +330,11 @@ class ViewClass
                     break;
                 }
             });
+            $query->when($this->province, function ($query){
+                $query->whereHas('received.myroles', function ($query) {
+                    $query->where('province_code', $this->province);
+                });
+            });
         })->withWhereHas('analyses', function ($query) use ($request){
             $query->with('sample','testservice.testname','testservice.method.reference','testservice.method.method');
             $query->where('status_id',11);
@@ -385,6 +405,11 @@ class ViewClass
                         $query->where('status_id',4);
                     break;
                 }
+            });
+            $query->when($this->province, function ($query){
+                $query->whereHas('received.myroles', function ($query) {
+                    $query->where('province_code', $this->province);
+                });
             });
         })->withWhereHas('analyses', function ($query) use ($request){
             $query->with('sample','testservice.testname','testservice.method.reference','testservice.method.method','analyst');

@@ -57,6 +57,13 @@ class CashierClass
             ->when($this->agency, function ($query,$agency) {
                 $query->where('agency_id',$agency);
             })
+            ->when($this->province, function ($query){
+                $query->whereHas('createdby',function ($query){
+                    $query->whereHas('myroles',function ($query){
+                        $query->where('province_code', $this->province);
+                    });
+                });
+            })
             ->orderBy('updated_at','DESC')
             ->limit(5)->get()
         );

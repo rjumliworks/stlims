@@ -68,6 +68,13 @@ class OrClass
                     $query->where('number', 'like', '%' . $keyword . '%');
                 });
             })
+            ->when($this->province, function ($query){
+                $query->whereHas('createdby',function ($query){
+                    $query->whereHas('myroles',function ($query){
+                        $query->where('province_code', $this->province);
+                    });
+                });
+            })
             ->where('payorable_type', 'App\Models\Customer')
             ->where('status_id',7)
             ->orderBy('updated_at','DESC')

@@ -11,6 +11,7 @@ class AccountantClass
     public function __construct()
     {
         $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : '';
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
     public function reminders(){
@@ -21,6 +22,13 @@ class AccountantClass
                 'count' => TsrPayment::where('status_id',18)
                 ->whereHas('tsr', function ($query) {
                     $query->where('agency_id',$this->agency);
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received',function ($query){
+                            $query->whereHas('myroles',function ($query){
+                                $query->where('province_code', $this->province);
+                            });
+                        });
+                    });
                 })
                 ->sum('total'),
                 'icon' => 'ri-secure-payment-line',
@@ -32,6 +40,13 @@ class AccountantClass
                 'count' => TsrPayment::where('status_id',6)
                 ->whereHas('tsr', function ($query) {
                     $query->where('agency_id',$this->agency);
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received',function ($query){
+                            $query->whereHas('myroles',function ($query){
+                                $query->where('province_code', $this->province);
+                            });
+                        });
+                    });
                 })
                 ->sum('total'),
                 'icon' => 'ri-hand-coin-line',
@@ -43,6 +58,13 @@ class AccountantClass
                 'count' => TsrPayment::whereYear('paid_at',now())
                 ->whereHas('tsr', function ($query) {
                     $query->where('agency_id',$this->agency);
+                    $query->when($this->province, function ($query){
+                        $query->whereHas('received',function ($query){
+                            $query->whereHas('myroles',function ($query){
+                                $query->where('province_code', $this->province);
+                            });
+                        });
+                    });
                 })
                 ->where('status_id',7)->sum('total'),
                 'icon' => 'ri-hand-coin-fill',
@@ -66,6 +88,13 @@ class AccountantClass
             })
             ->when($this->agency, function ($query, $lab) {
                 $query->where('agency_id',$lab);
+            })
+            ->when($this->province, function ($query){
+                $query->whereHas('received',function ($query){
+                    $query->whereHas('myroles',function ($query){
+                        $query->where('province_code', $this->province);
+                    });
+                });
             })
             ->whereHas('payment',function ($query){
                 $query->where('payment_id',NULL)->where('collection_id',NULL);

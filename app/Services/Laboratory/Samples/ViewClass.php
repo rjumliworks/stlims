@@ -17,6 +17,7 @@ class ViewClass
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->laboratory = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
         $this->role = UserRole::where('user_id',\Auth::user()->id)->pluck('role_id');
+        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
 
     public function lists($request){
