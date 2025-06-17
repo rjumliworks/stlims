@@ -10,8 +10,8 @@ class AnalystClass
 {
     public function __construct()
     {
-        $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : '';
-        $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
+        $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : null;
+        $this->province = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->province_code : null : null;
     }
 
     public function performance($request){
