@@ -35,6 +35,9 @@
                                 <div class="text-muted" v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openCancel(selected.qr)" style="cursor: pointer;">  
                                     <i class="ri-delete-bin-fill fs-16"></i> Cancel
                                 </div>
+                                <div class="text-muted" v-if="selected.status.name === 'For Payment' && selected.customer.wallet != null && selected.customer.wallet.available != '₱0.00'" @click="openWallet(selected.id,selected.customer,selected.payment)" style="cursor: pointer;">  
+                                    <i class="ri-wallet-3-fill fs-16"></i> Use Wallet
+                                </div>
                                 <div class="vr" style="width: 1px;"></div>
                                 <div v-if="selected.status.name === 'Pending'" :disabled="(analyses == 0) ? true : false">  
                                     <b-button @click="openSave(selected.id)" variant="primary" block><i class="ri-save-fill me-1"></i> Save</b-button>

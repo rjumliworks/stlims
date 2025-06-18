@@ -180,7 +180,7 @@ export default {
                 {'value' : 'due_at', 'name' : 'Due Date'},
                 {'value' : 'created_at', 'name' : 'Request Date'},
             ],
-            icons: ['ri-information-line','ri-wallet-3-line','ri-indeterminate-circle-line','ri-checkbox-circle-line','ri-close-circle-line'],
+            icons: ['ri-information-line','ri-wallet-3-line','ri-indeterminate-circle-line','ri-checkbox-circle-line','ri-close-circle-line','ri-pin-distance-fill'],
             chartOptions: {
                 chart: {
                 type: "radialBar",
