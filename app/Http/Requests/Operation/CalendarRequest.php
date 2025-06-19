@@ -23,7 +23,13 @@ class CalendarRequest extends FormRequest
                     }
                 },
             ],
-            'description' => 'required'
+            'description' => [
+                function ($attribute, $value, $fail) {
+                    if ($this->type !== 'Holiday' && empty($value)) {
+                        $fail('The description field is required.');
+                    }
+                },
+            ],
         ];
     }
 }
