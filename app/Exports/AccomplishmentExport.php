@@ -20,7 +20,7 @@ class AccomplishmentExport implements FromView
     {
         $lists = Tsr::select('id','code','customer_id')
         // ->whereDoesntHave('parent')
-        ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,addressable_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
+        ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
         
         ->with('payment.type')
         ->whereMonth('created_at',$this->month)
