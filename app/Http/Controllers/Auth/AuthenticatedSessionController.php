@@ -27,29 +27,27 @@ class AuthenticatedSessionController extends Controller
 
     public function store(LoginRequest $request): RedirectResponse
     {
-$credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password');
 
-if (Auth::attempt($credentials)) {
-        $user = Auth::user();
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
 
-        if (!$user->is_active) {
-            Auth::logout(); // Logout just in case it logged in
-            return back()->withErrors([
-                'email' => 'Account Locked, Please contact administrator.',
-            ])->onlyInput('email');
+            if (!$user->is_active) {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Account Locked, Please contact administrator.',
+                ])->onlyInput('email');
+            }
+
+            $request->session()->regenerate();
+            $request->session()->put('two_factor_authenticated', false);
+
+            return redirect()->intended(route('dashboard', absolute: false));
         }
 
-        // Authenticated and active
-        $request->session()->regenerate();
-        $request->session()->put('two_factor_authenticated', false);
-
-        return redirect()->intended(route('dashboard', absolute: false));
-    }
-
-    // Authentication failed
-    return back()->withErrors([
-        'email' => __('auth.failed'), // Or your own custom message
-    ])->onlyInput('email');
+        return back()->withErrors([
+            'email' => __('auth.failed'), 
+        ])->onlyInput('email');
     }
 
     public function destroy(Request $request): RedirectResponse

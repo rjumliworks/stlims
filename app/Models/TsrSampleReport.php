@@ -14,7 +14,9 @@ class TsrSampleReport extends Model
         'code',
         'information',
         'sample_id',
-        'user_id'
+        'user_id',
+        'cro_id',
+        'tm_id'
     ];
 
     public function sample()
@@ -25,6 +27,16 @@ class TsrSampleReport extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
+
+    public function cro()
+    {
+        return $this->belongsTo('App\Models\User', 'cro_id', 'id');
+    }
+
+    public function tm()
+    {
+        return $this->belongsTo('App\Models\User', 'tm_id', 'id');
     }
 
     public function lists()
