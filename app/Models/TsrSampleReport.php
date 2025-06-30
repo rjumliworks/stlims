@@ -53,7 +53,7 @@ class TsrSampleReport extends Model
 
     public function getPasskeyAttribute($value)
     {
-        return Crypt::decryptString($value);
+        return ($value) ? Crypt::decryptString($value) : null;
     }
 
     public function getCreatedAtAttribute($value)
