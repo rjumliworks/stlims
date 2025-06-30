@@ -32,4 +32,9 @@ class ListDiscount extends Model
     {
         return $this->hasMany('App\Models\TsrPayment', 'discount_id');
     } 
+
+    public function agencies()
+    {
+        return $this->hasMany('App\Models\AgencyDiscount', 'discount_id');
+    }
 }

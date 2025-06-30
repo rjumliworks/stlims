@@ -24,6 +24,7 @@ class AgencyResource extends JsonResource
             'member' => $this->member,
             'type' => $this->type,
             'fees' => $this->fees,
+            'discounts' => $this->discounts,
             'configuration' => $this->configuration,
         ];
     }

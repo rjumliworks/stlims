@@ -7,6 +7,7 @@ use App\Models\Tsr;
 use App\Models\TsrSample;
 use App\Models\Customer;
 use App\Models\Agency;
+use App\Models\AgencyDiscount;
 use App\Models\AgencyConfiguration;
 use App\Models\FinanceName;
 use App\Models\ListRole;
@@ -92,6 +93,19 @@ class DropdownClass
                 'type' => $item->type->name,
                 'based' => $item->based->name,
                 'subtype' => $item->subtype->name,
+            ];
+        });
+        return $data;
+    }
+
+    public function agency_discounts(){
+        $data = AgencyDiscount::with('discount')->where('is_active',1)->where('agency_id',$this->agency)->get()->map(function ($item) {
+            $total = ($item->discount->subtype->name == 'Percentage') ? $item->discount->value.'%' : '₱'.$item->discount->value;
+            $name = ($item->discount->name === 'Regular') ? $item->discount->name : $item->discount->name.' ('.$total.')';
+            return [
+                'value' => $item->discount->id,
+                'name' => $name,
+                'number' => $item->discount->value
             ];
         });
         return $data;

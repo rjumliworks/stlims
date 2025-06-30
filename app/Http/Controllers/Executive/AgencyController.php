@@ -51,6 +51,9 @@ class AgencyController extends Controller
                 case 'fee':
                     return $this->save->fee($request);
                 break;
+                case 'discount':
+                    return $this->save->discount($request);
+                break;
             }
         });
 
@@ -66,7 +69,8 @@ class AgencyController extends Controller
         $data = $this->view->view($id);
         return inertia('Modules/Executive/Agencies/Profile/Index',[
             'selected' => $data,
-            'laboratories' => $this->dropdown->laboratories()
+            'laboratories' => $this->dropdown->laboratories(),
+            'discounts' =>  $this->dropdown->discounts()
         ]);
     }
 }

@@ -35,6 +35,11 @@ class Agency extends Model
         return $this->hasOne('App\Models\AgencyAddress', 'agency_id');
     }
 
+    public function discounts()
+    {
+        return $this->hasMany('App\Models\AgencyDiscount', 'agency_id');
+    }
+
     public function configuration()
     {
         return $this->hasOne('App\Models\AgencyConfiguration', 'agency_id');

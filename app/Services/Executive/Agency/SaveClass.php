@@ -71,4 +71,14 @@ class SaveClass
             'info' => "You've successfully added additional fee."
         ];
     }
+
+    public function discount($request){
+        $data = Agency::findOrFail($request->agency_id);
+        $data->discounts()->create($request->all());
+        return [
+            'data' => $data,
+            'message' => 'Discount added was successful!', 
+            'info' => "You've successfully added discount."
+        ];
+    }
 }
