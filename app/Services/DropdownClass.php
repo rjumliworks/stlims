@@ -105,7 +105,10 @@ class DropdownClass
             return [
                 'value' => $item->discount->id,
                 'name' => $name,
-                'number' => $item->discount->value
+                'number' => $item->discount->value,
+                'type' => $item->discount->type->name,
+                'based' => $item->discount->based->name,
+                'subtype' => $item->discount->subtype->name
             ];
         });
         return $data;
