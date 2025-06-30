@@ -3,6 +3,7 @@
 namespace App\Services\Laboratory\Testreports;
 
 use Carbon\Carbon;
+use App\Models\UserRole;
 use App\Models\TsrSample;
 use App\Models\AgencyConfiguration;
 use App\Models\ListLaboratory;
@@ -18,6 +19,7 @@ class SaveClass
     }
 
     public function single($request){
+
         $labs = $this->configuration->laboratories;
         $laboratory_id = $request->laboratory_id;
 
@@ -44,6 +46,11 @@ class SaveClass
         $date = Carbon::now()->format('mdY');
         $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);  //$report_count REMOVED
 
+        $head = UserRole::with('user:id')
+       ->where('laboratory_id',$laboratory_id)->whereHas('role',function ($query){
+            $query->where('name','Technical Manager');
+        })->where('agency_id',$this->agency)->where('is_active',1)->pluck('user_id');
+
         $check = TsrSampleReport::where('code',$code)->count();
         if($check == 0){
             $count = TsrSampleReport::where('sample_id',$request->id)->count();
@@ -51,7 +58,8 @@ class SaveClass
                 $data = TsrSampleReport::create([
                     'code' => $code,
                     'sample_id' => $request->id,
-                    'user_id' => \Auth::user()->id
+                    'user_id' => \Auth::user()->id,
+                    'tm_id' => $head[0]
                 ]);
                 $message = 'Report number was generated!';
             }else{
@@ -96,6 +104,10 @@ class SaveClass
             // }
             $date = Carbon::now()->format('mdY');
             $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
+            $head = UserRole::with('user:id')
+            ->where('laboratory_id',$laboratory_id)->whereHas('role',function ($query){
+                $query->where('name','Technical Manager');
+            })->where('agency_id',$this->agency)->where('is_active',1)->pluck('user_id');
             $codes = [];
 
             $check = TsrSampleReport::where('code',$code)->count();
@@ -108,7 +120,8 @@ class SaveClass
                             $first = TsrSampleReport::create([
                                 'code' => $code,
                                 'sample_id' => $list,
-                                'user_id' => \Auth::user()->id
+                                'user_id' => \Auth::user()->id,
+                                'tm_id' => $head[0]
                             ]);
                             $id = $first->id;
                         }else{
