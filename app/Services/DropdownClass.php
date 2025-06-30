@@ -92,7 +92,7 @@ class DropdownClass
                 'number' => $item->value,
                 'type' => $item->type->name,
                 'based' => $item->based->name,
-                'subtype' => $item->subtype->name,
+                'subtype' => $item->subtype->name
             ];
         });
         return $data;
