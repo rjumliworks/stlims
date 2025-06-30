@@ -9,6 +9,7 @@ use App\Models\AgencyConfiguration;
 use App\Models\ListLaboratory;
 use App\Models\TsrSampleReport;
 use App\Models\TsrSampleReportList;
+use Illuminate\Support\Str;
 
 class SaveClass
 {
@@ -58,6 +59,7 @@ class SaveClass
                 $data = TsrSampleReport::create([
                     'code' => $code,
                     'sample_id' => $request->id,
+                    'passkey' => $this->generatePasskey(),
                     'user_id' => \Auth::user()->id,
                     'tm_id' => $head[0]
                 ]);
@@ -121,7 +123,8 @@ class SaveClass
                                 'code' => $code,
                                 'sample_id' => $list,
                                 'user_id' => \Auth::user()->id,
-                                'tm_id' => $head[0]
+                                'tm_id' => $head[0],
+                                'passkey' => $this->generatePasskey(),
                             ]);
                             $id = $first->id;
                         }else{
@@ -169,7 +172,11 @@ class SaveClass
                 // }
                 $date = Carbon::now()->format('mdY');
                 $code = $this->configuration->agency->code.'-'.$date.'-'.$lab_type->short.'-'.str_pad(($test_count+$count+1), 4, '0', STR_PAD_LEFT);
-                
+                $head = UserRole::with('user:id')
+                ->where('laboratory_id',$laboratory_id)->whereHas('role',function ($query){
+                    $query->where('name','Technical Manager');
+                })->where('agency_id',$this->agency)->where('is_active',1)->pluck('user_id');
+
                 $check = TsrSampleReport::where('code',$code)->count();
                 if($check == 0){
                     $errors = [];
@@ -179,7 +186,9 @@ class SaveClass
                         $first = TsrSampleReport::create([
                             'code' => $code,
                             'sample_id' => $list,
-                            'user_id' => \Auth::user()->id
+                            'user_id' => \Auth::user()->id,
+                            'tm_id' => $head[0],
+                            'passkey' => $this->generatePasskey(),
                         ]);
 
                         $codes[] = [
@@ -206,5 +215,24 @@ class SaveClass
             'message' => 'Report number successfully generated!',
             'info' => "The laboratory analyst result has been recorded and the report number has been created."
         ];
+    }
+
+    public function generatePasskey()
+    {
+        // Required components
+        $uppercase = chr(rand(65, 90)); // A-Z
+        $lowercase = chr(rand(97, 122)); // a-z
+        $numbers = rand(10, 99); // two digits, e.g. "42"
+
+        // Random 2 characters (any)
+        $remaining = Str::random(2);
+
+        // Combine all parts
+        $raw = $uppercase . $lowercase . $numbers . $remaining;
+
+        // Shuffle to randomize character order
+        $passkey = Str::of(str_shuffle($raw))->substr(0, 6);
+
+        return $passkey;
     }
 }

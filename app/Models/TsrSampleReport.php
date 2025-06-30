@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,6 +14,7 @@ class TsrSampleReport extends Model
     protected $fillable = [
         'code',
         'information',
+        'passkey',
         'sample_id',
         'user_id',
         'cro_id',
@@ -42,6 +44,16 @@ class TsrSampleReport extends Model
     public function lists()
     {
         return $this->hasMany('App\Models\TsrSampleReportList', 'report_id');
+    }
+
+    public function setPasskeyAttribute($value)
+    {
+        $this->attributes['passkey'] = Crypt::encryptString($value);
+    }
+
+    public function getPasskeyAttribute($value)
+    {
+        return Crypt::decryptString($value);
     }
 
     public function getCreatedAtAttribute($value)
