@@ -227,6 +227,7 @@ class ViewClass
             ->where('agency_id',$this->agency)
             ->where('is_psto',1)
             ->where('is_signatory',1)
+            ->where('is_active',1)
             ->where('province_code',$province)
             ->first();
             if(!$cashier){
@@ -236,6 +237,7 @@ class ViewClass
                 })
                 ->where('agency_id',$this->agency)
                 ->where('is_signatory',1)
+                ->where('is_active',1)
                 ->first();
             }
         }else{
@@ -245,13 +247,14 @@ class ViewClass
             })
             ->where('agency_id',$this->agency)
             ->where('is_psto',0)
+            ->where('is_active',1)
             ->first();
         }
 
         $head = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
        ->where('laboratory_id',$tsrinfo->laboratory->id)->whereHas('role',function ($query){
             $query->where('name','Technical Manager');
-        })->where('agency_id',$this->agency)->first();
+        })->where('is_active',1)->where('agency_id',$this->agency)->first();
 
         $url = $_SERVER['HTTP_HOST'].'/verification/'.$request->id;
         $qrCode = new QrCode($url);

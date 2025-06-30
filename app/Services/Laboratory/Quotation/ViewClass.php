@@ -175,6 +175,7 @@ class ViewClass
             $query->where('name','Technical Manager');
         })
         ->where('laboratory_id',$quotation->laboratory_id)
+        ->where('is_active',1)
         ->first();
         $array= [
             'configuration' => AgencyConfiguration::where('agency_id',$this->agency)->first(),
