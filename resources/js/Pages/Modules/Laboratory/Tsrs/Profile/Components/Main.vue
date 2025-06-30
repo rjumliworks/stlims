@@ -190,6 +190,7 @@
     <Service :services="services" ref="service"/>
     <SampleView ref="sampleview"/>
     <Report ref="report"/>
+    <AnalysisView ref="view"/>
 </template>
 <script>
 import Report from '../Modals/Main/Report.vue';
@@ -199,8 +200,9 @@ import Service from '../Modals/Main/Service.vue';
 import Analysis from '../Modals/Main/Analysis.vue';
 import Additional from '../Modals/Main/Additional.vue';
 import SampleView from '../Modals/Main/SampleView.vue';
+import AnalysisView from '../Modals/Main/AnalysisView.vue';
 export default {
-    components: { Sample, Service, Delete, Analysis, Additional, SampleView, Report },
+    components: { Sample, Service, Delete, Analysis, Additional, SampleView, Report, AnalysisView },
     props:['selected','services','analyses'],
     data(){
         return {
@@ -296,6 +298,9 @@ export default {
         },
         openAnalysisDelete(data){
             this.$refs.delete.show(data,this.selected.id,'analysis');
+        },
+        openAnalysisView(data){
+            this.$refs.view.show(data);
         },
         openQr(data){
             window.open('/samples?option=qrcode&id='+data.qr);

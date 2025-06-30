@@ -1,0 +1,153 @@
+<template>
+     <!-- style="--vz-modal-width: 1000px;" -->
+    <b-modal  v-if="selected" v-model="showModal" style="--vz-modal-width: 800px;" header-class="p-3 bg-light" title="View Sample" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
+        
+       <!-- {{ selected }} -->
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <div class="row align-items-center g-3">
+                    <div class="col-md">
+                        <div>
+                            <h6><span class="fw-semibold text-primary fs-15">{{ selected.testname }}</span></h6>
+                            <div class="hstack gap-3  fs-12 flex-wrap">
+                                <!-- <div class="vr" style="width: 1px;"></div> -->
+                                <div>Method : 
+                                    <span v-if="selected.method" class="fw-medium">{{selected.method}}</span>
+                                    <span v-else class="text-muted">Not Available</span>
+                                </div>
+                                <div class="vr" style="width: 1px;"></div>
+                                <div>Reference : 
+                                    <span v-if="selected.reference" class="fw-medium">{{selected.reference}}</span>
+                                    <span v-else class="text-muted">Not Available</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <ul class="list-unstyled">
+                        <li class="py-1 fs-12">
+                            <i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>{{selected.method}}
+                        </li>
+                        <li class="py-1 fs-12">
+                            <i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>{{selected.reference}}
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+         <!-- <div class="row g-2 mt-n2">
+            <div class="col-sm-12">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-2">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-information-line"></i></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted mb-0 fs-12">Method:</p>
+                            <h5 class="mb-0 fs-12">{{selected.method}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 mb-3">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-2">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-file-list-line"></i></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted mb-0 fs-12">Reference:</p>
+                            <h5 class="mb-0 fs-12">{{selected.reference}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div> -->
+        <hr class="text-muted mt-0"/>
+        <div class="row g-2 mt-n2">
+            <div class="col-sm-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-2">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-shield-user-fill"></i></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted mb-0 fs-12">Analyst:</p>
+                            <h5 class="mb-0 fs-12">{{selected.analyst}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-2">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-line"></i></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted mb-0 fs-12">Start Date:</p>
+                            <h5 class="mb-0 fs-12">{{selected.start_at}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="p-1 border border-dashed rounded">
+                    <div class="d-flex align-items-center">
+                        <div class="avatar-sm me-2">
+                            <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-line"></i></div>
+                        </div>
+                        <div class="flex-grow-1">
+                            <p class="text-muted mb-0 fs-12">End Date :</p>
+                            <h5 class="mb-0 fs-12">{{selected.end_at}}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <template v-slot:footer>
+            <b-button @click="hide()" variant="light" block>Close</b-button>
+            <!-- <b-button @click="openResult()" variant="primary" block>Preview</b-button> -->
+        </template>
+    </b-modal>
+</template>
+<script>
+import simplebar from "simplebar-vue";
+import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
+import TextInput from '@/Shared/Components/Forms/TextInput.vue';
+export default {
+    components : { InputLabel, TextInput, simplebar }, 
+    data(){
+        return {
+            currentUrl: window.location.origin,
+            showModal: false,
+            selected: {
+                analyses: [],
+                lists: [],
+                report: {}
+            }
+        }
+    },
+    methods: { 
+        show(data){
+            this.selected = data;   
+            this.showModal = true;
+        },
+        getRowClass(list, index) {
+            if (list.selected) {
+                return 'bg-warning-subtle';
+            }
+            if (list.status.name == 'Completed') {
+                return 'bg-success-subtle';
+            }
+            return '';
+        },
+        printQr(id){
+            window.open('/testreports?option=qrcode&id='+this.selected.qr);
+        },
+        hide(){
+            this.showModal = false;
+        }
+    }
+}
+</script>
