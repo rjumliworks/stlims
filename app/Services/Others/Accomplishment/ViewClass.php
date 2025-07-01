@@ -48,9 +48,9 @@ class ViewClass
                                 })->count();
                             break;
                             case 'Services Conducted':
-                                $count = TsrAnalysis::whereMonth('created_at',$index+1)->whereYear('created_at',$year)->whereHas('sample', function ($query) use ($laboratory_id){
-                                    $query->whereHas('tsr', function ($query) use ($laboratory_id){
-                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
+                                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$year,$index){
+                                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$year,$index){
+                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0)->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
                                     });
                                 })
                                 ->count();
@@ -113,11 +113,10 @@ class ViewClass
                             case 'Number of Testing and Calibration Services Provided (Paying)':
                                 $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
                                     $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
-                                        $query->where('status_id','!=',5);
-                                        $query->whereDoesntHave('parent')->withWhereHas('payment', function ($query) {
+                                        $query->withWhereHas('payment', function ($query) {
                                             $query->where('is_free',0);
                                         });
-                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
+                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
                                         $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
                                     });
                                 })
@@ -126,11 +125,10 @@ class ViewClass
                             case 'Number of Testing and Calibration Services Provided (Gratis)':
                                 $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
                                     $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
-                                        $query->where('status_id','!=',5);
-                                        $query->whereDoesntHave('parent')->withWhereHas('payment', function ($query) {
+                                        $query->withWhereHas('payment', function ($query) {
                                             $query->where('is_free',1);
                                         });
-                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
+                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
                                         $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
                                     });
                                 })
@@ -168,7 +166,7 @@ class ViewClass
             ];
             return $result;
         });
-        return $grouped;
+        // return $grouped;
         return inertia('Modules/Others/Accomplishments/View',[
             'agencies' => $agencies,
             'agency' => $this->agency,
