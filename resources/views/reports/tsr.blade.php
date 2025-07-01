@@ -339,9 +339,9 @@
                     <tr>
                         <td style="border-bottom-style: hidden; border-right-style: hidden;">Mode of Payment</td>
                         <td style="border-bottom-style: hidden;">
-                            <input type="checkbox" id="a1" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Cash</label>
-                            <input type="checkbox" id="a2" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Cheque</label>
-                            <input type="checkbox" id="a3" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Bank Deposit/Transfer</label>
+                            <span style="display: inline-block; width: 8px; height: 8px; border: 1px solid black; margin-top:10px;"></span>&nbsp;&nbsp;<label for="a">Cash</label>
+                            <span style="display: inline-block; width: 8px; height: 8px; border: 1px solid black;"></span>&nbsp;&nbsp;<label for="a">Cheque</label>
+                            <span style="display: inline-block; width: 8px; height: 8px; border: 1px solid black;"></span>&nbsp;&nbsp;<label for="a">Bank Deposit/Transfer</label>
                         </td>
                         <td width="33.3%" style="text-align: center;" rowspan="2">
                             <span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$cashier}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Cashier 
@@ -350,9 +350,9 @@
                     <tr>
                         <td style="border-right-style: hidden;">Excess payment </br><span style="font-size: 9px;">(to debit on customer's wallet)</span></td>
                         <td>
-                            <input type="checkbox" id="a" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">No</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="a" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Yes</label>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Amount: ________________
+                            <span style="display: inline-block; width: 8px; height: 8px; border: 1px solid black;"></span>&nbsp;&nbsp;<label for="a">No</label>
+                            <span style="display: inline-block; margin-left: 10.5px; width: 8px; height: 8px; border: 1px solid black;"></span>&nbsp;&nbsp;<label for="a">Yes</label>
+                            <span style="margin-left: 18px;">Amount: _________________________</span>
                         </td>
                     </tr>
                 </tbody>
