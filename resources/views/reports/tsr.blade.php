@@ -175,7 +175,7 @@
         <table style="border: 1px solid black; font-size: 10px; margin-top: -22px;">
             <thead style="background-color:#c8c8c8; padding: 5px; font-size: 9px;">
                 <tr>    
-                    <th style="text-align: left; vertical-align: middle;" width="12%">Code</th>
+                    <th style="vertical-align: middle;" width="12%">Sample Code</th>
                     <th style="vertical-align: middle;" width="16%">Sample</th>
                     <th style="vertical-align: middle;" width="20%">Test/Calibration Requested</th>
                     <th style="vertical-align: middle;" width="26%">Test/Calibration Method</th>
@@ -339,9 +339,9 @@
                     <tr>
                         <td style="border-bottom-style: hidden; border-right-style: hidden;">Mode of Payment</td>
                         <td style="border-bottom-style: hidden;">
-                            <input type="checkbox" id="a" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Cash</label>
-                            <input type="checkbox" id="a" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Cheque</label>
-                            <input type="checkbox" id="a" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Bank Deposit/Transfer</label>
+                            <input type="checkbox" id="a1" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Cash</label>
+                            <input type="checkbox" id="a2" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Cheque</label>
+                            <input type="checkbox" id="a3" style="margin-top: 22px;"/>&nbsp;&nbsp;<label for="a">Bank Deposit/Transfer</label>
                         </td>
                         <td width="33.3%" style="text-align: center;" rowspan="2">
                             <span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$cashier}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Cashier 
