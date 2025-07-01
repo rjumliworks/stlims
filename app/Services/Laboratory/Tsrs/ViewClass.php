@@ -273,7 +273,7 @@ class ViewClass
             'cashier' => ($cashier) ?  $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname : '',
             'manager' => ($head) ? $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname : '',
             'user' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname,
-            'color' => ($tsrinfo->lab_type) ? $tsrinfo->lab_type->color : 'black',
+            'color' => ($tsrinfo->laboratory) ? $tsrinfo->laboratory->color : 'black',
             'wallet' => ($wallet) ?  $wallet : '0.00',
             'payment' => $payment,
             'transaction' => $transaction,
