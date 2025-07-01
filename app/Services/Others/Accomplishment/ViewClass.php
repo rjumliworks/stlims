@@ -52,7 +52,7 @@ class ViewClass
                                         $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
                                     });
                                 })
-                            ->count();
+                                ->count();
                             break;
                             case 'Customers Served':
                                 $count = Tsr::where('status_id','!=',5)->whereMonth('created_at',$index+1)->whereYear('created_at',$year)->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)->count();
@@ -88,37 +88,57 @@ class ViewClass
                             //         $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
                             //     })
                             // ->sum('discount');
-                            $gdiscount = Tsr::whereDoesntHave('parent')
-                            ->withWhereHas('payment', function ($query) {
-                                $query->where('is_free',0);
-                            })
-                            ->where('status_id','!=',5)
-                            ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
-                            ->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)
-                            ->get()
-                            ->sum(function ($tsr) {
-                                return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
-                            });
+                                $gdiscount = Tsr::whereDoesntHave('parent')
+                                ->withWhereHas('payment', function ($query) {
+                                    $query->where('is_free',0);
+                                })
+                                ->where('status_id','!=',5)
+                                ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                                ->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)
+                                ->get()
+                                ->sum(function ($tsr) {
+                                    return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
+                                });
 
-                            $ggratis = Tsr::whereDoesntHave('parent')
-                            ->withWhereHas('payment', function ($query) {
-                                $query->where('is_free',1);
-                            })
-                            ->where('status_id','!=',5)
-                           ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
-                            ->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)
-                            ->get()
-                            ->sum(function ($tsr) {
-                                return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
-                            });
+                                $ggratis = Tsr::whereDoesntHave('parent')
+                                ->withWhereHas('payment', function ($query) {
+                                    $query->where('is_free',1);
+                                })
+                                ->where('status_id','!=',5)
+                                ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                                ->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)
+                                ->get()
+                                ->sum(function ($tsr) {
+                                    return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
+                                });
 
-                             $count = $ggratis + $gdiscount;
+                                $count = $ggratis + $gdiscount;
                             break;
-                            case 'New Services Offered':
-                                $count = 0;
+                            case 'Number of Testing and Calibration Services Provided (Paying)':
+                                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
+                                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
+                                        $query->where('status_id','!=',5);
+                                        $query->whereDoesntHave('parent')->withWhereHas('payment', function ($query) {
+                                            $query->where('is_free',0);
+                                        });
+                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
+                                        $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
+                                    });
+                                })
+                                ->count();
                             break;
-                            case 'Weaned Out Services':
-                                $count = 0;
+                            case 'Number of Testing and Calibration Services Provided (Gratis)':
+                                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
+                                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
+                                        $query->where('status_id','!=',5);
+                                        $query->whereDoesntHave('parent')->withWhereHas('payment', function ($query) {
+                                            $query->where('is_free',1);
+                                        });
+                                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
+                                        $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
+                                    });
+                                })
+                                ->count();
                             break;
                             default: 
                             $count = 0;
@@ -184,7 +204,10 @@ class ViewClass
                 ['name' => 'Value of Assistance Rendered','is_consolidated' => 0, 'is_amount' => 1],
                 ['name' => 'Number of Reports Generated','is_consolidated' => 0, 'is_amount' => 0],
                 ['name' => 'Number of Late Reports','is_consolidated' => 0, 'is_amount' => 0],
-                ['name' => 'Number of Innacurate','is_consolidated' => 0, 'is_amount' => 0]
+                ['name' => 'Number of Innacurate','is_consolidated' => 0, 'is_amount' => 0],
+                ['name' => 'Number of Testing and Calibration Services Provided (Paying)','is_consolidated' => 0, 'is_amount' => 0],
+                ['name' => 'Number of Testing and Calibration Services Provided (Gratis)','is_consolidated' => 0, 'is_amount' => 0],
+                ['name' => '% of Testing / Calibration Services Delivered withing Agreed Time','is_consolidated' => 1, 'is_amount' => 0],
             ];
             
             foreach($kpis as $kpi){
