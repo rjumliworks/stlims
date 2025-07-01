@@ -35,6 +35,7 @@ class ViewClass
         $breakdowns = $data->breakdowns;
         $grouped = $breakdowns->groupBy('name')->map(function ($items) use ($months,&$percentageCounts,$year){
             $breakdown = []; $monthly = []; $total = 0; $grandtotal = 0;
+            $monthly_all = [];
             foreach ($items as $item) {
                 if ($item->laboratory) {
                     $laboratory_id = $item->laboratory->id;
@@ -83,12 +84,7 @@ class ViewClass
                                 });
                             break;
                             case 'Value of Assistance Rendered':
-                            //     $count = TsrPayment::whereMonth('paid_at',$index+1)->whereYear('paid_at',$year)->where('is_free',1)
-                            //     ->whereHas('tsr', function ($query) use ($laboratory_id){
-                            //         $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id);
-                            //     })
-                            // ->sum('discount');
-                                $gdiscount = Tsr::whereDoesntHave('parent')
+                                $discount = Tsr::whereDoesntHave('parent')
                                 ->withWhereHas('payment', function ($query) {
                                     $query->where('is_free',0);
                                 })
@@ -100,7 +96,7 @@ class ViewClass
                                     return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
                                 });
 
-                                $ggratis = Tsr::whereDoesntHave('parent')
+                                $gratis = Tsr::whereDoesntHave('parent')
                                 ->withWhereHas('payment', function ($query) {
                                     $query->where('is_free',1);
                                 })
@@ -112,7 +108,7 @@ class ViewClass
                                     return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
                                 });
 
-                                $count = $ggratis + $gdiscount;
+                                $count = $gratis + $discount;
                             break;
                             case 'Number of Testing and Calibration Services Provided (Paying)':
                                 $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
@@ -161,18 +157,18 @@ class ViewClass
                     $breakdown = null;
                 }
             }
-            
             $result = [
                 'name' => $items->first()['name'],
                 'target' => $items->sum('count'),
                 'is_consolidated' => $items->first()['is_consolidated'],
                 'is_amount' => $items->first()['is_amount'],
                 'accomplish' => $grandtotal,
-                'breakdown' => $breakdown
+                'breakdown' => $breakdown,
+                'monthly' => $monthly_all
             ];
             return $result;
         });
-// return $grouped;
+        return $grouped;
         return inertia('Modules/Others/Accomplishments/View',[
             'agencies' => $agencies,
             'agency' => $this->agency,

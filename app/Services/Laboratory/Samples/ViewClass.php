@@ -15,7 +15,7 @@ class ViewClass
     public function __construct()
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
-        $this->laboratory = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
+        $this->laboratory = UserRole::where('user_id',\Auth::user()->id)->where('is_active',1)->pluck('laboratory_id');
         $this->role = UserRole::where('user_id',\Auth::user()->id)->pluck('role_id');
         $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
     }
@@ -30,9 +30,9 @@ class ViewClass
                 $query->select('id','due_at','created_at');
                 $query->where('agency_id',$this->agency);
                 $query->when($this->laboratory, function ($query) {
-                    if(in_array(4, $this->role->toArray(), false)){
+                    // if(in_array(4, $this->role->toArray(), false)){
                         $query->whereIn('laboratory_id',$this->laboratory);
-                    }
+                    // }
                 });
                 $query->when($code, function ($query) use ($code){
                     $query->where('code', 'LIKE', "%{$code}%");
@@ -54,23 +54,22 @@ class ViewClass
     }
 
     public function counts(){
-            $counts = 
-                [
-                    TsrSample::where('is_completed',0)->withWhereHas('tsr',function ($query){
-                        $query->whereNotIn('status_id',[1,2]);
-                        $query->where('agency_id',$this->agency);
-                        $query->when($this->laboratory, function ($query) {
-                            $query->where('laboratory_id',$this->laboratory);
-                        });
-                    })->count(),
-                    TsrSample::where('is_completed',0)->withWhereHas('tsr',function ($query){
-                        $query->where('agency_id',$this->agency);
-                        $query->when($this->laboratory, function ($query) {
-                            $query->where('laboratory_id',$this->laboratory);
-                        });
-                    })->where('is_completed',1)->count()
-                ];
-
+        $counts = 
+        [
+            TsrSample::where('is_completed',0)->withWhereHas('tsr',function ($query){
+                $query->whereNotIn('status_id',[1,2]);
+                $query->where('agency_id',$this->agency);
+                $query->when($this->laboratory, function ($query) {
+                    $query->whereIn('laboratory_id',$this->laboratory);
+                });
+            })->count(),
+            TsrSample::withWhereHas('tsr',function ($query){
+                $query->where('agency_id',$this->agency);
+                $query->when($this->laboratory, function ($query) {
+                    $query->whereIn('laboratory_id',$this->laboratory);
+                });
+            })->where('is_completed',1)->count()
+        ];
         return $counts;
     }
 
