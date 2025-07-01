@@ -215,6 +215,7 @@ class ViewClass
 
         $tsrinfo = Tsr::where('id',$id)->with('laboratory')->first();
         $tsr = TsrReport::where('tsr_id',$id)->value('information');
+        $secret = TsrReport::where('tsr_id',$id)->value('secret_key');
         $lab = json_decode($tsr);
         $user_id = $tsrinfo->received_by;
         $userrole = UserRole::where('user_id',$user_id)->first();
@@ -275,7 +276,8 @@ class ViewClass
             'color' => ($tsrinfo->lab_type) ? $tsrinfo->lab_type->color : 'black',
             'wallet' => ($wallet) ?  $wallet : '0.00',
             'payment' => $payment,
-            'transaction' => $transaction
+            'transaction' => $transaction,
+            'secret' => $secret
         ]; 
 
         $pdf = \PDF::loadView('reports.tsr',$array)->setPaper('a4', 'portrait');

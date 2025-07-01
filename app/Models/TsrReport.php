@@ -24,7 +24,7 @@ class TsrReport extends Model
 
     public function getSecretKeyAttribute($value)
     {
-        return Crypt::decryptString($value);
+        return ($value) ? Crypt::decryptString($value) : null;
     }
 
     public function setInformationAttribute($value)

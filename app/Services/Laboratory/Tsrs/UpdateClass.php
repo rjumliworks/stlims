@@ -352,14 +352,26 @@ class UpdateClass
         if(TsrReport::where('tsr_id',$id)->count() > 0){
             $data = TsrReport::where('tsr_id',$id)->first();
             $data->information = json_encode($information);
+            if(empty($data->secret_key)) {
+                $data->secret_key = $this->generatePasskey();
+            }
             $data->save();
         }else{
             $data = TsrReport::create([
                 'information' => json_encode($information,true),
+                'secret_key' => $this->generatePasskey(),
                 'tsr_id' => $id
             ]);
         }
         return true;
     }
 
+    public function generatePasskey($length = 8) {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $passkey = '';
+        for ($i = 0; $i < $length; $i++) {
+            $passkey .= $characters[random_int(0, strlen($characters) - 1)];
+        }
+        return $passkey;
+    }
 }

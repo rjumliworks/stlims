@@ -155,17 +155,19 @@
             <tbody>
                 <tr>
                     <td width="25%">Customer : </td>
-                    <td colspan="3" width="75%"><span style="font-weight: bold; text-transform: uppercase; color: #072388;">{{$tsr['customer']['name']}}</span></td>
+                    <td colspan="5" width="75%"><span style="font-weight: bold; text-transform: uppercase; color: #072388;">{{$tsr['customer']['name']}}</span></td>
                 </tr>
                 <tr>
                     <td width="25%">Address : </td>
-                    <td colspan="3" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address']}}</span></td>
+                    <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address']}}</span></td>
                 </tr>
                 <tr>
                     <td width="25%">Contact Number : </td>
-                    <td width="25%"><span style="color: #072388;">{{$tsr['customer']['contact_no']}}</span></td>
-                    <td width="25%">Email : </td>
+                    <td width="12.5%"><span style="color: #072388;">{{$tsr['customer']['contact_no']}}</span></td>
+                    <td width="12.5%">Email : </td>
                     <td width="25%"><span style="color: #072388;">{{$tsr['customer']['email']}}</span></td>
+                    <td width="12.5%">Pass Code : </td>
+                    <td width="12.5%"><span style="color: #072388;">{{$secret}}</span></td>
                 </tr>
             </tbody>
         </table>
