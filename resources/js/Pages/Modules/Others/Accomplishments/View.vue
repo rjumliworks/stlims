@@ -4,7 +4,7 @@
         <div class="auth-page-content">
             <div class="chat-wrapper d-lg-flex gap-1 mx-n4 mt-n4 p-1">
                 <div class="file-manager-content w-100 p-4 pb-0" ref="box">
-                     <b-row>
+                     <b-row class="mt-2">
                         <b-col lg>
                             <div class="input-group mb-1">
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
@@ -18,59 +18,75 @@
                             </div>
                         </b-col>
                     </b-row>
-                    <table class="table table-bordered table-nowrap align-middle">
-                        <thead class="text-white">
-                            <tr>
-                                <th colspan="23" class="text-center align-middle bg-primary ">{{selected.year}} Target vs Accomplishment</th>
-                            </tr>
-                            <tr class="fs-10">
-                                <th class="text-center align-middle bg-dark" style="width: 3%;">No.</th>
-                                <th class="text-center align-middle bg-dark" style="width: 15%;">OneLab KPI - Objective</th>
-                                <th class="text-center align-middle bg-warning" style="width: 5%;">Filled By</th>
-                                <th class="text-center align-middle bg-danger" style="width: 5%;">Target</th>
-                                <th v-if="type == 'Quarters'" class="text-center align-middle bg-info" v-for="(list,index) in quarters" v-bind:key="index">{{list}}</th>
-                                <th v-if="type == 'Months'" class="text-center align-middle bg-info" v-for="(list,index) in months" v-bind:key="index">{{list}}</th>
-                                <!-- <th class="text-center align-middle bg-danger" style="width: 6%;">Total Target</th> -->
-                                <th class="text-center align-middle bg-success" style="width: 8%;">Total</th>
-                                <th class="text-center align-middle bg-success" style="width: 4%;">%</th>
-                            </tr>
-                        </thead>
-                        <tbody class="fs-10">
-                            <template v-for="(kpi, index) in Object.values(selected.kpis)" :key="index">
-                                <tr class="bg-info-subtle fw-semibold">
-                                    <td>{{ '1.' + (index + 1).toString().padStart(2, '0') }}</td>
-                                    <td>{{ kpi.name }}</td>
-                                    <td class="text-center">-</td>
-                                    <td class="text-center">{{ formatNumber(kpi.target) }}</td>
-                                    <td v-if="type == 'Quarters'" colspan="4"></td>
-                                    <td v-if="type == 'Months'" colspan="12"></td>
-                                    <td v-if="kpi.is_amount" class="text-center">{{ formatMoney(kpi.accomplish) }}</td>
-                                    <td v-else class="text-center">{{ formatNumber(kpi.accomplish) }}</td>
+                    <div class="table-responsive" style="margin-top: 5px; height: calc(100vh - 80px); overflow: auto;">
+                        <table class="table table-bordered table-nowrap align-middle">
+                            <thead class="thead-fixed text-white">
+                                <tr>
+                                    <th colspan="22" class="text-center align-middle bg-primary ">{{selected.year}} Target vs Accomplishment</th>
                                 </tr>
-                                <template v-if="!kpi.is_consolidated">
-                                    <tr v-for="(breakdown, bIndex) in kpi.breakdown" :key="`breakdown-${index}-${bIndex}`">
-                                        <td class="text-center"></td>
-                                        <td class="ps-4">{{ breakdown.name || '-' }}</td>
-                                        <td class="text-center">-</td>
-                                        <td v-if="kpi.is_amount" class="text-center">{{ formatMoney(breakdown.target) }}</td>
-                                        <td v-else class="text-center">{{ breakdown.target }}</td>
-                                        <template v-if="type == 'Months'" v-for="(m, mIndex) in breakdown.months" :key="mIndex">
-                                            <td v-if="kpi.is_amount" class="text-center">{{formatMoney(m.accomplish)}}</td>
-                                            <td v-else class="text-center">{{m.accomplish}}</td>
-                                        </template>
-                                        <template v-if="type == 'Quarters'">
-                                            <td v-for="(q, qIndex) in groupByQuarter(breakdown.months,kpi.is_amount)" :key="'q' + qIndex" class="text-center">
-                                                <span v-if="kpi.is_amount">{{ formatMoney(q.accomplish) }}</span>
-                                                <span v-else>{{ q.accomplish }}</span>
-                                            </td>
-                                        </template>
-                                        <td v-if="kpi.is_amount" class="text-center">{{ formatMoney(breakdown.accomplish) }}</td>
-                                        <td v-else class="text-center">{{ formatNumber(breakdown.accomplish) }}</td>
+                                <tr class="fs-10">
+                                    <th class="text-center align-middle bg-dark" style="width: 3%;">No.</th>
+                                    <th class="text-center align-middle bg-dark" style="width: 15%;">KPI</th>
+                                    <th class="text-center align-middle bg-danger" style="width: 5%;">Target</th>
+                                    <th v-if="type == 'Quarters'" class="text-center align-middle bg-info" v-for="(list,index) in quarters" v-bind:key="index">{{list}}</th>
+                                    <th v-if="type == 'Months'" class="text-center align-middle bg-info" v-for="(list,index) in months" v-bind:key="index">{{list}}</th>
+                                    <!-- <th class="text-center align-middle bg-danger" style="width: 6%;">Total Target</th> -->
+                                    <th class="text-center align-middle bg-success" style="width: 8%;">Total</th>
+                                    <th class="text-center align-middle bg-success" style="width: 4%;">%</th>
+                                </tr>
+                            </thead>
+                            <tbody class="fs-10">
+                            <template v-for="(objectives, typeName, typeIndex) in selected.kpis" :key="typeName">
+                                    <tr class="bg-dark opacity-75 text-white">
+                                        <th>{{typeIndex+1+'.00'}}</th>
+                                        <th :colspan="(type == 'Months') ? 17 : 9">{{ typeName }}</th>
                                     </tr>
+                                    <template v-for="(objective, oIndex) in objectives" :key="objective.name">
+                                        <tr class="bg-info-subtle fw-semibold" @click="toggleRow(typeIndex + '-' + oIndex)" style="cursor: pointer;">
+                                            <td>{{ (typeIndex+1)+'.'+ (oIndex + 1).toString().padStart(2, '0') }}</td>
+                                            <td>{{ objective.name }}</td>
+                                            <td class="text-center">{{ formatNumber(objective.target) }}</td>
+                                            <template v-if="type == 'Months'" v-for="(m, xIndex) in objective.monthly" :key="xIndex">
+                                                <td v-if="objective.is_amount" class="text-center">{{formatMoney(m.accomplish)}}</td>
+                                                <td v-else class="text-center">{{m.accomplish}}</td>
+                                            </template>
+                                            <template v-if="type == 'Quarters'">
+                                                <td v-for="(q, qqIndex) in groupByQuarter(objective.monthly,objective.is_amount)" :key="'q' + qqIndex" class="text-center">
+                                                    <span v-if="objective.is_amount">{{ formatMoney(q.accomplish) }}</span>
+                                                    <span v-else>{{ q.accomplish }}</span>
+                                                </td>
+                                            </template>
+                                            <td v-if="objective.is_amount" class="text-center">{{ formatMoney(objective.accomplish) }}</td>
+                                            <td v-else class="text-center">{{ formatNumber(objective.accomplish) }}</td>
+                                            <td class="text-center">{{ objective.percentage }}</td>
+                                        </tr>
+                                        <template v-if="!objective.is_consolidated"> 
+                                            <!-- && expandedRows[typeIndex + '-' + oIndex -->
+                                            <tr v-for="(breakdown, bIndex) in objective.breakdown" :key="`breakdown-${index}-${bIndex}`">
+                                                <td class="text-center"></td>
+                                                <td class="ps-4">{{ breakdown.name || '-' }}</td>
+                                                <td v-if="objective.is_amount" class="text-center">{{ formatMoney(breakdown.target) }}</td>
+                                                <td v-else class="text-center">{{ breakdown.target }}</td>
+                                                <template v-if="type == 'Months'" v-for="(m, mIndex) in breakdown.months" :key="mIndex">
+                                                    <td v-if="objective.is_amount" class="text-center">{{formatMoney(m.accomplish)}}</td>
+                                                    <td v-else class="text-center">{{m.accomplish}}</td>
+                                                </template>
+                                                <template v-if="type == 'Quarters'">
+                                                    <td v-for="(q, qIndex) in groupByQuarter(breakdown.months,objective.is_amount)" :key="'q' + qIndex" class="text-center">
+                                                        <span v-if="objective.is_amount">{{ formatMoney(q.accomplish) }}</span>
+                                                        <span v-else>{{ q.accomplish }}</span>
+                                                    </td>
+                                                </template>
+                                                <td v-if="objective.is_amount" class="text-center">{{ formatMoney(breakdown.accomplish) }}</td>
+                                                <td v-else class="text-center">{{ formatNumber(breakdown.accomplish) }}</td>
+                                                <td class="text-center">{{ breakdown.percentage }}</td>
+                                            </tr>
+                                        </template>
+                                    </template>
                                 </template>
-                            </template>
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,6 +108,8 @@ export default {
             agency: this.agency,
             years: [],
             year: new Date().getFullYear(),
+            selectedRow: null, // currently unused
+            expandedRows: {},
         }
     },
     computed: {
@@ -117,6 +135,9 @@ export default {
         }
     },
     methods: {
+        toggleRow(index) {
+           this.expandedRows[index] = !this.expandedRows[index];
+        },
         groupByQuarter(months,is_amount) {
             const quarterMap = {
             Q1: ["Jan", "Feb", "Mar"],

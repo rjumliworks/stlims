@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('target_breakdowns', function (Blueprint $table) {
             $table->engine = 'InnoDB'; 
             $table->increments('id');
-            $table->string('name');
             $table->integer('count');
             $table->integer('accom');
             $table->boolean('is_set')->default(0);
             $table->boolean('is_amount');
             $table->boolean('is_consolidated');
+            $table->tinyInteger('objective_id')->unsigned()->nullable();
+            $table->foreign('objective_id')->references('id')->on('list_objectives')->onDelete('cascade');
             $table->tinyInteger('laboratory_id')->unsigned()->nullable();
             $table->foreign('laboratory_id')->references('id')->on('list_laboratories')->onDelete('cascade');
             $table->integer('target_id')->unsigned()->nullable();

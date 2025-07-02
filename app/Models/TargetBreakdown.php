@@ -9,11 +9,16 @@ class TargetBreakdown extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','count','accom','is_consolidated','is_amount','laboratory_id','target_id','user_id'];
+    protected $fillable = ['count','accom','is_consolidated','is_amount','laboratory_id','target_id','user_id','objective_id'];
 
     public function laboratory()
     {
         return $this->belongsTo('App\Models\ListLaboratory', 'laboratory_id', 'id');
+    }
+
+    public function objective()
+    {
+        return $this->belongsTo('App\Models\ListObjective', 'objective_id', 'id');
     }
 
     public function target()

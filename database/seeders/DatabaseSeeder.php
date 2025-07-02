@@ -104,5 +104,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(EquipmentTableSeeder::class);
         // $this->call(EquipmentLogsTableSeeder::class);
         // $this->call(EquipmentInfosTableSeeder::class);
+        $this->call(ListObjectivesTableSeeder::class);
     }
 }

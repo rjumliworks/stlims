@@ -768,6 +768,66 @@ class ListDropdownsTableSeeder extends Seeder
                 'others' => 'bg-purple',
                 'is_active' => 1,
             ),
+            75 => 
+            array (
+                'id' => 76,
+                'name' => 'OneLab KPI - Objective 1',
+                'classification' => 'Objective',
+                'type' => 'n/a',
+                'color' => 'text-white',
+                'others' => 'bg-purple',
+                'is_active' => 1,
+            ),
+            76 => 
+            array (
+                'id' => 77,
+                'name' => 'OneLab KPI - Objective 2',
+                'classification' => 'Objective',
+                'type' => 'n/a',
+                'color' => 'text-white',
+                'others' => 'bg-purple',
+                'is_active' => 0,
+            ),
+            77 => 
+            array (
+                'id' => 78,
+                'name' => 'OneLab KPI - Objective 3',
+                'classification' => 'Objective',
+                'type' => 'n/a',
+                'color' => 'text-white',
+                'others' => 'bg-purple',
+                'is_active' => 0,
+            ),
+            78 => 
+            array (
+                'id' => 79,
+                'name' => 'OneLab KPI - Objective 4',
+                'classification' => 'Objective',
+                'type' => 'n/a',
+                'color' => 'text-white',
+                'others' => 'bg-purple',
+                'is_active' => 0,
+            ),
+            79 => 
+            array (
+                'id' => 80,
+                'name' => 'Balance Score Card',
+                'classification' => 'Objective',
+                'type' => 'n/a',
+                'color' => 'text-white',
+                'others' => 'bg-purple',
+                'is_active' => 1,
+            ),
+            80 => 
+            array (
+                'id' => 81,
+            'name' => 'Laboratory Policies (QM-004)',
+                'classification' => 'Objective',
+                'type' => 'n/a',
+                'color' => 'text-white',
+                'others' => 'bg-purple',
+                'is_active' => 1,
+            ),
         ));
 
         
