@@ -255,6 +255,30 @@ class ViewClass
                 })
                 ->count();
             break;
+            case 'Ensure 99% of Test and Calibration Reports are ready on time':
+                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
+                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
+                        $query->withWhereHas('payment', function ($query) {
+                            $query->where('is_free',1);
+                        });
+                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
+                        $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
+                    });
+                })
+                ->count();
+            break;
+            case 'Maintain 100% accuracy in all Test and Calibration Reports':
+                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
+                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
+                        $query->withWhereHas('payment', function ($query) {
+                            $query->where('is_free',1);
+                        });
+                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
+                        $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
+                    });
+                })
+                ->count();
+            break;
             default: 
             $count = 0;
         }

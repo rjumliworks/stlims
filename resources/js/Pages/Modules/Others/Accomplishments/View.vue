@@ -28,8 +28,10 @@
                                     <th class="text-center align-middle bg-dark" style="width: 3%;">No.</th>
                                     <th class="text-center align-middle bg-dark" style="width: 15%;">KPI</th>
                                     <th class="text-center align-middle bg-danger" style="width: 5%;">Target</th>
-                                    <th v-if="type == 'Quarters'" class="text-center align-middle bg-info" v-for="(list,index) in quarters" v-bind:key="index">{{list}}</th>
-                                    <th v-if="type == 'Months'" class="text-center align-middle bg-info" v-for="(list,index) in months" v-bind:key="index">{{list}}</th>
+                                    <th v-if="type == 'Quarters'" @click="selectColumn(index)" class="text-center align-middle bg-info" v-for="(list,index) in quarters" v-bind:key="index"
+                                    :class="{'bg-dark text-white fw-semibold': selectedColumn === index}" style="cursor: pointer;">{{list}}</th>
+                                    <th v-if="type == 'Months'" @click="selectColumn(index)" class="text-center align-middle bg-info" v-for="(list,index) in months" v-bind:key="index" 
+                                    :class="{'bg-dark text-white fw-semibold': selectedColumn === index}" style="cursor: pointer;">{{list}}</th>
                                     <!-- <th class="text-center align-middle bg-danger" style="width: 6%;">Total Target</th> -->
                                     <th class="text-center align-middle bg-success" style="width: 8%;">Total</th>
                                     <th class="text-center align-middle bg-success" style="width: 4%;">%</th>
@@ -47,11 +49,12 @@
                                             <td>{{ objective.name }}</td>
                                             <td class="text-center">{{ formatNumber(objective.target) }}</td>
                                             <template v-if="type == 'Months'" v-for="(m, xIndex) in objective.monthly" :key="xIndex">
-                                                <td v-if="objective.is_amount" class="text-center">{{formatMoney(m.accomplish)}}</td>
-                                                <td v-else class="text-center">{{m.accomplish}}</td>
+                                                <td v-if="objective.is_amount" class="text-center" :class="{'bg-dark text-white fw-semibold': selectedColumn === xIndex}">{{formatMoney(m.accomplish)}}</td>
+                                                <td v-else class="text-center" :class="{'bg-dark text-white fw-semibold': selectedColumn === xIndex}">{{m.accomplish}}</td>
                                             </template>
                                             <template v-if="type == 'Quarters'">
-                                                <td v-for="(q, qqIndex) in groupByQuarter(objective.monthly,objective.is_amount)" :key="'q' + qqIndex" class="text-center">
+                                                <td v-for="(q, qqIndex) in groupByQuarter(objective.monthly,objective.is_amount)" :key="'q' + qqIndex" class="text-center"
+                                                :class="{'bg-dark text-white fw-semibold': selectedColumn === qqIndex}">
                                                     <span v-if="objective.is_amount">{{ formatMoney(q.accomplish) }}</span>
                                                     <span v-else>{{ q.accomplish }}</span>
                                                 </td>
@@ -62,17 +65,19 @@
                                         </tr>
                                         <template v-if="!objective.is_consolidated"> 
                                             <!-- && expandedRows[typeIndex + '-' + oIndex -->
-                                            <tr v-for="(breakdown, bIndex) in objective.breakdown" :key="`breakdown-${index}-${bIndex}`">
+                                            <tr style="cursor: pointer;" v-for="(breakdown, bIndex) in objective.breakdown" :key="`breakdown-${index}-${bIndex}`" @click="selectRow(`breakdown-${oIndex}-${bIndex}`)" 
+                                            :class="{'bg-dark text-white fw-semibold': selectedRow === `breakdown-${oIndex}-${bIndex}`}">
                                                 <td class="text-center"></td>
                                                 <td class="ps-4">{{ breakdown.name || '-' }}</td>
                                                 <td v-if="objective.is_amount" class="text-center">{{ formatMoney(breakdown.target) }}</td>
                                                 <td v-else class="text-center">{{ breakdown.target }}</td>
                                                 <template v-if="type == 'Months'" v-for="(m, mIndex) in breakdown.months" :key="mIndex">
-                                                    <td v-if="objective.is_amount" class="text-center">{{formatMoney(m.accomplish)}}</td>
-                                                    <td v-else class="text-center">{{m.accomplish}}</td>
+                                                    <td v-if="objective.is_amount" class="text-center" :class="{'bg-dark text-white fw-semibold': selectedColumn === mIndex}">{{formatMoney(m.accomplish)}}</td>
+                                                    <td v-else class="text-center" :class="{'bg-dark text-white fw-semibold': selectedColumn === mIndex}">{{m.accomplish}}</td>
                                                 </template>
                                                 <template v-if="type == 'Quarters'">
-                                                    <td v-for="(q, qIndex) in groupByQuarter(breakdown.months,objective.is_amount)" :key="'q' + qIndex" class="text-center">
+                                                    <td v-for="(q, qIndex) in groupByQuarter(breakdown.months,objective.is_amount)" :key="'q' + qIndex" class="text-center" 
+                                                    :class="{'bg-dark text-white fw-semibold': selectedColumn === qIndex}">
                                                         <span v-if="objective.is_amount">{{ formatMoney(q.accomplish) }}</span>
                                                         <span v-else>{{ q.accomplish }}</span>
                                                     </td>
@@ -81,7 +86,7 @@
                                                 <td v-else class="text-center">{{ formatNumber(breakdown.accomplish) }}</td>
                                                 <td class="text-center">{{ breakdown.percentage }}</td>
                                             </tr>
-                                        </template>
+                                      </template>
                                     </template>
                                 </template>
                             </tbody>
@@ -108,7 +113,8 @@ export default {
             agency: this.agency,
             years: [],
             year: new Date().getFullYear(),
-            selectedRow: null, // currently unused
+            selectedRow: null, 
+            selectedColumn: null,
             expandedRows: {},
         }
     },
@@ -172,7 +178,10 @@ export default {
             });
         },
         selectRow(index) {
-            this.selectedRow = index;
+            this.selectedRow = (this.selectedRow == index) ? null : index;
+        },
+        selectColumn(index) {
+            this.selectedColumn = (this.selectedColumn == index) ? null : index;
         }
     }
 }
