@@ -6,19 +6,6 @@ use App\Models\Tsr;
 
 class GadClass
 {
-    public function __construct()
-    {
-        $this->agency = (count(\Auth::user()->myroles)>0) ? \Auth::user()->myroles[0]->agency_id : null;
-    }
-
-    public function gender(){
-        return UserProfile::select(\DB::raw('count(*) as total'))
-        ->whereHas('user', function ($query) {
-            $query->where('is_active',1);
-        })
-        ->whereIn('sex',['Male','Female'])->groupBy('sex')->get();
-    }
-
     public function transactions(){
         $year = date('Y');
         $types = [
@@ -51,7 +38,7 @@ class GadClass
                 })
                 ->where('status_id','!=',5)
                 ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
-                ->where('agency_id',$this->agency)
+                ->where('agency_id',14)
                 ->get()
                 ->sum(function ($tsr) {
                     return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->total);
