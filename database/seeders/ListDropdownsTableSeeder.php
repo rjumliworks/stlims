@@ -741,7 +741,7 @@ class ListDropdownsTableSeeder extends Seeder
             72 => 
             array (
                 'id' => 73,
-                'name' => 'Woman',
+                'name' => 'Female',
                 'classification' => 'Female',
                 'type' => 'n/a',
                 'color' => 'n/a',
@@ -751,7 +751,7 @@ class ListDropdownsTableSeeder extends Seeder
             73 => 
             array (
                 'id' => 74,
-                'name' => 'Woman-led',
+                'name' => 'Female-led',
                 'classification' => 'Female',
                 'type' => 'n/a',
                 'color' => 'n/a',
@@ -826,6 +826,26 @@ class ListDropdownsTableSeeder extends Seeder
                 'type' => 'n/a',
                 'color' => 'text-white',
                 'others' => 'bg-purple',
+                'is_active' => 1,
+            ),
+            81 => 
+            array (
+                'id' => 82,
+                'name' => 'Male',
+                'classification' => 'Male',
+                'type' => 'n/a',
+                'color' => 'n/a',
+                'others' => 'n/a',
+                'is_active' => 1,
+            ),
+            82 => 
+            array (
+                'id' => 83,
+                'name' => 'Male-led',
+                'classification' => 'Male',
+                'type' => 'n/a',
+                'color' => 'n/a',
+                'others' => 'n/a',
                 'is_active' => 1,
             ),
         ));

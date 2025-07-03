@@ -181,9 +181,7 @@ class CustomerClass
         ->pluck('address.province_code') 
         ->unique();
 
-        $data = LocationProvince::withCount(['address' => function ($query){
-            $query->where('addressable_type','App\Models\Customer');
-        }])
+        $data = LocationProvince::withCount('address')
         ->whereIn('code',$provinces)->orderBy('address_count','DESC')->get();
 
         return DefaultResource::collection($data);

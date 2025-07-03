@@ -27,12 +27,12 @@ class LocationProvince extends Model
 
     public function customers()
     {
-        return $this->hasMany('App\Models\Address', 'province_code');
+        return $this->hasMany('App\Models\CustomerAddress', 'province_code');
     } 
 
     public function address()
     {
-        return $this->hasMany('App\Models\Address', 'province_code');
+        return $this->hasMany('App\Models\CustomerAddress', 'province_code');
     } 
 
     protected static $recordEvents = ['updated','created'];

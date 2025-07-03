@@ -75,7 +75,7 @@
                                         <InputLabel for="sex_id" value="Type" :message="form.errors.female_id"/>
                                         <Multiselect :options="dropdowns.females" label="name" v-model="form.female_id" placeholder="Select Type" @input="handleInput('female_id')" />
                                     </BCol>
-                                     <BCol v-if="form.sex_id == 70" lg="3" class="mt-0 mb-1">
+                                    <BCol v-if="form.sex_id == 70" lg="3" class="mt-0 mb-1">
                                         <InputLabel for="sex_id" value="Type" :message="form.errors.female_id"/>
                                         <Multiselect :options="dropdowns.males" label="name" v-model="form.female_id" placeholder="Select Type" @input="handleInput('female_id')" />
                                     </BCol>

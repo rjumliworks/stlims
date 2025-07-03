@@ -35,7 +35,28 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-
+                    <div class="card bg-light-subtle shadow-none border">
+                        <div class="card-header bg-light-subtle">
+                            <div class="d-flex mb-n3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div style="height:2rem;width:2rem;">
+                                        <span class="avatar-title bg-primary-subtle rounded p-2 mt-n1">
+                                            <i class="ri-map-pin-fill text-primary fs-20"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-0 fs-12"><span class="text-body">Customer Location</span></h5>
+                                    <p class="text-muted text-truncate-two-lines fs-11">Place of Origin</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card bg-white border-bottom shadow-none" no-body>
+                            <apexchart ref="realtimeChart" class="apex-charts" type="bar" dir="ltr" :series="series" 
+                                :options="chartOptions">
+                            </apexchart>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-8">
                     <div class="card bg-light-subtle shadow-none border">
@@ -55,35 +76,38 @@
                             </div>
                         </div>
                         <div class="card bg-white border-bottom shadow-none" no-body>
-                            <div class="table-responsive" style="max-height: calc(100vh - 300px); overflow: auto;">
-                                <table class="table table-nowrap table-striped align-middle mb-0">
+                            <div class="table-responsive" style="height: calc(100vh - 506px); overflow: auto;">
+                                <table class="table table-nowrap table-bordered table-striped align-middle mb-0">
                                     <thead class="table-light thead-fixed">
-                                        <tr class="fs-10">
-                                            <th class="text-center" width="20%">Type</th>
+                                        <tr class="fs-11">
+                                            <th class="text-center" width="13%">Type</th>
                                             <th class="text-center" v-for="(month,index) in months" v-bind:key="index">{{ month }}</th>
-                                            <th class="text-center" width="15%">Total</th>
+                                            <th class="text-center" width="11%">Total</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <tr v-for="(list,index) in roles" v-bind:key="index">
-                                            <td class="text-center">{{ list.role_name }}</td>
-                                            <td class="text-center">{{ list.female_count }}</td>
-                                            <td class="text-center">{{ list.male_count }}</td>
-                                            <td class="text-center">{{ list.female_percentage }}</td>
-                                            <td class="text-center">{{ list.male_percentage }}</td>
-                                            <td class="text-center">{{ list.total_users }}</td>
+                                    <tbody class="fs-11">
+                                        <tr v-for="(list,index) in transactions" v-bind:key="index">
+                                            <td class="text-center">{{ list.name }}</td>
+                                            <td class="text-center fs-10"  v-for="(list,index2) in list.monthly" v-bind:key="index2">
+                                                <span v-if="list != '00.0'">{{formatMoney(list)}}</span>
+                                                <span v-else>-</span>
+                                            </td>
+                                            <td class="text-center fw-semibold text-primary">{{ formatMoney(list.total) }}</td>
                                         </tr>
                                     </tbody>
-                                    <tfoot>
-                                        <tr class="text-primary text-center fs-12">
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th></th>
-                                            <th>{{ totalUsers }}</th>
+                                    <tfoot class="fs-11 table-light">
+                                        <tr>
+                                            <th class="text-center">Total</th>
+                                            <!-- Monthly column totals -->
+                                            <th class="text-center" v-for="(month, index) in months" :key="'foot-' + index">
+                                                {{ formatMoney(monthlyTotals[index] || 0) }}
+                                            </th>
+                                            <!-- Grand total -->
+                                            <th class="text-center text-success fw-bold">
+                                                {{ formatMoney(grandTotal) }}
+                                            </th>
                                         </tr>
-                                    </tfoot> -->
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>
@@ -101,17 +125,54 @@
 <script>
     export default {
         layout: null,
-        props: ['id'],
+        props: ['id','transactions','list'],
         data() {
             return {
                 months: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+                series: [
+                    {
+                    name: 'Customers',
+                        data: this.list
+                    }
+                ],
+                chartOptions: {
+                    chart: {type: 'bar',height: 350},
+                    plotOptions: {
+                        bar: {horizontal: false, columnWidth: '70%', endingShape: 'rounded'}
+                    },
+                    xaxis: {categories: ['ZC','ZDN','ZDS','ZSP','Outside']},
+                    colors: ['#556ee6'],
+                }
             };
+        },
+        computed: {
+            monthlyTotals() {
+                const totals = [];
+
+                this.transactions.forEach(item => {
+                    item.monthly.forEach((value, index) => {
+                        const amount = parseFloat(value) || 0;
+                        totals[index] = (totals[index] || 0) + amount;
+                    });
+                });
+
+                return totals;
+            },
+            grandTotal() {
+                return this.transactions.reduce((sum, item) => {
+                    return sum + (parseFloat(item.total) || 0);
+                }, 0);
+            }
         },
         methods: {
             topFunction() {
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
-            }
+            },
+            formatMoney(value) {
+                let val = (value/1).toFixed(2).replace(',', '.')
+                return '₱'+val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            },
         },
         mounted() {
             let backtoTop = document.getElementById("back-to-top");
