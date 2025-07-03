@@ -108,6 +108,7 @@ class ViewClass
         return inertia('Modules/Others/Accomplishments/View',[
             'agencies' => $agencies,
             'agency' => $this->agency,
+            'years' => $this->years(),
             'selected' => [
                 'year' => $data->year,
                 'kpis' =>$grouped
@@ -283,5 +284,9 @@ class ViewClass
             $count = 0;
         }
         return $count;
+    }
+
+    public function years(){
+        return Target::distinct()->pluck('year');
     }
 }

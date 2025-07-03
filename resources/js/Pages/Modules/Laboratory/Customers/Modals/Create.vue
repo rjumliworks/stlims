@@ -67,13 +67,17 @@
                                         <Multiselect :options="dropdowns.industries" :searchable="true" v-model="form.industry_id" :message="form.errors.industry_id" placeholder="Select Industry"/>
                                         <InputError :message="form.errors.industry_id" />
                                     </BCol> -->
-                                    <BCol :lg="(form.sex_id == 71) ? '3' : '6'" class="mt-0 mb-1">
+                                    <BCol :lg="(form.sex_id == 71 || form.sex_id == 70) ? '3' : '6'" class="mt-0 mb-1">
                                         <InputLabel for="sex_id" value="Sex" :message="form.errors.sex_id"/>
                                         <Multiselect :options="dropdowns.sexs" label="name" v-model="form.sex_id" placeholder="Select Sex" @input="handleInput('sex_id')" />
                                     </BCol>
                                     <BCol v-if="form.sex_id == 71" lg="3" class="mt-0 mb-1">
                                         <InputLabel for="sex_id" value="Type" :message="form.errors.female_id"/>
                                         <Multiselect :options="dropdowns.females" label="name" v-model="form.female_id" placeholder="Select Type" @input="handleInput('female_id')" />
+                                    </BCol>
+                                     <BCol v-if="form.sex_id == 70" lg="3" class="mt-0 mb-1">
+                                        <InputLabel for="sex_id" value="Type" :message="form.errors.female_id"/>
+                                        <Multiselect :options="dropdowns.males" label="name" v-model="form.female_id" placeholder="Select Type" @input="handleInput('female_id')" />
                                     </BCol>
                                     <BCol :lg="(subs.length > 0) ? '6' : '12'" class="mt-0 mb-1">
                                         <InputLabel for="industry_id" value="Industry Type" :message="form.errors.industry_id"/>

@@ -102,7 +102,7 @@ import Multiselect from "@vueform/multiselect";
 export default {
     layout: null,
     components: { Multiselect },
-    props: ['agencies','agency','selected'],
+    props: ['agencies','agency','selected','years'],
     data(){
         return {
             selectedRow: null,
@@ -111,7 +111,7 @@ export default {
             types: ['Months','Quarters'],
             type: 'Months',
             agency: this.agency,
-            years: [],
+            years: this.years,
             year: new Date().getFullYear(),
             selectedRow: null, 
             selectedColumn: null,

@@ -47,6 +47,7 @@ class CustomerController extends Controller
                     'individuals' => $this->dropdown->dropdowns('Individual','n/a'),
                     'sexs' => $this->dropdown->dropdowns('Sex','n/a'),
                     'females' => $this->dropdown->dropdowns('Female','n/a'),
+                    'males' => $this->dropdown->dropdowns('Male','n/a'),
                     'regions' => $this->dropdown->regions(),
                     'agencies' => $this->dropdown->agencies(),
                 ],
