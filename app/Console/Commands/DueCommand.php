@@ -29,7 +29,11 @@ class DueCommand extends Command
             }
             $message .= "\nKindly ensure that the above mentioned reports are completed before 4:00 PM today.\n\nThank you!";
 
-            $users = UserRole::with('user.profile')->where('laboratory_id',$laboratory->id)->whereIn('role_id',[9,4,2])->get();
+            $users = UserRole::with('user.profile')
+            ->whereHas('user', function ($query){
+                $query->where('is_active',1);
+            })
+            ->where('laboratory_id',$laboratory->id)->whereIn('role_id',[9,4,2])->get();
             if(count($tsrs) > 0){
                 foreach($users as $user){
                     dispatch(new SmsJob($user->user->profile->mobile, $message));

@@ -26,7 +26,7 @@ class ViewClass
         if($data){
            return $this->view($year,$agencies);
         }else{
-            $this->add($year,$agencies);
+            return $this->add($year,$agencies);
         }
     }
 
@@ -70,23 +70,44 @@ class ViewClass
                     ];
                 }else{
                     $monthly = [];
-                    foreach($months as $index => $month){
-                        $count = $this->count($item->objective->name,null,$year,$month,null);
-                        $total = $total + $count;
-                        $monthly[] = [
-                            'name' => $month,
-                            'is_amount' => $items->first()['is_amount'],
-                            'accomplish' => $count
-                        ];
-
-                        if (!isset($monthly_all[$index])) {
-                            $monthly_all[$index] = [
+                    if($item->objective->name == 'Firms Assisted'){
+                        foreach($months as $index => $month){
+                            $count = $this->count($item->objective->name,null,$year,$month,null);
+                            $total = $total + $count;
+                            $monthly[] = [
                                 'name' => $month,
                                 'is_amount' => $items->first()['is_amount'],
-                                'accomplish' => 0
+                                'accomplish' => $count
                             ];
+
+                            if (!isset($monthly_all[$index])) {
+                                $monthly_all[$index] = [
+                                    'name' => $month,
+                                    'is_amount' => $items->first()['is_amount'],
+                                    'accomplish' => 0
+                                ];
+                            }
+                            $monthly_all[$index]['accomplish'] += $count;
                         }
-                        $monthly_all[$index]['accomplish'] += $count;
+                    }else{
+                        foreach($months as $index => $month){
+                            $count = $this->count($item->objective->name,null,$year,$month,null);
+                            $total = $total + $count;
+                            $monthly[] = [
+                                'name' => $month,
+                                'is_amount' => $items->first()['is_amount'],
+                                'accomplish' => $count
+                            ];
+
+                            if (!isset($monthly_all[$index])) {
+                                $monthly_all[$index] = [
+                                    'name' => $month,
+                                    'is_amount' => $items->first()['is_amount'],
+                                    'accomplish' => 0
+                                ];
+                            }
+                            $monthly_all[$index]['accomplish'] += $count;
+                        }
                     }
                     $grandtotal =$grandtotal + $total;
                 }
@@ -130,15 +151,34 @@ class ViewClass
     
             foreach($objectives as $kpi){
                 if(!$kpi->is_consolidated){
-                    foreach($this->laboratories as $laboratory){
+                    if($kpi->name == 'Firms Assisted'){
                         $breakdown = $data->breakdowns()->create([
                             'objective_id' => $kpi->id,
                             'count' => 0,
                             'accom' => 0,
-                            'laboratory_id' => $laboratory['value'],
+                            'laboratory_id' => null,
                             'is_consolidated' => $kpi->is_consolidated,
                             'is_amount' => $kpi->is_amount
                         ]);
+                        $breakdown = $data->breakdowns()->create([
+                            'objective_id' => $kpi->id,
+                            'count' => 0,
+                            'accom' => 0,
+                            'laboratory_id' => null,
+                            'is_consolidated' => $kpi->is_consolidated,
+                            'is_amount' => $kpi->is_amount
+                        ]);
+                    }else{
+                        foreach($this->laboratories as $laboratory){
+                            $breakdown = $data->breakdowns()->create([
+                                'objective_id' => $kpi->id,
+                                'count' => 0,
+                                'accom' => 0,
+                                'laboratory_id' => $laboratory['value'],
+                                'is_consolidated' => $kpi->is_consolidated,
+                                'is_amount' => $kpi->is_amount
+                            ]);
+                        }
                     }
                 }else{
                     $breakdown = $data->breakdowns()->create([
@@ -205,7 +245,7 @@ class ViewClass
                     return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->total);
                 });
             break;
-            case 'Value of Assistance Rendered':
+            case 'Values of Assistance Rendered':
                 $discount = Tsr::whereDoesntHave('parent')
                 ->withWhereHas('payment', function ($query) {
                     $query->where('is_free',0);
@@ -256,29 +296,85 @@ class ViewClass
                 })
                 ->count();
             break;
-            case 'Ensure 99% of Test and Calibration Reports are ready on time':
-                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
-                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
-                        $query->withWhereHas('payment', function ($query) {
-                            $query->where('is_free',1);
-                        });
-                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
-                        $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
-                    });
+            case 'Amount of Testing and Calibration Fees Collected':
+                $amount = Tsr::whereDoesntHave('parent')
+                ->withWhereHas('payment', function ($query) {
+                    $query->where('is_free',0);
                 })
-                ->count();
+                ->where('status_id','!=',5)
+                ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                ->where('agency_id',$this->agency)
+                ->get()
+                ->sum(function ($tsr) {
+                    return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->total);
+                });
+                $discount = Tsr::whereDoesntHave('parent')
+                ->withWhereHas('payment', function ($query) {
+                    $query->where('is_free',0);
+                })
+                ->where('status_id','!=',5)
+                ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                ->where('agency_id',$this->agency)
+                ->get()
+                ->sum(function ($tsr) {
+                    return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
+                });
+
+                $gratis = Tsr::whereDoesntHave('parent')
+                ->withWhereHas('payment', function ($query) {
+                    $query->where('is_free',1);
+                })
+                ->where('status_id','!=',5)
+                ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                ->where('agency_id',$this->agency)
+                ->get()
+                ->sum(function ($tsr) {
+                    return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->discount);
+                });
+
+                $count = $gratis + $discount + $amount;
+
+            break;
+            case 'Ensure 99% of Test and Calibration Reports are ready on time':
+                $count = 0;
             break;
             case 'Maintain 100% accuracy in all Test and Calibration Reports':
-                $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$index,$year){
-                    $query->whereHas('tsr', function ($query) use ($laboratory_id,$index,$year){
-                        $query->withWhereHas('payment', function ($query) {
-                            $query->where('is_free',1);
-                        });
-                        $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0);
-                        $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
+                $count = 0;
+            break;
+            case 'Firms Assisted':
+                $i = 0;
+                if($i == 0){
+                    $count = Tsr::whereDoesntHave('parent')
+                    ->withWhereHas('payment', function ($query) {
+                        $query->where('is_free',0);
+                    })
+                    ->whereHas('customer', function ($query){
+                         $query->where('classification_id',8);
+                    })
+                    ->where('status_id','!=',5)
+                    ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                    ->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)
+                    ->get()
+                    ->sum(function ($tsr) {
+                        return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->total);
                     });
-                })
-                ->count();
+                }else{
+                    $count = Tsr::whereDoesntHave('parent')
+                    ->withWhereHas('payment', function ($query) {
+                        $query->where('is_free',0);
+                    })
+                    ->whereHas('customer', function ($query){
+                         $query->where('classification_id',8);
+                    })
+                    ->where('status_id','!=',5)
+                    ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                    ->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)
+                    ->get()
+                    ->sum(function ($tsr) {
+                        return str_replace(['₱ ', '₱', ',', ' '], '', $tsr->payment->total);
+                    });
+                }
+                $i++;
             break;
             default: 
             $count = 0;

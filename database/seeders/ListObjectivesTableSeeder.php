@@ -15,7 +15,7 @@ class ListObjectivesTableSeeder extends Seeder
     {
         
 
-        \DB::table('list_objectives')->truncate();
+        \DB::table('list_objectives')->delete();
         
         \DB::table('list_objectives')->insert(array (
             0 => 
