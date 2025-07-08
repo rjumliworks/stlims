@@ -16,7 +16,7 @@ class AnalysisRequest extends FormRequest
         return [
             'testservice_id' => 'sometimes|required|integer',
             'sample_id' => 'sometimes|required|integer',
-            'fee' => 'sometimes|required'
+            // 'fee' => 'sometimes|required'
         ];
     }
 }
