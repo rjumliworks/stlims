@@ -23,7 +23,7 @@ class ItemClass
     public function lists($request){
         $data = ItemResource::collection(
             InventoryItem::query()
-            ->with('category','unittype','stocks.withdrawals')
+            ->with('category','unittype','stocks.withdrawals','stocks.supp')
             ->where('agency_id',$this->agency)
             ->when($request->keyword, function ($query, $keyword) {
                 $query->where('name', 'LIKE', "%{$keyword}%");
@@ -64,6 +64,17 @@ class ItemClass
             'message' => 'Item creation was successful!', 
             'info' => "You've successfully created the new item."
         ];
+    }
+
+    public function checkout($request){
+        $keyword = $request->keyword;
+        $data = InventoryStock::with('unittype','item:id,name','supp')
+            ->withWhereHas('item', function ($query) use ($keyword){
+                $query->where('agency_id',$this->agency);
+            })
+            ->where('code',$keyword)
+            ->first();
+        return new StockResource($data);
     }
 
     public function search($request){

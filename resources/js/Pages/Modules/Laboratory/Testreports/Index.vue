@@ -65,7 +65,7 @@
                 </div>
                 <div class="card-body bg-white rounded-bottom">
                     <div class="table-responsive table-card" style="margin-top: -39px; height: calc(100vh - 465px); overflow: auto;">
-                        <table class="table align-middle table-centered mb-0">
+                        <table class="table align-middle table-centered table-striped mb-0">
                             <thead class="table-light thead-fixed">
                                 <tr class="fs-11">
                                     <th style="width: 3%;"></th>
@@ -78,7 +78,7 @@
                                 </tr>
                             </thead>
                             <tbody class="fs-12">
-                                <tr v-for="(list,index) in lists" v-bind:key="index" @click="selectRow(index)">
+                                <tr v-for="(list,index) in lists" v-bind:key="index" @click="selectRow(index)" :class="{'bg-info-subtle fw-semibold': selectedRow === index}">
                                     <td class="text-center"> 
                                         {{ (meta.current_page - 1) * meta.per_page + index + 1 }}.
                                     </td>
@@ -133,6 +133,7 @@ export default {
             },
             index: null,
             selectedIndex: null,
+            selectedRow: null, 
         }
     },
     watch: {
@@ -183,6 +184,9 @@ export default {
         viewStatus(status){
             this.filter.status = status;
             this.fetch();
+        },
+        selectRow(index) {
+            this.selectedRow = (this.selectedRow == index) ? null : index;
         },
         refresh(){
             this.filter.keyword = null;

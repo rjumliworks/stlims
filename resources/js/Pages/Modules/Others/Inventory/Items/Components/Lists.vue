@@ -9,8 +9,8 @@
                 </div>
             </div>
             <div class="flex-grow-1">
-                <h5 class="mb-0 fs-14"><span class="text-body">List of Technical Service Requests</span></h5>
-                <p class="text-muted text-truncate-two-lines fs-12">TSRs reviewed, reports completed, and approved—ready for customer release.</p>
+                <h5 class="mb-0 fs-14"><span class="text-body">Item Master List</span></h5>
+                <p class="text-muted text-truncate-two-lines fs-12">Items in inventory, validated and available for distribution</p>
             </div>
             <div class="flex-shrink-0" style="width: 45%;">
                 <div class="input-group mb-1" style="margin-top: -3px;">

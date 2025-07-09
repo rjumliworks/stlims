@@ -141,12 +141,14 @@ border-top: none !important;
                     <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$sample['fee']),'₱ ')*$sample['count'],2,".",",")}}</td>
                 </tr>
                 @if(isset($sample['additional']))
-                <tr style="text-align: center; font-size: 9px; color: #072388;">
-                    <td colspan="3" style="text-align: left;">{{$sample['additional']['name']}}</td>
-                    <td>{{$sample['additional']['quantity']}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($sample['additional']['fee'],'₱ ')}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$sample['additional']['fee']),'₱ ')*$sample['additional']['quantity'],2,".",",")}}</td>
-                </tr>
+                    @foreach($sample['additional'] as $index=>$add)
+                    <tr style="text-align: center; font-size: 9px; color: #072388;">
+                        <td colspan="3" style="text-align: left;">{{$add['name']}}</td>
+                        <td>{{$add['quantity']}}</td>
+                        <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($add['fee'],'₱ ')}}</td>
+                        <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$add['fee']),'₱ ')*$add['quantity'],2,".",",")}}</td>
+                    </tr>
+                    @endforeach
                 @endif
             @endforeach
             @if(isset($service))

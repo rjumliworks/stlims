@@ -38,7 +38,7 @@
             <div class="col-md-12">
                 <hr class="text-muted"/>
             </div>
-            <div class="col-md-12 mb-n5">
+            <div class="col-md-12 mb-n4">
                 <div class="card bg-light-subtle shadow-none border">
                     <div class="card-header bg-light-subtle">
                         <div class="d-flex mb-n3">
@@ -65,13 +65,13 @@
                     </div>
                     <div class="card-body bg-white">
                         <div class="table-responsive table-card">
-                            <simplebar data-simplebar style="height: 280px;">
+                            <simplebar data-simplebar style="max-height: 280px;">
                                 <table class="table table-nowrap align-middle mb-0">
                                     <thead class="table-light thead-fixed">
                                         <tr class="fs-11">
                                             <th class="text-center" style="width: 4%;">#</th>
                                             <th>Supplier</th>
-                                            <th class="text-center" style="width: 13%;">PO Number</th>
+                                            <th class="text-center" style="width: 13%;">S.N. / B.N.</th>
                                             <th class="text-center" style="width: 13%;">Quantity</th>
                                             <th class="text-center" style="width: 13%;">Content</th>
                                             <th class="text-center" style="width: 13%;">Price</th>
@@ -92,7 +92,7 @@
                                             <td class="text-center">{{list.unit}} {{list.type}}</td>
                                             <td class="text-center">{{list.price}}</td>
                                             <td class="text-center">
-                                                <b-button class="mt-n1 mb-n1" @click="openView(list,selected.name)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
+                                                <b-button class="mt-n1 mb-n1" @click="openView(selected.name,list)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
                                                     <i class="ri-eye-fill align-bottom"></i>
                                                 </b-button>
                                             </td>
@@ -110,12 +110,14 @@
         </template>
     </b-modal>
     <Add @update="updateSelected" :dropdowns="dropdowns" ref="add"/>
+    <Show ref="show"/>
 </template>
 <script>
 import simplebar from "simplebar-vue";
 import Add from '../Modals/Add.vue';
+import Show from '../Modals/Show.vue';
 export default {
-    components : { simplebar, Add }, 
+    components : { simplebar, Add, Show }, 
     props: ['dropdowns'],
     data(){
         return {
@@ -134,8 +136,8 @@ export default {
             this.selected = data;
             this.showModal = true;
         },
-        openView(id,duration,date,type){
-            this.$refs.perform.show(id,duration,date,type);
+        openView(selected,item){
+            this.$refs.show.show(selected,item);
         },
         updateSelected(data){
             this.selected = data;

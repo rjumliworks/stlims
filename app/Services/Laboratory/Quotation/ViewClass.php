@@ -125,37 +125,70 @@ class ViewClass
         })->get();
 
         $groupedData = [];
+
         foreach ($samples as $row) {
             $sampleName = $row['name'];
-            
-            foreach($row['analyses'] as $index=>$analysis){
+
+            foreach ($row['analyses'] as $index => $analysis) {
                 $testName = $analysis['testservice']['testname']['name'];
                 $testMethod = $analysis['testservice']['method']['method']['name'];
-                $key = $sampleName. "_" . $analysis['sample_id'] . "_" . $testName . "_" . $testMethod;
-                
+                $key = $sampleName . "_" . $analysis['sample_id'] . "_" . $testName . "_" . $testMethod;
+
+                // Initialize grouping if not yet set
                 if (!isset($groupedData[$key])) {
-                    if($analysis['addfee']){
-                        $fee = [
-                            'name' => $analysis['addfee']['service']['name'],
-                            'fee' => $analysis['addfee']['service']['fee'],
-                            'quantity' => $analysis['addfee']['quantity'],
-                            'total' => $analysis['addfee']['total']
-                        ];
-                    }else{
-                        $fee = null;
-                    }
                     $groupedData[$key] = [
                         "samplename" => ($index == 0) ? $sampleName : '-',
                         "testname" => $testName,
                         "method" => $testMethod,
                         "count" => 0,
                         "fee" => $analysis['fee'],
-                        'additional' => $fee
+                        'additional' => [] // Store as array of grouped additional fees
                     ];
                 }
+
+                // Increase count
                 $groupedData[$key]["count"] += 1;
+
+                // Group additional fees by name and sum quantity and total
+                if (!empty($analysis['addfee'])) {
+                    $addfees = is_array($analysis['addfee']) && isset($analysis['addfee'][0])
+                        ? $analysis['addfee']            // array of fees
+                        : [$analysis['addfee']];         // single fee wrapped in array
+
+                    foreach ($addfees as $addfee) {
+                        $feeName = $addfee['service']['name'];
+                        $feeAmount = $addfee['service']['fee'];
+                        $feeQuantity = $addfee['quantity'];
+                        $feeTotal = $addfee['total'];
+
+                        // Look for existing fee by name
+                        $found = false;
+                        $feeAmount = floatval(str_replace(['₱', ','], '', $addfee['service']['fee']));
+                        $feeQuantity = (int) $addfee['quantity'];
+                        $feeTotal = floatval(str_replace(['₱', ','], '', $addfee['total']));
+                        foreach ($groupedData[$key]['additional'] as &$existingFee) {
+                            if ($existingFee['name'] === $feeName) {
+                                $existingFee['quantity'] += $feeQuantity;
+                                $existingFee['total'] += $feeTotal;
+                                $found = true;
+                                break;
+                            }
+                        }
+
+                        // If not found, add as new fee entry
+                        if (!$found) {
+                            $groupedData[$key]['additional'][] = [
+                                'name' => $feeName,
+                                'fee' => $feeAmount,
+                                'quantity' => $feeQuantity,
+                                'total' => $feeTotal,
+                            ];
+                        }
+                    }
+                }
             }
         }
+
 
         if(isset($quotation->service)){
             $service = [

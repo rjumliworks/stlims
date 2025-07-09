@@ -65,7 +65,7 @@
                 </div>
                 <div class="card-body bg-white rounded-bottom">
                     <div class="table-responsive table-card" style="margin-top: -39px; height: calc(100vh - 465px); overflow: auto;">
-                        <table class="table align-middle table-centered mb-0">
+                        <table class="table align-middle table-centered table-striped mb-0">
                             <thead class="table-light thead-fixed">
                                 <tr class="fs-11">
                                     <th></th>
@@ -79,10 +79,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="(list,index) in lists" v-bind:key="index" class="fs-12" :class="filter.status === null ? {
+                                <tr v-for="(list,index) in lists" v-bind:key="index" class="fs-12" @click="selectRow(index)" :class="filter.status === null ? {
                                         'bg-success-subtle': list.status.name === 'Completed',
                                         'bg-warning-subtle': list.status.name === 'Pending',
-                                        'bg-danger-subtle': list.status.name === 'Cancelled'
+                                        'bg-danger-subtle': list.status.name === 'Cancelled',
+                                        'bg-dark-subtle fw-semibold': selectedRow === index
                                     } : ''">
                                     <td class="text-center"> 
                                         {{ (meta.current_page - 1) * meta.per_page + index + 1 }}.
@@ -157,6 +158,7 @@ export default {
                 'ri-checkbox-circle-line',
                 'ri-close-circle-line'
             ],
+            selectedRow: null
         }
     },
     watch: {
@@ -212,6 +214,9 @@ export default {
             this.index = index;
             this.filter.status = status;
             this.fetch();
+        },
+        selectRow(index) {
+            this.selectedRow = (this.selectedRow == index) ? null : index;
         },
         moveTo(data){
             window.open('/quotations/' + data, '_blank');

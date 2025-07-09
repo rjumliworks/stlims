@@ -30,6 +30,9 @@ class InventoryController extends Controller
             case 'search':
                 return $this->item->search($request);
             break;
+            case 'checkout':
+                return $this->item->checkout($request);
+            break;
             case 'items':
                 return $this->item->lists($request);
             break;
@@ -48,6 +51,9 @@ class InventoryController extends Controller
 
     public function show($code){
         switch($code){
+            case 'checkout':
+                return inertia('Modules/Others/Inventory/Checkout/Index');
+            break;
             case 'suppliers':
                 return inertia('Modules/Others/Inventory/Suppliers/Index');
             break;

@@ -249,7 +249,7 @@
     "src": "public/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-C4z-u81J.js",
+    "file": "assets/app-C-7cv2al.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -266,7 +266,7 @@
       "node_modules/leaflet/dist/leaflet-src.esm.js"
     ],
     "css": [
-      "assets/app-D0_N_Vsq.css"
+      "assets/app-B8gY2-n7.css"
     ],
     "assets": [
       "assets/logo-sm-BMbbSDmV.png",

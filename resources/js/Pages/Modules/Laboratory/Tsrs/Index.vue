@@ -67,7 +67,7 @@
                 </div>
                 <div class="card-body bg-white rounded-bottom">
                     <div class="table-responsive table-card" style="margin-top: -39px; height: calc(100vh - 465px); overflow: auto;">
-                        <table class="table align-middle table-centered mb-0">
+                        <table class="table align-middle table-centered table-striped mb-0">
                             <thead class="table-light thead-fixed">
                                 <tr class="fs-11">
                                     <th style="width: 4%;"></th>

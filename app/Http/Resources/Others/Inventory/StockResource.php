@@ -1,23 +1,14 @@
 <?php
 
-namespace App\Http\Resources\Operation\Inventory;
+namespace App\Http\Resources\Others\Inventory;
 
 use Illuminate\Http\Request;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Writer\PngWriter;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class StockResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
-        $code = $this->code;
-        $qrCode = new QrCode($code);
-        $qrCode->setSize(300);
-        $pngWriter = new PngWriter();
-        $qrCodeImageString = $pngWriter->write($qrCode)->getString();
-        $qr = 'data:image/png;base64,' . base64_encode($qrCodeImageString);
-
         return [
             'id' => $this->id,
             'code' => $this->code,
@@ -35,8 +26,6 @@ class StockResource extends JsonResource
             'supplier_id' => $this->supplier_id,
             'bought_at' => $this->bought_at,
             'expired_at' => $this->expired_at,
-            'withdrawals' => $this->withdrawals,
-            'qr' => $qr
         ];
     }
 }

@@ -16,7 +16,7 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h5 class="mb-0 fs-14"><span class="text-body">Equipment Service Status</span></h5>
+                                    <h5 class="mb-0 fs-14"><span class="text-body">Inventory Overview</span></h5>
                                     <p class="text-muted text-truncate-two-lines fs-12">Tracks calibration and maintenance alerts</p>
                                 </div>
                                 <div class="flex-shrink-0">
