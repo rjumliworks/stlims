@@ -33,16 +33,20 @@
                             <tr>
                                 <th style="cursor: pointer; width: 4%;">#</th>
                                 <th scope="col">Name</th>
+                                <th class="text-center" style="width: 10%;">Old</th>
+                                <th class="text-center" style="width: 10%;">New</th>
                                 <th class="text-center" style="width: 10%;">#</th>
-                                <th class="text-center" style="width: 10%;">%</th>
+                                <!-- <th class="text-center" style="width: 10%;">%</th> -->
                             </tr>
                         </thead>
                         <tbody class="fs-11">
                             <tr v-for="(list,index) in industries" v-bind:key="index">
                                 <td>{{index + 1}}</td>
                                 <td>{{list.name}}</td>
+                                <td>-</td>
+                                <td>-</td>
                                 <td class="text-center">{{list.customer_industry_count}} </td>
-                                <td class="text-center">{{percentage(list.customer_industry_count)}}</td>
+                                <!-- <td class="text-center">{{percentage(list.customer_industry_count)}}</td> -->
                             </tr>
                         </tbody>
                     </table>

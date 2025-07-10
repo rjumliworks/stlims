@@ -45,6 +45,26 @@ class ViewClass
             ->when($request->individual, function ($query, $value) {
                 $query ->where('type_id',$value);
             })
+            ->when($request->region, function ($query, $region) {
+                $query->whereHas('address',function ($query) use ($region) {
+                    $query->where('region_code',$region);
+                });
+            })
+            ->when($request->province, function ($query, $province) {
+                $query->whereHas('address',function ($query) use ($province) {
+                    $query->where('province_code',$province);
+                });
+            })
+            ->when($request->municipality, function ($query, $municipality) {
+                $query->whereHas('address',function ($query) use ($municipality) {
+                    $query->where('municipality_code',$municipality);
+                });
+            })
+            ->when($request->barangay, function ($query, $barangay) {
+                $query->whereHas('address',function ($query) use ($barangay) {
+                    $query->where('barangay_code',$barangay);
+                });
+            })
             ->where('agency_id',$this->agency)
             ->orderBy('created_at','desc')
             ->paginate($request->count)

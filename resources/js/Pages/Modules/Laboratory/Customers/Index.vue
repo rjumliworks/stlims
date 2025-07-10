@@ -32,6 +32,9 @@
                                 <Multiselect v-if="filter.industry == 107" class="white" style="width: 17%;" :options="dropdowns.individuals" v-model="filter.individual" label="name" :searchable="true" placeholder="Select Individual" />
                                 <Multiselect class="white" style="width: 17%;" :options="dropdowns.industries" v-model="filter.industry" label="name" :searchable="true" placeholder="Select Industry" />
                                 <Multiselect v-if="$page.props.roles.includes('Admnistrator')" class="white" style="width: 15%;" :options="dropdowns.agencies" v-model="filter.agency" label="short" :searchable="true" placeholder="Select Agency" />
+                                <span @click="filterAddress()" class="input-group-text" v-b-tooltip.hover title="Filter by Address" style="cursor: pointer;"> 
+                                    <i class="ri-map-pin-fill search-icon"></i>
+                                </span>
                                 <span @click="refresh()" class="input-group-text" v-b-tooltip.hover title="Refresh" style="cursor: pointer;"> 
                                     <i class="bx bx-refresh search-icon"></i>
                                 </span>
@@ -119,6 +122,7 @@
             </div>
         </div>
     </BRow>
+    <Filter @submit="handleSubmit" :regions="dropdowns.regions" :region="region" ref="filter"/>
     <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
     <Edit :dropdowns="dropdowns" :region="region" @update="fetch()" ref="edit"/>
 </template>
@@ -126,11 +130,12 @@
 import _ from 'lodash';
 import Edit from './Modals/Edit.vue';
 import Create from './Modals/Create.vue';
+import Filter from './Modals/Filter.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Multiselect, Edit, Create },
+    components: { PageHeader, Pagination, Filter, Multiselect, Edit, Create },
     props: ['region','dropdowns'],
     data(){
         return {
@@ -145,6 +150,12 @@ export default {
                 sex: null,
                 agency: null,
                 individual: null,
+            },
+            location: {
+                region: null,
+                province: null,
+                municipality: null,
+                province: null
             },
             index: null,
             index2: null,
@@ -186,6 +197,10 @@ export default {
                     industry: this.filter.industry,
                     sex: this.filter.sex,
                     individual: this.filter.individual,
+                    region: this.location.region,
+                    province: this.location.province,
+                    municipality: this.location.municipality,
+                    barangay: this.location.barangay,
                     count: 10,
                     option: 'lists'
                 }
@@ -209,6 +224,16 @@ export default {
         viewClass(index,data){
             this.index2 = index;
             this.filter.class = data;
+            this.fetch();
+        },
+        filterAddress(){
+            this.$refs.filter.show();
+        },
+        handleSubmit(data) {
+            this.location.region = data.form.region;
+            this.location.province = data.form.province.value;
+            this.location.municipality = data.form.municipality.value;
+            this.location.barangay = data.form.barangay.value;
             this.fetch();
         },
     }
