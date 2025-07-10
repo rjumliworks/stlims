@@ -31,7 +31,7 @@ export default {
             currentUrl: window.location.origin,
             total: [],
             year: new Date().getFullYear(),
-            series: "bar",
+            series: [],
             chartOptions: {
                 chart: {height: 284,toolbar: {show: false,},},
                 markers: {
@@ -94,6 +94,12 @@ export default {
                 };
                 this.series = response.data.lists;
                 this.total = response.data.total;
+
+                this.$nextTick(() => {
+                    setTimeout(() => {
+                        window.dispatchEvent(new Event('resize'));
+                    }, 100);
+                });
             })
             .catch(err => console.log(err));
         },

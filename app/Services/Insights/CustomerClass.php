@@ -84,7 +84,6 @@ class CustomerClass
         $month = $request->month;
         $laboratory = $request->laboratory;
 
-
         return [
             [
                 'name' => 'Firms',
@@ -187,28 +186,133 @@ class CustomerClass
         return DefaultResource::collection($data);
     }
 
-    public function industries($request){
-        $type = $request->laboratory; 
-        $sort = ($request->sort) ? $request->sort : 'desc';
-        $year = $request->year;
-        $month = $request->month;
-        $laboratory = $request->laboratory;
+    // public function industries($request){
+    //     $type = $request->laboratory; 
+    //     $sort = ($request->sort) ? $request->sort : 'desc';
+    //     $year = $request->year;
+    //     $month = $request->month;
+    //     $laboratory = $request->laboratory;
+
+    //     $startMonth = null;
+    //     $endMonth = null;
+    //     $month = null;
+    //     if($request->by == 'By Month'){
+    //         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+    //     }elseif($request->by == 'By Quarter'){
+    //         switch($request->quarter){
+    //             case '1st Quarter':
+    //                 $startMonth = 1;
+    //                 $endMonth = 3;
+    //             break;
+    //             case '2nd Quarter':
+    //                 $startMonth = 4;
+    //                 $endMonth = 6;
+    //             break;
+    //             case '3rd Quarter':
+    //                 $startMonth = 7;
+    //                 $endMonth = 9;
+    //             break;
+    //             case '4th Quarter':
+    //                 $startMonth = 10;
+    //                 $endMonth = 12;
+    //             break;
+    //         }
+    //     }else{
+    //         switch($request->semester){
+    //             case '1st Semester':
+    //                 $startMonth = 1;
+    //                 $endMonth = 6;
+    //             break;
+    //             case '2nd Semester':
+    //                 $startMonth = 7;
+    //                 $endMonth = 12;
+    //             break;
+    //         }
+    //     }
         
-        $query = ListIndustry::query();
-        $query->withCount(['customer_industry' => function ($query) use ($laboratory,$month,$year) {
-            $query->where('agency_id', $this->agency);
-            if ($laboratory) {
-                $query->whereHas('tsrs', function ($q) use ($laboratory,$month,$year) {
-                    $q->where('laboratory_id', $laboratory);
-                    ($month) ? $q->whereMonth('created_at',$month) : '';
-                    ($year) ? $q->whereYear('created_at',$year) : '';
-                });
+    //     $query = ListIndustry::query();
+    //     $query->withCount(['customer_industry' => function ($query) use ($laboratory,$month,$year,$startMonth,$endMonth) {
+    //         $query->where('agency_id', $this->agency);
+    //         if ($laboratory) {
+    //             $query->whereHas('tsrs', function ($q) use ($laboratory,$month,$year,$startMonth,$endMonth) {
+    //                 $q->where('laboratory_id', $laboratory);
+    //                 ($month) ? $q->whereMonth('tsrs.created_at',$month) : '';
+    //                 ($year) ? $q->whereYear('tsrs.created_at',$year) : '';
+    //                 $q->when(isset($startMonth) && isset($endMonth), function ($qq) use ($startMonth, $endMonth) {
+    //                     $qq->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+    //                 });
+    //             });
+    //         }
+    //     }])
+    //     ->having('customer_industry_count', '>', 0)
+    //     ->orderBy('customer_industry_count', $sort);
+    //     $data = ($request->type == 'industry') ? $query->paginate(10) : $query->get();
+    //     return DefaultResource::collection($data);
+    // }
+
+    public function industries($request){
+        $laboratory = $request->laboratory;
+        $year = ($request->year) ? $request->year : date('Y');
+        $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');
+
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
             }
-        }])
-        ->having('customer_industry_count', '>', 0)
-        ->orderBy('customer_industry_count', $sort);
-        $data = ($request->type == 'industry') ? $query->paginate(10) : $query->get();
-        return DefaultResource::collection($data);
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+        $data = Tsr::select(
+            'list_industries.name as name',
+            \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'),
+            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 THEN tsrs.customer_id END) as new'),
+            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 THEN tsrs.customer_id END) as old'),
+        )
+        ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
+        ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id') 
+        ->when($year, function ($query) use ($year){
+            $query->whereYear('tsrs.created_at', $year);
+        })
+        ->when($month, function ($query) use ($month){
+            $query->whereMonth('tsrs.created_at', $month);
+        })
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        })
+        ->where('tsrs.agency_id', $this->agency)
+        ->groupBy('customers.industry_id', 'list_industries.name')
+        ->orderBy('consolidated', 'DESC')
+        ->get();
+        return $data;
     }
 
     public function purposes($request){
@@ -216,13 +320,53 @@ class CustomerClass
         $year = $request->year;
         $month = $request->month;
         $laboratory = $request->laboratory;
+
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
         
         $query = ListDropdown::query()->where('classification','Purpose');
-        $query->withCount(['customer_purpose' => function ($query) use ($laboratory,$month,$year) {
+        $query->withCount(['customer_purpose' => function ($query) use ($laboratory,$month,$year,$startMonth,$endMonth) {
             $query->where('agency_id', $this->agency)->whereIn('status_id',[2,3,4]);
             ($laboratory) ? $query->where('laboratory_id',$laboratory) : '';
             ($month) ? $query->whereMonth('created_at',$month) : '';
             ($year) ? $query->whereYear('created_at',$year) : '';
+            $query->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+                $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+            });
         }])
         ->orderBy('customer_purpose_count', $sort);
         $data = ($request->type == 'purpose') ? $query->paginate(10) : $query->get();
@@ -234,14 +378,54 @@ class CustomerClass
         $year = $request->year;
         $month = $request->month;
         $laboratory = $request->laboratory;
+
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
         
         $query = ListDiscount::query();
-        $query->withCount(['payment' => function ($query) use ($laboratory,$year,$month) {
-            $query->whereHas('tsr', function ($query) use ($laboratory,$year,$month) {
+        $query->withCount(['payment' => function ($query) use ($laboratory,$year,$month,$startMonth,$endMonth) {
+            $query->whereHas('tsr', function ($query) use ($laboratory,$year,$month,$startMonth,$endMonth) {
                 $query->where('agency_id', $this->agency)->whereIn('status_id',[2,3,4]);
                 ($laboratory) ? $query->where('laboratory_id', $laboratory) : ''; 
                 ($month) ? $query->whereMonth('created_at',$month) : '';
                 ($year) ? $query->whereYear('created_at',$year) : '';
+                $query->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+                    $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+                });
             });
         }])
         ->orderBy('payment_count', $sort);
@@ -255,13 +439,53 @@ class CustomerClass
         $month = $request->month;
         $laboratory = $request->laboratory;
 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+
         $query = Customer::query()->select('id','name','is_main','name_id','agency_id')->with('customer_name:id,name,has_branches');
         $query->where('agency_id', $this->agency);
-        $query->withCount(['tsrs' => function ($query) use ($year,$month,$laboratory){
+        $query->withCount(['tsrs' => function ($query) use ($year,$month,$laboratory,$startMonth,$endMonth){
             $query->whereIn('status_id', [3,4]);
             ($laboratory) ? $query->where('laboratory_id',$laboratory) : '';
             ($year) ? $query->whereYear('created_at',$year) : '';
             ($month) ? $query->whereMonth('created_at',$month) : '';
+            $query->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+                $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+            });
         }])
         ->orderBy('tsrs_count', $sort);
         $data = ($request->type == 'tsr') ? $query->paginate(10) : $query->take(10)->get();
@@ -274,11 +498,51 @@ class CustomerClass
         $month = $request->month;
         $laboratory = $request->laboratory;
 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+
         $query = Tsr::query()->whereIn('status_id', [3,4]);
         $query->where('agency_id', $this->agency);
         ($laboratory) ? $query->where('laboratory_id',$laboratory) : '';
         ($year) ? $query->whereYear('created_at',$year) : '';
         ($month) ? $query->whereMonth('created_at',$month) : '';
+        $query->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+        });
         $data = $query->count();
         return $data;
     }
@@ -288,6 +552,43 @@ class CustomerClass
         $year = $request->year;
         $month = $request->month;
         $laboratory = $request->laboratory;
+
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
 
         $query = Customer::query();
         $query->select('customers.id','customers.agency_id', 'customers.name','customers.is_main', 'customer_names.name as customer_name','customer_names.has_branches as has_branches',\DB::raw('SUM(tsr_payments.total) as total'))
@@ -301,6 +602,9 @@ class CustomerClass
         ($laboratory) ? $query->where('tsrs.laboratory_id', $laboratory) : '';
         ($year) ? $query->whereYear('tsr_payments.paid_at', $year) : '';
         ($month) ? $query->whereMonth('tsr_payments.paid_at', $month) : '';
+        $query->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsr_payments.paid_at)'), [$startMonth, $endMonth]);
+        });
         $data = ($request->type == 'spender') ? $query->paginate(10) : $query->take(10)->get();
 
         return DefaultResource::collection($data);
@@ -311,6 +615,43 @@ class CustomerClass
         $year = ($request->year) ? $request->year : date('Y');
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');
 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+
         $data = Tsr::select(
             'list_industries.name as name',
             \DB::raw('COUNT(tsrs.id) as warm_bodies'),
@@ -319,8 +660,15 @@ class CustomerClass
         )
         ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
         ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id') 
-        ->whereYear('tsrs.created_at', $year)
-        ->whereMonth('tsrs.created_at', $month)
+        ->when($year, function ($query) use ($year){
+            $query->whereYear('tsrs.created_at', $year);
+        })
+        ->when($month, function ($query) use ($month){
+            $query->whereMonth('tsrs.created_at', $month);
+        })
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        })
         ->where('tsrs.agency_id', $this->agency)
         ->groupBy('customers.industry_id', 'list_industries.name')
         ->orderBy('total', 'DESC')
@@ -333,6 +681,43 @@ class CustomerClass
         $year = ($request->year) ? $request->year : date('Y');
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');
 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+
         $data = Tsr::select(
             'list_dropdowns.name as name', 
             \DB::raw('COUNT(tsrs.id) as warm_bodies'), 
@@ -342,6 +727,9 @@ class CustomerClass
         ->join('list_dropdowns', 'list_dropdowns.id', '=', 'tsrs.purpose_id') 
         ->whereYear('tsrs.created_at', $year) 
         ->whereMonth('tsrs.created_at', $month)
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        })
         ->where('tsrs.agency_id', $this->agency)
         ->groupBy('list_dropdowns.name') 
         ->orderBy('total', 'DESC') 
@@ -364,6 +752,9 @@ class CustomerClass
         ->join('list_discounts', 'list_discounts.id', '=', 'tsr_payments.discount_id') 
         ->whereYear('tsrs.created_at', $year)
         ->whereMonth('tsrs.created_at', $month)
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        })
         ->where('tsrs.agency_id', $this->agency)
         ->groupBy('list_discounts.name')
         ->orderBy('total', 'DESC')
@@ -376,17 +767,61 @@ class CustomerClass
         $year = ($request->year) ? $request->year : date('Y');
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');
 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+
         $data = Tsr::select(
             'list_dropdowns.name as name', 
             \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'), 
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 THEN tsrs.customer_id END) as new'),
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 THEN tsrs.customer_id END) as old'),
+            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 AND customers.classification_id = 8 THEN tsrs.customer_id END) as new'),
+            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 AND customers.classification_id = 8 THEN tsrs.customer_id END) as old'),
         )
         ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
         ->join('list_dropdowns', 'list_dropdowns.id', '=', 'tsrs.purpose_id') 
         ->where('customers.classification_id',8)
-        ->whereYear('tsrs.created_at', $year) 
-        ->whereMonth('tsrs.created_at', $month)
+          ->when($year, function ($query) use ($year){
+            $query->whereYear('tsrs.created_at', $year);
+        })
+        ->when($month, function ($query) use ($month){
+            $query->whereMonth('tsrs.created_at', $month);
+        })
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        })
         ->where('tsrs.agency_id', $this->agency)
         ->groupBy('list_dropdowns.name') 
         ->orderBy('consolidated', 'DESC') 
@@ -419,17 +854,60 @@ class CustomerClass
         $year = ($request->year) ? $request->year : date('Y');
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');
 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
         $data = Tsr::select(
             'list_industries.name as name',
             \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'),
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 THEN tsrs.customer_id END) as new'),
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 THEN tsrs.customer_id END) as old'),
+            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 AND customers.classification_id = 8 THEN tsrs.customer_id END) as new'),
+            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 AND customers.classification_id = 8 THEN tsrs.customer_id END) as old'),
         )
         ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
         ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id') 
-        ->where('customers.classification_id',8)
-        ->whereYear('tsrs.created_at', $year)
-        ->whereMonth('tsrs.created_at', $month)
+        // ->where('customers.classification_id',8)
+        ->when($year, function ($query) use ($year){
+            $query->whereYear('tsrs.created_at', $year);
+        })
+        ->when($month, function ($query) use ($month){
+            $query->whereMonth('tsrs.created_at', $month);
+        })
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        })
         ->where('tsrs.agency_id', $this->agency)
         ->groupBy('customers.industry_id', 'list_industries.name')
         ->orderBy('consolidated', 'DESC')

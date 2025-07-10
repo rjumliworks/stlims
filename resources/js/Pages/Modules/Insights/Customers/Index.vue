@@ -7,8 +7,12 @@
                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                 <input type="text" placeholder="Search Request" class="form-control" style="width: 20%;">
                 <Multiselect class="white" style="width: 15%;" :options="types" v-model="laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
+                <Multiselect v-if="by == 'By Semester'" class="white" style="width: 13%;" :options="semesters" v-model="semester" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect v-if="by == 'By Quarter'" class="white" style="width: 13%;" :options="quarters" v-model="quarter" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect v-if="by == 'By Month'" class="white" style="width: 13%;" :options="months" v-model="month" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect class="white" style="width: 12%;" :options="['By Month','By Quarter','By Semester']" v-model="by" label="name" :allow-empty="false" :searchable="true" placeholder="Filter By" />
+                <Multiselect class="white" style="width: 12%;" :options="['External','Internal']" v-model="customer" label="name" :allow-empty="false" :searchable="true" placeholder="Filter Customer" />
                 <Multiselect class="white" style="width: 15%;" :options="years" v-model="year" label="name" :searchable="true" placeholder="Select Year" />
-                <b-button type="button" variant="light"> PEZA </b-button>
                 <b-button type="button" variant="primary"> Filter Data </b-button>
             </div>
         </b-col>
@@ -92,6 +96,13 @@ export default {
             industriesfirm: [],
             purposesfirm: [],
             genders: [],
+            by: null,
+            customer: null,
+            semester: null,
+            quarter: null,
+            months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+            quarters: ['1st Quater','2nd Quarter','3rd Quarter','4th Quarter'],
+            semesters: ['1st Semester','2nd Semester'],
             total: null,
         }
     },
@@ -104,6 +115,18 @@ export default {
         },
         "laboratory"(newVal){
             this.fetch();
+        },
+        "quarter"(newVal){
+            this.fetch();
+        },
+        "semester"(newVal){
+            this.fetch();
+        },
+        "month"(newVal){
+            this.fetch();
+        },
+        "customer"(newVal){
+            this.fetch();
         }
     },
     methods: {
@@ -113,6 +136,10 @@ export default {
                     laboratory: this.laboratory,
                     month: this.month,
                     year: this.year,
+                    semester: this.semester,
+                    quarter: this.quarter,
+                    by: this.by,
+                    customer: this.customer,
                     option: 'customers'
                 }
             })
