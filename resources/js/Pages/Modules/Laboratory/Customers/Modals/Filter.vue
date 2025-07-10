@@ -26,7 +26,7 @@
         </form>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Cancel</b-button>
-            <b-button @click="submitExcel('ok')" variant="success" :disabled="form.processing || !isFormValid" block>Excel</b-button>
+            <b-button @click="submitExcel('ok')" variant="success" block>Excel</b-button>
             <b-button @click="submit('ok')" variant="primary" :disabled="form.processing || !isFormValid" block>Submit</b-button>
         </template>
     </b-modal>
@@ -91,9 +91,27 @@ export default {
             this.fetchProvince(this.region);
             this.showModal = true;
         },  
-        submitExcel(){
-            window.open('/reports?option=peza&region='+this.form.region+'&province='+this.form.province.value+'&municipality='+this.form.municipality.value+'&barangay='+this.form.barangay.value);
-        },
+        submitExcel() {
+    const params = new URLSearchParams();
+
+    params.append('option', 'peza');
+
+    if (this.form.region) {
+        params.append('region', this.form.region);
+    }
+    if (this.form.province?.value) {
+        params.append('province', this.form.province.value);
+    }
+    if (this.form.municipality?.value) {
+        params.append('municipality', this.form.municipality.value);
+    }
+    if (this.form.barangay?.value) {
+        params.append('barangay', this.form.barangay.value);
+    }
+
+    const url = `/reports?${params.toString()}`;
+    window.open(url);
+},
         submit(){
             this.$emit('submit', {
                 index: this.index,
