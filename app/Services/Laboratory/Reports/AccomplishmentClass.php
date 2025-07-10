@@ -212,8 +212,12 @@ class AccomplishmentClass
     public function analyses($request){
         $year = ($request->year) ? $request->year : date('Y');
         $lab = ($request->laboratory) ? $request->laboratory : null;
+        $quarter = ($request->quarter) ? $request->quarter : null;
+        $semester = ($request->semester) ? $request->semester : null;
+        $customer = ($request->customer) ? $request->customer : null;
+        $by = ($request->by) ? $request->by : null;
 
-        return Excel::download(new AnalysisExport($year,$lab), 'analysis.xlsx');
+        return Excel::download(new AnalysisExport($year,$lab,$quarter,$semester,$customer,$by), 'analysis.xlsx');
     }
     
     public function counts($request){

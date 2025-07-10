@@ -367,7 +367,7 @@ export default {
             .catch(err => console.log(err));
         },
         openTop(type){
-            window.open('/reports?year='+this.year+'&option='+type+'&laboratory='+this.laboratory);
+            window.open('/reports?year='+this.year+'&option='+type+'&laboratory='+this.laboratory+'&semester='+this.semester+'&quarter='+this.quarter+'&customer='+this.customer+'&by='+this.by);
         },
     }
 }

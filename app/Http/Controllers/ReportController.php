@@ -24,6 +24,7 @@ class ReportController extends Controller
                 return $this->accomplishment->pdf($request);
             break;
             case 'excel':
+                
                 return $this->accomplishment->excel($request);
             break;
             case 'accounting':
