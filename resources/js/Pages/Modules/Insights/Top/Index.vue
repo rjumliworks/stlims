@@ -73,9 +73,13 @@
         <b-col lg>
             <div class="input-group mb-1">
                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
-                <input type="text" placeholder="Search Request" class="form-control" style="width: 40%;">
+                <input type="text" placeholder="Search Request" class="form-control" style="width: 30%;">
                 <Multiselect class="white" style="width: 15%;" :options="types" v-model="laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
-                <Multiselect class="white" style="width: 15%;" :options="months" v-model="month" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect v-if="by == 'By Semester'" class="white" style="width: 15%;" :options="semesters" v-model="semester" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect v-if="by == 'By Quarter'" class="white" style="width: 15%;" :options="quarters" v-model="quarter" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect v-if="by == 'By Month'" class="white" style="width: 15%;" :options="months" v-model="month" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
+                <Multiselect class="white" style="width: 15%;" :options="['By Month','By Quarter','By Semester']" v-model="by" label="name" :allow-empty="false" :searchable="true" placeholder="Filter By" />
+                <Multiselect class="white" style="width: 15%;" :options="['External','Internal']" v-model="customer" label="name" :allow-empty="false" :searchable="true" placeholder="Filter Customer" />
                 <Multiselect class="white" style="width: 15%;" :options="years" v-model="year" label="name" :searchable="true" placeholder="Select Year" />
                 <!-- <b-button @click="refresh()" type="button" variant="">
                     <i class="bx bx-refresh"></i> 
@@ -285,6 +289,7 @@ export default {
             currentUrl: window.location.origin,
             month: this.info.month,
             year: this.info.year,
+            by: null,
             laboratories: [],
             samples: [],
             analyses: [],
@@ -292,7 +297,12 @@ export default {
             laboratory: null,
             date: null,
             total: [],
-            months: ['January','February','March','April','May','June','July','August','September','October','November','December']
+            customer: null,
+            semester: null,
+            quarter: null,
+            months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+            quarters: ['1st Quater','2nd Quarter','3rd Quarter','4th Quarter'],
+            semesters: ['1st Semester','2nd Semester']
         }
     },
     created(){
@@ -304,6 +314,15 @@ export default {
             this.fetchTop();
         },
         "month"(newVal){
+            this.fetchTop();
+        },
+        "semester"(newVal){
+            this.fetchTop();
+        },
+        "quarter"(newVal){
+            this.fetchTop();
+        },
+         "customer"(newVal){
             this.fetchTop();
         },
         "year"(newVal){
@@ -333,6 +352,10 @@ export default {
                     laboratory: this.laboratory,
                     month: this.month,
                     year: this.year,
+                    semester: this.semester,
+                    quarter: this.quarter,
+                    by: this.by,
+                    customer: this.customer,
                     option: 'tops'
                 }
             })

@@ -35,7 +35,42 @@ class TopClass
     }
 
     public function samples($request){
-        $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
 
         $data = TsrSample::select('name', \DB::raw('count(*) as count'))
         ->withWhereHas('tsr',function ($query) use ($request){
@@ -43,12 +78,20 @@ class TopClass
             $query->when($request->laboratory, function ($query, $laboratory) {
                 $query->where('laboratory_id',$laboratory);
             });
+            $query->whereHas('customer',function ($query) use ($request){
+                $query ->when($request->customer, function ($query, $customer) {
+                   ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
+                });
+            });
         })
         ->when($month, function ($query, $month) {
             $query->whereMonth('created_at',$month);
         })
         ->when($request->year, function ($query, $year) {
             $query->whereYear('created_at',$year);
+        })
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
         })
         ->groupBy('name')
         ->orderBy('count', 'desc')
@@ -58,7 +101,42 @@ class TopClass
     }
 
     public function analyses($request){
-        $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
 
         $data = TsrAnalysis::with('testservice.testname')
         ->select('testservice_id', \DB::raw('count(*) as count'))
@@ -66,6 +144,11 @@ class TopClass
             $query->whereHas('tsr', function ($query) use ($request) {
                 $query->when($request->laboratory, function ($query, $laboratory) {
                     $query->where('laboratory_id', $laboratory);
+                });
+                $query->whereHas('customer',function ($query) use ($request){
+                    $query ->when($request->customer, function ($query, $customer) {
+                    ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
+                    });
                 });
             });
         })
@@ -76,6 +159,9 @@ class TopClass
         ->when($request->year, function ($query, $year) {
             $query->whereYear('created_at',$year);
         })
+        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+        })
         ->groupBy('testservice_id')
         ->orderBy('count', 'desc')
         ->take(10)
@@ -84,24 +170,78 @@ class TopClass
     }
 
     public function customers($request){
-        $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        $startMonth = null;
+        $endMonth = null;
+        $month = null;
+        if($request->by == 'By Month'){
+            $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : null; 
+        }elseif($request->by == 'By Quarter'){
+            switch($request->quarter){
+                case '1st Quarter':
+                    $startMonth = 1;
+                    $endMonth = 3;
+                break;
+                case '2nd Quarter':
+                    $startMonth = 4;
+                    $endMonth = 6;
+                break;
+                case '3rd Quarter':
+                    $startMonth = 7;
+                    $endMonth = 9;
+                break;
+                case '4th Quarter':
+                    $startMonth = 10;
+                    $endMonth = 12;
+                break;
+            }
+        }else{
+            switch($request->semester){
+                case '1st Semester':
+                    $startMonth = 1;
+                    $endMonth = 6;
+                break;
+                case '2nd Semester':
+                    $startMonth = 7;
+                    $endMonth = 12;
+                break;
+            }
+        }
+
         $year = $request->year;
         $laboratory = $request->laboratory;
 
-        $data = Customer::select('id','name','is_main','name_id','agency_id')
-        ->with('customer_name:id,name,has_branches')
-        ->where('agency_id',$this->agency)
-        ->withCount(['tsrs' => function ($query) use ($year,$month,$laboratory){
-            $query->whereIn('status_id', [3,4]);
-            ($year) ? $query->whereYear('created_at',$year) : '';
-            ($month) ? $query->whereMonth('created_at',$month) : '';
-            $query->when($laboratory, function ($query, $laboratory) {
-                $query->where('laboratory_id', $laboratory);
+        $data = Customer::select('id', 'name', 'is_main', 'name_id', 'agency_id')
+    ->with('customer_name:id,name,has_branches')
+    ->where('agency_id', $this->agency)
+    ->withCount(['tsrs' => function ($query) use ($year, $month, $startMonth, $endMonth, $laboratory, $request) {
+        $query->whereIn('status_id', [3, 4]);
+
+        if ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        if ($month) {
+            $query->whereMonth('created_at', $month);
+        }
+
+        if (isset($startMonth) && isset($endMonth)) {
+            $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+        }
+
+        $query->when($laboratory, function ($query, $laboratory) {
+            $query->where('laboratory_id', $laboratory);
+        });
+
+        $query->whereHas('customer', function ($query) use ($request) {
+            $query->when($request->customer, function ($query, $customer) {
+                $query->where('is_internal', $customer == 'Internal' ? 1 : 0);
             });
-        }])
-        ->orderBy('tsrs_count', 'desc')
-        ->take(10)
-        ->get();
+        });
+    }])
+    ->having('tsrs_count', '>', 0) // ✅ Only include customers with at least 1 tsr
+    ->orderBy('tsrs_count', 'desc')
+    ->take(10)
+    ->get();
         return $data;
     }
 }
