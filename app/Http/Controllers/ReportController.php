@@ -36,6 +36,9 @@ class ReportController extends Controller
             case 'samples':
                 return $this->accomplishment->samples($request);
             break;
+            case 'peza':
+                return $this->accomplishment->peza($request);
+            break;
             case 'analyses':
                 return $this->accomplishment->analyses($request);
             break;

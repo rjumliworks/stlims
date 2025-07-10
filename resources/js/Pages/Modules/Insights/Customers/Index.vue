@@ -8,6 +8,7 @@
                 <input type="text" placeholder="Search Request" class="form-control" style="width: 20%;">
                 <Multiselect class="white" style="width: 15%;" :options="types" v-model="laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
                 <Multiselect class="white" style="width: 15%;" :options="years" v-model="year" label="name" :searchable="true" placeholder="Select Year" />
+                <b-button type="button" variant="light"> PEZA </b-button>
                 <b-button type="button" variant="primary"> Filter Data </b-button>
             </div>
         </b-col>

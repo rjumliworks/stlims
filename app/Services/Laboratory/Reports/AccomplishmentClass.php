@@ -15,6 +15,7 @@ use App\Exports\SampleExport;
 use App\Exports\AnalysisExport;
 use App\Exports\CountExport;
 use App\Exports\SpenderExport;
+use App\Exports\PezaExport;
 
 class AccomplishmentClass
 {
@@ -232,5 +233,14 @@ class AccomplishmentClass
         $lab = ($request->laboratory) ? $request->laboratory : null;
 
         return Excel::download(new SpenderExport($year,$lab), 'spender.xlsx');
+    }
+
+    public function peza($request){
+        $region = ($request->region) ? $request->region : null;
+        $province = ($request->province) ? $request->province : null;
+        $municipality = ($request->municipality) ? $request->municipality : null;
+        $barangay = ($request->barangay) ? $request->barangay : null;
+
+        return Excel::download(new PezaExport($region,$province,$municipality,$barangay), 'peza.xlsx');
     }
 }

@@ -26,6 +26,7 @@
         </form>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Cancel</b-button>
+            <b-button @click="submitExcel('ok')" variant="success" :disabled="form.processing || !isFormValid" block>Excel</b-button>
             <b-button @click="submit('ok')" variant="primary" :disabled="form.processing || !isFormValid" block>Submit</b-button>
         </template>
     </b-modal>
@@ -90,6 +91,9 @@ export default {
             this.fetchProvince(this.region);
             this.showModal = true;
         },  
+        submitExcel(){
+            window.open('/reports?option=peza&region='+this.form.region+'&province='+this.form.province.value+'&municipality='+this.form.municipality.value+'&barangay='+this.form.barangay.value);
+        },
         submit(){
             this.$emit('submit', {
                 index: this.index,
