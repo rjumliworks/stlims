@@ -291,15 +291,35 @@ class CustomerClass
                 break;
             }
         }
+        // $data = Tsr::select(
+        //     'list_industries.name as name',
+        //     \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'),
+        //     \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 THEN tsrs.customer_id END) as new'),
+        //     \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 THEN tsrs.customer_id END) as old'),
+        // )
+        // ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
+        // ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id') 
+        // ->when($year, function ($query) use ($year){
+        //     $query->whereYear('tsrs.created_at', $year);
+        // })
+        // ->when($month, function ($query) use ($month){
+        //     $query->whereMonth('tsrs.created_at', $month);
+        // })
+        // ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+        //     $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        // })
+        // ->where('tsrs.agency_id', $this->agency)
+        // ->groupBy('customers.industry_id', 'list_industries.name')
+        // ->orderBy('consolidated', 'DESC')
+        // ->get();
         $data = Tsr::select(
             'list_industries.name as name',
-            \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'),
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 THEN tsrs.customer_id END) as new'),
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 THEN tsrs.customer_id END) as old'),
+            \DB::raw('COUNT(CASE WHEN customers.is_new = 1 THEN tsrs.id END) as new'),
+            \DB::raw('COUNT(tsrs.id) as total')
         )
-        ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
-        ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id') 
-        ->when($year, function ($query) use ($year){
+        ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
+        ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id')
+          ->when($year, function ($query) use ($year){
             $query->whereYear('tsrs.created_at', $year);
         })
         ->when($month, function ($query) use ($month){
@@ -309,9 +329,10 @@ class CustomerClass
             $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
         })
         ->where('tsrs.agency_id', $this->agency)
-        ->groupBy('customers.industry_id', 'list_industries.name')
-        ->orderBy('consolidated', 'DESC')
+        ->groupBy('list_industries.id', 'list_industries.name')
+        ->orderBy('total', 'DESC')
         ->get();
+
         return $data;
     }
 
@@ -805,14 +826,12 @@ class CustomerClass
         }
 
         $data = Tsr::select(
-            'list_dropdowns.name as name', 
-            \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'), 
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 AND customers.classification_id = 8 THEN tsrs.customer_id END) as new'),
-            \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 AND customers.classification_id = 8 THEN tsrs.customer_id END) as old'),
+            'list_industries.name as name',
+            \DB::raw('COUNT(CASE WHEN customers.is_new = 1 AND customers.classification_id = 8 THEN tsrs.id END) as new'),
+            \DB::raw('COUNT(CASE WHEN customers.classification_id = 8 THEN tsrs.id END) as total')
         )
-        ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
-        ->join('list_dropdowns', 'list_dropdowns.id', '=', 'tsrs.purpose_id') 
-        ->where('customers.classification_id',8)
+        ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
+        ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id')
           ->when($year, function ($query) use ($year){
             $query->whereYear('tsrs.created_at', $year);
         })
@@ -823,10 +842,35 @@ class CustomerClass
             $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
         })
         ->where('tsrs.agency_id', $this->agency)
-        ->groupBy('list_dropdowns.name') 
-        ->orderBy('consolidated', 'DESC') 
+        ->groupBy('list_industries.id', 'list_industries.name')
+        ->orderBy('total', 'DESC')
         ->get();
+
         return $data;
+
+        // $data = Tsr::select(
+        //     'list_dropdowns.name as name', 
+        //     \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'), 
+        //     \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 1 AND customers.classification_id = 8 THEN tsrs.customer_id END) as new'),
+        //     \DB::raw('COUNT(DISTINCT CASE WHEN customers.is_new = 0 AND customers.classification_id = 8 THEN tsrs.customer_id END) as old'),
+        // )
+        // ->join('customers', 'customers.id', '=', 'tsrs.customer_id') 
+        // ->join('list_dropdowns', 'list_dropdowns.id', '=', 'tsrs.purpose_id') 
+        // ->where('customers.classification_id',8)
+        //   ->when($year, function ($query) use ($year){
+        //     $query->whereYear('tsrs.created_at', $year);
+        // })
+        // ->when($month, function ($query) use ($month){
+        //     $query->whereMonth('tsrs.created_at', $month);
+        // })
+        // ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+        //     $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+        // })
+        // ->where('tsrs.agency_id', $this->agency)
+        // ->groupBy('list_dropdowns.name') 
+        // ->orderBy('consolidated', 'DESC') 
+        // ->get();
+        // return $data;
     }
 
     public function gender($request){

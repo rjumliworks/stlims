@@ -34,7 +34,7 @@
                                 <th style="cursor: pointer; width: 4%;">#</th>
                                 <th scope="col">Name</th>
                                 <th class="text-center" style="width: 10%;">New</th>
-                                <th class="text-center" style="width: 10%;">Old</th>
+                                <th class="text-center" style="width: 10%;">Total</th>
                                 <!-- <th class="text-center" style="width: 10%;">#</th> -->
                                 <!-- <th class="text-center" style="width: 10%;">%</th> -->
                             </tr>
@@ -44,7 +44,7 @@
                                 <td>{{index + 1}}</td>
                                 <td>{{list.name}}</td>
                                  <td class="text-center">{{list.new}} </td>
-                                <td class="text-center">{{list.old}}</td>
+                                <td class="text-center">{{list.total}}</td>
                                 <!-- <td class="text-center">{{list.customer_industry_count}} </td> -->
                                 <!-- <td class="text-center">{{percentage(list.customer_industry_count)}}</td> -->
                             </tr>
