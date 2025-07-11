@@ -205,7 +205,7 @@
                             <tbody class="fs-12">
                                 <tr v-for="(list,index) in analyses" v-bind:key="index">
                                     <td>{{index + 1}}</td>
-                                    <td>{{list.testservice.testname.name  }}</td>
+                                    <td>{{list.name  }}</td>
                                     <td class="text-center">{{list.count}}</td>
                                 </tr>
                             </tbody>

@@ -138,33 +138,30 @@ class TopClass
             }
         }
 
-        $data = TsrAnalysis::with('testservice.testname')
-        ->select('testservice_id', \DB::raw('count(*) as count'))
-        ->withWhereHas('sample', function ($query) use ($request) {
-            $query->whereHas('tsr', function ($query) use ($request) {
-                $query->when($request->laboratory, function ($query, $laboratory) {
-                    $query->where('laboratory_id', $laboratory);
-                });
-                $query->whereHas('customer',function ($query) use ($request){
-                    $query ->when($request->customer, function ($query, $customer) {
-                    ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
-                    });
-                });
-            });
+        $data = \DB::table('tsr_analyses')
+        ->join('testservices', 'testservices.id', '=', 'tsr_analyses.testservice_id')
+        ->join('testservice_names', 'testservice_names.id', '=', 'testservices.testname_id')
+        ->join('tsr_samples', 'tsr_samples.id', '=', 'tsr_analyses.sample_id')
+        ->join('tsrs', 'tsrs.id', '=', 'tsr_samples.tsr_id')
+        ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
+        ->select('testservice_names.name as name', \DB::raw('COUNT(*) as count'))
+        ->where('tsr_analyses.status_id', '!=', 13)
+        ->when($month, fn($q) => $q->whereMonth('tsr_analyses.created_at', $month))
+        ->when($request->year, fn($q) => $q->whereYear('tsr_analyses.created_at', $request->year))
+        ->when(isset($startMonth) && isset($endMonth), fn($q) => 
+            $q->whereBetween(\DB::raw('MONTH(tsr_analyses.created_at)'), [$startMonth, $endMonth])
+        )
+        ->when($request->laboratory, fn($q, $lab) => $q->where('tsrs.laboratory_id', $lab))
+        ->when($request->customer, function ($q, $customer) {
+            if ($customer === 'Internal') {
+                $q->where('customers.is_internal', 1);
+            } else {
+                $q->where('customers.is_internal', 0);
+            }
         })
-        ->where('status_id', '!=', 13)
-        ->when($month, function ($query, $month) {
-            $query->whereMonth('created_at',$month);
-        })
-        ->when($request->year, function ($query, $year) {
-            $query->whereYear('created_at',$year);
-        })
-        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
-            $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
-        })
-        ->groupBy('testservice_id')
-        ->orderBy('count', 'desc')
-        ->take(100)
+        ->groupBy('testservice_names.name')
+        ->orderByDesc('count')
+        ->limit(100)
         ->get();
         return $data;
     }
