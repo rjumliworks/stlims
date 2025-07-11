@@ -164,7 +164,7 @@ class TopClass
         })
         ->groupBy('testservice_id')
         ->orderBy('count', 'desc')
-        ->take(50)
+        ->take(100)
         ->get();
         return $data;
     }
