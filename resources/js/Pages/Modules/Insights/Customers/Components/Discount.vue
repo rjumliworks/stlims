@@ -33,6 +33,7 @@
                             <tr>
                                 <th style="cursor: pointer; width: 4%;">#</th>
                                 <th scope="col">Name</th>
+                                <th class="text-center" style="width: 20%;">Total</th>
                                 <th class="text-center" style="width: 10%;">#</th>
                                 <th class="text-center" style="width: 10%;">%</th>
                             </tr>
@@ -41,6 +42,7 @@
                             <tr v-for="(list,index) in discounts" v-bind:key="index">
                                 <td>{{index + 1}}</td>
                                 <td>{{list.name}}</td>
+                                <td class="text-center">{{formatMoney(list.total_discount)}} </td>
                                 <td class="text-center">{{list.payment_count}} </td>
                                 <td class="text-center">{{percentage(list.payment_count)}}</td>
                             </tr>
@@ -75,6 +77,10 @@ export default {
         },
         openView(){
             this.$refs.discount.show();
+        },
+        formatMoney(value) {
+            let val = (value/1).toFixed(2).replace(',', '.')
+            return '₱'+val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
         }
     }
 }

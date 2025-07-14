@@ -4,7 +4,7 @@
             <BRow class="g-3 mt-1">
                 <BCol lg="12" class="mt-1 mb-n1">
                     <InputLabel for="name" value="Name" :message="form.errors.name"/>
-                    <TextInput id="name" v-model="form.name" type="text" class="form-control" autofocus placeholder="Please enter item name" autocomplete="name" required :class="{ 'is-invalid': form.errors.name }" readonly @input="handleInput('name')" :light="true"/>
+                    <TextInput id="name" v-model="form.name" type="text" class="form-control" autofocus placeholder="Please enter item name" @input="handleInput('name')" :light="true"/>
                 </BCol>
                 <BCol lg="6" class="mt-1">
                     <InputLabel for="category_id" value="Category" :message="form.errors.category_id"/>
@@ -14,7 +14,7 @@
                     <InputLabel for="category_id" value="Reorder point" :message="form.errors.reorder"/>
                     <div class="input-group mb-1">
                         <input type="text" v-model="form.reorder" placeholder="Size" class="form-control" style="height: 39px; width: 50%; background-color: #f5f6f7;">
-                        <select v-model="form.unit_id" class="form-select" id="inputGroupSelect02" style="height: 39px; width: 50%; background-color: #f5f6f7;" disabled>
+                        <select v-model="form.unit_id" class="form-select" id="inputGroupSelect02" style="height: 39px; width: 50%; background-color: #f5f6f7;">
                             <option :value="null" selected>Select</option>
                             <option :value="list.value" v-for="list in dropdowns.units" v-bind:key="list.value">{{list.name}}</option>
                         </select>

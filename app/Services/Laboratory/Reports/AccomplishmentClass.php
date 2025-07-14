@@ -206,8 +206,12 @@ class AccomplishmentClass
     public function samples($request){
         $year = ($request->year) ? $request->year : date('Y');
         $lab = ($request->laboratory) ? $request->laboratory : null;
+        $quarter = ($request->quarter) ? $request->quarter : null;
+        $semester = ($request->semester) ? $request->semester : null;
+        $customer = ($request->customer) ? $request->customer : null;
+        $by = ($request->by) ? $request->by : null;
 
-        return Excel::download(new SampleExport($year,$lab), 'samples.xlsx');
+        return Excel::download(new SampleExport($year,$lab,$quarter,$semester,$customer,$by), 'samples.xlsx');
     }
 
     public function analyses($request){

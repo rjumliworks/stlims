@@ -449,6 +449,28 @@ class CustomerClass
                 });
             });
         }])
+        ->withSum(['payment as total_discount' => function ($query) use ($laboratory, $year, $month, $startMonth, $endMonth) {
+    $query->whereHas('tsr', function ($query) use ($laboratory, $year, $month, $startMonth, $endMonth) {
+        $query->where('agency_id', $this->agency)
+              ->whereIn('status_id', [2, 3, 4]);
+
+        if ($laboratory) {
+            $query->where('laboratory_id', $laboratory);
+        }
+
+        if ($month) {
+            $query->whereMonth('created_at', $month);
+        }
+
+        if ($year) {
+            $query->whereYear('created_at', $year);
+        }
+
+        $query->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+            $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
+        });
+    });
+}], 'discount')
         ->orderBy('payment_count', $sort);
         $data = ($request->type == 'payment') ? $query->paginate(10) : $query->get();
         return DefaultResource::collection($data);
@@ -763,14 +785,14 @@ class CustomerClass
         $year = ($request->year) ? $request->year : date('Y');
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');
 
-        $data = Tsr::select(
+         $data = Tsr::select(
             'list_discounts.name as name',
             \DB::raw('COUNT(tsrs.id) as warm_bodies'),
             \DB::raw('COUNT(DISTINCT tsrs.customer_id) as consolidated'),
             \DB::raw('(COUNT(DISTINCT tsrs.customer_id) + COUNT(tsrs.id)) as total')
         )
         ->join('tsr_payments', 'tsr_payments.tsr_id', '=', 'tsrs.id')
-        ->join('list_discounts', 'list_discounts.id', '=', 'tsr_payments.discount_id') 
+        ->join('list_discounts', 'list_discounts.id', '=', 'tsr_payments.discount_id')
         ->whereYear('tsrs.created_at', $year)
         ->whereMonth('tsrs.created_at', $month)
         ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
