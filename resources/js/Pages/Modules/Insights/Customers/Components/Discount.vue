@@ -44,13 +44,14 @@
                                 <td>{{list.name}}</td>
                                 <td class="text-center">{{formatMoney(list.total_discount)}} </td>
                                 <td class="text-center">{{list.payment_count}} </td>
-                                <td class="text-center">{{percentage(list.payment_count)}}</td>
+                                <td class="text-center">{{percentage(list.total_discount)}}</td>
                             </tr>
                         </tbody>
                     </table>
                 </simplebar>
             </div>
         </div>
+        
     </div>
     <Discount :total="total" :info="info" :years="years" ref="discount"/>
 </template>
@@ -68,7 +69,7 @@ export default {
     },
     computed: {
         total() {
-            return this.discounts.reduce((sum, item) => sum + item.payment_count, 0);
+            return this.discounts.reduce((sum, item) => sum + Number(item.total_discount), 0);
         }
     },
     methods: {

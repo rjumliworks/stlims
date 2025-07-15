@@ -474,7 +474,7 @@ class CustomerClass
         });
     });
 }], 'discount')
-        ->orderBy('payment_count', $sort);
+        ->orderBy('total_discount', $sort);
         $data = ($request->type == 'payment') ? $query->paginate(10) : $query->get();
         return DefaultResource::collection($data);
     }
