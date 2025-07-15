@@ -319,7 +319,10 @@ class CustomerClass
         )
         ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
         ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id')
-          ->when($year, function ($query) use ($year){
+        ->when($laboratory, function ($query) use ($laboratory){
+            $query->where('tsrs.laboratory_id', $laboratory);
+        })
+        ->when($year, function ($query) use ($year){
             $query->whereYear('tsrs.created_at', $year);
         })
         ->when($month, function ($query) use ($month){
@@ -437,7 +440,7 @@ class CustomerClass
             }
         }
         
-        $query = ListDiscount::query();
+        $query = ListDiscount::query()->where('name','!=','Regular');
         $query->withCount(['payment' => function ($query) use ($laboratory,$year,$month,$startMonth,$endMonth) {
             $query->whereHas('tsr', function ($query) use ($laboratory,$year,$month,$startMonth,$endMonth) {
                 $query->where('agency_id', $this->agency)->whereIn('status_id',[2,3,4]);
