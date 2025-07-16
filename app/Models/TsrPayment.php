@@ -78,7 +78,7 @@ class TsrPayment extends Model
 
     public function getDiscountAttribute($value)
     {
-        return '₱'.number_format($value,2,'.',',');
+        return $value;
     }
 
     public function setDiscountAttribute($value)

@@ -139,10 +139,10 @@ class AccomplishmentClass
                 $req,
                 $sample,
                 $analysis,
-                '₱'.number_format($gtotal),
-                '₱'.number_format($ggratis),
-                '₱'.number_format($gdiscount),
-                '₱'.number_format($gtotal + $ggratis + $gdiscount),
+                '₱'.number_format($gtotal,2),
+                '₱'.number_format($ggratis,2),
+                '₱'.number_format($gdiscount,2),
+                '₱'.number_format(($gtotal + $ggratis + $gdiscount),2),
                 $laboratory->id,
             ];
 
@@ -156,7 +156,7 @@ class AccomplishmentClass
             $gross_total += ($gtotal + $ggratis + $gdiscount);
         }
         $footer[] = [
-            'Total',$requests_total, $samples_total, $analyses_total, '₱'.number_format($fees_total), '₱'.number_format($gratis_total), '₱'.number_format($discount_total), '₱'.number_format($gross_total)
+            'Total',$requests_total, $samples_total, $analyses_total, '₱'.number_format($fees_total,2), '₱'.number_format($gratis_total,2), '₱'.number_format($discount_total,2), '₱'.number_format($gross_total,2)
         ];
         return [
             'lists' => $lists,

@@ -312,30 +312,31 @@ class CustomerClass
         // ->groupBy('customers.industry_id', 'list_industries.name')
         // ->orderBy('consolidated', 'DESC')
         // ->get();
-        $data = Tsr::select(
-            'list_industries.name as name',
-            \DB::raw('COUNT(CASE WHEN customers.is_new = 1 THEN tsrs.id END) as new'),
-            \DB::raw('COUNT(tsrs.id) as total')
-        )
-        ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
-        ->join('list_industries', 'list_industries.id', '=', 'customers.industry_id')
-        ->when($laboratory, function ($query) use ($laboratory){
-            $query->where('tsrs.laboratory_id', $laboratory);
-        })
-        ->when($year, function ($query) use ($year){
-            $query->whereYear('tsrs.created_at', $year);
-        })
-        ->when($month, function ($query) use ($month){
-            $query->whereMonth('tsrs.created_at', $month);
-        })
-        ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
-            $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
-        })
-        ->where('tsrs.agency_id', $this->agency)
-        ->groupBy('customers.industry_id', 'list_industries.name')
-        ->orderBy('total', 'DESC')
-        ->get();
-
+         $data = \DB::table('tsrs')
+            ->join('customers', 'tsrs.customer_id', '=', 'customers.id')
+            ->join('list_industries as industry', 'customers.industry_id', '=', 'industry.id')
+            ->select(
+                'industry.name as name',
+                \DB::raw('COUNT(DISTINCT tsrs.customer_id) as count')
+            )
+            ->where('customers.classification_id', '=', 8)
+            ->where('status_id','!=',5)
+            ->when($laboratory, function ($query) use ($laboratory){
+                $query->where('tsrs.laboratory_id', $laboratory);
+            })
+            ->when($year, function ($query) use ($year){
+                $query->whereYear('tsrs.created_at', $year);
+            })
+            ->when($month, function ($query) use ($month){
+                $query->whereMonth('tsrs.created_at', $month);
+            })
+            ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
+                $query->whereBetween(\DB::raw('MONTH(tsrs.created_at)'), [$startMonth, $endMonth]);
+            })
+            ->orderBy('count','DESC')
+            ->groupBy('name')
+            ->get();
+            return $data;
         return $data;
     }
 

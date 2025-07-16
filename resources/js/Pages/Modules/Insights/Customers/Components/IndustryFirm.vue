@@ -33,7 +33,7 @@
                             <tr>
                                 <th style="cursor: pointer; width: 5%;">#</th>
                                 <th scope="col">Name</th>
-                                <th class="text-center" style="width: 10%;">#</th>
+                                <th class="text-center" style="width: 10%;">{{ totalCount }}</th>
                                 <th class="text-center" style="width: 10%;">%</th>
                             </tr>
                         </thead>
@@ -64,7 +64,10 @@ export default {
             ...item,
             percentage: total > 0 ? ((item.count / total) * 100).toFixed(2) : '0.00'
             }));
-        }
+        },
+         totalCount() {
+                return this.industriesfirm.reduce((sum, item) => sum + item.count, 0);
+            }
     }
 }
 </script>

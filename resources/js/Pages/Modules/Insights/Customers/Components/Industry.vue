@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="flex-grow-1">
-                    <h5 class="mb-0 fs-14"><span class="text-body">Customers by Industry</span></h5>
+                    <h5 class="mb-0 fs-14"><span class="text-body">Firms by Sub Industry</span></h5>
                     <p class="text-muted text-truncate-two-lines fs-12">Shows the leading players in each sector</p>
                 </div>
                 <div class="flex-shrink-0">
@@ -33,8 +33,8 @@
                             <tr>
                                 <th style="cursor: pointer; width: 4%;">#</th>
                                 <th scope="col">Name</th>
-                                <th class="text-center" style="width: 10%;">New</th>
-                                <th class="text-center" style="width: 10%;">Total</th>
+                                <!-- <th class="text-center" style="width: 10%;">New</th> -->
+                                <th class="text-center" style="width: 10%;">{{ totalCount }}</th>
                                 <!-- <th class="text-center" style="width: 10%;">#</th> -->
                                 <!-- <th class="text-center" style="width: 10%;">%</th> -->
                             </tr>
@@ -43,8 +43,8 @@
                             <tr v-for="(list,index) in industries" v-bind:key="index">
                                 <td>{{index + 1}}</td>
                                 <td>{{list.name}}</td>
-                                 <td class="text-center">{{list.new}} </td>
-                                <td class="text-center">{{list.total}}</td>
+                                 <!-- <td class="text-center">{{list.new}} </td> -->
+                                <td class="text-center">{{list.count}}</td>
                                 <!-- <td class="text-center">{{list.customer_industry_count}} </td> -->
                                 <!-- <td class="text-center">{{percentage(list.customer_industry_count)}}</td> -->
                             </tr>
@@ -71,6 +71,9 @@ export default {
     computed: {
         total() {
             return this.industries.reduce((sum, item) => sum + item.customer_industry_count, 0);
+        },
+        totalCount() {
+            return this.industries.reduce((sum, item) => sum + item.count, 0);
         }
     },
     methods: {

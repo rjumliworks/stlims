@@ -34,11 +34,12 @@ class ViewClass
         $data = Target::with('breakdowns.laboratory','breakdowns.objective.type')->where('year',$year)->where('agency_id',$this->agency)->first();
         $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
         $breakdowns = $data->breakdowns;
-
-        $grouped = $breakdowns->groupBy('objective_id')->map(function ($items) use ($months,$year){
-            $breakdown = []; $monthly = []; $total = 0; $grandtotal = 0;
+$grandtotal = 0;
+        $grouped = $breakdowns->groupBy('objective_id')->map(function ($items) use ($months,$year,$grandtotal){
+            $breakdown = []; $monthly = [];
             $monthly_all = [];
             foreach ($items as $item) {
+                 $total = 0; 
                 if($item->laboratory) {
                     $laboratory_id = $item->laboratory->id;
                     $monthly = [];
