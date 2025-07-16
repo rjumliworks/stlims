@@ -34,9 +34,9 @@
                                 <th style="cursor: pointer; width: 4%;">#</th>
                                 <th scope="col">Name</th>
                                 <!-- <th class="text-center" style="width: 10%;">New</th> -->
-                                <th class="text-center" style="width: 10%;">{{ totalCount }}</th>
+                                <th class="text-center" style="width: 10%;">#</th>
                                 <!-- <th class="text-center" style="width: 10%;">#</th> -->
-                                <!-- <th class="text-center" style="width: 10%;">%</th> -->
+                                <th class="text-center" style="width: 10%;">%</th>
                             </tr>
                         </thead>
                         <tbody class="fs-11">
@@ -46,7 +46,7 @@
                                  <!-- <td class="text-center">{{list.new}} </td> -->
                                 <td class="text-center">{{list.count}}</td>
                                 <!-- <td class="text-center">{{list.customer_industry_count}} </td> -->
-                                <!-- <td class="text-center">{{percentage(list.customer_industry_count)}}</td> -->
+                                <td class="text-center">{{percentage(list.count)}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -70,7 +70,7 @@ export default {
     },
     computed: {
         total() {
-            return this.industries.reduce((sum, item) => sum + item.customer_industry_count, 0);
+            return this.industries.reduce((sum, item) => sum + item.count, 0);
         },
         totalCount() {
             return this.industries.reduce((sum, item) => sum + item.count, 0);

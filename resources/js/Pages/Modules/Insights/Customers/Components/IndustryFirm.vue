@@ -33,7 +33,7 @@
                             <tr>
                                 <th style="cursor: pointer; width: 5%;">#</th>
                                 <th scope="col">Name</th>
-                                <th class="text-center" style="width: 10%;">{{ totalCount }}</th>
+                                <th class="text-center" style="width: 10%;">#</th>
                                 <th class="text-center" style="width: 10%;">%</th>
                             </tr>
                         </thead>
