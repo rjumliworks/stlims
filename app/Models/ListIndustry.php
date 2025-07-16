@@ -13,4 +13,9 @@ class ListIndustry extends Model
     {
         return $this->hasMany('App\Models\Customer', 'industry_id');
     } 
+
+    public function type()
+    {
+        return $this->belongsTo('App\Models\ListIndustry', 'type_id', 'id');
+    }
 }

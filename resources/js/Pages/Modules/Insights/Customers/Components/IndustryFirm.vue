@@ -33,16 +33,16 @@
                             <tr>
                                 <th style="cursor: pointer; width: 5%;">#</th>
                                 <th scope="col">Name</th>
-                                <th class="text-center" style="width: 10%;">New</th>
-                                <th class="text-center" style="width: 10%;">Old</th>
+                                <th class="text-center" style="width: 10%;">#</th>
+                                <th class="text-center" style="width: 10%;">%</th>
                             </tr>
                         </thead>
                         <tbody class="fs-11">
-                            <tr v-for="(list,index) in industriesfirm" v-bind:key="index">
+                            <tr v-for="(list,index) in industriesWithPercentage" v-bind:key="index">
                                 <td>{{index + 1}}</td>
                                 <td>{{list.name}}</td>
-                                <td class="text-center">{{list.new}} </td>
-                                <td class="text-center">{{list.old}}</td>
+                                <td class="text-center">{{list.count}} </td>
+                                <td class="text-center">{{list.percentage}}%</td>
                             </tr>
                         </tbody>
                     </table>
@@ -57,5 +57,14 @@ import simplebar from "simplebar-vue";
 export default {
     components: { simplebar },
     props: ['industriesfirm','info','years'],
+    computed: {
+        industriesWithPercentage() {
+            const total = this.industriesfirm.reduce((sum, item) => sum + item.count, 0);
+            return this.industriesfirm.map(item => ({
+            ...item,
+            percentage: total > 0 ? ((item.count / total) * 100).toFixed(2) : '0.00'
+            }));
+        }
+    }
 }
 </script>
