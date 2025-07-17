@@ -25,7 +25,7 @@ class ViewClass
     public function lists($request){
         $data = CustomerResource::collection(
             Customer::query()
-            ->with('customer_name:id,name','classification:id,name','sex:id,name','female:id,name','industry:id,name,type_id,is_main,is_alone,is_active')
+            ->with('customer_name:id,name','classification:id,name','sex:id,name','female:id,name','industry:id,name,industry_id,is_main,is_alone,is_active')
             ->with('address.region:code,name,region','address.province:code,name','address.municipality:code,name','address.barangay:code,name')
             ->when($request->keyword, function ($query, $keyword) {
                 $query->where('name', 'LIKE', "%{$keyword}%")
