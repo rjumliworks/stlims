@@ -50,6 +50,9 @@ class TestreportController extends Controller
                 case 'multiple':
                     return $this->save->multiple($request);
                 break;
+                case 'report':
+                    return $this->save->report($request);
+                break;
             }
         });
 

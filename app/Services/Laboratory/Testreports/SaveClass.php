@@ -10,6 +10,7 @@ use App\Models\ListLaboratory;
 use App\Models\TsrSampleReport;
 use App\Models\TsrSampleReportList;
 use Illuminate\Support\Str;
+use Hashids\Hashids;
 
 class SaveClass
 {
@@ -234,5 +235,41 @@ class SaveClass
         $passkey = Str::of(str_shuffle($raw))->substr(0, 6);
 
         return $passkey;
+    }
+    
+
+    public function report($request){
+        $hashids = new Hashids('krad',10);
+        $id = $hashids->decode($request->id);
+
+        $data = TsrSampleReport::where('sample_id',$id[0])->first();
+
+        $attach = $this->upload($data,$request);
+        $data->attachment = $attach;
+        $data->save();
+        
+        return [
+            'data' => $data,
+            'message' => 'Enrollment was added.', 
+            'info' => 'Enrollment details have been successfully added.',
+        ];
+    }
+
+    public function upload($data,$request){
+        $name = $data->code;
+        
+        if($request->hasFile('pdf'))
+        {   
+            $pdf = $request->file('pdf');   
+            $file_name = strtolower($name).'.'.$pdf->getClientOriginalExtension();
+            $file_path = $pdf->storeAs('uploads/testreports', $file_name, 'public');
+            $attachment = [
+                'name' => $file_name,
+                'file' => $file_path,
+                'added_by' => \Auth::user()->id,
+                'created_at' => date('M d, Y g:i a', strtotime(now()))
+            ];
+            return $attachment;
+        }
     }
 }

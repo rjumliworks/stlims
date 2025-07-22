@@ -71,6 +71,26 @@
         <div class="alert alert-primary alert-dismissible alert-label-icon rounded-label fade show mb-n2" role="alert">
             <i class="ri-qr-code-fill label-icon"></i><strong>QR Code</strong> - <span style="cursor: pointer;" @click="printQr()">Click here to print</span>
         </div>
+        <hr class="text-muted mt-4"/>
+         <file-pond
+            name="pdf"
+            ref="pond"
+            allow-multiple="false" 
+            max-files="1" 
+            accepted-file-types="application/pdf"
+            label-idle='Drag & Drop your PDF or <span class="filepond--label-action">Browse</span>'
+            :allow-process="false"      
+            @addfile="handleAddFile"
+            />
+            <hr class="text-muted"/>
+            <canvas ref="pdfCanvas" class="border"></canvas>
+    <img
+      ref="signature"
+      src="/signatures/your-signature.png"
+      id="signature"
+      style="position: absolute; width: 100px; cursor: move"
+    />
+    <button @click="submitSignature">Save Signature</button>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
             <b-button @click="openResult()" variant="primary" block>Preview</b-button>
@@ -79,12 +99,18 @@
     <Result ref="result"/>
 </template>
 <script>
+import * as pdfjsLib from 'pdfjs-dist'
+import interact from 'interactjs'
+import vueFilePond from 'vue-filepond';
+import 'filepond/dist/filepond.min.css';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+const FilePond = vueFilePond(FilePondPluginFileValidateType);
 import simplebar from "simplebar-vue";
 import Result from './Result.vue';
 import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
 export default {
-    components : { InputLabel, TextInput, simplebar, Result }, 
+    components : { InputLabel, TextInput, simplebar, Result, FilePond }, 
     data(){
         return {
             currentUrl: window.location.origin,
@@ -93,6 +119,8 @@ export default {
             parameters: [
                 {name: null, result: null}
             ],
+            scale: 1.5,
+            signaturePos: { x: 0, y: 0 }
         }
     },
     computed: {
@@ -105,19 +133,89 @@ export default {
             return result;
         }
     },
+   
     methods: { 
         show(data){
             this.selected = data;
             this.parameters = this.selected.analyses.map(analysis => {
                 return { name: analysis.testservice.testname.name, result: null };
             });
+            
             this.showModal = true;
+            this.$nextTick(() => {
+                this.renderPdf();
+                this.makeDraggable();
+            });
         },
         printQr(id){
             window.open('/testreports?option=qrcode&id='+this.selected.qr);
         },
         openResult(){
             this.$refs.result.show(this.parameters,this.selected.sample_id);
+        },
+        renderPdf() {
+            pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`
+
+            const url = `/storage/uploads/testreports/${this.selected.attachment.name}`
+            console.log(url);
+            const canvas = this.$refs.pdfCanvas
+            const ctx = canvas.getContext('2d')
+
+            pdfjsLib.getDocument(url).promise.then(pdf => {
+            pdf.getPage(1).then(page => {
+                const viewport = page.getViewport({ scale: this.scale })
+                canvas.height = viewport.height
+                canvas.width = viewport.width
+                page.render({ canvasContext: ctx, viewport })
+                })
+            })
+        },
+
+        makeDraggable() {
+            interact(this.$refs.signature).draggable({
+                modifiers: [interact.modifiers.restrictRect({ restriction: 'parent' })],
+                listeners: {
+                move: (event) => {
+                    const target = event.target
+                    const x = (parseFloat(target.dataset.x) || 0) + event.dx
+                    const y = (parseFloat(target.dataset.y) || 0) + event.dy
+
+                    target.style.transform = `translate(${x}px, ${y}px)`
+                    target.dataset.x = x
+                    target.dataset.y = y
+
+                    this.signaturePos = { x, y }
+                }
+                }
+            })
+        },
+        handleAddFile(error, fileItem) {
+            if (error) {
+                console.error('FilePond error:', error)
+                return
+            }
+
+            const file = fileItem.file
+
+            const formData = new FormData()
+            formData.append('pdf', file);
+            formData.append('id',this.selected.qr);
+            formData.append('option','report');
+
+            // If you have other fields (like user_id or signer_id), add them here:
+            // formData.append('user_id', this.value.user_id)
+
+            this.$inertia.post('/testreports', formData, {
+                preserveScroll: true,
+                forceFormData: true,
+                onSuccess: (response) => {
+                this.$emit('update', this.$page.props.flash?.data?.data)
+                this.hide?.()
+                },
+                onError: () => {
+                this.errors = this.$page.props.errors
+                }
+            })
         },
         hide(){
             this.showModal = false;

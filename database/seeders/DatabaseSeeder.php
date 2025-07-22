@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(LocationProvincesTableSeeder::class);
         // $this->call(LocationMunicipalitiesTableSeeder::class);
         // $this->call(LocationBarangaysTableSeeder::class);
-       $this->call(ListIndustries2TableSeeder::class);
+    //    $this->call(ListIndustries2TableSeeder::class);
         // $this->call(ListIndustriesTableSeeder::class);
         // $this->call(ListLaboratoriesTableSeeder::class);
         // $this->call(ListRolesTableSeeder::class);
@@ -105,5 +105,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(EquipmentLogsTableSeeder::class);
         // $this->call(EquipmentInfosTableSeeder::class);
         // $this->call(ListObjectivesTableSeeder::class);
+        $this->call(CsfQuestionsTableSeeder::class);
     }
 }

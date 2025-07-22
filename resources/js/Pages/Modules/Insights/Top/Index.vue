@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="flex-grow-1">
-                            <h5 class="mb-0 fs-14"><span class="text-body">Daily Accomplishment Insights</span></h5>
+                            <h5 class="mb-0 fs-14"><span class="text-body">Daily Accomplishment Insights {{ total_sample }}</span></h5> 
                             <p class="text-muted text-truncate-two-lines fs-12">A summary of tasks completed, analyses conducted, and milestones achieved within a specific reporting period, showcasing productivity, efficiency, and performance metrics</p>
                         </div>
                         <div class="flex-shrink-0">
@@ -138,6 +138,7 @@
                                     <th width="5%;"> #</th>
                                     <th width="80%;">Name</th>
                                     <th width="15%;" class="text-center" scope="col">Count</th>
+                                    <th width="10%;" class="text-center" scope="col">%</th>
                                 </tr>
                             </thead>
                             <tbody class="fs-12">
@@ -145,6 +146,7 @@
                                     <td>{{index + 1}}</td>
                                     <td>{{list.name }}</td>
                                     <td class="text-center">{{list.count}}</td>
+                                    <td class="text-center">{{ percentage(list.count,total_sample) }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -279,10 +281,11 @@
     </BRow>
 </template>
 <script>
+import _ from 'lodash';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 export default {
-    props: ['info','years','types'],
+    props: ['info','years','types','total_sample'],
     components: { PageHeader, Multiselect },
     data(){
         return {
@@ -365,6 +368,9 @@ export default {
                 this.customers = response.data.customers; 
             })
             .catch(err => console.log(err));
+        },
+        percentage(data,total){
+            return (_.divide(data, total)*100).toFixed(2)+'%';
         },
         openTop(type){
             window.open('/reports?year='+this.year+'&option='+type+'&laboratory='+this.laboratory+'&semester='+this.semester+'&quarter='+this.quarter+'&customer='+this.customer+'&by='+this.by);

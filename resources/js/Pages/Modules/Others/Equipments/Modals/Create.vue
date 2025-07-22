@@ -135,6 +135,7 @@ export default {
             this.showModal = true;
         },
         edit(data){
+            console.log(data);
             const p = data.price.replace(/[₱,]/g, "");
             this.form.id = data.id;
             this.form.code = data.code;

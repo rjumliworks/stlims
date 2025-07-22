@@ -5,12 +5,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/verification/{code}', [App\Http\Controllers\VerificationController::class, 'verification']);
 Route::get('/verification/sample/{code}', [App\Http\Controllers\VerificationController::class, 'sample_verification']);
 Route::resource('/gadcorner', App\Http\Controllers\Others\GadController::class);
+Route::get('/csf', [App\Http\Controllers\Others\CsfController::class, 'csf']);
 
 Route::middleware(['2fa','auth','verified'])->group(function () {
     Route::resource('/profile', App\Http\Controllers\Auth\ProfileController::class);
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
     Route::get('/search', [App\Http\Controllers\DashboardController::class, 'search']);
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/accounting', [App\Http\Controllers\DashboardController::class, 'accounting']);
+    Route::get('/cashier', [App\Http\Controllers\DashboardController::class, 'cashier']);
+    Route::resource('/testservices', App\Http\Controllers\Laboratory\ServiceController::class);
 
     Route::middleware(['role:Customer Relation Officer,Technical Manager,Laboratory Analyst,Calibration Officer,Laboratory Head,Laboratory Aide,Releasing Officer'])->group(function () {
         Route::resource('/customers', App\Http\Controllers\Laboratory\CustomerController::class);
@@ -19,7 +23,6 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
         Route::resource('/analyses', App\Http\Controllers\Laboratory\AnalysisController::class);
         Route::resource('/testreports', App\Http\Controllers\Laboratory\TestreportController::class);
         Route::resource('/tsrs', App\Http\Controllers\Laboratory\TsrController::class);
-        Route::resource('/testservices', App\Http\Controllers\Laboratory\ServiceController::class);
         Route::post('/wallet', [App\Http\Controllers\Finance\WalletController::class, 'store']);
     });
 

@@ -775,7 +775,7 @@ class ListDropdownsTableSeeder extends Seeder
                 'classification' => 'Objective',
                 'type' => 'n/a',
                 'color' => 'text-white',
-                'others' => 'bg-purple',
+                'others' => 'n/a',
                 'is_active' => 1,
             ),
             76 => 
@@ -785,7 +785,7 @@ class ListDropdownsTableSeeder extends Seeder
                 'classification' => 'Objective',
                 'type' => 'n/a',
                 'color' => 'text-white',
-                'others' => 'bg-purple',
+                'others' => 'n/a',
                 'is_active' => 0,
             ),
             77 => 
@@ -795,7 +795,7 @@ class ListDropdownsTableSeeder extends Seeder
                 'classification' => 'Objective',
                 'type' => 'n/a',
                 'color' => 'text-white',
-                'others' => 'bg-purple',
+                'others' => 'n/a',
                 'is_active' => 0,
             ),
             78 => 
@@ -805,7 +805,7 @@ class ListDropdownsTableSeeder extends Seeder
                 'classification' => 'Objective',
                 'type' => 'n/a',
                 'color' => 'text-white',
-                'others' => 'bg-purple',
+                'others' => 'n/a',
                 'is_active' => 0,
             ),
             79 => 
@@ -815,7 +815,7 @@ class ListDropdownsTableSeeder extends Seeder
                 'classification' => 'Objective',
                 'type' => 'n/a',
                 'color' => 'text-white',
-                'others' => 'bg-purple',
+                'others' => 'n/a',
                 'is_active' => 1,
             ),
             80 => 
@@ -825,7 +825,7 @@ class ListDropdownsTableSeeder extends Seeder
                 'classification' => 'Objective',
                 'type' => 'n/a',
                 'color' => 'text-white',
-                'others' => 'bg-purple',
+                'others' => 'n/a',
                 'is_active' => 1,
             ),
             81 => 
@@ -843,6 +843,16 @@ class ListDropdownsTableSeeder extends Seeder
                 'id' => 83,
                 'name' => 'Male-led',
                 'classification' => 'Male',
+                'type' => 'n/a',
+                'color' => 'n/a',
+                'others' => 'n/a',
+                'is_active' => 1,
+            ),
+            83 => 
+            array (
+                'id' => 84,
+            'name' => 'Regulatory (FDA)',
+                'classification' => 'Purpose',
                 'type' => 'n/a',
                 'color' => 'n/a',
                 'others' => 'n/a',

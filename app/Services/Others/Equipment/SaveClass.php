@@ -66,7 +66,7 @@ class SaveClass
         $data->calibration_program = $request->calibration_program;
         $data->maintenance_plan = $request->maintenance_plan;
         $data->calibration_testpoints = $request->calibration_testpoints;
-        $data->laboratory_type = $request->laboratory_type;
+        $data->laboratory_id = $request->laboratory_id;
         if($data->save()){
             $data1 = EquipmentInfo::where('equipment_id',$request->id)->first();
             $data1->manufacturer = $request->manufacturer;

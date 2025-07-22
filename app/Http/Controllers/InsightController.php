@@ -131,7 +131,8 @@ class InsightController extends Controller
                     'info' => [
                         'month' => \DateTime::createFromFormat('!m', date('m'))->format('F'),
                         'year' => date('Y')
-                    ]
+                    ],
+                    'total_sample' => $this->top->totalsamples()
                 ]);
             break;
             case 'daily':

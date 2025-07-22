@@ -15,6 +15,7 @@ class TsrSampleReport extends Model
         'code',
         'information',
         'passkey',
+        'attachment',
         'sample_id',
         'user_id',
         'cro_id',

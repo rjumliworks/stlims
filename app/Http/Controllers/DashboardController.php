@@ -143,6 +143,30 @@ class DashboardController extends Controller
         }
     }
 
+    public function accounting(Request $request){
+        return inertia('Modules/Finance/Accounting/Dashboard/Index',[
+            'dropdowns' => [
+                'reminders' => $this->accountant->reminders(),
+                'tsrs' => $this->accountant->forpayment($request),
+                'collections' => $this->dropdown->dropdowns('Collection Type','Laboratory'),
+                'payments' => $this->dropdown->dropdowns('Payment Mode','n/a'),
+            ]
+        ]);
+    }
+
+    public function cashier(Request $request){
+        return inertia('Modules/Finance/Cashiering/Dashboard/Index',[
+            'dropdowns' => [
+                'reminders' => $this->accountant->reminders(),
+                'orseries' => $this->cashier->orseries(),
+                'receipts' => $this->cashier->receipts(),
+                'deposits' => $this->dropdown->dropdowns('Deposit Type','n/a'),
+                'collections' => $this->dropdown->dropdowns('Collection Type','Non-laboratory'),
+                'payments' => $this->dropdown->dropdowns('Payment Mode','n/a'),
+            ]
+        ]);
+    }
+
     public function search(Request $request){
         $option = $request->option;
         switch($option){

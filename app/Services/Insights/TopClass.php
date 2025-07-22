@@ -100,6 +100,15 @@ class TopClass
         return $data;
     }
 
+    public function totalsamples()
+    {
+        $data = TsrSample::whereHas('tsr',function ($query){
+            $query->where('status_id','!=',5)->where('agency_id',$this->agency);
+        })
+        ->whereYear('created_at',now())->count();   
+        return $data;
+    }
+
     public function analyses($request){
         $startMonth = null;
         $endMonth = null;
