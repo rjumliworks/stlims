@@ -91,6 +91,11 @@
                                     <td class="text-center">{{list.user}}</td>
                                     <td class="text-center">{{list.created_at}}</td>
                                     <td class="text-end">
+                                        <a :href="`/testreports/${list.qr}`" target="_blank">
+                                            <b-button :variant="(filter.status) ? 'soft-info' : 'info'"  class="me-1" v-b-tooltip.hover title="View" size="sm">
+                                                <i class="ri-eye-fill align-bottom"></i>
+                                            </b-button>
+                                        </a>
                                         <b-button @click="openView(list)" variant="soft-primary" v-b-tooltip.hover title="View" size="sm">
                                             <i class="ri-eye-fill align-bottom"></i>
                                         </b-button>

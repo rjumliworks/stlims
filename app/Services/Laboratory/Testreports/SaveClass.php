@@ -250,8 +250,8 @@ class SaveClass
         
         return [
             'data' => $data,
-            'message' => 'Enrollment was added.', 
-            'info' => 'Enrollment details have been successfully added.',
+            'message' => 'Testreport updated.', 
+            'info' => 'Testreport details have been successfully updated.',
         ];
     }
 

@@ -63,4 +63,10 @@ class TestreportController extends Controller
             'status' => $result['status'],
         ]);
     }
+
+    public function show($id){
+        return inertia('Modules/Laboratory/Testreports/View',[
+            'testreport' => $this->view->testreport($id)
+        ]);
+    }
 }

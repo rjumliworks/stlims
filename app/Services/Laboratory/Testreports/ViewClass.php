@@ -22,6 +22,21 @@ class ViewClass
         $this->configuration = AgencyConfiguration::with('agency.address','agency.member')->where('agency_id',$this->agency)->first();
     }
 
+    public function testreport($id){
+        $hashids = new Hashids('krad',10);
+        $id = $hashids->decode($id);
+        $data = new TestreportResource(
+            TsrSampleReport::query()
+            ->with('lists.sample:id,code','lists.sample.analyses:testservice_id,sample_id','lists.sample.analyses.testservice:id,testname_id','lists.sample.analyses.testservice.testname:id,name')
+            ->with('sample.tsr','user.profile')
+            ->with('sample.analyses:testservice_id,sample_id','sample.analyses.testservice:id,testname_id','sample.analyses.testservice.testname:id,name')
+            ->where('sample_id',$id[0])
+            ->first()
+        );
+
+        return $data;
+    }
+
     public function lists($request){
         if($request->status == 'with'){
             $data = TestreportResource::collection(

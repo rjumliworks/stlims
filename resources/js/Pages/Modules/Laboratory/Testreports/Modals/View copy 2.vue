@@ -102,35 +102,8 @@
         <b-button variant="success" block @click="savePdfWithSignature">
         Save Signed PDF
         </b-button>
-        <nav aria-label="Page navigation example" class="float-end">
-        <ul class="pagination">
-            <li
-            class="page-item"
-            :class="{ disabled: currentPage === 1 }"
-            @click="goToPage(currentPage - 1)"
-            >
-            <a class="page-link" href="#">Previous</a>
-            </li>
-            <li
-            v-for="page in totalPages"
-            :key="page"
-            class="page-item"
-            :class="{ active: page === currentPage }"
-            @click="goToPage(page)"
-            >
-            <a class="page-link" href="#">{{ page }}</a>
-            </li>
-            <li
-            class="page-item"
-            :class="{ disabled: currentPage === totalPages }"
-            @click="goToPage(currentPage + 1)"
-            >
-            <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-        </nav>
         <canvas ref="pdfCanvas" id="pdfcanvas" style="border: 1px solid blue; width: 100%; height: auto;"></canvas>
-<!-- {{ totalPages }} -->
+
     <template v-slot:footer>
       <b-button @click="hide" variant="light" block>Close</b-button>
       <b-button @click="openResult" variant="primary" block>Preview</b-button>
@@ -161,10 +134,7 @@ export default {
       parameters: [{ name: null, result: null }],
       scale: 4.0,
       signaturePos: { x: 0, y: 0 },
-      pdfUrl: null,
-      pdfDoc: null,
-        currentPage: 1,
-        totalPages: 0,
+      pdfUrl: null
     };
   },
   computed: {
@@ -179,8 +149,6 @@ export default {
   },
   methods: {
     show(data) {
-        this.signaturePos.x = 0;
-        this.signaturePos.y = 0;
       this.selected = data;
       this.parameters = this.selected.analyses.map(analysis => ({
         name: analysis.testservice.testname.name,
@@ -211,28 +179,19 @@ export default {
         onError: () => this.errors = this.$page.props.errors
       });
     },
-    goToPage(page) {
-  this.currentPage = page;
-  this.renderPdf(page);
-},
-    renderPdf(pageNum = 1) {
+    renderPdf() {
       const canvasEl = this.$refs.pdfCanvas;
       const fileUrl = this.pdfUrl;
-    //    this.totalPages = pdfUrl.numPages;
       if (window.PDFJS) {
         window.PDFJS.workerSrc = null;
         window.PDFJS.getDocument(fileUrl).then(pdf => {
-            this.totalPages = pdf.numPages;
-            if (pageNum < 1) pageNum = 1;
-            if (pageNum > pdf.numPages) pageNum = pdf.numPages;
-            pdf.getPage(pageNum).then(page => {
-                const viewport = page.getViewport(this.scale);
-                canvasEl.width = viewport.width;
-                canvasEl.height = viewport.height;
-
-                const context = canvasEl.getContext('2d');
-                page.render({ canvasContext: context, viewport });
-            });
+          pdf.getPage(1).then(page => {
+            const viewport = page.getViewport(this.scale);
+            canvasEl.width = viewport.width;
+            canvasEl.height = viewport.height;
+            const context = canvasEl.getContext('2d');
+            page.render({ canvasContext: context, viewport });
+          });
         });
       } else {
         console.error('PDFJS not loaded');
