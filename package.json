@@ -48,7 +48,7 @@
         "moment": "^2.29.4",
         "pdf-lib": "^1.17.1",
         "prismjs": "^1.30.0",
-        "qrcode-vue3": "^1.7.2",
+        "qrcode-vue3": "^1.7.1",
         "sass": "^1.69.5",
         "simplebar-vue": "^2.4.1",
         "swiper": "^11.2.7",

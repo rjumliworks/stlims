@@ -117,13 +117,18 @@
                         </div>
                         <div class="col-md-12 position-relative" style="height: calc(100vh - 290px); overflow: auto;">
                             <div ref="pdfContainer" class="position-relative w-100">
-                            <img
+                            <div
                                 v-show="showSignature"
                                 ref="signature"
-                                src="/images/esig.png"
                                 id="signature"
-                                style="position: absolute; width: 100px; cursor: move;"
-                            />
+                                style="position: absolute; display: flex; align-items: center; cursor: move;"
+                            >
+                                <img src="/images/esig.png" style="width: 100px;" />
+                                <div style="font-size: 10px; color: #000;">
+                                    Digitally signed by Ra-ouf Jumli<br />
+                                    <span>{{ currentDateTime }}</span>
+                                </div>
+                            </div>
                             <canvas
                                 ref="pdfCanvas"
                                 id="pdfcanvas"
@@ -152,7 +157,8 @@
     <Message ref="message" />
 </template>
 <script>
-import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
+import html2canvas from 'html2canvas';
+import { PDFDocument } from 'pdf-lib';
 import interact from 'interactjs';
 import vueFilePond from 'vue-filepond';
 import 'filepond/dist/filepond.min.css';
@@ -187,7 +193,7 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
                 totalPages: 0,
                 showSignature: false,
                 isRendering: false,
-                currentDateTime: new Date().toLocaleString(),
+                currentDateTime: '',
             }
         },
         mounted() {
@@ -227,8 +233,19 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
             }
         },
         methods: { 
+            setCurrentDateTime() {
+                const now = new Date();
+                const options = {
+                    year: 'numeric',
+                    month: 'long',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true,
+                };
+                this.currentDateTime = now.toLocaleString('en-US', options);
+            },
             renderPdf(pageNum = 1) {
-                this.currentPage = pageNum;
                 this.showSignature = false;
                 this.isRendering = true;
                 this.pdfUrl = `/storage/uploads/testreports/${this.selected.attachment.name}`;
@@ -258,34 +275,37 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
                 }
             },
             async savePdfWithSignature() {
-                const signature = this.$refs.signature;
-                const canvas = this.$refs.pdfCanvas;
+            try {
+                const signatureEl = this.$refs.signature;
+                const canvasEl = this.$refs.pdfCanvas;
 
-                const sigBlob = await fetch(signature.src).then(res => res.blob());
-                const sigArrayBuffer = await sigBlob.arrayBuffer();
+                const signatureCanvas = await html2canvas(signatureEl, {
+                backgroundColor: null,
+                scale: 4,
+                });
+
+                const blob = await new Promise(resolve => signatureCanvas.toBlob(resolve, 'image/png'));
+                const sigArrayBuffer = await blob.arrayBuffer();
 
                 const pdfBytes = await fetch(this.pdfUrl).then(res => res.arrayBuffer());
                 const pdfDoc = await PDFDocument.load(pdfBytes);
-                const page = pdfDoc.getPages()[this.currentPage - 1];
+                const page = pdfDoc.getPages()[0];
 
                 const img = await pdfDoc.embedPng(sigArrayBuffer);
-                const sigWidthCSS = signature.offsetWidth;
-                const sigHeightCSS = signature.offsetHeight;
 
-                const scaleX = page.getWidth() / canvas.offsetWidth;
-                const scaleY = page.getHeight() / canvas.offsetHeight;
+                const sigWidthCSS = signatureEl.offsetWidth;
+                const sigHeightCSS = signatureEl.offsetHeight;
 
-                const sigX = parseFloat(signature.dataset.x) || 0;
-                const sigY = parseFloat(signature.dataset.y) || 0;
+                const scaleX = page.getWidth() / canvasEl.offsetWidth;
+                const scaleY = page.getHeight() / canvasEl.offsetHeight;
+
+                const sigX = parseFloat(signatureEl.dataset.x) || 0;
+                const sigY = parseFloat(signatureEl.dataset.y) || 0;
 
                 const sigXPDF = sigX * scaleX;
+                const sigYPDF = page.getHeight() - ((sigY + sigHeightCSS) * scaleY);
                 const sigWidthPDF = sigWidthCSS * scaleX;
                 const sigHeightPDF = sigHeightCSS * scaleY;
-
-                const cssYOffsetCorrection = 0; //36
-                const yOffsetCorrection = cssYOffsetCorrection * scaleY;
-
-                const sigYPDF = page.getHeight() - ((sigY + sigHeightCSS) * scaleY) + yOffsetCorrection;
 
                 page.drawImage(img, {
                     x: sigXPDF,
@@ -294,34 +314,11 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
                     height: sigHeightPDF,
                 });
 
-                this.currentDateTime = new Date().toLocaleString();
-                const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-                const signerName = 'DIGITALLY SIGNED BY RA-OUF JUMLI';
-                const timestamp = this.currentDateTime;
-                const textX = sigXPDF + sigWidthPDF + 10;
-                const textY = sigYPDF + sigHeightPDF - 10;
-
-                page.drawText(signerName, {
-                x: textX,
-                y: textY,
-                size: 5,
-                font,
-                color: rgb(0, 0, 0),
-                });
-
-                page.drawText(timestamp, {
-                x: textX,
-                y: textY - 7,
-                size: 5,
-                font,
-                color: rgb(0, 0, 0),
-                });
-
                 const pdfBytesSigned = await pdfDoc.save();
-                const blob = new Blob([pdfBytesSigned], { type: 'application/pdf' });
+                const finalBlob = new Blob([pdfBytesSigned], { type: 'application/pdf' });
 
                 const formData = new FormData();
-                formData.append('pdf', blob, 'signed-report.pdf');
+                formData.append('pdf', finalBlob, 'signed-report.pdf');
                 formData.append('id', this.selected.qr);
                 formData.append('option', 'report');
 
@@ -330,9 +327,13 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
                     forceFormData: true,
                     onSuccess: () => this.renderPdf?.(),
                     onError: () => {
-                    this.errors = this.$page.props.errors;
+                        this.errors = this.$page.props.errors;
                     }
                 });
+
+            } catch (error) {
+                console.error("❌ Failed to sign PDF:", error);
+            }
             },
             handleAddFile(error, fileItem) {
                 if (error) return console.error('FilePond error:', error);
@@ -367,6 +368,7 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
             }, 
             placeSignature() {
                 this.showSignature = true;
+                this.setCurrentDateTime();
                 this.$nextTick(() => {
                     const canvas = this.$refs.pdfCanvas;
                     const sig = this.$refs.signature;

@@ -81,78 +81,23 @@
         <div class="alert alert-primary alert-dismissible alert-label-icon rounded-label fade show mb-n2" role="alert">
             <i class="ri-qr-code-fill label-icon"></i><strong>QR Code</strong> - <span style="cursor: pointer;" @click="printQr()">Click here to print</span>
         </div>
-        <hr class="text-muted mt-4"/>
-        <file-pond
-        name="pdf"
-        ref="pond"
-        allow-multiple="false"
-        max-files="1"
-        accepted-file-types="application/pdf"
-        label-idle='Drag & Drop your PDF or <span class="filepond--label-action">Browse</span>'
-        :allow-process="false"
-        @addfile="handleAddFile"
-        />
-        <hr class="text-muted" />
-        <img
-        ref="signature"
-        src="/images/esig.png"
-        id="signature"
-        style="position: absolute; width: 100px; cursor: move"
-        />
-        <b-button variant="success" block @click="savePdfWithSignature">
-        Save Signed PDF
-        </b-button>
-        <nav aria-label="Page navigation example" class="float-end">
-        <ul class="pagination">
-            <li
-            class="page-item"
-            :class="{ disabled: currentPage === 1 }"
-            @click="goToPage(currentPage - 1)"
-            >
-            <a class="page-link" href="#">Previous</a>
-            </li>
-            <li
-            v-for="page in totalPages"
-            :key="page"
-            class="page-item"
-            :class="{ active: page === currentPage }"
-            @click="goToPage(page)"
-            >
-            <a class="page-link" href="#">{{ page }}</a>
-            </li>
-            <li
-            class="page-item"
-            :class="{ disabled: currentPage === totalPages }"
-            @click="goToPage(currentPage + 1)"
-            >
-            <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-        </nav>
-        <canvas ref="pdfCanvas" id="pdfcanvas" style="border: 1px solid blue; width: 100%; height: auto;"></canvas>
-<!-- {{ totalPages }} -->
+       
     <template v-slot:footer>
       <b-button @click="hide" variant="light" block>Close</b-button>
       <b-button @click="openResult" variant="primary" block>Preview</b-button>
     </template>
   </b-modal>
+   <Result ref="result"/>
 </template>
 
 <script>
-import { PDFDocument } from 'pdf-lib';
-import interact from 'interactjs';
-import vueFilePond from 'vue-filepond';
-import 'filepond/dist/filepond.min.css';
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-const FilePond = vueFilePond(FilePondPluginFileValidateType);
-
 import simplebar from "simplebar-vue";
 import Result from './Result.vue';
 import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
 
 export default {
-  components: { InputLabel, TextInput, simplebar, Result, FilePond },
+  components: { InputLabel, TextInput, simplebar, Result },
   data() {
     return {
       currentUrl: window.location.origin,
@@ -210,7 +155,9 @@ export default {
         onSuccess: () => this.hide?.(),
         onError: () => this.errors = this.$page.props.errors
       });
-    },
+    },  openResult(){
+            this.$refs.result.show(this.parameters,this.selected.sample_id);
+        },
     goToPage(page) {
   this.currentPage = page;
   this.renderPdf(page);
