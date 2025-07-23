@@ -6,6 +6,53 @@ use App\Models\Tsr;
 
 class GadClass
 {
+    public function numbers(){
+        $year = date('Y');
+        $types = [
+            ['id' => 82, 'name' => 'Male'],
+            ['id' => 83, 'name' => 'Male-led'],
+            ['id' => 73, 'name' => 'Female'],
+            ['id' => 74, 'name' => 'Female-led'],
+            ['id' => 5, 'name' => 'Enterprise/Company'],
+        ];
+        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        $result = [];
+
+        foreach($types as $index => $type){
+            $monthlyTotals = [];
+            $typeTotal = 0;
+            foreach($months as $index => $month){
+                $total = Tsr::whereDoesntHave('parent')
+                ->withWhereHas('payment', function ($query) {
+                    $query->where('is_free',0);
+                })
+                ->whereHas('customer', function ($query) use ($type){
+                    $query->where('female_id',$type['id'])
+                    ->orWhere(function ($sub) use ($type) {
+                        if($type['name'] == 'Male'){
+                            $sub->whereNull('female_id')->where('sex_id', 70);
+                        }else if($type['name'] == 'Female'){
+                            $sub->whereNull('female_id')->where('sex_id', 71);
+                        }
+                    });
+                })
+                ->where('status_id','!=',5)
+                ->whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                ->where('agency_id',14)
+                ->get()
+                ->count();
+                $monthlyTotals[] = $total;
+                $typeTotal += $total;
+            }
+            $result[] = [
+                'name' => $type['name'],
+                'monthly' => $monthlyTotals,
+                'total' => $typeTotal
+            ];
+        }
+        return $result;
+    }
+
     public function transactions(){
         $year = date('Y');
         $types = [
