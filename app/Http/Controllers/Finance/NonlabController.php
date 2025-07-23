@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Finance;
 use App\Models\FinanceOp;
 use App\Models\FinanceItem;
 use App\Models\FinanceOpItem;
+use App\Models\FinanceReceipt;
 use App\Models\FinanceReceiptDetail;
 use App\Traits\HandlesTransaction;
 use App\Http\Controllers\Controller;
@@ -137,11 +138,11 @@ class NonlabController extends Controller
                     $op->save();
 
                     if($op->payment_id == 18){
-                        $or_id = FinanceReceipt::where('op_id',$op_id)->value('receipt_id');
+                        $or_id = FinanceReceipt::where('op_id',$op_id)->value('id');
                         $detail = FinanceReceiptDetail::where('receipt_id',$or_id)->first();
-                        $detail->total = (float) str_replace(',', '', trim($detail->total, '₱ ')) - (float) str_replace(',', '', trim($old_amount, '₱ '));
+                        $detail->amount = (float) str_replace(',', '', trim($detail->amount, '₱ ')) - (float) str_replace(',', '', trim($old_amount, '₱ '));
                         if($detail->save()){
-                            $detail->total = (float) str_replace(',', '', trim($detail->total, '₱ ')) + (float) str_replace(',', '', trim($request->amount, '₱ ')); 
+                            $detail->amount = (float) str_replace(',', '', trim($detail->amount, '₱ ')) + (float) str_replace(',', '', trim($request->amount, '₱ ')); 
                             $detail->save();
                         }
                     }
