@@ -228,33 +228,35 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
         },
         methods: { 
             renderPdf(pageNum = 1) {
-                this.currentPage = pageNum;
-                this.showSignature = false;
-                this.isRendering = true;
-                this.pdfUrl = `/storage/uploads/testreports/${this.selected.attachment.name}`;
-                const canvasEl = this.$refs.pdfCanvas;
-                const fileUrl = this.pdfUrl;
-               
-                if (window.PDFJS) {
-                    window.PDFJS.workerSrc = null;
-                    window.PDFJS.getDocument(fileUrl).then(pdf => {
-                        this.totalPages = pdf.numPages;
-                        if (pageNum < 1) pageNum = 1;
-                        if (pageNum > pdf.numPages) pageNum = pdf.numPages;
-                        pdf.getPage(pageNum).then(page => {
-                            const viewport = page.getViewport(this.scale);
-                            canvasEl.width = viewport.width;
-                            canvasEl.height = viewport.height;
+                if(this.selected.attachment){
+                    this.currentPage = pageNum;
+                    this.showSignature = false;
+                    this.isRendering = true;
+                    this.pdfUrl = `/storage/uploads/testreports/${this.selected.attachment.name}`;
+                    const canvasEl = this.$refs.pdfCanvas;
+                    const fileUrl = this.pdfUrl;
+                
+                    if (window.PDFJS) {
+                        window.PDFJS.workerSrc = null;
+                        window.PDFJS.getDocument(fileUrl).then(pdf => {
+                            this.totalPages = pdf.numPages;
+                            if (pageNum < 1) pageNum = 1;
+                            if (pageNum > pdf.numPages) pageNum = pdf.numPages;
+                            pdf.getPage(pageNum).then(page => {
+                                const viewport = page.getViewport(this.scale);
+                                canvasEl.width = viewport.width;
+                                canvasEl.height = viewport.height;
 
-                            const context = canvasEl.getContext('2d');
-                            page.render({ canvasContext: context, viewport }).promise.then(() => {
-                                this.isRendering = false;
+                                const context = canvasEl.getContext('2d');
+                                page.render({ canvasContext: context, viewport }).promise.then(() => {
+                                    this.isRendering = false;
+                                });
                             });
                         });
-                    });
-                } else {
-                    console.error('PDFJS not loaded');
-                    this.isRendering = false;
+                    } else {
+                        console.error('PDFJS not loaded');
+                        this.isRendering = false;
+                    }
                 }
             },
             async savePdfWithSignature() {

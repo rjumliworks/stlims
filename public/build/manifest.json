@@ -1,6 +1,6 @@
 {
   "node_modules/canvg/lib/index.es.js": {
-    "file": "assets/index.es-Dt7GcPif.js",
+    "file": "assets/index.es-DxeWCwcC.js",
     "name": "index.es",
     "src": "node_modules/canvg/lib/index.es.js",
     "isDynamicEntry": true,
@@ -264,7 +264,7 @@
     "src": "public/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-C-Ee0FEb.js",
+    "file": "assets/app-B9vpzSJQ.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -283,7 +283,7 @@
       "node_modules/canvg/lib/index.es.js"
     ],
     "css": [
-      "assets/app-DbsAgT8C.css"
+      "assets/app-BF3S_983.css"
     ],
     "assets": [
       "assets/logo-sm-BMbbSDmV.png",
