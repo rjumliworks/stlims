@@ -50,11 +50,28 @@
             <div class="chat-wrapper d-lg-flex gap-1 mx-n4 mt-n4 p-1">
                 <div class="file-manager-content w-100 p-4 pb-0" ref="box" style="margin-left: 20px;">
                     <div class="row g-2">
+                        <div class="col-sm-12">
+                            <div class="row" v-if="selected.lists.length > 0" style="max-height: 130px; overflow: auto;">
+                                <div class="col-md-3" v-for="(column, index) in columns" :key="index">
+                                    <ul class="list-unstyled">
+                                        <li v-for="(item, idx) in column" :key="idx" class="py-1 fs-12">
+                                            <i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i> {{ item.sample.code }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="alert alert-primary alert-dismissible alert-label-icon rounded-label fade show mt-n2 mb-0" role="alert">
+                                <i class="ri-qr-code-fill label-icon"></i><strong>QR Code</strong> - <span style="cursor: pointer;" @click="printQr()">Click here to print</span>
+                            </div>
+                            <hr class="text-muted mt-3 mb-2"/>
+                        </div>
                         <div class="col-sm-6">
                             <div class="p-1 border border-dashed rounded">
                                 <div class="d-flex align-items-center">
                                     <div class="avatar-sm me-2">
-                                        <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-line"></i></div>
+                                        <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-fill"></i></div>
                                     </div>
                                     <div class="flex-grow-1">
                                         <p class="text-muted mb-0 fs-12">Report Date :</p>
@@ -67,7 +84,7 @@
                             <div class="p-1 border border-dashed rounded">
                                 <div class="d-flex align-items-center">
                                     <div class="avatar-sm me-2">
-                                        <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-line"></i></div>
+                                        <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-fill"></i></div>
                                     </div>
                                     <div class="flex-grow-1">
                                         <p class="text-muted mb-0 fs-12">Released Date :</p>
@@ -76,8 +93,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12" v-if="selected.attachment">
+                            <div class="border rounded border-dashed p-1 mb-3">
+                                <div class="d-flex align-items-center">
+                                    <div class="avatar-sm me-2">
+                                        <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-file-text-fill"></i></div>
+                                    </div>
+                                    <div class="flex-grow-1">
+                                        <p class="text-muted mb-0 fs-12">Download PDF :</p>
+                                        <h5 class="mb-0 fs-12">{{selected.code+'.pdf'}}</h5>
+                                    </div>
+                                    <div class="flex-shrink-0 ms-2">
+                                        <div class="d-flex gap-1">
+                                            <button type="button" @click="openPdf" class="btn btn-icon text-muted btn-sm fs-18"><i class="ri-download-2-line"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-md-12">
-                            <hr class="text-muted mt-2"/>
+                            <hr class="text-muted mt-n2"/>
                             <div class="card bg-light-subtle shadow-none border">
                                 <div class="card-header bg-light-subtle">
                                     <div class="d-flex mb-n3">
@@ -89,7 +124,7 @@
                                             </div>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h5 class="mb-0 fs-14"><span class="text-body">List of Signatories</span></h5>
+                                            <h5 class="mb-0 fs-13"><span class="text-body">List of Signatories</span></h5>
                                             <p class="text-muted text-truncate-two-lines fs-12">This is the list of individuals authorized to sign and who have signed the report.</p>
                                         </div>
                                         <div class="flex-shrink-0">
@@ -453,6 +488,12 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
                 this.currentPage = page;
                 this.renderPdf(page);
             },
+            printQr(){
+                window.open('/testreports?option=qrcode&id='+this.selected.qr);
+            },
+            opendPdf() {
+                window.open(this.pdfUrl, '_blank');
+            }
         }
     }
 </script>
