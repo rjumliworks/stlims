@@ -81,7 +81,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="p-1 border border-dashed rounded">
+                            <div class="p-1 border border-dashed rounded mb-3">
                                 <div class="d-flex align-items-center">
                                     <div class="avatar-sm me-2">
                                         <div class="avatar-title rounded bg-transparent text-primary fs-20"><i class="ri-calendar-fill"></i></div>
