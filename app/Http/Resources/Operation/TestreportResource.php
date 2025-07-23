@@ -23,6 +23,7 @@ class TestreportResource extends JsonResource
             'user' => $this->user->profile->firstname.' '.$this->user->profile->lastname,
             'lists' => $this->lists,
             'attachment' => json_decode($this->attachment),
+            'signatories' => $this->signatories,
             'created_at' => $this->created_at
         ]; 
     }

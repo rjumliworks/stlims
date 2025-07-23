@@ -11,19 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_profiles', function (Blueprint $table) {
+        Schema::create('tsr_sample_report_signatories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
-            $table->string('firstname',150);
-            $table->string('lastname',150);
-            $table->string('middlename',100)->nullable();
-            $table->string('suffix',10)->nullable();
-            $table->string('sex',8);
-            $table->string('mobile',15);
-            $table->string('avatar', 2048)->default('avatar');
-            $table->string('signature', 2048)->nullable();
+            $table->string('timestamp');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->bigInteger('report_id')->unsigned()->index();
+            $table->foreign('report_id')->references('id')->on('tsr_sample_reports')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_profiles');
+        Schema::dropIfExists('tsr_sample_report_signatories');
     }
 };

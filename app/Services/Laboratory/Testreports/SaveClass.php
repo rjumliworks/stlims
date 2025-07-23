@@ -9,6 +9,7 @@ use App\Models\AgencyConfiguration;
 use App\Models\ListLaboratory;
 use App\Models\TsrSampleReport;
 use App\Models\TsrSampleReportList;
+use App\Models\TsrSampleReportSignatory;
 use Illuminate\Support\Str;
 use Hashids\Hashids;
 
@@ -246,7 +247,13 @@ class SaveClass
 
         $attach = $this->upload($data,$request);
         $data->attachment = $attach;
-        $data->save();
+        if($data->save()){
+            $signatory = new TsrSampleReportSignatory;
+            $signatory->report_id = $data->id;
+            $signatory->timestamp = $request->timestamp;
+            $signatory->user_id = \Auth::user()->id;
+            $signatory->save();
+        }
         
         return [
             'data' => $data,

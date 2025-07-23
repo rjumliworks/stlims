@@ -28,7 +28,8 @@ class ViewClass
         $data = new TestreportResource(
             TsrSampleReport::query()
             ->with('lists.sample:id,code','lists.sample.analyses:testservice_id,sample_id','lists.sample.analyses.testservice:id,testname_id','lists.sample.analyses.testservice.testname:id,name')
-            ->with('sample.tsr','user.profile')
+            ->with('sample.tsr','user:id','user.profile:user_id,firstname,lastname,middlename,suffix')
+            ->with('signatories.user:id','signatories.user.profile:user_id,firstname,middlename,lastname,suffix')
             ->with('sample.analyses:testservice_id,sample_id','sample.analyses.testservice:id,testname_id','sample.analyses.testservice.testname:id,name')
             ->where('sample_id',$id[0])
             ->first()
@@ -43,6 +44,7 @@ class ViewClass
                 TsrSampleReport::query()
                 ->with('lists.sample:id,code','lists.sample.analyses:testservice_id,sample_id','lists.sample.analyses.testservice:id,testname_id','lists.sample.analyses.testservice.testname:id,name')
                 ->with('sample.tsr','user.profile')
+                ->with('signatories.user.profile:id,firstname,middlename,lastname,suffix')
                 ->with('sample.analyses:testservice_id,sample_id','sample.analyses.testservice:id,testname_id','sample.analyses.testservice.testname:id,name')
                 ->when($request->keyword, function ($query, $keyword) {
                     $query->where('code', 'LIKE', "%{$keyword}%");

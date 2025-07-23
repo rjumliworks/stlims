@@ -138,134 +138,15 @@ export default {
         this.makeDraggable();
       });
     },
+     openResult(){
+            this.$refs.result.show(this.parameters,this.selected.sample_id);
+        },
+         printQr(id){
+            window.open('/testreports?option=qrcode&id='+this.selected.qr);
+        },
     hide() {
       this.showModal = false;
     },
-    handleAddFile(error, fileItem) {
-      if (error) return console.error('FilePond error:', error);
-      const file = fileItem.file;
-      const formData = new FormData();
-      formData.append('pdf', file);
-      formData.append('id', this.selected.qr);
-      formData.append('option', 'report');
-
-      this.$inertia.post('/testreports', formData, {
-        preserveScroll: true,
-        forceFormData: true,
-        onSuccess: () => this.hide?.(),
-        onError: () => this.errors = this.$page.props.errors
-      });
-    },  openResult(){
-            this.$refs.result.show(this.parameters,this.selected.sample_id);
-        },
-    goToPage(page) {
-  this.currentPage = page;
-  this.renderPdf(page);
-},
-    renderPdf(pageNum = 1) {
-      const canvasEl = this.$refs.pdfCanvas;
-      const fileUrl = this.pdfUrl;
-    //    this.totalPages = pdfUrl.numPages;
-      if (window.PDFJS) {
-        window.PDFJS.workerSrc = null;
-        window.PDFJS.getDocument(fileUrl).then(pdf => {
-            this.totalPages = pdf.numPages;
-            if (pageNum < 1) pageNum = 1;
-            if (pageNum > pdf.numPages) pageNum = pdf.numPages;
-            pdf.getPage(pageNum).then(page => {
-                const viewport = page.getViewport(this.scale);
-                canvasEl.width = viewport.width;
-                canvasEl.height = viewport.height;
-
-                const context = canvasEl.getContext('2d');
-                page.render({ canvasContext: context, viewport });
-            });
-        });
-      } else {
-        console.error('PDFJS not loaded');
-      }
-    },
-    makeDraggable() {
-      interact(this.$refs.signature).draggable({
-        modifiers: [interact.modifiers.restrictRect({ restriction: 'parent' })],
-        listeners: {
-          move: event => {
-            const target = event.target;
-            const x = (parseFloat(target.dataset.x) || 0) + event.dx;
-            const y = (parseFloat(target.dataset.y) || 0) + event.dy;
-            target.style.transform = `translate(${x}px, ${y}px)`;
-            target.dataset.x = x;
-            target.dataset.y = y;
-            this.signaturePos = { x, y };
-          }
-        }
-      });
-    },
-    async savePdfWithSignature() {
-    const signature = this.$refs.signature;
-    const canvas = this.$refs.pdfCanvas;
-
-    // Load signature image
-    const sigBlob = await fetch(signature.src).then(res => res.blob());
-    const sigArrayBuffer = await sigBlob.arrayBuffer();
-
-    // Load PDF
-    const pdfBytes = await fetch(this.pdfUrl).then(res => res.arrayBuffer());
-    const pdfDoc = await PDFDocument.load(pdfBytes);
-    const page = pdfDoc.getPages()[0];
-
-    // Embed signature
-    const img = await pdfDoc.embedPng(sigArrayBuffer);
-    const sigWidthCSS = signature.offsetWidth;
-    const sigHeightCSS = signature.offsetHeight;
-
-    // Convert to PDF units
-    const scaleX = page.getWidth() / canvas.offsetWidth;
-    const scaleY = page.getHeight() / canvas.offsetHeight;
-
-    const sigX = parseFloat(signature.dataset.x) || 0;
-    const sigY = parseFloat(signature.dataset.y) || 0;
-
-    const sigXPDF = sigX * scaleX;
-    const sigWidthPDF = sigWidthCSS * scaleX;
-    const sigHeightPDF = sigHeightCSS * scaleY;
-
-    // 🔧 Fine-tune vertical position
-    const cssYOffsetCorrection = 36; // Adjust this value: try 26, 30, etc.
-    const yOffsetCorrection = cssYOffsetCorrection * scaleY;
-
-    const sigYPDF = page.getHeight() - ((sigY + sigHeightCSS) * scaleY) + yOffsetCorrection;
-
-    // Draw on PDF
-    page.drawImage(img, {
-        x: sigXPDF,
-        y: sigYPDF,
-        width: sigWidthPDF,
-        height: sigHeightPDF,
-    });
-
-    // Save PDF
-    const pdfBytesSigned = await pdfDoc.save();
-    const blob = new Blob([pdfBytesSigned], { type: 'application/pdf' });
-
-    // Upload to server
-    const formData = new FormData();
-    formData.append('pdf', blob, 'signed-report.pdf');
-    formData.append('id', this.selected.qr);
-    formData.append('option', 'report');
-
-    this.$inertia.post('/testreports', formData, {
-        preserveScroll: true,
-        forceFormData: true,
-        onSuccess: () => this.hide?.(),
-        onError: () => {
-        this.errors = this.$page.props.errors;
-        }
-    });
-    }
-
-
-
   }
 };
 </script>

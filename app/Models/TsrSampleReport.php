@@ -47,6 +47,11 @@ class TsrSampleReport extends Model
         return $this->hasMany('App\Models\TsrSampleReportList', 'report_id');
     }
 
+    public function signatories()
+    {
+        return $this->hasMany('App\Models\TsrSampleReportSignatory', 'report_id');
+    }
+
     public function setPasskeyAttribute($value)
     {
         $this->attributes['passkey'] = Crypt::encryptString($value);

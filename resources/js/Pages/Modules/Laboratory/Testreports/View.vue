@@ -77,7 +77,58 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                           
+                            <hr class="text-muted mt-2"/>
+                            <div class="card bg-light-subtle shadow-none border">
+                                <div class="card-header bg-light-subtle">
+                                    <div class="d-flex mb-n3">
+                                        <div class="flex-shrink-0 me-3">
+                                            <div style="height:2.5rem;width:2.5rem;">
+                                                <span class="avatar-title bg-primary-subtle rounded p-2 mt-n1">
+                                                    <i class="ri-team-fill text-primary fs-22"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="mb-0 fs-14"><span class="text-body">List of Signatories</span></h5>
+                                            <p class="text-muted text-truncate-two-lines fs-12">This is the list of individuals authorized to sign and who have signed the report.</p>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card bg-white border-bottom shadow-none" no-body>
+                                    <div class="table-responsive">
+                                        <table class="table table-nowrap table-striped align-middle mb-0">
+                                            <thead class="table-light thead-fixed">
+                                                <tr class="fs-11">
+                                                    <th class="text-center" width="7%">#</th>
+                                                    <th>Name</th>
+                                                    <th class="text-center" width="30%">Timestamp</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody v-if="selected.signatories.length > 0">
+                                                <tr v-for="(list,index) in selected.signatories" v-bind:key="index">
+                                                    <td class="text-center"> 
+                                                        {{index + 1}}
+                                                    </td>
+                                                    <td>
+                                                        <h5 class="fs-13 mb-0">{{list.user.profile.firstname}} {{list.user.profile.middlename[0]}}. {{list.user.profile.lastname}}</h5>
+                                                    </td>
+                                                    <td class="text-center">{{list.timestamp}}</td>
+                                                </tr>
+                                            </tbody>
+                                            <tbody v-else>
+                                                <tr>
+                                                    <td colspan="3" class="text-center text-muted fs-12">No signatories found. Please add at least one sample to proceed with the TSR.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            
+
                         </div>
                     </div>
                 </div>
@@ -298,25 +349,34 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
 
                 this.currentDateTime = new Date().toLocaleString();
                 const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
-                const signerName = 'DIGITALLY SIGNED BY RA-OUF JUMLI';
+                const title = 'DIGITALLY SIGNED BY';
+                const name = 'RA-OUF I. JUMLI';
                 const timestamp = this.currentDateTime;
                 const textX = sigXPDF + sigWidthPDF + 10;
                 const textY = sigYPDF + sigHeightPDF - 10;
 
-                page.drawText(signerName, {
-                x: textX,
-                y: textY,
-                size: 5,
-                font,
-                color: rgb(0, 0, 0),
+                page.drawText(title, {
+                    x: textX,
+                    y: textY,
+                    size: 5,
+                    font,
+                    color: rgb(0, 0, 1),
+                });
+
+                page.drawText(name, {
+                    x: textX,
+                    y: textY - 6,
+                    size: 5,
+                    font,
+                    color: rgb(0, 0, 1),
                 });
 
                 page.drawText(timestamp, {
-                x: textX,
-                y: textY - 7,
-                size: 5,
-                font,
-                color: rgb(0, 0, 0),
+                    x: textX,
+                    y: textY - 12,
+                    size: 5,
+                    font,
+                    color: rgb(0, 0, 1),
                 });
 
                 const pdfBytesSigned = await pdfDoc.save();
@@ -325,6 +385,7 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
                 const formData = new FormData();
                 formData.append('pdf', blob, 'signed-report.pdf');
                 formData.append('id', this.selected.qr);
+                formData.append('timestamp',timestamp);
                 formData.append('option', 'report');
 
                 this.$inertia.post('/testreports', formData, {
