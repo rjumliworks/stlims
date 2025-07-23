@@ -155,7 +155,7 @@
                                             </tbody>
                                             <tbody v-else>
                                                 <tr>
-                                                    <td colspan="3" class="text-center text-muted fs-12">No signatories found. Please add at least one sample to proceed with the TSR.</td>
+                                                    <td colspan="3" class="text-center text-muted fs-12">No signatories found.</td>
                                                 </tr>
                                             </tbody>
                                         </table>
