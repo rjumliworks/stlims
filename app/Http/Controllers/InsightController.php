@@ -9,16 +9,18 @@ use App\Services\Insights\CustomerClass;
 use App\Services\Insights\PaymentClass;
 use App\Services\Insights\LaboratoryClass;
 use App\Services\Insights\GadClass;
+use App\Services\Insights\ProvinceClass;
 
 class InsightController extends Controller
 {
-    public function __construct(CustomerClass $customer, LaboratoryClass $laboratory, DailyClass $daily, TopClass $top, PaymentClass $payment, GadClass $gad){
+    public function __construct(CustomerClass $customer, LaboratoryClass $laboratory, DailyClass $daily, TopClass $top, PaymentClass $payment, GadClass $gad, ProvinceClass $province){
         $this->top = $top;
         $this->customer = $customer;
         $this->laboratory = $laboratory;
         $this->daily = $daily;
         $this->payment = $payment;
         $this->gad = $gad;
+        $this->province = $province;
     }
 
     public function index(Request $request){
@@ -177,6 +179,16 @@ class InsightController extends Controller
                     ]
                 ]);
             break;
+            case 'provinces':
+                // return $this->province->zc();
+                return inertia('Modules/Insights/Province/Index',[
+                    'customers' => $this->province->customers(),
+                    'zc' => $this->province->zc(),
+                    'firms' => $this->province->firms(),
+                    'zcfirm' => $this->province->zcfirm()
+                ]);
+            break;
         }
     }
+    
 }
