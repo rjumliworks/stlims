@@ -233,7 +233,7 @@
                     <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($tsr['payment']['discount'],'₱ ')}}</td>
                 </tr>
                 @if(isset($payment['type']))
-                    @if($payment['type']['name'] == 'Wallet')
+                    @if($payment['type']['name'] == 'Wallet' && $transaction['amount'] == $payment['total'])
                     <tr>
                         <td colspan="5" style="font-weight: regular; text-align: left;"><i>Debited {{trim($payment['total'],'₱ ')}} from customers e-wallet</i></td>
                         <td style="font-size: 8px;">E-WALLET</td>
