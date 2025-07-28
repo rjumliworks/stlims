@@ -241,18 +241,28 @@
                     </tr>
                     @endif
                 @endif
-                @if(isset($transaction))
+                @if(isset($transaction) && $transaction['amount'] != $payment['total'])
                     <tr>
                         <td colspan="5" style="font-weight: regular; text-align: left;"><i>Partially debited {{trim($transaction['amount'],'₱ ')}} from customers e-wallet</i></td>
                         <td style="font-size: 8px;">E-WALLET</td>
                         <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($transaction['amount'],'₱ ')}}</td>
                     </tr>
                 @endif
-                <tr>
-                    <td colspan="5"></td>
-                    <td style="font-size: 8px;">TOTAL</td>
-                    <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($payment['total'],'₱ ')}}</td>
-                </tr>
+                @if(isset($payment['type']))
+                    @if($payment['type']['name'] == 'Wallet' && $transaction['amount'] == $payment['total'])
+                    <tr>
+                        <td colspan="5"></td>
+                            <td style="font-size: 8px;">TOTAL</td>
+                            <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>0.00</td>
+                        </tr>
+                    @endif
+                @else
+                    <tr>
+                        <td colspan="5"></td>
+                        <td style="font-size: 8px;">TOTAL</td>
+                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($payment['total'],'₱ ')}}</td>
+                    </tr>
+                @endif
             </tfoot>
         </table>
         <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S) / REMARK(S)</h6>
