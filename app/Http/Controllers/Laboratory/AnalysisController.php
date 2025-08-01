@@ -50,7 +50,8 @@ class AnalysisController extends Controller
         $request->validate([
             'start_at' => ['required_if:option,start'],
             'end_at' => ['required_if:option,end'],
-            'date' => ['required_if:option,group']
+            'date' => ['required_if:option,group'],
+            'reason' => ['required_if:option,cancel']
         ]);
         $result = $this->handleTransaction(function () use ($request) {
             switch($request->option){
@@ -65,6 +66,9 @@ class AnalysisController extends Controller
                 break;
                 case 'group':
                     return $this->update->group($request);
+                break;
+                case 'cancel':
+                    return $this->update->cancel($request);
                 break;
                 case 'delete':
                     return $this->save->deleteService($request);

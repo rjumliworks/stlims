@@ -62,7 +62,7 @@
                                         </div>
                                     </div>
                                     <div class="flex-shrink-0 ms-2">
-                                        <h6 v-if="list.is_credit" class="fs-14 mb-0">OR# : {{list.transacable.number}}</h6>
+                                        <h6 v-if="!list.transacable.code" class="fs-14 mb-0">OR# : {{list.transacable.number}}</h6>
                                         <h6 v-else class="fs-14 mb-0">{{list.transacable.code}}</h6>
                                         <small class="text-muted">{{list.created_at}}</small>
                                     </div>

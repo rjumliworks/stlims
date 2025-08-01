@@ -140,6 +140,10 @@
                                     <td><span v-if="selected.discounted.value != 0">({{selected.discounted.value}}%)</span>  Discount : </td>
                                     <td class="text-end" id="cart-discount">{{selected.discount}}</td>
                                 </tr>
+                                 <tr v-if="selected.customer.wallet">
+                                    <td> Wallet : </td>
+                                    <td class="text-end" id="cart-discount">{{selected.customer.wallet.available}}</td>
+                                </tr>
                                 <tr class="table-active">
                                     <th>Total :</th>
                                     <td class="text-end"><span class="fw-semibold" id="cart-total"> {{selected.total}} </span></td>

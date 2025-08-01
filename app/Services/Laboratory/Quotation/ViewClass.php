@@ -5,6 +5,7 @@ namespace App\Services\Laboratory\Quotation;
 use Hashids\Hashids;
 use App\Models\AgencyConfiguration;
 use App\Models\UserRole;
+use App\Models\Wallet;
 use App\Models\Quotation;
 use App\Models\QuotationSample;
 use App\Models\QuotationAnalysis;
@@ -210,6 +211,8 @@ class ViewClass
         ->where('laboratory_id',$quotation->laboratory_id)
         ->where('is_active',1)
         ->first();
+        $available = Wallet::where('customer_id', $quotation->customer_id)->value('available') ?? 0;
+        $wallet = ($available != 0) ? trim(str_replace(',','',$available),'₱') : 0;
         $array= [
             'configuration' => AgencyConfiguration::where('agency_id',$this->agency)->first(),
             'quotation' => new QuotationResource($quotation),
@@ -217,6 +220,7 @@ class ViewClass
             'group' => $samples2,
             'service' => $service,
             'descs' => $descs,
+            'wallet' => $wallet,
             'manager' => $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname,
             'user' => $quotation->createdby->profile->firstname.' '.$quotation->createdby->profile->middlename[0].'. '.$quotation->createdby->profile->lastname
         ]; 

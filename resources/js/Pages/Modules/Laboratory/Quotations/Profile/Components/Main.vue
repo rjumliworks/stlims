@@ -1,7 +1,6 @@
 <template>
     <div class="row">
         <div class="col-md-12">
-          
             <div class="card bg-light-subtle shadow-none border">
                 <div class="card-header bg-light-subtle">
                     <div class="d-flex mb-n3">

@@ -80,4 +80,8 @@ class TsrAnalysis extends Model
         ->dontSubmitEmptyLogs();
     }
 
+    public function cancellable()
+    {
+        return $this->morphOne('App\Models\TsrCancel', 'cancellable');
+    }
 }

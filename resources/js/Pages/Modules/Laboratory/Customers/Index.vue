@@ -22,7 +22,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="car-body bg-white border-bottom shadow-none">
+                <div class="card-body bg-white border-bottom shadow-none">
                     <b-row class="mb-2 ms-1 me-1" style="margin-top: 12px;">
                         <b-col lg>
                             <div class="input-group mb-1">

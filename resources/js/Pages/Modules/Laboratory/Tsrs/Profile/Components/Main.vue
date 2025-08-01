@@ -190,7 +190,7 @@
     <Service :services="services" ref="service"/>
     <SampleView ref="sampleview"/>
     <Report ref="report"/>
-    <AnalysisView ref="view"/>
+    <AnalysisView :status="selected.status.name" :customer="selected.customer.id" :id="selected.id" ref="view"/>
 </template>
 <script>
 import Report from '../Modals/Main/Report.vue';

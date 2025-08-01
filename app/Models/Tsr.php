@@ -158,4 +158,9 @@ class Tsr extends Model
         ->logOnlyDirty()
         ->dontSubmitEmptyLogs();
     }
+
+    public function cancellable()
+    {
+        return $this->morphOne('App\Models\TsrCancel', 'cancellable');
+    }
 }

@@ -7,6 +7,7 @@ use App\Models\Tsr;
 use App\Models\TsrSample;
 use App\Models\TsrAnalysis;
 use App\Models\TsrSampleDisposal;
+use App\Models\Wallet;
 use App\Http\Resources\Operation\SampleResource;
 use App\Http\Resources\Operation\AnalysisResource;
 
@@ -168,6 +169,64 @@ class UpdateClass
 
         return [
             'data' => $samples,
+            'message' => 'Analysis was updated!', 
+            'info' => "You've successfully updated the analysis."
+        ];
+    }
+
+    public function cancel($request){
+        $data = TsrAnalysis::where('id',$request->id)->first();
+        $data->status_id = $request->status_id;
+        if($data->save()){
+            $cancel = $data->cancellable()->create([
+                'reason' => $request->reason
+            ]);
+            if($cancel){
+                $total = trim(str_replace(',','',$request->fee),'₱');
+                $wallet = Wallet::where('customer_id',$request->customer_id)->first();
+                if($wallet){
+                    $wallet->total = $wallet->total + $total;
+                    $wallet->available = trim(str_replace(',','',$wallet->available),'₱') + $total;
+                    if($wallet->save()){
+                        $tsr = Tsr::where('id',$request->tsr_id)->first();
+                        $tsr->transaction()->create([
+                            'code' => date('Ymdgia'),
+                            'amount' => $total,
+                            'balance' => trim(str_replace(',','',$wallet->available),'₱'),
+                            'is_credit' => 1,
+                            'wallet_id' => $wallet->id
+                        ]);
+                        \DB::commit();  
+                    }else{
+                        $data = 'error';
+                        \DB::rollback();
+                    }
+                }else{
+                    $wallet = new Wallet;
+                    $wallet->total = $total;
+                    $wallet->available = $total;
+                    $wallet->customer_id = $customer_id;
+                    if($wallet->save()){
+                        $data->transaction()->create([
+                            'code' => date('Ymdgis'),
+                            'amount' => $total,
+                            'balance' => $total,
+                            'is_credit' => 1,
+                            'wallet_id' => $wallet->id
+                        ]);
+                        \DB::commit();  
+                    }else{
+                        $data = 'error';
+                        \DB::rollback();
+                    }
+                }
+            }
+            
+        }
+        
+
+        return [
+            'data' => $data,
             'message' => 'Analysis was updated!', 
             'info' => "You've successfully updated the analysis."
         ];
