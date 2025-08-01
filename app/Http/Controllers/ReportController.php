@@ -65,7 +65,8 @@ class ReportController extends Controller
     public function show($id){
         return inertia('Modules/Reports/Transactions/Index',[
             'labs' => $this->transaction->laboratory(),
-            'nonlabs' => $this->transaction->nonlaboratory()
+            'nonlabs' => $this->transaction->nonlaboratory(),
+            'overall' => $this->transaction->overall()
         ]);
     }
 }
