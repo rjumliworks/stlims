@@ -55,6 +55,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
 
     Route::resource('/insights', App\Http\Controllers\InsightController::class);
     Route::resource('/reports', App\Http\Controllers\ReportController::class);
+    Route::resource('/transactions', App\Http\Controllers\ReportController::class);
     // Route::get('/services', [App\Http\Controllers\Laboratory\ServiceController::class, 'index']);
     // Route::resource('/executive', App\Http\Controllers\ExecutiveController::class);
 });

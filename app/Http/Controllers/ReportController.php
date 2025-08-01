@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\Finance\AccountingClass;
 use App\Services\Laboratory\Reports\AccomplishmentClass;
+use App\Services\Laboratory\Reports\TransactionClass;
 
 class ReportController extends Controller
 {
-    public function __construct(AccomplishmentClass $accomplishment, AccountingClass $accounting){
+    public function __construct(AccomplishmentClass $accomplishment, AccountingClass $accounting, TransactionClass $transaction){
         $this->accomplishment = $accomplishment;
         $this->accounting = $accounting;
+        $this->transaction = $transaction;
     }
 
     public function index(Request $request){
@@ -58,5 +60,12 @@ class ReportController extends Controller
                 ]
             ]);
         }
+    }
+
+    public function show($id){
+        return inertia('Modules/Reports/Transactions/Index',[
+            'labs' => $this->transaction->laboratory(),
+            'nonlabs' => $this->transaction->nonlaboratory()
+        ]);
     }
 }

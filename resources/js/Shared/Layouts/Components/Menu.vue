@@ -164,11 +164,20 @@
                 </li>
                 <li class="nav-item">
                     <Link href="/reports" class="nav-link menu-link"
-                    :class="{'active': $page.component.startsWith('Modules/Reports') }">
+                    :class="{ 'active': $page.component === 'Modules/Reports/Index' }">
                     <i class="ri-file-text-fill"></i>
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Reports</span>
                     </Link>
                 </li>
+                <template v-if="['Cashier','Accountant'].some(role => $page.props.roles.includes(role))">
+                    <li class="nav-item">
+                        <Link href="/reports/transactions" class="nav-link menu-link"
+                        :class="{ 'active': $page.url === '/reports/transactions' }">
+                        <i class="ri-hand-coin-fill"></i>
+                        <span class="fw-semibold fs-14" data-key="t-dashboards">Transactions</span>
+                        </Link>
+                    </li>
+                 </template>
             </template>
             <template v-if="$page.props.roles.includes('Administrator')">
                 <li class="menu-title">
