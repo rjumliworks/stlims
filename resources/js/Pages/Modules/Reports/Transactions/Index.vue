@@ -42,6 +42,9 @@
                                     <td class="text-center"> {{ formatMoney(list.Wednesday) }}</td>
                                     <td class="text-center"> {{ formatMoney(list.Thursday) }}</td>
                                     <td class="text-center"> {{ formatMoney(list.Friday) }}</td>
+                                    <td class="text-center fw-semibold">
+                                        {{ formatMoney(list.Monday + list.Tuesday + list.Wednesday + list.Thursday + list.Friday) }}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -88,6 +91,9 @@
                                     <td class="text-center"> {{ formatMoney(list.Wednesday) }}</td>
                                     <td class="text-center"> {{ formatMoney(list.Thursday) }}</td>
                                     <td class="text-center"> {{ formatMoney(list.Friday) }}</td>
+                                    <td class="text-center  fw-semibold">
+                                        {{ formatMoney(list.Monday + list.Tuesday + list.Wednesday + list.Thursday + list.Friday) }}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
