@@ -106,7 +106,7 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">Receipts</span>
                     </Link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" v-if="$page.props.show">
                     <Link href="/nonlabreceipts" class="nav-link menu-link"
                     :class="{'active': $page.component.startsWith('Modules/Finance/Cashiering/Nonlab') }">
                     <i class="ri-price-tag-2-line"></i>
@@ -120,7 +120,7 @@
                     <span class="fw-semibold fs-14" data-key="t-dashboards">OR Series</span>
                     </Link>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" v-if="$page.props.show">
                     <Link href="/names" class="nav-link menu-link"
                     :class="{'active': $page.component.startsWith('Modules/Finance/Cashiering/Names') }">
                     <i class="ri-account-circle-fill"></i>
