@@ -19,6 +19,7 @@ class Equipment extends Model
         'calibration_testpoints',
         'maintenance_due',
         'maintenance_plan',
+        'status_id',
         'laboratory_id',
         'agency_id',
     ];
@@ -31,6 +32,11 @@ class Equipment extends Model
     public function laboratory()
     {
         return $this->belongsTo('App\Models\ListLaboratory', 'laboratory_id', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo('App\Models\ListStatus', 'status_id', 'id');
     }
 
     public function user()

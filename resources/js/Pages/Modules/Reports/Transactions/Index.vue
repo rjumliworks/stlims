@@ -36,11 +36,11 @@
                             <tbody>
                                 <tr v-for="(list,index) in overall" v-bind:key="index" >
                                     <td> {{ list.payment_method }}</td>
-                                    <td class="text-center"> {{ formatMoney(list.Monday) }}</td>
-                                    <td class="text-center"> {{ formatMoney(list.Tuesday) }}</td>
-                                    <td class="text-center"> {{ formatMoney(list.Wednesday) }}</td>
-                                    <td class="text-center"> {{ formatMoney(list.Thursday) }}</td>
-                                    <td class="text-center"> {{ formatMoney(list.Friday) }}</td>
+                                    <td class="text-center fs-12"> {{ formatMoney(list.Monday) }}</td>
+                                    <td class="text-center fs-12"> {{ formatMoney(list.Tuesday) }}</td>
+                                    <td class="text-center fs-12"> {{ formatMoney(list.Wednesday) }}</td>
+                                    <td class="text-center fs-12"> {{ formatMoney(list.Thursday) }}</td>
+                                    <td class="text-center fs-12"> {{ formatMoney(list.Friday) }}</td>
                                     <td class="text-center  fw-semibold">
                                         {{ formatMoney(list.Monday + list.Tuesday + list.Wednesday + list.Thursday + list.Friday) }}
                                     </td>
@@ -97,10 +97,10 @@
                                 <tr v-for="(list,index) in labs" v-bind:key="index" >
                                     <td> {{ list.payment_method }}</td>
                                     <td class="text-center fs-11"> {{ formatMoney(list.Monday) }}</td>
-                                    <td class="text-center  fs-11"> {{ formatMoney(list.Tuesday) }}</td>
-                                    <td class="text-center  fs-11"> {{ formatMoney(list.Wednesday) }}</td>
-                                    <td class="text-center  fs-11"> {{ formatMoney(list.Thursday) }}</td>
-                                    <td class="text-center  fs-11"> {{ formatMoney(list.Friday) }}</td>
+                                    <td class="text-center fs-11"> {{ formatMoney(list.Tuesday) }}</td>
+                                    <td class="text-center fs-11"> {{ formatMoney(list.Wednesday) }}</td>
+                                    <td class="text-center fs-11"> {{ formatMoney(list.Thursday) }}</td>
+                                    <td class="text-center fs-11"> {{ formatMoney(list.Friday) }}</td>
                                     <td class="text-center fw-semibold fs-12 ">
                                         {{ formatMoney(list.Monday + list.Tuesday + list.Wednesday + list.Thursday + list.Friday) }}
                                     </td>
@@ -158,7 +158,7 @@
                                     <td> {{ list.payment_method }}</td>
                                     <td class="text-center fs-11"> {{ formatMoney(list.Monday) }}</td>
                                     <td class="text-center fs-11"> {{ formatMoney(list.Tuesday) }}</td>
-                                    <td class="text-center"> {{ formatMoney(list.Wednesday) }}</td>
+                                    <td class="text-center fs-11"> {{ formatMoney(list.Wednesday) }}</td>
                                     <td class="text-center fs-11"> {{ formatMoney(list.Thursday) }}</td>
                                     <td class="text-center fs-11"> {{ formatMoney(list.Friday) }}</td>
                                     <td class="text-center fs-12 fw-semibold">
