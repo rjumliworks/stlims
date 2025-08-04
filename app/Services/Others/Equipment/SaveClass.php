@@ -86,6 +86,18 @@ class SaveClass
         }
     }   
 
+    public function disposal($request){
+        $data = Equipment::where('id',$request->id)->first();
+        $data->status_id = $request->status_id;
+        $data->save();
+            $data = Equipment::with('status')->where('id',$request->id)->first();
+        return [
+            'data' => $data->status,
+            'message' => 'Equipment status updated successfully!', 
+            'info' => "You've successfully updated the equipment status."
+        ];
+    }   
+
     private function generateCode($laboratory){
         $lab = Agency::where('id',$this->agency)->first();
         $type = ListLaboratory::where('id',$laboratory)->value('short');

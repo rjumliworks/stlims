@@ -28,6 +28,7 @@ class IndexResource extends JsonResource
             'maintenance_plan' => $this->maintenance_plan,
             'calibration_testpoints' => $this->calibration_testpoints,
             'others' => $this->info->others,
+            'status' => $this->status,
             'laboratory_id' => $this->laboratory_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at

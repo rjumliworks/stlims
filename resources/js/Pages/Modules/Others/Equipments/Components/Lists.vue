@@ -46,11 +46,12 @@
                     <tr class="fs-11">
                         <th style="width: 4%;"></th>
                         <th>Equipment</th>
-                        <th style="width: 15%;" class="text-center">Last Calibration</th>
-                        <th style="width: 15%;" class="text-center">Calibration Due</th>
-                        <th style="width: 15%;" class="text-center">Last Maintenance</th>
-                        <th style="width: 15%;" class="text-center">Maintenance Due</th>
-                        <th style="width: 10%;" ></th>
+                        <th style="width: 13%;" class="text-center">Last Calibration</th>
+                        <th style="width: 13%;" class="text-center">Calibration Due</th>
+                        <th style="width: 13%;" class="text-center">Last Maintenance</th>
+                        <th style="width: 13%;" class="text-center">Maintenance Due</th>
+                        <th style="width: 12%;" class="text-center">Status</th>
+                        <th style="width: 8%;" ></th>
                     </tr>
                 </thead>
                 <tbody class="table-white">
@@ -66,6 +67,9 @@
                     <td class="text-center">{{list.calibration_due}}</td>
                     <td class="text-center fs-12">{{list.last_maintenance}}</td>
                     <td class="text-center">{{list.maintenance_due}}</td>
+                    <td class="text-center">
+                        <span :class="'badge '+list.status.color">{{list.status.name}}</span>
+                    </td>
                     <td class="text-end">
                         <b-button  @click="openView(list,index)" variant="soft-info" class="me-1" v-b-tooltip.hover title="View" size="sm">
                             <i class="ri-eye-fill align-bottom"></i>
@@ -85,7 +89,7 @@
     
     <Create @message="fetch()" :dropdowns="dropdowns" ref="create"/>
     <Upload @update="fetch()" ref="upload"/>
-    <View @update="updateData" ref="view"/>
+    <View @success="updateStatus" @update="updateData" ref="view"/>
 </template>
 <script>
 import _ from 'lodash';
@@ -199,6 +203,9 @@ export default {
         },
         updateData(data){
             this.lists[this.index] = data;
+        },
+        updateStatus(data){
+            this.lists[this.index].status = data;
         },
         selectRow(index) {
             this.selectedRow = index;

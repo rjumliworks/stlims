@@ -58,7 +58,11 @@ class EquipmentController extends Controller
 
     public function update(EquipmentRequest $request){
         $result = $this->handleTransaction(function () use ($request) {
-            return $this->save->update($request);
+            if($request->option == 'disposed'){
+                return $this->save->disposal($request);
+            }else{
+                return $this->save->update($request);
+            }
         });
 
         return back()->with([

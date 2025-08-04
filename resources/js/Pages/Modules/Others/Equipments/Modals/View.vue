@@ -143,11 +143,13 @@
         </div>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
+            <b-button v-if="selected.status.name == 'Operational'" @click="submit('ok')" variant="primary" :disabled="form.processing" block>Mark as Disposed</b-button>
         </template>
     </b-modal>
     <Perform @update="updateData" ref="perform"/>
 </template>
 <script>
+import { useForm } from '@inertiajs/vue3';
 import Perform from './Perform.vue';
 import simplebar from "simplebar-vue";
 export default {
@@ -156,16 +158,32 @@ export default {
         return {
             currentUrl: window.location.origin,
             showModal: false,
-            selected: null
+            selected: null,
+            form: useForm({
+                id: null,
+                status_id: 36,
+                option: 'disposed'
+            }),
         }
     },
     methods: { 
         show(data){
             this.selected = data;
+            this.form.id = data.id;
             this.showModal = true;
         },
         openView(id,duration,date,type){
             this.$refs.perform.show(id,duration,date,type);
+        },
+        submit(){
+            this.form.put('/equipments/update',{
+                preserveScroll: true,
+                onSuccess: (response) => {
+                    this.form.reset();
+                    this.$emit('success',response.props.flash.data);
+                    this.hide();
+                }
+            });
         },
         updateData(data){
             this.selected = data;

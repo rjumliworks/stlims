@@ -20,10 +20,10 @@ class EquipmentRequest extends FormRequest
             'code' => [
             'sometimes',
             'required',
-            Rule::unique('equipment')
-                ->ignore($this->id)
-                ->where('laboratory_id', $laboratory),
-        ],
+                    Rule::unique('equipment')
+                        ->ignore($this->id)
+                        ->where('laboratory_id', $laboratory),
+                ],
             'name' => 'sometimes|required',
             'manufacturer' => 'sometimes|nullable',
             'serial_no' => 'sometimes|nullable',
@@ -36,6 +36,7 @@ class EquipmentRequest extends FormRequest
             'calibration_testpoints' => 'sometimes|nullable',
             'calibration_program' => 'sometimes|required',
             'maintenance_plan' => 'sometimes|required',
+            'status_id' => 'sometimes|required',
         ];
     }
 
