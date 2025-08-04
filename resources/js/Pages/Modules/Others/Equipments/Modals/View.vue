@@ -104,7 +104,7 @@
             </div>
         </div>
         <hr class="text-muted"/>
-        <div v-if="selected.logs == 0" class="alert alert-danger alert-dismissible bg-danger text-white alert-label-icon mb-xl-0 fs-11" role="alert">
+        <div v-if="selected.logs == 0" class="alert alert-danger alert-dismissible bg-warning text-white alert-label-icon mb-xl-0 fs-11" role="alert">
             <i class="ri-error-warning-line label-icon"></i>If no record exists, schedule a maintenance or calibration session to ensure the equipment meets operational and safety standards.
         </div>
         <hr v-if="selected.logs == 0" class="text-muted"/>
@@ -143,7 +143,7 @@
         </div>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
-            <b-button v-if="selected.status.name == 'Operational'" @click="submit('ok')" variant="primary" :disabled="form.processing" block>Mark as Disposed</b-button>
+            <b-button v-if="selected.status.name == 'Operational'" @click="submit('ok')" variant="danger" :disabled="form.processing" block>Mark as Disposed</b-button>
         </template>
     </b-modal>
     <Perform @update="updateData" ref="perform"/>

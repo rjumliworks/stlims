@@ -19,7 +19,8 @@ class SaveClass
     public function save($request){
         $code = $this->generateCode($request->laboratory_id);
         $service = Equipment::create(array_merge($request->all(),[
-            'agency_id' => $this->agency
+            'agency_id' => $this->agency,
+            'status_id' => 35
         ]));
         if($service){
             $service->info()->create(array_merge($request->all(),[
