@@ -10,7 +10,7 @@ use App\Http\Resources\Executive\AgencyResource;
 class ViewClass
 {
     public function lists($request){
-        $data = AgencyResource::collection(Agency::with('member:id,name','type:id,name','configuration')->orderBy('is_active','DESC')->paginate($request->count));
+        $data = AgencyResource::collection(Agency::with('member:id,name','type:id,name','configuration','facilities')->orderBy('is_active','DESC')->paginate($request->count));
         return $data;
     }
 
@@ -30,7 +30,7 @@ class ViewClass
         $id = $hashids->decode($id);
 
         $data = new AgencyResource(
-            Agency::with('member','type','configuration','fees','discounts.discount')->where('id',$id)->first()
+            Agency::with('member','type','configuration','facilities','address','fees','discounts.discount')->where('id',$id)->first()
         );
         return $data;
     }

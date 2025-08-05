@@ -10,6 +10,7 @@ use App\Models\Customer;
 use App\Models\FinanceOp;
 use App\Models\FinanceOpItem;
 use App\Models\AgencyConfiguration;
+use App\Models\AgencyFacilitySignatory;
 use App\Http\Resources\Finance\OpResource;
 use App\Http\Resources\Finance\Tsr\ListResource;
 
@@ -250,7 +251,7 @@ class OpClass
         $id = $request->id;
         $items = [];
         $data = FinanceOp::query()
-        ->with('items.itemable:id,code,created_at','items.itemable.samples:id,name,tsr_id','items.itemable.samples.analyses:id,sample_id,testservice_id','items.itemable.samples.analyses.testservice:id,testname_id','items.itemable.samples.analyses.testservice.testname:id,name')
+        ->with('items.itemable:id,code,created_at,facility_id','items.itemable.samples:id,name,tsr_id','items.itemable.samples.analyses:id,sample_id,testservice_id','items.itemable.samples.analyses.testservice:id,testname_id','items.itemable.samples.analyses.testservice.testname:id,name')
         ->with('createdby:id','createdby.profile:id,firstname,lastname,user_id')
         ->with('payorable')
         ->where('id',$id)
@@ -267,7 +268,7 @@ class OpClass
         ]);
         
         if($data){
-            $samples_list = [];
+            $samples_list = []; $facility_id = null;
             $customer = ($data->payorable->customer_name) ? $data->payorable->customer_name->name : $data->payorable->name; 
             if($data->payorable->customer_name){
                 $sub = ($data->payorable->name == 'Main') ? '' : ' - '.$data->payorable->name;
@@ -285,9 +286,11 @@ class OpClass
                         'name' => $item->itemable->code,
                         'date' => $item->itemable->created_at
                     ];
+                    $facility_id = $item->facility_id;
                     $samples_list[] = $samples;
+                    
                 }
-                
+                $facility_id = $data->items[0]->itemable->facility_id;
             }
         }
         $val = trim($data->total, '₱ ');
@@ -297,52 +300,52 @@ class OpClass
         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
         $number = $digit->format($wholeNumber);
 
-        $user_id = $data->created_by;
-        $userrole = UserRole::where('user_id',$user_id)->where('role_id',5)->first();
+        // $user_id = $data->created_by;
+        // $userrole = UserRole::where('user_id',$user_id)->where('role_id',5)->first();
 
-        if($userrole->is_psto){
-            $province = $userrole->province_code;
-            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-            ->whereHas('role',function ($query){
-                $query->where('name','Cashier');
-            })
-            ->where('agency_id',$this->agency)
-            ->where('is_psto',1)
-            ->where('is_signatory',1)
-            ->where('province_code',$province)
-            ->first();
-            if(!$cashier){
-                  $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-                ->whereHas('role',function ($query){
-                    $query->where('name','Cashier');
-                })
-                ->where('agency_id',$this->agency)
-                ->where('is_signatory',1)
-                ->first();
-            }
+        // if($userrole->is_psto){
+        //     $province = $userrole->province_code;
+        //     $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+        //     ->whereHas('role',function ($query){
+        //         $query->where('name','Cashier');
+        //     })
+        //     ->where('agency_id',$this->agency)
+        //     ->where('is_psto',1)
+        //     ->where('is_signatory',1)
+        //     ->where('province_code',$province)
+        //     ->first();
+        //     if(!$cashier){
+        //           $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+        //         ->whereHas('role',function ($query){
+        //             $query->where('name','Cashier');
+        //         })
+        //         ->where('agency_id',$this->agency)
+        //         ->where('is_signatory',1)
+        //         ->first();
+        //     }
 
-            $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-            ->whereHas('role',function ($query){
-                $query->where('name','Accountant');
-            })
-            ->where('agency_id',$this->agency)
-            ->where('is_psto',1)
-            ->where('province_code',$province)
-            ->first();
-            if(!$accountant){
-                $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-                ->whereHas('role',function ($query){
-                    $query->where('name','Accountant');
-                })
-                ->where('agency_id',$this->agency)
-                ->where('is_signatory',1)
-                ->first();
-            }
-        }else{
-            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',6)->where('is_psto',0)->where('is_signatory',1)->where('agency_id',$this->agency)->first();
-            $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',5)->where('is_psto',0)->where('is_signatory',1)->where('agency_id',$this->agency)->first();
-        }
-
+        //     $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+        //     ->whereHas('role',function ($query){
+        //         $query->where('name','Accountant');
+        //     })
+        //     ->where('agency_id',$this->agency)
+        //     ->where('is_psto',1)
+        //     ->where('province_code',$province)
+        //     ->first();
+        //     if(!$accountant){
+        //         $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+        //         ->whereHas('role',function ($query){
+        //             $query->where('name','Accountant');
+        //         })
+        //         ->where('agency_id',$this->agency)
+        //         ->where('is_signatory',1)
+        //         ->first();
+        //     }
+        // }else{
+        //     $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',6)->where('is_psto',0)->where('is_signatory',1)->where('agency_id',$this->agency)->first();
+        //     $accountant = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')->where('role_id',5)->where('is_psto',0)->where('is_signatory',1)->where('agency_id',$this->agency)->first();
+        // }
+        $signatory = AgencyFacilitySignatory::with('accountant.profile','cashier.profile')->where('facility_id',$facility_id)->first();
         $array = [
             'configuration' => AgencyConfiguration::with('agency.member')->where('agency_id',$this->agency)->first(),
             'lists' => $data->items,
@@ -354,8 +357,8 @@ class OpClass
             'items' => $items,
             'samples' => $samples_list,
             'address' => $data->payorable->address->address.', '.$data->payorable->address->barangay->name.', '.$data->payorable->address->municipality->name.', '.$data->payorable->address->province->name,
-            'cashier' => $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname,
-            'accountant' => $accountant->user->profile->firstname.' '.$accountant->user->profile->middlename[0].'. '.$accountant->user->profile->lastname,
+            'cashier' => $signatory->cashier->profile->firstname.' '.$signatory->cashier->profile->middlename[0].'. '.$signatory->cashier->profile->lastname,
+            'accountant' => $signatory->accountant->profile->firstname.' '.$signatory->accountant->profile->middlename[0].'. '.$signatory->accountant->profile->lastname,
         ];
 
         $pdf = \PDF::loadView('prints.op',$array)->setPaper('A4', 'portrait');
@@ -375,7 +378,7 @@ class OpClass
 
     private function generateCode(){
         $year = date('Y'); 
-        $c = FinanceOp::where('payorable_type','App\Models\Customer')->whereYear('created_at',$year)->count();
+        $c = FinanceOp::where('payorable_type','App\Models\Customer')->whereYear('created_at',$year)->where('agency_id',$this->agency)->count();
         $temp = ($year == '2024') ? 1000 : 0;
         $code = date('Y').date('m').'-'.str_pad(($temp+$c+1), 4, '0', STR_PAD_LEFT);  
         return $code;

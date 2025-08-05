@@ -23,7 +23,9 @@ class Quotation extends Model
         'customer_id',
         'discount_id',
         'conforme_id',
-        'created_by'
+        'created_by',
+        'is_referral',
+        'facility_id'
     ];
 
     public function service()
@@ -74,6 +76,16 @@ class Quotation extends Model
     public function createdby()
     {
         return $this->belongsTo('App\Models\User', 'created_by', 'id');
+    }
+
+    public function referral()
+    {
+        return $this->hasOne('App\Models\QuotationReferral', 'quotation_id');
+    }
+
+    public function facility()
+    {
+        return $this->belongsTo('App\Models\AgencyFacility', 'facility_id', 'id');
     }
 
     public function getUpdatedAtAttribute($value)

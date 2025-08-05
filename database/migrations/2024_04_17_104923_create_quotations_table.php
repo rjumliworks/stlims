@@ -35,6 +35,7 @@ return new class extends Migration
             $table->foreign('conforme_id')->references('id')->on('customer_conformes')->onDelete('cascade');
             $table->integer('created_by')->unsigned()->index();
             $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
+            $table->boolean('is_referral')->default(0);
             $table->date('due_at')->nullable();
             $table->timestamps();
         });

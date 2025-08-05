@@ -138,7 +138,7 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
     components: { PageHeader, Pagination, Multiselect, Create, Cancel, Edit },
-    props: ['counts','dropdowns'],
+    props: ['counts','dropdowns','region'],
     data(){
         return {
             currentUrl: window.location.origin,
@@ -197,7 +197,7 @@ export default {
             .catch(err => console.log(err));
         },
         openCreate(){
-            this.$refs.create.show();
+            this.$refs.create.show(this.region);
         },
         openEdit(data,index){
             this.index = index;

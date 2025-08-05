@@ -13,7 +13,6 @@ use App\Models\TsrAnalysis;
 use App\Models\WalletTransaction;
 use App\Models\AgencyConfiguration;
 use Endroid\QrCode\QrCode;
-use App\Models\AgencyFacilitySignatory;
 use Endroid\QrCode\Writer\PngWriter;
 use App\Http\Resources\Laboratory\Tsr\ListResource;
 use App\Http\Resources\Laboratory\Tsr\ViewResource;
@@ -48,26 +47,12 @@ class ViewClass
                 ->when($this->province, function ($query) {
                     $query->where('received_by', \Auth::user()->id);
                 })
-                ->when($this->configuration->strict_mode == 1, function ($query) {
-                    $facility = \Auth::user()->profile->facility;
-
-                    if ($facility->is_psto || $facility->is_separated) {
-                        $query->where('facility_id', $facility->id);
-                    }
-                })
                 ->where('agency_id',$this->agency)
                 ->count();
             } else {
                 $counts[] = Tsr::where('status_id',$status['value'])
                 ->when($this->province, function ($query){
                     $query->where('received_by', \Auth::user()->id);
-                })
-                ->when($this->configuration->strict_mode == 1, function ($query) {
-                    $facility = \Auth::user()->profile->facility;
-
-                    if ($facility->is_psto || $facility->is_separated) {
-                        $query->where('facility_id', $facility->id);
-                    }
                 })
                 ->where('agency_id',$this->agency)->count();
             }
@@ -178,13 +163,6 @@ class ViewClass
             ->when($this->province, function ($query){
                 $query->where('received_by', \Auth::user()->id);
             })
-            ->when($this->configuration->strict_mode == 1, function ($query) {
-                $facility = \Auth::user()->profile->facility;
-
-                if ($facility->is_psto || $facility->is_separated) {
-                    $query->where('facility_id', $facility->id);
-                }
-            })
             ->paginate($request->count)
         );
         return $data;
@@ -239,42 +217,40 @@ class ViewClass
         $tsr = TsrReport::where('tsr_id',$id)->value('information');
         $secret = TsrReport::where('tsr_id',$id)->value('secret_key');
         $lab = json_decode($tsr);
-        // $user_id = $tsrinfo->received_by;
-        // $userrole = UserRole::where('user_id',$user_id)->first();
-        // if($userrole->is_psto){
-        //     $province = $userrole->province_code;
-        //     $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-        //     ->whereHas('role',function ($query){
-        //         $query->where('name','Cashier');
-        //     })
-        //     ->where('agency_id',$this->agency)
-        //     ->where('is_psto',1)
-        //     ->where('is_signatory',1)
-        //     ->where('is_active',1)
-        //     ->where('province_code',$province)
-        //     ->first();
-        //     if(!$cashier){
-        //         $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-        //         ->whereHas('role',function ($query){
-        //             $query->where('name','Cashier');
-        //         })
-        //         ->where('agency_id',$this->agency)
-        //         ->where('is_signatory',1)
-        //         ->where('is_active',1)
-        //         ->first();
-        //     }
-        // }else{
-        //     $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
-        //     ->whereHas('role',function ($query){
-        //         $query->where('name','Cashier');
-        //     })
-        //     ->where('agency_id',$this->agency)
-        //     ->where('is_psto',0)
-        //     ->where('is_active',1)
-        //     ->first();
-        // }
-
-        $signatory = AgencyFacilitySignatory::with('cashier.profile')->where('facility_id',$tsrinfo->facility_id)->first();
+        $user_id = $tsrinfo->received_by;
+        $userrole = UserRole::where('user_id',$user_id)->first();
+        if($userrole->is_psto){
+            $province = $userrole->province_code;
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+            ->whereHas('role',function ($query){
+                $query->where('name','Cashier');
+            })
+            ->where('agency_id',$this->agency)
+            ->where('is_psto',1)
+            ->where('is_signatory',1)
+            ->where('is_active',1)
+            ->where('province_code',$province)
+            ->first();
+            if(!$cashier){
+                $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+                ->whereHas('role',function ($query){
+                    $query->where('name','Cashier');
+                })
+                ->where('agency_id',$this->agency)
+                ->where('is_signatory',1)
+                ->where('is_active',1)
+                ->first();
+            }
+        }else{
+            $cashier = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
+            ->whereHas('role',function ($query){
+                $query->where('name','Cashier');
+            })
+            ->where('agency_id',$this->agency)
+            ->where('is_psto',0)
+            ->where('is_active',1)
+            ->first();
+        }
 
         $head = UserRole::with('user:id','user.profile:id,user_id,firstname,middlename,lastname')
        ->where('laboratory_id',$tsrinfo->laboratory->id)->whereHas('role',function ($query){
@@ -294,7 +270,7 @@ class ViewClass
             'qrCodeImage' => $base64Image,
             'configuration' => AgencyConfiguration::with('agency.member')->where('agency_id',$this->agency)->first(),
             'tsr' => json_decode($tsr),
-            'cashier' => $signatory->cashier->profile->firstname.' '.$signatory->cashier->profile->middlename[0].'. '.$signatory->cashier->profile->lastname,
+            'cashier' => ($cashier) ?  $cashier->user->profile->firstname.' '.$cashier->user->profile->middlename[0].'. '.$cashier->user->profile->lastname : '',
             'manager' => ($head) ? $head->user->profile->firstname.' '.$head->user->profile->middlename[0].'. '.$head->user->profile->lastname : '',
             'user' => \Auth::user()->profile->firstname.' '.\Auth::user()->profile->middlename[0].'. '.\Auth::user()->profile->lastname,
             'color' => ($tsrinfo->laboratory) ? $tsrinfo->laboratory->color : 'black',

@@ -39,12 +39,14 @@ class QuotationController extends Controller
             return inertia('Modules/Laboratory/Quotations/Index',[
                 'dropdowns' => [
                     'laboratories' => $this->dropdown->laboratories(),
+                    'agencies' => $this->dropdown->allagencies(),
                     'modes' => $this->dropdown->dropdowns('Mode of Release','n/a'),
                     'purposes' => $this->dropdown->dropdowns('Purpose','n/a'),
                     'discounts' => $this->dropdown->discounts(),
                     'statuses' => $this->dropdown->statuses('Quotation')
                 ],
-                'counts' => $this->view->counts($this->dropdown->statuses('Quotation'))
+                'counts' => $this->view->counts($this->dropdown->statuses('Quotation')),
+                'region' => $this->view->region()
             ]);
         }
     }

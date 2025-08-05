@@ -35,6 +35,7 @@ class ViewResource extends JsonResource
             'samples' => SampleResource::collection($this->samples),
             'service' => $this->service,
             'due_at' => $this->due_at,
+            'is_referral' => $this->is_referral,
             'updated_at' => $this->updated_at,
             'created_at' => $this->created_at,
         ];

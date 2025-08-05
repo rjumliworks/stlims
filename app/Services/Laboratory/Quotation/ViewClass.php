@@ -21,6 +21,7 @@ class ViewClass
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->roles = \Auth::user()->myroles->pluck('role_id');
         $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
+        $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
     }
 
     public function counts($statuses){
@@ -28,7 +29,15 @@ class ViewClass
             $counts[] = Quotation::where('agency_id',$this->agency)->where('status_id',$status['value'])
             ->when($this->province, function ($query){
                 $query->where('created_by', \Auth::user()->id);
-            })->count();
+            })
+            ->when($this->configuration->strict_mode == 1, function ($query) {
+                $facility = \Auth::user()->profile->facility;
+
+                if ($facility->is_psto || $facility->is_separated) {
+                    $query->where('facility_id', $facility->id);
+                }
+            })
+            ->count();
         }
         return $counts;
     }
@@ -57,6 +66,13 @@ class ViewClass
             ->where('agency_id',$this->agency)
             ->when($this->province, function ($query){
                 $query->where('created_by', \Auth::user()->id);
+            })
+            ->when($this->configuration->strict_mode == 1, function ($query) {
+                $facility = \Auth::user()->profile->facility;
+
+                if ($facility->is_psto || $facility->is_separated) {
+                    $query->where('facility_id', $facility->id);
+                }
             })
             ->orderBy('created_at','DESC')
             ->paginate($request->count)
@@ -260,5 +276,9 @@ class ViewClass
             $groupedData[$key]["count"] += 1;
         }
         return $samples = array_values($groupedData);
+    }
+
+    public function region(){
+        return $this->configuration->agency->address->region_code;
     }
 }

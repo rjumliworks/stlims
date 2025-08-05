@@ -17,6 +17,8 @@ return new class extends Migration
             $table->json('form');
             $table->json('contact');
             $table->boolean('samplecode_year');
+            $table->boolean('show_others');
+            $table->boolean('strict_mode');
             $table->integer('agency_id')->unsigned()->index();
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->timestamps();

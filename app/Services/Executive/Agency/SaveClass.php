@@ -81,4 +81,14 @@ class SaveClass
             'info' => "You've successfully added discount."
         ];
     }
+
+    public function facility($request){
+        $data = Agency::findOrFail($request->agency_id);
+        $data->facilities()->create($request->all());
+        return [
+            'data' => $data,
+            'message' => 'Facility added was successful!', 
+            'info' => "You've successfully added discount."
+        ];
+    }
 }

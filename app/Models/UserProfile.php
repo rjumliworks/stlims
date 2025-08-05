@@ -19,6 +19,12 @@ class UserProfile extends Model
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
 
+    public function facility()
+    {
+        return $this->belongsTo('App\Models\AgencyFacility', 'facility_id', 'id');
+    }
+
+
     public function blood()
     {
         return $this->belongsTo('App\Models\ListData', 'blood_id', 'id');

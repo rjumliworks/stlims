@@ -190,6 +190,7 @@ export default {
                 agency_id: null,
                 laboratory_id: null,
                 customer_id: null,
+                is_referral: null,
                 conforme_id: null,
                 discount_id: null,
                 total: null,
@@ -226,6 +227,7 @@ export default {
             this.form.laboratory_id = data.laboratory.id;
             this.form.customer_id = data.customer.id;
             this.form.conforme_id = data.conforme_id;
+            this.form.is_referral = data.is_referral;
             // this.form.conforme = data.conforme;
             this.form.due_at = data.due_at;
             this.form.discount_id = data.discounted.id;

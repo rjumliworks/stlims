@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionClass
 {
+    public function __construct()
+    {
+        $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
+    }
+
     public function overall()
     {
         $startOfWeek = Carbon::now()->startOfWeek();
@@ -15,6 +20,7 @@ class TransactionClass
 
         $financeOps = FinanceOp::whereBetween('created_at', [$startOfWeek->copy()->startOfDay(), $endOfWeek->copy()->endOfDay()])
             ->where('status_id',7)
+            ->where('agency_id',$this->agency)
             ->get();
 
         $days = collect(range(0, 4))->map(fn($i) => $startOfWeek->copy()->addDays($i));
@@ -57,6 +63,7 @@ class TransactionClass
         $financeOps = FinanceOp::where('payorable_type', 'App\Models\Customer')
             ->whereBetween('created_at', [$startOfWeek->copy()->startOfDay(), $endOfWeek->copy()->endOfDay()])
             ->where('status_id',7)
+            ->where('agency_id',$this->agency)
             ->get();
 
         $days = collect(range(0, 4))->map(fn($i) => $startOfWeek->copy()->addDays($i));
@@ -98,6 +105,7 @@ class TransactionClass
         $financeOps = FinanceOp::where('payorable_type', 'App\Models\FinanceName')
             ->whereBetween('created_at', [$startOfWeek->copy()->startOfDay(), $endOfWeek->copy()->endOfDay()])
             ->where('status_id',7)
+            ->where('agency_id',$this->agency)
             ->get();
 
         $days = collect(range(0, 4))->map(fn($i) => $startOfWeek->copy()->addDays($i));

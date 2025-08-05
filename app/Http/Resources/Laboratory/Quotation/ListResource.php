@@ -22,6 +22,7 @@ class ListResource extends JsonResource
             'status' => $this->status,
             'discounted' => $this->discounted,
             'purpose' => $this->purpose,
+            'is_referral' => $this->is_referral,
             'customer' => ($this->customer->customer_name->has_branches) ? ($this->customer->is_main) ? $this->customer->customer_name->name :  $this->customer->customer_name->name.' - '.$this->customer->name : $this->customer->customer_name->name,
             'received' => $this->createdby->profile->firstname.' '.$this->createdby->profile->lastname,
             'created_at' => $this->created_at,

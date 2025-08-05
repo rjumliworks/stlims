@@ -16,7 +16,7 @@ class AgencyConfiguration extends Model
     ];
     
     protected $fillable = [
-        'code','name','acronym','sample_count','tsr_count','laboratories','form','samplecode_year','agency_id'
+        'laboratories','form','contact','samplecode_year','show_others','strict_mode','agency_id'
     ];
 
     public function agency()

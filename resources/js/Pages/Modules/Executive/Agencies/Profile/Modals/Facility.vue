@@ -4,11 +4,42 @@
             <BRow>
                 <BCol lg="12">
                     <BRow class="g-3">
-                        <BCol lg="6" class="mt-1">
+                        <BCol lg="9" class="mt-3">
+                            <InputLabel value="Name"/>
+                            <TextInput v-model="form.name" type="text" class="form-control" placeholder="Please name" @input="handleInput('name')" :light="true" />
+                        </BCol>
+                        <BCol lg="3" class="mt-3">
+                            <InputLabel value="Short"/>
+                            <TextInput v-model="form.short" type="text" class="form-control" placeholder="Please name" @input="handleInput('name')" :light="true" />
+                        </BCol>
+                        <BCol lg="12">
+                            <BRow class="g-3 mt-n3">
+                                <BCol lg="12"><hr class="text-muted mb-n3 mt-n1"/></BCol>
+                                <BCol lg="8" style="margin-top: 13px; margin-bottom: -12px;" class="fs-12" :class="(form.errors.is_psto) ? 'text-danger' : ''">Is facility a PSTO?</BCol>
+                                <BCol lg="4" style="margin-top: 13px; margin-bottom: -12px;">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="custom-control custom-radio mb-3">
+                                                <input type="radio" id="customRadio1" class="custom-control-input me-2" @input="handleInput('is_psto')" :value="true" v-model="form.is_psto">
+                                                <label class="custom-control-label fw-normal fs-12" for="customRadio1">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="custom-control custom-radio mb-3">
+                                                <input type="radio" id="customRadio2" class="custom-control-input me-2" @input="handleInput('is_psto')" :value="false" v-model="form.is_psto">
+                                                <label class="custom-control-label fw-normal fs-12" for="customRadio2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </BCol>
+                                <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
+                            </BRow>
+                        </BCol>
+                        <BCol lg="6" class="mt-0">
                             <InputLabel value="Region"/>
                             <Multiselect :options="regions" v-model="form.region" label="name" :searchable="true" placeholder="Select Region" />
                         </BCol>
-                        <BCol lg="6" class="mt-1">
+                        <BCol lg="6" class="mt-0">
                             <InputLabel value="Province"/>
                             <Multiselect :options="provinces" object v-model="form.province" label="name" :searchable="true" placeholder="Select Province" />
                         </BCol>
@@ -41,7 +72,7 @@
 </template>
 <script>
 import { useForm } from '@inertiajs/vue3';
-import Map from '../Components/Map.vue';
+import Map from './Map.vue';
 import Multiselect from "@vueform/multiselect";
 import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
@@ -52,13 +83,18 @@ export default {
         return {
             currentUrl: window.location.origin,
             form: useForm({
+                name: null,
+                short: null,
+                is_psto: null,
                 address: null,
                 region: null,
                 province: null,
                 municipality: null,
                 longitude: null,
                 latitude: null,
-                barangay: null
+                barangay: null,
+                agency_id: null,
+                option: 'facility'
             }),
             coordinates: {},
             provinces: [],
@@ -104,34 +140,22 @@ export default {
             this.form.longitude = this.coordinates.lng;
             this.form.latitude = this.coordinates.lat;
         },
-        openEdit(region){
+        show(id,region){
+            this.form.agency_id = id;
             this.$refs.map.view();
             this.form.region = region;
             this.fetchProvince(region);
             this.showModal = true;
         },  
         submit(){
-            const address = `${this.form.address}, ${this.form.barangay.name}, ${this.form.municipality.name}, ${this.form.province.name}`;
-            this.$emit('submit', {
-                address: address,
-                index: this.index,
-                form: {
-                    info: this.form.address,
-                    region: this.form.region,
-                    province: this.form.province,
-                    municipality: this.form.municipality,
-                    barangay: this.form.barangay,
-                    longitude: this.form.longitude,
-                    latitude: this.form.latitude,
-                }
+            this.form.post('/agencies',{
+                preserveScroll: true,
+                onSuccess: (response) => {
+                    this.names = [];
+                    this.$emit('message',true);
+                    this.hide();
+                },
             });
-
-            this.form.region = null;
-            this.form.province = null;
-            this.form.municipality = null;
-            this.form.barangay = null;
-            this.form.address = null;
-            this.hide();
         },
         fetchProvince(code){
             axios.get('/search',{

@@ -24,6 +24,7 @@ class SaveClass
             'customer_id' => $request->customer['value'],
             'conforme_id' => $request->conforme['value'],
             'received_by' => \Auth::user()->id,
+            'facility_id' => \Auth::user()->profile->facility_id,
             'is_onsite' => ($request->is_onsite) ? $request->is_onsite : 0,
             'created_at'  => ($request->created_at) ? Carbon::parse($request->created_at)->setTime(8, 0, 0) : Carbon::now(),
         ]));

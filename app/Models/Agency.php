@@ -40,6 +40,11 @@ class Agency extends Model
         return $this->hasMany('App\Models\AgencyDiscount', 'agency_id');
     }
 
+    public function facilities()
+    {
+        return $this->hasMany('App\Models\AgencyFacility', 'agency_id');
+    }
+
     public function configuration()
     {
         return $this->hasOne('App\Models\AgencyConfiguration', 'agency_id');

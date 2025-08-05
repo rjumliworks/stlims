@@ -26,7 +26,8 @@ class Tsr extends Model
         'is_shelf',
         'is_referral',
         'is_onsite',
-        'created_at'
+        'created_at',
+        'facility_id'
     ];
 
     public function payment()
@@ -52,6 +53,11 @@ class Tsr extends Model
     public function report()
     {
         return $this->hasOne('App\Models\TsrReport', 'tsr_id');
+    }
+
+    public function facility()
+    {
+        return $this->belongsTo('App\Models\AgencyFacility', 'facility_id', 'id');
     }
 
     public function agency()

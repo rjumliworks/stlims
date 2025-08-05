@@ -12,6 +12,7 @@ use App\Models\TsrPaymentDeduction;
 use App\Models\UserRole;
 use App\Models\ListStatus;
 use App\Models\ListLaboratory;
+use App\Models\AgencyConfiguration;
 
 class TmClass
 {
@@ -21,6 +22,7 @@ class TmClass
         $this->start = now()->copy()->startOfMonth()->format('Y-m-d');
         $this->end = now()->copy()->endOfMonth()->format('Y-m-d');
         $this->roles = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
+        $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
     }
 
     public function info($request){
@@ -55,6 +57,13 @@ class TmClass
             ->whereBetween('created_at', [$this->start, $this->end])
             ->groupBy(\DB::raw('DATE(created_at)'))
             ->orderBy(\DB::raw('DATE(created_at)'))
+            ->when($this->configuration->strict_mode == 1, function ($query) {
+                $facility = \Auth::user()->profile->facility;
+
+                if ($facility->is_psto || $facility->is_separated) {
+                    $query->where('facility_id', $facility->id);
+                }
+            })
             ->get()->map(function ($item) {
                 return [
                     'x' => date('F d, Y',strtotime($item->x)),
@@ -92,6 +101,13 @@ class TmClass
             $data = TsrSample::select(\DB::raw('DATE(created_at) AS x'), \DB::raw('count(*) AS y'))
             ->whereHas('tsr', function ($query) use ($role){
                 $query->where('agency_id',$this->agency)->where('laboratory_id',$role)->whereIn('status_id',[1,2,3,4]);
+                $query->when($this->configuration->strict_mode == 1, function ($query) {
+                    $facility = \Auth::user()->profile->facility;
+
+                    if ($facility->is_psto || $facility->is_separated) {
+                        $query->where('facility_id', $facility->id);
+                    }
+                });
             })
             ->whereBetween('created_at', [$this->start, $this->end])
             ->groupBy(\DB::raw('DATE(created_at)'))
@@ -135,6 +151,13 @@ class TmClass
             ->whereHas('sample', function ($query) use ($role){
                 $query->whereHas('tsr', function ($query) use ($role){
                     $query->where('agency_id',$this->agency)->where('laboratory_id',$role)->whereIn('status_id',[1,2,3,4]);
+                    $query->when($this->configuration->strict_mode == 1, function ($query) {
+                        $facility = \Auth::user()->profile->facility;
+
+                        if ($facility->is_psto || $facility->is_separated) {
+                            $query->where('facility_id', $facility->id);
+                        }
+                    });
                 });
             })
             ->whereBetween('created_at', [$this->start, $this->end])
@@ -178,39 +201,82 @@ class TmClass
         $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');  
         $year = ($request->year) ? $request->year : date('Y');
         $totals = [];
+        // dd($this->roles);
         foreach($this->roles as $role){
-            $wallet = TsrPaymentDeduction::whereMonth('created_at',$month)->whereYear('created_at',$year)
-            ->whereHas('payment', function ($query) use ($role){
-                $query->whereHas('tsr', function ($query) use ($role){
-                    $query->where('agency_id',$this->agency)->where('laboratory_id',$role);
-                });
-            })->sum('amount');
+            // $wallet = TsrPaymentDeduction::whereMonth('created_at',$month)->whereYear('created_at',$year)
+            // ->whereHas('payment', function ($query) use ($role){
+            //     $query->whereHas('tsr', function ($query) use ($role){
+            //         $query->where('agency_id',$this->agency)->where('laboratory_id',$role);
+            //         $query->when($this->configuration->strict_mode == 1, function ($query) {
+            //             $facility = \Auth::user()->profile->facility;
 
-            $contract = TsrPayment::where('status_id',18)->whereHas('tsr', function ($query) use ($month,$year,$role){
-                $query->whereMonth('created_at',$month)->whereYear('created_at',$year)->where('agency_id',$this->agency)->where('laboratory_id',$role);
-            })->sum('total');
+            //             if ($facility->is_psto || $facility->is_separated) {
+            //                 $query->where('facility_id', $facility->id);
+            //             }
+            //         });
+            //     });
+            // })->sum('amount');
 
-            $pending = TsrPayment::where('status_id',6)->whereHas('tsr', function ($query) use ($month,$year,$role){
-                $query->whereMonth('created_at',$month)->whereYear('created_at',$year)->where('agency_id',$this->agency)->where('laboratory_id',$role);
-            })->sum('total');
+            // $contract = TsrPayment::where('status_id',18)->whereHas('tsr', function ($query) use ($month,$year,$role){
+            //     $query->whereMonth('created_at',$month)->whereYear('created_at',$year)->where('agency_id',$this->agency)->where('laboratory_id',$role);
+            //     $query->when($this->configuration->strict_mode == 1, function ($query) {
+            //         $facility = \Auth::user()->profile->facility;
 
-            $gratis = TsrPayment::whereMonth('paid_at',$month)->whereYear('paid_at',$year)->where('is_free',1)
-            ->whereHas('tsr', function ($query) use ($role){
-                $query->where('agency_id',$this->agency)->where('laboratory_id',$role);
-            })->sum('discount');
+            //         if ($facility->is_psto || $facility->is_separated) {
+            //             $query->where('facility_id', $facility->id);
+            //         }
+            //     });
+            // })->sum('total');
 
-            $discount = TsrPayment::whereMonth('paid_at',$month)->whereYear('paid_at',$year)->where('is_free',0)
-            ->whereHas('tsr', function ($query) use ($role){
-                $query->where('agency_id',$this->agency)->where('laboratory_id',$role);
-            })->sum('discount');
+            // $pending = TsrPayment::where('status_id',6)->whereHas('tsr', function ($query) use ($month,$year,$role){
+            //     $query->whereMonth('created_at',$month)->whereYear('created_at',$year)->where('agency_id',$this->agency)->where('laboratory_id',$role);
+            //     $query->when($this->configuration->strict_mode == 1, function ($query) {
+            //         $facility = \Auth::user()->profile->facility;
+
+            //         if ($facility->is_psto || $facility->is_separated) {
+            //             $query->where('facility_id', $facility->id);
+            //         }
+            //     });
+            // })->sum('total');
+
+            // $gratis = TsrPayment::whereMonth('paid_at',$month)->whereYear('paid_at',$year)->where('is_free',1)
+            // ->whereHas('tsr', function ($query) use ($role){
+            //     $query->where('agency_id',$this->agency)->where('laboratory_id',$role);
+            //     $query->when($this->configuration->strict_mode == 1, function ($query) {
+            //         $facility = \Auth::user()->profile->facility;
+
+            //         if ($facility->is_psto || $facility->is_separated) {
+            //             $query->where('facility_id', $facility->id);
+            //         }
+            //     });
+            // })->sum('discount');
+
+            // $discount = TsrPayment::whereMonth('paid_at',$month)->whereYear('paid_at',$year)->where('is_free',0)
+            // ->whereHas('tsr', function ($query) use ($role){
+            //     $query->where('agency_id',$this->agency)->where('laboratory_id',$role);
+            //     $query->when($this->configuration->strict_mode == 1, function ($query) {
+            //         $facility = \Auth::user()->profile->facility;
+
+            //         if ($facility->is_psto || $facility->is_separated) {
+            //             $query->where('facility_id', $facility->id);
+            //         }
+            //     });
+            // })->sum('discount');
 
             $total = TsrPayment::where('is_child',0)->where('paid_at','!=',NULL)->whereHas('tsr', function ($query) use ($month,$year,$role){
                 $query->where('agency_id',$this->agency)->where('laboratory_id',$role)->whereMonth('created_at',$month)->whereYear('created_at',$year)->where('status_id','!=',5);
+                $query->when($this->configuration->strict_mode == 1, function ($query) {
+                    $facility = \Auth::user()->profile->facility;
+
+                    if ($facility->is_psto || $facility->is_separated) {
+                        $query->where('facility_id', $facility->id);
+                    }
+                });
             })->sum('total');
 
             $totals[] = [
                 'id' => $role,
-                'total' => $total+$pending+$contract+$wallet+$gratis+$discount
+                'total' => $total //+$pending+$contract+$wallet+$gratis+$discount
             ];
         }
 

@@ -8,6 +8,7 @@ use App\Models\Quotation;
 use App\Models\QuotationSample;
 use App\Models\QuotationService;
 use App\Models\QuotationAnalysis;
+use App\Models\QuotationReferral;
 
 class SaveClass
 {
@@ -24,10 +25,19 @@ class SaveClass
             'purpose_id' => $request->purpose_id,
             'agency_id' => $this->agency,
             'laboratory_id' => $request->laboratory_id,
+            'is_referral' => $request->is_referral,
+            'facility_id' => \Auth::user()->profile->facility_id,
             'status_id' => 1,
             'received_by' => \Auth::user()->id
         ]);
-
+        if($request->is_referral){
+            $referral = QuotationReferral::where('quotation_id',$id)->first();
+            $data->referral()->create([
+                'is_psto' => ($referral->province_code) ? 1 : 0,
+                'province_code' => ($referral->province_code) ? $referral->province_code : null,
+                'agency_id' => $referral->agency_id
+            ]);
+        }
         if($data){
             $data->payment()->create([
                 'total' => $request->total,
@@ -98,6 +108,7 @@ class SaveClass
             'conforme_id' => $request->conforme['value'],
             'created_by' => \Auth::user()->id
         ]));
+        ($request->is_referral) ? $data->referral()->create(array_merge($request->all(),['is_psto' => ($request->province_code) ? 1 : 0])) : '';
         $hashids = new Hashids('krad',10);
         $code = $hashids->encode($data->id);
         return [

@@ -95,6 +95,57 @@
                                                             </table>
                                                         </div>
                                                     </div>
+                                                    <div v-if="menu == 'Facilities'">
+                                                        <div class="card-header border-0">
+                                                            <div class="d-flex align-items-center">
+                                                                <h5 class="card-title mb-0 fs-13 flex-grow-1">Laboratory Facitilies</h5>
+                                                                <div class="flex-shrink-0">
+                                                                <div class="d-flex flex-wrap gap-2">
+                                                                    <button @click="addFacility(selected.data.id)" class="btn btn-danger add-btn btn-sm">
+                                                                        <i class="ri-add-line align-bottom me-1"></i> Add
+                                                                    </button>
+                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-nowrap align-middle mb-0">
+                                                                <thead class="table-light">
+                                                                    <tr class="fs-11">
+                                                                        <th style="width: 5%;"></th>
+                                                                        <th>Name</th>
+                                                                        <th style="width: 15%;" class="text-center">Status</th>
+                                                                        <th style="width: 15%;" class="text-center">Fee</th>
+                                                                        <th style="width: 7%;" ></th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody v-if="selected.data.facilities.length > 0" class="table-white fs-12">
+                                                                    <tr v-for="(list,index) in selected.data.facilities" v-bind:key="index">
+                                                                        <td class="text-center"> {{ index + 1 }}.</td>
+                                                                        <td class="fs-12">
+                                                                            <h5 class="fs-12 mb-0">{{list.name}}</h5>
+                                                                            <p class="fs-12 text-muted mb-0">{{list.description}}</p>
+                                                                        </td>
+                                                                        <td class="text-center fs-12">
+                                                                            <span v-if="list.is_active" class="badge bg-success">Active</span>
+                                                                            <span v-else class="badge bg-danger">Inactive</span>
+                                                                        </td>
+                                                                        <td class="text-center fs-12">{{list.fee}}</td>
+                                                                        <td class="text-end">
+                                                                            <b-button variant="info" class="me-1" v-b-tooltip.hover title="View" size="sm">
+                                                                                <i class="ri-eye-fill align-bottom"></i>
+                                                                            </b-button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                                <tbody v-else>
+                                                                    <tr>
+                                                                        <td colspan="5" class="text-center text-muted">No additional fees found</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
                                                     <div v-if="menu == 'Discounts'">
                                                         <div class="card-header border-0">
                                                             <div class="d-flex align-items-center">
@@ -158,21 +209,23 @@
         </b-col>
     </b-row>
     <Fee ref="fee"/>
+    <Facility :regions="regions" ref="facility"/>
     <Discount :discounts="selected.data.discounts" :options="discounts" ref="discount"/>
 </template>
 <script>
 import Top from './Top.vue';
 import Sidebar from './Sidebar.vue';
 import Fee from './Modals/Fee.vue';
+import Facility from './Modals/Facility.vue';
 import Discount from './Modals/Discount.vue';
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 export default {
-    props:['selected','laboratories','discounts'],
-    components: { PageHeader, Top, Fee, Sidebar, Discount },
+    props:['selected','laboratories','discounts','regions'],
+    components: { PageHeader, Top, Fee, Sidebar, Discount, Facility },
     data(){
         return {
             menus: [
-                'Reports','Additional Services','Discounts','Activity Logs'
+                'Reports','Additional Services','Discounts','Facilities','Activity Logs'
             ],
             index: null,
         }
@@ -183,7 +236,10 @@ export default {
         },
         addDiscount(id){
             this.$refs.discount.show(id);
-        }
+        },
+        addFacility(id){
+            this.$refs.facility.show(id,this.selected.data.address.region_code);
+        },
     }
 }
 </script>

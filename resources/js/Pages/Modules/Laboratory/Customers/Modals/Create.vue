@@ -269,6 +269,7 @@ export default {
                 onSuccess: (response) => {
                     this.names = [];
                     this.$emit('message',true);
+                    this.$refs.location.emptyMap();
                     this.hide();
                     this.multiselectKey += 1;
                 },
@@ -300,6 +301,8 @@ export default {
             this.industry = null;
             this.form.reset();
             this.form.clearErrors();
+            this.form.name = 'Main';
+            this.form.is_main = true;
             this.editable = false;
             this.showModal = false;
         }

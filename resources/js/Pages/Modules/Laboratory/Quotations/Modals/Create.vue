@@ -65,6 +65,47 @@
                     :searchable="true" label="name"
                     placeholder="Select Purpose"/>
                 </BCol>
+                <BCol lg="12">
+                    <BRow class="g-3 mt-n2">
+                        <BCol lg="12"><hr class="text-muted mb-n3 mt-n1"/></BCol>
+                        <BCol lg="8" style="margin-top: 13px; margin-bottom: -12px;" class="fs-12" :class="(form.errors.is_referral) ? 'text-danger' : ''">Is TSR classified as a referral?</BCol>
+                        <BCol lg="4" style="margin-top: 13px; margin-bottom: -12px;">
+                        <div class="row">
+                                <div class="col-md-6">
+                                    <div class="custom-control custom-radio mb-3">
+                                        <input type="radio" id="customRadio1" class="custom-control-input me-2" @input="handleInput('is_referral')" :value="true" v-model="form.is_referral">
+                                        <label class="custom-control-label fw-normal fs-12" for="customRadio1">Yes</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="custom-control custom-radio mb-3">
+                                        <input type="radio" id="customRadio2" class="custom-control-input me-2" @input="handleInput('is_referral')" :value="false" v-model="form.is_referral">
+                                        <label class="custom-control-label fw-normal fs-12" for="customRadio2">No</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </BCol>
+                        <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
+                    </BRow>
+                </BCol>
+                <BCol :lg="(form.agency_id == $page.props.user.data.agency_id ) ? 6 : 12" class="mt-n2" v-if="form.is_referral">
+                    <InputLabel for="region" value="Agency" :message="form.errors.agency_id"/>
+                    <Multiselect 
+                    :options="dropdowns.agencies" 
+                    v-model="form.agency_id"
+                    @input="handleInput('agency_id')"
+                    :searchable="true" label="name"
+                    placeholder="Select Agency"/>
+                </BCol>
+                <BCol lg="6" class="mt-n2" v-if="form.is_referral && $page.props.user.data.agency_id == form.agency_id">
+                    <InputLabel for="province" value="Province" :message="form.errors.province_code"/>
+                    <Multiselect 
+                    :options="provinces" 
+                    v-model="form.province_code"
+                    @input="handleInput('province_code')"
+                    :searchable="true" label="name"
+                    placeholder="Select Province"/>
+                </BCol>
             </BRow>
         </form>
            
@@ -84,7 +125,7 @@ import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
 export default {
     components: { Multiselect, InputLabel, TextInput, Add },
-    props: ['dropdowns'],
+    props: ['dropdowns','region'],
     data(){
         return {
             currentUrl: window.location.origin,
@@ -95,16 +136,31 @@ export default {
                 laboratory_id: null,
                 discount_id: null,
                 purpose_id: null,
+                agency_id: null,
+                province_code: null,
+                is_referral: false,
                 option: 'quotation'
             }),
             customers: [],
             conformes: [],
+            provinces: [],
+            region: null,
             showModal: false,
             editable: false
         }
     },
+    watch: {
+        "form.is_referral"(newVal){
+            if(!newVal){
+                this.form.agency_id = null;
+                this.form.province_code = null;
+            }
+        }
+    },
     methods: { 
-        show(){
+        show(region){
+            this.region = region;
+            this.fetchProvince(this.region);
             this.showModal = true;
         },
         edit(data){
@@ -134,6 +190,18 @@ export default {
             })
             .then(response => {
                 this.customers = response.data;
+            })
+            .catch(err => console.log(err));
+        },
+        fetchProvince(code){
+            axios.get('/search',{
+                params: {
+                    option: 'provinces',
+                    code: code
+                }
+            })
+            .then(response => {
+                this.provinces = response.data;
             })
             .catch(err => console.log(err));
         },
