@@ -11,22 +11,12 @@ class CashierClass
     public function __construct()
     {
         $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : null;
-        $this->province = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->province_code : null : null;
     }
     
     public function orseries(){
         $data = FinanceOrseries::where('is_active',1)->where('agency_id',$this->agency)
          ->when(true, function ($query) {
-            if ($this->province) {
-                $query->whereHas('user.myroles', function ($q) {
-                    $q->whereNotNull('province_code')
-                      ->where('province_code', $this->province);
-                });
-            } else {
-                $query->whereDoesntHave('user.myroles', function ($q) {
-                    $q->whereNotNull('province_code');
-                });
-            }
+            
         })
         ->get()->map(function ($item) {
             return [
