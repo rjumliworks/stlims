@@ -35,21 +35,43 @@
                                 <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
                             </BRow>
                         </BCol>
+                        <BCol lg="12" v-if="form.is_psto === false">
+                            <BRow class="g-3" style="margin-top: -32px;">
+                                <BCol lg="8" style="margin-top: 13px; margin-bottom: -12px;" class="fs-12" :class="(form.errors.is_separated) ? 'text-danger' : ''">Is facility separated from regional office?</BCol>
+                                <BCol lg="4" style="margin-top: 13px; margin-bottom: -12px;">
+                                <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="custom-control custom-radio mb-3">
+                                                <input type="radio" id="customRadio1" class="custom-control-input me-2" @input="handleInput('is_separated')" :value="true" v-model="form.is_separated">
+                                                <label class="custom-control-label fw-normal fs-12" for="customRadio1">Yes</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="custom-control custom-radio mb-3">
+                                                <input type="radio" id="customRadio2" class="custom-control-input me-2" @input="handleInput('is_separated')" :value="false" v-model="form.is_separated">
+                                                <label class="custom-control-label fw-normal fs-12" for="customRadio2">No</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </BCol>
+                                <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
+                            </BRow>
+                        </BCol>
                         <BCol lg="6" class="mt-0">
                             <InputLabel value="Region"/>
-                            <Multiselect :options="regions" v-model="form.region" label="name" :searchable="true" placeholder="Select Region" />
+                            <Multiselect :options="regions" v-model="form.region_code" label="name" :searchable="true" placeholder="Select Region" />
                         </BCol>
                         <BCol lg="6" class="mt-0">
                             <InputLabel value="Province"/>
-                            <Multiselect :options="provinces" object v-model="form.province" label="name" :searchable="true" placeholder="Select Province" />
+                            <Multiselect :options="provinces" v-model="form.province_code" label="name" :searchable="true" placeholder="Select Province" />
                         </BCol>
                         <BCol lg="6" class="mt-1">
                             <InputLabel value="Municipality" :message="form.errors.municipality_code"/>
-                            <Multiselect :options="municipalities" object v-model="form.municipality" label="name" :searchable="true" placeholder="Select Municipality" />
+                            <Multiselect :options="municipalities" v-model="form.municipality_code" label="name" :searchable="true" placeholder="Select Municipality" />
                         </BCol>
                         <BCol lg="6" class="mt-1">
-                            <InputLabel value="Barangay" :message="form.errors.municipality_code"/>
-                            <Multiselect :options="barangays" object v-model="form.barangay" label="name" :searchable="true" placeholder="Select Barangay" />
+                            <InputLabel value="Barangay" :message="form.errors.barangay_code"/>
+                            <Multiselect :options="barangays" v-model="form.barangay_code" label="name" :searchable="true" placeholder="Select Barangay" />
                         </BCol>
                         <BCol lg="12" class="mt-1">
                             <InputLabel value="Street, Landmark, Block, Lot, Unit"/>
@@ -86,13 +108,15 @@ export default {
                 name: null,
                 short: null,
                 is_psto: null,
+                is_regional: null,
+                is_separated: null,
                 address: null,
-                region: null,
-                province: null,
-                municipality: null,
+                region_code: null,
+                province_code: null,
+                municipality_code: null,
                 longitude: null,
                 latitude: null,
-                barangay: null,
+                barangay_code: null,
                 agency_id: null,
                 option: 'facility'
             }),
@@ -107,31 +131,38 @@ export default {
         }
     },
     watch: {
-        "form.region"(newVal){
+        "form.is_psto"(newVal){
+            if(newVal){
+                this.form.is_regional = false;
+            }else{
+                this.form.is_regional = true;
+            }
+        },
+        "form.region_code"(newVal){
             if(!newVal){
-                this.form.province = null;
-                this.form.municipality = null;
-                this.form.barangay = null;
+                this.form.province_code = null;
+                this.form.municipality_code = null;
+                this.form.barangay_code = null;
             }
             this.fetchProvince(newVal);
         },
-        "form.province"(newVal){
+        "form.province_code"(newVal){
             if(!newVal){
-                this.form.municipality = null;
-                this.form.barangay = null;
+                this.form.municipality_code = null;
+                this.form.barangay_code = null;
             }
             this.fetchMunicipality(newVal);
         },
-        "form.municipality"(newVal){
+        "form.municipality_code"(newVal){
             if(!newVal){
-                this.form.barangay = null;
+                this.form.barangay_code = null;
             }
             this.fetchBarangay(newVal);
         }
     },
     computed: {
         isFormValid() {
-            return this.form.address && this.form.region && this.form.province && this.form.municipality && this.form.barangay;
+            return this.form.address && this.form.region_code && this.form.province_code && this.form.municipality_code && this.form.barangay_code;
         }
     },
     methods: { 
@@ -143,7 +174,7 @@ export default {
         show(id,region){
             this.form.agency_id = id;
             this.$refs.map.view();
-            this.form.region = region;
+            this.form.region_code = region;
             this.fetchProvince(region);
             this.showModal = true;
         },  

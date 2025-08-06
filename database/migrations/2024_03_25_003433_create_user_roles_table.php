@@ -14,15 +14,11 @@ return new class extends Migration
         Schema::create('user_roles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->boolean('is_psto')->default(0);
-            $table->boolean('is_signatory')->default(0);
             $table->boolean('is_active')->default(1);
             $table->integer('agency_id')->unsigned()->index();
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->tinyInteger('laboratory_id')->unsigned()->nullable();
             $table->foreign('laboratory_id')->references('id')->on('list_laboratories')->onDelete('cascade');
-            $table->string('province_code')->nullable()->constrained();
-            $table->foreign('province_code')->references('code')->on('location_provinces')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->tinyInteger('role_id')->unsigned()->index();
