@@ -54,6 +54,9 @@
                                 <b-button v-if="selected.status.name == 'Pending'" type="button" variant="primary" @click="openSample">
                                     <i class="ri-add-circle-fill align-bottom me-1"></i>Add Sample
                                 </b-button>
+                                 <b-button type="button" variant="primary" @click="printAll()">
+                                    <i class="ri-printer-fill align-bottom"></i>
+                                </b-button>
                             </div>
                         </b-col>
                     </b-row>
@@ -305,6 +308,9 @@ export default {
         openQr(data){
             window.open('/samples?option=qrcode&id='+data.qr);
         },
+        printAll(){
+            window.open('/samples?option=qrcode-list&id='+this.selected.qr);
+        }
     }
 }
 </script>

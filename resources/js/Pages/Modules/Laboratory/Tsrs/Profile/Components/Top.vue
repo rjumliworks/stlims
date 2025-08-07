@@ -81,7 +81,7 @@ export default {
         },
         openCancel(data){
             this.$refs.cancel.show(data);
-        },
+        }
     }
 }
 </script>
