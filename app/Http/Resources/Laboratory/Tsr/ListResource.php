@@ -34,6 +34,7 @@ class ListResource extends JsonResource
             'id' => $this->id,
             'qr' => $code,
             'code' => $this->code,
+            'is_onsite' => $this->is_onsite,
             'is_referral' => $this->is_referral,
             'laboratory' => $this->laboratory,
             'status' => $this->status,

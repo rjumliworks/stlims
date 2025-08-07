@@ -34,6 +34,7 @@ class ViewResource extends JsonResource
             'due_at' => $this->due_at,
             'addfee' => $this->addfee,
             'is_shelf' => $this->is_shelf,
+            'is_onsite' => $this->is_onsite,
             'services' => $this->services,
             'referral' => $this->referral,
             'updated_at' => $this->updated_at,
