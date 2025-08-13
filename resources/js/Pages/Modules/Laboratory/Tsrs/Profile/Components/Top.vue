@@ -29,6 +29,9 @@
                                         <i class="ri-close-circle-fill fs-16"></i> Close
                                     </div>
                                 </Link>
+                                 <div class="text-muted" @click="makeCopy(selected)" style="cursor: pointer;">  
+                                    <i class="ri-edit-box-fill fs-16"></i> Make a Copy
+                                </div>
                                 <div class="text-muted" v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" style="cursor: pointer;">  
                                     <i class="ri-edit-box-fill fs-16"></i> Update
                                 </div>
@@ -53,18 +56,20 @@
             </div>
         </b-card>
     </b-col>
+    <Copy ref="copy"/>
     <Save ref="save"/>
     <Wallet ref="wallet"/>
     <Cancel ref="cancel"/>
     <Edit :dropdowns="dropdowns" ref="edit"/>
 </template>
 <script>
+import Copy from '../Modals/Top/Copy.vue';
 import Edit from '../Modals/Top/Edit.vue';
 import Save from '../Modals/Top/Save.vue';
 import Cancel from '../Modals/Top/Cancel.vue';
 import Wallet from '../Modals/Top/Wallet.vue';
 export default {
-    components: { Save, Wallet, Edit, Cancel },
+    components: { Save, Wallet, Edit, Cancel, Copy },
     props:['selected','analyses','dropdowns'],
     methods: {
         openSave(id){
@@ -81,6 +86,9 @@ export default {
         },
         openCancel(data){
             this.$refs.cancel.show(data);
+        },
+        makeCopy(data){
+            this.$refs.copy.show(data);
         }
     }
 }

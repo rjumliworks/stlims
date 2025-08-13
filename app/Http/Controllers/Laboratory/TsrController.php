@@ -65,7 +65,13 @@ class TsrController extends Controller
 
     public function store(TsrRequest $request){
         $result = $this->handleTransaction(function () use ($request) {
-            return $this->save->save($request);
+            switch($request->option){
+                case 'copy':
+                    return $this->save->copy($request);
+                break;
+                default:
+                    return $this->save->save($request);
+            }
         });
 
         return back()->with([
