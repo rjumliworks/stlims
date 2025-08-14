@@ -91,7 +91,6 @@ class SaveClass
 
         foreach($old->samples as $sample){
             $s = $data->samples()->create([
-                'code' => $sample->code,
                 'name' => $sample->name,
                 'customer_description' => $sample->customer_description,
                 'description' => $sample->description,
@@ -99,7 +98,7 @@ class SaveClass
             foreach($sample->analyses as $analysis){
                 $a = $s->analyses()->create([
                     'fee' => $analysis->fee,
-                    'status_id' => $analysis->status_id,
+                    'status_id' => 10,
                     'testservice_id' => $analysis->testservice_id
                 ]);
                 if($analysis->addfee){
