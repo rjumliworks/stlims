@@ -43,7 +43,7 @@ export default {
             this.form.post('/tsrs',{
                 preserveScroll: true,
                 onSuccess: (response) => {
-                    this.hide();
+                    window.location.href = `/tsrs/${this.$page.props.flash.data}`;
                 },
             });
         },

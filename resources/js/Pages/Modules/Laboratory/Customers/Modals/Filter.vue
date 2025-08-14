@@ -92,26 +92,26 @@ export default {
             this.showModal = true;
         },  
         submitExcel() {
-    const params = new URLSearchParams();
+            const params = new URLSearchParams();
 
-    params.append('option', 'peza');
+            params.append('option', 'peza');
 
-    if (this.form.region) {
-        params.append('region', this.form.region);
-    }
-    if (this.form.province?.value) {
-        params.append('province', this.form.province.value);
-    }
-    if (this.form.municipality?.value) {
-        params.append('municipality', this.form.municipality.value);
-    }
-    if (this.form.barangay?.value) {
-        params.append('barangay', this.form.barangay.value);
-    }
+            if (this.form.region) {
+                params.append('region', this.form.region);
+            }
+            if (this.form.province?.value) {
+                params.append('province', this.form.province.value);
+            }
+            if (this.form.municipality?.value) {
+                params.append('municipality', this.form.municipality.value);
+            }
+            if (this.form.barangay?.value) {
+                params.append('barangay', this.form.barangay.value);
+            }
 
-    const url = `/reports?${params.toString()}`;
-    window.open(url);
-},
+            const url = `/reports?${params.toString()}`;
+            window.open(url);
+        },
         submit(){
             this.$emit('submit', {
                 index: this.index,

@@ -39,6 +39,8 @@ class PezaExport implements FromView
                 'customers.is_main',
                 'customer_names.name as customer_name',
                 'customer_names.has_branches as has_branches',
+                'customer_contacts.email',
+                'customer_contacts.contact_no',
                 \DB::raw('COUNT(DISTINCT tsrs.id) as count'),
                 \DB::raw('SUM(tsr_pay.total) as total'),
                 \DB::raw('SUM(COALESCE(tsr_services.service_count, 0)) as services')
@@ -51,6 +53,7 @@ class PezaExport implements FromView
                 $join->on('tsrs.id', '=', 'tsr_services.tsr_id');
             })
             ->join('customer_names', 'customers.name_id', '=', 'customer_names.id')
+            ->leftJoin('customer_contacts', 'customers.id', '=', 'customer_contacts.customer_id')
             ->whereHas('address', function ($query) {
                 if (!empty($this->region)) {
                     $query->where('region_code', $this->region);
@@ -65,16 +68,19 @@ class PezaExport implements FromView
                     $query->where('barangay_code', $this->barangay);
                 }
             })
-            ->whereHas('tsrs', function ($query) {
-                $query->whereYear('created_at', 2025)
-                    ->whereBetween(\DB::raw('MONTH(created_at)'), [1, 6]);
-            })
+            // ->whereHas('tsrs', function ($query) {
+            //     $query->whereYear('created_at', 2025)
+            //         ->whereBetween(\DB::raw('MONTH(created_at)'), [1, 6]);
+            // })
+            ->where('industry_id','!=',22) //GOVERNMENT
             ->groupBy(
                 'customers.id',
                 'customers.name',
                 'customers.is_main',
                 'customer_names.name',
-                'customer_names.has_branches'
+                'customer_names.has_branches',
+                'customer_contacts.email',
+                'customer_contacts.contact_no',
             )
             ->orderByDesc('total')
             ->get();
@@ -84,6 +90,8 @@ class PezaExport implements FromView
             $name = ($row['name'] == 'Main') ? '' : ' - '.$row['name'];
             $tsrs[] = [
                 "name" => $row['customer_name'].' '.$name,
+                "email" => $row['email'],
+                "contact_no" => $row['contact_no'],
                 "count" => $row['count'],
                 "services" => $row['services'],
                 "total" => $row['total']
