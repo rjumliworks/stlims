@@ -26,12 +26,7 @@ class UserRequest extends FormRequest
             'agency_id' => 'sometimes|required',
             'role_id' => 'sometimes|required',
             'is_psto' => 'sometimes|required',
-            'province_code' => [
-                'sometimes',
-                Rule::requiredIf(function () {
-                    return $this->is_psto;
-                }),
-            ],
+           
         ];
     }
 }
