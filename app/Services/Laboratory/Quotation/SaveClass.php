@@ -152,9 +152,12 @@ class SaveClass
     }
 
     public function sample($request){
-        $data = QuotationSample::create($request->all());
+        $count = (int) $request->count;
+        for ($i = 0; $i < $count; $i++) {
+            QuotationSample::create($request->all());
+        }
         return [
-            'data' => $data,
+            'data' => true,
             'message' => 'Sample added was successful!', 
             'info' => "You've successfully created the new sample."
         ];

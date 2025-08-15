@@ -2,6 +2,21 @@
     <b-modal v-model="showModal" style="--vz-modal-width: 800px;" header-class="p-3 bg-light" :title="(!editable) ? 'Add Sampletype' : 'Edit Sampletype'" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
         <form class="customform">
             <BRow class="g-3 mt-3">
+                <BCol lg="12" v-if="action == 'copy'" class="mt-0 mb-2">
+                    <div class="alert alert-danger alert-dismissible alert-label-icon label-arrow" role="alert"><i class="ri-error-warning-line label-icon"></i>
+                        <div class="d-flex mb-n2">
+                            <div class="flex-shrink-0 me-3">
+                                <TextInput id="name" v-model="form.count" type="text" class="form-control" style="width: 45px; text-align: center;" :light="true"/>
+                            </div>
+                            <div class="flex-grow-1 mt-2"> 
+                                <span>Please specify how many copies of the sample you want to add with its details.</span>
+                            </div>
+                        </div>
+                    </div>
+                </BCol>
+                <BCol lg="12" v-if="action == 'copy'">
+                    <hr class="text-muted mt-n3"/>
+                </BCol>
                 <BCol lg="12" class="mt-n2 mb-n3">
                     <InputLabel for="name" value="Sample Name"/>
                     <TextInput id="name" v-model="form.name" type="text" class="form-control" placeholder="Please enter name" :light="true"/>
@@ -41,8 +56,10 @@ export default {
                 name: null,
                 description: null,
                 customer_description: null,
+                count: 1,
                 option: 'sample'
             }),
+            action: null,
             sampletypes: [],
             showModal: false,
             editable: false
@@ -50,11 +67,13 @@ export default {
     },
     methods: { 
         show(id,laboratory){
+            this.action = null;
             this.form.quotation_id = id;
             this.form.laboratory_id = laboratory;
             this.showModal = true;
         },
         copy(id,sample){
+            this.action = 'copy';
             this.form.quotation_id = id;
             this.form.name = sample.name;
             this.form.description = sample.description;
@@ -62,6 +81,7 @@ export default {
             this.showModal = true;
         },
         edit(id,data){
+            this.action = null;
             this.form.id = data.id;
             this.form.quotation_id = id;
             this.form.option = 'quotation';
@@ -90,6 +110,7 @@ export default {
             }
         },
         hide(){
+            this.action = null;
             this.form.reset();
             this.editable = false;
             this.showModal = false;

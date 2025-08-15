@@ -14,13 +14,13 @@ class SaveClass
     }
 
     public function save($request){
-        $data = TsrSample::create($request->all());
-        $data = TsrSample::with('analyses.status','analyses.testservice.method.method','analyses.sample','analyses.analyst')
-        ->where('id',$data->id)
-        ->first();
+        $count = (int) $request->count;
+        for ($i = 0; $i < $count; $i++) {
+            TsrSample::create($request->all());
+        }
         
         return [
-            'data' => $data,
+            'data' => true,
             'message' => 'Sample Added Successfully', 
             'info' => "The sample has been added and is now linked to this TSR."
         ];
