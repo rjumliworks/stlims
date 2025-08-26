@@ -33,15 +33,15 @@ class AppServiceProvider extends ServiceProvider
 
         if (App::environment('production')) {
             Artisan::command('migrate:fresh', function () {
-                $this->error('🚨 CYBER OPS ARE COMING!');
+                $this->error('-');
             });
 
             Artisan::command('db:wipe', function () {
-                $this->error('🚨 CYBER OPS ARE COMING!');
+                $this->error('-');
             });
 
             Artisan::command('migrate:fresh --seed', function () {
-                $this->error('🚨 CYBER OPS ARE COMING!');
+                $this->error('-');
             });
         }
     }
