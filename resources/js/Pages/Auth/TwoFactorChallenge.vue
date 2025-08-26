@@ -150,7 +150,7 @@ export default {
         
     </div>
 </template>
-<style>
+<style scoped>
 .auth-page-wrapper {
     background-color: hsl(201, 80%, 82%);
 }

@@ -35,6 +35,15 @@ class LoginRequest extends FormRequest
                 'email' => trans('auth.failed'),
             ]);
         }
+        $user = Auth::user();
+
+        if (!$user->is_active && $user->is_new == 0) {
+            Auth::logout();
+            RateLimiter::clear($this->throttleKey()); // optional: clear attempts
+            throw ValidationException::withMessages([
+                'email' => 'Account Locked, Please contact administrator.',
+            ]);
+        }
 
         RateLimiter::clear($this->throttleKey());
     }

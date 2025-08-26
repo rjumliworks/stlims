@@ -214,13 +214,13 @@ export default {
             </BLink>
           </BDropdown> -->
 
-          <div class="ms-1 header-item d-none d-sm-flex">
+          <!-- <div class="ms-1 header-item d-none d-sm-flex">
             <a :href="`/gadcorner`" target="_blank">
                 <BButton type="button" variant="ghost-secondary" class="btn-icon btn-topbar rounded-circle">
                   <i class="bx bx-male-female fs-22"></i>
                 </BButton>
               </a>
-          </div>
+          </div> -->
 
           <div class="ms-1 header-item d-none d-sm-flex">
            <a :href="`/accomplishments?option=view`" target="_blank">

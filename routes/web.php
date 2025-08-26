@@ -9,6 +9,8 @@ Route::get('/csf', [App\Http\Controllers\Others\CsfController::class, 'csf']);
 
 Route::middleware(['2fa','auth','verified'])->group(function () {
     Route::resource('/profile', App\Http\Controllers\Auth\ProfileController::class);
+});
+Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
     Route::get('/search', [App\Http\Controllers\DashboardController::class, 'search']);
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');

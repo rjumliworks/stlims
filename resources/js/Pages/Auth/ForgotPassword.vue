@@ -70,7 +70,7 @@ export default {
         };
     }
 }
-</script>
+</script scoped>
 <style>
 .auth-page-wrapper {
     background-color: #299cdb;

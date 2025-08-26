@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Traits\HandlesTransaction;
 use Illuminate\Support\Facades\Http;
 use App\Services\DropdownClass;
+use Illuminate\Validation\Rules\Password;
 
 class WelcomeController extends Controller
 {
@@ -48,16 +49,32 @@ class WelcomeController extends Controller
         dispatch(new SmsJob($contact, $message));
     }
 
-    public function activation(Request $request){
-        // dd($request->email);
-        if(\Auth::check()){
+    public function activation(){
+   
+        return inertia('Auth/Activation');
+        
+    }
+
+    public function activate(Request $request){
+        $validated = $request->validate([
+            'password' => [
+                'required',
+                'confirmed',
+                Password::min(8)
+                    ->mixedCase()     // must include uppercase and lowercase
+                    ->letters()       // must include letters
+                    ->numbers()       // must include numbers
+                    ->symbols()       // must include symbols
+                    ->uncompromised() // checks against data leaks (optional)
+            ],
+        ]);
+        $id = \Auth::user()->id;
+        $user = User::findOrFail($id);
+        $user->is_active = 1;
+        $user->is_new = 0;
+        $user->password = bcrypt($validated['password']);
+        if($user->save()){
             return redirect()->intended(route('dashboard', absolute: false));
-        }else{
-            return inertia('Auth/Activation',[
-                'email' => $request->email,
-                'token' => $request->token,
-                'name' => $request->name
-            ]);
         }
     }
 }

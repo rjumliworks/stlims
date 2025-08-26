@@ -23,12 +23,12 @@ Route::middleware('guest')->group(function () {
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
     Route::post('reset-password', [NewPasswordController::class, 'store'])->name('password.store');
-    Route::get('activation', [WelcomeController::class, 'activation'])->name('activation');
 });
 
 Route::middleware('auth')->group(function () {
     Route::get('installation', [WelcomeController::class, 'installation'])->name('installation');
     Route::post('install', [WelcomeController::class, 'install']);
+    Route::get('activation', [WelcomeController::class, 'activation'])->name('activation');
     Route::post('activate', [WelcomeController::class, 'activate']);
     Route::get('two-factor-challenge', [TwoFactorAuthenticationController::class, 'index'])->name('twofactor');
     Route::post('two-factor-challenge', [TwoFactorAuthenticationController::class, 'store']);
