@@ -130,6 +130,11 @@ class Tsr extends Model
         return $this->hasOne('App\Models\TsrChild', 'child_id');
     }
 
+    public function remarkable()
+    {
+        return $this->morphOne('App\Models\TsrRemarks', 'remarkable');
+    }
+
     public function getUpdatedAtAttribute($value)
     {
         return date('M d, Y g:i a', strtotime($value));

@@ -176,10 +176,18 @@ class UpdateClass
 
     public function cancel($request){
         $data = TsrAnalysis::where('id',$request->id)->first();
-        $data->status_id = $request->status_id;
+        if($request->type_id == 85){
+            $data->status_id = $request->status_id;
+        }else{
+            $data->fee = 0.00;
+            $data->is_refunded = 1;
+        }
         if($data->save()){
-            $cancel = $data->cancellable()->create([
-                'reason' => $request->reason
+            $cancel = $data->remarkable()->create([
+                'amount' => ($request->type_id == 86) ? $request->fee : null,
+                'reason' => $request->reason,
+                'type_id' => $request->type_id,
+                'user_id' => \Auth::user()->id
             ]);
             if($cancel){
                 $total = trim(str_replace(',','',$request->fee),'₱');
@@ -205,9 +213,10 @@ class UpdateClass
                     $wallet = new Wallet;
                     $wallet->total = $total;
                     $wallet->available = $total;
-                    $wallet->customer_id = $customer_id;
+                    $wallet->customer_id = $request->customer_id;
                     if($wallet->save()){
-                        $data->transaction()->create([
+                        $tsr = Tsr::where('id',$request->tsr_id)->first();
+                        $tsr->transaction()->create([
                             'code' => date('Ymdgis'),
                             'amount' => $total,
                             'balance' => $total,

@@ -133,7 +133,8 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody v-if="list.analyses.length > 0">
-                                                    <tr v-for="(list,index) in list.analyses" v-bind:key="index" class="bg-light-subtle">
+                                                    <tr v-for="(list,index) in list.analyses" v-bind:key="index" 
+                                                    :class="list.status?.name === 'Cancelled' ? 'bg-danger-subtle' : 'bg-light-subtle'">
                                                         <td class="text-center"> 
                                                             {{index + 1}}
                                                         </td>

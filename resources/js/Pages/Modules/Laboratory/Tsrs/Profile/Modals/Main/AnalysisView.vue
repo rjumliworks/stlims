@@ -78,17 +78,28 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12" v-if="selected.status.name == 'Cancelled'">
+            <div class="col-sm-12 mb-n3" v-if="selected.status.name == 'Cancelled'">
                 <hr class="text-muted mt-2"/>
                 <div class="alert alert-danger alert-dismissible alert-label-icon label-arrow mt-2 fs-12" role="alert"><i class="ri-error-warning-line label-icon"></i>
-                    This analysis has been cancelled. <br /> The amount of <strong>{{ selected.fee }}</strong> has been credited to the customer's wallet.
+                    <b><i>{{ selected.remarkable.reason }}</i></b><br /> <br /> 
+                    This analysis has been cancelled. <br /> The amount of <strong>{{ selected.fee }}</strong> has been credited to the customer's wallet. 
                 </div>
             </div>
+            <template v-if="selected.remarkable">
+                <div class="col-sm-12 mb-n3" v-if="selected.remarkable.type_id == 86">
+                    <hr class="text-muted mt-2"/>
+                    <div class="alert alert-warning alert-dismissible alert-label-icon label-arrow mt-2 fs-12" role="alert"><i class="ri-error-warning-line label-icon"></i>
+                        <b><i>{{ selected.remarkable.reason }}</i></b><br /> <br /> 
+                        This analysis cost has been refunded. <br /> The amount of <strong>{{ selected.remarkable.amount }}</strong> has been credited to the customer's wallet. 
+                    </div>
+                </div>
+            </template>
         </div>
         
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
-            <b-button v-if="status == 'Ongoing' && selected.status.name == 'Pending'" @click="openCancel(selected)" variant="danger" block>Cancel</b-button>
+            <b-button v-if="status == 'Ongoing' && selected.status.name == 'Pending' && selected.is_refunded == 0" @click="openCancel(selected,'refund')" variant="success" block>Refund</b-button>
+            <b-button v-if="status == 'Ongoing' && selected.status.name == 'Pending' && selected.is_refunded == 0" @click="openCancel(selected,'cancel')" variant="danger" block>Cancel</b-button>
         </template>
     </b-modal>
     <Cancel @success="hide()" ref="cancel"/>
@@ -130,8 +141,8 @@ export default {
         printQr(id){
             window.open('/testreports?option=qrcode&id='+this.selected.qr);
         },
-        openCancel(data){
-            this.$refs.cancel.show(data,this.customer,this.id);
+        openCancel(data,type){
+            this.$refs.cancel.show(data,this.customer,this.id,type);
         },
         hide(){
             this.showModal = false;

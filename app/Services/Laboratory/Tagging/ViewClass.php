@@ -277,7 +277,9 @@ class ViewClass
         })
         ->doesntHave('report')
         ->withCount([
-            'analyses as analyses_count',
+            'analyses as analyses_count' => function ($query) {
+                $query->where('status_id', '!=', 13);
+            },
             'analyses as completed_analyses_count' => function ($query) {
                 $query->where('status_id', 12);
             },
@@ -353,7 +355,9 @@ class ViewClass
             });
         })
         ->withCount([
-            'analyses as analyses_count',
+            'analyses as analyses_count' => function ($query) {
+                $query->where('status_id', '!=', 13);
+            },
             'analyses as completed_analyses_count' => function ($query) {
                 $query->where('status_id', 12);
             },
@@ -429,7 +433,9 @@ class ViewClass
             });
         })
         ->withCount([
-            'analyses as analyses_count',
+            'analyses as analyses_count' => function ($query) {
+                $query->where('status_id', '!=', 13);
+            },
             'analyses as completed_analyses_count' => function ($query) {
                 $query->where('status_id', 12);
             },

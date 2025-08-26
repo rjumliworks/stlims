@@ -12,6 +12,7 @@ class AnalysisResource extends JsonResource
         return [
             'id' => $this->id,
             'fee' => $this->fee,
+            'is_refunded' => $this->is_refunded,
             'selected' => false,
             'status' => $this->status,
             'code' => $this->sample->code,

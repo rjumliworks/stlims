@@ -12,7 +12,7 @@ class TsrAnalysis extends Model
     use HasFactory,LogsActivity;
 
     protected $fillable = [
-        'status_id','analyst_id','sample_id','testservice_id','fee','start_at','end_at',
+        'status_id','analyst_id','sample_id','testservice_id','fee','start_at','end_at','is_refunded'
     ];
 
     public function result()
@@ -73,7 +73,7 @@ class TsrAnalysis extends Model
     public function getActivitylogOptions(): LogOptions {
         return LogOptions::defaults()
         ->logOnly( [
-          'status_id','analyst_id','sample_id','testservice_id','fee','start_at','end_at'
+          'status_id','analyst_id','sample_id','testservice_id','fee','start_at','end_at','is_refunded'
         ])
         ->useLogName('Analysis')
         ->logOnlyDirty()
@@ -83,5 +83,10 @@ class TsrAnalysis extends Model
     public function cancellable()
     {
         return $this->morphOne('App\Models\TsrCancel', 'cancellable');
+    }
+
+    public function remarkable()
+    {
+        return $this->morphOne('App\Models\TsrRemarks', 'remarkable');
     }
 }

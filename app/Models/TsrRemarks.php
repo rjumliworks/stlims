@@ -6,26 +6,42 @@ use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Spatie\Activitylog\LogOptions;
 
-class TsrCancel extends Model
+class TsrRemarks extends Model
 {
     use LogsActivity;
 
     protected $fillable = [
-        'reason'
+        'amount',
+        'reason',
+        'type_id',
+        'user_id'
     ];
 
-    public function cancellable()
+    public function remarkable()
     {
         return $this->morphTo();
+    }
+
+    public function setAmountAttribute($value)
+    {
+        $this->attributes['amount'] = trim(str_replace(',','',$value),'₱');
+    }
+
+    public function getAmountAttribute($value)
+    {
+        return '₱'.number_format($value,2,'.',',');
     }
 
     public function getActivitylogOptions(): LogOptions {
         return LogOptions::defaults()
         ->logOnly( [
-            'reason'
+            'amount',
+            'reason',
+            'type_id',
+            'user_id'
         ])
         ->setDescriptionForEvent(fn(string $eventName) => "{$eventName}")
-        ->useLogName('Analysis Cancellation')
+        ->useLogName('Analysis Remarks')
         ->logOnlyDirty()
         ->dontSubmitEmptyLogs();
     }
