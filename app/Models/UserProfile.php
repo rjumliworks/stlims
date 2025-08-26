@@ -12,7 +12,7 @@ class UserProfile extends Model
     use HasFactory, LogsActivity;
 
     protected $guarded = [];
-    protected $fillable = ['firstname', 'lastname', 'middlename','suffix','sex','contact_no','mobile','user_id', 'avatar','birthdate','marital_id','religion_id','blood_id'];
+    protected $fillable = ['firstname', 'lastname', 'middlename','suffix','sex','mobile','mobile','user_id', 'avatar','facility_id'];
 
     public function user()
     {
@@ -22,22 +22,6 @@ class UserProfile extends Model
     public function facility()
     {
         return $this->belongsTo('App\Models\AgencyFacility', 'facility_id', 'id');
-    }
-
-
-    public function blood()
-    {
-        return $this->belongsTo('App\Models\ListData', 'blood_id', 'id');
-    }
-
-    public function marital()
-    {
-        return $this->belongsTo('App\Models\ListData', 'marital_id', 'id');
-    }
-
-    public function religion()
-    {
-        return $this->belongsTo('App\Models\ListData', 'religion_id', 'id');
     }
 
     public function setFirstnameAttribute($value)
