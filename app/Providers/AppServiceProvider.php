@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\App;
 use App\Listeners\LoginFailed;
 use App\Listeners\LoginSuccessful;
 use Illuminate\Support\ServiceProvider;
@@ -28,5 +30,19 @@ class AppServiceProvider extends ServiceProvider
             LoginSuccessful::class,
             LoginFailed::class
         );
+
+        if (App::environment('production')) {
+            Artisan::command('migrate:fresh', function () {
+                $this->error('🚨 CYBER OPS ARE COMING!');
+            });
+
+            Artisan::command('db:wipe', function () {
+                $this->error('🚨 CYBER OPS ARE COMING!');
+            });
+
+            Artisan::command('migrate:fresh --seed', function () {
+                $this->error('🚨 CYBER OPS ARE COMING!');
+            });
+        }
     }
 }
