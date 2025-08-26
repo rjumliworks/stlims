@@ -51,13 +51,18 @@
                                         <i class="ri-apps-2-line me-1 align-bottom"></i> All Users
                                         </BLink>
                                     </li>
+                                     <li class="nav-item">
+                                        <BLink @click="viewStatus(0,1)" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                        <i class="ri-checkbox-circle-line me-1 align-bottom"></i> New Users
+                                        </BLink>
+                                    </li>
                                     <li class="nav-item">
-                                        <BLink @click="viewStatus(null,null)" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                        <BLink @click="viewStatus(1,0)" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
                                         <i class="ri-checkbox-circle-line me-1 align-bottom"></i> Active Users
                                         </BLink>
                                     </li>
                                     <li class="nav-item">
-                                        <BLink @click="viewStatus(null,null)" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                        <BLink @click="viewStatus(0,0)" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
                                         <i class="ri-close-circle-line me-1 align-bottom"></i> Inactive Users
                                         </BLink>
                                     </li>
@@ -85,7 +90,7 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-white fs-12">
-                                    <tr v-for="(list,index) in lists" v-bind:key="index" >
+                                    <tr v-for="(list,index) in lists" v-bind:key="index" :class="{ 'bg-danger-subtle': list.is_active === 0, 'bg-warning-subtle': list.is_new === 1 }">
                                         <td>
                                             <div class="avatar-xs chat-user-img online">
                                                 <img :src="list.avatar" alt="-" @error="setDefaultImage($event)" class="avatar-xs rounded-circle">
@@ -151,7 +156,9 @@
                     keyword: null,
                     role: null,
                     agency: null,
-                    laboratory: null
+                    laboratory: null,
+                    is_active: null,
+                    is_new: null
                 },
                 index: null,
                 units: []
@@ -186,6 +193,8 @@
                         role: this.filter.role,
                         laboratory: this.filter.laboratory,
                         keyword: this.filter.keyword,
+                        status: this.filter.is_active,
+                        new: this.filter.is_new,
                         count: 10,
                         option: 'lists'
                     }
@@ -211,6 +220,11 @@
             },
             setDefaultImage(event) {
                 event.target.src = '/images/avatars/avatar.jpg'; 
+            },
+            viewStatus(active,is_new){
+                this.filter.is_new = is_new;
+                this.filter.is_active = active;
+                this.fetch();
             },
             refresh(){
                 this.filter.keyword = null;

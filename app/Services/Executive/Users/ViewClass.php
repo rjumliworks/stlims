@@ -19,6 +19,10 @@ class ViewClass
                     $query->where('username', 'LIKE', "%{$keyword}%")->whereNotIn('role',['Administrator']);
                 });
             })
+            ->when(!is_null($request->status) && !is_null($request->new), function ($query) use ($request) {
+                $query->where('is_active', $request->status)
+                    ->where('is_new', $request->new);
+            })
             ->when($request->agency, function ($query, $agency) {
                 $query->whereHas('myroles',function ($query) use ($agency) {
                     $query->where('agency_id',$agency);
