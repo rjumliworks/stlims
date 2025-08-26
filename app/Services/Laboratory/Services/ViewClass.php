@@ -67,6 +67,7 @@ class ViewClass
         $data = TestserviceName::where('name', 'LIKE', "%{$keyword}%")
         ->where('type_id',$type)
         ->where('laboratory_id',$laboratory)
+        ->where('is_active',1)
         ->limit(20)
         ->get()->map(function ($item) {
             return [
