@@ -15,7 +15,7 @@ class SaveClass
         ]);
 
         $user = User::find(\Auth::user()->id);
-        if ($user->profile()->avatar) {
+        if ($user->profile->avatar) {
             Storage::disk('public')->delete($user->profile->avatar);
         }
 
