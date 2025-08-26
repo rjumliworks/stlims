@@ -14,7 +14,7 @@ class SaveClass
             'image' => 'required|image|max:2048' // Assuming maximum file size is 2MB
         ]);
 
-        $user = \Auth::user();
+        $user = User::find(\Auth::user()->id);
         if ($user->profile->avatar) {
             Storage::disk('public')->delete($user->profile->avatar);
         }
