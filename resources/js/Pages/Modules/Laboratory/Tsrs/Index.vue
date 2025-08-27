@@ -332,6 +332,22 @@ export default {
             this.location.municipality = data?.form?.municipality?.value ?? null;
             this.location.barangay     = data?.form?.barangay?.value     ?? null;
             this.fetch();
+        },
+       refresh() {
+            this.location.region       = null;
+            this.location.province     = null;
+            this.location.municipality = null;
+            this.location.barangay     = null; 
+
+            this.filter = {
+                keyword: null,
+                status: null,
+                laboratory: null,
+                sortby: 'Requested At',
+                sort: 'desc',
+                datetype: null,
+                date: null
+            };
         }
     }
 }
