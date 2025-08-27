@@ -20,16 +20,9 @@
                         <div class="row g-3 mb-0 align-items-center">
                             <div class="col-sm-auto">
                                 <div class="input-group">
-                                    <select v-model="laboratory"
-                                            class="form-select"
-                                            aria-label="Default select example"
-                                            :disabled="loading">
+                                    <select v-model="laboratory" class="form-select" aria-label="Default select example" :disabled="loading">
                                         <option :value="null">All handled Laboratory</option>
-                                        <option :value="list.value"
-                                                v-for="list in laboratories"
-                                                :key="list.value">
-                                            {{ list.name }}
-                                        </option>
+                                        <option :value="list.value" v-for="list in laboratories" :key="list.value">{{ list.name }}</option>
                                     </select>
                                     <div class="input-group-text bg-primary border-primary text-white">
                                         <i class="ri-flask-fill"></i>
@@ -45,8 +38,8 @@
                      <div class="input-group mb-0">
                         <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                         <input type="text"  placeholder="Search Sample Code/Name" v-model="filter.keyword" class="form-control" style="width: 30%;">
-                        <Multiselect class="white" style="width: 17%;" :options="months" v-model="filter.month" label="name" :allow-empty="false" :searchable="true" placeholder="Filter by Month" />
-                        <Multiselect class="white" style="width: 20%;" :options="['Sample Code','Sample Name']" v-model="filter.type" :searchable="true" :allow-empty="false"/>
+                        <Multiselect class="white" style="width: 17%;" :options="months" v-model="filter.month" label="name" :allow-empty="false" :searchable="true" :disabled="loading" placeholder="Filter by Month" />
+                        <Multiselect class="white" style="width: 20%;" :options="['Sample Code','Sample Name']" v-model="filter.type" :searchable="true"  :disabled="loading" :allow-empty="false"/>
                         <b-button type="button" variant="primary"  @click="(checked1.length > 0 || checked2.length > 0) ? openUpdate() : '' ">
                             <i class="ri-timer-line search-icon"></i> Update
                         </b-button>
