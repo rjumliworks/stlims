@@ -153,6 +153,7 @@ class DashboardController extends Controller
             'reminders' => $this->analyst->reminders($request),
             'tasks' => $this->analyst->tasks($request),
             'lists' => $this->analyst->lists($request),
+            'laboratories' => $this->analyst->laboratories(),
         ]);
     }
 
