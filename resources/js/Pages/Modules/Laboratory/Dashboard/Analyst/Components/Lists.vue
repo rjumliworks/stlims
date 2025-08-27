@@ -20,9 +20,16 @@
                         <div class="row g-3 mb-0 align-items-center">
                             <div class="col-sm-auto">
                                 <div class="input-group">
-                                    <select v-model="laboratory" class="form-select" aria-label="Default select example">
+                                    <select v-model="laboratory"
+                                            class="form-select"
+                                            aria-label="Default select example"
+                                            :disabled="loading">
                                         <option :value="null">All handled Laboratory</option>
-                                        <option :value="list.value" v-for="list in laboratories" v-bind:key="list.value">{{list.name}}</option>
+                                        <option :value="list.value"
+                                                v-for="list in laboratories"
+                                                :key="list.value">
+                                            {{ list.name }}
+                                        </option>
                                     </select>
                                     <div class="input-group-text bg-primary border-primary text-white">
                                         <i class="ri-flask-fill"></i>
@@ -279,6 +286,7 @@ export default {
             mark1: null,
             mark2: null,
             laboratory: null,
+            loading: false,
             checked1: [],
             checked2: [],
             months: [
@@ -349,6 +357,7 @@ export default {
             this.fetch();
         }, 300),
         fetch(page_url){
+            this.loading = true;
             page_url = page_url || '/samples';
             axios.get(page_url,{
                 params : {
@@ -366,6 +375,7 @@ export default {
                     this.ongoings = response.data.ongoings;
                     this.completeds = response.data.completeds;          
                 }
+                this.loading = false;
             })
             .catch(err => console.log(err));
         },
