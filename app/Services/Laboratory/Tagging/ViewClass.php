@@ -16,11 +16,12 @@ class ViewClass
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->province = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->province_code : null;
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
-        $data = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
-        $filteredData = $data->filter(function ($value) {
-            return !is_null($value);
-        });
-        $this->laboratory = $filteredData->isNotEmpty() ? $filteredData : null;
+        // $data = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
+        // $filteredData = $data->filter(function ($value) {
+        //     return !is_null($value);
+        // });
+        // $this->laboratory = $filteredData->isNotEmpty() ? $filteredData : null;
+        $this->laboratories = UserRole::where('user_id',\Auth::user()->id)->where('role_id',4)->pluck('laboratory_id');
     }
 
     public function lists($request){
@@ -82,7 +83,6 @@ class ViewClass
                 $query->withWhereHas('tsr', function ($query) use ($request) {
                     $query->select('id', 'due_at', 'created_at')
                         ->where('agency_id', $this->agency)
-                        ->where('laboratory_id', $this->laboratory)
                         ->where('status_id', 3)
                         ->when($request->month, function ($query, $month) {
                             $query->whereMonth('due_at', $month);
@@ -106,6 +106,11 @@ class ViewClass
                                     $query->where('status_id', 4);
                                     break;
                             }
+                        });
+                    $query->when($request->laboratory, function ($query) use ($request) {
+                            $query->whereIn('laboratory_id', (array) $request->laboratory);
+                        }, function ($query) {
+                            $query->whereIn('laboratory_id', $this->laboratories);
                         });
                     $query->when($this->province, function ($query){
                         $query->whereHas('received.myroles', function ($query) {
@@ -172,7 +177,6 @@ class ViewClass
                 $query->withWhereHas('tsr', function ($query) use ($request) {
                     $query->select('id', 'due_at', 'created_at')
                     ->where('agency_id', $this->agency)
-                    ->where('laboratory_id', $this->laboratory)
                     ->where('status_id', 3)
                     ->when($request->month, function ($query, $month) {
                         $query->whereMonth('due_at', $month);
@@ -195,6 +199,11 @@ class ViewClass
                                 $query->where('status_id', 4);
                             break;
                         }
+                    });
+                    $query->when($request->laboratory, function ($query) use ($request) {
+                        $query->whereIn('laboratory_id', (array) $request->laboratory);
+                    }, function ($query) {
+                        $query->whereIn('laboratory_id', $this->laboratories);
                     });
                     $query->when($this->province, function ($query){
                         $query->whereHas('received.myroles', function ($query) {
@@ -233,7 +242,12 @@ class ViewClass
         })
         ->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
-            $query->where('agency_id',$this->agency)->whereIn('laboratory_id',$this->laboratory)->whereIn('status_id',[3,4]);
+            $query->where('agency_id',$this->agency)->whereIn('status_id',[3,4]);
+            $query->when($request->laboratory, function ($query) use ($request) {
+                $query->whereIn('laboratory_id', (array) $request->laboratory);
+            }, function ($query) {
+                $query->whereIn('laboratory_id', $this->laboratories);
+            });
             $query->when($request->reminder, function ($query, $reminder) {
                 switch($reminder){
                     case 'Completed with no report number':
@@ -312,7 +326,12 @@ class ViewClass
             $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
         })->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
-            $query->where('agency_id',$this->agency)->whereIn('laboratory_id',$this->laboratory)->where('status_id',3);
+            $query->where('agency_id',$this->agency)->where('status_id',3);
+            $query->when($request->laboratory, function ($query) use ($request) {
+                $query->whereIn('laboratory_id', (array) $request->laboratory);
+            }, function ($query) {
+                $query->whereIn('laboratory_id', $this->laboratories);
+            });
             $query->when($request->month, function ($query, $month) {
                 $query->whereMonth('due_at',$month);
             });
@@ -390,7 +409,12 @@ class ViewClass
             $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
         })->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
-            $query->where('agency_id',$this->agency)->where('laboratory_id',$this->laboratory)->where('status_id',3);
+            $query->where('agency_id',$this->agency)->where('status_id',3);
+            $query->when($request->laboratory, function ($query) use ($request) {
+                $query->whereIn('laboratory_id', (array) $request->laboratory);
+            }, function ($query) {
+                $query->whereIn('laboratory_id', $this->laboratories);
+            });
             $query->when($request->month, function ($query, $month) {
                 $query->whereMonth('due_at',$month);
             });

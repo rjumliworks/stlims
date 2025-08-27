@@ -15,6 +15,7 @@ return new class extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->boolean('is_active')->default(1);
+            $table->boolean('is_primary')->default(1);
             $table->integer('agency_id')->unsigned()->index();
             $table->foreign('agency_id')->references('id')->on('agencies')->onDelete('cascade');
             $table->tinyInteger('laboratory_id')->unsigned()->nullable();

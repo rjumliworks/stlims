@@ -16,7 +16,21 @@
                             <p class="text-muted text-truncate-two-lines fs-12">{{ (name) ? name.description : 'Monitoring the status of tests from pending to completion'}}</p>
                         </div>
                         <div class="flex-shrink-0">
-                          
+                          <form action="javascript:void(0);">
+                        <div class="row g-3 mb-0 align-items-center">
+                            <div class="col-sm-auto">
+                                <div class="input-group">
+                                    <select v-model="laboratory" class="form-select" aria-label="Default select example">
+                                        <option :value="null">All handled Laboratory</option>
+                                        <option :value="list.value" v-for="list in laboratories" v-bind:key="list.value">{{list.name}}</option>
+                                    </select>
+                                    <div class="input-group-text bg-primary border-primary text-white">
+                                        <i class="ri-flask-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                         </div>
                     </div>
                 </div>
@@ -246,7 +260,7 @@ import simplebar from "simplebar-vue";
 import Multiselect from "@vueform/multiselect";
 export default {
     components: { simplebar, Show, Update, Multiselect },
-    props: ['searchQuery'],
+    props: ['searchQuery','laboratories'],
     data() {
         return {
             pendings: [],
@@ -264,6 +278,7 @@ export default {
             },
             mark1: null,
             mark2: null,
+            laboratory: null,
             checked1: [],
             checked2: [],
             months: [
@@ -286,6 +301,9 @@ export default {
         this.fetch();
     }, 
     watch: {
+        laboratory() {
+            this.fetch();
+        },
         "filter.month"(newVal){
             this.setMonth(newVal);
         },
@@ -334,6 +352,7 @@ export default {
             page_url = page_url || '/samples';
             axios.get(page_url,{
                 params : {
+                    laboratory: this.laboratory,
                     type: this.filter.type,
                     keyword: this.filter.keyword,
                     month: this.filter.month,

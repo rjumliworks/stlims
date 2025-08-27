@@ -16,6 +16,7 @@ Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
     Route::get('/accounting', [App\Http\Controllers\DashboardController::class, 'accounting']);
     Route::get('/cashier', [App\Http\Controllers\DashboardController::class, 'cashier']);
+    Route::get('/analyst', [App\Http\Controllers\DashboardController::class, 'analyst']);
     Route::resource('/testservices', App\Http\Controllers\Laboratory\ServiceController::class);
      Route::resource('/services', App\Http\Controllers\Executive\TestserviceController::class);
 

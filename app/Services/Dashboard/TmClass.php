@@ -21,7 +21,7 @@ class TmClass
         $this->agency = (\Auth::check()) ? (count(\Auth::user()->myroles) > 0) ? \Auth::user()->myroles[0]->agency_id : null : '';
         $this->start = now()->copy()->startOfMonth()->format('Y-m-d');
         $this->end = now()->copy()->endOfMonth()->format('Y-m-d');
-        $this->roles = UserRole::where('user_id',\Auth::user()->id)->pluck('laboratory_id');
+        $this->roles = UserRole::where('user_id',\Auth::user()->id)->where('role_id',2)->pluck('laboratory_id');
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
     }
 

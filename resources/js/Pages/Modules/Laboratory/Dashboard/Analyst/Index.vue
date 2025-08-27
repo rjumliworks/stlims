@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="col-md-9">
-            <Lists :search-query="searchQuery" ref="sample"/>
+            <Lists :search-query="searchQuery" :laboratories="laboratories" ref="sample"/>
         </div>
     </b-row>
     <Performance ref="performance"/>
@@ -81,7 +81,7 @@ import Performance from './Modals/Performance.vue';
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 export default {
     components: { PageHeader, Lists, Performance },
-    props: ['tasks','reminders','lists'],
+    props: ['tasks','reminders','lists','laboratories'],
     data(){
         return {
             currentUrl: window.location.origin,

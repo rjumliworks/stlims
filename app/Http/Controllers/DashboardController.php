@@ -44,7 +44,11 @@ class DashboardController extends Controller
             if(\Auth::user()->role === 'Administrator'){
                 return inertia('Modules/Executive/Dashboard/Index');
             }else{
-                $role = \Auth::user()->myroles[0]->role->name;
+                $role = \Auth::user()
+                ->myroles()
+                ->where('is_primary', 1)
+                ->with('role')
+                ->first()?->role->name;
                 switch($role){
                     case 'Accountant':
                         return inertia('Modules/Finance/Accounting/Dashboard/Index',[
@@ -73,6 +77,7 @@ class DashboardController extends Controller
                             'reminders' => $this->analyst->reminders($request),
                             'tasks' => $this->analyst->tasks($request),
                             'lists' => $this->analyst->lists($request),
+                            'laboratories' => $this->analyst->laboratories(),
                         ]);
                     break;
                     case 'Calibration Officer':
@@ -141,6 +146,14 @@ class DashboardController extends Controller
                 }
             }
         }
+    }
+
+    public function analyst(Request $request){
+        return inertia('Modules/Laboratory/Dashboard/Analyst/Index',[
+            'reminders' => $this->analyst->reminders($request),
+            'tasks' => $this->analyst->tasks($request),
+            'lists' => $this->analyst->lists($request),
+        ]);
     }
 
     public function accounting(Request $request){
