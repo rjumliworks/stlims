@@ -15,7 +15,7 @@
                 >
                 <li class="nav-item">
                     <Link href="/analyst" class="nav-link menu-link"
-                        :class="{ 'active': $page.url === '/analyst' || $page.url === '/' }">
+                        :class="{ 'active': $page.url === '/analyst'}">
                         <i class="ri-flask-fill"></i>
                         <span class="fw-semibold fs-14" data-key="t-dashboards">Analyst Dashboard</span>
                     </Link>
