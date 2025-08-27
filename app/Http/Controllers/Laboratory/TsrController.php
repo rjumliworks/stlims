@@ -10,6 +10,7 @@ use App\Http\Requests\Operation\TsrRequest;
 use App\Services\Laboratory\Tsrs\ViewClass;
 use App\Services\Laboratory\Tsrs\SaveClass;
 use App\Services\Laboratory\Tsrs\UpdateClass;
+use App\Http\Requests\Laboratory\TsrUpdateRequest;
 
 class TsrController extends Controller
 {
@@ -82,7 +83,7 @@ class TsrController extends Controller
         ]);
     }
 
-    public function update(Request $request){
+    public function update(TsrUpdateRequest $request){
         $result = $this->handleTransaction(function () use ($request) {
             switch($request->option){
                 case 'Confirm':

@@ -9,7 +9,7 @@
                     <BRow>
                         <BCol lg="12" class="mt-2">
                             <InputLabel for="due" value="Report Due" :message="form.errors.due_at"/>
-                            <TextInput v-model="form.due_at" type="date" class="form-control" autofocus placeholder="Please enter email" autocomplete="email" required @input="handleInput('due_at')" :light="true"/>
+                            <TextInput v-model="form.due_at" type="date" class="form-control" placeholder="Please enter email" @input="handleInput('due_at')" :light="true"/>
                         </BCol>
                         <BCol lg="12" class="mt-2">
                             <InputLabel for="due" value="Please type CONFIRM to continue."/>
@@ -74,6 +74,7 @@ export default {
     },
     methods: { 
         show(id,industry){
+            this.keyword = null;
             this.form.id = id;
             this.form.industry = industry;
             this.showModal = true;
@@ -87,6 +88,9 @@ export default {
                     window.open('/samples?option=qrcode-list&id='+response.props.flash.data.data.qr);
                 },
             });
+        },
+        handleInput(field) {
+            this.form.errors[field] = false;
         },
         hide(){
             this.showModal = false;

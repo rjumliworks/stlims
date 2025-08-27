@@ -42,8 +42,8 @@
                                     <i class="ri-wallet-3-fill fs-16"></i> Use Wallet
                                 </div>
                                 <div class="vr" style="width: 1px;"></div>
-                                <div v-if="selected.status.name === 'Pending'" :disabled="(analyses == 0) ? true : false">  
-                                    <b-button @click="openSave(selected.id)" variant="primary" block><i class="ri-save-fill me-1"></i> Save</b-button>
+                                <div v-if="selected.status.name === 'Pending'">  
+                                    <b-button @click="openSave(selected.id)" variant="primary" block :disabled="(analyses == 0) ? true : false"><i class="ri-save-fill me-1"></i> Save</b-button>
                                 </div>
                                  <div v-if="selected.status.name !== 'Pending'" @click="openPrint(selected.qr)">  
                                     <b-button variant="primary" block><i class="ri-printer-fill me-1"></i> Print</b-button>
