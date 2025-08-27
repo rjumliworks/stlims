@@ -103,7 +103,6 @@ class ViewClass
                     }
                 ]);
             }])
-            
             ->when($request->status, function ($query, $status) {
                 if ($status == '2') {
                     $query->where(function ($query) {
@@ -184,6 +183,26 @@ class ViewClass
                 if ($facility->is_psto || $facility->is_separated) {
                     $query->where('facility_id', $facility->id);
                 }
+            })
+            ->when($request->region, function ($query, $region) {
+                $query->whereHas('customer.address', function ($query) use ($region) {
+                    $query->where('region_code', $region);
+                });
+            })
+            ->when($request->province, function ($query, $province) {
+                $query->whereHas('customer.address', function ($query) use ($province) {
+                    $query->where('province_code', $province);
+                });
+            })
+            ->when($request->municipality, function ($query, $municipality) {
+                $query->whereHas('customer.address', function ($query) use ($municipality) {
+                    $query->where('municipality_code', $municipality);
+                });
+            })
+            ->when($request->barangay, function ($query, $barangay) {
+                $query->whereHas('customer.address', function ($query) use ($barangay) {
+                    $query->where('barangay_code', $barangay);
+                });
             })
             ->paginate($request->count)
         );

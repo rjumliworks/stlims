@@ -31,6 +31,9 @@
                                 <input v-if="filter.datetype" type="date" v-model="filter.date" placeholder="Search Request" class="form-control" style="width: 100px;">
                                 <Multiselect class="white" style="width: 15%;" :options="dates" v-model="filter.datetype" label="name" :allow-empty="false" :searchable="true" placeholder="Filter by date" />
                                 <Multiselect class="white" style="width: 15%;" :options="dropdowns.laboratories" v-model="filter.laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
+                                <span @click="filterAddress()" class="input-group-text" v-b-tooltip.hover title="Filter by Address" style="cursor: pointer;"> 
+                                    <i class="bx bxs-map search-icon" :class="{'bx-tada text-danger': hasAddressFilter}"></i>
+                                </span>
                                 <span @click="refresh()" class="input-group-text" v-b-tooltip.hover title="Refresh" style="cursor: pointer;"> 
                                     <i class="bx bx-refresh search-icon"></i>
                                 </span>
@@ -145,6 +148,7 @@
             </div>
         </div>
     </BRow>
+    <Filter @submit="handleSubmit" :regions="dropdowns.regions" :region="region" ref="filter"/>
     <Edit @update="updateData" :dropdowns="dropdowns" ref="edit"/>
     <Cancel @update="updateData" ref="cancel"/>
     <Create :dropdowns="dropdowns"  @success="moveTo" ref="create"/>
@@ -154,11 +158,12 @@ import _ from 'lodash';
 import Edit from './Modals/Edit.vue';
 import Cancel from './Modals/Cancel.vue';
 import Create from './Modals/Create.vue';
+import Filter from './Modals/Filter.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Multiselect, Create, Cancel, Edit },
+    components: { PageHeader, Pagination, Multiselect, Create, Cancel, Edit, Filter },
     props: ['counts','dropdowns','region'],
     data(){
         return {
@@ -175,6 +180,12 @@ export default {
                 sort: 'desc',
                 datetype: null,
                 date:null
+            },
+            location: {
+                region: null,
+                province: null,
+                municipality: null,
+                province: null
             },
             dates: [
                 {'value' : 'due_at', 'name' : 'Due Date'},
@@ -226,6 +237,12 @@ export default {
             this.fetch();
         }
     },
+    computed: {
+        hasAddressFilter() {
+            return ['province', 'municipality', 'barangay']
+            .some(key => this.location[key] && this.location[key] !== '');
+        }
+    },
     created(){
         this.fetch();
     },
@@ -244,6 +261,10 @@ export default {
                     date: this.filter.date,
                     datetype: this.filter.datetype,
                     laboratory: this.filter.laboratory,
+                    region: this.location.region,
+                    province: this.location.province,
+                    municipality: this.location.municipality,
+                    barangay: this.location.barangay,
                     count: 10,
                     option: 'lists'
                 }
@@ -298,10 +319,20 @@ export default {
         updateData(data){
             this.lists[this.index] = data;
         },
+        filterAddress(){
+            this.$refs.filter.show();
+        },
         moveTo(data){
             this.fetch();
             window.open(`/tsrs/${data}`, '_blank');
         },
+        handleSubmit(data) {
+            this.location.region       = data?.form?.region       ?? null;
+            this.location.province     = data?.form?.province?.value     ?? null;
+            this.location.municipality = data?.form?.municipality?.value ?? null;
+            this.location.barangay     = data?.form?.barangay?.value     ?? null;
+            this.fetch();
+        }
     }
 }
 </script>

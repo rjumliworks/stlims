@@ -40,6 +40,7 @@ class TsrController extends Controller
                     'statuses' => $this->dropdown->statuses('Request'),
                     'services' => $this->dropdown->services(),
                     'purposes' => $this->dropdown->dropdowns('Purpose','n/a'),
+                    'regions' => $this->dropdown->regions(),
                 ],
                 'counts' => $this->view->counts($this->dropdown->statuses('Request')),
                 'region' => $this->view->region()
