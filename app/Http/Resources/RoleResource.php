@@ -12,6 +12,7 @@ class RoleResource extends JsonResource
         return [
             'role' => $this->role->name,
             'laboratory' => ($this->laboratory) ? $this->laboratory->name : '-',
+            'is_primary' => $this->is_primary,
             'agency' => $this->agency->name
         ];
     }

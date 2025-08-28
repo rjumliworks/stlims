@@ -82,8 +82,8 @@
                                     <tr class="fs-11">
                                         <th style="width: 4%;"></th>
                                         <th>Name</th>
-                                        <th style="width: 15%;" class="text-center">Laboratory</th>
-                                        <th style="width: 15%;" class="text-center">Agency</th>
+                                        <th style="width: 15%;" class="text-center">Email</th>
+                                        <th style="width: 10%;" class="text-center">Agency</th>
                                         <th style="width: 15%;" class="text-center">Assignment</th>
                                         <th style="width: 15%;" class="text-center">Status</th>
                                         <th style="width: 10%;"></th>
@@ -101,7 +101,7 @@
                                             <h5 class="fs-13 mb-0 text-dark">{{list.name}}</h5>
                                             <p class="fs-12 text-muted mb-0">{{list.roles[0].role}}</p>
                                         </td>
-                                        <td class="text-center fs-12">{{list.roles[0].laboratory}}</td>
+                                        <td class="text-center fs-12">{{list.email}}</td>
                                         <td class="text-center fs-12">{{list.roles[0].agency}}</td>
                                         <td class="text-center fs-12">
                                             <span v-if="list.province">{{ list.province.name }} <span class="text-muted">(PSTO)</span></span>
