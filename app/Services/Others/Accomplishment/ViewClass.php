@@ -197,6 +197,21 @@ class ViewClass
     }
 
     public function count($name,$index,$year,$month,$laboratory_id){
+        $months = [
+            'Jan' => 1,
+            'Feb' => 2,
+            'Mar' => 3,
+            'Apr' => 4,
+            'May' => 5,
+            'Jun' => 6,
+            'Jul' => 7,
+            'Aug' => 8,
+            'Sep' => 9,
+            'Oct' => 10,
+            'Nov' => 11,
+            'Dec' => 12,
+        ];
+
         switch($name){
             case 'Samples Received':
                 $count = TsrSample::whereMonth('created_at',$index+1)->whereYear('created_at',$year)->whereHas('tsr', function ($query) use ($laboratory_id){
@@ -219,8 +234,9 @@ class ViewClass
                 //     $query->where('is_new',1)->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
                 // })
                 // ->where('agency_id',$this->agency)->select('customer_id')->distinct()->count('customer_id');
+                $m = $months[$month] ?? null;
                 $count = Customer::where('is_new', true)
-                ->whereMonth('created_at', $index + 1)
+                ->whereMonth('created_at', $m)
                 ->whereYear('created_at', $year)
                 ->whereHas('tsrs', function ($query){
                     $query->where('agency_id', $this->agency);
@@ -228,8 +244,9 @@ class ViewClass
                 ->count();
             break;
             case 'Firms Served':
-                $count = Tsr::whereHas('customer', function ($query) use ($index,$year){
-                    $query->whereMonth('created_at',$index+1)->whereYear('created_at',$year)->where('classification_id',8);
+                $m = $months[$month] ?? null;
+                $count = Tsr::whereHas('customer', function ($query) use ($m,$year){
+                    $query->whereMonth('created_at',$m)->whereYear('created_at',$year)->where('classification_id',8);
                 })
                 ->where('agency_id',$this->agency)->count();
             break;
