@@ -11,6 +11,7 @@ use App\Models\ListIndustry;
 use App\Models\ListDropdown;
 use App\Models\ListDiscount;
 use App\Models\LocationProvince;
+use App\Models\LocationMunicipality;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\LocationExport;
 use App\Http\Resources\DefaultResource;
@@ -175,15 +176,39 @@ class CustomerClass
                 $q->where('laboratory_id', $laboratory); // Filter by laboratory_type
             });
         })
+        // ->whereHas('address', function ($q) {
+        //     $q->where('municipality_code','!=','097332000');
+        // })
         ->where('agency_id', $this->agency)
         ->get()
         ->pluck('address.province_code') 
         ->unique();
 
-        $data = LocationProvince::withCount('address')
-        ->whereIn('code',$provinces)->orderBy('address_count','DESC')->get();
+    $municipalitiesData = LocationMunicipality::withCount(['address' => function ($query) {
+        // $query->where('municipality_code', '097332000'); // Only count addresses with this municipality_code
+    }])
+    ->where('code', '097332000') // Filter by the municipality code
+    ->orderBy('address_count', 'DESC') // Order by the address count
+    ->get();
 
-        return DefaultResource::collection($data);
+// dd($municipalitiesData);
+
+// Fetch LocationProvince data with address count where municipality_code is NOT '097332000'
+    $provincesData = LocationProvince::withCount(['address' => function ($query) {
+        $query->where('municipality_code', '!=', '097332000');
+    }])
+    ->whereIn('code', $provinces) // Filter by provinces
+    ->orderBy('address_count', 'DESC') // Order by the number of addresses
+    ->get();
+
+// Merge both collections (municipalities and provinces)
+$combinedData = $municipalitiesData->merge($provincesData);
+
+// Return the combined data as a collection of DefaultResource
+return DefaultResource::collection($combinedData);
+
+
+        // return DefaultResource::collection($data);
     }
 
     // public function industries($request){

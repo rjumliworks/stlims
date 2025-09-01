@@ -24,6 +24,11 @@ class LocationMunicipality extends Model
         return $this->hasMany('App\Models\LocationBarangay', 'municipality_code');
     } 
 
+    public function address()
+    {
+        return $this->hasMany('App\Models\CustomerAddress', 'municipality_code');
+    } 
+
     protected static $recordEvents = ['updated','created'];
     public function getActivitylogOptions(): LogOptions {
         return LogOptions::defaults()
