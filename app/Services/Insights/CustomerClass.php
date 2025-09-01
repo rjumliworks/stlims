@@ -169,6 +169,7 @@ class CustomerClass
     }
 
     public function location($request){
+        $year = ($request->year) ? $request->year : date('Y') ;
         $laboratory = $request->laboratory; 
         $provinces = Customer::with('address')
         ->when($laboratory, function ($query, $laboratory) {
@@ -176,36 +177,38 @@ class CustomerClass
                 $q->where('laboratory_id', $laboratory); // Filter by laboratory_type
             });
         })
-        // ->whereHas('address', function ($q) {
-        //     $q->where('municipality_code','!=','097332000');
-        // })
+        ->whereHas('address', function ($q) use ($year) {
+            // $q->where('municipality_code','!=','097332000');
+            $q->whereYear('created_at',$year);
+        })
         ->where('agency_id', $this->agency)
         ->get()
         ->pluck('address.province_code') 
         ->unique();
 
-    $municipalitiesData = LocationMunicipality::withCount(['address' => function ($query) {
-        // $query->where('municipality_code', '097332000'); // Only count addresses with this municipality_code
-    }])
-    ->where('code', '097332000') // Filter by the municipality code
-    ->orderBy('address_count', 'DESC') // Order by the address count
-    ->get();
+        $municipalitiesData = LocationMunicipality::withCount(['address' => function ($query) use ($year) {
+            $query->whereYear('created_at',$year);
+            // $query->where('municipality_code', '097332000'); // Only count addresses with this municipality_code
+        }])
+        ->where('code', '097332000') // Filter by the municipality code
+        ->orderBy('address_count', 'DESC') // Order by the address count
+        ->get();
 
-// dd($municipalitiesData);
+    // dd($municipalitiesData);
 
-// Fetch LocationProvince data with address count where municipality_code is NOT '097332000'
-    $provincesData = LocationProvince::withCount(['address' => function ($query) {
-        $query->where('municipality_code', '!=', '097332000');
-    }])
-    ->whereIn('code', $provinces) // Filter by provinces
-    ->orderBy('address_count', 'DESC') // Order by the number of addresses
-    ->get();
+    // Fetch LocationProvince data with address count where municipality_code is NOT '097332000'
+        $provincesData = LocationProvince::withCount(['address' => function ($query) use ($year) {
+            $query->where('municipality_code', '!=', '097332000')->whereYear('created_at',$year);
+        }])
+        ->whereIn('code', $provinces) // Filter by provinces
+        ->orderBy('address_count', 'DESC') // Order by the number of addresses
+        ->get();
 
-// Merge both collections (municipalities and provinces)
-$combinedData = $municipalitiesData->merge($provincesData);
+    // Merge both collections (municipalities and provinces)
+        $combinedData = $municipalitiesData->merge($provincesData);
 
-// Return the combined data as a collection of DefaultResource
-return DefaultResource::collection($combinedData);
+        // Return the combined data as a collection of DefaultResource
+        return DefaultResource::collection($combinedData);
 
 
         // return DefaultResource::collection($data);
