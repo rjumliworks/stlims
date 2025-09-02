@@ -21,7 +21,7 @@ class ViewClass
         //     return !is_null($value);
         // });
         // $this->laboratory = $filteredData->isNotEmpty() ? $filteredData : null;
-        $this->laboratories = UserRole::where('user_id',\Auth::user()->id)->where('role_id',9)->pluck('laboratory_id');
+        $this->laboratories = UserRole::where('user_id',\Auth::user()->id)->whereIn('role_id',[4,9])->pluck('laboratory_id');
     }
 
     public function lists($request){
