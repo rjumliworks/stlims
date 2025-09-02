@@ -46,17 +46,22 @@
                     <TextInput id="name" v-model="form.bought_at" type="date" class="form-control" placeholder="Please enter bought date" @input="handleInput('bought_at')" :light="true"/>
                 </BCol>
                 <BCol lg="12"><hr class="text-muted mt-0 mb-0"/></BCol>
-                <BCol lg="12" class="mt-2">
+                <BCol v-if="form.laboratory_id == 1" lg="4" class="mt-2 mb-2">
+                    <InputLabel for="name" value="CAS Number" :message="form.errors.cas_number"/>
+                    <TextInput id="name" v-model="form.cas_number" type="text" class="form-control" placeholder="Please enter cas number" @input="handleInput('cas_number')" :light="true"/>
+                </BCol>
+                <BCol :lg="(form.laboratory_id == 1) ? 8 : 12" class="mt-2">
                     <div class="d-flex">
                         <div style="width: 100%;">
                             <InputLabel for="supplier_id" value="Supplier" :message="form.errors.supplier_id"/>
-                            <Multiselect :options="dropdowns.suppliers" label="name" :searchable="true" v-model="form.supplier_id" placeholder="Select Supplier"/>
+                            <Multiselect :options="dropdowns.suppliers" label="name" :searchable="true" v-model="form.supplier_id" placeholder="Select Supplier" ref="krad"/>
                         </div>
                         <div class="flex-shrink-0">
                             <b-button @click="openSupplier()" style="margin-top: 20px;" variant="light" class="waves-effect waves-light ms-1"><i class="ri-add-circle-fill"></i></b-button>
                         </div>
                     </div>
                 </BCol>
+    
                 <BCol v-if="form.notify" lg="4" class="mt-3">
                     <!-- <InputLabel for="name" value="Notification Date" :message="form.errors.notify_at"/> -->
                     <TextInput id="name" v-model="form.notify_at" type="date" class="form-control" placeholder="Please enter notification date" @input="handleInput('notify_at')" :light="true"/>
@@ -99,33 +104,66 @@ export default {
                 price: null,
                 expired_at: null,
                 number: null,
+                cas_number: null,
                 quantity: null,
                 brand: null,
                 notify: false,
                 notify_at: null,
+                laboratory_id: null,
                 option: 'stock'
             }),
+            editable: false,
             selected: null,
             showModal: false
         }
     },
     methods: { 
         show(data){
+            this.editable = false;
             this.form.item_id = data.id;
             this.form.name = data.name;
             this.form.unit_id = data.unit_id;
+            this.form.laboratory_id = data.laboratory_id;
             this.selected = data;
             this.showModal = true;
         },
+        edit(data){
+            this.selected = data;
+            this.form.id = data.id;
+            this.form.name = data.name;
+            this.form.brand = data.brand;
+            this.form.number = data.number;
+            this.form.quantity = data.quantity;
+            this.form.price = data.price;
+            this.form.unit = data.unit;
+            this.form.unit_id = data.unit_id;
+            this.$refs.krad.emitSelectedValues(data.supplier_id);
+            this.$refs.testing.emitValue(data.price);
+            this.form.expired_at = data.expired_at;
+            this.form.bought_at = data.bought_at;
+            this.editable = true;
+            this.showModal = true;
+        },
         submit(){
-            this.form.post('/inventory',{
-                preserveScroll: true,
-                onSuccess: (response) => {
-                    this.$emit('update',this.$page.props.flash.data.data);
-                    this.form.reset();
-                    this.hide();
-                },
-            });
+            if(this.editable){
+                this.form.put('/inventory/update',{
+                    preserveScroll: true,
+                    onSuccess: (response) => {
+                        this.$emit('updatestock',this.$page.props.flash.data.data);
+                        this.form.reset();
+                        this.hide();
+                    },
+                });
+            }else{
+                this.form.post('/inventory',{
+                    preserveScroll: true,
+                    onSuccess: (response) => {
+                        this.$emit('update',this.$page.props.flash.data.data);
+                        this.form.reset();
+                        this.hide();
+                    },
+                });
+            }
         },
         amount(val){
             this.form.price = val;

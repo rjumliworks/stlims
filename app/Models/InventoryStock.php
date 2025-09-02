@@ -15,6 +15,7 @@ class InventoryStock extends Model
         'onhand',
         'quantity',
         'number',
+        'cas_number',
         'price',
         'unit',
         'unit_id',

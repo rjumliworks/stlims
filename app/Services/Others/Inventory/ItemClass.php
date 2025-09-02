@@ -171,6 +171,50 @@ class ItemClass
         }
     }
 
+    public function stockUpdate($request){
+        // $data = InventoryStock::where('id',$request->id)->update($request->except(['name','item_id','option','laboratory_id']));
+        $stock = InventoryStock::find($request->id);
+        $data = array_merge(
+            $request->except(['name', 'item_id', 'option', 'laboratory_id']),
+            ['onhand' => $request->quantity]
+        );
+        $stock->update($data);
+
+        $data = InventoryItem::query()
+            ->with('category','unittype','stocks.withdrawals','stocks.supp')
+            ->where('agency_id',$this->agency)
+            ->when($request->keyword, function ($query, $keyword) {
+                $query->where('name', 'LIKE', "%{$keyword}%");
+            })
+            ->when($request->category, function ($query, $category) {
+                $query->where('category_id', $category);
+            })
+            ->withCount([
+                'stocks as onhand' => function (Builder $query) {
+                    $query->select(\DB::raw('SUM(onhand)'));
+                }, 
+                'stocks as stock' => function (Builder $query) {
+                    $query->select(\DB::raw('SUM(
+                    CASE
+                        WHEN inventory_stocks.unit_id = inventory_items.unit_id THEN inventory_stocks.unit * inventory_stocks.onhand
+                        WHEN inventory_stocks.unit_id = 123 AND inventory_items.unit_id = 124 THEN inventory_stocks.unit * inventory_stocks.onhand * 1000
+                        WHEN inventory_stocks.unit_id = 124 AND inventory_items.unit_id = 123 THEN inventory_stocks.unit * inventory_stocks.onhand * 0.001
+                        WHEN inventory_stocks.unit_id = 125 AND inventory_items.unit_id = 126 THEN inventory_stocks.unit * inventory_stocks.onhand * 0.001
+                        WHEN inventory_stocks.unit_id = 126 AND inventory_items.unit_id = 125 THEN inventory_stocks.unit * inventory_stocks.onhand * 1000
+                        ELSE inventory_stocks.unit * inventory_stocks.onhand
+                    END)'))
+                        ->where('onhand', '!=', 0);
+                }
+            ])
+        ->where('id',$stock->item_id)->first();
+
+        return [
+            'data' => new ItemResource($data),
+            'message' => 'Stock was updated successful!', 
+            'info' => "You've successfully added the new stock."
+        ];
+    }
+
     public function stock($request){
         $data = InventoryStock::create(array_merge($request->all(),[
             'code' => date('Ymdhis'),

@@ -100,4 +100,17 @@ class InventoryController extends Controller
             'status' => $result['status'],
         ]);
     }
+
+    public function update(Request $request){
+        $result = $this->handleTransaction(function () use ($request) {
+            return $this->item->stockUpdate($request);
+        });
+        
+        return back()->with([
+            'data' => $result['data'],
+            'message' => $result['message'],
+            'info' => $result['info'],
+            'status' => $result['status'],
+        ]);
+    }
 }

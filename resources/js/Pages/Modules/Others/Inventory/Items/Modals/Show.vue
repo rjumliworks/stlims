@@ -6,9 +6,9 @@
                     <div class="col-md">
                         <div>
                             
-                       <a :href="item.qr" target="_blank" rel="noopener noreferrer">
-  <img :src="item.qr" class="img-fluid avatar-sm float-end mt-n2" alt="QR Code" />
-</a>
+                            <a :href="item.qr" target="_blank" rel="noopener noreferrer">
+                                <img :src="item.qr" class="img-fluid avatar-sm float-end mt-n2" alt="QR Code" />
+                            </a>
                             <h6><span class="fw-semibold text-primary fs-15">{{ selected }}</span> </h6>
                             <div class="hstack gap-3  fs-12 flex-wrap">
                                 

@@ -45,7 +45,8 @@ class InventoryRequest extends FormRequest
                 'quantity' => 'required|integer',
                 'price' => 'required',
                 'supplier_id' => 'required',
-                'expired_at' => 'required',
+                'expired_at' => 'nullable',
+                'cas_number' => 'required_if:laboratory_id,1',
                 'bought_at' => 'required',
                 'unit' => [
                     function ($attribute, $value, $fail) {

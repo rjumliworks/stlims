@@ -31,7 +31,7 @@
             <div class="col-md-3">
                 <div class="hstack gap-1 mt-n2 mb-n2 flex-wrap">
                     <div class="row g-1 text-end">
-                        
+                
                     </div>
                 </div>
             </div>
@@ -92,6 +92,9 @@
                                             <td class="text-center">{{list.unit}} {{list.type}}</td>
                                             <td class="text-center">{{list.price}}</td>
                                             <td class="text-center">
+                                                <b-button @click="openEdit(list,index)" variant="soft-warning" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
+                                                    <i class="ri-pencil-fill align-bottom"></i>
+                                                </b-button>
                                                 <b-button class="mt-n1 mb-n1" @click="openView(selected.name,list)" variant="soft-info" v-b-tooltip.hover title="View" size="sm">
                                                     <i class="ri-eye-fill align-bottom"></i>
                                                 </b-button>
@@ -109,7 +112,7 @@
             <b-button @click="hide()" variant="light" block>Close</b-button>
         </template>
     </b-modal>
-    <Add @update="updateSelected" :dropdowns="dropdowns" ref="add"/>
+    <Add @update="updateSelected" @updatestock="updateStocks" :dropdowns="dropdowns" ref="add"/>
     <Show ref="show"/>
 </template>
 <script>
@@ -142,6 +145,13 @@ export default {
         updateSelected(data){
             this.selected = data;
             this.$emit('update',data);
+        },
+        updateStocks(data){
+            this.selected = data;
+        },
+        openEdit(data,index){
+            this.index = index;
+            this.$refs.add.edit(data);
         },
         openAdd(data){
             this.$refs.add.show(data);

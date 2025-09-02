@@ -22,6 +22,7 @@ class ItemResource extends JsonResource
             'stock' => ($this->stock ) ?  $this->formatNumber($this->stock) : 0,
             'category' => ($this->category) ? $this->category->name : 'Not Specified',
             'category_id' => $this->category_id,
+            'laboratory_id' => $this->laboratory_id,
             'stocks' => StockResource::collection($this->whenLoaded('stocks'))
         ];
     }
