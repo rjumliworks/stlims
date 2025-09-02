@@ -16,7 +16,7 @@ class AnalystClass
     }
 
     public function laboratories(){
-        $data = UserRole::with('laboratory:id,name')->where('user_id',\Auth::user()->id)->where('role_id',4)->get()->map(function ($item) {
+        $data = UserRole::with('laboratory:id,name')->where('user_id',\Auth::user()->id)->where('role_id',9)->get()->map(function ($item) {
             return [
                 'value' => $item->laboratory->id ?? null,
                 'name' => $item->laboratory->name ?? null,
