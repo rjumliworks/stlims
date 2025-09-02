@@ -131,6 +131,9 @@ export default {
     watch: {
         "filter.keyword"(newVal){
             this.checkSearchStr(newVal)
+        },
+        "filter.laboratory"(newVal){
+            this.fetch();
         }
     },
     created(){
@@ -151,7 +154,8 @@ export default {
                 params : {
                     keyword: this.filter.keyword,
                     category: this.filter.category,
-                    count: ((window.innerHeight-350)/58),
+                    laboratory: this.filter.laboratory,
+                    count: 10,
                     option: 'items'
                 }
             })

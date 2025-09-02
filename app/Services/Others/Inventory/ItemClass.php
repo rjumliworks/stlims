@@ -31,6 +31,11 @@ class ItemClass
             ->when($request->category, function ($query, $category) {
                 $query->where('category_id', $category);
             })
+            ->when($request->laboratory, function ($query, $laboratory) {
+                $query->whereHas('stocks', function ($q) use ($laboratory) {
+                    $q->where('laboratory_id', $laboratory);
+                });
+            })
             ->withCount([
                 'stocks as onhand' => function (Builder $query) {
                     $query->select(\DB::raw('SUM(onhand)'));
