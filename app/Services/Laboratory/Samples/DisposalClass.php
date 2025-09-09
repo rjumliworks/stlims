@@ -4,6 +4,7 @@ namespace App\Services\Laboratory\Samples;
 
 use App\Models\TsrSample;
 use App\Models\TsrSampleDisposal;
+use App\Http\Resources\DefaultResource;
 use App\Http\Resources\Operation\DisposalResource;
 
 class DisposalClass
@@ -18,7 +19,7 @@ class DisposalClass
         $keyword = $request->keyword;
         $data = DisposalResource::collection(
             TsrSampleDisposal::query()
-            ->with('disposal','sample','user.profile','status')
+            ->with('disposal','sample.tsr','user.profile','status')
             ->whereHas('sample',function ($query) use ($laboratory,$keyword){
                 $query->when($keyword, function ($query, $keyword) {
                     $query->where('code', 'LIKE', "%{$keyword}%");

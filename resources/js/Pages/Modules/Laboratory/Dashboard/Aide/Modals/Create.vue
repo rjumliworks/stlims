@@ -1,30 +1,22 @@
 <template>
     <b-modal v-model="showModal" header-class="p-3 bg-light" title="Sample Disposal" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
+        <div class="d-flex mb-n3 mt-2" v-if="selected">
+            <div class="flex-shrink-0 me-3">
+                <div style="height:2.5rem;width:2.5rem;">
+                    <span class="avatar-title bg-primary-subtle rounded p-2 mt-n1">
+                        <i class="ri-flask-fill  text-primary fs-24"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="flex-grow-1">
+                <h5 class="mb-0 fs-14"><span class="text-body">{{selected.sample.code}}</span></h5>
+                <p class="text-muted text-truncate-two-lines fs-12">{{selected.sample.name}}</p>
+            </div>
+        </div>
+        <div class="alert alert-warning mt-3" role="alert">Due Date : <b>{{ selected.due_at }}</b></div>
+        <hr class="text-muted mt-3 mb-2"/>
         <form class="customform">
             <BRow class="g-2">
-                <!-- <BCol lg="12">
-                    <InputLabel for="customer" value="Sample Code" :message="form.errors.sample_id"/>
-                    <Multiselect 
-                    :options="samples" 
-                    @search-change="fetchSample" 
-                    v-model="form.sample_id" 
-                    label="name"
-                    object
-                    :searchable="true" 
-                    @input="handleInput('sample_id')"
-                    placeholder="Select Sample"/>
-                </BCol> -->
-                <BCol lg="6" v-if="form.sample">
-                    <!-- <InputLabel for="firstname" value="Firstname" :message="form.errors.firstname"/> -->
-                    <TextInput id="firstname" v-model="form.sample.code" type="text" class="form-control" :light="true" readonly/>
-                </BCol>
-                <BCol lg="6" v-if="form.sample">
-                    <!-- <InputLabel for="firstname" value="Firstname" :message="form.errors.firstname"/> -->
-                    <TextInput id="firstname" v-model="form.sample.name" type="text" class="form-control" :light="true" readonly/>
-                </BCol>
-                <BCol lg="12">
-                    <hr class="text-muted mt-1 mb-n3"/>
-                </BCol>
                 <BCol lg="12" class="mt-2">
                     <InputLabel value="Type of Disposal" :message="form.errors.disposal_id"/>
                     <Multiselect 
@@ -68,6 +60,7 @@ export default {
                 disposed_at: null,
                 option: 'disposal'
             }),
+            selected: null,
             samples: [],
             showModal: false,
             editable: false
@@ -75,6 +68,7 @@ export default {
     },
     methods: { 
         show(data){
+            this.selected = data;
             this.form.sample = data.sample;
             this.showModal = true;
         },

@@ -15,6 +15,7 @@ class DisposalResource extends JsonResource
             'disposal' => ($this->disposal) ? $this->disposal->name : '-',
             'sample' => $this->sample,
             'status' => $this->status,
+            'due_at' => $this->sample->tsr->due_at,
             'user' => ($this->user) ? $this->user->profile->firstname.' '.$this->user->profile->lastname : '-',
             'created_at' => $this->created_at
         ];

@@ -45,11 +45,12 @@
                 <thead class="table-light thead-fixed">
                     <tr class="fs-11">
                         <th style="width: 4%;"></th>
-                        <th style="width: 22%;">Code</th>
+                        <th>Code</th>
                         <th style="width: 20%;" class="text-center">Manner of Disposal</th>
                         <th style="width: 18%;" class="text-center">Disposed By</th>
-                        <th style="width: 16%;" class="text-center">Disposed Date</th>
-                        <th style="width: 15%;" class="text-center">Status</th>
+                        <th style="width: 13%;" class="text-center">Due date</th>
+                        <th style="width: 13%;" class="text-center">Disposed Date</th>
+                        <th style="width: 10%;" class="text-center">Status</th>
                         <th style="width: 5%;" ></th>
                     </tr>
                 </thead>
@@ -64,6 +65,7 @@
                         </td>
                         <td class="text-center">{{list.disposal}}</td>
                         <td class="text-center">{{list.user}}</td>
+                        <td class="text-center">{{list.due_at}}</td>
                         <td class="text-center" v-if="list.status.name == 'Completed'">{{list.disposed_at}}</td>
                         <td class="text-center" v-else>{{timeAgo(list.created_at)}}</td>
                         <td class="text-center">
