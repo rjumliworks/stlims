@@ -57,10 +57,9 @@ class ViewClass
             ->when($request->keyword, function ($query, $keyword) {
                 $query->where(function ($q) use ($keyword) {
                     $q->whereHas('testservice.testname', function ($q) use ($keyword) {
-                        $q->where('name', 'LIKE', "%{$keyword}%");
+                        ($request->type == "Sample Code") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
                     })->orWhereHas('sample', function ($q) use ($keyword) {
-                        $q->where('code', 'LIKE', "%{$keyword}%")
-                        ->orWhere('name', 'LIKE', "%{$keyword}%");
+                       ($request->type == "Sample Code") ?  $q->where('code', 'LIKE', "%{$keyword}%") : $q->orWhere('name', 'LIKE', "%{$keyword}%");
                     });
                 });
             })
@@ -151,10 +150,9 @@ class ViewClass
             ->when($request->keyword, function ($query, $keyword) {
                 $query->where(function ($q) use ($keyword) {
                     $q->whereHas('testservice.testname', function ($q) use ($keyword) {
-                        $q->where('name', 'LIKE', "%{$keyword}%");
+                        ($request->type == "Sample Code") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
                     })->orWhereHas('sample', function ($q) use ($keyword) {
-                        $q->where('code', 'LIKE', "%{$keyword}%")
-                        ->orWhere('name', 'LIKE', "%{$keyword}%");
+                       ($request->type == "Sample Code") ?  $q->where('code', 'LIKE', "%{$keyword}%") : $q->orWhere('name', 'LIKE', "%{$keyword}%");
                     });
                 });
             })
@@ -230,8 +228,8 @@ class ViewClass
     }
 
     private function completeds($request){
-        $ongoings = TsrSample::when($request->keyword, function ($query, $keyword) {
-            $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
+        $ongoings = TsrSample::when($request->keyword, function ($query, $keyword) use ($request){
+            ($request->type == "Sample Code") ? $query->where('code', 'LIKE', "%{$keyword}%") : $query->orWhere('name','LIKE',"%{$keyword}%");
         })
         ->when($request->reminder, function ($query, $reminder) {
             switch($reminder){
@@ -322,8 +320,8 @@ class ViewClass
     }   
 
     private function ongoings($request){
-        $ongoings = TsrSample::when($request->keyword, function ($query, $keyword) {
-            $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
+        $ongoings = TsrSample::when($request->keyword, function ($query, $keyword) use ($request){
+            ($request->type == "Sample Code") ? $query->where('code', 'LIKE', "%{$keyword}%") : $query->orWhere('name','LIKE',"%{$keyword}%");
         })->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
             $query->where('agency_id',$this->agency)->where('status_id',3);
@@ -405,8 +403,8 @@ class ViewClass
     }   
 
     private function pendings($request){
-        $pendings = TsrSample::when($request->keyword, function ($query, $keyword) {
-            $query->where('code', 'LIKE', "%{$keyword}%")->orWhere('name','LIKE',"%{$keyword}%");
+        $pendings = TsrSample::when($request->keyword, function ($query, $keyword) use ($request){
+            ($request->type == "Sample Code") ? $query->where('code', 'LIKE', "%{$keyword}%") : $query->orWhere('name','LIKE',"%{$keyword}%");
         })->withWhereHas('tsr',function ($query) use ($request){
             $query->select('id','due_at','created_at');
             $query->where('agency_id',$this->agency)->where('status_id',3);
