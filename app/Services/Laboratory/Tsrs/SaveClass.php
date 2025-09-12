@@ -29,7 +29,7 @@ class SaveClass
             'created_at'  => ($request->created_at) ? Carbon::parse($request->created_at)->setTime(8, 0, 0) : Carbon::now(),
         ]));
         
-        $payment = (in_array($request->discount_id, [5, 6, 7])) ? ['status_id' => 8,'is_free' => 1,'paid_at' => now()] : ['status_id' => 6];
+        $payment = (in_array($request->discount_id, [5, 6, 7, 10, 11, 12])) ? ['status_id' => 8,'is_free' => 1,'paid_at' => now()] : ['status_id' => 6];
         $data->payment()->create(array_merge($request->all(),$payment));
         ($request->is_referral) ? $data->referral()->create(array_merge($request->all(),['is_psto' => ($request->province_code) ? 1 : 0])) : '';
 
