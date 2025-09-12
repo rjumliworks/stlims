@@ -60,6 +60,7 @@ class ViewClass
                     break;
                 }
             })
+            ->orderBy('code','ASC')
             ->paginate($request->count)
         );
         return $data;
