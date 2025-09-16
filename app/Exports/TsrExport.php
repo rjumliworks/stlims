@@ -27,11 +27,11 @@ class TsrExport implements FromView
             $query->select('tsr_id','or_number','total','subtotal','discount','paid_at','is_free');
             $query->where('status_id',8); //gratis
         })
-        ->whereMonth('created_at',$this->month)
-        ->whereYear('created_at',$this->year)
-        // ->when($this->type, function ($query, $type) {
-        //     $query->where('laboratory_type',$type);
-        // })
+        // ->whereMonth('created_at',$this->month)
+        ->whereYear('created_at',2025)
+        ->when($this->type, function ($query, $type) {
+            $query->where('laboratory_id',$type);
+        })
         ->where('agency_id',$this->lab)
         ->get();
 
