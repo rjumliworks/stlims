@@ -10,7 +10,7 @@ class UserRole extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'role_id','laboratory_id','agency_id','is_primary','is_active'
+        'user_id', 'role_id','laboratory_id','province_code','agency_id','is_primary','is_active'
     ];
 
     public function user()
