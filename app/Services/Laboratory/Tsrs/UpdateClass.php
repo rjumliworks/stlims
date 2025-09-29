@@ -104,7 +104,7 @@ class UpdateClass
     public function confirm($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
         if(is_null($data->code)){
-            $data->status_id = (in_array($data->payment->discount_id, [5, 6, 7])) ? 3 : $request->status_id;
+            $data->status_id = (in_array($data->payment->discount_id, [5, 6, 7, 10, 11, 12])) ? 3 : $request->status_id;
             $data->due_at = $request->due_at;
             $data->code = $this->generateCode($data);
             if($data->save()){
