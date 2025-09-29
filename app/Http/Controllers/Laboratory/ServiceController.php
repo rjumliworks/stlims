@@ -38,6 +38,7 @@ class ServiceController extends Controller
             return inertia('Modules/Laboratory/Services/Index',[
                 'dropdowns' => [
                     'laboratories' => $this->dropdown->laboratories(),
+                    'agencies' => $this->dropdown->agencies(),
                     'statuses' => $this->dropdown->statuses('Testservice')
                 ],
                 'counts' => $this->view->counts($this->dropdown->statuses('Testservice'))

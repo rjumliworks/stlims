@@ -156,7 +156,7 @@ class SaveClass
                     'testname_id' => $parameter->id,
                     'method_id' => $methodCombo->id,
                     'laboratory_id' => $request->laboratory_id,
-                    'agency_id' => 11,
+                    'agency_id' => 11
                 ])->first();
 
                 if ($existing) {
@@ -174,6 +174,7 @@ class SaveClass
                     'method_id' => $methodCombo->id,
                     'laboratory_id' => $request->laboratory_id,
                     'agency_id' => $request->agency_id,
+                    'status_id' => 32
                 ]);
 
                 $results['success'][] = [

@@ -29,6 +29,9 @@
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                 <input type="text" v-model="filter.keyword" placeholder="Search sampletype, testname, method or fee" class="form-control" style="width: 30%;">
                                 <Multiselect class="white" style="width: 17%;" :options="dropdowns.laboratories" v-model="filter.laboratory" label="name" :searchable="true" placeholder="Select Laboratory" />
+                                <span @click="openUpload()" class="input-group-text" v-b-tooltip.hover title="Upload" style="cursor: pointer;"> 
+                                    <i class="ri-upload-cloud-fill search-icon"></i>
+                                </span>
                                 <span @click="refresh()" class="input-group-text" v-b-tooltip.hover title="Refresh" style="cursor: pointer;"> 
                                     <i class="bx bx-refresh search-icon"></i>
                                 </span>
@@ -137,6 +140,7 @@
     </BRow>
     <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
     <Fee ref="fee"/>
+    <Upload :dropdowns="dropdowns" ref="upload"/>
     <View @success="fetch()" ref="view"/>
 </template>
 <script>
@@ -144,11 +148,12 @@ import _ from 'lodash';
 import Fee from './Modals/Fee.vue';
 import View from './Modals/View.vue';
 import Create from './Modals/Create.vue';
+import Upload from './Modals/Upload.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Multiselect, Create, Fee, View },
+    components: { PageHeader, Pagination, Multiselect, Create, Fee, View, Upload },
     props: ['counts','dropdowns'],
     data(){
         return {
@@ -217,6 +222,9 @@ export default {
         },
         openView(data){
             this.$refs.view.show(data);
+        },
+        openUpload(){
+            this.$refs.upload.show();
         },
         viewStatus(index,status){
             this.index = index;
