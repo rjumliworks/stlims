@@ -31,9 +31,9 @@
                                     <form class="customform" @submit.prevent="submit">
                                         <div class="row g-3">
                                             <div class="col-md-12 mt-n1">
-                                                <div v-if="Object.keys(this.$page.props.errors).length" class="alert alert-danger mt-0 mb-3" role="alert">
+                                                <div v-if="Object.keys($page.props.errors).length" class="alert alert-danger mt-0 mb-3" role="alert">
                                                     <ul class="mb-0">
-                                                        <li v-for="(list,index) in this.$page.props.errors" v-bind:key="index">{{ list }}</li>
+                                                        <li v-for="(list,index) in $page.props.errors" v-bind:key="index">{{ list }}</li>
                                                     </ul>
                                                 </div>
                                                 <div class="form-floating mb-n3">
