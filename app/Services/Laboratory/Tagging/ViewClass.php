@@ -58,7 +58,7 @@ class ViewClass
             ->when($request->keyword, function ($query, $keyword) use ($type) {
                 $query->where(function ($q) use ($keyword,$type) {
                     $q->whereHas('testservice.testname', function ($q) use ($keyword,$type) {
-                        ($type == "Sample Code") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
+                        ($type == "Sample Name") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
                     })->orWhereHas('sample', function ($q) use ($keyword,$type) {
                        ($type == "Sample Code") ?  $q->where('code', 'LIKE', "%{$keyword}%") : $q->orWhere('name', 'LIKE', "%{$keyword}%");
                     });
@@ -152,7 +152,7 @@ class ViewClass
             ->when($request->keyword, function ($query, $keyword) use ($type){
                 $query->where(function ($q) use ($keyword,$type) {
                     $q->whereHas('testservice.testname', function ($q) use ($keyword,$type) {
-                        ($type == "Sample Code") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
+                        ($type == "Sample Name") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
                     })->orWhereHas('sample', function ($q) use ($keyword,$type) {
                        ($type == "Sample Code") ?  $q->where('code', 'LIKE', "%{$keyword}%") : $q->orWhere('name', 'LIKE', "%{$keyword}%");
                     });
