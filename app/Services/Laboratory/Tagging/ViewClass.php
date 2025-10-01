@@ -137,6 +137,7 @@ class ViewClass
     }
 
     private function ongoings2($request){
+        $type = $request->type;
         $ongoings = TsrAnalysis::query()
             ->with([
                 'sample',
@@ -148,12 +149,12 @@ class ViewClass
             ->where('status_id', 11)
             
             // Combined keyword filter
-            ->when($request->keyword, function ($query, $keyword) {
-                $query->where(function ($q) use ($keyword) {
-                    $q->whereHas('testservice.testname', function ($q) use ($keyword) {
-                        ($request->type == "Sample Code") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
-                    })->orWhereHas('sample', function ($q) use ($keyword) {
-                       ($request->type == "Sample Code") ?  $q->where('code', 'LIKE', "%{$keyword}%") : $q->orWhere('name', 'LIKE', "%{$keyword}%");
+            ->when($request->keyword, function ($query, $keyword) use ($type){
+                $query->where(function ($q) use ($keyword,$type) {
+                    $q->whereHas('testservice.testname', function ($q) use ($keyword,$type) {
+                        ($type == "Sample Code") ? '' : $q->where('name', 'LIKE', "%{$keyword}%");
+                    })->orWhereHas('sample', function ($q) use ($keyword,$type) {
+                       ($type == "Sample Code") ?  $q->where('code', 'LIKE', "%{$keyword}%") : $q->orWhere('name', 'LIKE', "%{$keyword}%");
                     });
                 });
             })
