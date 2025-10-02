@@ -399,7 +399,7 @@ class ViewClass
                 $count = TsrSampleReport::whereMonth('created_at',$index+1)->whereYear('created_at',$year)
                 ->whereHas('sample', function ($query) use ($laboratory_id){
                     $query->whereHas('tsr', function ($query) use ($laboratory_id) {
-                        $query->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency);
+                        $query->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency)->where('status_id','!=',5);
                     });
                 })
                 ->count();
