@@ -6,6 +6,7 @@ use Hashids\Hashids;
 use App\Models\Target;
 use App\Models\Tsr;
 use App\Models\TsrSample;
+use App\Models\TsrSampleReport;
 use App\Models\TsrPayment;
 use App\Models\TsrAnalysis;
 use App\Models\Customer;
@@ -393,6 +394,15 @@ class ViewClass
                     });
                 }
                 $i++;
+            break;
+            case 'Number of Reports Generated ':
+                $count = TsrSampleReport::whereMonth('created_at',$index+1)->whereYear('created_at',$year)
+                ->whereHas('sample', function ($query) use ($laboratory_id){
+                    $query->whereHas('tsr', function ($query) use ($laboratory_id) {
+                        $query->where('laboratory_id',$laboratory_id)->where('agency_id',$this->agency);
+                    });
+                })
+                ->count();
             break;
             default: 
             $count = 0;
