@@ -87,7 +87,7 @@ class ViewClass
         $data = new ViewResource(
             Quotation::query()
             ->with('service.service')
-            ->with('samples.analyses.testservice.testname','samples.analyses.addfee.service','samples.analyses.testservice.method.method','samples.analyses.testservice.method.reference')
+            ->with('samples.analyses.testservice.testname','samples.sample.parent.subs','samples.analyses.addfee.service','samples.analyses.testservice.method.method','samples.analyses.testservice.method.reference')
             ->with('createdby:id','createdby.profile:id,firstname,lastname,user_id')
             ->with('agency:id,name','laboratory:id,name','status:id,name,color,others','discounted:id,name,value','purpose:id,name')
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')

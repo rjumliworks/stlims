@@ -14,6 +14,7 @@ class SampleRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'sampletype_id' => 'sometimes|required',
             'name' => 'sometimes|required',
             'customer_description' => 'sometimes|required',
             'description' => 'nullable',

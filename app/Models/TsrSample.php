@@ -18,6 +18,7 @@ class TsrSample extends Model
         'description',
         'is_disposed',
         'is_completed',
+        'sampletype_id',
         'tsr_id',
         'completed_at'
     ];
@@ -25,6 +26,11 @@ class TsrSample extends Model
     public function tsr()
     {
         return $this->belongsTo('App\Models\Tsr', 'tsr_id', 'id');
+    }
+
+    public function sample()
+    {
+        return $this->belongsTo('App\Models\ListName', 'sampletype_id', 'id');
     }
 
     public function report()

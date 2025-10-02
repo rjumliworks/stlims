@@ -199,10 +199,10 @@ export default {
     },
     methods: {
         openSample(){
-            this.$refs.sample.show(this.selected.id,this.selected.laboratory_type);
+            this.$refs.sample.show(this.selected.id,this.selected.laboratory.id);
         },
         openSampleEdit(data){
-            this.$refs.sample.edit(this.selected.id,data);
+            this.$refs.sample.edit(this.selected.id,data,this.selected.laboratory.id);
         },
         openAnalysis(){
             (this.samples.length > 0) ? this.$refs.analysis.show(this.samples,this.selected.laboratory.id) : '';
@@ -214,7 +214,7 @@ export default {
             this.$refs.delete.show(data,this.selected.id,'analysis');
         },
         openSampleCopy(sample){
-            this.$refs.sample.copy(this.selected.id,sample);
+            this.$refs.sample.copy(this.selected.id,sample,this.selected.laboratory.id);
         },
         openService(){
             this.$refs.service.show(this.selected.id);

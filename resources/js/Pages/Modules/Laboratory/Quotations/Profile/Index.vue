@@ -17,10 +17,12 @@
             </div>
         </div>
     </div>
+    <Message ref="message" />
 </template>
 <script>
     import Top from './Components/Top.vue';
     import simplebar from "simplebar-vue";
+    import Message from './Modals/Message.vue';
     import Main from './Components/Main.vue';
     import Sidebar from './Components/Sidebar.vue';
     import PageHeader from '@/Shared/Components/PageHeader.vue';
@@ -31,7 +33,8 @@
             simplebar,
             Top,
             Sidebar,
-            Main
+            Main,
+            Message
         },
         props: ['quotation', 'services', 'analyses'],
     }

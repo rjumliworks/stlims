@@ -13,8 +13,14 @@ class QuotationSample extends Model
         'name',
         'customer_description',
         'description',
+        'sampletype_id',
         'quotation_id',
     ];
+
+    public function sample()
+    {
+        return $this->belongsTo('App\Models\ListName', 'sampletype_id', 'id');
+    }
 
     public function quotation()
     {

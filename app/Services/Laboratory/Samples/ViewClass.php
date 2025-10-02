@@ -4,6 +4,8 @@ namespace App\Services\Laboratory\Samples;
 
 use Hashids\Hashids;
 use App\Models\Tsr;
+use App\Models\ListName;
+use App\Models\ListSample;
 use App\Models\UserRole;
 use App\Models\TsrSample;
 use Endroid\QrCode\QrCode;
@@ -184,5 +186,63 @@ class ViewClass
         $height = 6.00 * 28.35;
         $pdf = \PDF::loadView('qrcodes.list-sample',$array)->setPaper([0, 0, $width, $height], 'portrait');
         return $pdf->stream(Tsr::where('id',$id)->value('code').'_qrcodes.pdf');
+    }
+
+    //  public function types($request){
+    //     $keyword = $request->keyword;
+    //     $data = ListSample::where('agency_id',$this->agency)->where('laboratory_id',$request->laboratory)
+    //     ->when($keyword, function ($query) use ($keyword){
+    //         $query->whereHas('name', function ($query) use ($keyword){
+    //             $query->where('name', 'LIKE', "%{$keyword}%");
+    //         });
+    //     })
+    //     ->get()->map(function ($item) {
+    //         return [
+    //             'value' => $item->name->id,
+    //             'name' => $item->name->name
+    //         ];
+    //     });
+    //     return $data;
+    // }
+
+
+    public function types($request){
+        $keyword = $request->keyword;
+        $data = ListSample::where('agency_id',$this->agency)->where('laboratory_id',$request->laboratory)
+        ->when($keyword, function ($query) use ($keyword){
+            $query->withWhereHas('name', function ($query) use ($keyword){
+                $query->where('name', 'LIKE', "%{$keyword}%");
+            });
+        })
+        ->with('name.subs')
+        ->get()->map(function ($item) {
+            return [
+                'value' => $item->name->id,
+                'name' => $item->name->name,
+                'subs' => $item->name->subs->map(function ($sub) {
+                    return [
+                        'value' => $sub->id,
+                        'name'  => $sub->name,
+                    ];
+                }),
+            ];
+        });
+        return $data;
+    }
+
+    public function sampletypes($request){
+        $keyword = $request->code;
+        $data = ListName::with('subs')->where('parent_id',null)
+        ->when($keyword, function ($query) use ($keyword){
+            $query->where('name', 'LIKE', "%{$keyword}%");
+        })
+        ->get()->map(function ($item) {
+            return [
+                'value' => $item->id,
+                'name' => $item->name,
+                'subs' => $item->subs
+            ];
+        });
+        return $data;
     }
 }

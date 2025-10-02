@@ -33,6 +33,12 @@ class SampleController extends Controller
             case 'qrcode-list':
                 return $this->view->qrcode_list($request);
             break;
+            case 'types':
+                return $this->view->types($request);
+            break;
+            case 'sampletypes':
+                return $this->view->sampletypes($request);
+            break;
             case 'disposals':
                 return $this->disposal->lists($request);
             break;
@@ -61,6 +67,12 @@ class SampleController extends Controller
                 break;
                 case 'disposal':
                     return $this->disposal->save($request);
+                break;
+                case 'sampletype':
+                    return $this->save->sampletype($request);
+                break;
+                case 'name':
+                    return $this->save->name($request);
                 break;
                 default:
                 return $this->save->save($request);

@@ -2,6 +2,8 @@
 
 namespace App\Services\Laboratory\Samples;
 
+use App\Models\ListName;
+use App\Models\ListSample;
 use App\Models\TsrSample;
 use App\Models\TsrPayment;
 use App\Services\Laboratory\Samples\ReportClass;
@@ -10,6 +12,7 @@ class SaveClass
 {
     public function __construct(ReportClass $report)
     {
+        $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->report = $report;
     }
 
@@ -29,13 +32,14 @@ class SaveClass
     public function update($request){
         $data = TsrSample::findOrFail($request->id);
         $data->name = $request->name;
+        $data->sampletype_id = (int) $request->sampletype_id;
         $data->customer_description = $request->customer_description;
         $data->description = $request->description;
         if($data->save()){
             $this->report->update($data->tsr_id);
         }
         return [
-            'data' => $data,
+            'data' => $data->toArray(),
             'message' => 'Sample Updated Successfully', 
             'info' => "The sample details have been updated and saved to the TSR."
         ];
@@ -68,6 +72,44 @@ class SaveClass
             'data' => $payment,
             'message' => 'Sample Deletion Successful', 
             'info' => "The selected sample has been deleted successfully and is no longer linked to this TSR."
+        ];
+    }
+
+    public function sampletype($request){
+        $data = new ListSample;
+        $data->name_id = $request->name_id;
+        $data->laboratory_id = $request->laboratory_id;
+        $data->agency_id = $this->agency;
+        $data->save();
+
+        $data = ListSample::with('name')->where('id',$data->id)->first();
+        return [
+            'data' => [
+                'value' => $data->name->id,
+                'name' => $data->name->name,
+            ],
+            'message' => 'Name added Successfully', 
+            'info' => "The name saved to the TSR."
+        ];
+    }
+
+    public function name($request){
+        if($request->name_id){
+            $data = new ListName;
+            $data->name = $request->name;
+            $data->parent_id = $request->name_id;
+            $data->is_sub = true;
+            $data->save();
+        }else{
+            $data = new ListName;
+            $data->name = $request->name;
+            $data->save();
+        }
+
+        return [
+            'data' => ListName::with('subs')->where('id',$data->id)->first(),
+            'message' => 'Name added Successfully', 
+            'info' => "The name saved to the TSR."
         ];
     }
 }

@@ -24,6 +24,14 @@ class QuotationRequest extends FormRequest
                     'discount_id' => 'sometimes|required|integer'
                 ];
             break;
+             case 'sample':
+                return [
+                   'sampletype_id' => 'sometimes|required',
+                    'name' => 'sometimes|required',
+                    'customer_description' => 'sometimes|required',
+                    'description' => 'nullable',
+                ];
+            break;
             default:
                 return [];
         }
