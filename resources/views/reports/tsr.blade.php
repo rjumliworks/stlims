@@ -188,7 +188,11 @@
             @foreach($tsr['samples'] as $index=>$sample)
                 <tr style="text-align: center; font-size: 9px; color: #072388;">
                     <td style="text-align: left;">{{$sample['samplecode']}}</td>
-                    <td>{{$sample['samplename']}}</td>
+                    <td>{{$sample['samplename']}}<br/>
+                        @if($sample['sampletype'] != '-')
+                        <span style="color: #5f5f5f; font-size: 8px;"> ({{$sample['sampletype']}})</span>
+                        @endif
+                    </td>
                     <td>{{$sample['testname']}}</td>
                     <td>{{(isset($sample['methodShort'])) ? $sample['methodShort'] : $sample['method']}}</td>
                     <td>{{$sample['count']}}</td>

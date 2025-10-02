@@ -257,7 +257,7 @@ class UpdateClass
         ->with('payment:tsr_id,id,total,subtotal,discount,or_number,is_paid,is_free,paid_at,status_id,discount_id,collection_id,payment_id','payment.status:id,name,color,others','payment.collection:id,name','payment.type:id,name','payment.discounted:id,name,value')
         ->first();
 
-        $samples = TsrSample::with('analyses.testservice.method.method','analyses.testservice.testname','analyses.addfee.service')->whereHas('tsr',function ($query) use ($id) {
+        $samples = TsrSample::with('sample','analyses.testservice.method.method','analyses.testservice.testname','analyses.addfee.service')->whereHas('tsr',function ($query) use ($id) {
             $query->where('id',$id);
         })->get();
 
@@ -265,6 +265,7 @@ class UpdateClass
         foreach ($samples as $row) {
             $sampleCode = $row['code'];
             $sampleName = $row['name'];
+            $sampleType = $row['sample']['name'];
             
             foreach($row['analyses'] as $index=>$analysis){
                 $testName = $analysis['testservice']['testname']['name'];
@@ -286,6 +287,7 @@ class UpdateClass
                     $groupedData[$key] = [
                         "samplecode" => ($index == 0) ? $sampleCode : '',
                         "samplename" => ($index == 0) ? $sampleName : '-',
+                        "sampletype" => ($index == 0) ? $sampleType : '-',
                         "testname" => $testName,
                         "method" => $testMethod,
                         "methodShort" => $testMethodShort,
