@@ -125,7 +125,8 @@ export default {
             this.form.errors[field] = false;
         },
         hide(){
-            this.form.name = null;
+            this.names = [];
+            this.form.reset();
             this.showModal = false;
         }
     }

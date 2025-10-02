@@ -2,7 +2,6 @@
     <b-modal v-model="showModal" header-class="p-3 bg-light" title="Add Sample Name" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
         <form class="customform">
             <BRow>
-                {{selected}}
                 <BCol lg="12 mt-3" v-if="selected">
                     <TextInput :value="selected.name" type="text" class="form-control" placeholder="Please enter name" :light="true" readonly/>
                 </BCol>
@@ -52,8 +51,8 @@ export default {
             });
         },
         hide(){
+            this.form.reset();
             this.selected = null;
-            this.form.name = null;
             this.showModal = false;
         }
     }
