@@ -54,6 +54,7 @@ class SaveClass
                     'name' => $sample['name'],
                     'customer_description' => $sample['customer_description'],
                     'description' => $sample['description'],
+                    'sampletype_id' => $sample['sampletype_id'],
                     'tsr_id' => $data->id
                 ]);
                 foreach($sample['analyses'] as $analysis){
