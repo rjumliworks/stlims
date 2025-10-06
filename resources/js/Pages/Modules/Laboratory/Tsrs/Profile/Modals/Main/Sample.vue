@@ -162,6 +162,9 @@ export default {
         },
 
         setSampleType(sample){
+            if (sample === null || sample === undefined) {
+                return;
+            }
             if(sample.parent){
                 this.types.push({
                     value: sample.parent.id,
