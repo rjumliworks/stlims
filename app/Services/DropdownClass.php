@@ -8,6 +8,7 @@ use App\Models\TsrSample;
 use App\Models\Customer;
 use App\Models\Agency;
 use App\Models\AgencyDiscount;
+use App\Models\AgencyFacility;
 use App\Models\AgencyConfiguration;
 use App\Models\FinanceName;
 use App\Models\ListRole;
@@ -388,5 +389,15 @@ class DropdownClass
         }else{
             return [];
         }
+    }
+
+    public function facilities($code){
+        $data = AgencyFacility::where('agency_id',$code)->get()->map(function ($item) {
+            return [
+                'value' => $item->id,
+                'name' => $item->name
+            ];
+        });
+        return $data;
     }
 }

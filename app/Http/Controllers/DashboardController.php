@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\DropdownClass;
 use App\Services\Dashboard\TmClass;
+use App\Services\Dashboard\TopClass;
 use App\Services\Dashboard\CroClass;
 use App\Services\Dashboard\AideClass;
 use App\Services\Dashboard\HeadClass;
@@ -17,6 +18,7 @@ class DashboardController extends Controller
 {
     public function __construct(
         TmClass $tm,
+        TopClass $top,
         AideClass $aide,
         DropdownClass $dropdown,
         CashierClass $cashier, 
@@ -27,6 +29,7 @@ class DashboardController extends Controller
         ReleasingClass $releasing
     ){
         $this->tm = $tm;
+        $this->top = $top;
         $this->cro = $cro;
         $this->aide = $aide;
         $this->head = $head;
@@ -131,6 +134,15 @@ class DashboardController extends Controller
                             ]
                         ]);
                     break;
+                    case 'Top Management':
+                        return inertia('Modules/Laboratory/Dashboard/Top/Index',[
+                            'dropdowns' => [
+                                'info' => $this->top->info($request),
+                                'counts' => $this->top->counts($request),
+                                'laboratories' => $this->dropdown->laboratories($request),
+                            ]
+                        ]);
+                    break;
                     default: 
                     return inertia('Modules/Laboratory/Dashboard/CRO/Index',[
                         'dropdowns' => [
@@ -167,6 +179,17 @@ class DashboardController extends Controller
                 'payments' => $this->dropdown->dropdowns('Payment Mode','n/a'),
             ]
         ]);
+    }
+
+    public function top(Request $request){
+        switch($request->option){
+            case 'lists':
+                return $this->top->lists($request);
+            break;
+            case 'count':
+                return $this->top->counts($request);
+            break;
+        }
     }
 
     public function cashier(Request $request){
@@ -214,6 +237,9 @@ class DashboardController extends Controller
             break;
             case 'reports':
                 return $this->dropdown->reports($request);
+            break;
+            case 'facilities':
+                return $this->dropdown->facilities($request->code);
             break;
         }
     }

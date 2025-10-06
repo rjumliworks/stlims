@@ -88,6 +88,10 @@
                                 <InputLabel for="province_code" value="Province" :message="form.errors.province_code"/>
                                 <Multiselect :options="provinces" label="name" v-model="form.province_code" placeholder="Select Province" ref="multiselect3"/>
                             </BCol>
+                            <BCol lg="`1`" v-if="form.agency_id" class="mt-1">
+                                <InputLabel for="facility" value="Facility" :message="form.errors.facility_id"/>
+                                <Multiselect :options="facilities" label="name" v-model="form.facility_id" placeholder="Select Facility" ref="multiselect3"/>
+                            </BCol>
                             <BCol v-if="form.agency_id" :lg="(has_lab || form.role_id == 9) ? 6 : 12" class="mt-1">
                                 <InputLabel for="role" value="Role" :message="form.errors.role_id"/>
                                 <Multiselect
@@ -137,6 +141,7 @@ export default {
                 profile_id: null,
                 agency_id: null,
                 agency: null,
+                facility_id: null,
                 laboratory_id: null,
                 province_code: null,
                 role_id: null,
@@ -146,6 +151,7 @@ export default {
             }),
             region: null,
             provinces: [],
+            facilities: [],
             has_lab: false,
             showModal: false,
             editable: false
@@ -176,6 +182,7 @@ export default {
               this.form.agency_id = newVal.value;
               this.region = newVal.region;
               this.fetchProvince(this.region);
+              this.fetchFacility(newVal.value);
             }else{
                 this.has_lab = 0;
                 this.form.agency_id = null;
@@ -200,6 +207,18 @@ export default {
             })
             .then(response => {
                 this.provinces = response.data;
+            })
+            .catch(err => console.log(err));
+        },
+        fetchFacility(code){
+            axios.get('/search',{
+                params: {
+                    option: 'facilities',
+                    code: code
+                }
+            })
+            .then(response => {
+                this.facilities = response.data;
             })
             .catch(err => console.log(err));
         },

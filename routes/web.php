@@ -11,6 +11,7 @@ Route::middleware(['2fa','auth','verified'])->group(function () {
     Route::resource('/profile', App\Http\Controllers\Auth\ProfileController::class);
     Route::get('/activation', [App\Http\Controllers\WelcomeController::class, 'activation'])->name('activation');
 });
+
 Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     Route::get('/', [App\Http\Controllers\DashboardController::class, 'index']);
     Route::get('/search', [App\Http\Controllers\DashboardController::class, 'search']);
@@ -18,8 +19,9 @@ Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     Route::get('/accounting', [App\Http\Controllers\DashboardController::class, 'accounting']);
     Route::get('/cashier', [App\Http\Controllers\DashboardController::class, 'cashier']);
     Route::get('/analyst', [App\Http\Controllers\DashboardController::class, 'analyst']);
+    Route::get('/top', [App\Http\Controllers\DashboardController::class, 'top']);
     Route::resource('/testservices', App\Http\Controllers\Laboratory\ServiceController::class);
-     Route::resource('/services', App\Http\Controllers\Executive\TestserviceController::class);
+    Route::resource('/services', App\Http\Controllers\Executive\TestserviceController::class);
 
     Route::middleware(['role:Customer Relation Officer,Technical Manager,Laboratory Analyst,Calibration Officer,Laboratory Head,Laboratory Aide,Releasing Officer'])->group(function () {
         Route::resource('/customers', App\Http\Controllers\Laboratory\CustomerController::class);
@@ -45,7 +47,6 @@ Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     });
 
     Route::middleware(['role:Administrator'])->group(function () {
-       
         Route::resource('/wallets', App\Http\Controllers\Finance\WalletController::class);
         Route::resource('/testrequests', App\Http\Controllers\Executive\TsrController::class);
         Route::resource('/users', App\Http\Controllers\Executive\UserController::class);
