@@ -82,19 +82,19 @@
                     <div class="d-flex">
                         <div class="flex-grow-1">
                             <!-- border border-dashed border-end-0 border-start-0 -->
-                            <ul class="nav nav-tabs nav-tabs-custom nav-success fs-12" role="tablist">
+                            <ul class="nav nav-tabs nav-tabs-custom nav-primary fs-12" role="tablist">
                                 <li class="nav-item">
-                                    <BLink @click="openView(null)" class="nav-link py-3 active" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                    <BLink @click="openView(null)" class="nav-link py-3" :class="(type == null || type == 'Total Transaction Value') ? 'active text-primary' : ''" data-bs-toggle="tab" role="tab" aria-selected="true">
                                     <i class="ri-apps-2-line me-1 align-bottom"></i> All Transactions
                                     </BLink>
                                 </li>
                                 <li class="nav-item">
-                                    <BLink @click="openView('Collected Amount')" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                    <BLink @click="openView('Collected Amount')" class="nav-link py-3" :class="(type == 'Collected Amount') ? 'active text-success' : ''" data-bs-toggle="tab" role="tab" aria-selected="true">
                                     <i class="ri-checkbox-circle-line me-1 align-bottom"></i>Collected Transactions
                                     </BLink>
                                 </li>
                                  <li class="nav-item">
-                                    <BLink @click="openView('Uncollected Amount')" class="nav-link py-3" data-bs-toggle="tab" role="tab" aria-selected="true">
+                                    <BLink @click="openView('Uncollected Amount')" class="nav-link py-3" :class="(type == 'Uncollected Amount') ? 'active text-danger' : ''" data-bs-toggle="tab" role="tab" aria-selected="true">
                                     <i class="ri-close-circle-line me-1 align-bottom"></i>Uncollected Transactions
                                     </BLink>
                                 </li>
