@@ -31,7 +31,7 @@ class PaymentClass
             })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total');
             $first[] = $count;
         }
-        if ($year == 2024) {
+        if ($year == 2024 && $this->agency == 14) {
             $manualCollected = [
                 540853.4, // Jan
                 331486,   // Feb
@@ -59,7 +59,7 @@ class PaymentClass
             })->whereIn('status_id',[6,18])->where('is_paid',0)->where('is_child',0)->sum('total');
             $second[] = $count;
         }
-        if ($year == 2024) {
+        if ($year == 2024 && $this->agency == 14) {
             $manualCollected1 = [
                 0, // Jan
                 0,   // Feb
@@ -119,28 +119,81 @@ class PaymentClass
             [
                 'name' => 'Collected Amount (Receipted)',
                 'description' => ' Total amount successfully collected and receipted',
-                'total' => TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$month,$year){
-                    $query->where('agency_id', $this->agency)->where('status_id','!=',5);
-                    $query->when($laboratory, function ($query, $laboratory) {
-                        $query->where('laboratory_id',$laboratory);
-                    });
-                    ($year) ? $query->whereYear('created_at',$year) : '';
-                    ($month) ? $query->whereMonth('created_at',$month) : '';
-                })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total'),
+                'total' => (function () use ($laboratory, $month, $year) {
+                    $total = TsrPayment::whereHas('tsr', function ($query) use ($laboratory, $month, $year) {
+                            $query->where('agency_id', $this->agency)->where('status_id', '!=', 5);
+                            $query->when($laboratory, function ($query, $laboratory) {
+                                $query->where('laboratory_id', $laboratory);
+                            });
+                            if ($year) {
+                                $query->whereYear('created_at', $year);
+                            }
+                            if ($month) {
+                                $query->whereMonth('created_at', $month);
+                            }
+                        })
+                        ->where('status_id', 7)
+                        ->where('is_paid', 1)
+                        ->where('is_child', 0)
+                        ->sum('total');
+
+                    // ✅ Add manual values for 2024 (Jan–Sep)
+                    if ($year == 2024 && $this->agency == 14) {
+                        $manualCollected = [
+                            540853.4, // Jan
+                            331486,   // Feb
+                            778483.6, // Mar
+                            621516.8, // Apr (note: you said 621,516.8, not 612,516.8)
+                            708506,   // May
+                            383944,   // Jun
+                            580560,   // Jul
+                            427169,   // Aug
+                            116860,   // Sep
+                        ];
+
+                        // ✅ If a specific month is selected → only add that month’s value
+                        if ($month && $month >= 1 && $month <= 9) {
+                            $total += $manualCollected[$month - 1];
+                        } 
+                        // ✅ If NO specific month → add all Jan–Sep manually
+                        elseif (!$month) {
+                            $total += array_sum($manualCollected);
+                        }
+                    }
+
+                    return $total;
+                })(),
                 'icon' => 'ri-checkbox-circle-fill fs-20',
                 'color' => 'text-success'
             ],
             [
                 'name' => 'Uncollected Amount',
                 'description' => 'Total pending payments not yet received',
-                'total' => TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$year,$month){
-                    $query->where('agency_id', $this->agency)->where('status_id','!=',5);
-                    $query->when($laboratory, function ($query, $laboratory) {
-                        $query->where('laboratory_id',$laboratory);
-                    });
-                    ($year) ? $query->whereYear('created_at',$year) : '';
-                    ($month) ? $query->whereMonth('created_at',$month) : '';
-                })->whereIn('status_id',[6,18])->where('is_paid',0)->where('is_child',0)->sum('total'),
+                'total' => (function () use ($laboratory, $year, $month) {
+                    $total = TsrPayment::whereHas('tsr', function ($query) use ($laboratory, $year, $month) {
+                            $query->where('agency_id', $this->agency)->where('status_id', '!=', 5);
+                            $query->when($laboratory, function ($query, $laboratory) {
+                                $query->where('laboratory_id', $laboratory);
+                            });
+                            if ($year) {
+                                $query->whereYear('created_at', $year);
+                            }
+                            if ($month) {
+                                $query->whereMonth('created_at', $month);
+                            }
+                        })
+                        ->whereIn('status_id', [6, 18])
+                        ->where('is_paid', 0)
+                        ->where('is_child', 0)
+                        ->sum('total');
+
+                    // ✅ Add manual ₱9,320 for year 2024
+                    if ($year == 2024 && $this->agency == 14) {
+                        $total += 9320;
+                    }
+
+                    return $total;
+                })(),
                 'icon' => 'ri-close-circle-fill fs-20',
                 'color' => 'text-danger'
             ],
