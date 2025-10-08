@@ -31,7 +31,7 @@ export default {
             currentUrl: window.location.origin,
             year: this.y,
             laboratory: null,
-            series: "area",
+            series: [],
             chartOptions: {
                 chart: {height: 284,toolbar: {show: false,},},
                 // stroke: {curve: "straight", dashArray: [0, 0, 8],width: [2, 0, 2.2]},
