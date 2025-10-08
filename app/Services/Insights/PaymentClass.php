@@ -31,6 +31,23 @@ class PaymentClass
             })->where('status_id',7)->where('is_paid',1)->where('is_child',0)->sum('total');
             $first[] = $count;
         }
+        if ($year == 2024) {
+            $manualCollected = [
+                540853.4, // Jan
+                331486,   // Feb
+                778483.6, // Mar
+                612516.8, // Apr
+                708506,   // May
+                383944,   // Jun
+                580560,   // Jul
+                427169,   // Aug
+                116860,   // Sep
+            ];
+            // replace only the first 9 months
+            for ($i = 0; $i < count($manualCollected); $i++) {
+                $first[$i] = $manualCollected[$i];
+            }
+        }
         $second = [];
         for($month = 1; $month <= 12; $month++){
             $count = TsrPayment::whereHas('tsr', function ($query) use ($laboratory,$year,$month){
@@ -41,6 +58,23 @@ class PaymentClass
                 $query->whereYear('created_at',$year)->whereMonth('created_at',$month);
             })->whereIn('status_id',[6,18])->where('is_paid',0)->where('is_child',0)->sum('total');
             $second[] = $count;
+        }
+        if ($year == 2024) {
+            $manualCollected1 = [
+                0, // Jan
+                0,   // Feb
+                0, // Mar
+                0, // Apr
+                0,   // May
+                0,   // Jun
+                0,   // Jul
+                0,   // Aug
+                9320,   // Sep
+            ];
+            // replace only the first 9 months
+            for ($i = 0; $i < count($manualCollected1); $i++) {
+                $second[$i] = $manualCollected1[$i];
+            }
         }
         $third = [];
         for($month = 1; $month <= 12; $month++){
