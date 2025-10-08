@@ -99,6 +99,19 @@
                     </Link>
                 </li>
             </tempalte>
+            <tempalte v-if="['Top Management'].some(role => $page.props.roles.includes(role))">
+                <li class="menu-title">
+                    <i class="ri-more-fill" aria-expanded="false"></i>
+                    <span data-key="t-menu">Reports</span>
+                </li>
+                <li class="nav-item">
+                    <Link href="/insights" class="nav-link menu-link"
+                    :class="{'active': $page.component.startsWith('Modules/Finance/Accounting/OrderPayments') }">
+                    <i class="ri-hand-coin-fill"></i>
+                    <span class="fw-semibold fs-14" data-key="t-dashboards">Insights</span>
+                    </Link>
+                </li>
+            </tempalte>
             <template v-if="['Cashier'].some(role => $page.props.roles.includes(role))">
                 <li class="menu-title">
                     <i class="ri-more-fill" aria-expanded="false"></i>

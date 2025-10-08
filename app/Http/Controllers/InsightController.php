@@ -120,7 +120,12 @@ class InsightController extends Controller
                 return $this->gad->roles($request);
             break;
             default:
-            return inertia('Modules/Insights/Index');
+            return inertia('Modules/Insights/Index',[
+                'info2' => $this->payment->info2($request),
+                'years' => $this->top->years(),
+                'y' => date('Y'),
+                'types' => $this->top->laboratory_types(),
+            ]);
         }
     }
 

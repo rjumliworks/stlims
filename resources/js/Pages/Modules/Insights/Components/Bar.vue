@@ -33,9 +33,7 @@ export default {
             laboratory: null,
             series: [],
             chartOptions: {
-                chart: {height: 284,toolbar: {show: false,},},
-                // stroke: {curve: "straight", dashArray: [0, 0, 8],width: [2, 0, 2.2]},
-                // fill: {opacity: [0.1, 0.9, 1]},
+                chart: {height: 319,toolbar: {show: false,},},
                 markers: {
                     size: [0, 0, 0],
                     strokeWidth: 2,
@@ -61,7 +59,21 @@ export default {
                     itemMargin: { horizontal: 10, vertical: 0},
                 },
                  dataLabels: {
-                    enabled: false, 
+                    enabled: true,
+                    formatter: function (val) {
+                        return "₱" + val.toLocaleString();
+                    },
+                    style: {
+                        fontSize: '11px',
+                        colors: ['#555'],
+                    },
+                    background: {
+                        enabled: true,
+                        foreColor: '#fff',
+                        borderRadius: 4,
+                        padding: 4,
+                        opacity: 0.9,
+                    },
                 },
                 plotOptions: {
                 bar: {
