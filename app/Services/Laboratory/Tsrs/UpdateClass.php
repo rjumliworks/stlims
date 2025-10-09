@@ -27,6 +27,7 @@ class UpdateClass
 
     public function update($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
+         
         if($data->status_id == 1 || $data->status_id == 2){
             $data->customer_id = $request->customer['value'];
             $data->conforme_id = $request->conforme['value'];
@@ -34,6 +35,7 @@ class UpdateClass
             $data->laboratory_id = $request->laboratory_id;
             $data->save();
             if($data){
+                
                 if($data->payment->discount_id != $request->discount_id){
                     if(in_array($request->discount_id, [5, 6, 7])){
                         $data->payment->update([
@@ -51,6 +53,7 @@ class UpdateClass
                     }
                     $total = $this->updateTotal($request->id,$data->payment->subtotal);
                 }
+             
                 $this->report($request->id);
             }
 
@@ -247,6 +250,7 @@ class UpdateClass
     }
 
     public function report($id){
+       
         $tsr = Tsr::where('id',$id)
         ->with('services.service')
         ->with('received:id','received.profile:id,firstname,middlename,lastname,user_id')
@@ -265,8 +269,8 @@ class UpdateClass
         foreach ($samples as $row) {
             $sampleCode = $row['code'];
             $sampleName = $row['name'];
-            $sampleType = $row['sample']['name'];
-            
+            $sampleType = ($row['sample']) ? $row['sample']['name'] : null;
+           
             foreach($row['analyses'] as $index=>$analysis){
                 $testName = $analysis['testservice']['testname']['name'];
                 $testMethod = $analysis['testservice']['method']['method']['name'];
@@ -287,7 +291,7 @@ class UpdateClass
                     $groupedData[$key] = [
                         "samplecode" => ($index == 0) ? $sampleCode : '',
                         "samplename" => ($index == 0) ? $sampleName : '-',
-                        "sampletype" => ($index == 0) ? $sampleType : '-',
+                        "sampletype" => ( $sampleType ) ? $sampleType : '-',
                         "testname" => $testName,
                         "method" => $testMethod,
                         "methodShort" => $testMethodShort,
@@ -351,6 +355,7 @@ class UpdateClass
             'samples' => $samples,
             'descriptions' => $descs    
         ];
+    
         if(TsrReport::where('tsr_id',$id)->count() > 0){
             $data = TsrReport::where('tsr_id',$id)->first();
             $data->information = json_encode($information);
