@@ -256,9 +256,15 @@
                     @if($payment['type']['name'] == 'Wallet' && $transaction['amount'] == $payment['total'])
                     <tr>
                         <td colspan="5"></td>
-                            <td style="font-size: 8px;">TOTAL</td>
-                            <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>0.00</td>
-                        </tr>
+                        <td style="font-size: 8px;">TOTAL</td>
+                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>0.00</td>
+                    </tr>
+                    @else
+                    <tr>
+                        <td colspan="5"></td>
+                        <td style="font-size: 8px;">TOTAL</td>
+                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($payment['total'],'₱ ')}}</td>
+                    </tr>
                     @endif
                 @else
                     <tr>
