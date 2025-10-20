@@ -83,6 +83,18 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1 overflow-hidden">
+                                    <p class="mb-1 fs-12 text-muted">Received At :</p>
+                                    <h6 class="text-truncate mb-0"> <span class="fs-12">{{selected.facility.name}}</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="d-flex mt-3">
+                                <div class="flex-shrink-0 avatar-xs align-self-center me-3">
+                                    <div class="avatar-title bg-light rounded-circle fs-16 text-primary"><i class="ri-account-circle-fill"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-grow-1 overflow-hidden">
                                     <p class="mb-1 fs-12 text-muted">Received By :</p>
                                     <h6 class="text-truncate mb-0"> <span class="fs-12">{{selected.received}}</span></h6>
                                 </div>

@@ -19,6 +19,7 @@ class ViewResource extends JsonResource
             'code' => $this->code,
             'laboratory' => $this->laboratory,
             'agency' => $this->agency,
+            'facility' => $this->facility,
             'status' => $this->status,
             'groups' => $this->groups,
             'children' => $this->children,

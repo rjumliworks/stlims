@@ -8,7 +8,16 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </BCol>
+                <!-- <BCol lg="12">
+                    <BCol lg="12" class="mt-2">
+                        <InputLabel for="due" value="Report Due" :message="form.errors.due_at"/>
+                        <TextInput v-model="form.due_at" type="date" class="form-control" @input="handleInput('due_at')" :light="true"/>
+                    </BCol>
+                </BCol>
                 <BCol lg="12">
+                    <hr class="text-muted"/>
+                </BCol> -->
+                <BCol lg="12" class="mt-n1">
                     <InputLabel for="customer" value="Customer" :message="form.errors.customer"/>
                     <Multiselect 
                     :options="customers" 
@@ -126,7 +135,7 @@ export default {
                 name: this.selected.conforme,
                 contact_no: this.selected.conforme_no
             };
-            // this.form.due_at = (data.due_at) ? this.convertToISO(data.due_at) : null;
+            // this.form.due_at = (this.selected.due_at) ? this.convertToISO(this.selected.due_at) : null;
             this.form.purpose_id = (data.purpose) ? data.purpose.id : null;
             this.form.discount_id = data.payment.discount_id;
             this.form.laboratory_id = this.selected.laboratory.id;
@@ -161,8 +170,9 @@ export default {
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, '0');
             const day = String(date.getDate()).padStart(2, '0');
+            console.log(`${year}-${month}-${day}`);
 
-            return `${year}-${month}-${day}`;
+            return `${year}-${day}-${month}`;
         },
         set(data){
             this.form.customer.conformes.push(data);
