@@ -23,6 +23,7 @@ use App\Models\LocationMunicipality;
 use App\Models\LocationBarangay;
 use App\Models\TestserviceAddon;
 use App\Models\InventorySupplier;
+use App\Models\AgencyFacilityLaboratory;
 
 class DropdownClass
 {  
@@ -64,7 +65,8 @@ class DropdownClass
         ->get()->map(function ($item) {
             return [
                 'value' => $item->id,
-                'name' => $item->name
+                'name' => $item->name,
+                'others' => $item->others
             ];
         });
         return $data;
@@ -146,10 +148,21 @@ class DropdownClass
         $query = ListLaboratory::query();
         ($lab_id) ? $query->whereIn('id',$lab_id) : '';
         $data = $query->get()->map(function ($item) {
+            $facilities = AgencyFacilityLaboratory::withWhereHas('facility', function ($query)  {
+                $query->where('agency_id', $this->agency);
+            })
+            ->where('laboratory_id', $item->id)
+            ->get()->map(function ($item1) {
+                return [
+                    'value' => $item1->facility->id,
+                    'name' => $item1->facility->name
+                ];
+            });
             return [
                 'value' => $item->id,
                 'name' => $item->name,
-                'short' => $item->short
+                'short' => $item->short,
+                'facilities' => $facilities,
             ];
         });
         return $data;

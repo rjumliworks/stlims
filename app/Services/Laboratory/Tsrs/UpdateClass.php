@@ -11,6 +11,7 @@ use App\Models\TsrGroup;
 use App\Models\TsrPayment;
 use App\Models\TsrAnalysis;
 use App\Models\Agency;
+use App\Models\AgencyFacility;
 use App\Models\AgencyConfiguration;
 use App\Models\ListLaboratory;
 use Hashids\Hashids;
@@ -107,14 +108,15 @@ class UpdateClass
     public function confirm($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
         if(is_null($data->code)){
+            $short = AgencyFacility::where('id',$data->facility_id)->where('is_regional',0)->value('short');
             $data->status_id = (in_array($data->payment->discount_id, [5, 6, 7, 10, 11, 12])) ? 3 : $request->status_id;
             $data->due_at = $request->due_at;
-            $data->code = $this->generateCode($data);
+            $data->code = $this->generateCode($data,$short);
             if($data->save()){
                 $samples = TsrSample::where('tsr_id',$request->id)->get();
                 foreach($samples as $sample){
                     $s = TsrSample::findOrFail($sample->id);
-                    $s->code = $this->generateSampleCode($data);
+                    $s->code = $this->generateSampleCode($data,$short);
                     $s->save();
                 }
                 $this->report($request->id);
@@ -193,40 +195,106 @@ class UpdateClass
         ];
     }
 
-    private function generateCode($data){
-        $labs = $this->configuration->laboratories;
-        $specificValue = $data->laboratory_id;
-        $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
-            return $object['value'] === $specificValue;
-        }));
-        $tsr_count = $lab[0]['tsr_count'];
-        $laboratory = $data->laboratory_id;
-        $agency = Agency::where('id',$this->agency)->first();
-        $year = date('Y'); 
-        $lab_type = ListLaboratory::select('short')->where('id',$laboratory)->first();
-        $c = Tsr::where('agency_id',$this->agency)->where('laboratory_id',$laboratory)
-        ->whereYear('created_at',$year)->where('code','!=',NULL)->count();
-        $code = $agency->code.'-'.date('m').date('Y').'-'.$lab_type->short.'-'.str_pad(($tsr_count+$c+1), 4, '0', STR_PAD_LEFT);  //$tsr_count+ remove since it will reset
-        return $code;
+    private function generateCode($data,$short)
+    {
+        return \DB::transaction(function () use ($data, $short) {
+            $labs = $this->configuration->laboratories;
+            $specificValue = $data->laboratory_id;
+            $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
+                return $object['value'] === $specificValue;
+            }));
+            $tsr_count = $lab[0]['tsr_count'];
+            $laboratory = $data->laboratory_id;
+        
+            $agency = Agency::where('id', $this->agency)->first();
+            $year = date('Y'); 
+            $lab_type = ListLaboratory::select('short')->where('id', $laboratory)->first();
+
+            if ($short) {
+                $shortCode = $short;
+                $c = Tsr::where('agency_id', $this->agency)
+                    ->where('facility_id', $data->facility_id)
+                    ->whereYear('created_at', $year)
+                    ->whereNotNull('code')
+                    ->lockForUpdate() // prevent race conditions
+                    ->count();
+            } else {
+                $shortCode = $lab_type->short;
+                $c = Tsr::where('agency_id', $this->agency)
+                    ->where('laboratory_id', $laboratory)
+                    ->whereYear('created_at', $year)
+                    ->whereNotNull('code')
+                    ->lockForUpdate()
+                    ->count();
+            }
+
+            if ($year == 2025 && $this->agency == 11) {
+                switch ($data->facility_id) {
+                    case 4: $tsr_count = 861; break;
+                    case 5: $tsr_count = 84; break;
+                    case 6: $tsr_count = 366; break;
+                }
+            }
+
+            $sequence = $tsr_count + $c + 1;
+            $code = $agency->code . '-' . date('m') . date('Y') . '-' . $shortCode . '-' . str_pad($sequence, 4, '0', STR_PAD_LEFT);
+
+            return $code;
+        });
     }
 
-    private function generateSampleCode($data){
-        $labs = $this->configuration->laboratories;
-        $specificValue = $data->laboratory_id;
-        $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
-            return $object['value'] === $specificValue;
-        }));
-        $sample_count = $lab[0]['sample_count'];
+    private function generateSampleCode($data,$short)
+    {
+        return \DB::transaction(function () use ($data, $short) {
+            $labs = $this->configuration->laboratories;
+            $specificValue = $data->laboratory_id;
+            $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
+                return $object['value'] === $specificValue;
+            }));
+            $sample_count = $lab[0]['sample_count'];
 
-        $laboratory = $data->laboratory_id;
-        $year = ($this->configuration->samplecode_year) ? '-'.date('Y') : '';
-        $lab = Agency::where('id',$this->agency)->first();
-        $year = date('Y'); 
-        $lab_type = ListLaboratory::select('short')->where('id',$laboratory)->first();
-        $c = TsrSample::whereHas('tsr',function ($query) use ($laboratory) {
-            $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory);
-        })->whereYear('created_at',$year)->where('code','!=','NULL')->count();
-        return $lab_type->short.'-'.str_pad(($sample_count+$c+1), 5, '0', STR_PAD_LEFT); //$sample_count+ removed
+            $laboratory = $data->laboratory_id;
+            $year = date('Y');
+            $agency = Agency::find($this->agency);
+            $lab_type = ListLaboratory::select('short')->where('id', $laboratory)->first();
+
+            // Select correct short code and base query
+            if ($short) {
+                $shortCode = $short;
+                $facility = $data->facility_id;
+                $query = TsrSample::whereHas('tsr', function ($q) use ($facility) {
+                    $q->where('agency_id', $this->agency)
+                    ->where('facility_id', $facility);
+                });
+            } else {
+                $shortCode = $lab_type->short;
+                $query = TsrSample::whereHas('tsr', function ($q) use ($laboratory) {
+                    $q->where('agency_id', $this->agency)
+                    ->where('laboratory_id', $laboratory);
+                });
+            }
+
+            // Lock to prevent concurrent duplicate generation
+            $c = $query->whereYear('created_at', $year)
+                    ->whereNotNull('code')
+                    ->lockForUpdate()
+                    ->count();
+
+            // Special reset rules (your 2025 logic)
+            if ($year == 2025 && $this->agency == 11) {
+                switch ($data->facility_id) {
+                    case 4: $sample_count = 861; break;
+                    case 5: $sample_count = 84; break;
+                    case 6: $sample_count = 366; break;
+                }
+            }
+
+            // Compute and format the sample code
+            $sequence = $sample_count + $c + 1;
+            $code = $shortCode . '-' . str_pad($sequence, 5, '0', STR_PAD_LEFT);
+
+            return $code;
+        });
     }
 
     private function updateTotal($id,$fee){

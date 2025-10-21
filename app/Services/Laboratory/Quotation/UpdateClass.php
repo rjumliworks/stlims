@@ -226,13 +226,25 @@ class UpdateClass
     }
 
     private function generateCode($data){
-        $agency = Agency::where('id',$this->agency)->first();
-        $year = date('Y'); 
-        $c = Quotation::where('agency_id',$this->agency)
-        ->whereYear('created_at',$year)
-        ->whereNotNull('code')->count();
-        $code = 'QUO-'.$agency->code.'-'.date('Y').'-'.str_pad(($c+1), 4, '0', STR_PAD_LEFT);  
-        return $code;
+        return \DB::transaction(function () {
+            $agency = Agency::find($this->agency);
+            $year = date('Y');
+
+            // Lock all existing quotation rows for this agency + year
+            $c = Quotation::where('agency_id', $this->agency)
+                ->whereYear('created_at', $year)
+                ->whereNotNull('code')
+                ->lockForUpdate() // prevents race condition
+                ->count();
+
+            // Compute next sequential number safely
+            $next = $c + 1;
+
+            // Generate formatted code
+            $code = 'QUO-' . $agency->code . '-' . $year . '-' . str_pad($next, 4, '0', STR_PAD_LEFT);
+
+            return $code;
+        });
     }
 
     private function updateTotal($id,$fee){

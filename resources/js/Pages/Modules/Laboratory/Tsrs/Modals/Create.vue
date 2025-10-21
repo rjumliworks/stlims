@@ -42,7 +42,7 @@
                     <InputLabel for="region" value="Laboratory" :message="form.errors.laboratory_id"/>
                     <Multiselect 
                     :options="dropdowns.laboratories" 
-                    v-model="form.laboratory_id"
+                    v-model="form.laboratory" object
                     @input="handleInput('laboratory_id')"
                     :searchable="true" label="name"
                     placeholder="Select Laboratory"/>
@@ -55,6 +55,15 @@
                     @input="handleInput('discount_id')"
                     :searchable="true" label="name"
                     placeholder="Select Discount"/>
+                </BCol>
+                <BCol v-if="form.laboratory?.facilities.length > 1" lg="12" class="mt-1">
+                    <InputLabel for="region" value="Facility" :message="form.errors.facility_id"/>
+                    <Multiselect 
+                    :options="form.laboratory.facilities" 
+                    v-model="form.facility_id"
+                    @input="handleInput('purpose_id')"
+                    :searchable="true" label="name"
+                    placeholder="Select Purpose"/>
                 </BCol>
                 <BCol lg="12" class="mt-1">
                     <InputLabel for="region" value="Purpose" :message="form.errors.purpose_id"/>
@@ -152,7 +161,7 @@ import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
 export default {
     components: { Multiselect, InputLabel, TextInput, Add },
-    props: ['dropdowns'],
+    props: ['dropdowns','facility'],
     data(){
         return {
             currentUrl: window.location.origin,
@@ -160,9 +169,11 @@ export default {
                 id: null,
                 customer: null,
                 conforme: null,
+                laboratory: null,
                 laboratory_id: null,
                 purpose_id: null,
                 discount_id: null,
+                facility_id: this.facility,
                 purpose_id: null,
                 is_referral: null,
                 is_onsite: null,
@@ -201,6 +212,7 @@ export default {
             this.showModal = true;
         },
         submit(){
+            this.form.laboratory_id = this.form.laboratory.value;
             this.form.post('/tsrs',{
                 preserveScroll: true,
                 onSuccess: (response) => {

@@ -23,4 +23,9 @@ class ListLaboratory extends Model
     {
         return $this->hasMany('App\Models\Tsr', 'laboratory_id');
     }
+
+    public function facilities()
+    {
+        return $this->hasMany('App\Models\AgencyFacilityLaboratory', 'laboratory_id');
+    }
 }

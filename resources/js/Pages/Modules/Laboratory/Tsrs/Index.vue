@@ -151,7 +151,7 @@
     <Filter @submit="handleSubmit" :regions="dropdowns.regions" :region="region" ref="filter"/>
     <Edit @update="updateData" :dropdowns="dropdowns" ref="edit"/>
     <Cancel @update="updateData" ref="cancel"/>
-    <Create :dropdowns="dropdowns"  @success="moveTo" ref="create"/>
+    <Create :dropdowns="dropdowns" :facility="facility" @success="moveTo" ref="create"/>
 </template>
 <script>
 import _ from 'lodash';
@@ -164,7 +164,7 @@ import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
     components: { PageHeader, Pagination, Multiselect, Create, Cancel, Edit, Filter },
-    props: ['counts','dropdowns','region'],
+    props: ['counts','dropdowns','region','facility'],
     data(){
         return {
             currentUrl: window.location.origin,
