@@ -58,7 +58,14 @@ font-size: .9em;
 line-height: 1.1em;
 border-top: none !important;
 }
-
+  .footer {
+            position: fixed;
+            bottom: -10;
+            width: 100%;
+            left: 0;
+            margin-left: auto;
+            margin-right: auto;
+        }
 .page-break {
   page-break-after: always;
 }
@@ -78,11 +85,30 @@ border-top: none !important;
             
         ?>
 
+        <div class="footer">
+            <table style="border-bottom-style: hidden; border-right-style: hidden; border-top-style: hidden; border-left-style: hidden;">
+                <tr>
+                    <td style="width: 40%; text-align: left; font-weight: bold; color: black;"><hr/></td>
+                </tr>
+            </table>
+            <table style="margin-top: -5px; border-bottom-style: hidden; border-right-style: hidden; border-top-style: hidden; border-left-style: hidden;">
+                <tr>
+                    <td style="border-right-style: hidden; width: 3%; text-align: right;"> </td>
+                    <td style="border-right-style: hidden;" style="width: 50%; text-align: left; font-size: 10px;"><br/></td>
+                    @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
+                    <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-006-F1 (front page) <br/>Rev 3 | October 20, 2025</td>
+                    @else
+                    <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-006-F1 (front page) <br/>Rev 3 | September 9, 2025</td>
+                    @endif
+                </tr>   
+            </table>
+        </div>
+
         <div style="font-family:Arial;">
             <img src="{{ public_path('images/logo-sm.png') }}" alt="tag" style="position: absolute; top: -4; left: 90; width: 50px; height: 50px;">
-            <center style="font-size: 10px; margin-bottom: 0px; text-transform: uppercase;">{{$configuration['name']}}</center>
+            <center style="font-size: 10px; margin-bottom: 0px; text-transform: uppercase;">{{$configuration['agency']['member']['name']}}</center>
             <center style="font-size: 11px; margin-bottom: 0px; font-weight: bold;">REGIONAL STANDARDS AND TESTING LABORATORIES</center>
-            <center style="font-size: 11px;">{{$form['address']}} | {{$form['contact']}}</center>
+            <center style="font-size: 11px; width: 400px; margin: 0 auto; text-align: center;">{{$form['address']}} | {{$form['contact']}}</center>
             <br/>
             
             <center style="margin-top: 8px; font-size: 12px; color:#000; font-weight: bold; padding: 2px;">QUOTATION</center>
@@ -172,14 +198,14 @@ border-top: none !important;
                     <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$quotation['discount']),'₱ '),2,".",",")}}</td>
                 </tr>
                 @php
-    $walletAmount = (float) preg_replace('/[^0-9.]/', '', $wallet);
-    $quotationTotal = (float) preg_replace('/[^0-9.]/', '', $quotation['total']);
+                    $walletAmount = (float) preg_replace('/[^0-9.]/', '', $wallet);
+                    $quotationTotal = (float) preg_replace('/[^0-9.]/', '', $quotation['total']);
 
-    $netTotal = max($quotationTotal - $walletAmount, 0); // Never less than 0
-    $newWalletBalance = $walletAmount > $quotationTotal
-        ? $walletAmount - $quotationTotal
-        : 0;
-@endphp
+                    $netTotal = max($quotationTotal - $walletAmount, 0); // Never less than 0
+                    $newWalletBalance = $walletAmount > $quotationTotal
+                        ? $walletAmount - $quotationTotal
+                        : 0;
+                @endphp
                 @if($wallet != 0)
                 <tr>
                     <td colspan="4"></td>
@@ -192,12 +218,12 @@ border-top: none !important;
                     <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$netTotal),'₱ '),2,".",",")}}</td>
                 </tr>
               <tr>
-    <td colspan="4"></td>
-    <td style="font-size: 8px;">NEW WALLET BALANCE</td>
-    <td style="text-align: right;">
-        <span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format($newWalletBalance, 2, ".", ",") }}
-    </td>
-</tr>
+                    <td colspan="4"></td>
+                    <td style="font-size: 8px;">NEW WALLET BALANCE</td>
+                    <td style="text-align: right;">
+                        <span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format($newWalletBalance, 2, ".", ",") }}
+                    </td>
+                </tr>
                 @else
                 <tr>
                     <td colspan="4"></td>
@@ -221,38 +247,42 @@ border-top: none !important;
                 </tr>
             </tbody>
         </table>
-        <h6 style="font-size: 10px; margin-top: 12px;">3. TERMS AND CONDITIONS</h6>
-        <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
-            <tbody>
-                <tr>
-                    <td>
-                        <ul style="margin-left: -20px;">
-                            @foreach($quotation['terms'] as $index=>$term)
-                            <li>{{ is_array($term) && isset($term['name']) ? $term['name'] : (is_string($term) ? $term : '') }}</li>
-                            @endforeach
-                            <!-- <li>DOST IX Trust Fund 1952101052 Landbank of the Philippines.</li>
-                            <li>Cash payment should be made directly to the cashier or deposit to DOST IX account.</li>
-                            <li>This quotation is valid only until <b>{{$quotation['due_at']}}</b></li> -->
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <h6 style="font-size: 10px; margin-top: 12px;">4. SIGNATORIES</h6>
-        <table style="text-align: center; border: 1px solid black; font-size: 10px; margin-top: -22px;">
-            <tbody>
-                <tr>
-                    <td style="min-height: 50px; padding: 20px; border-bottom-style: hidden;"></td>
-                    <td style="min-height: 50px; padding: 20px; border-bottom-style: hidden;"></td>
-                    <td style="min-height: 50px; padding: 20px; border-bottom-style: hidden;"></td>
-                </tr>
-                <tr>
-                    <td width="33.3%"><span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$quotation['conforme']}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Customer / Authorized Representative </br> <span style="font-size:9px; color: #606060;">(Received by)</span></td>
-                    <td width="33.3%"><span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$user}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Laboratory Personnel </br> <span style="font-size:9px; color: #606060;">(Prepared by)</span></td>
-                    <td width="33.3%"><span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$manager}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Technical Manager </br> <span style="font-size:9px; color: #606060;">(Approved by)</span></td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="page-break-inside: avoid;">
+            <h6 style="font-size: 10px; margin-top: 12px;">3. TERMS AND CONDITIONS</h6>
+            <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul style="margin-left: -20px;">
+                                @foreach($quotation['terms'] as $index=>$term)
+                                <li>{{ is_array($term) && isset($term['name']) ? $term['name'] : (is_string($term) ? $term : '') }}</li>
+                                @endforeach
+                                <!-- <li>DOST IX Trust Fund 1952101052 Landbank of the Philippines.</li>
+                                <li>Cash payment should be made directly to the cashier or deposit to DOST IX account.</li>
+                                <li>This quotation is valid only until <b>{{$quotation['due_at']}}</b></li> -->
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div style="page-break-inside: avoid;">
+            <h6 style="font-size: 10px; margin-top: 12px;">4. SIGNATORIES</h6>
+            <table style="text-align: center; border: 1px solid black; font-size: 10px; margin-top: -22px;">
+                <tbody>
+                    <tr>
+                        <td style="min-height: 50px; padding: 20px; border-bottom-style: hidden;"></td>
+                        <td style="min-height: 50px; padding: 20px; border-bottom-style: hidden;"></td>
+                        <td style="min-height: 50px; padding: 20px; border-bottom-style: hidden;"></td>
+                    </tr>
+                    <tr>
+                        <td width="33.3%"><span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$quotation['conforme']}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Customer / Authorized Representative </br> <span style="font-size:9px; color: #606060;">(Received by)</span></td>
+                        <td width="33.3%"><span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$user}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Laboratory Personnel </br> <span style="font-size:9px; color: #606060;">(Prepared by)</span></td>
+                        <td width="33.3%"><span style="font-weight: bold; font-size: 11px; color: #072388; text-transform: uppercase;">{{$manager}}</span><hr style="margin-top: 0px; margin-bottom: 1px; border: .1px solid black; width: 80%;">Technical Manager </br> <span style="font-size:9px; color: #606060;">(Approved by)</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </body>
 </html>
 

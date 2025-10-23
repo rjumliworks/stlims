@@ -241,7 +241,22 @@ class ViewClass
             'user' => $quotation->createdby->profile->firstname.' '.$quotation->createdby->profile->middlename[0].'. '.$quotation->createdby->profile->lastname
         ]; 
         $pdf = \PDF::loadView('reports.quotation',$array)->setPaper('a4', 'portrait');
-        return $pdf->stream('Quotation.pdf');
+       
+
+        $pdf->output();
+        $dompdf = $pdf->getDomPDF();
+        $canvas = $dompdf->getCanvas();
+        $canvas->page_script(function ($pageNumber, $pageCount, $canvas, $fontMetrics) {
+            $copies = 1;
+            $totalPagesPerCopy = $pageCount / $copies;
+            $currentPageInCopy = ($pageNumber - 1) % $totalPagesPerCopy + 1;
+            $text = "PAGE $currentPageInCopy OF $totalPagesPerCopy";
+            $font = $fontMetrics->get_font("Helvetica", "normal");
+            $size = 7;
+            $width = $fontMetrics->get_text_width($text, $font, $size);
+            $canvas->text(80 - $width, 796, $text, $font, $size);
+        });
+        return $pdf->stream($quotation->code.'.pdf');
     }
 
     private function analysesList($id){
