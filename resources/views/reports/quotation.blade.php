@@ -255,7 +255,7 @@ border-top: none !important;
                     <tr>
                         <td>
                             @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
-                                <ul style="margin-left: -10px;">
+                                <ul style="margin-left: -20px; margin-right: 20px;">
                                     <li>Payments can be made in the form of cash or Managers Check. Please make check payment payable to DOST VI or DEPARTMENT OF SCIENCE AND TECHNOLOGY VI. Also, please be informed that as a National Government Agency, DOST VI is not subject to Expanded Witholding Tax pursuant to section 2.57.5 of BIR Revenue Regulation No. 2-98.</li>   
                                 </ul> 
                             @else
