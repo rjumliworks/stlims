@@ -117,7 +117,10 @@
             <tr>
                 <td style="border-right-style: hidden; width: 3%; text-align: right;"> <img src="<?php echo $qrCodeImage; ?>"  width="30" height="30" alt="QR Code"></td>
                 <td style="border-right-style: hidden;" style="width: 50%; text-align: left; font-size: 10px;"><br/> <span style="font-weight: bold; color: #072388;">{{$tsr['code']}}</span></td>
-                <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 13 l Feb 01, 2025</td>
+                @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
+                <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 4 | October 20, 2025</td>
+                @else
+                <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 13 | Feb 01, 2025</td>
                 
             </tr>
         </table>
