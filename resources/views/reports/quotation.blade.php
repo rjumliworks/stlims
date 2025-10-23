@@ -243,6 +243,7 @@ border-top: none !important;
                                 <li>&#62; {{$desc['name']}} : <i>{{$desc['customer_description']}}</i>, {{$desc['description']}}</li>
                             @endforeach
                         </ul>
+                        
                     </td>
                 </tr>
             </tbody>
@@ -253,14 +254,18 @@ border-top: none !important;
                 <tbody>
                     <tr>
                         <td>
-                            <ul style="margin-left: -20px;">
-                                @foreach($quotation['terms'] as $index=>$term)
-                                <li>{{ is_array($term) && isset($term['name']) ? $term['name'] : (is_string($term) ? $term : '') }}</li>
-                                @endforeach
-                                <!-- <li>DOST IX Trust Fund 1952101052 Landbank of the Philippines.</li>
-                                <li>Cash payment should be made directly to the cashier or deposit to DOST IX account.</li>
-                                <li>This quotation is valid only until <b>{{$quotation['due_at']}}</b></li> -->
-                            </ul>
+                            @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
+                                <p>Payments can be made in the form of cash or Managers Check. Please make check payment payable to DOST VI or DEPARTMENT OF SCIENCE AND TECHNOLOGY VI. Also, please be informed that as a National Government Agency, DOST VI is not subject to Expanded Witholding Tax pursuant to section 2.57.5 of BIR Revenue Regulation No. 2-98.</p>
+                            @else
+                                <ul style="margin-left: -20px;">
+                                    @foreach($quotation['terms'] as $index=>$term)
+                                    <li>{{ is_array($term) && isset($term['name']) ? $term['name'] : (is_string($term) ? $term : '') }}</li>
+                                    @endforeach
+                                    <!-- <li>DOST IX Trust Fund 1952101052 Landbank of the Philippines.</li>
+                                    <li>Cash payment should be made directly to the cashier or deposit to DOST IX account.</li>
+                                    <li>This quotation is valid only until <b>{{$quotation['due_at']}}</b></li> -->
+                                </ul>
+                            @endif
                         </td>
                     </tr>
                 </tbody>
