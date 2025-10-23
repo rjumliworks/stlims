@@ -121,8 +121,8 @@
                 <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 4 | October 20, 2025</td>
                 @else
                 <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 13 | Feb 01, 2025</td>
-                
-            </tr>
+                @endif
+            </tr>   
         </table>
     </div>
 
