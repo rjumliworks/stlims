@@ -98,7 +98,7 @@ border-top: none !important;
                     @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
                     <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-006-F1 (front page) <br/>Rev 3 | October 20, 2025</td>
                     @else
-                    <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-006-F1 (front page) <br/>Rev 3 | September 9, 2025</td>
+                    <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-006-F2 (front page) <br/>Rev 4 | September 9, 2025</td>
                     @endif
                 </tr>   
             </table>
