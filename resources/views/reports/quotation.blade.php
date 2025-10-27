@@ -91,7 +91,7 @@ border-top: none !important;
                     <td style="width: 40%; text-align: left; font-weight: bold; color: black;"><hr/></td>
                 </tr>
             </table>
-            <table style="margin-top: 10px; border-bottom-style: hidden; border-right-style: hidden; border-top-style: hidden; border-left-style: hidden;">
+            <table style="margin-top: 55px; border-bottom-style: hidden; border-right-style: hidden; border-top-style: hidden; border-left-style: hidden;">
                 <tr>
                     <td style="border-right-style: hidden; width: 3%; text-align: right;"> </td>
                     <td style="border-right-style: hidden;" style="width: 50%; text-align: left; font-size: 10px;"><br/></td>
