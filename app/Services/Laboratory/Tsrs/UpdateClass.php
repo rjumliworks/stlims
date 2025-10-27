@@ -108,7 +108,11 @@ class UpdateClass
     public function confirm($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
         if(is_null($data->code)){
-            $short = AgencyFacility::where('id',$data->facility_id)->where('is_regional',0)->value('short');
+            if($data->laboratory_id == 1 || $data->laboratory_id == 2){
+                $short = null;
+            }else{
+                $short = AgencyFacility::where('id',$data->facility_id)->where('is_regional',0)->value('short');
+            }
             $data->status_id = (in_array($data->payment->discount_id, [5, 6, 7, 10, 11, 12])) ? 3 : $request->status_id;
             $data->due_at = $request->due_at;
             $data->code = $this->generateCode($data,$short);
