@@ -63,7 +63,7 @@ border-top: none !important;
             bottom: -10;
             width: 100%;
             left: 0;
-            margin-top: 55px;
+            margin-top: 70px;
             margin-left: auto;
             margin-right: auto;
         }
