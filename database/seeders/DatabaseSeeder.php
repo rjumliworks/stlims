@@ -14,28 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(ListDropdownsTableSeeder::class);
 
-        // \DB::table('users')->insert([
-        //     'username' => 'administrator',
-        //     'email' => 'kradjumli@gmail.com',
-        //     'password' => bcrypt('123456!@#$%'),
-        //     'role' => 'Administrator',
-        //     'is_active' => 1,
-        //     'email_verified_at' => '2024-05-15 08:46:33',
-        //     'created_at' => now(),
-        //     'updated_at' => now()
-        // ]);
-
-        // \DB::table('user_profiles')->insert([
-        //     'firstname' => 'Ra-ouf',
-        //     'lastname' => 'Jumli',
-        //     'middlename' => 'Indanan',
-        //     'avatar' => 'avatar.jpg',
-        //     'sex' => 'Male',
-        //     'user_id' => 1,
-        //     'mobile' => '09171531652',
-        //     'created_at' => now(),
-        //     'updated_at' => now(),
-        // ]);
+      
         
         // $this->call(LocationRegionsTableSeeder::class);
         // $this->call(LocationProvincesTableSeeder::class);

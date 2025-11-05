@@ -87,7 +87,7 @@ class SaveClass
         }
     }   
 
-    public function disposal($request){
+    public function status($request){
         $data = Equipment::where('id',$request->id)->first();
         $data->status_id = $request->status_id;
         $data->save();

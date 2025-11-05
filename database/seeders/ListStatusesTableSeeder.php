@@ -414,6 +414,17 @@ class ListStatusesTableSeeder extends Seeder
                 'created_at' => '2024-03-28 02:33:01',
                 'updated_at' => '2024-03-28 02:33:01',
             ),
+            36 => 
+            array (
+                'id' => 37,
+                'name' => 'Not in Use',
+                'type' => 'Equipment',
+                'color' => 'bg-warning',
+                'others' => 'text-warning',
+                'is_active' => 1,
+                'created_at' => '2024-03-28 02:33:01',
+                'updated_at' => '2024-03-28 02:33:01',
+            ),
         ));
 
         

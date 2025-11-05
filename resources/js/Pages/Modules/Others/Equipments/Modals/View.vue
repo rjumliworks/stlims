@@ -32,7 +32,7 @@
             </div>
             <div class="col-md-3">
                 <div class="hstack gap-1 mt-n2 mb-n2 flex-wrap">
-                    <div class="row g-1 text-end">
+                    <div class="row g-1 text-end"  v-if="selected.status.name == 'Operational'">
                         <div class="col-md-12">
                             <b-button @click="openView(selected.id,selected.calibration_program,selected.calibration_due,'Calibration')" pill variant="primary" class="btn-label btn-sm waves-effect waves-light fs-11" style="width: 180px;">
                                 <i class="ri-equalizer-line label-icon align-middle rounded-pill fs-12 me-2"></i> Perform Calibration
@@ -145,7 +145,8 @@
         </div>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Close</b-button>
-            <b-button v-if="selected.status.name == 'Operational'" @click="submit('ok')" variant="danger" :disabled="form.processing" block>Mark as Disposed</b-button>
+            <b-button v-if="selected.status.name == 'Operational'" @click="submit(37)" variant="warning" :disabled="form.processing" block>Mark as Not in Use</b-button>
+            <b-button v-if="selected.status.name == 'Operational'" @click="submit(36)" variant="danger" :disabled="form.processing" block>Mark as Disposed</b-button>
         </template>
     </b-modal>
     <Perform @update="updateData" ref="perform"/>
@@ -163,8 +164,8 @@ export default {
             selected: null,
             form: useForm({
                 id: null,
-                status_id: 36,
-                option: 'disposed'
+                status_id: null,
+                option: 'status'
             }),
         }
     },
@@ -177,7 +178,8 @@ export default {
         openView(id,duration,date,type){
             this.$refs.perform.show(id,duration,date,type);
         },
-        submit(){
+        submit(id){
+            this.form.status_id = id;
             this.form.put('/equipments/update',{
                 preserveScroll: true,
                 onSuccess: (response) => {
