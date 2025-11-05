@@ -63,17 +63,14 @@
                         <h5 class="fs-13 mb-0 fw-semibold text-primary">{{list.code}}</h5>
                         <p class="fs-12 text-muted mb-0">{{list.name}}</p>
                     </td>
-                    <td class="text-center fs-12">{{list.last_calibration}}</td>
+                    <td class="text-center fs-12">
+                        <span v-if="list.calibration_program == 'Not Available'" class="text-muted fs-11">Not Applicable</span>
+                        <span v-else>{{ list.last_calibration }}</span>
+                    </td>
                     <td class="text-center">
-                        <span
-                            v-if="isDue(list.calibration_due)"
-                            class="badge bg-danger"
-                        >
-                            {{ list.calibration_due }}
-                        </span>
-                        <span v-else>
-                            {{ list.calibration_due }}
-                        </span>
+                        <span v-if="list.calibration_program == 'Not Available'" class="text-muted fs-11">Not Applicable</span>
+                        <span v-else-if="isDue(list.calibration_due)" class="badge bg-danger">{{ list.calibration_due }}</span>
+                        <span v-else>{{ list.calibration_due }}</span>
                     </td>
                     <td class="text-center fs-12">{{list.last_maintenance}}</td>
                     <td class="text-center">

@@ -113,14 +113,15 @@
                 <table class="table table-bordered table-nowrap align-middle mb-0">
                     <thead class="table-primary thead-fixed">
                         <tr class="fs-11">
-                            <th colspan="3" class="text-center text-primary">Calibration / Maintance Logs</th>
+                            <th colspan="4" class="text-center text-primary">Calibration / Maintance Logs</th>
                         </tr>
                     </thead>
                     <thead class="table-light thead-fixed">
                         <tr class="fs-11">
-                            <th style="width: 30%;" class="text-center">Type</th>
-                            <th style="width: 40%;" class="text-center">Date</th>
+                            <th style="width: 15%;" class="text-center">Type</th>
+                            <th style="width: 15%;" class="text-center">Date</th>
                             <th style="width: 30%;" class="text-center">User</th>
+                            <th style="width: 40%;" class="text-center">Note</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -131,6 +132,7 @@
                             </td>
                             <td class="text-center">{{ list.date }}</td>
                             <td class="text-center">{{ list.name }}</td>
+                            <td class="text-center">{{ (list.note) ? list.note : 'n/a' }}</td>
                         </tr>
                         <tr v-if="selected.logs.length == 0">
                             <td colspan="3" class="text-center text-muted fs-10">

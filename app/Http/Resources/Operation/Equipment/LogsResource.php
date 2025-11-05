@@ -18,6 +18,7 @@ class LogsResource extends JsonResource
             'id' => $this->id,
             'name' => $this->user->profile->firstname.' '.$this->user->profile->lastname,
             'date' => date('F d, Y', strtotime($this->date)),
+            'note' => $this->note,
             'is_calibrated' => $this->is_calibrated
         ];
     }
