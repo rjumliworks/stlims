@@ -1,6 +1,7 @@
 <template>
     <b-modal v-model="showModal" header-class="p-3 bg-light" title="Sample Disposal" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
-        <div class="d-flex mb-n3 mt-2" v-if="selected">
+        <template  v-if="selected">
+        <div class="d-flex mb-n3 mt-2">
             <div class="flex-shrink-0 me-3">
                 <div style="height:2.5rem;width:2.5rem;">
                     <span class="avatar-title bg-primary-subtle rounded p-2 mt-n1">
@@ -35,7 +36,7 @@
         </form>
 
         {{form.sample_id}}
-           
+           </template>
         <template v-slot:footer>
             <b-button @click="hide()" variant="light" block>Cancel</b-button>
             <b-button @click="submit('ok')" variant="primary" :disabled="form.processing" block>Submit</b-button>

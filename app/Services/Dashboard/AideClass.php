@@ -24,7 +24,7 @@ class AideClass
                 'description' => 'Samples completed 30 days ago',
                 'count' => TsrSample::where('is_completed', 1)
                 ->whereHas('analyses', function ($query) use ($thirtyDaysAgo) {
-                    $query->where('end_at', '<=', $thirtyDaysAgo)
+                    $query->where('end_at', '<=', $thirtyDaysAgo)->whereYear('end_at','!=',2024)
                           ->orderBy('end_at', 'desc');
                 })
                 ->count(),
@@ -36,7 +36,7 @@ class AideClass
                 'description' => 'Samples that have not been disposed of',
                 'count' => TsrSample::whereHas('tsr',function ($query){
                     $query->where('laboratory_id',$this->laboratory);
-                })->where('is_completed',1)->where('is_disposed',0)->count(),
+                })->whereYear('completed_at','!=',2024)->where('is_completed',1)->where('is_disposed',0)->count(),
                 'icon' => 'ri-error-warning-line fs-20',
                 'color' => 'text-warning'
             ],
@@ -60,7 +60,9 @@ class AideClass
             [
                 'name' => 'Pending',
                 'description' => 'Samples that are ready for disposal',
-                'count' => TsrSampleDisposal::where('status_id', 28)->count(),
+                'count' => TsrSampleDisposal::where('status_id', 28)->whereHas('sample',function ($query){
+                    $query->whereYear('completed_at','!=',2024);
+                })->count(),
                 'icon' => 'ri-error-warning-fill fs-20',
                 'color' => 'text-warning'
             ],

@@ -28,14 +28,14 @@
 
                                         <div class="mb-2">
                                             <InputLabel for="email" value="Email" />
-                                            <TextInput id="email" v-model="form.email" type="email" class="form-control" autofocus placeholder="Please enter email" autocomplete="email" required :class="{ 'is-invalid': form.errors.email }" />
+                                            <TextInput id="email" v-model="form.email" type="email" class="form-control" autofocus placeholder="Please enter email" :class="{ 'is-invalid': form.errors.email }" />
                                             <InputError :message="form.errors.email" />
                                         </div>
 
                                         <div class="mb-3">
                                             <InputLabel for="password" value="Password" />
                                             <div class="position-relative auth-pass-inputgroup mb-3">
-                                                <input :type="togglePassword ? 'text' : 'password'" class="form-control pe-5" placeholder="Enter password" id="password-input" v-model="form.password" autocomplete="password" required :class="{ 'is-invalid': form.errors.password }"/>
+                                                <input :type="togglePassword ? 'text' : 'password'" class="form-control pe-5" placeholder="Enter password" id="password-input" v-model="form.password" :class="{ 'is-invalid': form.errors.password }"/>
                                                 <BButton variant="link" class="position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="password-addon" @click="togglePassword = !togglePassword">
                                                     <i class="ri-eye-fill align-middle"></i>
                                                 </BButton>

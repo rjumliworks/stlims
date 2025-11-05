@@ -30,6 +30,7 @@ class DisposalClass
                         $query->where('laboratory_id',$laboratory);
                     });
                 });
+                $query->whereYear('completed_at','!=',2024);
             })
             ->orderBy('status_id','ASC')
             ->orderBy('created_at','ASC')
