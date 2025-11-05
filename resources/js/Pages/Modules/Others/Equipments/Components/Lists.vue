@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="flex-grow-1">
-                <h5 class="mb-0 fs-14"><span class="text-body">List of Technical Service Requests</span></h5>
+                <h5 class="mb-0 fs-14"><span class="text-body">List of Laboratory Equipment</span></h5>
                 <p class="text-muted text-truncate-two-lines fs-12">TSRs reviewed, reports completed, and approved—ready for customer release.</p>
             </div>
             <div class="flex-shrink-0" style="width: 45%;">
@@ -64,9 +64,29 @@
                         <p class="fs-12 text-muted mb-0">{{list.name}}</p>
                     </td>
                     <td class="text-center fs-12">{{list.last_calibration}}</td>
-                    <td class="text-center">{{list.calibration_due}}</td>
+                    <td class="text-center">
+                        <span
+                            v-if="isDue(list.calibration_due)"
+                            class="badge bg-danger"
+                        >
+                            {{ list.calibration_due }}
+                        </span>
+                        <span v-else>
+                            {{ list.calibration_due }}
+                        </span>
+                    </td>
                     <td class="text-center fs-12">{{list.last_maintenance}}</td>
-                    <td class="text-center">{{list.maintenance_due}}</td>
+                    <td class="text-center">
+                        <span
+                            v-if="isDue(list.maintenance_due)"
+                            class="badge bg-danger"
+                        >
+                            {{ list.maintenance_due }}
+                        </span>
+                        <span v-else>
+                            {{ list.maintenance_due }}
+                        </span>
+                    </td>
                     <td class="text-center">
                         <span :class="'badge '+list.status.color">{{list.status.name}}</span>
                     </td>
@@ -168,6 +188,15 @@ export default {
             this.filter.reminder = null;
             this.filter.laboratory = null;
             this.fetch();
+        },
+        isDue(date) {
+            if (!date) return false;
+            const today = new Date();
+            const due = new Date(date);
+            // Remove time part to compare only date
+            today.setHours(0, 0, 0, 0);
+            due.setHours(0, 0, 0, 0);
+            return due <= today;
         },
         isDueApproaching(dueDate) {
             const today = new Date();

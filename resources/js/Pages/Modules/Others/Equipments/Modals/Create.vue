@@ -60,7 +60,7 @@
                 <BCol lg="3" class="mt-0"> 
                     <InputLabel value="Maintenance Plan" :message="form.errors.maintenance_plan"/>
                     <Multiselect 
-                    :options="['6 months','1 year','2 years','Not Available']" 
+                    :options="['1 month','2 months','6 months','1 year','2 years','Not Available']" 
                     v-model="form.maintenance_plan" 
                     label="name"
                     @input="handleInput('maintenance_plan')"
@@ -69,7 +69,7 @@
                 <BCol lg="3" class="mt-0"> 
                     <InputLabel value="Calibration Program" :message="form.errors.calibration_program"/>
                     <Multiselect 
-                    :options="['6 months','1 year','2 years','Not Available']" 
+                    :options="['6 months','1 year','2 years','Not Applicable']" 
                     v-model="form.calibration_program" 
                     label="name"
                     @input="handleInput('calibration_program')"
