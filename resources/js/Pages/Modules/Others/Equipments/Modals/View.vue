@@ -135,7 +135,7 @@
                             <td class="text-center">{{ (list.note) ? list.note : 'n/a' }}</td>
                         </tr>
                         <tr v-if="selected.logs.length == 0">
-                            <td colspan="3" class="text-center text-muted fs-10">
+                            <td colspan="4" class="text-center text-muted fs-10">
                                 No records found. There are no logs available for the calibration or maintenance of the equipment.
                             </td>
                         </tr>

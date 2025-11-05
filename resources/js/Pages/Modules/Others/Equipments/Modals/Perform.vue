@@ -53,6 +53,12 @@ export default {
             if(newVal){
                 const date = new Date(newVal); 
                 switch(this.duration){
+                    case '1 month':
+                        date.setMonth(date.getMonth() + 1);
+                    break;
+                    case '2 months':
+                        date.setMonth(date.getMonth() + 2);
+                    break;
                     case '6 months':
                         date.setMonth(date.getMonth() + 6);
                     break;
