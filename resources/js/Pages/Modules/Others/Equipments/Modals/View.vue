@@ -57,7 +57,7 @@
                         </div>
                         <div class="flex-grow-1">
                             <p class="text-muted mb-0 fs-12">Last Calibration:</p>
-                            <h5 class="mb-0 fs-13">{{selected.last_calibration}}</h5>
+                            <h5 class="mb-0 fs-13">{{(selected.calibration_program != 'Not Applicable') ? selected.last_calibration : selected.calibration_program}}</h5>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                         </div>
                         <div class="flex-grow-1">
                             <p class="text-muted mb-0 fs-12">Calibration Due :</p>
-                            <h5 class="mb-0 fs-13">{{selected.calibration_due}}</h5>
+                           <h5 class="mb-0 fs-13">{{(selected.calibration_program != 'Not Applicable') ? selected.calibration_due : selected.calibration_program}}</h5>
                         </div>
                     </div>
                 </div>
