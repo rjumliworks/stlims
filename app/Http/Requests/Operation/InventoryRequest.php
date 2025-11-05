@@ -15,7 +15,7 @@ class InventoryRequest extends FormRequest
     {
         if($this->option == 'supplier'){
             return [
-                'name' => 'sometimes|required|string|unique:inventory_suppliers,name,NULL,'.$this->id.',laboratory_id,'.$this->laboratory_id,
+                'name' => 'sometimes|required|string|unique:inventory_suppliers,name,NULL,'.$this->id.',agency_id,'.$this->agency_id,
                 'email' => 'sometimes|required|email|max:150',
                 'contact_no' => 'sometimes|required|numeric|digits:11',
                 'address' => 'sometimes|required|string|max:200',

@@ -22,7 +22,7 @@ class SupplierClass
         return $data;
     }
 
-    public function save($request){
+    public function save($request){;
         $data = InventorySupplier::create(array_merge($request->all(),['agency_id' => $this->agency, 'user_id' => \Auth::user()->id]));
         return [
             'data' => new SupplierResource($data),

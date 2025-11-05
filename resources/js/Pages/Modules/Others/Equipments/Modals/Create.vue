@@ -94,19 +94,19 @@
             <b-button v-else @click="submit('ok')" variant="primary" :disabled="form.processing" block>Submit</b-button>
         </template>
     </b-modal>
-    <!-- <Supplier @message="pushNew" :dropdowns="dropdowns" ref="create"/> -->
+    <Supplier @message="pushNew" :dropdowns="dropdowns" ref="create"/>
 </template>
 <script>
 import _ from 'lodash';
 import { useForm } from '@inertiajs/vue3';
 import Multiselect from "@vueform/multiselect";
-// import Supplier from '../../Inventory/Suppliers/Modals/Create.vue';
+import Supplier from '../../Inventory/Suppliers/Modals/Create.vue';
 import Amount from '@/Shared/Components/Forms/Amount.vue';
 import InputLabel from '@/Shared/Components/Forms/InputLabel.vue';
 import TextInput from '@/Shared/Components/Forms/TextInput.vue';
 export default {
     props: ['dropdowns'],
-    components: { InputLabel, TextInput, Multiselect, Amount},
+    components: { InputLabel, TextInput, Multiselect, Amount, Supplier},
     data(){
         return {
             currentUrl: window.location.origin,

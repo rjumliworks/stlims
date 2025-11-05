@@ -19,19 +19,19 @@
                 </BCol>
                 <BCol lg="6" class="mt-1">
                     <InputLabel for="region" value="Region" :message="form.errors.region_code"/>
-                    <Multiselect :options="dropdowns.regions" v-model="form.region_code" :message="form.errors.region_code" label="name" placeholder="Select Region"/>
+                    <Multiselect @input="handleInput('region_code')" :options="dropdowns.regions" v-model="form.region_code" :message="form.errors.region_code" label="name" placeholder="Select Region"/>
                 </BCol>
                 <BCol lg="6" class="mt-1">
                     <InputLabel for="province" value="Province" :message="form.errors.province_code"/>
-                    <Multiselect :options="provinces" :searchable="true" v-model="form.province_code" :message="form.errors.province_code" label="name" placeholder="Select Province"/>
+                    <Multiselect @input="handleInput('province_code')" :options="provinces" :searchable="true" v-model="form.province_code" :message="form.errors.province_code" label="name" placeholder="Select Province"/>
                 </BCol>
                 <BCol lg="6" class="mt-1">
                     <InputLabel for="municipality" value="Municipality" :message="form.errors.municipality_code"/>
-                    <Multiselect :options="municipalities" :searchable="true" v-model="form.municipality_code" :message="form.errors.municipality_code" label="name" placeholder="Select Municipality"/>
+                    <Multiselect @input="handleInput('municipality_code')" :options="municipalities" :searchable="true" v-model="form.municipality_code" :message="form.errors.municipality_code" label="name" placeholder="Select Municipality"/>
                 </BCol>
                 <BCol lg="6" class="mt-1">
                     <InputLabel for="barangay" value="Barangay" />
-                    <Multiselect :options="barangays" :searchable="true" v-model="form.barangay_code" :message="form.errors.barangay_code" label="name" placeholder="Select Barangay"/>
+                    <Multiselect @input="handleInput('barangay_code')" :options="barangays" :searchable="true" v-model="form.barangay_code" :message="form.errors.barangay_code" label="name" placeholder="Select Barangay"/>
                 </BCol>
                 <BCol lg="12" class="mt-1">
                     <InputLabel for="address" value="Address" :message="form.errors.address"/>
