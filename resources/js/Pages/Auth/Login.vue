@@ -15,7 +15,7 @@
                                     </div>
                                     <div class="col-10">
                                         <div class="text-primary mt-1">
-                                            <h4 class="fs-16 fw-semibold">DOST - STLIMS</h4>
+                                            <h4 class="fs-16 fw-semibold">DOST - LIMS</h4>
                                             <p class="mt-n2">Laboratory Information Management System</p>
                                         </div>
                                     </div>

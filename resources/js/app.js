@@ -13,7 +13,7 @@ AOS.init({
     duration: 1000
 });
 
-const appName = import.meta.env.VITE_APP_NAME || 'STLIMS';
+const appName = import.meta.env.VITE_APP_NAME || 'LIMS';
 
 createInertiaApp({
     resolve: (name) => {
