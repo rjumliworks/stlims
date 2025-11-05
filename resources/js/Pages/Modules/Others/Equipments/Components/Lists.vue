@@ -1,6 +1,15 @@
 <template>
     <div class="card-header bg-light-subtle">
-        <div class="d-flex mb-n3">
+         <div class="input-group" style="margin-top: 0px; margin-bottom: -4px;">
+                    <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
+                    <input type="text" v-model="filter.keyword" placeholder="Search Equipment" class="form-control" style="width: 20%;">
+                    <Multiselect class="white" style="width: 25%;" :options="dropdowns.statuses" v-model="filter.status" label="name" :allow-empty="false" :searchable="true" placeholder="Select Status" />
+                    <Multiselect class="white" style="width: 25%;" :options="dropdowns.laboratories" v-model="filter.laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
+                    <b-button type="button" variant="primary" @click="openCreate">
+                        <i class="ri-add-circle-fill align-bottom me-1"></i> Create
+                    </b-button>
+                </div>
+        <!-- <div class="d-flex mb-n3">
             <div class="flex-shrink-0 me-3">
                 <div style="height:2.5rem;width:2.5rem;">
                     <span class="avatar-title bg-primary-subtle rounded p-2 mt-n1">
@@ -22,7 +31,7 @@
                     </b-button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="card bg-white border-bottom shadow-none" no-body>
         <div class="d-flex">
@@ -127,6 +136,7 @@ export default {
             index: null,
             name: 'Equipment',
             filter: {
+                status: null,
                 keyword: null,
                 laboratory: null,
                 reminder: null,
@@ -139,6 +149,9 @@ export default {
             this.checkSearchStr(newVal)
         },
         "filter.laboratory"(newVal){
+            this.fetch();
+        },
+        "filter.status"(newVal){
             this.fetch();
         }
     },
@@ -153,6 +166,7 @@ export default {
             page_url = page_url || '/equipments';
             axios.get(page_url,{
                 params : {
+                    status: this.filter.status,
                     keyword: this.filter.keyword,
                     laboratory: this.filter.laboratory,
                     reminder: this.filter.reminder,

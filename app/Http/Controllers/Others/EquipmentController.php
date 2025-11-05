@@ -28,6 +28,7 @@ class EquipmentController extends Controller
             default :
             return inertia('Modules/Others/Equipments/Index',[
                 'dropdowns' => [
+                    'statuses' => $this->dropdown->statuses('Equipment'),
                     'regions' => $this->dropdown->regions(),
                     'laboratories' => $this->dropdown->laboratories(),
                     'equipments' => $this->dropdown->dropdowns('Equipment','n/a'),

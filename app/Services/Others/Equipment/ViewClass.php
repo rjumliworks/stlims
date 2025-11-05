@@ -29,6 +29,9 @@ class ViewClass
             ->when($this->agency, function ($query) {
                 $query->where('agency_id',$this->agency);
             })
+            ->when($request->status , function ($query,$status) {
+               $query->where('status_id',$status);
+            }) 
             ->when($request->laboratory , function ($query, $labtype ) {
                 (is_array($labtype)) ?  $query->whereIn('laboratory_id',$labtype ) : $query->where('laboratory_id',$labtype );
             }) 
