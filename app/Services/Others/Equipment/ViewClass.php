@@ -44,10 +44,10 @@ class ViewClass
                         $query->whereBetween('calibration_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()]);
                     break;
                     case 'Overdue Calibration':
-                        $query->whereDate('calibration_due','<',now());
+                        $query->where('calibration_program','!=','Not Applicable')->whereDate('calibration_due','<',now())->whereNotIn('status_id',[36,37]);
                     break;
                     case 'Unscheduled Calibration':
-                        $query->where('calibration_due',NULL);
+                        $query->where('calibration_program','!=','Not Applicable')->where('calibration_due',NULL)->whereNotIn('status_id',[36,37]);
                     break;
                     case 'Maintenance Complete':
                         $query->whereDate('maintenance_due','>',now());
@@ -56,10 +56,10 @@ class ViewClass
                         $query->whereBetween('maintenance_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()]);
                     break;
                     case 'Overdue Maintenance':
-                        $query->whereDate('maintenance_due','<',now());
+                        $query->whereDate('maintenance_due','<',now())->whereNotIn('status_id',[36,37]);
                     break;
                     case 'Unscheduled Maintenance':
-                        $query->where('maintenance_due',NULL);
+                        $query->where('maintenance_due',NULL)->whereNotIn('status_id',[36,37]);
                     break;
                 }
             })
@@ -88,14 +88,14 @@ class ViewClass
             [
                 'name' => 'Overdue Calibration',
                 'description' => 'Calibration is past its scheduled due date',
-                'count' => Equipment::whereDate('calibration_due','<',now())->where('agency_id',$this->agency)->count(),
+                'count' => Equipment::whereDate('calibration_due','<',now())->where('calibration_program','!=','Not Applicable')->where('agency_id',$this->agency)->whereNotIn('status_id',[36,37])->count(),
                 'icon' => 'ri-error-warning-fill',
                 'color' => 'bg-danger-subtle text-danger'
             ],
             [
                 'name' => 'Unscheduled Calibration',
                 'description' => 'Ensure follow-up on unclaimed reports.',
-                'count' => Equipment::where('calibration_due',NULL)->where('agency_id',$this->agency)->count(),
+                'count' => Equipment::where('calibration_due',NULL)->where('calibration_program','!=','Not Applicable')->where('agency_id',$this->agency)->whereNotIn('status_id',[36,37])->count(),
                 'icon' => 'ri-information-fill',
                 'color' => 'bg-dark-subtle text-dark'
             ],
@@ -121,14 +121,14 @@ class ViewClass
             [
                 'name' => 'Overdue Maintenance',
                 'description' => 'Maintenance is past its scheduled due date',
-                'count' => Equipment::whereDate('maintenance_due','<',now())->where('agency_id',$this->agency)->count(),
+                'count' => Equipment::whereDate('maintenance_due','<',now())->where('agency_id',$this->agency)->whereNotIn('status_id',[36,37])->count(),
                 'icon' => 'ri-error-warning-fill',
                 'color' => 'bg-danger-subtle text-danger'
             ],
             [
                 'name' => 'Unscheduled Maintenance',
                 'description' => 'Ensure follow-up on unclaimed reports.',
-                'count' => Equipment::where('maintenance_due',NULL)->where('agency_id',$this->agency)->count(),
+                'count' => Equipment::where('maintenance_due',NULL)->where('agency_id',$this->agency)->whereNotIn('status_id',[36,37])->count(),
                 'icon' => 'ri-information-fill',
                 'color' => 'bg-dark-subtle text-dark'
             ],
