@@ -81,7 +81,10 @@
                         <span v-else-if="isDue(list.calibration_due)" class="badge bg-danger">{{ list.calibration_due }}</span>
                         <span v-else>{{ list.calibration_due }}</span>
                     </td>
-                    <td class="text-center fs-12">{{list.last_maintenance}}</td>
+                    <td class="text-center fs-12">
+                        <span v-if="list.status.name  == 'Disposed' || list.status.name  == 'Not in Use'" class="text-muted fs-11">-</span>
+                        <span v-else>{{list.last_maintenance}}</span>
+                    </td>
                     <td class="text-center">
                         <span v-if="list.status.name  == 'Disposed' || list.status.name  == 'Not in Use'" class="text-muted fs-11">-</span>
                         <span v-else-if="isDue(list.maintenance_due)"
