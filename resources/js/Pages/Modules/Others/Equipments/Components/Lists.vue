@@ -83,8 +83,8 @@
                     </td>
                     <td class="text-center fs-12">{{list.last_maintenance}}</td>
                     <td class="text-center">
-                        <span
-                            v-if="isDue(list.maintenance_due)"
+                        <span v-if="list.status.name  == 'Disposed' || list.status.name  == 'Not in Use'" class="text-muted fs-11">-</span>
+                        <span v-else-if="isDue(list.maintenance_due)"
                             class="badge bg-danger"
                         >
                             {{ list.maintenance_due }}

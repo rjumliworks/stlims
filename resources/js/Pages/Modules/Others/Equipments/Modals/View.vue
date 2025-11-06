@@ -147,7 +147,7 @@
             <b-button @click="hide()" variant="light" block>Close</b-button>
             <b-button v-if="selected.status.name == 'Not in Use'" @click="submit(35)" variant="success" :disabled="form.processing" block>Mark as Operational</b-button>
             <b-button v-if="selected.status.name == 'Operational'" @click="submit(37)" variant="warning" :disabled="form.processing" block>Mark as Not in Use</b-button>
-            <b-button v-if="selected.status.name == 'Operational'" @click="submit(36)" variant="danger" :disabled="form.processing" block>Mark as Disposed</b-button>
+            <b-button v-if="selected.status.name == 'Operational' || selected.status.name == 'Not in Use'" @click="submit(36)" variant="danger" :disabled="form.processing" block>Mark as Disposed</b-button>
         </template>
     </b-modal>
     <Perform @update="updateData" ref="perform"/>
