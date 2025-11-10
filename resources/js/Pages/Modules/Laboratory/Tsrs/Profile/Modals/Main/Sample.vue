@@ -33,7 +33,7 @@
                                     placeholder="Select Sampletype"/>
                                 </div>
                                  <div class="col-md-6" v-if="form.sampletype?.subs.length > 0">
-                                    <InputLabel for="conforme" value="Sample Type" :message="form.errors.sampletype_id"/>
+                                    <InputLabel for="conforme" value="Sample Subtype" :message="form.errors.sampletype_id"/>
                                     <Multiselect 
                                     :options="form.sampletype.subs" 
                                     v-model="form.sampletype_id"

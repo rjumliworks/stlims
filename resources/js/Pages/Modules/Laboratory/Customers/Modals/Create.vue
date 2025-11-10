@@ -79,7 +79,7 @@
                                         <InputLabel for="sex_id" value="Type" :message="form.errors.female_id"/>
                                         <Multiselect :options="dropdowns.males" label="name" v-model="form.female_id" placeholder="Select Type" @input="handleInput('female_id')" />
                                     </BCol>
-                                    <BCol :lg="(subs.length > 0) ? '6' : '12'" class="mt-0 mb-1">
+                                    <BCol v-if="form.classification_id != 9" :lg="(subs.length > 0) ? '6' : '12'" class="mt-0 mb-1">
                                         <InputLabel for="industry_id" value="Industry Type" :message="form.errors.industry_id"/>
                                         <Multiselect :options="industries" :searchable="true" label="name" object v-model="industry" placeholder="Select Industry" @input="handleInput('industry')" />
                                     </BCol>
