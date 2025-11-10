@@ -97,7 +97,7 @@ class ViewClass
         ->where('agency_id',$this->agency)->where('role_id',4)
         ->get()->map(function ($item) {
             return [
-                'value' => $item->id,
+                'value' => $item->user_id,
                 'name' => $item->user->profile->firstname.' '.$item->user->profile->lastname
             ];
         });
