@@ -40,9 +40,12 @@ export default {
         return {
             currentUrl: window.location.origin,
             form: useForm({
-                code: null,
+                id: null,
+                email: null,
                 is_active: null,
-                option: 'status'
+                email_verified_at: '2024-05-15 08:46:33',
+                type: null,
+                option: 'user'
             }),
             user: {},
             type: null,
@@ -53,7 +56,9 @@ export default {
         show(type,data){
             this.user = data;
             this.type = type;
-            this.form.code = this.user.code,
+            this.form.type = type;
+            this.form.id = this.user.id,
+            this.form.email = this.user.email,
             this.form.is_active = (this.user.is_active == 1) ? 0 : 1,
             this.showModal = true;
         },

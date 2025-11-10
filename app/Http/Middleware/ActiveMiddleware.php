@@ -11,7 +11,7 @@ class ActiveMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         if(auth()->check()) {
-            if(auth()->user()->is_new) {
+            if(auth()->user()->must_change) {
                 return redirect()->intended(route('activation', absolute: false));
             }
             return $next($request);

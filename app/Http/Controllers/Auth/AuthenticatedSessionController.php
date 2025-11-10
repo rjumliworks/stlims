@@ -33,7 +33,7 @@ class AuthenticatedSessionController extends Controller
         $request->session()->put('two_factor_authenticated', false);
 
         if(\Auth::user()->is_active){
-            if(\Auth::user()->is_new){
+            if(\Auth::user()->must_change){
                 return redirect()->intended(route('activation', absolute: false));
             }
             return redirect()->intended(route('dashboard', absolute: false));

@@ -13,6 +13,24 @@ class UserProfile extends Model
 
     protected $guarded = [];
     protected $fillable = ['firstname', 'lastname', 'middlename','suffix','sex','mobile','mobile','user_id', 'avatar','facility_id'];
+    protected $appends = ['name','fullname'];
+
+    public function getFullnameAttribute()
+    {
+        $middleInitial = $this->middlename ? strtoupper($this->middlename[0]) . '.' : '';
+        $name = trim("{$this->firstname} {$middleInitial} {$this->lastname}");
+        if ($this->suffix) {
+            $name .= ', ' . $this->suffix;
+        }
+        return $name;
+    }
+
+    public function getNameAttribute()
+    {
+        $middleInitial = $this->middlename ? strtoupper($this->middlename[0]) . '.' : '';
+        $parts = [trim($this->lastname) . ',', trim($this->firstname), $middleInitial, $this->suffix];
+        return implode(' ', array_filter($parts));
+    }
 
     public function user()
     {

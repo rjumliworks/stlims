@@ -19,6 +19,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'role',
         'password',
         'is_active',
+        'must_change',
         'email_verified_at',
         'password_changed_at',
         'two_factor_confirmed_at',
@@ -53,7 +54,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function myroles()
     {
-        return $this->hasMany('App\Models\UserRole', 'user_id');
+        return $this->hasMany('App\Models\UserRole', 'user_id')->orderBy('is_active','DESC');
     }
 
     public function roles()

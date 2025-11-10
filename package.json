@@ -37,6 +37,7 @@
         "@vueform/toggle": "^2.1.4",
         "aos": "^2.3.4",
         "bootstrap": "^5.3.6",
+        "dayjs": "^1.11.19",
         "filepond": "^4.32.8",
         "filepond-plugin-file-validate-type": "^1.2.9",
         "html2canvas": "^1.4.1",
