@@ -20,7 +20,7 @@ class DueCommand extends Command
         $laboratories = ListLaboratory::where('is_active',1)->get();
         
         foreach($laboratories as $laboratory){
-            $tsrs = Tsr::where('laboratory_id',$laboratory->id)->whereDate('due_at', $today)->get();
+            $tsrs = Tsr::where('laboratory_id',$laboratory->id)->whereDate('due_at', $today)->where('agency_id',14)->get();
             $counter = 1;
             $message = "Good day. This is to inform you that the Reports for the following Technical Service Request for ".$laboratory->name." are due today, ".$today->format('F j, Y')."\n\n";
             foreach ($tsrs as $tsr) {
@@ -33,7 +33,10 @@ class DueCommand extends Command
             ->whereHas('user', function ($query){
                 $query->where('is_active',1);
             })
-            ->where('laboratory_id',$laboratory->id)->whereIn('role_id',[9,4,2])->get();
+            ->where('agency_id',14)
+            ->where('laboratory_id',$laboratory->id)
+            ->whereIn('role_id',[9,4,2])->get();
+            
             if(count($tsrs) > 0){
                 foreach($users as $user){
                     dispatch(new SmsJob($user->user->profile->mobile, $message));
