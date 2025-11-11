@@ -7,6 +7,7 @@ use App\Models\Tsr;
 use App\Models\TsrPayment;
 use App\Models\Customer;
 use App\Models\Address;
+use App\Models\AgencyDiscount;
 use App\Models\ListIndustry;
 use App\Models\ListDropdown;
 use App\Models\ListDiscount;
@@ -468,8 +469,9 @@ class CustomerClass
                 break;
             }
         }
-        
-        $query = ListDiscount::query()->where('name','!=','Regular');
+        $agency_discount = AgencyDiscount::where('agency_id',$this->agency)->pluck('discount_id');
+
+        $query = ListDiscount::query()->whereIn('id',$agency_discount)->where('name','!=','Regular');
         $query->withCount(['payment' => function ($query) use ($laboratory,$year,$month,$startMonth,$endMonth) {
             $query->whereHas('tsr', function ($query) use ($laboratory,$year,$month,$startMonth,$endMonth) {
                 $query->where('agency_id', $this->agency)->whereIn('status_id',[2,3,4]);
