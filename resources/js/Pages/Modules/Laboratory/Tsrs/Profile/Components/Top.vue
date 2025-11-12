@@ -73,7 +73,7 @@ export default {
     props:['selected','analyses','dropdowns'],
     methods: {
         openSave(id){
-            this.$refs.save.show(id,this.selected.customer.industry);
+            this.$refs.save.show(id,this.selected.customer.industry,this.selected.facility);
         },
         openWallet(id,customer,payment){
             this.$refs.wallet.show(id,customer,payment);

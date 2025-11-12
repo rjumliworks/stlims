@@ -15,7 +15,7 @@
                             <InputLabel for="due" value="Please type CONFIRM to continue."/>
                             <TextInput v-model="keyword" type="text" class="form-control" :light="true"/>
                         </BCol>
-                        <template v-if="form.industry == 'Government'">
+                        <template v-if="form.industry == 'Government' || facility?.id == 2">
                             <BCol lg="12" class="mt-3"><hr class="text-muted mt-n1 mb-n3"/></BCol>
                             <BCol lg="8" style="margin-top: 13px; margin-bottom: -12px;" class="fs-12" :class="(form.errors.is_government) ? 'text-danger' : ''">Has Memorandum of Agreement?</BCol>
                             <BCol lg="4" style="margin-top: 13px; margin-bottom: -12px;">
@@ -68,14 +68,16 @@ export default {
                 industry: null,
                 option: 'Confirm'
             }),
+            facility: null,
             keyword: null,
             showModal: false
         }
     },
     methods: { 
-        show(id,industry){
+        show(id,industry,facility){
             this.keyword = null;
             this.form.id = id;
+            this.facility = facility;
             this.form.industry = industry;
             this.showModal = true;
         },
