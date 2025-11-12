@@ -37,6 +37,7 @@ class OrseriesClass
                 });
             }
         })
+        ->where('user_id',\Auth::user()->id) // only this user see
         ->orderBy('is_active','DESC')
         ->paginate($request->count);
         return DefaultResource::collection($data);
