@@ -111,7 +111,11 @@ class UpdateClass
             if($data->laboratory_id == 1 || $data->laboratory_id == 2){
                 $short = null;
             }else{
-                $short = AgencyFacility::where('id',$data->facility_id)->where('is_regional',0)->value('short');
+                if($this->agency == 11){
+                    $short = AgencyFacility::where('id',$data->facility_id)->value('short');
+                }else{
+                    $short = null;
+                }
             }
             $data->status_id = (in_array($data->payment->discount_id, [5, 6, 7, 10, 11, 12])) ? 3 : $request->status_id;
             $data->due_at = $request->due_at;
@@ -208,6 +212,7 @@ class UpdateClass
                 return $object['value'] === $specificValue;
             }));
             $tsr_count = $lab[0]['tsr_count'];
+            
             $laboratory = $data->laboratory_id;
         
             $agency = Agency::where('id', $this->agency)->first();
@@ -228,7 +233,7 @@ class UpdateClass
                     ->where('laboratory_id', $laboratory)
                     ->whereYear('created_at', $year)
                     ->whereNotNull('code')
-                    ->lockForUpdate()
+                    ->lockForUpdate() 
                     ->count();
             }
 
