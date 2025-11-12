@@ -358,6 +358,7 @@ class OpClass
             'samples' => $samples_list,
             'address' => $data->payorable->address->address.', '.$data->payorable->address->barangay->name.', '.$data->payorable->address->municipality->name.', '.$data->payorable->address->province->name,
             'cashier' => $signatory->cashier->profile->firstname.' '.$signatory->cashier->profile->middlename[0].'. '.$signatory->cashier->profile->lastname,
+            'role' => ($signatory->is_cashier) ? 'Cashier' : 'Special Collecting Officer',
             'accountant' => $signatory->accountant->profile->firstname.' '.$signatory->accountant->profile->middlename[0].'. '.$signatory->accountant->profile->lastname,
         ];
 

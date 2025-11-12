@@ -116,7 +116,7 @@ $form = $configuration['form'] = $configuration['form'];
                 </tr>    
                 <tr>
                     <td width="25%">Cash Unit</td>
-                    <td width="75%">Cashier</td>
+                    <td width="75%">{{$role}}</td>
                 </tr>
             </tbody>
         </table>
