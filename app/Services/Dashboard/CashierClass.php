@@ -15,6 +15,7 @@ class CashierClass
     
     public function orseries(){
         $data = FinanceOrseries::where('is_active',1)->where('agency_id',$this->agency)
+        ->where('user_id',\Auth::user()->id)
          ->when(true, function ($query) {
             
         })
