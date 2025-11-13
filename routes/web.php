@@ -56,6 +56,7 @@ Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     Route::resource('/equipments', App\Http\Controllers\Others\EquipmentController::class);
     Route::resource('/inventory', App\Http\Controllers\Others\InventoryController::class);
     Route::resource('/accomplishments', App\Http\Controllers\Others\AccomplishmentController::class);
+    Route::resource('/personnels', App\Http\Controllers\Others\PersonnelController::class);
 
     Route::resource('/insights', App\Http\Controllers\InsightController::class);
     Route::resource('/reports', App\Http\Controllers\ReportController::class);

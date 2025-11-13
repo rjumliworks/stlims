@@ -26,21 +26,25 @@ class AnalystClass
     }
 
     public function performance($request){
-        $userId = \Auth::user()->id;
+        $userId = ($request->id) ? $request->id : \Auth::user()->id;
         $year = $request->year;
         $month = $request->month;
         $startMonth = ($month == 'January - June') ? 1 : 7;
         $endMonth = $startMonth + 5;
+        $laboratory = $request->laboratory;
 
         $monthlyCounts = [];
 
         for ($m = $startMonth; $m <= $endMonth; $m++) {
             $query = TsrAnalysis::where('status_id', 12)
             ->where('analyst_id', $userId)
-            ->whereHas('sample', function ($query) use ($year, $m) {
-                $query->whereHas('tsr', function ($query) use ($year, $m) {
+            ->whereHas('sample', function ($query) use ($year, $m, $laboratory) {
+                $query->whereHas('tsr', function ($query) use ($year, $m,$laboratory) {
                     $query->whereYear('created_at', $year)
-                        ->whereMonth('created_at', $m);
+                        ->whereMonth('created_at', $m)
+                         ->when($laboratory, function ($query) use ($laboratory) {
+                            $query->where('laboratory_id',$laboratory);
+                        });
                 });
             });
 

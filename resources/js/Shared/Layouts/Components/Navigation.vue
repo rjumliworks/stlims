@@ -322,13 +322,25 @@ export default {
             </div>
           </BDropdown> 
 
-        <div class="ms-1 header-item d-none d-sm-flex">
+
+          
+
+           <div class="ms-1 header-item d-none d-sm-flex">
+            <Link href="/personnels">
+              <BButton type="button" variant="ghost-secondary" class="btn-icon btn-topbar rounded-circle">
+                <i class="ri-account-circle-fill fs-22"></i>
+              </BButton>
+            </Link>
+          </div>
+
+
+        <!-- <div class="ms-1 header-item d-none d-sm-flex">
             <Link href="/addresses">
               <BButton type="button" variant="ghost-secondary" class="btn-icon btn-topbar rounded-circle">
                 <i class="ri-map-pin-fill fs-22"></i>
               </BButton>
             </Link>
-          </div>
+          </div> -->
 
           <div class="ms-1 header-item d-none d-sm-flex">
             <BButton type="button" variant="ghost-secondary" class="btn-icon btn-topbar rounded-circle"
