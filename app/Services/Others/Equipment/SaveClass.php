@@ -97,7 +97,37 @@ class SaveClass
             'message' => 'Equipment status updated successfully!', 
             'info' => "You've successfully updated the equipment status."
         ];
-    }   
+    } 
+    
+    public function delete($id){
+        $data = EquipmentLog::where('id',$id)->first();
+        $equipment_id = $data->equipment_id;
+        $is_calibrated = $data->is_calibrated;
+       
+        if($data->delete()){
+            $latest = EquipmentLog::where('equipment_id', $equipment_id)
+            ->latest() 
+            ->first();
+            if($latest){
+                $latest_due = $latest->next_date;
+            }else{
+                $latest_due = null;
+            }
+            
+            $equipment = Equipment::where('id',$equipment_id)->first();
+            if($is_calibrated){
+                $equipment->calibration_due = $latest_due;
+            }else{
+                $equipment->maintenance_due = $latest_due;
+            }
+            $equipment->save();
+        }
+        return [
+            'data' => $data,
+            'message' => 'Equipment status updated successfully!', 
+            'info' => "You've successfully updated the equipment status."
+        ];
+    } 
 
     private function generateCode($laboratory){
         $lab = Agency::where('id',$this->agency)->first();

@@ -113,7 +113,7 @@
                 <table class="table table-bordered table-nowrap align-middle mb-0">
                     <thead class="table-primary thead-fixed">
                         <tr class="fs-11">
-                            <th colspan="4" class="text-center text-primary">Calibration / Maintance Logs</th>
+                            <th colspan="5" class="text-center text-primary">Calibration / Maintance Logs</th>
                         </tr>
                     </thead>
                     <thead class="table-light thead-fixed">
@@ -122,6 +122,7 @@
                             <th style="width: 15%;" class="text-center">Date</th>
                             <th style="width: 30%;" class="text-center">User</th>
                             <th style="width: 40%;" class="text-center">Note</th>
+                            <th style="width: 5%;"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -133,6 +134,11 @@
                             <td class="text-center">{{ list.date }}</td>
                             <td class="text-center">{{ list.name }}</td>
                             <td class="text-center">{{ (list.note) ? list.note : 'n/a' }}</td>
+                            <td>
+                                <b-button  @click="openEdit(list,index)" variant="soft-warning" v-b-tooltip.hover title="Edit" size="sm">
+                                    <i class="ri-delete-bin-fill align-bottom"></i>
+                                </b-button>
+                            </td>
                         </tr>
                         <tr v-if="selected.logs.length == 0">
                             <td colspan="4" class="text-center text-muted fs-10">
@@ -151,13 +157,15 @@
         </template>
     </b-modal>
     <Perform @update="updateData" ref="perform"/>
+    <Edit ref="edit"/>
 </template>
 <script>
+import Edit from './Edit.vue';
 import { useForm } from '@inertiajs/vue3';
 import Perform from './Perform.vue';
 import simplebar from "simplebar-vue";
 export default {
-    components : { simplebar, Perform }, 
+    components : { simplebar, Perform, Edit }, 
     data(){
         return {
             currentUrl: window.location.origin,
@@ -168,6 +176,7 @@ export default {
                 status_id: null,
                 option: 'status'
             }),
+            index: null
         }
     },
     methods: { 
@@ -189,6 +198,10 @@ export default {
                     this.hide();
                 }
             });
+        },
+        openEdit(data,index){
+            this.index = index;
+            this.$refs.edit.show(data.id);
         },
         updateData(data){
             this.selected = data;

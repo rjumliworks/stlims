@@ -61,9 +61,25 @@ class EquipmentController extends Controller
         $result = $this->handleTransaction(function () use ($request) {
             if($request->option == 'status'){
                 return $this->save->status($request);
+            }else if($request->option == 'delete'){
+                return $this->save->delete($request);
             }else{
                 return $this->save->update($request);
             }
+        });
+
+        return back()->with([
+            'data' => $result['data'],
+            'message' => $result['message'],
+            'info' => $result['info'],
+            'status' => $result['status'],
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        $result = $this->handleTransaction(function () use ($id){
+            return $this->save->delete($id);
         });
 
         return back()->with([
