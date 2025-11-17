@@ -13,7 +13,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-12 mt-5">
                                     <div class="text-center">
-                                        <img src="/images/gad.png" alt="" class="rounded img-fluid mx-auto d-block" />
+                                        <img src="/images/gad1.png" alt="" class="rounded img-fluid mx-auto d-block" />
                                     </div>
                                 </div>
                                 <div class="col-lg-8 ms-n5 text-center">
