@@ -18,7 +18,6 @@
                             <p class="text-muted text-truncate-two-lines fs-12">A comprehensive overview of each analyst’s activity within the system, including test counts, completed analyses, and total test costs.</p>
                         </div>
                         <div class="flex-shrink-0" style="width: 45%;">
-                            
                         </div>
                     </div>
                 </div>
