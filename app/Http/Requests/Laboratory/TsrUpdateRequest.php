@@ -20,6 +20,17 @@ class TsrUpdateRequest extends FormRequest
                     'is_government' => 'required_if:industry,Government',
                 ];
             break;
+            case 'Discount':
+                return [
+                    'reason' => 'required',
+                    'discount_id' => 'required'
+                ];
+            break;
+            case 'Cancel':
+                return [
+                    'reason' => 'required'
+                ];
+            break;
             default: 
             return [];
         }

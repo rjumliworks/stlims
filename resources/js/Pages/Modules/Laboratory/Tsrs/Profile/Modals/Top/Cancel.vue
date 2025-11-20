@@ -5,6 +5,13 @@
                 <h4 class="mb-3">Cancel Request</h4>
                 <p class="text-muted mb-0">Are you sure you want to cancel the tsr request?</p>
                 <p class="text-muted mb-4">Cancelling request cannot be undone.</p>
+                  <BCol lg="12">
+                    <p class="text-muted mb-n3 fs-11 mt-2 text-start">
+                        Changing the discount while an ongoing TSR exists will update the total amount.
+                        Please enter the reason for changing the discount.
+                    </p>
+                    <textarea id="attribute"  :class="{ 'is-invalid': form.errors.reason }" v-model="form.reason" maxlength="250" rows="2" type="text" class="form-control mt-4 mb-4" placeholder="Please enter reason" style="background-color: #f5f6f7;"/>
+                </BCol>
                 <div class="hstack gap-2 justify-content-center mb-3">
                     <button @click="hide()" class="btn btn-light btn-md" type="button">
                         <div class="btn-content"> Close</div>
@@ -24,6 +31,7 @@ export default {
             form: useForm({
                id: null,
                status_id: 5,
+               reason: null,
                option: 'Cancel'
             }),
             showModal: false

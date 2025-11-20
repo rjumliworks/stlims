@@ -32,6 +32,9 @@
                                  <div class="text-muted" @click="makeCopy(selected)" style="cursor: pointer;">  
                                     <i class="ri-edit-box-fill fs-16"></i> Make a Copy
                                 </div>
+                                <div class="text-muted" v-if="selected.status.name === 'Ongoing' && selected.laboratory.id === 3 && $page.props.user.data.agency_id === 11 && selected.payment.status.name == 'Contract'" @click="openUpdate(selected,index)" style="cursor: pointer;">  
+                                    <i class="ri-edit-box-fill fs-16"></i> Update Discount 
+                                </div>
                                 <div class="text-muted" v-if="selected.status.name === 'Pending' || selected.status.name === 'For Payment'" @click="openEdit(selected,index)" style="cursor: pointer;">  
                                     <i class="ri-edit-box-fill fs-16"></i> Update
                                 </div>
@@ -51,7 +54,6 @@
                             </div>
                         </b-col>
                     </b-row>
-                    
                 </b-card-body>
             </div>
         </b-card>
@@ -60,6 +62,7 @@
     <Save ref="save"/>
     <Wallet ref="wallet"/>
     <Cancel ref="cancel"/>
+    <Update :dropdowns="dropdowns" ref="update"/>
     <Edit :dropdowns="dropdowns" ref="edit"/>
 </template>
 <script>
@@ -68,8 +71,9 @@ import Edit from '../Modals/Top/Edit.vue';
 import Save from '../Modals/Top/Save.vue';
 import Cancel from '../Modals/Top/Cancel.vue';
 import Wallet from '../Modals/Top/Wallet.vue';
+import Update from '../Modals/Top/Update.vue';
 export default {
-    components: { Save, Wallet, Edit, Cancel, Copy },
+    components: { Save, Wallet, Edit, Cancel, Update, Copy },
     props:['selected','analyses','dropdowns'],
     methods: {
         openSave(id){
@@ -86,6 +90,9 @@ export default {
         },
         openCancel(data){
             this.$refs.cancel.show(data);
+        },
+        openUpdate(selected){
+            this.$refs.update.show(selected);
         },
         makeCopy(data){
             this.$refs.copy.show(data);

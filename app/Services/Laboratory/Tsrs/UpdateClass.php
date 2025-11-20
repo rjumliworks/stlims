@@ -26,6 +26,60 @@ class UpdateClass
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
     }
 
+    public function discount($request){
+        $data = Tsr::with('payment')->where('id',$request->id)->first();
+         
+        if ($data->status_id == 3 && $request->discount_id != $data->discount_id) {
+            if($data->payment->discount_id != $request->discount_id){
+                if(in_array($request->discount_id, [5, 6, 7])){
+                    $data->payment->update([
+                        'discount_id' => $request->discount_id,
+                        'status_id' => 8,
+                        'paid_at' => now(),
+                        'is_free' => 1
+                    ]);
+                    $data->status_id = 3; //update to ongoing since it is gratis
+                    $data->save();
+                }else{
+                    $data->payment->update([
+                        'discount_id' => $request->discount_id
+                    ]);
+                }
+                $total = $this->updateTotal($request->id,$data->payment->subtotal);
+                $cancel = $data->remarkable()->create([
+                    'amount' => $data->payment->subtotal,
+                    'reason' => $request->reason,
+                    'type_id' => 90,
+                    'user_id' => \Auth::user()->id
+                ]);
+            }
+            
+            $this->report($request->id);
+            
+
+            $final =  Tsr::query()
+            ->with('laboratory','status','received.profile')
+            ->with('customer.customer_name','conforme','customer.address.region','customer.address.province','customer.address.municipality','customer.address.barangay')
+            ->with('payment.status','payment.collection','payment.type','payment.discounted')
+            ->where('id',$request->id)
+            ->first();
+
+            return [
+                'data' => new TsrResource($final),
+                'message' => 'TSR Discount was successfully updated!', 
+                'info' => "You've successfully updated the tsr details.",
+            ];
+        }else{
+            return [
+                'data' => [],
+                'message' => 'Action Not Allowed',
+                'status' => false,
+                'info' => 'This TSR has already been processed and can no longer be modified.'
+            ];
+        }
+
+    }
+
     public function update($request){
         $data = Tsr::with('payment')->where('id',$request->id)->first();
          
@@ -88,7 +142,14 @@ class UpdateClass
         $data = Tsr::find($id[0]);
         $data->update($request->except(['option']));
         $payment = TsrPayment::where('tsr_id',$id[0])->update(['status_id' => 9]);
-    
+        
+        $cancel = $data->remarkable()->create([
+            'amount' => $data->payment->subtotal,
+            'reason' => $request->reason,
+            'type_id' => 85,
+            'user_id' => \Auth::user()->id
+        ]);
+
         $data = new TsrResource(
             Tsr::with('services.service')
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches','customer.wallet')
