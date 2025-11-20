@@ -178,11 +178,11 @@ class ViewClass
                 $query->where('received_by', \Auth::user()->id);
             })
             ->when($this->configuration->strict_mode == 1, function ($query) {
-                // $facility = \Auth::user()->profile->facility;
+                $facility = \Auth::user()->profile->facility;
 
-                // if ($facility->is_psto || $facility->is_separated) {
-                //     $query->where('facility_id', $facility->id);
-                // }
+                if ($facility->is_psto) { //|| $facility->is_separated
+                    $query->where('facility_id', $facility->id);
+                }
             })
             ->when($request->region, function ($query, $region) {
                 $query->whereHas('customer.address', function ($query) use ($region) {
