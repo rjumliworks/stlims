@@ -10,7 +10,7 @@ use App\Jobs\MailJob;
 class SaveClass
 {
     public function store($request){
-        $data = User::create(array_merge($request->all(), ['password' => bcrypt('dost6!@#$%'),'is_new' => 1 ,'role' => 'Staff','avatar' =>'avatar.jpg']));
+        $data = User::create(array_merge($request->all(), ['password' => bcrypt('dost7!@#$%'),'is_new' => 1 ,'role' => 'Staff','avatar' =>'avatar.jpg']));
         $data->profile()->create($request->all());
         $data->myroles()->create($request->all());
         MailJob::dispatch($data);
