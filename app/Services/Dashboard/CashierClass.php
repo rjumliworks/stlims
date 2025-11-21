@@ -16,9 +16,12 @@ class CashierClass
     public function orseries(){
         $data = FinanceOrseries::where('is_active',1)->where('agency_id',$this->agency)
         ->where('user_id',\Auth::user()->id)
-         ->when(true, function ($query) {
-            
+        ->when($this->agency_id != 14, function ($query) {
+            $query->where('user_id', \Auth::user()->id);
         })
+        // ->when(true, function ($query) {
+            
+        // })
         ->get()->map(function ($item) {
             return [
                 'value' => $item->id,
@@ -28,13 +31,7 @@ class CashierClass
                 'end' => $item->end
             ];
         });
-        // $data->push([
-        //     'value' => 0,
-        //     'name' => 'Custom OR',
-        //     'start' => 0,
-        //     'next' => 0,
-        //     'end' => 0,
-        // ]);
+
         return $data;
     }
 
