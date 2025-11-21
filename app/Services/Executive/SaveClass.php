@@ -12,7 +12,7 @@ use App\Http\Resources\DefaultResource;
 class SaveClass
 {   
     public function user($request){
-        $data = User::create(array_merge($request->all(), ['password' => bcrypt('123456789'), 'role' => 'Staff','avatar' =>'avatar.jpg']));
+        $data = User::create(array_merge($request->all(), ['password' => bcrypt('dost7!@#$%'), 'role' => 'Staff','avatar' =>'avatar.jpg']));
         $data->profile()->create($request->all());
         $data->myrole()->create($request->all());
            
