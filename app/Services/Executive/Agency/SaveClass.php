@@ -26,6 +26,7 @@ class SaveClass
             $config->contact = [];
             $config->samplecode_year = 0;
             $config->agency_id = $data->id;
+            $config->strict_mode = 1;
             $config->save();
         }
         $data = new AgencyResource(
