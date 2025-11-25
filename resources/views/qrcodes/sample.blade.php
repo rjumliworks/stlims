@@ -101,14 +101,14 @@
         <img class="image1" src="<?php echo $qrCodeImage; ?>" alt="QR Code"/>
         <div class="code1">({{$sample_code}})</div>
         <div class="sample1">{{$sample_name}}</div>
-        <div class="received1">Receiveds: {{$created_at}}</div>
-        <div class="due1">Due atss: {{$due_at}}</div>
+        <div class="received1">Received: {{$created_at}}</div>
+        <div class="due1">Due at: {{$due_at}}</div>
         @endif
         @if (strlen($sample_name) <= 10)
         <img class="image" src="<?php echo $qrCodeImage; ?>" alt="QR Code"/>
         <div class="code">{{$sample_code}} ({{$sample_name}})</div>
-        <div  class="received">Receivedss: {{$created_at}}</div>
-        <div class="due">Due atss: {{$due_at}}</div>
+        <div  class="received">Received: {{$created_at}}</div>
+        <div class="due">Due at: {{$due_at}}</div>
         @endif
         <div class="breakline"></div>
         <div class="names">
