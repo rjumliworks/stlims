@@ -31,7 +31,7 @@
                                 <!-- CARD COMPONENT -->
                                 <template v-for="card in cards" :key="card.id">
                                     <div class="col-md-6">
-                                        <Link :href="`/gadcorner/${card.id}`">
+                                        <Link :href="`/gadinfosys/${card.id}`">
                                             <div class="card border">
                                                 <div class="card-body">
                                                     <div class="d-flex flex-wrap" style="cursor: pointer;">
