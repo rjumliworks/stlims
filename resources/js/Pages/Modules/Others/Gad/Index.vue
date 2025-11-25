@@ -127,7 +127,7 @@
                 document.documentElement.scrollTop = 0;
             },
             selectCard(id) {
-                const url = `/gadcorner/${id}`;
+                const url = `/gadinfosys/${id}`;
                 window.open(url);
             }
         },
