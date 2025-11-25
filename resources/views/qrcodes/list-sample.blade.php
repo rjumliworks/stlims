@@ -89,8 +89,8 @@
         @foreach($lists as $index2=>$list)
         <img class="image" src="<?php echo $list['qrCodeImage']; ?>" alt="QR Code"/>
         <div class="code">{{$list['sample_code']}}  @if (strlen($list['sample_name']) <= 17)<span style="font-size: 10px;">({{$list['sample_name']}})</span>@endif</div>
-        <div class="received">Received: {{$list['created_at']}}</div>
-        <div class="due">Due at: {{$list['due_at']}}</div>
+        <div class="received">Received:s {{$list['created_at']}}</div>
+        <div class="due">Due sat: {{$list['due_at']}}</div>
         @if (strlen($list['sample_name']) > 17)
             <div class="desc"><span style="font-size: 10px;">{{$list['sample_name']}}</span></div>
             <div class="breakline2"></div>
