@@ -6,7 +6,7 @@
                     <img src="/images/gad.png" alt="Logo" class="logo-small" />
                     <b-col md="auto">
                         <div class="hstack gap-4 flex-wrap mt-2">
-                            <Link href="/gadcorner">
+                            <Link href="/gadinfosys">
                                     <div style="margin-top: -8px;">  
                                     <b-button variant="purple" block><i class="ri-delete-back-2-fill me-1"></i> Back</b-button>
                                 </div>
