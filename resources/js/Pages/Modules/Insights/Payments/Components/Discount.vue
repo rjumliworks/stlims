@@ -51,13 +51,15 @@
             </div>
         </div>
     </div>
+    <Discount :y="y" :discounts="discounts" ref="discount"/>
 </template>
 <script>
 import _ from 'lodash';
+import Discount from './Modals/Discount.vue';
 import simplebar from "simplebar-vue";
 export default {
-    props: ['lists'],
-    components: { simplebar },
+    props: ['lists','discounts','y'],
+    components: { simplebar, Discount },
     data(){
         return {
             sort: null,
@@ -77,7 +79,7 @@ export default {
             }
         },
         openView(){
-            this.$refs.tsr.show();
+            this.$refs.discount.show();
         }
     }
 }

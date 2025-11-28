@@ -6,6 +6,8 @@ use App\Models\TsrPayment;
 use App\Models\ListStatus;
 use App\Models\ListDropdown;
 use App\Models\ListDiscount;
+use App\Exports\DiscountExport;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Resources\DefaultResource;
 
 class PaymentClass
@@ -265,7 +267,9 @@ class PaymentClass
         $month = $request->month;
         $laboratory = $request->laboratory;
   
-        $query = ListDiscount::query()->select('id','name');
+        $query = ListDiscount::query()->whereHas('agencies', function ($q){
+            $q->where('agency_id',$this->agency);
+        })->select('id','name');
         $query->withCount(['payment' => function ($query) use ($year,$month,$laboratory){
             $query->where('is_child',0);
             $query->whereHas('tsr',function ($query) use ($year,$month,$laboratory) {
@@ -278,6 +282,18 @@ class PaymentClass
         ->orderBy('payment_count', $sort);
         $data = $query->get();
         return DefaultResource::collection($data);
+    }
+
+     public function list_discount(){
+        $data = ListDiscount::whereHas('agencies', function ($q){
+            $q->where('agency_id',$this->agency);
+        })->get()->map(function ($item) {
+            return [
+                'value' => $item->id,
+                'name' => $item->name
+            ];
+        });
+        return $data;
     }
 
     public function statuses($request){
@@ -320,5 +336,10 @@ class PaymentClass
         ->orderBy('payment_count', $sort);
         $data = $query->get();
         return DefaultResource::collection($data);
+    }
+
+    public function excel($request){
+        $year = ($request->year) ? $request->year : date('Y');
+        return Excel::download(new DiscountExport($year,$this->agency,$request->discount), 'discount'.$year.'.xlsx');
     }
 }

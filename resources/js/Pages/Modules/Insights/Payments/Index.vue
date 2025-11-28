@@ -27,7 +27,7 @@
             <Method :lists="methods"/>
         </BCol>
         <BCol xl="4" class="mt-n1">
-            <Discount :lists="discounts"/>
+            <Discount :y="y" :discounts="list_discount" :lists="discounts"/>
         </BCol>
     </BRow>
 </template>
@@ -40,7 +40,7 @@ import Discount from './Components/Discount.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 export default {
-    props: ['types','y','years'],
+    props: ['types','y','years','list_discount'],
     components: { PageHeader, Multiselect, Status, Method, Discount, Info, Bar },
     data(){
         return {

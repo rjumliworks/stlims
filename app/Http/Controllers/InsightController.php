@@ -99,6 +99,9 @@ class InsightController extends Controller
                     'chart' => $this->payment->chart($request)
                 ];
             break;
+            case 'discount': 
+                return $this->payment->excel($request);
+            break;
             case 'gad':
                 return [
                     'discounts' => $this->gad->discounts($request),
@@ -170,6 +173,7 @@ class InsightController extends Controller
                 return inertia('Modules/Insights/Payments/Index',[
                     'years' => $this->top->years(),
                     'y' => date('Y'),
+                    'list_discount' => $this->payment->list_discount(),
                     'types' => $this->top->laboratory_types(),
                 ]);
             break;
