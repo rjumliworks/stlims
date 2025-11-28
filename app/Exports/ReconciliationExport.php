@@ -66,10 +66,17 @@ class ReconciliationExport implements FromView
                 "excess" => $excess,
                 "created" => $created
             ];
+
+            $totalOrAmount = collect($ops)->sum(function($item) {
+                return floatval(
+                    str_replace(['₱', ','], '', $item['oramount'])
+                );
+            });
         }
 
         return view('exports.reconciliation', [
-            'lists' => $ops
+            'lists' => $ops,
+            'total_or' => $totalOrAmount
         ]);
     }
 }
