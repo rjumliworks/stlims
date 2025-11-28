@@ -88,7 +88,7 @@ class AccomplishmentClass
             ->withWhereHas('payment', function ($query) {
                 $query->where('is_free',0);
             })
-            // ->where('status_id','!=',5)
+            ->where('status_id','!=',5)
             ->when($month, function ($query, $month) {
                 $query->whereMonth('created_at',$month);
             })
