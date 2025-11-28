@@ -24,10 +24,16 @@ class OpExport implements FromView
         ->with(['items' => function ($query) {
             $query->with('itemable:id,code')->where('itemable_type', 'App\Models\Tsr');
         }, 'or:id,op_id,number','or.detail','or.wallet'])
-         ->whereHasMorph('items.itemable', [\App\Models\Tsr::class], function ($q) {
-        $q->whereMonth('created_at', $this->month)
-          ->whereYear('created_at', $this->year);
-    })
+         ->whereHas('items', function ($q) {
+    $q->whereHasMorph(
+        'itemable',
+        [\App\Models\Tsr::class],
+        function ($tsrQuery) {
+            $tsrQuery->whereMonth('created_at', $this->month)
+                     ->whereYear('created_at', $this->year);
+        }
+    );
+})
 
         ->where('payorable_type', 'App\Models\Customer')
         ->where('status_id',7)
