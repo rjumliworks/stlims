@@ -51,8 +51,9 @@ class AccomplishmentClass
         $lists = []; $requests_total = 0; $samples_total = 0; $analyses_total = 0; $fees_total = 0; $gratis_total = 0; $discount_total = 0; $gross_total = 0;
         
         foreach($laboratories as $laboratory){
-            $req = Tsr::where('status_id','!=',5)
-            ->when($month, function ($query, $month) {
+            $req = Tsr::
+            // where('status_id','!=',5)
+            when($month, function ($query, $month) {
                 $query->whereMonth('created_at',$month);
             })
             ->when($year, function ($query, $year) {
