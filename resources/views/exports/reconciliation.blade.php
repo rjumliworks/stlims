@@ -36,14 +36,14 @@
             </tr>
         @endforeach
         <tr style="font-size: 10px; font-weight: bold; background-color:#e6e6e6;">
-    <td colspan="7" style="text-align: right; padding-right: 10px;">TOTAL OR AMOUNT:</td>
-    <td style="text-align: center;">
-        <span style="font-family: DejaVu Sans;">&#8369;</span>
-        {{ number_format($total_or, 2, ".", ",") }}
-    </td>
-    <td></td>
-    <td></td>
-</tr>
+            <td colspan="7" style="text-align: right; padding-right: 10px;">TOTAL OR AMOUNT:</td>
+            <td style="text-align: center;">
+                <span style="font-family: DejaVu Sans;">&#8369;</span>
+                {{ number_format($total_or, 2, ".", ",") }}
+            </td>
+            <td></td>
+            <td></td>
+        </tr>
 
         </tbody>
 
