@@ -72,14 +72,15 @@ class AccomplishmentClass
             })->count();
 
             $analysis = TsrAnalysis::
-            when($month, function ($query, $month) {
-                $query->whereMonth('created_at',$month);
-            })
-            ->when($year, function ($query, $year) {
-                $query->whereYear('created_at',$year);
-            })->whereHas('sample', function ($query) use ($laboratory){
-                $query->whereHas('tsr', function ($query) use ($laboratory){
-                    $query->where('laboratory_id',$laboratory->id)->where('agency_id',$this->agency)->where('status_id','!=',5)->where('is_shelf',0);
+            // when($month, function ($query, $month) {
+            //     $query->whereMonth('created_at',$month);
+            // })
+            // ->when($year, function ($query, $year) {
+            //     $query->whereYear('created_at',$year);
+            // })
+            whereHas('sample', function ($query) use ($laboratory,$year,$month){
+                $query->whereHas('tsr', function ($query) use ($laboratory,$year,$month){
+                    $query->where('laboratory_id',$laboratory->id)->where('agency_id',$this->agency)->where('status_id','!=',5)->where('is_shelf',0)->whereYear('created_at',$year)->whereMonth('created_at',$month);
                 });
             })->count();
 
