@@ -42,9 +42,7 @@ class DiscountExport implements FromView
             }else{
                 $a = ', '.$row['customer']['address']['province']['name'];
             }
-            $barangay = $row['customer']['address']['barangay']['name'];
-            $municipality = $row['customer']['address']['municipality']['name'];
-            $province = $row['customer']['address']['province']['name'];
+       
             $completed_address = $address.$row['customer']['address']['barangay']['name'].', '.$row['customer']['address']['municipality']['name'].$a;
 
             $tsrs[] = [
