@@ -95,7 +95,7 @@ class TopClass
         })
         ->groupBy('name')
         ->orderBy('count', 'desc')
-        ->take(200)
+        ->take(500)
         ->get();
         return $data;
     }
@@ -246,7 +246,7 @@ class TopClass
     }])
     ->having('tsrs_count', '>', 0) // ✅ Only include customers with at least 1 tsr
     ->orderBy('tsrs_count', 'desc')
-    ->take(200)
+    ->take(500)
     ->get();
         return $data;
     }
