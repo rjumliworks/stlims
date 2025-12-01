@@ -238,11 +238,11 @@ class TopClass
             $query->where('laboratory_id', $laboratory);
         });
 
-        $query->whereHas('customer', function ($query) use ($request) {
-            $query->when($request->customer, function ($query, $customer) {
-                $query->where('is_internal', $customer == 'Internal' ? 1 : 0);
-            });
-        });
+        // $query->whereHas('customer', function ($query) use ($request) {
+        //     $query->when($request->customer, function ($query, $customer) {
+        //         $query->where('is_internal', $customer == 'Internal' ? 1 : 0);
+        //     });
+        // });
     }])
     ->having('tsrs_count', '>', 0) // ✅ Only include customers with at least 1 tsr
     ->orderBy('tsrs_count', 'desc')
