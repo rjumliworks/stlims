@@ -74,7 +74,7 @@ class TopClass
 
         $data = TsrSample::select('name', \DB::raw('count(*) as count'))
         ->withWhereHas('tsr',function ($query) use ($request){
-            $query->where('agency_id',$this->agency);
+            $query->where('agency_id',$this->agency)->where('status_id','!=',5);
             $query->when($request->laboratory, function ($query, $laboratory) {
                 $query->where('laboratory_id',$laboratory);
             });
@@ -93,7 +93,7 @@ class TopClass
         ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
             $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
         })
-        ->groupBy('name')
+        // ->groupBy('name')
         ->orderBy('count', 'desc')
         ->take(500)
         ->get();
