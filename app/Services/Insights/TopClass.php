@@ -74,15 +74,15 @@ class TopClass
 
         $data = TsrSample::select('name', \DB::raw('count(*) as count'))
         ->withWhereHas('tsr',function ($query) use ($request){
-            $query->where('agency_id',$this->agency)->where('status_id','!=',5);
+            $query->where('agency_id',$this->agency);
             $query->when($request->laboratory, function ($query, $laboratory) {
                 $query->where('laboratory_id',$laboratory);
             });
-            // $query->whereHas('customer',function ($query) use ($request){
-            //     $query ->when($request->customer, function ($query, $customer) {
-            //        ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
-            //     });
-            // });
+            $query->whereHas('customer',function ($query) use ($request){
+                $query ->when($request->customer, function ($query, $customer) {
+                   ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
+                });
+            });
         })
         ->when($month, function ($query, $month) {
             $query->whereMonth('created_at',$month);
@@ -93,7 +93,7 @@ class TopClass
         ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
             $query->whereBetween(\DB::raw('MONTH(created_at)'), [$startMonth, $endMonth]);
         })
-        // ->groupBy('name')
+        ->groupBy('name')
         ->orderBy('count', 'desc')
         ->take(500)
         ->get();

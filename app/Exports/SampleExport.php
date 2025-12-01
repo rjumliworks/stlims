@@ -61,15 +61,15 @@ class SampleExport implements FromView
 
         $lists = TsrSample::select('name', \DB::raw('count(*) as count'))
         ->withWhereHas('tsr', function ($query) use ($startMonth,$endMonth){
-            $query->where('agency_id',$this->agency);
+            $query->where('agency_id',$this->agency)->where('status_id','!=',5);
             $query->when($this->laboratory, function($query){
                 $query->where('laboratory_id', $this->laboratory);
             });
-            $query->whereHas('customer',function ($query){
-                $query->when($this->customer, function ($query, $customer) {
-                    ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
-                });
-            });
+            // $query->whereHas('customer',function ($query){
+            //     $query->when($this->customer, function ($query, $customer) {
+            //         ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
+            //     });
+            // });
         })
         ->when($month, function ($query, $month) {
             $query->whereMonth('created_at',$month);

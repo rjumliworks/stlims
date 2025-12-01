@@ -14,7 +14,7 @@
                             </div>
                         </div>
                         <div class="flex-grow-1">
-                            <h5 class="mb-0 fs-14"><span class="text-body">Daily Accomplishment Insights {{ total_sample }}</span></h5> 
+                            <h5 class="mb-0 fs-14"><span class="text-body">Daily Accomplishment Insights</span></h5> 
                             <p class="text-muted text-truncate-two-lines fs-12">A summary of tasks completed, analyses conducted, and milestones achieved within a specific reporting period, showcasing productivity, efficiency, and performance metrics</p>
                         </div>
                         <div class="flex-shrink-0">
