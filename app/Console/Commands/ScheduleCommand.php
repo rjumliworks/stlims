@@ -35,6 +35,7 @@ class ScheduleCommand extends Command
         ->whereHas('user', function ($query){
             $query->where('is_active',1);
         })
+        ->where('agency_id',14)
         ->whereIn('role_id',[2,3,4,9])->get();
         if(count($schedules) > 0){
             foreach($users as $user){
