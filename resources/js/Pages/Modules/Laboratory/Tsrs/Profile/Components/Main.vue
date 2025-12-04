@@ -45,10 +45,10 @@
                             <div class="input-group mb-1">
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                  <input type="text" placeholder="Search Sample" class="form-control" style="width: 40%;">
-                                <span v-if="selected.status.name == 'Pending'" @click="openService()" class="input-group-text" v-b-tooltip.hover title="Add Service" style="cursor: pointer;"> 
+                                <span v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openService()" class="input-group-text" v-b-tooltip.hover title="Add Service" style="cursor: pointer;"> 
                                     <i class="ri-add-circle-fill text-primary search-icon me-1"></i>Add-ons
                                 </span>
-                                <span v-if="selected.status.name == 'Pending'" @click="openAnalysis()" class="input-group-text" v-b-tooltip.hover title="Add Analysis" style="cursor: pointer;"> 
+                                <span v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openAnalysis()" class="input-group-text" v-b-tooltip.hover title="Add Analysis" style="cursor: pointer;"> 
                                     <i class="ri-flask-fill text-primary search-icon me-1"></i>Add Service
                                 </span>
                                 <b-button v-if="selected.status.name == 'Pending'" type="button" variant="primary" @click="openSample">
@@ -66,7 +66,7 @@
                         <table class="table table-nowrap table-striped align-middle mb-0">
                             <thead class="table-light thead-fixed">
                                 <tr class="fs-11">
-                                    <th v-if="selected.status.name == 'Pending'" width="4%" class="text-center">
+                                    <th v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" width="4%" class="text-center">
                                         <input class="form-check-input fs-16" v-model="mark" type="checkbox" value="option" />
                                     </th>
                                     <th :class="(selected.status.name == 'Pending') ? '' : 'text-center'" width="5%">#</th>
@@ -79,7 +79,7 @@
                             <tbody v-if="selected.samples.length > 0">
                                 <template v-for="(list,index) in selected.samples" v-bind:key="index">
                                     <tr :class="(showAnalyses) ? 'bg-info-subtle' : ''">
-                                        <td v-if="selected.status.name == 'Pending'"  width="4%" class="text-center">
+                                        <td v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'"  width="4%" class="text-center">
                                             <input type="checkbox" v-model="list.selected" class="form-check-input" />
                                         </td>
                                         <td :class="(selected.status.name == 'Pending') ? '' : 'text-center'" width="3%">{{index+1}}</td>
@@ -90,7 +90,7 @@
                                         <td width="63%" class="fs-12" style=" white-space: normal;overflow: hidden; text-overflow: ellipsis; max-width: 150px;">
                                             <i>{{list.customer_description}}</i>, {{list.description}}
                                         </td>
-                                        <td v-if="selected.status.name != 'Pending'" width="4%" class="text-center">
+                                        <td v-if="selected.status.name != 'Pending' && selected.status.name != 'For Payment'" width="4%" class="text-center">
                                             <span class="fs-12" v-if="list.analyses.filter(item => item.status.name == 'Completed').length != list.analyses.length">{{list.analyses.filter(item => item.status.name == "Completed").length}} / {{list.analyses.length}}</span>
                                             <span v-else><i class="ri-checkbox-circle-fill text-success fs-18" v-b-tooltip.hover :title="list.analyses.filter(item => item.status.name == 'Completed').length+'/'+list.analyses.length"></i></span>
                                         </td>
@@ -160,7 +160,7 @@
                                                             <b-button @click="openAdditional(list.additional,list.id)" v-if="selected.status.name == 'Pending' && list.additional.length > 0 && list.addfee == null" variant="soft-success" class="me-1" v-b-tooltip.hover title="Add" size="sm">
                                                                 <i class="ri-add-circle-fill align-bottom"></i>
                                                             </b-button>
-                                                            <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment' && analyses.length > 1" @click="openAnalysisDelete(list)" variant="soft-danger" v-b-tooltip.hover title="Delete" size="sm">
+                                                            <b-button v-if="selected.status.name == 'Pending' || selected.status.name == 'For Payment'" @click="openAnalysisDelete(list)" variant="soft-danger" v-b-tooltip.hover title="Delete" size="sm">
                                                                 <i class="ri-delete-bin-fill align-bottom"></i>
                                                             </b-button>
                                                         </td>

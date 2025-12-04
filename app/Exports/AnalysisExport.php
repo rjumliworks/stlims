@@ -21,6 +21,8 @@ class AnalysisExport implements FromView
 
     public function view(): View
     {
+        $startMonth = null;
+        $endMonth = null;
         if($this->by == 'By Month'){
             $month = ($this->month) ? \DateTime::createFromFormat('F', $this->month)->format('m') : null; 
         }elseif($this->by == 'By Quarter'){
