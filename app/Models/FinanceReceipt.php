@@ -24,6 +24,11 @@ class FinanceReceipt extends Model
     //     return $this->hasMany('App\Models\WalletTransaction', 'receipt_id');
     // }
 
+    public function getNumberAttribute($value)
+    {
+        return preg_replace('/\D/', '', $value);
+    }
+
     public function wallet()
     {
         return $this->morphOne('App\Models\WalletTransaction', 'transacable');
