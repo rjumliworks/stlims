@@ -8,7 +8,7 @@
                 font-family: Times New Roman;
                 /* font-weight: bold; */
                 margin-top: 60px;
-                margin-left: 15px;
+                margin-left: -15px;
             }
             table,
             td,
