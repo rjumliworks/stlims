@@ -194,11 +194,11 @@ class OpClass
             })
             ->whereIn('status_id',[2,3,4])
             ->whereIn('customer_id',$request->customer_id)
-            ->when($this->province, function ($query) {
-                $query->whereHas('received.myroles', function ($query) {
-                    $query->where('province_code', $this->province);
-                });
-            })
+            // ->when($this->province, function ($query) {
+            //     $query->whereHas('received.myroles', function ($query) {
+            //         $query->where('province_code', $this->province);
+            //     });
+            // })
             ->orderBy('created_at','DESC')
             ->get()
         );
@@ -362,7 +362,7 @@ class OpClass
             'accountant' => $signatory->accountant->profile->firstname.' '.$signatory->accountant->profile->middlename[0].'. '.$signatory->accountant->profile->lastname,
         ];
 
-        $pdf = \PDF::loadView('prints.op',$array)->setPaper('A4', 'portrait');
+        $pdf = \PDF::loadView('prints.op2',$array)->setPaper('A4', 'portrait');
         return $pdf->stream('orderofpayment.pdf');
     }
 
