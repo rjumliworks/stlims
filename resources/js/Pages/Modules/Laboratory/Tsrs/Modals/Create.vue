@@ -6,14 +6,22 @@
                     <InputLabel for="customer" value="Customer" :message="form.errors.customer"/>
                     <Multiselect 
                     :options="customers" 
-                    @search-change="fetchCustomer" 
+                    @search-change="checkSearchStr"
                     v-model="form.customer" 
                     object label="name"
                     :searchable="true" 
                     @input="handleInput('customer')"
                     placeholder="Select Customer"/>
                 </BCol>
-                <BCol :lg="(form.conforme) ? 6 : 12" class="mt-1" v-if="form.customer">
+                <BCol lg="6" class="mt-1" v-if="form.customer">
+                    <InputLabel value="Email" :message="form.errors.email"/>
+                    <TextInput v-model="form.email" type="text" class="form-control" placeholder="Please enter email" :light="true"/>
+                </BCol>   
+                <BCol lg="6" class="mt-1" v-if="form.customer">
+                    <InputLabel value="Contact" :message="form.errors.contact_no"/>
+                    <TextInput v-model="form.contact_no" type="text" class="form-control" placeholder="Please enter contact" :light="true"/>
+                </BCol>  
+                <BCol :lg="(form.conforme) ? 6 : 12" class="mt-0" v-if="form.customer">
                     <div class="d-flex">
                         <div style="width: 100%;">
                             <InputLabel for="conforme" value="Conforme" :message="form.errors.conforme"/>
@@ -47,16 +55,7 @@
                     :searchable="true" label="name"
                     placeholder="Select Laboratory"/>
                 </BCol>
-                <BCol lg="6" class="mt-n2">
-                    <InputLabel for="region" value="Discount" :message="form.errors.discount_id"/>
-                    <Multiselect 
-                    :options="dropdowns.discounts" 
-                    v-model="form.discount_id"
-                    @input="handleInput('discount_id')"
-                    :searchable="true" label="name"
-                    placeholder="Select Discount"/>
-                </BCol>
-                <BCol v-if="form.laboratory?.facilities.length > 1" lg="12" class="mt-1">
+                <BCol v-if="form.laboratory?.facilities.length > 1" :lg="(form.laboratory?.facilities.length > 1) ? '6' : null" class="mt-n2">
                     <InputLabel for="region" value="Facility" :message="form.errors.facility_id"/>
                     <Multiselect 
                     :options="form.laboratory.facilities" 
@@ -65,7 +64,16 @@
                     :searchable="true" label="name"
                     placeholder="Select Purpose"/>
                 </BCol>
-                <BCol lg="12" class="mt-1">
+                <BCol lg="6" :class="(form.laboratory?.facilities.length > 1) ? 'mt-1' : 'mt-n2'">
+                    <InputLabel for="region" value="Discount" :message="form.errors.discount_id"/>
+                    <Multiselect 
+                    :options="dropdowns.discounts" 
+                    v-model="form.discount_id"
+                    @input="handleInput('discount_id')"
+                    :searchable="true" label="name"
+                    placeholder="Select Discount"/>
+                </BCol>
+                <BCol :lg="(form.laboratory?.facilities.length > 1) ? 6 : 12" class="mt-1">
                     <InputLabel for="region" value="Purpose" :message="form.errors.purpose_id"/>
                     <Multiselect 
                     :options="dropdowns.purposes" 
@@ -168,6 +176,8 @@ export default {
             form: useForm({
                 id: null,
                 customer: null,
+                email: null,
+                contact_no: null,
                 conforme: null,
                 laboratory: null,
                 laboratory_id: null,
@@ -204,6 +214,22 @@ export default {
         "form.is_onsite"(newVal){
             this.form.created_at = null;
         },
+         "form.customer"(newVal){
+            if(newVal){
+                this.form.email = newVal.email;
+                this.form.contact_no = newVal.contact_no;
+            }else{
+                this.form.email = null;
+                this.form.contact_no = null;
+            }
+        },
+        "form.laboratory"(newVal){
+            if(newVal){
+                this.form.laboratory_id = newVal.value;
+            }else{
+                this.form.facility_id = null;
+            }
+        }
     },
     methods: { 
         show(region){
@@ -221,6 +247,9 @@ export default {
                 },
             });
         },
+        checkSearchStr: _.debounce(function(string) {
+            this.fetchCustomer(string);
+        }, 300),
         fetchCustomer(code){
             axios.get('/customers',{
                 params: {

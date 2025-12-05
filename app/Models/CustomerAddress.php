@@ -33,6 +33,11 @@ class CustomerAddress extends Model
         return $this->belongsTo('App\Models\LocationMunicipality', 'municipality_code', 'code');
     }
 
+    public function district()
+    {
+        return $this->belongsTo('App\Models\LocationDistrict', 'district_code', 'code');
+    }
+
     public function barangay()
     {
         return $this->belongsTo('App\Models\LocationBarangay', 'barangay_code', 'code');

@@ -15,6 +15,7 @@ class CustomerContact extends Model
     protected $fillable = [
         'email',
         'contact_no',
+        'tin',
         'customer_id'
     ];
     
@@ -43,6 +44,16 @@ class CustomerContact extends Model
         return Crypt::decryptString($value);
     }
 
+    public function setTinAttribute($value)
+    {
+        $this->attributes['tin'] = Crypt::encryptString($value);
+    }
+
+    public function getTinAttribute($value)
+    {
+        return ($value) ? Crypt::decryptString($value) : null;
+    }
+
     public function updateIfDirty(array $attributes){
         $dirtyAttributes = [];
         foreach ($attributes as $key => $value) {
@@ -61,7 +72,7 @@ class CustomerContact extends Model
     
     public function getActivitylogOptions(): LogOptions {
         return LogOptions::defaults()
-        ->logOnly(['email','contact_no'])
+        ->logOnly(['email','contact_no','tin'])
         ->setDescriptionForEvent(fn(string $eventName) => "{$eventName}")
         ->useLogName('Customer Contact')
         ->logOnlyDirty()

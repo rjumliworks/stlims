@@ -106,7 +106,7 @@ class ViewClass
     public function pick($request){
         $keyword = $request->keyword;
         $id = $request->id;
-        $data = Customer::with('conformes')->with('customer_name')
+        $data = Customer::with('conformes','contact')->with('customer_name')
         ->where(function($query) use ($keyword,$id) {
             $query->where('name', 'LIKE', "%{$keyword}%")
                 ->where('id','!=',$id)
@@ -124,6 +124,8 @@ class ViewClass
             return [
                 'value' => $item->id,
                 'name' => $name,
+                'email' => $item->contact->email,
+                'contact_no' => $item->contact->contact_no,
                 'conformes' => $item->conformes->map(function ($i) {
                     return [
                         'value' => $i->id,

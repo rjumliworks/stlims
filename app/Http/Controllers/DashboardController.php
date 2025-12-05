@@ -220,6 +220,9 @@ class DashboardController extends Controller
             case 'barangays':
                 return $this->dropdown->barangays($request->code);
             break;
+            case 'districts':
+                return $this->dropdown->districts($request->code);
+            break;
             case 'units':
                 return $this->dropdown->units($request->code);
             break;

@@ -34,7 +34,7 @@ class SaveClass
         }
         $code = $this->generateCode();
         $customer = Customer::create(array_merge($request->all(),['code' => $code,'agency_id' => $this->agency,'user_id' => \Auth::user()->id]));
-        $customer->address()->create($request->except(['name','is_main','email','industry_id','classification_id','sex_id','female_id','type_id','contact_no','name_id','is_new','customer','has_branches','option']));
+        $customer->address()->create($request->except(['name','tin','is_main','email','industry_id','classification_id','sex_id','female_id','type_id','contact_no','name_id','is_new','customer','has_branches','option']));
         $customer->contact()->create($request->all());
 
         return [

@@ -30,6 +30,10 @@
                     label="name"
                     placeholder="Select Payment type"/>
                 </BCol>
+                <!-- <BCol lg="12 mt-1 mb-2">
+                    <InputLabel value="Serial No." :message="form.errors.serial_no"/>
+                    <TextInput v-model="form.serial_no" type="text" class="form-control" @input="handleInput('serial_no')" :light="true"/>
+                </BCol> -->
                 <BCol lg="12" class="mt-1">
                     <InputLabel for="customer" value="Subsidiary Customer/'s (Optional)" :message="form.errors.customer"/>
                     <Multiselect 
@@ -117,6 +121,7 @@ export default {
             currentUrl: window.location.origin,
             form: useForm({
                 customer_id: null,
+                serial_no: null,
                 collection_id: 54,
                 payment_id: null,
                 selected: [],

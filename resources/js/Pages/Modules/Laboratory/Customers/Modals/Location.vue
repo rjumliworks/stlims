@@ -16,12 +16,16 @@
                             <InputLabel value="Municipality" :message="form.errors.municipality_code"/>
                             <Multiselect :options="municipalities" object v-model="form.municipality" label="name" :searchable="true" placeholder="Select Municipality" />
                         </BCol>
-                        <BCol lg="6" class="mt-1">
-                            <InputLabel value="Barangay" :message="form.errors.municipality_code"/>
+                         <BCol v-if="districts.length > 0" lg="6" class="mt-1">
+                            <InputLabel value="District" :message="form.errors.district_code"/>
+                            <Multiselect :options="districts" object v-model="form.district" label="name" :searchable="true" placeholder="Select District" />
+                        </BCol>
+                        <BCol :lg="(districts.length > 0) ? 12 : 6" class="mt-1">
+                            <InputLabel value="Barangay" :message="form.errors.barangay_code"/>
                             <Multiselect :options="barangays" object v-model="form.barangay" label="name" :searchable="true" placeholder="Select Barangay" />
                         </BCol>
                         <BCol lg="12" class="mt-1">
-                            <InputLabel value="Street, Landmark, Block, Lot, Unit"/>
+                            <InputLabel value="Street, Landmark, Block, Lot, Unit (Optional)"/>
                             <TextInput v-model="form.address" type="text" class="form-control" placeholder="Please enter st.,road" @input="handleInput('address')" :light="true" />
                         </BCol>
                     </BRow>  
@@ -58,12 +62,14 @@ export default {
                 municipality: null,
                 longitude: null,
                 latitude: null,
-                barangay: null
+                barangay: null,
+                district: null
             }),
             coordinates: {},
             provinces: [],
             municipalities: [],
             barangays: [],
+            districts: [],
             index: null,
             showModal: false,
             editable: false,
@@ -89,13 +95,16 @@ export default {
         "form.municipality"(newVal){
             if(!newVal){
                 this.form.barangay = null;
+                this.form.district = null;
             }
+            this.fetchDistrict(newVal);
             this.fetchBarangay(newVal);
         }
     },
     computed: {
         isFormValid() {
-            return this.form.address && this.form.region && this.form.province && this.form.municipality && this.form.barangay;
+            const districtRequired = this.districts.length > 0;
+            return this.form.region && this.form.province && this.form.municipality && this.form.barangay &&  (!districtRequired || this.form.district);
         }
     },
     methods: { 
@@ -121,6 +130,7 @@ export default {
                     province: this.form.province,
                     municipality: this.form.municipality,
                     barangay: this.form.barangay,
+                    district: this.form.district,
                     longitude: this.form.longitude,
                     latitude: this.form.latitude,
                 }
@@ -130,6 +140,7 @@ export default {
             this.form.province = null;
             this.form.municipality = null;
             this.form.barangay = null;
+            this.form.district = null;
             this.form.address = null;
             this.hide();
         },
@@ -166,6 +177,18 @@ export default {
             })
             .then(response => {
                 this.barangays = response.data;
+            })
+            .catch(err => console.log(err));
+        },
+        fetchDistrict(code){
+            axios.get('/search',{
+                params: {
+                    option: 'districts',
+                    code: code
+                }
+            })
+            .then(response => {
+                this.districts = response.data;
             })
             .catch(err => console.log(err));
         },

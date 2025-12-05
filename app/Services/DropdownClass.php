@@ -20,6 +20,7 @@ use App\Models\ListLaboratory;
 use App\Models\LocationRegion;
 use App\Models\LocationProvince;
 use App\Models\LocationMunicipality;
+use App\Models\LocationDistrict;
 use App\Models\LocationBarangay;
 use App\Models\TestserviceAddon;
 use App\Models\InventorySupplier;
@@ -265,6 +266,16 @@ class DropdownClass
 
     public function barangays($code){
         $data = LocationBarangay::where('municipality_code',$code)->get()->map(function ($item) {
+            return [
+                'value' => $item->code,
+                'name' => $item->name
+            ];
+        });
+        return $data;
+    }
+
+    public function districts($code){
+        $data = LocationDistrict::where('municipality_code',$code)->get()->map(function ($item) {
             return [
                 'value' => $item->code,
                 'name' => $item->name

@@ -2,6 +2,7 @@
 
 namespace App\Services\Laboratory\Tsrs;
 
+use Carbon\Carbon;
 use App\Models\UserRole;
 use App\Models\Tsr;
 use App\Models\TsrSample;
@@ -87,6 +88,8 @@ class UpdateClass
             $data->customer_id = $request->customer['value'];
             $data->conforme_id = $request->conforme['value'];
             $data->purpose_id = $request->purpose_id;
+            $data->created_at = Carbon::parse($request->created_at)->setTime(8, 0);
+            $data->due_at = $request->due_at;
             $data->laboratory_id = $request->laboratory_id;
             $data->save();
             if($data){
@@ -394,7 +397,7 @@ class UpdateClass
         ->with('received:id','received.profile:id,firstname,middlename,lastname,user_id')
         ->with('agency','laboratory:id,name','status:id,name,color,others')
         ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches','customer.wallet')
-        ->with('customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
+        ->with('customer.address:address,customer_id,region_code,province_code,district_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name','customer.address.district:code,name')
         ->with('conforme:id,name,contact_no','customer.contact:id,email,contact_no,customer_id')
         ->with('payment:tsr_id,id,total,subtotal,discount,or_number,is_paid,is_free,paid_at,status_id,discount_id,collection_id,payment_id','payment.status:id,name,color,others','payment.collection:id,name','payment.type:id,name','payment.discounted:id,name,value')
         ->first();
@@ -463,6 +466,8 @@ class UpdateClass
         $d = ($tsr->customer->address->address != NULL || $tsr->customer->address->address != '') ? $tsr->customer->address->address.', ' : '';
         if($tsr->customer->address->municipality->name == 'Zamboanga City' || $tsr->customer->address->municipality->name == 'Isabela City'){
             $a = $tsr->customer->address->municipality->name;
+        }else if($tsr->customer->address->municipality->name == 'Iloilo City'){
+            $a = $tsr->customer->address->district->name.', '.$tsr->customer->address->municipality->name;
         }else if($tsr->customer->address->province->name == 'Sulu'){
             $a = $tsr->customer->address->municipality->name.', '.$tsr->customer->address->province->name;
         }else{
@@ -477,7 +482,8 @@ class UpdateClass
             'receiver' => $tsr->received->profile->firstname.' '.$tsr->received->profile->middlename[0].'. '.$tsr->received->profile->lastname,
             'customer' => [
                 'name' => ($tsr->customer->is_main) ? $tsr->customer->customer_name->name :  $tsr->customer->customer_name->name.' - '.$tsr->customer->name,
-                'address' => $d.$tsr->customer->address->barangay->name.', '.$a,
+                // 'address' => $d.$tsr->customer->address->barangay->name.', '.$a,
+                'address' => $tsr->customer->address->barangay->name.', '.$a,
                 'contact_no' => $tsr->customer->contact->contact_no,
                 'email' => $tsr->customer->contact->email,
                 'conforme' => [

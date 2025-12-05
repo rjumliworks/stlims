@@ -51,8 +51,8 @@
                             <th style="width: 13;" class="text-center">Collection</th>
                             <th style="width: 13%;" class="text-center">Payment</th>
                             <th style="width: 10%;" class="text-center">Status</th>
-                            <th style="width: 13%;" class="text-center">Total</th>
-                            <th style="width: 8%;" ></th>
+                            <th style="width: 10%;" class="text-center">Total</th>
+                            <th style="width: 10%;" ></th>
                         </tr>
                     </thead>
                     <tbody v-if="lists.length > 0" class="table-white">

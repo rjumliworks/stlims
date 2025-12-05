@@ -8,15 +8,6 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </BCol>
-                <!-- <BCol lg="12">
-                    <BCol lg="12" class="mt-2">
-                        <InputLabel for="due" value="Report Due" :message="form.errors.due_at"/>
-                        <TextInput v-model="form.due_at" type="date" class="form-control" @input="handleInput('due_at')" :light="true"/>
-                    </BCol>
-                </BCol>
-                <BCol lg="12">
-                    <hr class="text-muted"/>
-                </BCol> -->
                 <BCol lg="12" class="mt-n1">
                     <InputLabel for="customer" value="Customer" :message="form.errors.customer"/>
                     <Multiselect 
@@ -51,7 +42,7 @@
                     <TextInput v-model="form.conforme.contact_no" type="text" class="form-control" placeholder="Please enter name" @input="handleInput('conforme')" :light="true"/>
                 </BCol>
             </div>
-            <hr class="text-muted"/>
+            <hr class="text-muted mb-2"/>
             <div class="row customform g-2 mt-n2">
                 
                 <BCol lg="12" class="mt-2">
@@ -85,6 +76,17 @@
                     label="name"
                     placeholder="Select Purpose"/>
                 </BCol>
+                <BCol lg="12" class="mt-0">
+                    <hr class="text-muted"/>
+                </BCol>
+                <BCol lg="6" class="mt-n2">
+                    <InputLabel for="due" value="Requested Date" :message="form.errors.created_at"/>
+                    <TextInput v-model="form.created_at" type="date" class="form-control" @input="handleInput('created_at')" :light="true"/>
+                </BCol>
+                <BCol lg="6" class="mt-n2">
+                    <InputLabel for="due" value="Report Due" :message="form.errors.due_at"/>
+                    <TextInput v-model="form.due_at" type="date" class="form-control" @input="handleInput('due_at')" :light="true"/>
+                </BCol>
             </div>
             </form>
         <template v-slot:footer>
@@ -112,7 +114,8 @@ export default {
                 purpose_id: null,
                 discount_id: null,
                 conforme: null,
-                // due_at: null,
+                due_at: null,
+                created_at: null,
                 customer: null,
                 laboratory_id: null,
                 option: 'Update'
@@ -136,10 +139,16 @@ export default {
                 contact_no: this.selected.conforme_no
             };
             // this.form.due_at = (this.selected.due_at) ? this.convertToISO(this.selected.due_at) : null;
+            this.form.created_at = this.formatToDateInput(this.selected.created_at);
+            this.form.due_at = this.formatToDateInput(this.selected.due_at);
             this.form.purpose_id = (data.purpose) ? data.purpose.id : null;
             this.form.discount_id = data.payment.discount_id;
             this.form.laboratory_id = this.selected.laboratory.id;
             this.showModal = true;
+        },
+        formatToDateInput(str) {
+            const parts = new Date(str).toLocaleDateString('en-CA'); 
+            return parts; // en-CA always returns YYYY-MM-DD in local timezone
         },
         submit(){
             this.form.put('/tsrs/update',{

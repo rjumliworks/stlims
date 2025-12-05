@@ -1,5 +1,5 @@
 <template>
-    <b-modal v-model="showModal" style="--vz-modal-width: 700px;" header-class="p-3 bg-light" :title="(!editable) ? 'Create Customer' : 'Edit Customer'" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
+    <b-modal v-model="showModal" style="--vz-modal-width: 800px;" header-class="p-3 bg-light" :title="(!editable) ? 'Create Customer' : 'Edit Customer'" class="v-modal-custom" modal-class="zoomIn" centered no-close-on-backdrop>
         
             <BRow>
                 <BCol lg="12" class="mt-n1">
@@ -7,7 +7,7 @@
                     :key="multiselectKey" 
                     :create-option="true" 
                     :options="names" 
-                    @search-change="fetchCustomer" 
+                    @search-change="checkSearchStr" 
                     v-model="form.customer" 
                     object
                     :searchable="true" 
@@ -92,9 +92,13 @@
                                         <InputLabel for="email" value="Email" :message="form.errors.email"/>
                                         <TextInput id="email" v-model="form.email" type="email" class="form-control" placeholder="Please enter email" @input="handleInput('email')" :light="true"/>
                                     </BCol>
-                                    <BCol lg="6" class="mt-1 mb-n1">
+                                    <BCol lg="3" class="mt-1 mb-n1">
                                         <InputLabel for="contact_no" value="Mobile no." :message="form.errors.contact_no"/>
                                         <TextInput id="contact_no" v-model="form.contact_no" type="text" class="form-control" placeholder="Please enter contact" @input="handleInput('contact_no')" :light="true"/>
+                                    </BCol>
+                                    <BCol lg="3" class="mt-1 mb-n1">
+                                        <InputLabel for="tin" value="Tin no. (Optional)" :message="form.errors.email"/>
+                                        <TextInput id="tin" v-model="form.tin" type="text" class="form-control" placeholder="Please enter tin" @input="handleInput('tin')" :light="true"/>
                                     </BCol>
                                     <BCol lg="12" class="mt-1">
                                         <div class="d-flex">
@@ -130,6 +134,7 @@
                                             <BCol lg="12"><hr class="text-muted mt-n2"/></BCol>
                                         </BRow>
                                     </BCol>
+                                    
                                 </BRow>
                             </BCol>
                         </Brow>
@@ -162,6 +167,7 @@ export default {
             form: useForm({
                 id: null,
                 name: null,
+                tin: null,
                 email: null,
                 is_main: false,
                 contact_no: null,
@@ -175,6 +181,7 @@ export default {
                 region_code: null,
                 province_code: null,
                 municipality_code: null,
+                district_code: null,
                 barangay_code: null,
                 latitude: null,
                 longitude: null,
@@ -251,6 +258,9 @@ export default {
             this.names = [];
             this.showModal = true;
         },
+        checkSearchStr: _.debounce(function(string) {
+            this.fetchCustomer(string);
+        }, 300),
         fetchCustomer(code){
             axios.get('/customers',{
                 params: {
@@ -288,6 +298,7 @@ export default {
                 this.form.province_code = data.form.province.value;
                 this.form.municipality_code = data.form.municipality.value;
                 this.form.barangay_code = data.form.barangay.value;
+                this.form.district_code = data.form.district.value;
                 this.form.latitude = data.form.latitude;
                 this.form.longitude = data.form.longitude;
             }
