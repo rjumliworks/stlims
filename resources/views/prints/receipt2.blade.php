@@ -7,7 +7,7 @@
             html * {
                 font-family: Times New Roman;
                 /* font-weight: bold; */
-                margin-top: 100px;
+                margin-top: 70px;
             }
             table,
             td,
