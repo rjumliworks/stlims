@@ -347,7 +347,11 @@ class OrClass
             'items' => $items,
             'payment' => $data->op->payment->name,
         ];
-        $pdf = \PDF::loadView('prints.receipt',$array)->setPaper([0, 0, 300, 641.68], 'portrait');
+        if($this->agency == 11){
+                    $pdf = \PDF::loadView('prints.receipt2',$array)->setPaper([0, 0, 300, 641.68], 'portrait');
+        }else{
+                    $pdf = \PDF::loadView('prints.receipt',$array)->setPaper([0, 0, 300, 641.68], 'portrait');
+        }
         return $pdf->stream($data->number.'.pdf');
     }
 
