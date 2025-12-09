@@ -298,7 +298,7 @@ export default {
                 this.form.province_code = data.form.province.value;
                 this.form.municipality_code = data.form.municipality.value;
                 this.form.barangay_code = data.form.barangay.value;
-                this.form.district_code = data.form.district.value;
+                this.form.district_code = (data.form.district) ? data.form.district.value : null;
                 this.form.latitude = data.form.latitude;
                 this.form.longitude = data.form.longitude;
             }

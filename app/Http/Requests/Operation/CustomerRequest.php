@@ -29,8 +29,8 @@ class CustomerRequest extends FormRequest
                 'province_code' => 'sometimes|required',
                 'municipality_code' => 'sometimes|required',
                 'barangay_code' => 'sometimes|required',
-                'longitude' => 'sometimes|nullable',
-                'latitude' => 'sometimes|nullable',
+                'longitude' => 'sometimes|required',
+                'latitude' => 'sometimes|required',
                 'is_new' => 'required'
             ];
         }else{
