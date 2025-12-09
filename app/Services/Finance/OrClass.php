@@ -340,7 +340,7 @@ class OrClass
         $array = [
             'agency' => $this->configuration->agency->name,
             'customer' => $customer.$sub,
-            'word' => ucwords($number),
+            'word' => ucwords($number).' Pesos Only',
             'date' => $data->created_at,
             'detail' => ($data->detail) ? $data->detail : null,
             'total' => $data->op->total,
