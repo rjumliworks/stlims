@@ -117,7 +117,7 @@ class UpdateClass
 
             $final =  Tsr::query()
             ->with('laboratory','status','received.profile')
-            ->with('customer.customer_name','conforme','customer.address.region','customer.address.province','customer.address.municipality','customer.address.barangay')
+            ->with('customer.customer_name','conforme','customer.address.region','customer.address.district','customer.address.province','customer.address.municipality','customer.address.barangay')
             ->with('payment.status','payment.collection','payment.type','payment.discounted')
             ->where('id',$request->id)
             ->first();
@@ -305,7 +305,7 @@ class UpdateClass
                 switch ($data->facility_id) {
                     case 4: $tsr_count = 861; break;
                     case 5: $tsr_count = 84; break;
-                    case 6: $tsr_count = 366; break;
+                    case 6: $tsr_count = 367; break;
                 }
             }
 
@@ -358,7 +358,7 @@ class UpdateClass
                 switch ($data->facility_id) {
                     case 4: $sample_count = 861; break;
                     case 5: $sample_count = 84; break;
-                    case 6: $sample_count = 366; break;
+                    case 6: $sample_count = 367; break;
                 }
             }
 
