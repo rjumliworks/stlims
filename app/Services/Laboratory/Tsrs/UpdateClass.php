@@ -305,7 +305,7 @@ class UpdateClass
                 switch ($data->facility_id) {
                     case 4: $tsr_count = 861; break;
                     case 5: $tsr_count = 84; break;
-                    case 6: $tsr_count = 367; break;
+                    case 6: $tsr_count = 365; break;
                 }
             }
 
@@ -358,7 +358,7 @@ class UpdateClass
                 switch ($data->facility_id) {
                     case 4: $sample_count = 861; break;
                     case 5: $sample_count = 84; break;
-                    case 6: $sample_count = 367; break;
+                    case 6: $sample_count = 365; break;
                 }
             }
 
