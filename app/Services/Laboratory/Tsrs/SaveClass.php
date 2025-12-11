@@ -55,6 +55,7 @@ class SaveClass
             'received_by' => \Auth::user()->id,
             'facility_id' => \Auth::user()->profile->facility_id,
             'is_onsite' => $old->is_onsite,
+            'is_referral' => $old->is_referral,
             'created_at'  => Carbon::now(),
         ]));
         
@@ -74,7 +75,6 @@ class SaveClass
                 'province_code' => $old->referral->province_code,
                 'agency_id' => $old->referral->agency_id
             ]);
-            $data->is_referral = 1;
         }
 
         if(count($old->services) > 0){
@@ -92,6 +92,7 @@ class SaveClass
         foreach($old->samples as $sample){
             $s = $data->samples()->create([
                 'name' => $sample->name,
+                'sampletype_id' => $sample->sampletype_id,
                 'customer_description' => $sample->customer_description,
                 'description' => $sample->description,
             ]);
