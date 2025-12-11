@@ -79,14 +79,14 @@
                 <BCol lg="12" class="mt-0">
                     <hr class="text-muted"/>
                 </BCol>
-                <BCol lg="12" class="mt-n2">
+                <BCol :lg="(selected.status.name == 'For Payment') ? 6 : 12" class="mt-n2">
                     <InputLabel for="due" value="Requested Date" :message="form.errors.created_at"/>
                     <TextInput v-model="form.created_at" type="date" class="form-control" @input="handleInput('created_at')" :light="true"/>
                 </BCol>
-                <!-- <BCol lg="6" class="mt-n2">
+                <BCol v-if="selected.status.name == 'For Payment'" lg="6" class="mt-n2">
                     <InputLabel for="due" value="Report Due" :message="form.errors.due_at"/>
                     <TextInput v-model="form.due_at" type="date" class="form-control" @input="handleInput('due_at')" :light="true"/>
-                </BCol> -->
+                </BCol>
             </div>
             </form>
         <template v-slot:footer>
