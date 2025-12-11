@@ -68,14 +68,14 @@ class SaveClass
             'subtotal' => $old->payment->subtotal,
             'discount' => $old->payment->discount
         ],$payment));
-        ($old->is_referral) 
-        ? 
-        $data->referral()->create([
-            'is_psto' => $old->referral->is_psto, 
-            'province_code' => $old->referral->province_code,
-            'agency_id' => $old->referral->agency_id
-        ]) 
-        : '';
+        if($old->is_referral){  
+            $data->referral()->create([
+                'is_psto' => $old->referral->is_psto, 
+                'province_code' => $old->referral->province_code,
+                'agency_id' => $old->referral->agency_id
+            ]);
+            $data->is_referral = 1;
+        }
 
         if(count($old->services) > 0){
             foreach($old->services as $service){
