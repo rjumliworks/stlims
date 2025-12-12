@@ -28,9 +28,9 @@ class ViewClass
             ->when($this->agency, function ($query, $agency) {
                 $query->where('agency_id',$agency);
             })
-             ->when($request->agency, function ($query, $agency) {
-                $query->where('agency_id',$agency);
-            })
+            //  ->when($request->agency, function ($query, $agency) {
+            //     $query->where('agency_id',$agency);
+            // })
             ->when($request->keyword, function ($query, $keyword) {
                 $query->whereHas('sampletype', function ($query) use ($keyword){
                     $query->where('name', 'LIKE', "%{$keyword}%");
