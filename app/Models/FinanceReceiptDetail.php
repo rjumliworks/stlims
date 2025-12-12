@@ -19,6 +19,14 @@ class FinanceReceiptDetail extends Model
         $this->attributes['amount'] = trim(str_replace(',','',$value),'₱');
     }
 
+    public function getNumberAttribute($value)
+    {
+        if (strpos($value, '-DUP-') !== false) {
+            return explode('-DUP-', $value)[0];
+        }
+        return $value;
+    }
+
     public function getAmountAttribute($value)
     {
         return '₱'.number_format($value,2,'.',',');

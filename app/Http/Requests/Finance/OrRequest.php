@@ -15,11 +15,11 @@ class OrRequest extends FormRequest
 
     public function rules(): array
     {   
+        // 'details_number' => 'sometimes|required_if:orseries,!=,null|unique:finance_receipts,number,NULL,'.$this->id.',orseries_id,'.$this->orseries_id,
         if($this->option == 'receipt'){
             return [
                 'deposit_id' => 'required|integer',
                 'orseries' => 'required',
-                // 'details_number' => 'sometimes|required_if:orseries,!=,null|unique:finance_receipts,number,NULL,'.$this->id.',orseries_id,'.$this->orseries_id,
                 'details_number' => 'sometimes|nullable',
                 'details_date_at' => 'sometimes|required',
                 'details_bank' => 'sometimes|required',

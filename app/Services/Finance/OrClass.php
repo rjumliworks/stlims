@@ -133,12 +133,16 @@ class OrClass
                     if($or->save()){
                         if($request->type === 'Cheque' || $request->type === 'Online Transfer' || $request->type === 'Bank Deposit'){
                             $cheque = new FinanceReceiptDetail;
-                            $cheque->number = $request->details_number;
                             $cheque->amount = $request->details_amount;
                             $cheque->bank = $request->details_bank;
                             $cheque->date_at = $request->details_date_at;
                             $cheque->is_cheque = ($request->type === 'Bank Deposit') ? $request->details_is_cheque : false;
                             $cheque->receipt_id = $data->id;
+                            if($op->payment_id == 22){
+                                $cheque->number = $request->details_number.'-DUP-'.uniqid();
+                            }else{
+                                $cheque->number = $request->details_number;
+                            }
                             if($cheque->save()){
                                 $amount = trim(str_replace(',','',$request->details_amount),'₱');
                                 $total = trim(str_replace(',','',$request->total),'₱');
