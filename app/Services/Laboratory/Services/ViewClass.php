@@ -115,9 +115,10 @@ class ViewClass
                 ->when($request->ids, function ($query, $ids) {
                     $query->whereNotIn('id', $ids);
                 })
-                ->when($this->agency, function ($query, $agency) {
-                    $query->where('agency_id',$agency);
-                })
+                // ->when($this->agency, function ($query, $agency) {
+                //     $query->where('agency_id',$agency);
+                // })
+                 ->where('agency_id',$this->agency)
                 ->with('sampletype','agency.member','agency.address.region','laboratory')
                 ->with('method.method','method.reference')
                 // ->with('testname')
