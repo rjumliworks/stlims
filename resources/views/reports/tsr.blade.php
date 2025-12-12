@@ -79,6 +79,37 @@
         .page-break {
             page-break-after: always;
         }
+        .letter-p {
+    position: relative;
+    font-size: 100px;
+    font-weight: bold;
+    display: inline-block;
+    color: black;
+  }
+
+  /* First line */
+  .letter-p::before {
+    content: '';
+    position: absolute;
+    width: 60%; /* adjust length */
+    height: 5px; /* line thickness */
+    background-color: red; /* line color */
+    top: 20%; /* vertical position */
+    left: 20%; /* horizontal start */
+    transform: rotate(-10deg); /* optional tilt */
+  }
+
+  /* Second line */
+  .letter-p::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 5px;
+    background-color: blue;
+    top: 50%;
+    left: 25%;
+    transform: rotate(5deg);
+  }
     </style>
 </head>
 <?php 
@@ -199,15 +230,42 @@
                     <td>{{$sample['testname']}}</td>
                     <td>{{(isset($sample['methodShort'])) ? $sample['methodShort'] : $sample['method']}}</td>
                     <td>{{$sample['count']}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($sample['fee'],'₱ ')}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$sample['fee']),'₱ ')*$sample['count'],2,".",",")}}</td>
+                    <td style="text-align: right;">
+                        <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                        {{-- <span style="font-family: DejaVu Sans;">&#8369;</span> --}}
+                        {{trim($sample['fee'],'₱ ')}}
+                        
+                    </td>
+                    <td style="text-align: right;">
+                        <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                        {{number_format(trim(str_replace(',','',$sample['fee']),'₱ ')*$sample['count'],2,".",",")}}</td>
                 </tr>
                 @if(isset($sample['additional']))
                 <tr style="text-align: center; font-size: 9px; color: #072388;">
                     <td colspan="4" style="text-align: left;">{{$sample['additional']['name']}}</td>
                     <td>{{$sample['additional']['quantity']}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($sample['additional']['fee'],'₱ ')}}</td>
-                    <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$sample['additional']['fee']),'₱ ')*$sample['additional']['quantity'],2,".",",")}}</td>
+                    <td style="text-align: right;">
+                        <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                        {{trim($sample['additional']['fee'],'₱ ')}}</td>
+                    <td style="text-align: right;">
+                        <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                        {{number_format(trim(str_replace(',','',$sample['additional']['fee']),'₱ ')*$sample['additional']['quantity'],2,".",",")}}</td>
                 </tr>
                 @endif
             @endforeach
@@ -232,12 +290,24 @@
                 <tr>
                     <td colspan="5"></td>
                     <td style="font-size: 8px;">SUBTOTAL</td>
-                    <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($tsr['payment']['subtotal'],'₱ ')}}</td>
+                    <td style="font-size: 9px; text-align: right;">
+                        <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                        {{trim($tsr['payment']['subtotal'],'₱ ')}}</td>
                 </tr>
                 <tr>
                     <td colspan="5"></td>
                     <td style="font-size: 8px;">DISCOUNT</td>
-                    <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($tsr['payment']['discount'],'₱ ')}}</td>
+                    <td style="font-size: 9px; text-align: right;">
+                        <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                        {{trim($tsr['payment']['discount'],'₱ ')}}</td>
                 </tr>
                 @if(isset($payment['type']))
                     @if($payment['type']['name'] == 'Wallet' && $transaction['amount'] == $payment['total'])
@@ -252,7 +322,13 @@
                     <tr>
                         <td colspan="5" style="font-weight: regular; text-align: left;"><i>Partially debited {{trim($transaction['amount'],'₱ ')}} from customers e-wallet</i></td>
                         <td style="font-size: 8px;">E-WALLET</td>
-                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($transaction['amount'],'₱ ')}}</td>
+                        <td style="font-size: 9px; text-align: right;">
+                            <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                            {{trim($transaction['amount'],'₱ ')}}</td>
                     </tr>
                 @endif
                 @if(isset($payment['type']))
@@ -260,20 +336,36 @@
                     <tr>
                         <td colspan="5"></td>
                         <td style="font-size: 8px;">TOTAL</td>
-                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>0.00</td>
+                        <td style="font-size: 9px; text-align: right;">
+                            <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: .7px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>
+                            0.00</td>
                     </tr>
                     @else
                     <tr>
                         <td colspan="5"></td>
                         <td style="font-size: 8px;">TOTAL</td>
-                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($payment['total'],'₱ ')}}</td>
+                        <td style="font-size: 9px; text-align: right;">
+                            <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: .7px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>{{trim($payment['total'],'₱ ')}}</td>
                     </tr>
                     @endif
                 @else
                     <tr>
                         <td colspan="5"></td>
                         <td style="font-size: 8px;">TOTAL</td>
-                        <td style="font-size: 9px; text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim($payment['total'],'₱ ')}}</td>
+                        <td style="font-size: 9px; text-align: right;">
+                            <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: .7px;">
+                            <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            <span style="position: absolute; top: 3.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
+                            P
+                        </span>{{trim($payment['total'],'₱ ')}}</td>
                     </tr>
                 @endif
             </tfoot>
