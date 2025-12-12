@@ -25,9 +25,10 @@ class ViewClass
             ->when($request->status, function ($query, $status) {
                 $query->where('status_id',$status);
             })
-            ->when($this->agency, function ($query, $agency) {
-                $query->where('agency_id',$agency);
-            })
+            ->where('agency_id',$this->agency)
+            // ->where($this->agency, function ($query, $agency) {
+            //     $query->where('agency_id',$agency);
+            // })
             //  ->when($request->agency, function ($query, $agency) {
             //     $query->where('agency_id',$agency);
             // })
