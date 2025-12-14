@@ -155,6 +155,7 @@ class TopClass
         ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
         ->select('testservice_names.name as name', \DB::raw('COUNT(*) as count'))
         ->where('tsr_analyses.status_id', '!=', 13)
+        ->where('tsrs.agency_id',$this->agency)
         ->when($month, fn($q) => $q->whereMonth('tsr_analyses.created_at', $month))
         ->when($request->year, fn($q) => $q->whereYear('tsr_analyses.created_at', $request->year))
         ->when(isset($startMonth) && isset($endMonth), fn($q) => 
@@ -217,9 +218,9 @@ class TopClass
         $laboratory = $request->laboratory;
 
         $data = Customer::select('id', 'name', 'is_main', 'name_id', 'agency_id')
-    ->with('customer_name:id,name,has_branches')
-    ->where('agency_id', $this->agency)
-    ->withCount(['tsrs' => function ($query) use ($year, $month, $startMonth, $endMonth, $laboratory, $request) {
+        ->with('customer_name:id,name,has_branches')
+        ->where('agency_id', $this->agency)
+        ->withCount(['tsrs' => function ($query) use ($year, $month, $startMonth, $endMonth, $laboratory, $request) {
         $query->whereIn('status_id', [3, 4]);
 
         if ($year) {
