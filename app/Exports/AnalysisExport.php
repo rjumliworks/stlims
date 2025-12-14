@@ -17,6 +17,7 @@ class AnalysisExport implements FromView
         $this->semester = $semester;
         $this->customer = $customer;
         $this->by = $by;
+        $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
     }
 
     public function view(): View
@@ -70,6 +71,7 @@ class AnalysisExport implements FromView
                             ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
                         });
                     });
+                    $query->where('agency_id',$this->agency);
                 });
             });
         })
