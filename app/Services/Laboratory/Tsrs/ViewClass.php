@@ -85,14 +85,15 @@ class ViewClass
             ->with('laboratory:id,name','status:id,name,color,others')
             ->with('payment:tsr_id,id,total,is_paid,is_free,paid_at,status_id,discount_id,collection_id,payment_id','payment.status:id,name,color,others')
             ->when($request->keyword, function ($query, $keyword) {
-                $query->where('code', 'LIKE', "%{$keyword}%")
-                ->orWhereHas('customer',function ($query) use ($keyword) {
-                    $query->where('name', 'LIKE', "%{$keyword}%")
-                    ->orWhereHas('customer_name',function ($query) use ($keyword) {
-                        $query->where('name', 'LIKE', "%{$keyword}%");
+                $query->where(function ($q) use ($keyword) {
+                    $q->where('code', 'LIKE', "%{$keyword}%")
+                    ->orWhereHas('customer', function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', "%{$keyword}%")
+                            ->orWhereHas('customer_name', function ($q) use ($keyword) {
+                                $q->where('name', 'LIKE', "%{$keyword}%");
+                            });
                     });
                 });
-                
             })
             ->with(['samples' => function ($query){
                 $query->select('id','tsr_id');
