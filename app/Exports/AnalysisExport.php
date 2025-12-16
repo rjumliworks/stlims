@@ -61,7 +61,7 @@ class AnalysisExport implements FromView
         $lists = TsrAnalysis::with('testservice.testname')
         ->select('testservice_id', \DB::raw('count(*) as count'))
         ->whereHas('sample.tsr', function ($query) {
-            $query->where('agency_id', 14);
+            $query->where('agency_id', $this->agency);
             $query->where('is_shelf',0)->where('status_id','!=',5);
             $query->when($this->lab, fn ($q) =>
                 $q->where('laboratory_id', $this->lab)
