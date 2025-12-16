@@ -76,6 +76,9 @@ class ViewClass
     }
 
     public function lists($request){
+        $agencyIds = auth()->user()
+    ->myroles()
+    ->pluck('agency_id');
         $data = ListResource::collection(
             Tsr::query()
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')
@@ -206,7 +209,7 @@ class ViewClass
                     $query->where('barangay_code', $barangay);
                 });
             })
-            ->where('agency_id',$this->agency)
+            ->whereIn('agency_id', $agencyIds)
             ->paginate($request->count)
         );
         return $data;
