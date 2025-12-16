@@ -171,9 +171,9 @@ class ViewClass
                     break;
                 }
             })
-            ->when($this->agency, function ($query,$agency) {
-                $query->where('agency_id',$agency);
-            })
+            // ->when($this->agency, function ($query,$agency) {
+            //     $query->where('agency_id',$agency);
+            // })
             ->when($this->province, function ($query){
                 $query->where('received_by', \Auth::user()->id);
             })
@@ -206,6 +206,7 @@ class ViewClass
                     $query->where('barangay_code', $barangay);
                 });
             })
+            ->where('agency_id',$agency)
             ->paginate($request->count)
         );
         return $data;
