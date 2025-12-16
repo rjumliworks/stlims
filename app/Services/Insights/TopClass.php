@@ -155,7 +155,7 @@ class TopClass
         ->join('customers', 'customers.id', '=', 'tsrs.customer_id')
         ->select('testservice_names.name as name', \DB::raw('COUNT(*) as count'))
         ->where('tsr_analyses.status_id', '!=', 13)
-        ->where('tsrs.agency_id',$this->agency)
+        ->where('tsrs.agency_id',14)
         ->when($month, fn($q) => $q->whereMonth('tsr_analyses.created_at', $month))
         ->when($request->year, fn($q) => $q->whereYear('tsr_analyses.created_at', $request->year))
         ->when(isset($startMonth) && isset($endMonth), fn($q) => 
@@ -171,7 +171,7 @@ class TopClass
         })
         ->groupBy('testservice_names.name')
         ->orderByDesc('count')
-        ->limit(100)
+        ->limit(300)
         ->get();
         return $data;
     }

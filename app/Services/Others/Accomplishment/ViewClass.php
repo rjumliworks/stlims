@@ -221,6 +221,7 @@ class ViewClass
             break;
             case 'Services Conducted':
                 $count = TsrAnalysis::whereHas('sample', function ($query) use ($laboratory_id,$year,$index){
+                    $query->where('status_id','!=',13);
                     $query->whereHas('tsr', function ($query) use ($laboratory_id,$year,$index){
                         $query->where('agency_id',$this->agency)->where('laboratory_id',$laboratory_id)->where('status_id','!=',5)->where('is_shelf',0)->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
                     });

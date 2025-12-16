@@ -60,20 +60,21 @@ class AnalysisExport implements FromView
         
         $lists = TsrAnalysis::with('testservice.testname')
         ->select('testservice_id', \DB::raw('count(*) as count'))
-        ->when($this->lab, function ($query) {
-            return $query->withWhereHas('sample', function ($query)  {
-                $query->whereHas('tsr', function ($query){
-                    $query->when($this->lab, function ($query) {
-                        $query->where('laboratory_id', $this->lab);
-                    });
-                    $query->whereHas('customer',function ($query){
-                        $query->when($this->customer, function ($query, $customer) {
-                            ($customer == 'Internal') ? $query->where('is_internal',1) : $query->where('is_internal',0);
-                        });
-                    });
-                    $query->where('agency_id',$this->agency);
-                });
-            });
+        ->whereHas('sample.tsr', function ($query) {
+            $query->where('agency_id', 14);
+            $query->where('is_shelf',0)->where('status_id','!=',5);
+            $query->when($this->lab, fn ($q) =>
+                $q->where('laboratory_id', $this->lab)
+            );
+
+            // $query->whereHas('customer', function ($q) {
+            //     $q->when($this->customer, function ($q, $customer) {
+            //         $q->where(
+            //             'is_internal',
+            //             $customer === 'Internal' ? 1 : 0
+            //         );
+            //     });
+            // });
         })
         ->where('status_id', '!=', 13)
         ->when(isset($startMonth) && isset($endMonth), function ($query) use ($startMonth, $endMonth) {
