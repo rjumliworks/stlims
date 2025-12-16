@@ -206,7 +206,7 @@ class ViewClass
                     $query->where('barangay_code', $barangay);
                 });
             })
-            ->where('agency_id',$agency)
+            ->where('agency_id',$this->agency)
             ->paginate($request->count)
         );
         return $data;
