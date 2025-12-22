@@ -33,6 +33,15 @@ class ViewClass
                     $query->where('name', 'LIKE', "%{$keyword}%");
                 });
             })
+            ->when($request->type, function ($query, $type) {
+                if($type == 'New Customer'){
+                    $query->where('is_new',1);
+                }else if($type == 'Old Customer'){
+                    $query->where('is_new',0);
+                }else{
+                    $query->where('is_new',null);
+                }
+            })
             ->when($request->class, function ($query, $value) {
                 $query ->where('classification_id',$value);
             })

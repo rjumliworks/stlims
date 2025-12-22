@@ -32,7 +32,8 @@ class CustomerResource extends JsonResource
             'conformes' => $this->conformes,
             'sex' => $this->sex,
             'address' => new AddressResource($this->address),
-            'wallet' => new WalletResource($this->wallet)
+            'wallet' => new WalletResource($this->wallet),
+            'created_at' => $this->created_at
         ];
     }
 }

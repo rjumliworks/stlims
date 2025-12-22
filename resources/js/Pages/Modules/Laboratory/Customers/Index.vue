@@ -77,12 +77,11 @@
                                 <tr class="fs-11">
                                     <th style="width: 3%;"></th>
                                     <th>Name</th>
-                                    <th style="width: 7%;" class="text-center">Type</th>
-                                    <th style="width: 15%;" class="text-center">Class</th>
-                                    <th style="width: 15%;" class="text-center">Email</th>
-                                    <th style="width: 10%;" class="text-center">Contact No.</th>
+                                    <th style="width: 13%;" class="text-center">Contact Details</th>
+                                    <th style="width: 13%;" class="text-center">Date Created</th>
+                                    <th style="width: 5%;" class="text-center">Type</th>
                                     <th style="width: 7%;" class="text-center">Status</th>
-                                    <th style="width: 7%;" ></th>
+                                    <th style="width: 6%;" ></th>
                                 </tr>
                             </thead>
                             <tbody class="table-white fs-12">
@@ -94,15 +93,21 @@
                                         <h5 class="fs-13 mb-0 text-dark">{{list.customer}}</h5>
                                         <p class="fs-12 text-muted mb-0">{{list.address.name}}</p>
                                     </td>
-                                    <td class="text-center">
-                                        <span v-if="list.is_new" class="badge bg-success">New</span>
-                                        <span v-else class="badge bg-danger">Old</span>
-                                    </td>
                                     <!-- <td class="text-center fs-12">{{list.bussiness.name}}</td> -->
-                                    <td class="text-center fs-12">{{list.classification.name}}</td>
                                     <!-- <td class="text-center fs-12">{{list.classification.name}}</td> -->
-                                    <td class="text-center fs-12">{{list.email}}</td>
-                                    <td class="text-center fs-12">{{list.contact_no}}</td>
+                                    <!-- <td class="text-center fs-12">{{list.classification.name}}</td> -->
+                                    <td class="text-center fs-12">
+                                        <h5 class="fs-11 mb-0 text-dark">{{list.email}}</h5>
+                                        <p class="fs-11 text-muted mb-0">{{list.contact_no}}</p>
+                                        <!-- {{list.email}} -->
+                                    </td>
+                                    <!-- <td class="text-center fs-12">{{list.contact_no}}</td> -->
+                                    <td class="text-center fs-11">{{list.created_at}}</td>
+                                    <td class="text-center">
+                                        <span v-if="list.is_new" class="badge bg-info-subtle text-info">New</span>
+                                        <span v-else-if="list.is_new == NULL" class="badge bg-warning-subtle text-warning">Not Set</span>
+                                        <span v-else-if="!list.is_new" class="badge bg-danger-subtle text-danger">Old</span>
+                                    </td>
                                     <td class="text-center">
                                         <span v-if="list.is_active" class="badge bg-success">Active</span>
                                         <span v-else class="badge bg-danger">Inactive</span>
@@ -156,6 +161,7 @@ export default {
                 sex: null,
                 agency: null,
                 individual: null,
+                type: null
             },
             location: {
                 region: null,
@@ -182,6 +188,9 @@ export default {
         "filter.sex"(newVal){
             this.fetch();
         },
+        "filter.type"(newVal){
+            this.fetch();
+        },
         "filter.individual"(newVal){
             this.fetch();
         }
@@ -202,6 +211,7 @@ export default {
                     class: this.filter.class,
                     industry: this.filter.industry,
                     sex: this.filter.sex,
+                    type: this.filter.type,
                     individual: this.filter.individual,
                     region: this.location.region,
                     province: this.location.province,
