@@ -28,10 +28,11 @@
                             <div class="input-group mb-1">
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                                 <input type="text" v-model="filter.keyword" placeholder="Search Customer" class="form-control" style="width: 30%;">
-                                <Multiselect class="white" style="width: 17%;" :options="dropdowns.sexs" v-model="filter.sex" label="name" :searchable="true" placeholder="Select Sex" />
+                                <Multiselect class="white" style="width: 13%;" :options="dropdowns.sexs" v-model="filter.sex" label="name" :searchable="true" placeholder="Select Sex" />
                                 <Multiselect v-if="filter.industry == 107" class="white" style="width: 17%;" :options="dropdowns.individuals" v-model="filter.individual" label="name" :searchable="true" placeholder="Select Individual" />
                                 <Multiselect class="white" style="width: 17%;" :options="dropdowns.industries" v-model="filter.industry" label="name" :searchable="true" placeholder="Select Industry" />
                                 <Multiselect v-if="$page.props.roles.includes('Admnistrator')" class="white" style="width: 15%;" :options="dropdowns.agencies" v-model="filter.agency" label="short" :searchable="true" placeholder="Select Agency" />
+                                <Multiselect class="white" style="width: 13%;" :options="['New Customer','Old Customer','Not Identified']" v-model="filter.type" label="name" :searchable="true" placeholder="Select Type" />
                                 <span @click="filterAddress()" class="input-group-text" v-b-tooltip.hover title="Filter by Address" style="cursor: pointer;"> 
                                     <i class="ri-map-pin-fill search-icon"></i>
                                 </span>
@@ -76,6 +77,7 @@
                                 <tr class="fs-11">
                                     <th style="width: 3%;"></th>
                                     <th>Name</th>
+                                    <th style="width: 7%;" class="text-center">Type</th>
                                     <th style="width: 15%;" class="text-center">Class</th>
                                     <th style="width: 15%;" class="text-center">Email</th>
                                     <th style="width: 10%;" class="text-center">Contact No.</th>
@@ -91,6 +93,10 @@
                                     <td>
                                         <h5 class="fs-13 mb-0 text-dark">{{list.customer}}</h5>
                                         <p class="fs-12 text-muted mb-0">{{list.address.name}}</p>
+                                    </td>
+                                    <td class="text-center">
+                                        <span v-if="list.is_new" class="badge bg-success">New</span>
+                                        <span v-else class="badge bg-danger">Old</span>
                                     </td>
                                     <!-- <td class="text-center fs-12">{{list.bussiness.name}}</td> -->
                                     <td class="text-center fs-12">{{list.classification.name}}</td>
