@@ -31,6 +31,7 @@
                                 <input v-if="filter.datetype" type="date" v-model="filter.date" placeholder="Search Request" class="form-control" style="width: 100px;">
                                 <Multiselect class="white" style="width: 15%;" :options="dates" v-model="filter.datetype" label="name" :allow-empty="false" :searchable="true" placeholder="Filter by date" />
                                 <Multiselect class="white" style="width: 15%;" :options="dropdowns.laboratories" v-model="filter.laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
+                                <Multiselect class="white" style="width: 10%;" :options="['Local','Referral']" v-model="filter.type" label="name" :allow-empty="false" :searchable="true" placeholder="Select Type" />
                                 <span @click="filterAddress()" class="input-group-text" v-b-tooltip.hover title="Filter by Address" style="cursor: pointer;"> 
                                     <i class="bx bxs-map search-icon" :class="{'bx-tada text-danger': hasAddressFilter}"></i>
                                 </span>
@@ -179,7 +180,8 @@ export default {
                 sortby: 'Requested At',
                 sort: 'desc',
                 datetype: null,
-                date:null
+                date: null,
+                type: null
             },
             location: {
                 region: null,
@@ -235,6 +237,9 @@ export default {
         },
         "filter.laboratory"(newVal){
             this.fetch();
+        },
+        "filter.type"(newVal){
+            this.fetch();
         }
     },
     computed: {
@@ -265,6 +270,7 @@ export default {
                     province: this.location.province,
                     municipality: this.location.municipality,
                     barangay: this.location.barangay,
+                    type: this.filter.type,
                     count: 10,
                     option: 'lists'
                 }

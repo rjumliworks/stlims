@@ -210,6 +210,9 @@ class ViewClass
                     $query->where('barangay_code', $barangay);
                 });
             })
+            ->when($request->type, function ($query, $type) {
+                ($type == 'Referral') ? $query->where('is_referral',1) : $query->where('is_referral', 0);
+            })
             ->whereIn('agency_id', $agencyIds)
             ->paginate($request->count)
         );
