@@ -10,7 +10,7 @@ class ViewResource extends JsonResource
 {
     public function toArray(Request $request): array
     {
-         $hashids = new Hashids('krad',10);
+        $hashids = new Hashids('krad',10);
         $code = $hashids->encode($this->id);
 
         return [
