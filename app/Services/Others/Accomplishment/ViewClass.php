@@ -236,13 +236,30 @@ class ViewClass
                 //     $query->where('is_new',1)->whereMonth('created_at',$index+1)->whereYear('created_at',$year);
                 // })
                 // ->where('agency_id',$this->agency)->select('customer_id')->distinct()->count('customer_id');
+                // $m = $months[$month] ?? null;
+                // $count = Customer::where('is_new', true)
+                // ->whereMonth('created_at', $m)
+                // ->whereYear('created_at', $year)
+                // ->whereHas('tsrs', function ($query){
+                //     $query->where('agency_id', $this->agency);
+                // })
+                // ->count();
                 $m = $months[$month] ?? null;
-                $count = Customer::where('is_new', true)
-                ->whereMonth('created_at', $m)
-                ->whereYear('created_at', $year)
-                ->whereHas('tsrs', function ($query){
-                    $query->where('agency_id', $this->agency);
-                })
+                $count = Customer::query()
+                ->where('customers.is_new', true)
+                ->joinSub(
+                    \DB::table('tsrs')
+                        ->select('customer_id', \DB::raw('MIN(created_at) as first_tsr_date'))
+                        ->where('agency_id', $this->agency)
+                        ->where('status_id', '!=', 5) // 🚫 exclude cancelled
+                        ->groupBy('customer_id'),
+                    'first_tsrs',
+                    'first_tsrs.customer_id',
+                    '=',
+                    'customers.id'
+                )
+                ->whereMonth('first_tsrs.first_tsr_date', $m)
+                ->whereYear('first_tsrs.first_tsr_date', $year)
                 ->count();
             break;
             case 'Firms Served':
