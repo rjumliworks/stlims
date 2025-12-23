@@ -77,8 +77,8 @@ class ViewClass
 
     public function lists($request){
         $agencyIds = auth()->user()
-    ->myroles()
-    ->pluck('agency_id');
+        ->myroles()
+        ->pluck('agency_id');
         $data = ListResource::collection(
             Tsr::query()
             ->with('customer:id,name_id,name,is_main','customer.customer_name:id,name,has_branches')
@@ -129,14 +129,17 @@ class ViewClass
                 (is_array($labtype)) ?  $query->whereIn('laboratory_id',$labtype ) : $query->where('laboratory_id',$labtype );
             }) 
             ->when($request->sort, function ($query, $sort) use ($request) {
-                if($request->sortby == 'Code'){
-                    $query->orderBy('code',$request->sort);
-                }else if($request->sortby == 'Requested At'){
-                    $query->orderBy('created_at',$request->sort);
-                }else{
-                    $query->orderBy('due_at',$request->sort);
-                }
-            })
+    if ($request->sortby == 'Code') {
+        $query->orderBy('code', $sort)
+              ->orderBy('id', 'asc');
+    } elseif ($request->sortby == 'Requested At') {
+        $query->orderBy('created_at', $sort)
+              ->orderBy('id', 'asc');
+    } else {
+        $query->orderBy('due_at', $sort)
+              ->orderBy('id', 'asc');
+    }
+})
             ->when($request->reminder, function ($query, $reminder) {
                 switch($reminder){
                     case 'Memorandum of Agreement (MOA)':
