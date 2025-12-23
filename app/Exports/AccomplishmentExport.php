@@ -14,6 +14,7 @@ class AccomplishmentExport implements FromView
         $this->month = $month;
         $this->year = $year;
         $this->lab = $lab;
+        $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
     }
 
     public function view(): View
@@ -26,6 +27,7 @@ class AccomplishmentExport implements FromView
         ->whereMonth('created_at',$this->month)
         ->whereYear('created_at',$this->year)
         ->where('laboratory_id',$this->lab)
+        ->where('agency_id', $this->agency)
         ->get();
 
         foreach ($lists as $row) {
