@@ -129,17 +129,17 @@ class ViewClass
                 (is_array($labtype)) ?  $query->whereIn('laboratory_id',$labtype ) : $query->where('laboratory_id',$labtype );
             }) 
             ->when($request->sort, function ($query, $sort) use ($request) {
-    if ($request->sortby == 'Code') {
-        $query->orderBy('code', $sort)
-              ->orderBy('id', 'asc');
-    } elseif ($request->sortby == 'Requested At') {
-        $query->orderBy('created_at', $sort)
-              ->orderBy('id', 'asc');
-    } else {
-        $query->orderBy('due_at', $sort)
-              ->orderBy('id', 'asc');
-    }
-})
+                if ($request->sortby == 'Code') {
+                    $query->orderBy('code', $sort)
+                        ->orderBy('id', 'asc');
+                } elseif ($request->sortby == 'Requested At') {
+                    $query->orderBy('created_at', $sort)
+                        ->orderBy('id', 'asc');
+                } else {
+                    $query->orderBy('due_at', $sort)
+                        ->orderBy('id', 'asc');
+                }
+            })
             ->when($request->reminder, function ($query, $reminder) {
                 switch($reminder){
                     case 'Memorandum of Agreement (MOA)':
