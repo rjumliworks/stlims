@@ -77,6 +77,8 @@ class CustomerController extends Controller
         $result = $this->handleTransaction(function () use ($request) {
             if($request->option == 'customer'){
                 return $this->save->update($request);
+            }else if($request->option == 'type'){
+                return $this->save->type($request);
             }else{
                 return $this->save->updateConforme($request);
             }

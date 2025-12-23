@@ -85,6 +85,18 @@ class SaveClass
         ];
     }
 
+    public function type($request){
+        $data = Customer::findOrFail($request->id);
+        $data->is_new = $request->is_new;
+        $data->save();
+$data = Customer::findOrFail($request->id);
+        return [
+            'data' => $data,
+            'message' => 'Customer was updated!', 
+            'info' => "You've successfully updated the customer details."
+        ];
+    }
+
     private function generateCode(){
         $agency = Agency::where('id',$this->agency)->first();
         $c = Customer::where('agency_id',$this->agency)->count();

@@ -81,7 +81,7 @@
                                     <th style="width: 13%;" class="text-center">Date Created</th>
                                     <th style="width: 5%;" class="text-center">Type</th>
                                     <th style="width: 7%;" class="text-center">Status</th>
-                                    <th style="width: 6%;" ></th>
+                                    <th style="width: 10%;" ></th>
                                 </tr>
                             </thead>
                             <tbody class="table-white fs-12">
@@ -114,12 +114,15 @@
                                     </td>
                                     <td class="text-end">
                                         <Link :href="`/customers/${list.code}`">
-                                            <b-button variant="soft-info" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
+                                            <b-button variant="soft-info" class="me-1" v-b-tooltip.hover title="View" size="sm">
                                                 <i class="ri-eye-fill align-bottom"></i>
                                             </b-button>
                                         </Link>
-                                        <b-button @click="openEdit(list,index)" variant="soft-warning" v-b-tooltip.hover title="Edit" size="sm">
+                                        <b-button @click="openEdit(list,index)" variant="soft-warning" class="me-1" v-b-tooltip.hover title="Edit" size="sm">
                                             <i class="ri-pencil-fill align-bottom"></i>
+                                        </b-button>
+                                         <b-button @click="openUpdate(list,index)" variant="soft-danger" v-b-tooltip.hover title="Update" size="sm">
+                                            <i class="ri-calendar-fill align-bottom"></i>
                                         </b-button>
                                     </td>
                                 </tr>
@@ -136,17 +139,19 @@
     <Filter @submit="handleSubmit" :regions="dropdowns.regions" :region="region" ref="filter"/>
     <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
     <Edit :dropdowns="dropdowns" :region="region" @update="fetch()" ref="edit"/>
+    <Update @update="fetch()" ref="update"/>
 </template>
 <script>
 import _ from 'lodash';
 import Edit from './Modals/Edit.vue';
+import Update from './Modals/Update.vue';
 import Create from './Modals/Create.vue';
 import Filter from './Modals/Filter.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Filter, Multiselect, Edit, Create },
+    components: { PageHeader, Pagination, Filter, Multiselect, Edit, Create, Update },
     props: ['region','dropdowns'],
     data(){
         return {
@@ -236,6 +241,10 @@ export default {
         openEdit(data,index){
             this.index = index;
             this.$refs.edit.show(data);
+        },
+        openUpdate(data,index){
+            this.index = index;
+            this.$refs.update.show(data);
         },
         viewClass(index,data){
             this.index2 = index;
