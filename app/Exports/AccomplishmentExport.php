@@ -20,7 +20,7 @@ class AccomplishmentExport implements FromView
     public function view(): View
     {
         $lists = Tsr::select('id','code','customer_id')
-        // ->whereDoesntHave('parent')
+        ->whereDoesntHave('parent')
         ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
         
         ->with('payment.type')
@@ -28,6 +28,7 @@ class AccomplishmentExport implements FromView
         ->whereYear('created_at',$this->year)
         ->where('laboratory_id',$this->lab)
         ->where('agency_id', $this->agency)
+        ->where('status_id','!=',5)
         ->get();
 
         foreach ($lists as $row) {
