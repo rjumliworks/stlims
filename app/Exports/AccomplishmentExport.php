@@ -42,14 +42,20 @@ class AccomplishmentExport implements FromView
             $complete_address = $address.$row['customer']['address']['barangay']['name'].', '.$row['customer']['address']['municipality']['name'].$a;
 
             $code = $row['code'];
-            $customer = $row['customer']['customer_name']['name'];
+            // $customer = $row['customer']['customer_name']['name'];
             $address = $complete_address;
             $gratis =  ($row['payment']['is_free']) ? $row['payment']['discount'] : '-';
 
+            $customer = $row['customer']['customer_name']['name'];
+            if($row['customer']['name'] != 'Main'){
+                $customerComplete = $row['customer']['customer_name']['name'].' - '.$row['customer']['name'];
+            }else{
+                $customerComplete = $row['customer']['customer_name']['name'];
+            }
 
             $tsrs[] = [
                 "code" => $code,
-                "customer" => $customer,
+                "customer" => $customerComplete,
                 "address" => $complete_address,
                 "ornumber" => $row['payment']['or_number'],
                 "subtotal" => $row['payment']['subtotal'],
