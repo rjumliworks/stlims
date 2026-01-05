@@ -381,7 +381,8 @@ class OpClass
         $year = date('Y'); 
         $c = FinanceOp::where('payorable_type','App\Models\Customer')->whereYear('created_at',$year)->where('agency_id',$this->agency)->count();
         $temp = ($year == '2024') ? 1000 : 0;
-        $code = date('Y').date('m').'-'.str_pad(($temp+$c+1), 4, '0', STR_PAD_LEFT);  
+        $region = ($this->agency == 14) ? 'R9' : 'R6';
+        $code = date('Y').date('m').'-'.str_pad(($temp+$c+1), 4, '0', STR_PAD_LEFT).'-'.$region;  
         return $code;
     }
 }
