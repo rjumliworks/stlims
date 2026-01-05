@@ -19,6 +19,11 @@ class FinanceOp extends Model
         'agency_id'
     ];
 
+    public function getCodeAttribute($value)
+    {
+        return preg_replace('/-R\d+$/i', '', $value);
+    }
+
     public function payorable()
     {
         return $this->morphTo();
