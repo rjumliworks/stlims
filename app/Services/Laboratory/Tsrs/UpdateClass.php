@@ -270,12 +270,12 @@ class UpdateClass
     private function generateCode($data,$short)
     {
         return \DB::transaction(function () use ($data, $short) {
-            $labs = $this->configuration->laboratories;
-            $specificValue = $data->laboratory_id;
-            $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
-                return $object['value'] === $specificValue;
-            }));
-            $tsr_count = $lab[0]['tsr_count'];
+            // $labs = $this->configuration->laboratories;
+            // $specificValue = $data->laboratory_id;
+            // $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
+            //     return $object['value'] === $specificValue;
+            // }));
+            // $tsr_count = $lab[0]['tsr_count'];
             
             $laboratory = $data->laboratory_id;
         
@@ -301,15 +301,16 @@ class UpdateClass
                     ->count();
             }
 
-            if ($year == 2025 && $this->agency == 11) {
-                switch ($data->facility_id) {
-                    case 4: $tsr_count = 861; break;
-                    case 5: $tsr_count = 84; break;
-                    case 6: $tsr_count = 366; break;
-                }
-            }
+            // if ($year == 2025 && $this->agency == 11) {
+            //     switch ($data->facility_id) {
+            //         case 4: $tsr_count = 861; break;
+            //         case 5: $tsr_count = 84; break;
+            //         case 6: $tsr_count = 366; break;
+            //     }
+            // }
 
-            $sequence = $tsr_count + $c + 1;
+            // $sequence = $tsr_count + $c + 1;
+            $sequence = $c + 1;
             $code = $agency->code . '-' . date('m') . date('Y') . '-' . $shortCode . '-' . str_pad($sequence, 4, '0', STR_PAD_LEFT);
 
             return $code;
@@ -319,12 +320,12 @@ class UpdateClass
     private function generateSampleCode($data,$short)
     {
         return \DB::transaction(function () use ($data, $short) {
-            $labs = $this->configuration->laboratories;
-            $specificValue = $data->laboratory_id;
-            $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
-                return $object['value'] === $specificValue;
-            }));
-            $sample_count = $lab[0]['sample_count'];
+            // $labs = $this->configuration->laboratories;
+            // $specificValue = $data->laboratory_id;
+            // $lab = array_values(array_filter($labs, function ($object) use ($specificValue) {
+            //     return $object['value'] === $specificValue;
+            // }));
+            // $sample_count = $lab[0]['sample_count'];
 
             $laboratory = $data->laboratory_id;
             $year = date('Y');
@@ -354,16 +355,17 @@ class UpdateClass
                     ->count();
 
             // Special reset rules (your 2025 logic)
-            if ($year == 2025 && $this->agency == 11) {
-                switch ($data->facility_id) {
-                    case 4: $sample_count = 861; break;
-                    case 5: $sample_count = 84; break;
-                    case 6: $sample_count = 366; break;
-                }
-            }
+            // if ($year == 2025 && $this->agency == 11) {
+            //     switch ($data->facility_id) {
+            //         case 4: $sample_count = 861; break;
+            //         case 5: $sample_count = 84; break;
+            //         case 6: $sample_count = 366; break;
+            //     }
+            // }
 
             // Compute and format the sample code
-            $sequence = $sample_count + $c + 1;
+            // $sequence = $sample_count + $c + 1;
+            $sequence = $c + 1;
             $code = $shortCode . '-' . str_pad($sequence, 5, '0', STR_PAD_LEFT);
 
             return $code;
