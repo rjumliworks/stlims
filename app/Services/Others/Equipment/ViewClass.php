@@ -80,8 +80,8 @@ class ViewClass
             ],
             [
                 'name' => 'Calibration Due Soon',
-                'description' => '5 days ahead of the calibration due date',
-                'count' => Equipment::whereBetween('calibration_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()])->where('agency_id',$this->agency)->count(),
+                'description' => '30 days ahead of the calibration due date',
+                'count' => Equipment::whereBetween('calibration_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(30)->endOfDay()])->where('agency_id',$this->agency)->count(),
                 'icon' => 'ri-error-warning-line',
                 'color' => 'bg-warning-subtle text-warning'
             ],
@@ -113,8 +113,8 @@ class ViewClass
             ],
             [
                 'name' => 'Maintenance Due Soon',
-                'description' => '5 days ahead of the maintenance due date',
-                'count' => Equipment::whereBetween('maintenance_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()])->where('agency_id',$this->agency)->count(),
+                'description' => '30 days ahead of the maintenance due date',
+                'count' => Equipment::whereBetween('maintenance_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(30)->endOfDay()])->where('agency_id',$this->agency)->count(),
                 'icon' => 'ri-error-warning-line',
                 'color' => 'bg-warning-subtle text-warning'
             ],
