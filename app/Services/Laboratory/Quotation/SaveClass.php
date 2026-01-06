@@ -105,6 +105,7 @@ class SaveClass
         $data = Quotation::create(array_merge($request->all(),[
             'status_id' => 14,
             'agency_id' => $this->agency,
+            'facility_id' => \Auth::user()->profile->facility_id,
             'customer_id' => $request->customer['value'],
             'conforme_id' => $request->conforme['value'],
             'created_by' => \Auth::user()->id
