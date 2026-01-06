@@ -41,7 +41,7 @@ class ViewClass
                         $query->whereDate('calibration_due','>',now());
                     break;
                     case 'Calibration Due Soon':
-                        $query->whereBetween('calibration_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()]);
+                        $query->whereBetween('calibration_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(30)->endOfDay()]);
                     break;
                     case 'Overdue Calibration':
                         $query->where('calibration_program','!=','Not Applicable')->whereDate('calibration_due','<',now())->whereNotIn('status_id',[36,37]);
@@ -53,7 +53,7 @@ class ViewClass
                         $query->whereDate('maintenance_due','>',now());
                     break;
                     case 'Maintenance Due Soon':
-                        $query->whereBetween('maintenance_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(5)->endOfDay()]);
+                        $query->whereBetween('maintenance_due', [Carbon::now()->startOfDay(), Carbon::now()->addDays(30)->endOfDay()]);
                     break;
                     case 'Overdue Maintenance':
                         $query->whereDate('maintenance_due','<',now())->whereNotIn('status_id',[36,37]);
