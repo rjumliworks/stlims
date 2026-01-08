@@ -70,7 +70,8 @@ class ViewClass
             ->when($this->configuration->strict_mode == 1, function ($query) {
                 $facility = \Auth::user()->profile->facility;
 
-                if ($facility->is_psto || $facility->is_separated) {
+                //  || $facility->is_separated
+                if ($facility->is_psto) { 
                     $query->where('facility_id', $facility->id);
                 }
             })
