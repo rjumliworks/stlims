@@ -47,7 +47,7 @@ class OpClass
             ->where('payorable_type','!=','App\Models\FinanceName')
             ->orderBy('updated_at','DESC')
             ->orderBy('id','DESC')
-            ->paginate($request->count)
+            ->paginate(10)
             ->loadMorph('payorable', [
                 Customer::class => [
                     'customer_name:id,name,has_branches',
