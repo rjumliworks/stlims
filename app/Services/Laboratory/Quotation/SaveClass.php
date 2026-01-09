@@ -206,7 +206,7 @@ class SaveClass
     }
 
     public function copy($request){
-        $old = Quotation::with('samples.analyses.addfee','referral')->where('id',$request->id)->first();
+        $old = Quotation::with('samples.analyses.addfee','referral','service')->where('id',$request->id)->first();
         $data = Quotation::create(array_merge($request->all(),[
            'total'    => (float) str_replace([',', '₱'], '', $old->total),
             'subtotal' => (float) str_replace([',', '₱'], '', $old->subtotal),
