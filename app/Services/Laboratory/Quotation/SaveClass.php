@@ -208,7 +208,7 @@ class SaveClass
     public function copy($request){
         $old = Quotation::with('samples.analyses.addfee','referral','service')->where('id',$request->id)->first();
         $data = Quotation::create(array_merge($request->all(),[
-           'total'    => (float) str_replace([',', '₱'], '', $old->total),
+            'total'    => (float) str_replace([',', '₱'], '', $old->total),
             'subtotal' => (float) str_replace([',', '₱'], '', $old->subtotal),
             'discount' => (float) str_replace([',', '₱'], '', $old->discount),
             'terms' => $old->terms,
@@ -234,14 +234,14 @@ class SaveClass
         }
 
         if($old->service){
-          
-                $data->service()->create([
-                    'fee' => $service->fee,
-                    'total' => $service->total,
-                    'quantity' => $service->quantity,
-                    'service_id' => $service->service_id,
-                    'is_additional' => $service->is_additional
-                ]);
+
+            $data->service()->create([
+                'fee' => (float) str_replace([',', '₱'], '', $old->service->fee),
+                'total' => (float) str_replace([',', '₱'], '', $old->service->total),
+                'quantity' => $old->service->quantity,
+                'service_id' => $old->service->service_id,
+                'is_additional' => $old->service->is_additional
+            ]);
             
         }
 
