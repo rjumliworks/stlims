@@ -25,6 +25,9 @@
                         </b-col>
                         <b-col md="auto">
                             <div class="hstack gap-1 flex-wrap mt-2">
+                                <div class="text-muted" @click="makeCopy(selected)" style="cursor: pointer;">  
+                                    <i class="ri-edit-box-fill fs-16"></i> Make a Copy
+                                </div>
                                 <b-button v-if="selected.status.name === 'Ongoing' || selected.status.name === 'Completed'" @click="openSubmit(selected)" variant="primary" v-b-tooltip.hover title="Save">
                                     <i class="ri-save-fill align-bottom"></i> Convert to TSR
                                 </b-button>
@@ -47,14 +50,16 @@
             </div>
         </b-card>
     </b-col>
+     <Copy ref="copy"/>
     <Save ref="save"/>
     <Submit ref="submit"/>
 </template>
 <script>
+import Copy from '../Modals/Top/Copy.vue';
 import Save from '../Modals/Top/Save.vue';
 import Submit from '../Modals/Top/Submit.vue';
 export default {
-    components: { Save, Submit }, 
+    components: { Save, Submit, Copy }, 
     props:['selected','analyses'],
     methods: {
         openSave(id){
@@ -66,6 +71,9 @@ export default {
         openSubmit(data){
             this.$refs.submit.show(data,this.analyses);
         },
+        makeCopy(data){
+            this.$refs.copy.show(data);
+        }
     }
 }
 </script>

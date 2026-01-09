@@ -9,6 +9,7 @@ use App\Models\QuotationSample;
 use App\Models\QuotationService;
 use App\Models\QuotationAnalysis;
 use App\Models\QuotationReferral;
+use Carbon\Carbon;
 
 class SaveClass
 {
@@ -202,5 +203,68 @@ class SaveClass
         $data->total = $total;
         $data->save();
         return $data->total;
+    }
+
+    public function copy($request){
+        $old = Quotation::with('samples.analyses.addfee','referral')->where('id',$request->id)->first();
+        $data = Quotation::create(array_merge($request->all(),[
+           'total'    => (float) str_replace([',', '₱'], '', $old->total),
+            'subtotal' => (float) str_replace([',', '₱'], '', $old->subtotal),
+            'discount' => (float) str_replace([',', '₱'], '', $old->discount),
+            'terms' => $old->terms,
+            'status_id' => 14,
+            'purpose_id' => $old->purpose_id,
+            'discount_id' => $old->discount_id,
+            'agency_id' => $this->agency,
+            'customer_id' =>$old->customer_id,
+            'conforme_id' => $old->conforme_id,
+            'laboratory_id' => $old->laboratory_id,
+            'created_by' => \Auth::user()->id,
+            'facility_id' => \Auth::user()->profile->facility_id,
+            'is_referral' => $old->is_referral,
+            'created_at'  => Carbon::now(),
+        ]));
+        
+        if($old->is_referral){  
+            $data->referral()->create([
+                'is_psto' => $old->referral->is_psto, 
+                'province_code' => $old->referral->province_code,
+                'agency_id' => $old->referral->agency_id
+            ]);
+        }
+
+
+        foreach($old->samples as $sample){
+            $s = $data->samples()->create([
+                'name' => $sample->name,
+                'sampletype_id' => $sample->sampletype_id,
+                'customer_description' => $sample->customer_description,
+                'description' => $sample->description,
+            ]);
+            foreach($sample->analyses as $analysis){
+                $a = $s->analyses()->create([
+                    'fee' => $analysis->fee,
+                    'testservice_id' => $analysis->testservice_id
+                ]);
+                if($analysis->addfee){
+                    $a->addfee()->create([
+                        'fee' => $analysis->addfee->fee,
+                        'total' => $analysis->addfee->total,
+                        'quantity' => $analysis->addfee->quantity,
+                        'service_id' => $analysis->addfee->service_id,
+                        'is_additional' => $analysis->addfee->is_additional
+                    ]);
+                }
+            }
+        }
+
+        $hashids = new Hashids('krad',10);
+        $code = $hashids->encode($data->id);
+
+        return [
+            'data' => $code,
+            'message' => 'Quotation copied!', 
+            'info' => "You've successfully copied the quotation."
+        ];
     }
 }

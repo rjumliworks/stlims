@@ -72,6 +72,9 @@ class QuotationController extends Controller
                 case 'tsr':
                     return $this->save->tsr($request);
                 break;
+                 case 'copy':
+                    return $this->save->copy($request);
+                break;
             }
         });
 
