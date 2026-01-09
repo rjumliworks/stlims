@@ -233,16 +233,16 @@ class SaveClass
             ]);
         }
 
-        if(count($old->services) > 0){
-            foreach($old->services as $service){
-                $data->services()->create([
+        if($old->service){
+          
+                $data->service()->create([
                     'fee' => $service->fee,
                     'total' => $service->total,
                     'quantity' => $service->quantity,
                     'service_id' => $service->service_id,
                     'is_additional' => $service->is_additional
                 ]);
-            }
+            
         }
 
         foreach($old->samples as $sample){
