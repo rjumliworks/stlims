@@ -484,8 +484,8 @@ class UpdateClass
             'receiver' => $tsr->received->profile->firstname.' '.$tsr->received->profile->middlename[0].'. '.$tsr->received->profile->lastname,
             'customer' => [
                 'name' => ($tsr->customer->is_main) ? $tsr->customer->customer_name->name :  $tsr->customer->customer_name->name.' - '.$tsr->customer->name,
-                // 'address' => $d.$tsr->customer->address->barangay->name.', '.$a,
-                'address' => $tsr->customer->address->barangay->name.', '.$a,
+                'address1' => $d.$tsr->customer->address->barangay->name.', '.$a,
+                'address2' => $tsr->customer->address->barangay->name.', '.$a,
                 'contact_no' => $tsr->customer->contact->contact_no,
                 'email' => $tsr->customer->contact->email,
                 'conforme' => [
