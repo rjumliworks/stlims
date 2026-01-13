@@ -194,9 +194,17 @@
                 <tr>
                     <td width="25%">Address : </td>
                     @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
-                    <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address2']}}</span></td>
+                        @if($tsr['customer']['address2'])
+                        <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address2']}}</span></td>
+                        @else 
+                        <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address']}}</span></td>
+                        @endif
                     @else 
-                    <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address1']}}</span></td>
+                        @if($tsr['customer']['address1'])
+                        <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address1']}}</span></td>
+                        @else 
+                        <td colspan="5" width="75%"><span style="text-transform: uppercase; color: #072388;">{{$tsr['customer']['address']}}</span></td>
+                        @endif
                     @endif
                 </tr>
                 <tr>
