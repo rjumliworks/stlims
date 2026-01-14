@@ -22,7 +22,7 @@ class RSTLExport implements FromView
         ->whereDoesntHave('parent')
         ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
         ->withWhereHas('payment', function ($query) {
-            $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id')->with('status','type');
+            $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id','paid_at')->with('status','type');
         })
         ->when($this->type, function ($query, $type) {
             $query->where('laboratory_id',$type);
@@ -59,7 +59,8 @@ class RSTLExport implements FromView
                 "ornumber" => ($row['payment']['or_number']) ? $row['payment']['or_number'] : '-',
                 "amount" => $row['payment']['total'],
                 "status" => $row['payment']['status']['name'],
-                "payment" => ($row['payment']['type']) ?  $row['payment']['type']['name'] : '-'
+                "payment" => ($row['payment']['type']) ?  $row['payment']['type']['name'] : '-',
+                "date" => ($row['payment']['paid_at']) ?  $row['payment']['paid_at'] : '-'
             ];
         }
 

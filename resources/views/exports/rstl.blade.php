@@ -13,6 +13,7 @@
                 <td style="width: 150px; text-align: center; font-weight: bold;">Discounted</td>
                 <td style="width: 160px; text-align: center; font-weight: bold;">Amount</td>
                 <td style="width: 160px; text-align: center; font-weight: bold;">Status</td>
+                <td style="width: 160px; text-align: center; font-weight: bold;">Date Paid</td>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
                 <td style="text-align: center;">{{$list['discount']}}</td>
                 <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['amount']),'₱ '),2,".",",")}}</td>
                 <td style="text-align: center;">{{$list['status']}}</td>
+                <td style="text-align: center;">{{$list['date']}}</td>
             </tr>
         @endforeach
         </tbody>
