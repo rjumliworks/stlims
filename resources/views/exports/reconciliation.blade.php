@@ -28,9 +28,9 @@
                     @endforeach
                 </td>                
                 <td style="text-align: center;">{{$list['ornumber']}}</td>
-                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['rstlamount']),'₱ '),2,".",",")}}</td>
-                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['opamount']),'₱ '),2,".",",")}}</td>
-                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['oramount']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{trim(str_replace(',','',$list['rstlamount']),'₱ ')}}</td>
+                <td style="text-align: center;">{{trim(str_replace(',','',$list['opamount']),'₱ ')}}</td>
+                <td style="text-align: center;">{{trim(str_replace(',','',$list['oramount']),'₱ ')}}</td>
                 <td style="text-align: center;">{{$list['excess']}}</td>
                 <td style="text-align: center;">{{$list['created']}}</td>
             </tr>
