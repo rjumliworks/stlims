@@ -19,7 +19,7 @@ class TopClass
 
     public function years(){
         // $data = Target::where('agency_id',$this->agency)->distinct()->pluck('year')->toArray();
-        return [2024,2025];
+        return [2024,2025,2026];
     }
 
     public function laboratory_types(){
