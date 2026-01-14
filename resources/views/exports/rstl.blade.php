@@ -23,9 +23,9 @@
                 <td style="text-align: center;">{{$list['address']}}</td>
                 <td style="text-align: center;">{{$list['payment']}}</td>
                 <td style="text-align: center;">{{$list['ornumber']}}</td>
-                <td style="text-align: center;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$list['total_fees']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['total_fees']),'₱ '),2,".",",")}}</td>
                 <td style="text-align: center;">{{$list['discount']}}</td>
-                <td style="text-align: center;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$list['amount']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['amount']),'₱ '),2,".",",")}}</td>
                 <td style="text-align: center;">{{$list['status']}}</td>
             </tr>
         @endforeach

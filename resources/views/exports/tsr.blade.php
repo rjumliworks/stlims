@@ -22,9 +22,9 @@
         @foreach($lists as $list)
             <tr>
                 <td style="{{ $list['code'] == '-' ? 'text-align: center;' : '' }}">{{$list['code']}}</td>
-                <td style="text-align: center;">{{$list['subtotal']}}</td>
-                <td style="text-align: center;">{{($list['discount'] == '₱0.00') ? '-' : $list['discount']}}</td>
-                <td style="text-align: center;">{{$list['total']}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['subtotal']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{($list['discount'] == '₱0.00') ? '-' : number_format(trim(str_replace(',','',$list['discount']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['total']),'₱ '),2,".",",")}}</td>
                 <td style="text-align: center;">{{$list['gratis']}}</td>
                 <td style="{{ $list['code'] == '-' ? 'text-align: center;' : '' }}">{{$list['customer']}}</td>
                 <td style="{{ $list['code'] == '-' ? 'text-align: center;' : '' }}">{{$list['address']}}</td>
@@ -58,10 +58,10 @@
             @endphp
             <tr style="font-weight: bold; text-align: center;">
                 <td colspan="1"></td>
-                <td style="text-align: center; font-weight: bold;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format($totalSubtotal, 2, ".", ",") }}</td>
-                <td style="text-align: center; font-weight: bold;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format($totalDiscount, 2, ".", ",") }}</td>
-                <td style="text-align: center; font-weight: bold;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format($totalAmount, 2, ".", ",") }}</td>
-                <td style="text-align: center; font-weight: bold;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{ number_format($totalGratis, 2, ".", ",") }}</td>
+                <td style="text-align: center; font-weight: bold;">{{ number_format($totalSubtotal, 2, ".", ",") }}</td>
+                <td style="text-align: center; font-weight: bold;">{{ number_format($totalDiscount, 2, ".", ",") }}</td>
+                <td style="text-align: center; font-weight: bold;">{{ number_format($totalAmount, 2, ".", ",") }}</td>
+                <td style="text-align: center; font-weight: bold;">{{ number_format($totalGratis, 2, ".", ",") }}</td>
             </tr>
         </tfoot>
     </table>

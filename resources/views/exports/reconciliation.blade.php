@@ -28,9 +28,9 @@
                     @endforeach
                 </td>                
                 <td style="text-align: center;">{{$list['ornumber']}}</td>
-                <td style="text-align: center;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$list['rstlamount']),'₱ '),2,".",",")}}</td>
-                <td style="text-align: center;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$list['opamount']),'₱ '),2,".",",")}}</td>
-                <td style="text-align: center;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$list['oramount']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['rstlamount']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['opamount']),'₱ '),2,".",",")}}</td>
+                <td style="text-align: center;">{{number_format(trim(str_replace(',','',$list['oramount']),'₱ '),2,".",",")}}</td>
                 <td style="text-align: center;">{{$list['excess']}}</td>
                 <td style="text-align: center;">{{$list['created']}}</td>
             </tr>
@@ -38,7 +38,7 @@
         <tr style="font-size: 10px; font-weight: bold; background-color:#e6e6e6;">
             <td colspan="7" style="text-align: right; padding-right: 10px;">TOTAL OR AMOUNT:</td>
             <td style="text-align: center;">
-                <span style="font-family: DejaVu Sans;">&#8369;</span>
+                
                 {{ number_format($total_or, 2, ".", ",") }}
             </td>
             <td></td>
