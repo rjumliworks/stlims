@@ -20,7 +20,7 @@
     <hr class="text-muted"/>
     <BRow class="g-3" style="height: calc(100vh - 300px); overflow: auto;">
         <BCol xl="8">
-            <Bar/>
+            <Bar ref="bar"/>
         </BCol>
         <BCol xl="4">
             <Info :lists="info1" :lists2="info2"/>
@@ -112,6 +112,7 @@ export default {
     watch: {
         "year"(newVal){
             this.fetch();
+            this.$refs.bar.updateYear(newVal);
         },
         "laboratory"(newVal){
             this.fetch();

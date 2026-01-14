@@ -106,6 +106,10 @@ export default {
         openView(){
             this.$refs.industry.show();
         },
+        updateYear(year){
+            this.year = year;
+            this.fetch();
+        },
         previous(year){
             this.year = year - 1;
             this.fetch();

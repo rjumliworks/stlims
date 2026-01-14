@@ -74,6 +74,7 @@ export default {
     watch: {
         "year"(newVal){
             this.fetch();
+            this.$refs.bar.updateYear(newVal);
         },
         "laboratory"(newVal){
             this.fetch();
