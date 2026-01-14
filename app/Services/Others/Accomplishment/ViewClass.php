@@ -22,7 +22,7 @@ class ViewClass
     }
 
     public function show($request,$agencies){
-        $year = 2025;
+        $year = date('Y');
         $data = Target::with('breakdowns.laboratory')->where('year',$year)->where('agency_id',$this->agency)->first();
         if($data){
            return $this->view($year,$agencies);
