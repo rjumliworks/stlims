@@ -34,6 +34,9 @@ class ServiceController extends Controller
             case 'testservices':
                 return $this->view->testservices($request);
             break;
+            case 'download':
+                return $this->view->download($request);
+            break;
             default :
             return inertia('Modules/Laboratory/Services/Index',[
                 'dropdowns' => [

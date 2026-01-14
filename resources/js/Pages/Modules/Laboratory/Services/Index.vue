@@ -32,6 +32,9 @@
                                 <span @click="openUpload()" class="input-group-text" v-b-tooltip.hover title="Upload" style="cursor: pointer;"> 
                                     <i class="ri-upload-cloud-fill search-icon"></i>
                                 </span>
+                                <span @click="openDownload()" class="input-group-text" v-b-tooltip.hover title="Download" style="cursor: pointer;"> 
+                                    <i class="ri-file-excel-2-fill search-icon"></i>
+                                </span>
                                 <span @click="refresh()" class="input-group-text" v-b-tooltip.hover title="Refresh" style="cursor: pointer;"> 
                                     <i class="bx bx-refresh search-icon"></i>
                                 </span>
@@ -141,6 +144,7 @@
     <Create @message="fetch()" :dropdowns="dropdowns" :region="region" ref="create"/>
     <Fee ref="fee"/>
     <Upload :dropdowns="dropdowns" ref="upload"/>
+    <Download :dropdowns="dropdowns" ref="download"/>
     <View @success="fetch()" ref="view"/>
 </template>
 <script>
@@ -149,11 +153,12 @@ import Fee from './Modals/Fee.vue';
 import View from './Modals/View.vue';
 import Create from './Modals/Create.vue';
 import Upload from './Modals/Upload.vue';
+import Download from './Modals/Download.vue';
 import Multiselect from "@vueform/multiselect";
 import PageHeader from '@/Shared/Components/PageHeader.vue';
 import Pagination from "@/Shared/Components/Pagination.vue";
 export default {
-    components: { PageHeader, Pagination, Multiselect, Create, Fee, View, Upload },
+    components: { PageHeader, Pagination, Multiselect, Create, Fee, View, Upload, Download },
     props: ['counts','dropdowns'],
     data(){
         return {
@@ -225,6 +230,9 @@ export default {
         },
         openUpload(){
             this.$refs.upload.show();
+        },
+        openDownload(){
+            this.$refs.download.show();
         },
         viewStatus(index,status){
             this.index = index;

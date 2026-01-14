@@ -2,6 +2,9 @@
 
 namespace App\Services\Laboratory\Services;
 
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\ServiceExport;
+use App\Models\ListLaboratory;
 use App\Models\Testservice;
 use App\Models\TestserviceName;
 use App\Models\TestserviceMethod;
@@ -134,5 +137,11 @@ class ViewClass
             $data = [];
         }
         return $data;
+    }
+
+    public function download($request){
+        $laboratory = ($request->laboratory) ? $request->laboratory : null;
+        $name = ListLaboratory::where('id',$laboratory)->value('short');
+        return Excel::download(new ServiceExport($laboratory,$this->agency), $name.'-testservices.xlsx');
     }
 }
