@@ -65,33 +65,21 @@ class AnalystClass
             [
                 'name' => 'Ongoing Test',
                 'description' => 'Tests conducted by the analyst',
-                'count' => TsrAnalysis::where('status_id',11)->where('analyst_id',\Auth::user()->id)->whereHas('sample', function ($query){
-                    $query->whereHas('tsr', function ($query){
-                        $query->whereYear('created_at',now());
-                    });
-                })->count(),
+                'count' => TsrAnalysis::where('status_id',11)->where('analyst_id',\Auth::user()->id)->whereYear('created_at',now())->count(),
                 'icon' => 'ri-checkbox-circle-fill fs-20',
                 'color' => 'text-warning'
             ],
             [
                 'name' => 'Tests Performed',
                 'description' => 'Tests conducted by the analyst',
-                'count' => TsrAnalysis::where('status_id',12)->where('analyst_id',\Auth::user()->id)->whereHas('sample', function ($query){
-                    $query->whereHas('tsr', function ($query){
-                        $query->whereYear('created_at',now());
-                    });
-                })->count(),
+                'count' => TsrAnalysis::where('status_id',12)->where('analyst_id',\Auth::user()->id)->whereYear('created_at',now())->count(),
                 'icon' => 'ri-checkbox-circle-fill fs-20',
                 'color' => 'text-success'
             ],
             [
                 'name' => 'Total Test Cost',
                 'description' => 'Cost of all tests performed by the analyst',
-                'count' => '₱' . number_format(TsrAnalysis::where('status_id',12)->where('analyst_id',\Auth::user()->id)->whereHas('sample', function ($query){
-                    $query->whereHas('tsr', function ($query){
-                        $query->whereYear('created_at',now());
-                    });
-                })->sum('fee'),2),
+                'count' => '₱' . number_format(TsrAnalysis::where('status_id',12)->where('analyst_id',\Auth::user()->id)->whereYear('created_at',now())->sum('fee'),2),
                 'icon' => 'ri-information-fill fs-20',
                 'color' => 'text-info'
             ]
