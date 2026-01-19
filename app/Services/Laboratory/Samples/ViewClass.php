@@ -94,7 +94,7 @@ class ViewClass
         ->whereHas('user', function ($query){
             $query->where('is_active',1);
         })
-        ->where('agency_id',$this->agency)->where('role_id',4)
+        ->where('agency_id',$this->agency)->whereIn('role_id',[4,9])
         ->get()->map(function ($item) {
             return [
                 'value' => $item->user_id,
