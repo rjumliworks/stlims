@@ -95,6 +95,8 @@ class ViewClass
             $query->where('is_active',1);
         })
         ->where('agency_id',$this->agency)->whereIn('role_id',[4,9])
+        ->select('user_id')   // important
+        ->distinct()          // removes duplicates
         ->get()->map(function ($item) {
             return [
                 'value' => $item->user_id,
