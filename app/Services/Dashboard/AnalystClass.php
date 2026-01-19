@@ -38,15 +38,13 @@ class AnalystClass
         for ($m = $startMonth; $m <= $endMonth; $m++) {
             $query = TsrAnalysis::where('status_id', 12)
             ->where('analyst_id', $userId)
-            ->whereHas('sample', function ($query) use ($year, $m, $laboratory) {
-                $query->whereHas('tsr', function ($query) use ($year, $m,$laboratory) {
-                    $query->whereYear('created_at', $year)
-                        ->whereMonth('created_at', $m)
-                         ->when($laboratory, function ($query) use ($laboratory) {
+            ->whereHas('sample', function ($query) use ($laboratory) {
+                $query->whereHas('tsr', function ($query) use ($laboratory) {
+                    $query->when($laboratory, function ($query) use ($laboratory) {
                             $query->where('laboratory_id',$laboratory);
                         });
                 });
-            });
+            })->whereYear('start_at', $year)->whereMonth('start_at', $m);
 
             $count = $query->count();
             $totalCost = round($query->sum('fee'), 2);
