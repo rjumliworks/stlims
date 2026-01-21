@@ -44,7 +44,7 @@ class ViewClass
         $laboratory = ($request->laboratory) ? $request->laboratory : $this->laboratories;
         $users = UserRole::with('user.profile','laboratory')
             ->where('agency_id', $this->agency)
-            ->whereIn('laboratory_id', $laboratory)
+            // ->whereIn('laboratory_id', $laboratory)
             ->whereIn('role_id', [4, 9])
             // ->whereHas('myroles', function ($query) {
             //     $query->where('agency_id', $this->agency)
