@@ -51,6 +51,9 @@ class ViewClass
             //         ->where('laboratory_id', $this->roles)
             //         ->whereIn('role_id', [4, 9]);
             // })
+            ->whereHas('user', function ($query) {
+                $query->where('is_active',1);
+            })
             ->get();
 
         $usersWithCounts = $users->map(function ($user) {
