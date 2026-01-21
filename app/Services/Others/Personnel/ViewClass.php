@@ -58,28 +58,27 @@ class ViewClass
             ->where('analyst_id', $user->user_id)
             ->whereHas('sample', function($q) use ($user) {
                 $q->whereHas('tsr', function($q2) use ($user) {
-                    $q2->whereYear('created_at', now())
-                    ->where('laboratory_id', $user->laboratory_id);
+                    $q2->where('laboratory_id', $user->laboratory_id);
                 });
-            })->count();
+            })
+            ->whereYear('start_at', now())->count();
 
             $testsPerformed = TsrAnalysis::where('status_id', 12)
                 ->where('analyst_id', $user->user_id)
                 ->whereHas('sample', function($q) use ($user) {
                     $q->whereHas('tsr', function($q2) use ($user) {
-                        $q2->whereYear('created_at', now())
-                        ->where('laboratory_id', $user->laboratory_id); // fixed typo
+                        $q2->where('laboratory_id', $user->laboratory_id); // fixed typo
                     });
-                })->count();
+                })
+                ->whereYear('start_at', now())->count();
 
             $totalCost = TsrAnalysis::where('status_id', 12)
                 ->where('analyst_id', $user->user_id)
                 ->whereHas('sample', function($q) use ($user) {
                     $q->whereHas('tsr', function($q2) use ($user) {
-                        $q2->whereYear('created_at', now())
-                        ->where('laboratory_id', $user->laboratory_id); // added filter
+                        $q2->where('laboratory_id', $user->laboratory_id); // added filter
                     });
-                })->sum('fee');
+                })->whereYear('start_at', now())->sum('fee');
 
             return [
                 'id' => $user->user_id,

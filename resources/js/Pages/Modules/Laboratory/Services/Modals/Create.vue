@@ -200,7 +200,6 @@ export default {
             axios.get('/testservices',{
                 params: {
                     option: 'methods',
-                    count: 5,
                     laboratory_id: this.form.laboratory_id,
                     keyword: code
                 }
