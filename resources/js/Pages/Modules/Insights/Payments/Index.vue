@@ -27,7 +27,7 @@
             <Method :lists="methods"/>
         </BCol>
         <BCol xl="4" class="mt-n1">
-            <Discount :y="y" :discounts="list_discount" :lists="discounts"/>
+            <Discount :y="year" :discounts="list_discount" :lists="discounts"/>
         </BCol>
     </BRow>
 </template>
