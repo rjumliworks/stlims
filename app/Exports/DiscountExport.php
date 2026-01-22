@@ -54,7 +54,8 @@ class DiscountExport implements FromView
                 "ornumber" => ($row['payment']['or_number']) ? $row['payment']['or_number'] : '-',
                 "amount" => $row['payment']['total'],
                 "status" => $row['payment']['status']['name'],
-                "payment" => ($row['payment']['type']) ?  $row['payment']['type']['name'] : '-'
+                "payment" => ($row['payment']['type']) ?  $row['payment']['type']['name'] : '-',
+                "date" => $row['created_at']
             ];
         }
 
