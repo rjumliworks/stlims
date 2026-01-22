@@ -22,7 +22,7 @@ class DiscountExport implements FromView
         ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
         ->withWhereHas('payment', function ($query) {
             $query->where('discount_id',$this->discount);
-            $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id')->with('status','type');
+            $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id','paid_at')->with('status','type');
         })
 
         ->where('agency_id',$this->agency)
@@ -55,7 +55,7 @@ class DiscountExport implements FromView
                 "amount" => $row['payment']['total'],
                 "status" => $row['payment']['status']['name'],
                 "payment" => ($row['payment']['type']) ?  $row['payment']['type']['name'] : '-',
-                "date" => $row['created_at']
+                "date" => $row['payment']['paid_at']
             ];
         }
 
