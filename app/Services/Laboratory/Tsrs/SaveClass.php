@@ -13,6 +13,7 @@ class SaveClass
     {
         $this->agency = (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null;
         $this->laboratory = null;
+        $this->facility = \Auth::user()->profile->facility_id;
         $this->configuration = AgencyConfiguration::with('agency.address')->where('agency_id',$this->agency)->first();
     }
 
@@ -24,7 +25,7 @@ class SaveClass
             'customer_id' => $request->customer['value'],
             'conforme_id' => $request->conforme['value'],
             'received_by' => \Auth::user()->id,
-            'facility_id' => $request->facility_id,
+            'facility_id' =>($request->facility_id) ? $request->facility_id : $this->facility,
             'is_onsite' => ($request->is_onsite) ? $request->is_onsite : 0,
             'created_at'  => ($request->created_at) ? Carbon::parse($request->created_at)->setTime(8, 0, 0) : Carbon::now(),
         ]));

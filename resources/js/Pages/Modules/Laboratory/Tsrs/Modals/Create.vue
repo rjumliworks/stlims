@@ -233,6 +233,7 @@ export default {
     },
     methods: { 
         show(region){
+            this.form.facility_id = this.facility;
             this.region = region;
             this.fetchProvince(this.region);
             this.showModal = true;
@@ -242,6 +243,10 @@ export default {
             this.form.post('/tsrs',{
                 preserveScroll: true,
                 onSuccess: (response) => {
+                    if (!this.$page.props.flash.data) {
+                        console.error(this.$page.props.flash.info);
+                        return;
+                    }
                     this.$emit('success',this.$page.props.flash.data);
                     this.hide();
                 },
