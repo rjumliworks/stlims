@@ -111,7 +111,7 @@ border-top: none !important;
                 <img src="{{ public_path('images/logo-sm.png') }}" alt="tag" style="position: absolute; top: -4; left: 90; width: 50px; height: 50px;">
                 <center style="font-size: 10px; margin-bottom: 0px; text-transform: uppercase;">{{$configuration['agency']['member']['name']}}</center>
                 <center style="font-size: 11px; margin-bottom: 0px; font-weight: bold;">REGIONAL STANDARDS AND TESTING LABORATORIES</center>
-                <center style="font-size: 11px; width: 350px; margin: 0 auto; text-align: center;">{{$form['address']}} | {{$form['contact']}}</center>
+                <center style="font-size: 11px; width: 350px; margin: 0 auto; text-align: center;">{{$form['address']}} | {{$form['contact']}} | {{$form['email']}}</center>
                 <br/>
                 
                 <center style="margin-top: 8px; font-size: 12px; color:#000; font-weight: bold; padding: 2px;">QUOTATION</center>
@@ -164,7 +164,7 @@ border-top: none !important;
                     <tr style="text-align: center; font-size: 9px; color: #072388;">
                         <td style="text-align: left;">{{$sample['samplename']}}</td>
                         <td>{{$sample['testname']}}</td>
-                        <td>{{$sample['method']}}</td>
+                         <td>{{(isset($sample['methodShort'])) ? $sample['methodShort'] : $sample['method']}}</td>
                         <td>{{$sample['count']}}</td>
                         <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{trim(str_replace(',','',$sample['fee']),'₱ ')}}</td>
                         <td style="text-align: right;"><span style="font-family: DejaVu Sans;">&#8369;</span>{{number_format(trim(str_replace(',','',$sample['fee']),'₱ ')*$sample['count'],2,".",",")}}</td>
