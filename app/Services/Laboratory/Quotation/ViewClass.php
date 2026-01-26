@@ -150,6 +150,7 @@ class ViewClass
             foreach ($row['analyses'] as $index => $analysis) {
                 $testName = $analysis['testservice']['testname']['name'];
                 $testMethod = $analysis['testservice']['method']['method']['name'];
+                $shortMethod = $analysis['testservice']['method']['method']['short'];
                 $key = $sampleName . "_" . $analysis['sample_id'] . "_" . $testName . "_" . $testMethod;
 
                 // Initialize grouping if not yet set
@@ -157,7 +158,7 @@ class ViewClass
                     $groupedData[$key] = [
                         "samplename" => ($index == 0) ? $sampleName : '-',
                         "testname" => $testName,
-                        "method" => $testMethod,
+                        "method" => ($shortMethod) ? $shortMethod : $testMethod,
                         "count" => 0,
                         "fee" => $analysis['fee'],
                         'additional' => [] // Store as array of grouped additional fees
