@@ -5,7 +5,7 @@
                 <div class="row align-items-center g-3">
                     <div class="col-md">
                         <div>
-                            <h6><span class="fw-semibold text-primary fs-15">{{ selected.testname }}</span></h6>
+                            <h6><span class="fw-semibold text-primary fs-15">{{ selected.testname }}</span> <span class="text-muted">({{ selected.sampletype }})</span></h6>
                             <div class="hstack gap-3  fs-12 flex-wrap">
                                 <div>Analyst : 
                                     <span v-if="selected.analyst != '-'" class="fw-medium">{{selected.analyst}}</span>

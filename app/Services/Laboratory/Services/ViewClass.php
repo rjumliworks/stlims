@@ -19,41 +19,47 @@ class ViewClass
         $this->agency = ($this->role != 'Administrator') ? (\Auth::user()->myroles) ? \Auth::user()->myroles[0]->agency_id : null : null;
     }
 
-    public function lists($request){
-        $data = DefaultResource::collection(
-            Testservice::query()
+    public function lists($request)
+{
+    return DefaultResource::collection(
+        Testservice::query()
+            ->where('agency_id', $this->agency) // always applied
             ->when($request->laboratory, function ($query, $laboratory) {
-                $query->where('laboratory_id',$laboratory);
+                $query->where('laboratory_id', $laboratory);
             })
             ->when($request->status, function ($query, $status) {
-                $query->where('status_id',$status);
+                $query->where('status_id', $status);
             })
-            ->where('agency_id',$this->agency)
-            // ->where($this->agency, function ($query, $agency) {
-            //     $query->where('agency_id',$agency);
-            // })
-            //  ->when($request->agency, function ($query, $agency) {
-            //     $query->where('agency_id',$agency);
-            // })
             ->when($request->keyword, function ($query, $keyword) {
-                $query->whereHas('sampletype', function ($query) use ($keyword){
-                    $query->where('name', 'LIKE', "%{$keyword}%");
-                })->orWhereHas('testname', function ($query) use ($keyword){
-                    $query->where('name', 'LIKE', "%{$keyword}%");
-                })->orWhereHas('method', function ($query) use ($keyword){
-                    $query->whereHas('method', function ($query) use ($keyword){
-                        $query->where('name', 'LIKE', "%{$keyword}%");
+                $query->where(function ($q) use ($keyword) {
+                    $q->whereHas('sampletype', function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', "%{$keyword}%");
+                    })
+                    ->orWhereHas('testname', function ($q) use ($keyword) {
+                        $q->where('name', 'LIKE', "%{$keyword}%");
+                    })
+                    ->orWhereHas('method', function ($q) use ($keyword) {
+                        $q->whereHas('method', function ($q) use ($keyword) {
+                            $q->where('name', 'LIKE', "%{$keyword}%");
+                        });
                     });
                 });
             })
-            ->with('fees','status')
-            ->with('sampletype','testname','agency.member','agency.address.region','laboratory')
-            ->with('method.method','method.reference')
-            ->orderBy('created_at','DESC')
+            ->with([
+                'fees',
+                'status',
+                'sampletype',
+                'testname',
+                'agency.member',
+                'agency.address.region',
+                'laboratory',
+                'method.method',
+                'method.reference'
+            ])
+            ->orderBy('created_at', 'DESC')
             ->paginate($request->count)
-        );
-        return $data;
-    }
+    );
+}
 
     public function counts($statuses){
         foreach($statuses as $status){
