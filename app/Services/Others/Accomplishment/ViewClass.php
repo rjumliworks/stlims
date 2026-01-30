@@ -422,6 +422,17 @@ class ViewClass
                 })
                 ->count();
             break;
+            case 'Number of Firms Assisted':
+                $m = $months[$month] ?? null;
+                $count = Tsr::whereHas('customer', function ($query) use ($m,$year){
+                    $query->whereMonth('created_at',$m)->whereYear('created_at',$year)->where('classification_id',8);
+                })
+                ->where('laboratory_id',$laboratory_id)
+                ->whereHas('payment', function ($query) {
+                    $query->where('is_free', 1);
+                })
+                ->where('agency_id',$this->agency)->count();
+            break;
             default: 
             $count = 0;
         }
