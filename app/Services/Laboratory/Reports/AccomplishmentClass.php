@@ -103,7 +103,7 @@ class AccomplishmentClass
 
             $gdiscount = Tsr::whereDoesntHave('parent')
             ->withWhereHas('payment', function ($query) {
-                $query->where('is_free',0);
+                $query->whereNotIn('discount_id',[6,10,11,12]);
             })
             ->where('status_id','!=',5)
             ->when($month, function ($query, $month) {
@@ -120,7 +120,7 @@ class AccomplishmentClass
 
             $ggratis = Tsr::whereDoesntHave('parent')
             ->withWhereHas('payment', function ($query) {
-                $query->where('is_free',1);
+                $query->whereIn('discount_id',[6,10,11,12]);
             })
             ->where('status_id','!=',5)
             ->when($month, function ($query, $month) {
