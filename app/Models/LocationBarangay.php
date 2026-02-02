@@ -19,6 +19,11 @@ class LocationBarangay extends Model
         return $this->belongsTo('App\Models\LocationMunicipality', 'municipality_code', 'code');
     }
 
+    public function district()
+    {
+        return $this->belongsTo('App\Models\LocationDistrict', 'district_code', 'code');
+    }
+
     protected static $recordEvents = ['updated','created'];
     public function getActivitylogOptions(): LogOptions {
         return LogOptions::defaults()
