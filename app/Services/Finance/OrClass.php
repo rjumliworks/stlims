@@ -336,17 +336,24 @@ class OrClass
             }
         }
         $val = trim($data->op->total, '₱ ');
-        $val = (float) str_replace(',', '', $val);
-               
-        // $wholeNumber = intval($val);
-        //  dd($wholeNumber);
-   
-        $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-        $number = $digit->format($val);
+$val = (float) str_replace(',', '', $val);
+
+// Split whole number and decimal
+$wholeNumber = floor($val);
+$decimalPart = round(($val - $wholeNumber) * 100); // get 2-digit cents
+
+$formatter = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+$wholeText = $formatter->format($wholeNumber);
+
+if ($decimalPart > 0) {
+    $numberInWords = ucwords($wholeText) . " and " . sprintf('%02d', $decimalPart) . "/100 Pesos Only";
+} else {
+    $numberInWords = ucfirst($wholeText) . " Pesos Only";
+}
         $array = [
             'agency' => $this->configuration->agency->name,
             'customer' => $customer.$sub,
-            'word' => ucwords($number).' Pesos Only',
+            'word' => $numberInWords,
             'date' => $data->created_at,
             'detail' => ($data->detail) ? $data->detail : null,
             'total' => $data->op->total,
