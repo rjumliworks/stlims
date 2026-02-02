@@ -337,10 +337,12 @@ class OrClass
         }
         $val = trim($data->op->total, '₱ ');
         $val = (float) str_replace(',', '', $val);
-        $wholeNumber = intval($val);
+               
+        // $wholeNumber = intval($val);
+        //  dd($wholeNumber);
    
         $digit = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-        $number = $digit->format($wholeNumber);
+        $number = $digit->format($val);
         $array = [
             'agency' => $this->configuration->agency->name,
             'customer' => $customer.$sub,
