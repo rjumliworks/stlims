@@ -27,6 +27,12 @@ class AccomplishmentController extends Controller
             case 'customer_data':
                 return $this->customer->list($request);
             break;
+            case 'excel':
+                return $this->customer->excel($request);
+            break;
+            case 'excel2':
+                return $this->customer->excel2($request);
+            break;
         }   
     }
 }

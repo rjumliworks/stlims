@@ -4,6 +4,9 @@ namespace App\Services\Others\Accomplishment;
 
 use App\Models\Tsr;
 use App\Models\Target;
+use App\Exports\CustomerExport;
+use App\Exports\CustomersExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerClass
 {
@@ -205,4 +208,13 @@ class CustomerClass
     public function years(){
         return Target::distinct()->pluck('year');
     }
+
+    public function excel($request){
+        return Excel::download(new CustomerExport(), 'customer.xlsx');
+    }
+
+    public function excel2($request){
+        return Excel::download(new CustomersExport(), 'customer2.xlsx');
+    }
+
 }
