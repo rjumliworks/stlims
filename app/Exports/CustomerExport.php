@@ -81,6 +81,8 @@ class CustomerExport implements FromView
                     $provinceFirstDistrict = true;
                 } elseif (strpos($districtStr, '2') !== false || $districtStr === '2') {
                     $provinceSecondDistrict = true;
+                }else if (strpos($districtStr, '3') !== false || $districtStr === '3'){
+                    $provinceThirdDistrict = true;
                 }
             }
 
@@ -123,18 +125,25 @@ class CustomerExport implements FromView
 
             $zdn1 = false;
             $zdn2 = false;
+            $zdn3 = false;
             $zds1 = false;
             $zds2 = false;
             $zsp1 = false;
             $zsp2 = false;
 
             if ($zdn) {
-                if ($provinceFirstDistrict) {
+                   if ($provinceFirstDistrict) {
                     $zdn1 = true;
                     $zdn2 = false;
+                    $zdn3 = false;
                 } elseif ($provinceSecondDistrict) {
                     $zdn1 = false;
                     $zdn2 = true;
+                    $zdn3 = false;
+                }elseif ($provinceThirdDistrict) {
+                    $zdn1 = false;
+                    $zdn2 = false;
+                    $zdn3 = true;
                 }
             }
 
@@ -169,6 +178,7 @@ class CustomerExport implements FromView
                 'zc2'  => $zc && $zcSecondDistrict, // Use barangay district for ZC
                 'zdn1' => $zdn1,
                 'zdn2' => $zdn2,
+                'zdn3' => $zdn3,
                 'zds1' => $zds1,
                 'zds2' => $zds2,
                 'zsp1' => $zsp1,

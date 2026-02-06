@@ -9,7 +9,7 @@
         <tr>
             <th style="width: 30px; text-align: center; font-weight: bold;" rowspan="3">No.</th>
             <th style="width: 500px; text-align: center; font-weight: bold;" rowspan="3">Customer Name</th>
-            <th style=" text-align: center; font-weight: bold;" colspan="11">Address / District</th>
+            <th style=" text-align: center; font-weight: bold;" colspan="12">Address / District</th>
             <th style=" text-align: center; font-weight: bold;" colspan="2">Firm</th>
             <th style="text-align: center; font-weight: bold;" colspan="5">Individual</th>
             <th style=" text-align: center; font-weight: bold;" rowspan="3">New</th>
@@ -18,7 +18,7 @@
             <th style="text-align: center;" rowspan="2">IC</th>
             <th style="text-align: center;" rowspan="2">Sulu</th>
             <th style="text-align: center;" colspan="2">ZC</th>
-            <th style="text-align: center;" colspan="2">ZDN</th>
+            <th style="text-align: center;" colspan="3">ZDN</th>
             <th style="text-align: center;" colspan="2">ZDS</th>
             <th style="text-align: center;" colspan="2">ZSP</th>
             <th style="text-align: center;" rowspan="2">Outside</th>
@@ -30,6 +30,7 @@
             <th style="text-align: center;">2nd</th>
             <th style="text-align: center;">1st</th>
             <th style="text-align: center;">2nd</th>
+            <th style="text-align: center;">3rd</th>
             <th style="text-align: center;">1st</th>
             <th style="text-align: center;">2nd</th>
             <th style="text-align: center;">1st</th>

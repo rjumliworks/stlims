@@ -29,7 +29,7 @@
                                 <tr class="bg-dark">
                                     <th rowspan="3" class="align-middle">No.</th>
                                     <th rowspan="3" class="align-middle">Customer Name</th>
-                                    <th colspan="11" class="text-center align-middle table-info">Address / District</th>
+                                    <th colspan="12" class="text-center align-middle table-info">Address / District</th>
                                     <th rowspan="2" colspan="2"  class="text-center align-middle table-success">Firm</th>
                                     <th colspan="5" class="text-center align-middle table-warning">Individual</th>
                                     <th rowspan="3" class="text-center align-middle table-danger">New</th>
@@ -38,7 +38,7 @@
                                     <th rowspan="2" class="table-info" style="border: 1px solid red">IC</th>
                                     <th rowspan="2" class="table-info">Sulu</th>
                                     <th colspan="2" class="table-info">ZC</th>
-                                    <th colspan="2" class="table-info">ZDN</th>
+                                    <th colspan="3" class="table-info">ZDN</th>
                                     <th colspan="2" class="table-info">ZDS</th>
                                     <th colspan="2" class="table-info">ZSP</th>
                                     <th rowspan="2" class="align-middle table-info">Outside</th>
@@ -50,6 +50,7 @@
                                     <th class="table-info">2nd</th>
                                     <th class="table-info">1st</th>
                                     <th class="table-info">2nd</th>
+                                    <th class="table-info">3rd</th>
                                     <th class="table-info">1st</th>
                                     <th class="table-info">2nd</th>
                                     <th class="table-info">1st</th>
