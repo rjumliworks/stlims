@@ -26,7 +26,8 @@ class CustomerDiscount implements FromView
             $query->selectRaw('MIN(id)')
                 ->from('tsrs')
                 ->whereYear('created_at', $this->year)
-                ->where('agency_id', $agencyId);
+                ->where('agency_id', $agencyId)
+                ->groupBy('customer_id');
         })
        ->with([
             'customer:id,name,classification_id,sex_id,type_id,name_id,is_new',
