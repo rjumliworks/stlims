@@ -20,16 +20,8 @@ class CustomerDiscount implements FromView
     public function view(): View {
 
         $agencyId = $this->agency;
-        $query = Tsr::where('agency_id', 14)->where('status_id','!=',5)
-        ->whereYear('created_at', $this->year)
-        ->whereIn('id', function ($query) use ($agencyId) {
-            $query->selectRaw('MIN(id)')
-                ->from('tsrs')
-                ->whereYear('created_at', $this->year)
-                ->where('agency_id', $agencyId)
-                ->groupBy('customer_id');
-        })
-       ->with([
+        $query = Tsr::where('agency_id', $agencyId)
+        ->with([
             'customer:id,name,classification_id,sex_id,type_id,name_id,is_new',
             'customer.customer_name:id,name',
             'payment.discounted'
@@ -43,8 +35,11 @@ class CustomerDiscount implements FromView
         ->when($this->lab, function ($query, $laboratory) {
             $query->where('laboratory_id',$laboratory);
         })
+        ->whereYear('created_at', $this->year)
+        ->whereMonth('created_at', $this->month)
         ->where('status_id','!=',5)
-        ->orderBy('created_at','ASC');
+        ->orderBy('code', 'ASC');
+
         if ($this->month) {
             $query->whereMonth('created_at', $this->month);
         }
