@@ -83,6 +83,9 @@
                                     <td class="text-center">
                                         <i v-if="item.zdn2" class="text-success fs-16 ri-checkbox-circle-fill"></i>
                                     </td>
+                                     <td class="text-center">
+                                        <i v-if="item.zdn3" class="text-success fs-16 ri-checkbox-circle-fill"></i>
+                                    </td>
                                     <td class="text-center">
                                         <i v-if="item.zds1" class="text-success fs-16 ri-checkbox-circle-fill"></i>
                                     </td>
