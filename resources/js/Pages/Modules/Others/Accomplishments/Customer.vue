@@ -123,8 +123,10 @@
                                         <i v-if="item.pwd" class="text-success fs-16 ri-checkbox-circle-fill"></i>
                                     </td>
                                     <td class="text-center">
-                                        <i v-if="item.isnew" class="text-success fs-16 ri-checkbox-circle-fill"></i>
-                                        <i v-else class="text-danger fs-16 ri-close-circle-fill"></i>
+                                        <i v-if="item.isnew == 'yes'" class="text-success fs-16 ri-checkbox-circle-fill"></i>
+                                        <i v-else-if="item.isnew == 'no'" class="text-danger fs-16 ri-close-circle-fill"></i>
+                                        <i v-else class="text-warning fs-16 ri-close-circle-fill"></i>
+                                        {{newCount}} / {{oldCount}} / {{oldNone}}
                                     </td>
                                 </tr>
                             </tbody>
@@ -156,6 +158,25 @@ export default {
     },
     created(){
         this.fetch();
+    },
+    computed: {
+        newCount() {
+            return this.list.filter(item => item.isnew == 'yes').length;
+        },
+        oldCount() {
+            return this.list.filter(item => item.isnew == 'no').length;
+        },
+        oldNone() {
+            return this.list.filter(item => item.isnew == 'none').length;
+        }
+    },
+    watch: {
+        'month'(){
+            this.fetch();
+        },
+        'laboratory'(){
+            this.fetch();
+        },
     },
     methods: {
         fetch(){

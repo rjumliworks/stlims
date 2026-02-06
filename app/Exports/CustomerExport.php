@@ -11,13 +11,29 @@ class CustomerExport implements FromView
     public function view(): View {
         $year = date('Y');
         $month = 1;
-        $query = Tsr::where('agency_id', 14)->where('status_id','!=',5)
-        ->whereYear('created_at', $year)
-        ->whereIn('id', function ($query) use ($year) {
+        // $query = Tsr::where('agency_id', 14)->where('status_id','!=',5)
+        // ->whereYear('created_at', $year)
+        // ->whereIn('id', function ($query) use ($year) {
+        //     $query->selectRaw('MIN(id)')
+        //         ->from('tsrs')
+        //         ->whereYear('created_at', $year)
+        //         ->where('agency_id', 14)
+        //         ->groupBy('customer_id');
+        // })
+        // ->with([
+        //     'customer.address.province','customer.address.municipality','customer.address.barangay.district',
+        //     'customer:id,name,classification_id,sex_id,type_id,name_id,is_new',
+        //     'customer.classification','customer.sex',
+        //     'customer.type',
+        //     'customer.customer_name:id,name',
+        //     'payment'
+        // ])
+        // ->orderBy('created_at','ASC');
+         $query = Tsr::whereIn('id', function ($query) use ($year,$month, $agencyId) {
             $query->selectRaw('MIN(id)')
                 ->from('tsrs')
-                ->whereYear('created_at', $year)
-                ->where('agency_id', 14)
+                ->where('status_id','!=',5)
+                ->where('agency_id', $agencyId)
                 ->groupBy('customer_id');
         })
         ->with([
@@ -28,6 +44,8 @@ class CustomerExport implements FromView
             'customer.customer_name:id,name',
             'payment'
         ])
+        ->whereMonth('created_at', $month)
+        ->whereYear('created_at', $year)
         ->orderBy('created_at','ASC');
 
         if ($month) {

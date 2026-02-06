@@ -29,15 +29,36 @@ class CustomerClass
     public function list($request)
     {
         $year = $request->year;
-        $month = $request->month ?? null; 
+        $monthInput = $request->month;
+
+        if (is_null($monthInput)) {
+            $month = date('m'); // current month (01–12)
+        } else {
+            $month = date('m', strtotime($monthInput));
+        }
         $agencyId = $this->agency;
 
-        $query = Tsr::where('agency_id', $agencyId)
-        ->whereYear('created_at', $year)
-        ->whereIn('id', function ($query) use ($year, $agencyId) {
+        //  $count = Customer::query()
+        //         ->where('customers.is_new', true)
+        //         ->joinSub(
+        //             \DB::table('tsrs')
+        //                 ->select('customer_id', \DB::raw('MIN(created_at) as first_tsr_date'))
+        //                 ->where('agency_id', $this->agency)
+        //                 ->where('status_id', '!=', 5) // 🚫 exclude cancelled
+        //                 ->groupBy('customer_id'),
+        //             'first_tsrs',
+        //             'first_tsrs.customer_id',
+        //             '=',
+        //             'customers.id'
+        //         )
+        //         ->whereMonth('first_tsrs.first_tsr_date', $m)
+        //         ->whereYear('first_tsrs.first_tsr_date', $year)
+        //         ->count();
+
+        $query = Tsr::whereIn('id', function ($query) use ($year,$month, $agencyId) {
             $query->selectRaw('MIN(id)')
                 ->from('tsrs')
-                ->whereYear('created_at', $year)
+                ->where('status_id','!=',5)
                 ->where('agency_id', $agencyId)
                 ->groupBy('customer_id');
         })
@@ -49,11 +70,10 @@ class CustomerClass
             'customer.customer_name:id,name',
             'payment'
         ])
+        ->whereMonth('created_at', $month)
+        ->whereYear('created_at', $year)
         ->orderBy('created_at','ASC');
 
-        if ($month) {
-            $query->whereMonth('created_at', $month);
-        }
         return $query->get()->map(function ($item) {
             $municipality = optional($item->customer->address->municipality)->name;
             $province     = optional($item->customer->address->province)->name;
@@ -212,7 +232,9 @@ class CustomerClass
                 'student' => $student,
                 'senior' => $senior,
                 'pwd' => $pwd,
-                'isnew' => ($item->customer->is_new == 1) ? true : false
+                'isnew' => is_null($item->customer->is_new)
+                ? 'none'
+                : ($item->customer->is_new == 1 ? 'yes' : 'no'),
             ];
         });
     }
