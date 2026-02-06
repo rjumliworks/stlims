@@ -135,7 +135,7 @@ class CustomerClass
                 // Check type
                 if ($type === 'Student') {
                     $student = true;
-                } elseif ($type === 'Senior') {
+                } elseif ($type === 'Senior Citizen') {
                     $senior = true;
                 } elseif ($type === 'Person with Disability') {
                     $pwd = true;
