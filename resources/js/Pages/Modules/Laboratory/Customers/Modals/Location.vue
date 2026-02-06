@@ -105,7 +105,8 @@ export default {
     computed: {
         isFormValid() {
             const districtRequired = this.districts.length > 0;
-            return this.form.region && this.form.province && this.form.municipality && this.form.barangay &&  (!districtRequired || this.form.district);
+            return this.form.region && this.form.province && this.form.municipality && this.form.barangay;
+            // &&  (!districtRequired || this.form.district);
         }
     },
     methods: { 
