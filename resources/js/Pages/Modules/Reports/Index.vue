@@ -221,11 +221,18 @@
                                 <div class="flex-shrink-0">
                                     <div class="mb-n1 mt-n1">
                                         <button @click="openTop('samples')" class="btn btn-sm btn-soft-success me-1" type="button" data-original-title="View Excel">
-                                            <i class="ri-file-excel-fill align-bottom"></i>
+                                            <i class="ri-file-list-2-fill align-bottom"></i> Samples
                                         </button>
-                                        <button class="btn btn-sm btn-soft-info" type="button" data-original-title="View PDF">
-                                            <i class="ri-printer-fill align-bottom"></i>
+                                        <a href="/accomplishments?option=customer" target="_blank">
+                                            <button class="btn btn-sm btn-soft-info me-1" type="button" data-original-title="View Excel">
+                                                <i class="ri-file-list-2-fill align-bottom"></i> Customer Address
+                                            </button>
+                                        </a>
+                                        <a href="/accomplishments?option=customer2" target="_blank">
+                                        <button class="btn btn-sm btn-soft-danger me-1" type="button" data-original-title="View Excel">
+                                            <i class="ri-file-list-2-fill align-bottom"></i> Customer Discount
                                         </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

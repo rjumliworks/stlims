@@ -6,7 +6,7 @@ use App\Models\Tsr;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class CustomersExport implements FromView
+class CustomerDiscount implements FromView
 {
     protected $month,$year,$lab;
 
@@ -20,13 +20,11 @@ class CustomersExport implements FromView
     public function view(): View {
 
         $agencyId = $this->agency;
-
-        $query = Tsr::where('agency_id', $agencyId)
+        $query = Tsr::where('agency_id', 14)->where('status_id','!=',5)
         ->whereYear('created_at', $this->year)
         ->whereIn('id', function ($query) use ($agencyId) {
             $query->selectRaw('MIN(id)')
                 ->from('tsrs')
-                ->whereMonth('created_at', $this->month)
                 ->whereYear('created_at', $this->year)
                 ->where('agency_id', $agencyId)
                 ->groupBy('customer_id');
@@ -47,7 +45,9 @@ class CustomersExport implements FromView
         })
         ->where('status_id','!=',5)
         ->orderBy('created_at','ASC');
-
+        if ($this->month) {
+            $query->whereMonth('created_at', $this->month);
+        }
         $tsrs = $query->get()->map(function ($item) {
             $discount = optional($item->payment->discounted)->name;
             $formattedDiscount = isset($item->payment->discount) ? '₱' . number_format($item->payment->discount, 2) : '-';

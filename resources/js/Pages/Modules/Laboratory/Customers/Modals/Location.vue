@@ -16,11 +16,12 @@
                             <InputLabel value="Municipality" :message="form.errors.municipality_code"/>
                             <Multiselect :options="municipalities" object v-model="form.municipality" label="name" :searchable="true" placeholder="Select Municipality" />
                         </BCol>
-                         <BCol v-if="districts.length > 0" lg="6" class="mt-1">
+                        <!-- $page.props.user.data.agency_id == 11 -->
+                         <BCol v-if="districts.length > 0 && $page.props.user.data.agency_id == 11" lg="6" class="mt-1">
                             <InputLabel value="District" :message="form.errors.district_code"/>
                             <Multiselect :options="districts" object v-model="form.district" label="name" :searchable="true" placeholder="Select District" />
                         </BCol>
-                        <BCol :lg="(districts.length > 0) ? 12 : 6" class="mt-1">
+                        <BCol :lg="(districts.length > 0 && $page.props.user.data.agency_id == 11) ? 12 : 6" class="mt-1">
                             <InputLabel value="Barangay" :message="form.errors.barangay_code"/>
                             <Multiselect :options="barangays" object v-model="form.barangay" label="name" :searchable="true" placeholder="Select Barangay" />
                         </BCol>

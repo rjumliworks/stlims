@@ -39,7 +39,7 @@
                         <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
                         <input type="text"  placeholder="Search Sample Code/Name" v-model="filter.keyword" class="form-control" style="width: 30%;">
                         <Multiselect class="white" style="width: 17%;" :options="months" v-model="filter.month" label="name" :allow-empty="false" :searchable="true" :disabled="loading" placeholder="Filter by Month" />
-                        <Multiselect class="white" style="width: 20%;" :options="['Sample Code','Sample Name']" v-model="filter.type" :searchable="true"  :disabled="loading" :allow-empty="false"/>
+                        <Multiselect class="white" style="width: 20%;" :options="['Sample Code','Testing Parameter']" v-model="filter.type" :searchable="true"  :disabled="loading" :allow-empty="false"/>
                         <b-button type="button" variant="primary"  @click="(checked1.length > 0 || checked2.length > 0) ? openUpdate() : '' ">
                             <i class="ri-timer-line search-icon"></i> Update
                         </b-button>
