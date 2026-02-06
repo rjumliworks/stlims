@@ -14,9 +14,6 @@
                                  <b-button type="button" variant="light" @click="openExcel()">
                                     Download Excel
                                 </b-button>
-                                <b-button type="button" variant="light" @click="openExcel2()">
-                                    Download Excel 2
-                                </b-button>
                                 <b-button type="button" variant="primary" @click="openCreate">
                                     <i class="ri-search-eye-fill align-bottom"></i>
                                 </b-button>
