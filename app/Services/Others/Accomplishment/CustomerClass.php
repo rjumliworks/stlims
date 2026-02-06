@@ -259,8 +259,7 @@ class CustomerClass
             $query->selectRaw('MIN(id)')
                 ->from('tsrs')
                 ->whereYear('created_at', $year)
-                ->where('agency_id', $agencyId)
-                ->groupBy('customer_id');
+                ->where('agency_id', $agencyId);
         })
        ->with([
             'customer:id,name,classification_id,sex_id,type_id,name_id,is_new',
@@ -277,7 +276,7 @@ class CustomerClass
             $query->where('laboratory_id',$laboratory);
         })
         ->where('status_id','!=',5)
-        ->orderBy('created_at','ASC');
+        ->orderBy('code', 'ASC');
 
         if ($month) {
             $query->whereMonth('created_at', $month);
