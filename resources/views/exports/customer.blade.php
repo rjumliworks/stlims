@@ -56,6 +56,7 @@
                 <td style="text-align: center;">{{ $item['zc2'] ? '✔' : '' }}</td>
                 <td style="text-align: center;">{{ $item['zdn1'] ? '✔' : '' }}</td>
                 <td style="text-align: center;">{{ $item['zdn2'] ? '✔' : '' }}</td>
+                <td style="text-align: center;">{{ $item['zdn3'] ? '✔' : '' }}</td>
                 <td style="text-align: center;">{{ $item['zds1'] ? '✔' : '' }}</td>
                 <td style="text-align: center;">{{ $item['zds2'] ? '✔' : '' }}</td>
                 <td style="text-align: center;">{{ $item['zsp1'] ? '✔' : '' }}</td>
