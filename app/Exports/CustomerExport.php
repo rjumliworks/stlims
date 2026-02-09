@@ -41,6 +41,7 @@ class CustomerExport implements FromView
                 ->from('tsrs')
                 ->where('status_id','!=',5)
                 ->where('agency_id', $this->agency)
+                ->whereYear('created_at', $this->year)
                 ->groupBy('customer_id');
         })
         ->with([
