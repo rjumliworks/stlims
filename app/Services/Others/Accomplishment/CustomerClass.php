@@ -328,7 +328,7 @@ class CustomerClass
                 'senior' => $senior,
                 'pwd' => $pwd,
                 'women' => $women,
-                'gross' => $item->payment->subtotal
+                'gross' => ($item->payment->subtotal != $item->payment->total) ? ($item->payment->discount == '0.00') ? $item->payment->total : $item->payment->subtotal : $item->payment->subtotal
                
             ];
         });

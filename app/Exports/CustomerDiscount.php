@@ -59,6 +59,10 @@ class CustomerDiscount implements FromView
 
             $name = ($item->customer->name == 'Main') ? '' : ' - '.$item->customer->name;
 
+            $subtotal = (float) str_replace([',', '₱'], '', $item->payment->subtotal);
+            $discount = (float) str_replace([',', '₱'], '', $item->payment->discount);
+            $total = (float) str_replace([',', '₱'], '', $item->payment->total);
+
             return [
                 'code' => $item->code,
                 'name' => $item->customer->customer_name->name.' '.$name,
@@ -73,8 +77,7 @@ class CustomerDiscount implements FromView
                 'senior' => $senior,
                 'pwd' => $pwd,
                 'women' => $women,
-                'gross' => (float) str_replace([',', '₱'], '', $item->payment->subtotal)
-               
+                'gross' => ($subtotal != $total) ? ($discount == '0.00') ?  $total : $subtotal : $subtotal
             ];
         });
 
