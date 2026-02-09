@@ -269,7 +269,7 @@ class ViewClass
                         ->from('tsrs')
                         ->where('status_id','!=',5)
                         ->where('agency_id', $this->agency)
-                        ->whereYear('created_at', $this->year)
+                        ->whereYear('created_at', $year)
                         ->groupBy('customer_id');
                 })
                 ->whereHas('customer', function ($query) use ($m,$year){
