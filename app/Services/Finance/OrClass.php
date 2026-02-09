@@ -315,7 +315,7 @@ class OrClass
                 }
                 if($data->transaction){
                     $items[] = [
-                        'name' => 'Excess Payment',
+                        'name' => 'Credited to Customer Wallet',
                         'amount' => $data->transaction->amount
                     ];
                     $total = (float) str_replace(',', '', trim($data->op->total, '₱ ')) + (float) str_replace(',', '', trim($data->transaction->amount, '₱ ')); 
@@ -336,20 +336,20 @@ class OrClass
             }
         }
         $val = trim($data->op->total, '₱ ');
-        $val = (float) str_replace(',', '', $val);
+$val = (float) str_replace(',', '', $val);
 
-        // Split whole number and decimal
-        $wholeNumber = floor($val);
-        $decimalPart = round(($val - $wholeNumber) * 100); // get 2-digit cents
+// Split whole number and decimal
+$wholeNumber = floor($val);
+$decimalPart = round(($val - $wholeNumber) * 100); // get 2-digit cents
 
-        $formatter = new NumberFormatter("en", NumberFormatter::SPELLOUT);
-        $wholeText = $formatter->format($wholeNumber);
+$formatter = new NumberFormatter("en", NumberFormatter::SPELLOUT);
+$wholeText = $formatter->format($wholeNumber);
 
-        if ($decimalPart > 0) {
-            $numberInWords = ucwords($wholeText) . " and " . sprintf('%02d', $decimalPart) . "/100 Pesos Only";
-        } else {
-            $numberInWords = ucfirst($wholeText) . " Pesos Only";
-        }
+if ($decimalPart > 0) {
+    $numberInWords = ucwords($wholeText) . " and " . sprintf('%02d', $decimalPart) . "/100 Pesos Only";
+} else {
+    $numberInWords = ucfirst($wholeText) . " Pesos Only";
+}
         $array = [
             'agency' => $this->configuration->agency->name,
             'customer' => $customer.$sub,
