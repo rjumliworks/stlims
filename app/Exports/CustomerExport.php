@@ -8,9 +8,16 @@ use Maatwebsite\Excel\Concerns\FromView;
 
 class CustomerExport implements FromView
 {
+    protected $month,$year,$lab;
+
+    function __construct($month,$year,$agency) {
+        $this->month = $month;
+        $this->year = $year;
+        $this->agency = $agency;
+    }
+
     public function view(): View {
-        $year = date('Y');
-        $month = 1;
+      
         // $query = Tsr::where('agency_id', 14)->where('status_id','!=',5)
         // ->whereYear('created_at', $year)
         // ->whereIn('id', function ($query) use ($year) {
@@ -29,11 +36,11 @@ class CustomerExport implements FromView
         //     'payment'
         // ])
         // ->orderBy('created_at','ASC');
-         $query = Tsr::whereIn('id', function ($query) use ($year,$month, $agencyId) {
+        $query = Tsr::whereIn('id', function ($query){
             $query->selectRaw('MIN(id)')
                 ->from('tsrs')
                 ->where('status_id','!=',5)
-                ->where('agency_id', $agencyId)
+                ->where('agency_id', $this->agency)
                 ->groupBy('customer_id');
         })
         ->with([
@@ -44,13 +51,10 @@ class CustomerExport implements FromView
             'customer.customer_name:id,name',
             'payment'
         ])
-        ->whereMonth('created_at', $month)
-        ->whereYear('created_at', $year)
+        ->whereMonth('created_at', $this->month)
+        ->whereYear('created_at', $this->year)
         ->orderBy('created_at','ASC');
 
-        if ($month) {
-            $query->whereMonth('created_at', $month);
-        }
         $tsrs = $query->get()->map(function ($item) {
             $municipality = optional($item->customer->address->municipality)->name;
             $province     = optional($item->customer->address->province)->name;

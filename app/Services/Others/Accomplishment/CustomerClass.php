@@ -339,25 +339,16 @@ class CustomerClass
     }
 
     public function excel($request){
-        $monthInput = $request->month ?? date('F'); // default to full month name if empty
-
-// Convert month name to number
-$month = is_numeric($monthInput) 
-    ? (int) $monthInput 
-    : date('m', strtotime($monthInput));
+        $monthInput = $request->month ?? date('F');
+        $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
         $year = ($request->year) ? $request->year : date('Y');
-        $lab = $request->laboratory;
         $agency = $this->agency;
-        return Excel::download(new CustomerExport($month,$year,$lab,$agency), 'customer.xlsx');
+        return Excel::download(new CustomerExport($month,$year,$agency), 'customer.xlsx');
     }
 
     public function excel2($request){
-        $monthInput = $request->month ?? date('F'); // default to full month name if empty
-
-// Convert month name to number
-$month = is_numeric($monthInput) 
-    ? (int) $monthInput 
-    : date('m', strtotime($monthInput));
+        $monthInput = $request->month ?? date('F');
+        $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
         $year = ($request->year) ? $request->year : date('Y');
         $lab = $request->laboratory;
         $agency = $this->agency;

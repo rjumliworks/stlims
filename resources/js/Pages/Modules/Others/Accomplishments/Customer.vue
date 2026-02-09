@@ -202,10 +202,7 @@ export default {
             this.selectedColumn = (this.selectedColumn == index) ? null : index;
         },
         openExcel(){
-            window.open('/accomplishments?option=excel');
-        },
-        openExcel2(){
-            window.open('/accomplishments?option=excel2');
+            window.open('/accomplishments?option=excel&month='+this.month+'&year='+this.year);
         },
     }
 }
