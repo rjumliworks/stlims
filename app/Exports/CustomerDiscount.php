@@ -45,7 +45,7 @@ class CustomerDiscount implements FromView
         }
         $tsrs = $query->get()->map(function ($item) {
             $discount = optional($item->payment->discounted)->name;
-            $formattedDiscount = isset($item->payment->discount) ? '₱' . number_format($item->payment->discount, 2) : '-';
+            $formattedDiscount = isset($item->payment->discount) ? $item->payment->discount : '-';
 
             $calibration = ($discount === 'Gratis - Calibration') ? $formattedDiscount : '-';
             $qc          = ($discount === 'Gratis - QC') ? $formattedDiscount : '-';
@@ -64,7 +64,7 @@ class CustomerDiscount implements FromView
                 'name' => $item->customer->customer_name->name.' '.$name,
                 'samples' => $item->samples_count,
                 'analyses' => $item->analyses_count,
-                'fees' => $item->payment->total,
+                'fees'  => (float) str_replace([',', '₱'], '', $item->payment->total),
                 'calibration' => $calibration,
                 'qc' => $qc,
                 'rd' => $rd,
@@ -73,7 +73,7 @@ class CustomerDiscount implements FromView
                 'senior' => $senior,
                 'pwd' => $pwd,
                 'women' => $women,
-                'gross' => $item->payment->subtotal
+                'gross' => (float) str_replace([',', '₱'], '', $item->payment->subtotal)
                
             ];
         });
