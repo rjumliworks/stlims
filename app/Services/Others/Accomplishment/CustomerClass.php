@@ -60,6 +60,7 @@ class CustomerClass
                 ->from('tsrs')
                 ->where('status_id','!=',5)
                 ->where('agency_id', $agencyId)
+                ->whereYear('created_at', $year)
                 ->groupBy('customer_id');
         })
         ->with([
