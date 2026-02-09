@@ -264,10 +264,21 @@ class ViewClass
             break;
             case 'Firms Served':
                 $m = $months[$month] ?? null;
-                $count = Tsr::whereHas('customer', function ($query) use ($m,$year){
-                    $query->whereMonth('created_at',$m)->whereYear('created_at',$year)->where('classification_id',8);
+                $count = Tsr::whereIn('id', function ($query) use ($year,$month,$laboratory_id) {
+                    $query->selectRaw('MIN(id)')
+                        ->from('tsrs')
+                        ->where('status_id','!=',5)
+                        ->where('agency_id', $this->agency)
+                        ->groupBy('customer_id');
                 })
-                ->where('agency_id',$this->agency)->count();
+                ->whereHas('customer', function ($query) use ($m,$year){
+                    $query->where('classification_id',8);
+                })
+                ->where('laboratory_id',$laboratory_id)
+                ->whereMonth('created_at', $m)
+                ->whereYear('created_at', $year)
+                ->count();
+
             break;
             case 'Actual Fees Collected':
                 $count = Tsr::whereDoesntHave('parent')
