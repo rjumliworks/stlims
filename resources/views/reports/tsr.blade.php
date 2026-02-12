@@ -382,20 +382,22 @@
                 @endif
             </tfoot>
         </table>
-        <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S) / REMARK(S)</h6>
-        <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
-            <tbody>
-                <tr>
-                    <td>
-                        <ul style="margin-left: -30px; list-style: none; color: #072388; ">
-                            @foreach($tsr['descriptions'] as $desc)
-                                <li>{{$desc['code']}} : <i>{{$desc['customer_description']}}</i>, {{$desc['description']}}</li>
-                            @endforeach
-                        </ul>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="page-break-inside: avoid; break-inside: avoid;">
+            <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S) / REMARK(S)</h6>
+            <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <ul style="margin-left: -30px; list-style: none; color: #072388; ">
+                                @foreach($tsr['descriptions'] as $desc)
+                                    <li>{{$desc['code']}} : <i>{{$desc['customer_description']}}</i>, {{$desc['description']}}</li>
+                                @endforeach
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <h6 style="font-size: 10px; margin-top: 12px;">3. CUSTOMER WALLET</h6>
         <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
             <tbody>

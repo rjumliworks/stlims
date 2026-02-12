@@ -85,6 +85,6 @@ class DatabaseSeeder extends Seeder
         // $this->call(EquipmentInfosTableSeeder::class);
         // $this->call(ListObjectivesTableSeeder::class);
         $this->call(CsfQuestionsTableSeeder::class);
-        $this->call(LocationDistrictsTableSeeder::class);
+        // $this->call(LocationDistrictsTableSeeder::class);
     }
 }
