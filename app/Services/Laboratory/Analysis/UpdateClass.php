@@ -88,8 +88,8 @@ class UpdateClass
     public function tagging($request){
         $data = TsrAnalysis::with('status')->where('id',$request->id)->first();
         $data->analyst_id = $request->analyst['value'];
-        $data->start_at = $request->start_at;
-        $data->end_at = $request->end_at;
+        $data->start_at = ($request->start_at) ? $request->start_at : $data->start_at;
+        $data->end_at = ($request->end_at) ? $request->end_at : $data->end_at;
         $data->save();
 
         return [

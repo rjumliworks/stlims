@@ -113,6 +113,9 @@
                                                     <b-button v-if="list.status.name == 'Completed'" @click="openEdit(list,index)" :variant="(list.status.name != 'Completed') ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Update" size="sm">
                                                         <i class="ri-pencil-fill align-bottom"></i>
                                                     </b-button>
+                                                    <b-button v-else @click="openEdit2(list,index)" variant="danger" class="me-1" v-b-tooltip.hover title="Update" size="sm">
+                                                        <i class="ri-pencil-fill align-bottom"></i>
+                                                    </b-button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -132,16 +135,18 @@
     <Sample ref="sample"/>
     <Save @update="updateData" ref="save"/>
     <Edit @update="updateAnalyst" :analysts="analysts" ref="edit"/>
+    <Edit2 @update="updateAnalyst" :analysts="analysts" ref="edit2"/>
 </template>
 <script>
 import _ from 'lodash';
 import Edit from './Modals/Edit.vue';
+import Edit2 from './Modals/Edit2.vue';
 import Save from './Modals/Save.vue';
 import Sample from './Modals/Sample.vue';
 import simplebar from "simplebar-vue";
 import Multiselect from "@vueform/multiselect";
 export default {
-    components: { Multiselect, simplebar, Sample, Save, Edit },
+    components: { Multiselect, simplebar, Sample, Save, Edit, Edit2 },
     props:['sample','analysts'],
     data(){
         return {
@@ -209,6 +214,10 @@ export default {
         openEdit(data,index){
             this.index = index;
             this.$refs.edit.show(data);
+        },
+        openEdit2(data,index){
+            this.index = index;
+            this.$refs.edit2.show(data);
         },
         openSample(data){
             this.$refs.sample.show(data);
