@@ -59,10 +59,8 @@ export default {
     computed: {
         terms() {
             return [
-                { name: 'DOST-IX RSTL implements Payment First Policy.', is_editable: 0 },
-                { name: 'Payment Method: Cheque payment should be paid to DOST IX;', is_editable: 0 },
-                { name: 'DOST IX Trust Fund 1952101052 Landbank of the Philippines.', is_editable: 0 },
-                { name: 'Cash payment should be made directly to the cashier or deposit to DOST IX account.', is_editable: 0 },
+                { name: 'DOST IX–RSTL implements a Payment-First Policy. All customers are required to settle their payments before services are rendered..', is_editable: 0 },
+                { name: 'Payment methods are as follows: Cash payments should be made directly to the cashier while cheque and deposit payments should be made payable to DOST IX Trust Fund and deposited to Land Bank of the Philippines Account No. 1952-1010-52;', is_editable: 0 },
                 { name: 'This quotation is valid only until ' + (this.form.due_at ? this.form.due_at : 'N/A'), is_editable: 1 },
                 { name: 'Availability of testing and calibration services may change without prior notice. Please contact the laboratory to confirm before submitting your samples.'}
             ];
