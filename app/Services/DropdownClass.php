@@ -343,7 +343,7 @@ class DropdownClass
         $data = TsrSample::with('tsr')->whereHas('tsr', function ($query){
                 $query->where('agency_id',$this->agency);
             })
-            ->whereYear('created_at',2026)
+            ->whereYear('created_at','!=',2024)
             ->where('is_completed', 1)
             ->doesntHave('report')
             ->doesntHave('reportlist')
