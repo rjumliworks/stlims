@@ -49,7 +49,9 @@ class AccountingClass
     }
 
     private function excel($request){
-        $month = ($request->month) ? \DateTime::createFromFormat('F', $request->month)->format('m') : date('m');  
+        $month = ($request->month) 
+    ? \DateTime::createFromFormat('F', $request->month)->format('m') 
+    : null; // keep null if not selected
         $year = ($request->year) ? $request->year : date('Y');
         $laboratory = $request->laboratory;
         $month_name = $request->month;
