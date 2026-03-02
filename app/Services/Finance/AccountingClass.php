@@ -49,12 +49,17 @@ class AccountingClass
     }
 
     private function excel($request){
-        $month = ($request->month) 
-    ? \DateTime::createFromFormat('F', $request->month)->format('m') 
-    : null; // keep null if not selected
+      $month_name = $request->month;
+
+// Convert month name to number safely
+if (!empty($month_name)) {
+    $dt = \DateTime::createFromFormat('F', ucfirst(strtolower($month_name)));
+    $month = $dt ? $dt->format('m') : null; // fallback to null if invalid
+} else {
+    $month = null;
+}
         $year = ($request->year) ? $request->year : date('Y');
         $laboratory = $request->laboratory;
-        $month_name = $request->month;
         switch($request->type){
             case 'op':
                 return Excel::download(new OpExport($month,$year,$this->agency), 'opor-'.strtolower($month_name).'-'.$year.'.xlsx');
