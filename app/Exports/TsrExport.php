@@ -27,7 +27,9 @@ class TsrExport implements FromView
         ->withWhereHas('payment', function ($query) {
             $query->select('tsr_id','or_number','total','subtotal','discount','paid_at','is_free');
         })
-        ->whereMonth('created_at',$this->month)
+        ->when($this->month, function ($query) {
+            $query->whereMonth('created_at', $this->month);
+        })
         ->whereYear('created_at',$this->year)
         // ->when($this->type, function ($query, $type) {
         //     $query->where('laboratory_type',$type);

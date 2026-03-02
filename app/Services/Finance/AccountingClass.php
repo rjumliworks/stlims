@@ -61,7 +61,12 @@ class AccountingClass
                 return Excel::download(new RSTLExport($month,$year,$laboratory,$this->agency), 'rstl-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
             case 'tsr':
-                return Excel::download(new TsrExport($month,$year,$laboratory,$this->agency), 'tsr-'.strtolower($month_name).'-'.$year.'.xlsx');
+                $filename = 'tsr-';
+                if (!empty($month)) {
+                    $filename .= strtolower($month_name) . '-';
+                }
+                $filename .= $year . '.xlsx';
+                return Excel::download(new TsrExport($month,$year,$laboratory,$this->agency), $filename);
             break;
             default:
                 return Excel::download(new ReconciliationExport($month,$year,$this->agency), 'reconciliation-'.strtolower($month_name).'-'.$year.'.xlsx');
