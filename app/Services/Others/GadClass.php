@@ -7,7 +7,7 @@ use App\Models\Tsr;
 class GadClass
 {
     public function numbers(){
-        $year = 2025;
+        $year = 2026;
         $types = [
             ['id' => 82, 'name' => 'Male'],
             ['id' => 83, 'name' => 'Male-led'],
@@ -54,7 +54,7 @@ class GadClass
     }
 
     public function transactions(){
-        $year = 2025;
+        $year = 2026;
         $types = [
             ['id' => 82, 'name' => 'Male'],
             ['id' => 83, 'name' => 'Male-led'],
@@ -112,7 +112,7 @@ class GadClass
     }
 
     public function province($code){
-        $year = 2025;
+        $year = 2026;
         return Tsr::whereYear('created_at', $year)
         ->whereHas('customer.address', function ($query) use ($code) {
             $query->where('province_code', $code);
@@ -121,7 +121,7 @@ class GadClass
     }
 
      public function city($code){
-        $year = 2025;
+        $year = 2026;
         return Tsr::whereYear('created_at', $year)
         ->whereHas('customer.address', function ($query) use ($code) {
             $query->where('municipality_code', $code);
