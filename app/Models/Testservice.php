@@ -13,6 +13,11 @@ class Testservice extends Model
         'laboratory_id','sampletype_id','testname_id','method_id','agency_id','is_active','status_id'
     ];
 
+    public function analyses()
+    {
+        return $this->hasMany(TsrAnalysis::class);
+    }
+
     public function status()
     {
         return $this->belongsTo('App\Models\ListStatus', 'status_id', 'id');

@@ -135,7 +135,7 @@ export default {
                     keyword: this.filter.keyword,
                     status: 6,
                     count: ((window.innerHeight-490)/58),
-                    option: 'lists'
+                    option: 'list'
                 }
             })
             .then(response => {
