@@ -16,6 +16,10 @@ class GadController extends Controller
         return inertia('Modules/Others/Gad/Index');
     }
 
+    public function landing(Request $request){
+        return inertia('Modules/Others/Gad/Landing');
+    }
+
     public function show($code){
         switch($code){
             case 'workforce':

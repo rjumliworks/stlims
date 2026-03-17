@@ -2,10 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::domain('gad.' . config('app.app_host'))->as('gad.')->group(function () {
+    Route::get('/', [App\Http\Controllers\Others\GadController::class, 'landing']);
+});
+
 Route::get('/verification/{code}', [App\Http\Controllers\VerificationController::class, 'verification']);
 Route::get('/verification/sample/{code}', [App\Http\Controllers\VerificationController::class, 'sample_verification']);
 Route::resource('/gadinfosys', App\Http\Controllers\Others\GadController::class);
 Route::get('/csf', [App\Http\Controllers\Others\CsfController::class, 'csf']);
+
 
 Route::middleware(['2fa','auth','verified','is_active'])->group(function () {
     Route::resource('/profile', App\Http\Controllers\Auth\ProfileController::class);

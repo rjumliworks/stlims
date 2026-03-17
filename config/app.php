@@ -17,6 +17,7 @@ return [
     'laboratory' => env('LABORATORY_ID'),
     'api_link' => env('API_LINK'),
     'api_key' => env('API_KEY'),
+    'app_host' => env('APP_HOST'),
 
     /*
     |--------------------------------------------------------------------------
