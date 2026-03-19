@@ -110,12 +110,15 @@
                                                     <b-button v-if="list.status.name == 'Ongoing'" @click="save(12,'end',list.id)" variant="soft-danger" class="me-1" :disabled="list.analyst_id != $page.props.user.data.id" v-b-tooltip.hover title="End Analysis" size="sm">
                                                         <i class="ri-calendar-check-fill align-bottom"></i>
                                                     </b-button>
-                                                    <b-button v-if="list.status.name == 'Completed'" @click="openEdit(list,index)" :variant="(list.status.name != 'Completed') ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Update" size="sm">
+                                                    <b-button @click="openEdit(list,index)" :variant="(list.status.name != 'Completed') ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Update" size="sm">
+                                                        <i class="ri-pencil-fill align-bottom"></i>
+                                                    </b-button>
+                                                    <!-- <b-button v-if="list.status.name == 'Completed'" @click="openEdit(list,index)" :variant="(list.status.name != 'Completed') ? 'soft-success' : 'success'" class="me-1" v-b-tooltip.hover title="Update" size="sm">
                                                         <i class="ri-pencil-fill align-bottom"></i>
                                                     </b-button>
                                                     <b-button v-else @click="openEdit2(list,index)" variant="danger" class="me-1" v-b-tooltip.hover title="Update" size="sm">
                                                         <i class="ri-pencil-fill align-bottom"></i>
-                                                    </b-button>
+                                                    </b-button> -->
                                                 </td>
                                             </tr>
                                         </tbody>

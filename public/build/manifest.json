@@ -1,6 +1,6 @@
 {
   "node_modules/canvg/lib/index.es.js": {
-    "file": "assets/index.es-CiMB0ALW.js",
+    "file": "assets/index.es-BzL7szjz.js",
     "name": "index.es",
     "src": "node_modules/canvg/lib/index.es.js",
     "isDynamicEntry": true,
@@ -235,6 +235,34 @@
     "file": "assets/cover-pattern-CzcjCYXt.png",
     "src": "public/images/cover-pattern.png"
   },
+  "public/images/demos/creative.png": {
+    "file": "assets/creative-DYvxMJXo.png",
+    "src": "public/images/demos/creative.png"
+  },
+  "public/images/demos/default.png": {
+    "file": "assets/default-CV6AyZJe.png",
+    "src": "public/images/demos/default.png"
+  },
+  "public/images/demos/interactive.png": {
+    "file": "assets/interactive-9bIK7nVR.png",
+    "src": "public/images/demos/interactive.png"
+  },
+  "public/images/demos/material.png": {
+    "file": "assets/material-D5SlcXIe.png",
+    "src": "public/images/demos/material.png"
+  },
+  "public/images/demos/minimal.png": {
+    "file": "assets/minimal-BWYrL6_W.png",
+    "src": "public/images/demos/minimal.png"
+  },
+  "public/images/demos/modern.png": {
+    "file": "assets/modern-Du02aSxz.png",
+    "src": "public/images/demos/modern.png"
+  },
+  "public/images/demos/saas.png": {
+    "file": "assets/saas-DuEIPsS_.png",
+    "src": "public/images/demos/saas.png"
+  },
   "public/images/logo-dark.png": {
     "file": "assets/logo-dark-BTQwWYkM.png",
     "src": "public/images/logo-dark.png"
@@ -264,7 +292,7 @@
     "src": "public/images/sidebar/img-4.jpg"
   },
   "resources/js/app.js": {
-    "file": "assets/app-wKCiVTgG.js",
+    "file": "assets/app-B6CHQgJk.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true,
@@ -283,10 +311,17 @@
       "node_modules/canvg/lib/index.es.js"
     ],
     "css": [
-      "assets/app-CoBhyE3r.css"
+      "assets/app-B7ZJQvCt.css"
     ],
     "assets": [
       "assets/logo-sm-BMbbSDmV.png",
+      "assets/default-CV6AyZJe.png",
+      "assets/saas-DuEIPsS_.png",
+      "assets/material-D5SlcXIe.png",
+      "assets/minimal-BWYrL6_W.png",
+      "assets/creative-DYvxMJXo.png",
+      "assets/modern-Du02aSxz.png",
+      "assets/interactive-9bIK7nVR.png",
       "assets/logo-dark-BTQwWYkM.png",
       "assets/logo-light-xO5Q2xFH.png",
       "assets/performance-Drv6lVg6.png",
