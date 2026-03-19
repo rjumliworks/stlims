@@ -25,9 +25,6 @@ class WomenExport implements FromView
             $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id','paid_at')->with('status','type');
             $query->where('discount_id',9);
         })
-        ->when($this->type, function ($query, $type) {
-            $query->where('laboratory_id',$type);
-        })
         ->where('agency_id',$this->agency)
         ->whereMonth('created_at',$this->month)
         ->whereYear('created_at',$this->year)
