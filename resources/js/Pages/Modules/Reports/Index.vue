@@ -131,6 +131,9 @@
                                 </div>
                                 <div class="flex-shrink-0">
                                     <div class="mb-n1 mt-n1">
+                                        <b-button @click="openExcel('womens')" variant="soft-success" class="me-1" v-b-tooltip.hover title="View Women's" size="sm">
+                                            <i class="ri-file-excel-fill align-bottom"></i>
+                                        </b-button>
                                         <b-button @click="openExcel('rstl')" variant="soft-success" class="me-1" v-b-tooltip.hover title="View Excel" size="sm">
                                             <i class="ri-file-excel-fill align-bottom"></i>
                                         </b-button>

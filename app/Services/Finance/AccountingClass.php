@@ -8,6 +8,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RSTLExport;
 use App\Exports\OpExport;
 use App\Exports\TsrExport;
+use App\Exports\WomenExport;
 use App\Exports\ReconciliationExport;
 
 class AccountingClass
@@ -66,6 +67,9 @@ if (!empty($month_name)) {
             break;
             case 'rstl':
                 return Excel::download(new RSTLExport($month,$year,$laboratory,$this->agency), 'rstl-'.strtolower($month_name).'-'.$year.'.xlsx');
+            break;
+            case 'womens':
+                return Excel::download(new WomenExport($month,$year,$laboratory,$this->agency), 'rstl-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
             case 'tsr':
                 $filename = 'tsr-';
