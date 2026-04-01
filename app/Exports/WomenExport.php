@@ -23,8 +23,9 @@ class WomenExport implements FromView
         ->with('customer:id,name,name_id','customer.customer_name:id,name','customer.address:address,customer_id,region_code,province_code,municipality_code,barangay_code','customer.address.region:code,name,region','customer.address.province:code,name','customer.address.municipality:code,name','customer.address.barangay:code,name')
         ->withWhereHas('payment', function ($query) {
             $query->select('tsr_id','or_number','total','subtotal','discount','status_id','payment_id','paid_at')->with('status','type');
-            $query->where('discount_id',9);
+            $query->where('discount_id',9)->where('is_free', 0);
         })
+        ->where('status_id', '!=', 5)
         ->where('agency_id',$this->agency)
         ->whereMonth('created_at',$this->month)
         ->whereYear('created_at',$this->year)
