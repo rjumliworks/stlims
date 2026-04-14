@@ -57,7 +57,7 @@ class ViewClass
             // Combined keyword filter
             ->when($request->keyword, function ($query, $keyword) use ($type) {
                 $query->where(function ($q) use ($keyword,$type) {
-                    if ($type === "Sample Name") {
+                    if ($type === "Testing Parameter") {
                         $q->whereHas('testservice.testname', function ($q) use ($keyword) {
                             $q->where('name', 'LIKE', "%{$keyword}%");
                         });
@@ -158,7 +158,7 @@ class ViewClass
             // Combined keyword filter
             ->when($request->keyword, function ($query, $keyword) use ($type){
                 $query->where(function ($q) use ($keyword,$type) {
-                   if ($type === "Sample Name") {
+                   if ($type === "Testing Parameter") {
                         $q->whereHas('testservice.testname', function ($q) use ($keyword) {
                             $q->where('name', 'LIKE', "%{$keyword}%");
                         });
