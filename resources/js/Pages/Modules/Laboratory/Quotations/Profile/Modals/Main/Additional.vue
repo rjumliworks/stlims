@@ -70,12 +70,14 @@ export default {
             this.form.tsr_id = tsr;
             this.form.id = id;
             
-            this.services = data.map(service => ({
-                ...service,
-                selected: false,
-                fee: service.fee,
-                quantity: 1
-            }));
+           this.services = data
+    .filter(service => service.is_active == 1)
+    .map(service => ({
+        ...service,
+        selected: false,
+        fee: service.fee,
+        quantity: 1
+    }));
             this.showModal = true;
         },
         onServiceToggle(item) {
