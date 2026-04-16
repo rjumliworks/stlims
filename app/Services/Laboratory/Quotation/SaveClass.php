@@ -139,18 +139,25 @@ class SaveClass
 
     public function fee($request){
         $data = QuotationAnalysis::findOrFail($request->id);
-        $data->addfee()->create([
-            'service_id' => $request->service['id'],
-            'fee' => $request->service['fee'],
-            'total' => $request->total,
-            'quantity' => $request->quantity,
-            'is_additional' => 1
-        ]);
+        $grandTotal = 0;
+        foreach($request->services as $service){
+            $fee = str_replace(['₱', ','], '', $service['fee']);
+            $quantity = $service['quantity'];
+            $total = $fee * $quantity;
+            $data->addfee()->create([
+                'service_id' => $service['id'],
+                'fee' => $fee,
+                'total' => $total,
+                'quantity' => $quantity,
+                'is_additional' => 1
+            ]);
+            $grandTotal += $total;
+        }
         $total = $this->updateTotal($request->tsr_id,$request->total);
-        return [
+       return [
             'data' => $total,
-            'message' => 'Service added was successful!', 
-            'info' => "You've successfully added a service."
+            'message' => 'Additional Fee Added Successfully', 
+            'info' => "Additional fee has been added and linked to this TSR as an add-on."
         ];
     }
 
