@@ -21,6 +21,7 @@ class SampleResource extends JsonResource
             'sample' => $this->sample,
             'customer_description' => $this->customer_description,
             'description' => $this->description,
+            'remarks' => $this->remarks,
             'is_completed' => $this->is_completed,
             'completed_at' => $this->completed_at,
             'is_disposed' => $this->is_disposed,

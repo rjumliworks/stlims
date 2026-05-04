@@ -56,13 +56,17 @@
                     <InputLabel for="name" value="Sample Name"/>
                     <TextInput id="name" v-model="form.name" type="text" class="form-control" placeholder="Please enter name" :light="true"/>
                 </BCol>
-                <BCol lg="6" class="mb-1">
+                <BCol lg="6" class="mb-n2">
                     <InputLabel for="name" value="Description provided by customer"/>
-                    <Textarea id="name" v-model="form.customer_description" class="form-control" rows="7" :class="{ 'is-invalid': form.errors.customer_description }" :light="true"/>
+                    <Textarea id="name" v-model="form.customer_description" class="form-control" rows="5" :class="{ 'is-invalid': form.errors.customer_description }" :light="true"/>
                 </BCol>
-                <BCol lg="6" class="mb-1">
+                <BCol lg="6" class="mb-n2">
                     <InputLabel for="name" value="Description based on the sample submitted"/>
-                    <Textarea id="name" v-model="form.description" class="form-control" rows="7" :class="{ 'is-invalid': form.errors.description }" :light="true"/>
+                    <Textarea id="name" v-model="form.description" class="form-control" rows="5" :class="{ 'is-invalid': form.errors.description }" :light="true"/>
+                </BCol>
+                <BCol lg="12" class="mb-1">
+                    <InputLabel for="name" value="Remarks"/>
+                    <Textarea id="name" v-model="form.remarks" class="form-control" rows="2" :class="{ 'is-invalid': form.errors.remarks }" :light="true"/>
                 </BCol>
             </BRow>
         </form>
@@ -97,6 +101,7 @@ export default {
                 code: null,
                 description: null,
                 customer_description: null,
+                remarks: null,
                 laboratory_id: null,
                 count: 1,
             }),
@@ -142,6 +147,7 @@ export default {
             this.form.name = data.name;
             this.form.description = data.description;
             this.form.customer_description = data.customer_description;
+            this.form.remarks = data.remarks;
             this.form.tsr_id = id;
             this.form.laboratory_id = laboratory;
             this.setSampleType(data.sample);
@@ -156,6 +162,7 @@ export default {
             this.form.name = data.name;
             this.form.description = data.description;
             this.form.customer_description = data.customer_description;
+            this.form.remarks = data.remarks;
             this.form.laboratory_id = laboratory;
             this.setSampleType(data.sample);
             this.showModal = true;
