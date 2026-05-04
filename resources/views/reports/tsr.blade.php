@@ -434,7 +434,7 @@
             </tbody>
         </table>
         @endif
-        <h6 style="font-size: 10px; margin-top: 12px;">4. DISCUSSED WITH CUSTOMER INCLUDING THE TERMS AND CONDITIONS AT THE BACK</h6>
+        <h6 style="font-size: 10px; margin-top: 12px;">4. AGREED WITH CUSTOMER INCLUDING THE TERMS AND CONDITIONS AT THE BACK</h6>
         <table style="border: 1px solid black; font-size: 10px; margin-top: -22px; page-break-inside: avoid;">
             <tbody>
                 <tr>
