@@ -383,7 +383,7 @@
             </tfoot>
         </table>
         <div style="page-break-inside: avoid; break-inside: avoid;">
-            <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S) / REMARK(S)</h6>
+            <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S)</h6>
             <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
                 <tbody>
                     <tr>
