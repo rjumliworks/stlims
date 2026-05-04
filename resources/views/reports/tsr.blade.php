@@ -398,17 +398,8 @@
                 </tbody>
             </table>
         </div>
-        <h6 style="font-size: 10px; margin-top: 12px;">3. CUSTOMER WALLET</h6>
-        <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
-            <tbody>
-                <tr>
-                    <td>
-                        <?php echo trim($wallet,'₱ '); ?>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <h6 style="font-size: 10px; margin-top: 12px;">4. DISCUSSED WITH CUSTOMER INCLUDING THE TERMS AND CONDITIONS AT THE BACK</h6>
+      
+        <h6 style="font-size: 10px; margin-top: 12px;">3. AGREED WITH CUSTOMER INCLUDING THE TERMS AND CONDITIONS AT THE BACK</h6>
         <table style="border: 1px solid black; font-size: 10px; margin-top: -22px; page-break-inside: avoid;">
             <tbody>
                 <tr>
