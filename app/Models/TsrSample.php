@@ -16,6 +16,7 @@ class TsrSample extends Model
         'name',
         'customer_description',
         'description',
+        'remarks',
         'is_disposed',
         'is_completed',
         'sampletype_id',

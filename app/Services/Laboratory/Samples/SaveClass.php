@@ -35,6 +35,7 @@ class SaveClass
         $data->sampletype_id = (int) $request->sampletype_id;
         $data->customer_description = $request->customer_description;
         $data->description = $request->description;
+        $data->remarks = $request->remarks;
         if($data->save()){
             $this->report->update($data->tsr_id);
         }

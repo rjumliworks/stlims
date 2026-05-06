@@ -151,7 +151,7 @@
                 @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - VI')
                 <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 4 | February 2, 2026</td>
                 @else
-                <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 13 | Feb 01, 2025</td>
+                <td style="border-left-style: hidden; width: 50%; text-align: right; font-size: 10px;">OP-007-F1 (front page) <br/>Rev 13 | May 01, 2026</td>
                 @endif
             </tr>   
         </table>
@@ -383,7 +383,7 @@
             </tfoot>
         </table>
         <div style="page-break-inside: avoid; break-inside: avoid;">
-            <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S) / REMARK(S)</h6>
+            <h6 style="font-size: 10px; margin-top: 12px;">2. DESCRIPTION OF THE SAMPLE(S)</h6>
             <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
                 <tbody>
                     <tr>
@@ -398,6 +398,31 @@
                 </tbody>
             </table>
         </div>
+         @if($configuration['agency']['member']['name'] == 'Department of Science and Technology - Zamboanga Peninsula')
+        <h6 style="font-size: 10px; margin-top: 12px;">3. REMARK(S)</h6>
+        <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
+            <tbody>
+                <tr>
+                    <td>
+                        @php
+                            $descriptionsWithRemarks = collect($tsr['descriptions'])
+                                ->filter(fn($desc) => !empty($desc['remarks']));
+                        @endphp
+
+                        @if($descriptionsWithRemarks->isNotEmpty())
+                            <ul style="margin-left: -30px; list-style: none; color: #072388;">
+                                @foreach($descriptionsWithRemarks as $desc)
+                                    <li>{{ $desc['code'] }} : {{ $desc['remarks'] }}</li>
+                                @endforeach
+                            </ul>
+                        @else 
+                            <ul style="list-style: none;"><li>-</li></ul>
+                        @endif
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        @else  
         <h6 style="font-size: 10px; margin-top: 12px;">3. CUSTOMER WALLET</h6>
         <table style="border: 1px solid black; font-size: 9px; margin-top: -22px;">
             <tbody>
@@ -408,7 +433,8 @@
                 </tr>
             </tbody>
         </table>
-        <h6 style="font-size: 10px; margin-top: 12px;">4. DISCUSSED WITH CUSTOMER INCLUDING THE TERMS AND CONDITIONS AT THE BACK</h6>
+        @endif
+        <h6 style="font-size: 10px; margin-top: 12px;">4. AGREED WITH CUSTOMER INCLUDING THE TERMS AND CONDITIONS AT THE BACK</h6>
         <table style="border: 1px solid black; font-size: 10px; margin-top: -22px; page-break-inside: avoid;">
             <tbody>
                 <tr>
