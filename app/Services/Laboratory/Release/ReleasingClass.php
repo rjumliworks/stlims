@@ -88,7 +88,7 @@ class ReleasingClass
             ]));
             $contact = Tsr::with('customer.contact')->where('id',$request->tsr_id)->first()?->customer?->contact?->contact_no;
             $code = Tsr::where('id',$request->tsr_id)->first()?->code;
-            $message = "Good day. This message is from the Department of Science and Technology- Regional Standards and Testing Laboratory. (DOST-RSTL). \n\nWe are pleased to inform you that the Test/Calibration Report for the Technical Service Request Number `$code` is now ready for pick up at the DOST IX Office, Pettit Barracks, Zamboanga City starting 4:00 PM today and the succeeding weekdays (except public holidays) between 8:00 AM- 5:00 PM. \n\nKindly present the Customer’s Copy of the Technical Service Request and Valid ID when claiming, and filled-out authorization slip if applicable.\n\nThank you!"; 
+            $message = "Good day. This message is from the Department of Science and Technology- Regional Standards and Testing Laboratory. (DOST-RSTL). \n\nWe are pleased to inform you that the Test/Calibration Report for the Technical Service Request Number `$code` is now ready for pick up at the DOST IX Office, Pettit Barracks, Zamboanga City starting 4:00 PM today and the succeeding weekdays (except public holidays and Fridays) between 8:00 AM- 5:00 PM. \n\nKindly present the Customer’s Copy of the Technical Service Request and Valid ID when claiming, and filled-out authorization slip if applicable.\n\nThank you!"; 
             dispatch(new SmsJob($contact, $message));
         }else{
             $data = [];
