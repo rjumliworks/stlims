@@ -6,14 +6,15 @@ use App\Models\Tsr;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class CustomerDiscount implements FromView
+class DiscountCustomer implements FromView
 {
-    protected $month,$year,$lab;
+   protected $month,$year,$lab,$agency,$discount;
 
-    function __construct($month,$year,$lab,$agency) {
+    function __construct($month,$year,$lab,$agency,$discount) {
         $this->month = $month;
         $this->year = $year;
         $this->lab = $lab;
+        $this->discount = $discount;
         $this->agency = $agency;
     }
 
@@ -32,32 +33,29 @@ class CustomerDiscount implements FromView
                 $q->join('tsr_analyses', 'tsr_analyses.sample_id', '=', 'tsr_samples.id');
             }
         ])
+        ->when($this->discount !== null, function ($q,$discount) {
+            $q->whereHas('payment',function ($query) use ($discount){
+                $query->where('discount_id',$this->discount);
+            });
+        })
         ->when($this->lab, function ($query, $laboratory) {
             $query->where('laboratory_id',$laboratory);
         })
-        ->whereYear('created_at', $this->year)
           ->when($this->month !== null, function ($q){
             $q->whereMonth('created_at',$this->month);
         })
+        ->whereYear('created_at', $this->year)
         ->where('status_id','!=',5)
         ->orderBy('code', 'ASC');
 
-        if ($this->month) {
-            $query->whereMonth('created_at', $this->month);
-        }
+        // if ($this->month) {
+        //     $query->whereMonth('created_at', $this->month);
+        // }
         $tsrs = $query->get()->map(function ($item) {
-            $discount = optional($item->payment->discounted)->name;
+            // $discount = optional($item->payment->discounted)->name;
             $formattedDiscount = isset($item->payment->discount) ? $item->payment->discount : '-';
 
-            $calibration = ($discount === 'Gratis - Calibration') ? $formattedDiscount : '-';
-            $qc          = ($discount === 'Gratis - QC') ? $formattedDiscount : '-';
-            $rd          = ($discount === 'Gratis - R&D') ? $formattedDiscount : '-';
-
-            $health  = ($discount === 'Health Units') ? $formattedDiscount : '-';
-            $student = ($discount === 'Student') ? $formattedDiscount : '-';
-            $senior  = ($discount === 'Senior Citizen') ? $formattedDiscount : '-';
-            $pwd     = ($discount === 'Persons with Disabilities') ? $formattedDiscount : '-';
-            $women   = ($discount === 'Women\'s Month') ? $formattedDiscount : '-';
+            $discount = $formattedDiscount;
 
             $name = ($item->customer->name == 'Main') ? '' : ' - '.$item->customer->name;
 
@@ -71,19 +69,12 @@ class CustomerDiscount implements FromView
                 'samples' => $item->samples_count,
                 'analyses' => $item->analyses_count,
                 'fees'  => (float) str_replace([',', '₱'], '', $item->payment->total),
-                'calibration' => $calibration,
-                'qc' => $qc,
-                'rd' => $rd,
-                'health' => $health,
-                'student' => $student,
-                'senior' => $senior,
-                'pwd' => $pwd,
-                'women' => $women,
+                'discount' => $discount,
                 'gross' => ($subtotal != $total) ? ($discount == '0.00') ?  $total : $subtotal : $subtotal
             ];
         });
 
-        return view('exports.customers', [
+        return view('exports.customer3', [
             'lists' => $tsrs
         ]);
     }

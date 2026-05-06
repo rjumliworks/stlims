@@ -4,9 +4,11 @@ namespace App\Services\Others\Accomplishment;
 
 use App\Models\Tsr;
 use App\Models\Target;
+use App\Models\AgencyDiscount;
 use App\Models\AgencyFacilityLaboratory;
 use App\Exports\CustomerExport;
 use App\Exports\CustomerDiscount;
+use App\Exports\DiscountCustomer;
 use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerClass
@@ -32,7 +34,8 @@ class CustomerClass
         $monthInput = $request->month;
 
         if (is_null($monthInput)) {
-            $month = date('m'); // current month (01–12)
+            // $month = date('m'); // current month (01–12)
+            $month = null;
         } else {
             $month = date('m', strtotime($monthInput));
         }
@@ -71,7 +74,9 @@ class CustomerClass
             'customer.customer_name:id,name',
             'payment'
         ])
-        ->whereMonth('created_at', $month)
+        ->when($month !== null, function ($q) use ($month) {
+            $q->whereMonth('created_at', $month);
+        })
         ->whereYear('created_at', $year)
         ->orderBy('created_at','ASC');
 
@@ -270,7 +275,8 @@ class CustomerClass
         $monthInput = $request->month;
 
         if (is_null($monthInput)) {
-            $month = date('m'); // current month (01–12)
+            // $month = date('m'); // current month (01–12)
+            $month = null;
         } else {
             $month = date('m', strtotime($monthInput));
         }
@@ -292,7 +298,10 @@ class CustomerClass
             $query->where('laboratory_id',$laboratory);
         })
         ->whereYear('created_at', $year)
-        ->whereMonth('created_at', $month)
+        // ->whereMonth('created_at', $month)
+         ->when($month !== null, function ($q) use ($month) {
+            $q->whereMonth('created_at', $month);
+        })
         ->where('status_id','!=',5)
         ->orderBy('code', 'ASC');
 
@@ -335,25 +344,155 @@ class CustomerClass
         });
     }
 
+      public function discounts(){
+        $data = AgencyDiscount::with('discount')->where('is_active',1)->where('agency_id',$this->agency)->get()->map(function ($item) {
+            $total = ($item->discount->subtype->name == 'Percentage') ? $item->discount->value.'%' : '₱'.$item->discount->value;
+            $name = ($item->discount->name === 'Regular') ? $item->discount->name : $item->discount->name.' ('.$total.')';
+            return [
+                'value' => $item->discount->id,
+                'name' => $name,
+                'number' => $item->discount->value,
+                'type' => $item->discount->type->name,
+                'based' => $item->discount->based->name,
+                'subtype' => $item->discount->subtype->name
+            ];
+        });
+        return $data;
+    }
+
+
+    public function view3(){
+        $months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun','Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return inertia('Modules/Others/Accomplishments/Customer3',[
+            'years' => $this->years(),
+            'discounts' => $this->discounts(),
+            'selected' => [
+                'year' => date('Y'),
+            ],
+            'laboratories' =>  AgencyFacilityLaboratory::with('laboratory')
+            ->withWhereHas('facility', function ($query) {
+                $query->where('agency_id', $this->agency);
+            })
+            ->get()
+            ->map(function ($item) {
+                return [
+                    'value' => $item->laboratory->id,
+                    'name'  => $item->laboratory->name,
+                ];
+            })
+            ->unique('value')
+            ->values()
+        ]);
+    }
+
+    public function list3($request)
+    {
+        $laboratory = $request->laboratory;
+        $discount = $request->discount;
+        $year = $request->year;
+        $monthInput = $request->month;
+
+        if (is_null($monthInput)) {
+            // $month = date('m'); // current month (01–12)
+            $month = null;
+        } else {
+            $month = date('m', strtotime($monthInput));
+        }
+        $agencyId = $this->agency;
+
+        $query = Tsr::where('agency_id', $agencyId)
+        ->with([
+            'customer:id,name,classification_id,sex_id,type_id,name_id,is_new',
+            'customer.customer_name:id,name',
+            'payment.discounted'
+        ])
+        ->withCount([
+            'samples',
+            'samples as analyses_count' => function ($q) {
+                $q->join('tsr_analyses', 'tsr_analyses.sample_id', '=', 'tsr_samples.id');
+            }
+        ])
+        ->when($discount !== null, function ($q) use ($discount) {
+            $q->whereHas('payment',function ($query) use ($discount){
+                $query->where('discount_id',$discount);
+            });
+        })
+        ->when($laboratory, function ($query, $laboratory) {
+            $query->where('laboratory_id',$laboratory);
+        })
+        ->whereYear('created_at', $year)
+        // ->whereMonth('created_at', $month)
+         ->when($month !== null, function ($q) use ($month) {
+            $q->whereMonth('created_at', $month);
+        })
+        ->where('status_id','!=',5)
+        ->orderBy('code', 'ASC');
+
+        if ($month) {
+            $query->whereMonth('created_at', $month);
+        }
+        return $query->get()->map(function ($item) {
+            // $discount = optional($item->payment->discounted)->name;
+            $formattedDiscount = isset($item->payment->discount) ? '₱' . number_format($item->payment->discount, 2) : '-';
+
+            $discount = $formattedDiscount;
+
+            $name = ($item->customer->name == 'Main') ? '' : ' - '.$item->customer->name;
+
+            return [
+                'code' => $item->code,
+                'name' => $item->customer->customer_name->name.' '.$name,
+                'samples' => $item->samples_count,
+                'analyses' => $item->analyses_count,
+                'fees' => $item->payment->total,
+                'discount' => $discount,
+                'gross' => ($item->payment->subtotal != $item->payment->total) ? ($item->payment->discount == '0.00') ? $item->payment->total : $item->payment->subtotal : $item->payment->subtotal
+               
+            ];
+        });
+    }
+
     public function years(){
         return Target::distinct()->pluck('year');
     }
 
     public function excel($request){
-        $monthInput = $request->month ?? date('F');
-        $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
+        if($request->month){
+            $monthInput = $request->month ?? null;
+            $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
+        }else{
+            $month = null;
+        }
         $year = ($request->year) ? $request->year : date('Y');
         $agency = $this->agency;
         return Excel::download(new CustomerExport($month,$year,$agency), 'customer.xlsx');
     }
 
     public function excel2($request){
-        $monthInput = $request->month ?? date('F');
-        $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
+        if($request->month){
+            $monthInput = $request->month ?? null;
+            $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
+        }else{
+            $month = null;
+        }
         $year = ($request->year) ? $request->year : date('Y');
         $lab = $request->laboratory;
         $agency = $this->agency;
         return Excel::download(new CustomerDiscount($month,$year,$lab,$agency), 'customerdiscount.xlsx');
+    }
+
+     public function excel3($request){
+        $discount = $request->discount;
+        if($request->month && $request->month != 'null'){
+            $monthInput = $request->month ?? null;
+            $month = is_numeric($monthInput) ? (int) $monthInput : date('m', strtotime($monthInput));
+        }else{
+            $month = null;
+        }
+        $year = ($request->year) ? $request->year : date('Y');
+        $lab = ($request->laboratory != 'null' && $request->laboratory) ? $request->laboratory : null;
+        $agency = $this->agency;
+        return Excel::download(new DiscountCustomer($month,$year,$lab,$agency,$discount), 'discount.xlsx');
     }
 
 }

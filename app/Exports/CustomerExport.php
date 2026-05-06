@@ -52,7 +52,10 @@ class CustomerExport implements FromView
             'customer.customer_name:id,name',
             'payment'
         ])
-        ->whereMonth('created_at', $this->month)
+        // ->whereMonth('created_at', $this->month)
+        ->when($this->month !== null, function ($q){
+            $q->whereMonth('created_at',$this->month);
+        })
         ->whereYear('created_at', $this->year)
         ->orderBy('created_at','ASC');
 

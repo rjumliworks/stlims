@@ -149,7 +149,7 @@ export default {
             months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
             years: this.years,
             year: new Date().getFullYear(),
-            month: new Date().getMonth(),
+             month: null, // new Date().getMonth()
             selectedRow: null, 
             selectedColumn: null,
             expandedRows: {},

@@ -236,6 +236,11 @@
                                             <i class="ri-file-list-2-fill align-bottom"></i> Customer Discount
                                         </button>
                                         </a>
+                                         <a href="/accomplishments?option=customer3" target="_blank">
+                                        <button class="btn btn-sm btn-soft-warning me-1" type="button" data-original-title="View Excel">
+                                            <i class="ri-file-list-2-fill align-bottom"></i> Discounts
+                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

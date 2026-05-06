@@ -8,7 +8,8 @@
                         <b-col lg>
                             <div class="input-group mb-1">
                                 <span class="input-group-text"> <i class="ri-search-line search-icon"></i></span>
-                                <input type="text" placeholder="Accomplishments" class="form-control" style="width: 40%;">
+                                <input type="text" placeholder="Accomplishments" class="form-control" style="width: 20%;">
+                                <Multiselect class="white" style="width: 15%;" :options="discounts" v-model="discount" label="name" :allow-empty="false" :searchable="true" placeholder="Select Discount" />
                                 <Multiselect class="white" style="width: 15%;" :options="laboratories" v-model="laboratory" label="name" :allow-empty="false" :searchable="true" placeholder="Select Laboratory" />
                                 <Multiselect class="white" style="width: 15%;" :options="months" v-model="month" label="name" :allow-empty="false" :searchable="true" placeholder="Select Month" />
                                 <Multiselect class="white" style="width: 15%;" :options="years" v-model="year" label="name" :allow-empty="false" :searchable="true" placeholder="Select Year" />
@@ -25,26 +26,14 @@
                         <table class="table table-light table-bordered table-striped table-nowrap align-middle">
                             <thead class="thead-fixed text-primary fs-11">
                                 <tr class="bg-dark">
-                                    <th rowspan="2" class="align-middle">No.</th>
-                                    <th rowspan="2" class="text-center align-middle">TSR No.</th>
-                                    <th rowspan="2" class="align-middle">Customer Name</th>
-                                    <th rowspan="2" class="text-center align-middle">No. of Samples</th>
-                                    <th rowspan="2" class="text-center align-middle">No. of Services</th>
-                                    <th rowspan="2" class="text-center align-middle">Fees Collected</th>
-                                    <th colspan="3"  class="text-center align-middle table-info">Gratis</th>
-                                    <th colspan="5"  class="text-center align-middle table-danger">Discount</th>
-                                    <th rowspan="2" class="text-center align-middle table-success">Grouss Amount</th>
-                                </tr>
-                                <tr class="text-center align-middle">
-                                    <th class="table-info">Calibration</th>
-                                    <th class="table-info">QC</th>
-                                    <th class="table-info">R&D</th>
-                                    <th class="table-danger">Health Units</th>
-                                    <th class="table-danger">Student</th>
-                                    <th class="table-danger">Senior Citizen</th>
-                                    <th class="table-danger">PWD</th>
-                                    <th class="table-danger">Women's</th>
-                                
+                                    <th class="align-middle">No.</th>
+                                    <th class="text-center align-middle">TSR No.</th>
+                                    <th class="align-middle">Customer Name</th>
+                                    <th class="text-center align-middle">No. of Samples</th>
+                                    <th class="text-center align-middle">No. of Services</th>
+                                    <th class="text-center align-middle">Fees Collected</th>
+                                    <th class="text-center align-middle table-danger">Discount</th>
+                                    <th class="text-center align-middle table-success">Grouss Amount</th>
                                 </tr>
                             </thead>
                             <tbody class="fs-10">
@@ -55,14 +44,7 @@
                                     <td class="text-center align-middle">{{item.samples}}</td>
                                     <td class="text-center align-middle">{{item.analyses}}</td>
                                     <td class="text-center align-middle">{{item.fees}}</td>
-                                    <td class="text-center align-middle">{{item.calibration}}</td>
-                                    <td class="text-center align-middle">{{item.qc}}</td>
-                                    <td class="text-center align-middle">{{item.rd}}</td>
-                                    <td class="text-center align-middle">{{item.health}}</td>
-                                    <td class="text-center align-middle">{{item.student}}</td>
-                                    <td class="text-center align-middle">{{item.senior}}</td>
-                                    <td class="text-center align-middle">{{item.pwd}}</td>
-                                    <td class="text-center align-middle">{{item.women}}</td>
+                                    <td class="text-center align-middle">{{item.discount}}</td>
                                     <td class="text-center align-middle">{{item.gross}}</td>
                                 </tr>
                             </tbody>
@@ -78,15 +60,16 @@ import Multiselect from "@vueform/multiselect";
 export default {
     layout: null,
     components: { Multiselect },
-    props: ['years','selected','laboratories'],
+    props: ['years','selected','laboratories','discounts'],
     data(){
         return {
             selectedRow: null,
             months: ['January','February','March','April','May','June','July','August','September','October','November','December'],
             years: this.years,
             year: new Date().getFullYear(),
-             month: null, // new Date().getMonth()
+            month: null, // new Date().getMonth()
             laboratory: null,
+            discount: null,
             selectedRow: null, 
             selectedColumn: null,
             expandedRows: {},
@@ -103,6 +86,9 @@ export default {
         'laboratory'(){
             this.fetch();
         },
+        'discount'(){
+            this.fetch();
+        }
     },
     methods: {
         fetch(){
@@ -111,7 +97,8 @@ export default {
                     month: this.month,
                     year: this.year,
                     laboratory: this.laboratory,
-                    option: 'customer2_data'
+                    discount: this.discount,
+                    option: 'customer3_data'
                 }
             })
             .then(response => {
@@ -129,7 +116,7 @@ export default {
             this.selectedColumn = (this.selectedColumn == index) ? null : index;
         },
         openExcel(){
-            window.open('/accomplishments?option=excel2&month='+this.month+'&year='+this.year+'&laboratory='+this.laboratory);
+            window.open('/accomplishments?option=excel3&month='+this.month+'&year='+this.year+'&laboratory='+this.laboratory+'&discount='+this.discount);
         },
         formatMoney(value) {
             let val = (value / 1).toFixed(2).replace(',', '.');
