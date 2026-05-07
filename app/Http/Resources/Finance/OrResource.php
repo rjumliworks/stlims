@@ -18,27 +18,32 @@ class OrResource extends JsonResource
             $amount = $this->total;
             $excess = '-';
         }else{
-            $amount = $this->or->detail->amount;
-            if($this->or->wallet){
-                $excess = $this->or->wallet->amount;
+            if($this->or){
+                $amount = $this->or->detail->amount;
+                if($this->or->wallet){
+                    $excess = $this->or->wallet->amount;
+                }else{
+                    $excess = '-';
+                }
             }else{
-                $excess = '-';
+                $amount = 0;
+                $excess = 0;
             }
         }
 
         return [
             'id' => $this->id,
-            'or_id' => $this->or->id,
+            'or_id' => ($this->or) ? $this->or->id : '-',
             'date' => $this->created_at,
             'opnumber' => $this->code,
             'customer' => $customer,
-            'ornumber' => $this->or->number,
+            'ornumber' => ($this->or) ? $this->or->number  : '-',
             'collection' => $this->collection->name,
             'payment' => $this->payment->name,
             'status' => $this->status,
             'items' => $this->items,
-            'detail' => $this->or->detail,
-            'transaction' => $this->or->wallet,
+            'detail' => ($this->or) ? $this->or->detail : '-',
+            'transaction' => ($this->or) ? $this->or->wallet : '-',
             'excess' => $excess,
             'opamount' => $this->total,
             'oramount' => $amount,
