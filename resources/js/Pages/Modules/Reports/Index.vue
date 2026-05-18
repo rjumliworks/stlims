@@ -89,6 +89,9 @@
                                 </div>
                                 <div class="flex-shrink-0">
                                     <div class="mb-n1 mt-n1">
+                                         <b-button @click="openExcel('paymenttype')" variant="soft-success" class="me-1" v-b-tooltip.hover title="Payment Type" size="sm">
+                                            <i class="ri-file-excel-fill align-bottom"></i>
+                                        </b-button>
                                         <b-button @click="openExcel('op')" variant="soft-success" class="me-1" v-b-tooltip.hover title="View Excel" size="sm">
                                             <i class="ri-file-excel-fill align-bottom"></i>
                                         </b-button>

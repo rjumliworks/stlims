@@ -7,6 +7,7 @@ use App\Models\AgencyConfiguration;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\RSTLExport;
 use App\Exports\OpExport;
+use App\Exports\OpTypeExport;
 use App\Exports\TsrExport;
 use App\Exports\WomenExport;
 use App\Exports\ReconciliationExport;
@@ -31,7 +32,7 @@ class AccountingClass
             break;
             case 'excel':
                 return $this->excel($request);
-            break;
+            break; 
         }
     }
 
@@ -65,6 +66,9 @@ if (!empty($month_name)) {
             case 'op':
                 return Excel::download(new OpExport($month,$year,$this->agency), 'opor-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
+            case 'paymenttype':
+                return Excel::download(new OpTypeExport($month,$year,$this->agency), 'optypeor-'.strtolower($month_name).'-'.$year.'.xlsx');
+            break;
             case 'rstl':
                 return Excel::download(new RSTLExport($month,$year,$laboratory,$this->agency), 'rstl-'.strtolower($month_name).'-'.$year.'.xlsx');
             break;
@@ -82,5 +86,18 @@ if (!empty($month_name)) {
             default:
                 return Excel::download(new ReconciliationExport($month,$year,$this->agency), 'reconciliation-'.strtolower($month_name).'-'.$year.'.xlsx');
         }
+    }
+
+    private function type($request){
+      $month_name = $request->month;
+        if (!empty($month_name)) {
+            $dt = \DateTime::createFromFormat('F', ucfirst(strtolower($month_name)));
+            $month = $dt ? $dt->format('m') : null;
+        } else {
+            $month = null;
+        }
+        $year = ($request->year) ? $request->year : date('Y');
+        $laboratory = $request->laboratory;
+       return Excel::download(new OpTypeExport($month,$year,$this->agency), 'opor-'.strtolower($month_name).'-'.$year.'.xlsx');
     }
 }
