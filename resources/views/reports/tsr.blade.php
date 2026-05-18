@@ -311,8 +311,12 @@
                         {{trim($tsr['payment']['subtotal'],'₱ ')}}</td>
                 </tr>
                 <tr>
-                    <td colspan="5"></td>
-                    <td style="font-size: 8px;">DISCOUNT</td>
+                    <td colspan="5"  style="font-weight: regular; text-align: left;">
+                        {{-- @if($tsr['payment']['discounted'] != 'Regular')
+                            <i>{{$tsr['payment']['discounted']}} discount applied</i>
+                        @endif --}}
+                    </td>
+                    <td style="font-size: 8px;">DISCOUNT @if(isset($tsr['payment']['discounted']))  <br/><span style="color: #5f5f5f; font-size: 8px;"> ({{$tsr['payment']['discounted']}})</span> @endif</td>
                     <td style="font-size: 9px; text-align: right;">
                         <span style="position: relative; display: inline-block; margin-bottom: -2px; margin-right: -2px;">
                             <span style="position: absolute; top: 4.5px; left: 1.78; width: .68em; border-top: .65px solid #072388"></span>
