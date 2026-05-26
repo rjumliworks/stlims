@@ -135,7 +135,8 @@ class ViewClass
             ->count();
 
             if($mainCount > 1){
-                $name = $item->customer_name->name.' - '.$item->address->municipality->name ;
+                // $name = $item->customer_name->name.' - '.$item->address->municipality->name ;
+                $name = ($item->customer_name->has_branches) ? ($item->is_main) ? $item->customer_name->name.' - '.$item->address->municipality->name :  $item->customer_name->name.' - '.$item->name : $item->customer_name->name;
             }else{
                 $name = ($item->customer_name->has_branches) ? ($item->is_main) ? $item->customer_name->name :  $item->customer_name->name.' - '.$item->name : $item->customer_name->name;
             }
