@@ -115,7 +115,7 @@ class ViewClass
     public function pick($request){
         $keyword = $request->keyword;
         $id = $request->id;
-        $data = Customer::with('conformes','contact')->with('customer_name')
+        $data = Customer::with('conformes','contact','address.municipality')->with('customer_name')
         ->where(function($query) use ($keyword,$id) {
             $query->where('name', 'LIKE', "%{$keyword}%")
                 ->where('id','!=',$id)
@@ -129,7 +129,16 @@ class ViewClass
             $query ->where('agency_id',$value);
         })
         ->get()->map(function ($item) {
-            $name = ($item->customer_name->has_branches) ? ($item->is_main) ? $item->customer_name->name :  $item->customer_name->name.' - '.$item->name : $item->customer_name->name;
+       
+            $mainCount = Customer::where('name_id', $item->name_id)
+            ->where('is_main', 1)
+            ->count();
+
+            if($mainCount > 1){
+                $name = $item->customer_name->name.' - '.$item->address->municipality->name ;
+            }else{
+                $name = ($item->customer_name->has_branches) ? ($item->is_main) ? $item->customer_name->name :  $item->customer_name->name.' - '.$item->name : $item->customer_name->name;
+            }
             return [
                 'value' => $item->id,
                 'name' => $name,
