@@ -153,7 +153,7 @@ class SaveClass
             ]);
             $grandTotal += $total;
         }
-        $total = $this->updateTotal($request->tsr_id,$request->total);
+        $total = $this->updateTotal($request->tsr_id,$grandTotal);
        return [
             'data' => $total,
             'message' => 'Additional Fee Added Successfully', 
