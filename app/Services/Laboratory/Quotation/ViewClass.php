@@ -146,6 +146,7 @@ class ViewClass
 
         foreach ($samples as $row) {
             $sampleName = $row['name'];
+   
 
             foreach ($row['analyses'] as $index => $analysis) {
                 $testName = $analysis['testservice']['testname']['name'];
@@ -169,10 +170,15 @@ class ViewClass
                 $groupedData[$key]["count"] += 1;
 
                 // Group additional fees by name and sum quantity and total
+           
                 if (!empty($analysis['addfee'])) {
-                    $addfees = is_array($analysis['addfee']) && isset($analysis['addfee'][0])
-                        ? $analysis['addfee']            // array of fees
-                        : [$analysis['addfee']];         // single fee wrapped in array
+                    // $addfees = is_array($analysis['addfee']) && isset($analysis['addfee'][0])
+                    //     ? $analysis['addfee']            // array of fees
+                    //     : [$analysis['addfee']];         // single fee wrapped in array
+
+                    //   dd($addfees);
+
+                    $addfees = $analysis['addfee'];
 
                     foreach ($addfees as $addfee) {
                         $feeName = $addfee['service']['name'];
