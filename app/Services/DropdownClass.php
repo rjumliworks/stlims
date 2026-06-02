@@ -107,7 +107,7 @@ class DropdownClass
             $total = ($item->discount->subtype->name == 'Percentage') ? $item->discount->value.'%' : '₱'.$item->discount->value;
             $name = ($item->discount->name === 'Regular') ? $item->discount->name : $item->discount->name.' ('.$total.')';
             return [
-                'value' => $item->discount->id,
+                'value' => $item->discount_id,
                 'name' => $name,
                 'number' => $item->discount->value,
                 'type' => $item->discount->type->name,
